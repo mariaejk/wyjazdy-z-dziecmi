@@ -3,7 +3,7 @@
 import { useEffect, useRef, useCallback } from "react";
 import Link from "next/link";
 import { X } from "lucide-react";
-import { motion, AnimatePresence } from "motion/react";
+import { motion, AnimatePresence, useReducedMotion } from "motion/react";
 import { mainNavigation } from "@/data/navigation";
 
 type MobileMenuProps = {
@@ -14,6 +14,7 @@ type MobileMenuProps = {
 export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
   const menuRef = useRef<HTMLDivElement>(null);
   const closeButtonRef = useRef<HTMLButtonElement>(null);
+  const shouldReduceMotion = useReducedMotion();
 
   // Focus trap + Escape handler
   const handleKeyDown = useCallback(
@@ -68,7 +69,7 @@ export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.2 }}
+            transition={{ duration: shouldReduceMotion ? 0 : 0.2 }}
             className="fixed inset-0 z-40 bg-graphite/40"
             onClick={onClose}
             aria-hidden="true"
@@ -84,8 +85,8 @@ export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
             initial={{ x: "100%" }}
             animate={{ x: 0 }}
             exit={{ x: "100%" }}
-            transition={{ type: "spring", damping: 25, stiffness: 300 }}
-            className="fixed right-0 top-0 z-50 flex h-full w-72 flex-col bg-parchment shadow-xl"
+            transition={shouldReduceMotion ? { duration: 0 } : { type: "spring", damping: 25, stiffness: 300 }}
+            className="fixed right-0 top-0 z-50 flex h-full w-4/5 max-w-xs flex-col bg-parchment shadow-xl"
           >
             {/* Close button */}
             <div className="flex items-center justify-end px-4 py-4">

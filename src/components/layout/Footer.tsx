@@ -107,7 +107,11 @@ export function Footer() {
         </div>
 
         {/* Newsletter placeholder */}
-        <div className="mt-10 border-t border-parchment pt-8">
+        <form
+          className="mt-10 border-t border-parchment pt-8"
+          action="#"
+          aria-label="Formularz newslettera"
+        >
           <div className="flex flex-col items-start gap-4 sm:flex-row sm:items-center sm:justify-between">
             <div>
               <p className="text-sm font-medium text-graphite">
@@ -122,19 +126,19 @@ export function Footer() {
                 type="email"
                 placeholder="Twój email"
                 disabled
-                className="w-full rounded-md border border-parchment bg-white px-3 py-2 text-sm text-graphite-light sm:w-56"
-                aria-label="Adres email do newslettera"
+                className="w-full cursor-not-allowed rounded-md border border-parchment bg-white px-3 py-2 text-sm text-graphite-light opacity-60 sm:w-56"
+                aria-label="Adres email do newslettera (wkrótce dostępne)"
               />
               <button
-                type="button"
+                type="submit"
                 disabled
-                className="rounded-md bg-moss/50 px-4 py-2 text-sm font-medium text-white"
+                className="cursor-not-allowed rounded-md bg-moss/50 px-4 py-2 text-sm font-medium text-white opacity-60"
               >
                 Zapisz
               </button>
             </div>
           </div>
-        </div>
+        </form>
 
         {/* Copyright */}
         <div className="mt-8 border-t border-parchment pt-6 text-center">

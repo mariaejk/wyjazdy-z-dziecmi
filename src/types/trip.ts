@@ -31,6 +31,11 @@ export type TripCollaborator = {
   image?: string;
 };
 
+export type TripTargetAudience = {
+  label: string;
+  description?: string;
+};
+
 export type Trip = {
   slug: string;
   title: string;
@@ -42,7 +47,7 @@ export type Trip = {
   longDescription: string;
   image: string;
   isPast: boolean;
-  targetAudience: string[];
+  targetAudience: TripTargetAudience[];
   schedule: TripScheduleDay[];
   practicalInfo: {
     accommodation: string;
