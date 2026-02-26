@@ -7,32 +7,32 @@
 
 ## Etap 2A: Dane wyjazdów [M]
 
-- [ ] **2A.1** Utworzyć `src/data/trips.ts` z eksportem `trips: Trip[]`
-- [ ] **2A.2** Wypełnić dane "Matka i Córka — Wspólny Rytm" (slug, title, subtitle, date, location, descriptions, schedule 3 dni, pricing 3 opcje, deposit 450, collaborator Ilona, targetAudience 4 punkty, FAQ 5 pytań, gallery)
-- [ ] **2A.3** Dodać placeholder "Yoga i Konie" (minimalne dane, isPast: false)
-- [ ] **2A.4** Wyeksportować helpery: `getTripBySlug(slug)`, `getAllTrips()`, `getUpcomingTrips()`, `getPastTrips()`
-- [ ] **2A.5** Sprawdzić zgodność z typem `Trip` (`npm run build`)
+- [x] **2A.1** Utworzyć `src/data/trips.ts` z eksportem `trips: Trip[]`
+- [x] **2A.2** Wypełnić dane "Matka i Córka — Wspólny Rytm" (slug, title, subtitle, date, location, descriptions, schedule 3 dni, pricing 3 opcje, deposit 450, collaborator Ilona, targetAudience 4 punkty, FAQ 5 pytań, gallery)
+- [x] **2A.3** Dodać placeholder "Yoga i Konie" (minimalne dane, isPast: false)
+- [x] **2A.4** Wyeksportować helpery: `getTripBySlug(slug)`, `getAllTrips()`, `getUpcomingTrips()`, `getPastTrips()`
+- [x] **2A.5** Sprawdzić zgodność z typem `Trip` (`npm run build`)
 
 ---
 
 ## Etap 2B: UI Primitives [L]
 
-- [ ] **2B.1** `src/components/ui/Button.tsx` — warianty: primary/secondary/ghost, rozmiary: sm/md/lg, props: href (→ Link), icon, disabled, className
-- [ ] **2B.2** `src/components/ui/SectionWrapper.tsx` — props: variant (default/alternate), id, className, children; padding-y responsive
-- [ ] **2B.3** `src/components/ui/SectionHeading.tsx` — props: title (h2), subtitle (p), align (center/left), className
-- [ ] **2B.4** `src/components/ui/Badge.tsx` — props: variant (default/outline), children, className
-- [ ] **2B.5** `src/components/ui/Card.tsx` — props: image (src, alt), children, href, className; hover effect (scale + shadow)
-- [ ] **2B.6** Sprawdzić `npm run build` po dodaniu wszystkich UI components
+- [x] **2B.1** `src/components/ui/Button.tsx` — warianty: primary/secondary/ghost, rozmiary: sm/md/lg, props: href (→ Link), icon, disabled, className
+- [x] **2B.2** `src/components/ui/SectionWrapper.tsx` — props: variant (default/alternate), id, className, children; padding-y responsive
+- [x] **2B.3** `src/components/ui/SectionHeading.tsx` — props: title (h2), subtitle (p), align (center/left), className
+- [x] **2B.4** `src/components/ui/Badge.tsx` — props: variant (default/outline), children, className
+- [x] **2B.5** `src/components/ui/Card.tsx` — props: image (src, alt), children, href, className; hover effect (scale + shadow)
+- [x] **2B.6** Sprawdzić `npm run build` po dodaniu wszystkich UI components
 
 ---
 
 ## Etap 2C: ScrollAnimation [M]
 
-- [ ] **2C.1** `src/components/shared/ScrollAnimation.tsx` — "use client", import z `motion/react`
-- [ ] **2C.2** Warianty animacji: fadeIn, fadeUp, fadeLeft, fadeRight, scaleIn
-- [ ] **2C.3** Props: variant, delay, duration, threshold, once (default true), className
-- [ ] **2C.4** Respektowanie `prefers-reduced-motion` (hook lub media query)
-- [ ] **2C.5** Test na dev server — animacja odpala się poprawnie przy scroll
+- [x] **2C.1** `src/components/shared/ScrollAnimation.tsx` — "use client", import z `motion/react`
+- [x] **2C.2** Warianty animacji: fadeIn, fadeUp, fadeLeft, fadeRight, scaleIn
+- [x] **2C.3** Props: variant, delay, duration, threshold, once (default true), className
+- [x] **2C.4** Respektowanie `prefers-reduced-motion` (hook `useReducedMotion()` z motion/react)
+- [x] **2C.5** Test na dev server — build PASS, lint PASS
 
 ---
 
@@ -75,9 +75,9 @@
 
 | Etap | Zadań | Status |
 |------|-------|--------|
-| 2A: Dane wyjazdów | 5 | ⬜ Pending |
-| 2B: UI Primitives | 6 | ⬜ Pending |
-| 2C: ScrollAnimation | 5 | ⬜ Pending |
+| 2A: Dane wyjazdów | 5 | ✅ Done |
+| 2B: UI Primitives | 6 | ✅ Done |
+| 2C: ScrollAnimation | 5 | ✅ Done |
 | 2D: Sekcje strony głównej | 8 | ⬜ Pending |
 | 2E: Złożenie page.tsx | 4 | ⬜ Pending |
 | 2F: Weryfikacja | 8 | ⬜ Pending |

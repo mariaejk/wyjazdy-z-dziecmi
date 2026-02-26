@@ -1,7 +1,7 @@
 # Kontekst: Faza 2 — Strona Główna
 
 > **Branch:** `feature/faza2-strona-glowna`
-> **Ostatnia aktualizacja:** 2026-02-26
+> **Ostatnia aktualizacja:** 2026-02-26 (etapy 2A+2B+2C)
 
 ---
 
@@ -135,4 +135,10 @@ import { motion } from "motion/react";
 
 ## Notatki z sesji
 
-*(uzupełniać w trakcie implementacji)*
+### Etapy 2A+2B+2C (2026-02-26)
+- **Unicode quotes bug:** Polskie cudzysłowy `„"` (U+201E/U+201D) w stringach JS powodowały parse error. Rozwiązanie: unicode escapes `\u201E`/`\u201D` w trips.ts.
+- **Motion types:** `Record<string, { hidden: object; visible: object }>` nie pasuje do motion props. Fix: `as const` na obiekcie variants.
+- **useReducedMotion:** Eksportowane z `motion/react` — działa OK z React 19.
+- **Button:** Discriminated union `ButtonAsLink | ButtonAsButton` zamiast jednego typu — czyste rozdzielenie props.
+- **Card:** `grayscale` prop gotowy na przyszłe minione wyjazdy (isPast).
+- **Build + Lint:** PASS (0 errors).
