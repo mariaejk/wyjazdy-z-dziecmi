@@ -66,3 +66,21 @@ Ostatnia aktualizacja: 2026-02-27
 | 1E: Layout | 3 | 3 | ✅ Ukończony |
 | 1F: Weryfikacja | 1 | 1 | ✅ Ukończony |
 | **Łącznie** | **19** | **19** | **100%** |
+
+---
+
+## Do poprawy po review Fazy 1
+
+### 🟠 Important (powinno być naprawione)
+- [ ] 🟠 **globals.css:21** + **MobileMenu.tsx** — dodać `prefers-reduced-motion: reduce` (WCAG 2.3.3): wyłączyć `scroll-behavior: smooth` i animacje motion
+- [ ] 🟠 **Footer.tsx:121-135** — dodać `cursor-not-allowed opacity-60` na disabled newsletter input/button + poprawić aria-label
+- [ ] 🟠 **Container.tsx:4,6** + **layout.tsx:44** — named imports (`ReactNode`, `ElementType`) zamiast `React.ReactNode`
+- [ ] 🟠 **Footer.tsx** — owinąć newsletter placeholder w `<form>` dla poprawnej semantyki
+- [ ] 🟠 **types/trip.ts** — dodać `TripTargetAudience` jako osobny typ (zgodność z planem zadanie 1.10)
+
+### 🟡 Nit (opcjonalne)
+- [ ] 🟡 **MobileMenu.tsx** — `w-72` → `w-4/5 max-w-xs` (lepiej na 320px)
+- [ ] 🟡 **MobileMenu.tsx:49** — `setTimeout` wokół `closeButtonRef.current?.focus()` (czekaj na mount animacji)
+- [ ] 🟡 **error.tsx** — dodać `console.error(error)` jako placeholder dla monitoringu
+- [ ] 🟡 **globals.css** — usunąć nadmiarowe `--color-white: #FFFFFF` (Tailwind v4 definiuje `white`)
+- [ ] 🟡 **Header.tsx** — rozważyć wydzielenie HamburgerButton jako osobny Client Component (RSC optymalizacja)

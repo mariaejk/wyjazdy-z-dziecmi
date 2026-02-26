@@ -6,16 +6,18 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 Landing page / sales funnel for "Wyjazdy z Dziećmi" — a brand organizing family workshop retreats in nature (yoga, dance, ceramics, horses). Client: Maria Kordalewska. Domain: wyjazdyzdziecmi.pl.
 
-**Status:** Pre-implementation. Plan v1.1 finalized, ready for Phase 1.
+**Status:** Phase 1 (Fundament) COMPLETE. Ready for Phase 2.
 
 ## Tech Stack
 
-- **Next.js 15** (App Router, SSG) + **TypeScript** + **Tailwind CSS v4**
-- **Motion** (`motion/react`) — NOT `framer-motion` (incompatible with React 19)
-- **React Hook Form + Zod** — form validation (client + server)
-- **Lucide React** — line icons (strokeWidth 1.5)
+- **Next.js 16.1.6** (App Router, SSG) + **TypeScript** + **Tailwind CSS v4**
+- **React 19.2** + **Turbopack**
+- **Motion 12.34** (`motion/react`) — NOT `framer-motion` (incompatible with React 19)
+- **React Hook Form 7.71 + Zod 4.3** — form validation (client + server)
+- **Lucide React 0.575** — line icons (strokeWidth 1.5)
+- **clsx 2.1 + tailwind-merge 3.5** — className utility `cn()`
 - **Vercel** — deployment
-- Fonts: **Playfair Display** (headings) + **Inter** (body), self-hosted via `next/font/local`
+- Fonts: **Playfair Display** (headings) + **Inter** (body), self-hosted via `next/font/google` (auto self-hosting, RODO OK)
 
 ## Critical Constraints
 
@@ -40,12 +42,18 @@ Mobile-first, generous whitespace, line icons. Past trips rendered with `graysca
 ## Project Structure
 
 ```
-dev/plan.md        — Implementation plan v1.1 (5 phases, 78 tasks)
-dev/task.md        — Task checklist with checkboxes
-dev/kontekst.md    — Project context and session notes
-docs/              — PRD, content, UI guidelines, source images
-docs/Images/       — logo.jpeg + 5 photos (image_5.png is 1.3MB — needs optimization priority)
-src/               — Next.js app (to be created in Phase 1)
+dev/plan.md              — Implementation plan v1.1 (5 phases, 78 tasks)
+dev/task.md              — Task checklist with checkboxes
+dev/kontekst.md          — Project context and session notes
+dev/completed/           — Archived completed phases
+dev/active/              — Current active phase docs
+docs/                    — PRD, content, UI guidelines, source images
+src/app/                 — Next.js pages (layout, page, loading, error)
+src/components/layout/   — SkipToContent, Container, Header, MobileMenu, Footer
+src/lib/                 — constants.ts, utils.ts
+src/data/                — navigation.ts (future: trips.ts)
+src/types/               — trip.ts, team.ts, place.ts, forms.ts
+public/images/           — 6 optimized images (hero, logo, etc.)
 ```
 
 ## Build & Dev Commands (after Phase 1 setup)
@@ -64,6 +72,13 @@ npm run lint       # ESLint
 - **Booking form fields**: name, email, phone, trip (dropdown), adults count, children count + ages, notes, RODO consent (required), marketing consent (optional)
 - **Logo**: use as raster JPG via `next/image` (SVG conversion is non-trivial, needs vector file from client)
 - **Skip-to-content** link from Phase 1, not deferred to accessibility audit
+
+## Phase 1 Lessons Learned
+
+- **`next/font/google` = self-hosting**: Next.js auto-downloads fonts and serves from own domain. Zero Google requests at runtime. RODO compliant.
+- **Focus trap needs manual implementation**: No built-in solution in motion — handle Tab/Shift+Tab cycling, Escape, body scroll lock manually.
+- **`prefers-reduced-motion`**: Must be added to globals.css AND motion components. Easy to forget. (Pending fix from code review.)
+- **React 19 imports**: Use `import type { ReactNode } from "react"` — not `React.ReactNode`. (Pending fix from code review.)
 
 ## Content Sources
 

@@ -197,3 +197,15 @@ Systematyczna weryfikacja 10+ punktów akceptacyjnych:
 | Responsywność 320–1440px | ⚠️ MANUAL | HTML renderuje się poprawnie, wymaga wizualnego testu |
 
 **Faza 1 — FUNDAMENT — UKOŃCZONA (19/19 zadań, 100%)**
+
+### Code Review Fazy 1 (2026-02-27)
+- Reviewer: subagent code-architecture-reviewer
+- Werdykt: **APPROVE** — kod gotowy do merge, brak blockerów
+- 23 pliki sprawdzone, 0 blocking, 5 important, 5 nit, 6 suggestions
+- Raport: `dev/active/faza1-fundament/faza1-fundament-code-review.md`
+- Kluczowe wnioski:
+  1. Brak `prefers-reduced-motion` — naruszone WCAG 2.3.3 (do poprawy)
+  2. Disabled newsletter bez wizualnego sygnału (cursor-not-allowed, opacity)
+  3. `React.ReactNode` zamiast named imports — niespójność z React 19 patterns
+  4. Brak `<form>` wrappera na newsletter placeholder
+  5. Dobre praktyki: Tailwind v4, motion/react, ARIA, semantyczny HTML, focus trap, lang="pl" — wszystko poprawne
