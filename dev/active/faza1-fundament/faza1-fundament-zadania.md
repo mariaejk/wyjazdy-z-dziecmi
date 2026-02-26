@@ -7,9 +7,9 @@ Ostatnia aktualizacja: 2026-02-26
 
 ## Etap 1A: Inicjalizacja projektu
 
-- ⬜ **1.1** Inicjalizacja Next.js 15 (`create-next-app` z TS + Tailwind + App Router + src)
-- ⬜ **1.2** Instalacja zależności (`motion`, `react-hook-form`, `zod`, `@hookform/resolvers`, `lucide-react`, `clsx`, `tailwind-merge`)
-- ⬜ **1.3** Utworzenie `.env.example` (GA4 ID, webhook URLs)
+- ✅ **1.1** Inicjalizacja Next.js 16.1.6 (`create-next-app` z TS + Tailwind + App Router + src) — React 19.2, Turbopack
+- ✅ **1.2** Instalacja zależności (motion 12.34, react-hook-form 7.71, zod 4.3, lucide-react 0.575, clsx 2.1, tailwind-merge 3.5)
+- ✅ **1.3** Utworzenie `.env.example` + aktualizacja `.gitignore` (env, .next, build, DS_Store)
 
 ## Etap 1B: Design System i fonty
 
@@ -58,10 +58,10 @@ Ostatnia aktualizacja: 2026-02-26
 
 | Etap | Zadania | Ukończone | Status |
 |------|---------|-----------|--------|
-| 1A: Inicjalizacja | 3 | 0 | ⬜ Oczekuje |
+| 1A: Inicjalizacja | 3 | 3 | ✅ Ukończony |
 | 1B: Design System | 3 | 0 | ⬜ Oczekuje |
 | 1C: Utils i dane | 4 | 0 | ⬜ Oczekuje |
 | 1D: Komponenty | 5 | 0 | ⬜ Oczekuje |
 | 1E: Layout | 3 | 0 | ⬜ Oczekuje |
 | 1F: Weryfikacja | 1 | 0 | ⬜ Oczekuje |
-| **Łącznie** | **19** | **0** | **0%** |
+| **Łącznie** | **19** | **3** | **16%** |

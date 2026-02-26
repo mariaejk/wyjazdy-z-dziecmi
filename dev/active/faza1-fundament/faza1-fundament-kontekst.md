@@ -1,7 +1,7 @@
 # Kontekst: Faza 1 — Fundament
 
 Branch: `feature/faza1-fundament`
-Ostatnia aktualizacja: 2026-02-26
+Ostatnia aktualizacja: 2026-02-27
 
 ---
 
@@ -121,3 +121,13 @@ Footer links:
 - Przeanalizowano plan.md, task.md, kontekst.md, treści, UI, PRD
 - Stworzono dokumentację Fazy 1 (plan, kontekst, zadania)
 - Gotowe do implementacji: `/dev-docs-execute dev/active/faza1-fundament`
+
+### Sesja 2 (2026-02-27) — Etap 1A: Inicjalizacja
+- Zainicjalizowano projekt Next.js **16.1.6** (nie 15 — @latest dał v16, kompatybilny wstecz)
+- React **19.2.3**, Turbopack domyślnie
+- Zainstalowano wszystkie zależności (motion, RHF, Zod, Lucide, clsx, tailwind-merge)
+- Utworzono `.env.example`, zaktualizowano `.gitignore`
+- Poprawiono `package.json` name z "temp-next" na "wyjazdy-z-dziecmi"
+- Dev server testowo uruchomiony — HTTP 200 OK
+
+**Decyzja:** Użyto Next.js 16 zamiast 15 (plan mówi 15, ale @latest daje 16). API App Router jest identyczne. React 19 + motion działa bez zmian.
