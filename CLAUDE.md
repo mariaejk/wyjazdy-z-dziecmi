@@ -6,7 +6,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 Landing page / sales funnel for "Wyjazdy z Dziećmi" — a brand organizing family workshop retreats in nature (yoga, dance, ceramics, horses). Client: Maria Kordalewska. Domain: wyjazdyzdziecmi.pl.
 
-**Status:** Phase 1 (Fundament) COMPLETE. Ready for Phase 2.
+**Status:** Phase 1 (Fundament) + Phase 2 (Homepage) COMPLETE. Ready for Phase 3.
 
 ## Tech Stack
 
@@ -50,8 +50,11 @@ dev/active/              — Current active phase docs
 docs/                    — PRD, content, UI guidelines, source images
 src/app/                 — Next.js pages (layout, page, loading, error)
 src/components/layout/   — SkipToContent, Container, Header, MobileMenu, Footer
+src/components/ui/       — Button, SectionWrapper, SectionHeading, Badge, Card
+src/components/shared/   — ScrollAnimation (motion/react, cross-page)
+src/components/home/     — HeroSection, TripCard, TripCardsSection, AboutTeaser, OpinionsTeaser
 src/lib/                 — constants.ts, utils.ts
-src/data/                — navigation.ts (future: trips.ts)
+src/data/                — navigation.ts, trips.ts (hardcoded trip data + helpers)
 src/types/               — trip.ts, team.ts, place.ts, forms.ts
 public/images/           — 6 optimized images (hero, logo, etc.)
 ```
@@ -77,8 +80,18 @@ npm run lint       # ESLint
 
 - **`next/font/google` = self-hosting**: Next.js auto-downloads fonts and serves from own domain. Zero Google requests at runtime. RODO compliant.
 - **Focus trap needs manual implementation**: No built-in solution in motion — handle Tab/Shift+Tab cycling, Escape, body scroll lock manually.
-- **`prefers-reduced-motion`**: Must be added to globals.css AND motion components. Easy to forget. (Pending fix from code review.)
-- **React 19 imports**: Use `import type { ReactNode } from "react"` — not `React.ReactNode`. (Pending fix from code review.)
+- **`prefers-reduced-motion`**: Must be added to globals.css AND motion components. Standard pattern: early return with plain HTML (no motion elements). Fixed in Phase 2.
+- **React 19 imports**: Use `import type { ReactNode } from "react"` — not `React.ReactNode`. Fixed in Phase 2.
+
+## Phase 2 Lessons Learned
+
+- **Reduced-motion pattern**: Always use early return with plain HTML (no motion.* elements) when `useReducedMotion()` is true. Consistent across ScrollAnimation and HeroSection.
+- **Polish quotes in JS strings**: `„"` (U+201E/U+201D) cause parse errors. Use unicode escapes `\u201E`/`\u201D` in .ts files, HTML entities `&bdquo;`/`&rdquo;` in JSX.
+- **Motion variants typing**: `Record<string, ...>` doesn't match motion props. Use `as const` assertion on variant objects.
+- **Button discriminated union**: `ButtonAsLink | ButtonAsButton` with `never` for clean type separation. Link variant accepts `aria-label`, `target`, `rel`.
+- **Server Components by default**: Section wrappers (TripCardsSection, AboutTeaser) are SC. Only components using motion hooks directly need `"use client"`. ScrollAnimation acts as client boundary.
+- **Staggered animations**: `delay={index * 0.15}` on mapped elements gives natural cascade effect.
+- **Card image sizes with calc**: `sizes="(max-width: 640px) calc(100vw - 2rem), ..."` for optimal next/image delivery.
 
 ## Content Sources
 
