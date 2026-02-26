@@ -175,3 +175,25 @@ Footer links:
 - `loading.tsx` — spinner (animate-spin, border-t-moss) z tekstem "Ładowanie...", min-h-[50vh] centered
 - `error.tsx` — "use client", komunikat "Coś poszło nie tak", przycisk "Spróbuj ponownie" z reset(), bg-moss hover:bg-moss-light
 - `tsc --noEmit` PASS, `npm run build` PASS
+
+### Sesja 3 kontynuacja — Etap 1F: Weryfikacja końcowa
+Systematyczna weryfikacja 10+ punktów akceptacyjnych:
+
+| Test | Wynik | Metoda |
+|------|-------|--------|
+| `npm run build` | ✅ PASS | Turbopack 7.4s, zero errors |
+| `next start` HTTP 200 | ✅ PASS | curl -w "%{http_code}" |
+| `<html lang="pl">` | ✅ PASS | grep w HTML source |
+| Header sticky + nav | ✅ PASS | 5 nav links + hamburger aria-expanded |
+| SkipToContent | ✅ PASS | href="#main-content", focus:translate-y-0 |
+| Footer (kontakt, social, legal) | ✅ PASS | email, tel, FB, IG, regulamin, prywatność, cookies |
+| Fonty self-hosted | ✅ PASS | 4x .woff2 w _next/static/media/ |
+| Kolory design systemu | ✅ PASS | bg-parchment, text-graphite, text-moss w HTML |
+| OG metadata | ✅ PASS | og:title, og:image, og:locale, og:type |
+| ESLint | ✅ PASS | 0 errors (3 warnings w .claude/hooks/) |
+| loading.tsx | ✅ PASS | animate-spin w RSC payload |
+| error.tsx | ✅ PASS | "use client", reset() callback |
+| MobileMenu interaktywny | ⚠️ MANUAL | Wymaga testu w przeglądarce (motion, focus trap, Escape) |
+| Responsywność 320–1440px | ⚠️ MANUAL | HTML renderuje się poprawnie, wymaga wizualnego testu |
+
+**Faza 1 — FUNDAMENT — UKOŃCZONA (19/19 zadań, 100%)**
