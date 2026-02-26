@@ -6,7 +6,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 Landing page / sales funnel for "Wyjazdy z Dziećmi" — a brand organizing family workshop retreats in nature (yoga, dance, ceramics, horses). Client: Maria Kordalewska. Domain: wyjazdyzdziecmi.pl.
 
-**Status:** Phase 1 (Fundament) + Phase 2 (Homepage) COMPLETE. Ready for Phase 3.
+**Status:** Phase 1 (Fundament) + Phase 2 (Homepage) + Phase 3 (Trip Subpages + Booking Form) COMPLETE. Ready for Phase 4.
 
 ## Tech Stack
 
@@ -50,10 +50,13 @@ dev/active/              — Current active phase docs
 docs/                    — PRD, content, UI guidelines, source images
 src/app/                 — Next.js pages (layout, page, loading, error)
 src/components/layout/   — SkipToContent, Container, Header, MobileMenu, Footer
-src/components/ui/       — Button, SectionWrapper, SectionHeading, Badge, Card
+src/components/ui/       — Button, SectionWrapper, SectionHeading, Badge, Card, Accordion, Input, Textarea, Select, Checkbox, HoneypotField
 src/components/shared/   — ScrollAnimation (motion/react, cross-page)
 src/components/home/     — HeroSection, TripCard, TripCardsSection, AboutTeaser, OpinionsTeaser
-src/lib/                 — constants.ts, utils.ts
+src/components/trips/    — TripHero, TripTargetAudience, TripDescription, TripProgram, TripPracticalInfo, TripPricing, TripCollaborator, TripFAQ, TripGallery, BookingForm
+src/lib/                 — constants.ts, utils.ts, rate-limit.ts
+src/lib/validations/     — booking.ts (Zod schema, shared client+server)
+src/app/api/booking/     — POST route (Zod + honeypot + rate limit)
 src/data/                — navigation.ts, trips.ts (hardcoded trip data + helpers)
 src/types/               — trip.ts, team.ts, place.ts, forms.ts
 public/images/           — 6 optimized images (hero, logo, etc.)
@@ -92,6 +95,15 @@ npm run lint       # ESLint
 - **Server Components by default**: Section wrappers (TripCardsSection, AboutTeaser) are SC. Only components using motion hooks directly need `"use client"`. ScrollAnimation acts as client boundary.
 - **Staggered animations**: `delay={index * 0.15}` on mapped elements gives natural cascade effect.
 - **Card image sizes with calc**: `sizes="(max-width: 640px) calc(100vw - 2rem), ..."` for optimal next/image delivery.
+
+## Phase 3 Lessons Learned
+
+- **Zod 4 + RHF type mismatch**: `z.string().optional().default("")` creates input/output type divergence. RHF resolver infers input type, `useForm<T>` expects output → TS error. Fix: use non-optional fields + `defaultValues` in `useForm()`.
+- **Conditional section rendering**: Boolean flags (`hasSchedule`, `hasPricing`, etc.) in page.tsx with `{hasX && <X />}`. Better than rendering empty components and hiding with CSS.
+- **Accordion reduced-motion**: Ternary in JSX — `prefersReducedMotion ? (isOpen && <div>) : (<AnimatePresence>)`. Consistent with ScrollAnimation early return pattern.
+- **Form primitives pattern**: `forwardRef` + `id = id ?? props.name` + `aria-invalid` + `aria-describedby` + error `role="alert"`. Reusable across all forms (booking, contact, newsletter).
+- **Honeypot fake 200**: Return `{ success: true }` for bots (non-empty `website` field) — don't reveal detection.
+- **Gallery hide on ≤1 image**: No point showing gallery with single image (same as hero).
 
 ## Content Sources
 

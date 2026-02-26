@@ -60,7 +60,7 @@ export function HeroSection() {
               ))}
             </ul>
             <div className="mt-10 sm:mt-12">
-              <Button href="#wyjazdy" size="lg" className="bg-moss hover:bg-moss-light">
+              <Button href="/wyjazdy" size="lg" className="bg-moss hover:bg-moss-light">
                 Zobacz wyjazdy
               </Button>
             </div>
@@ -132,7 +132,7 @@ export function HeroSection() {
             transition={{ duration: 0.7, delay: 0.55 }}
             className="mt-10 sm:mt-12"
           >
-            <Button href="#wyjazdy" size="lg" className="bg-moss hover:bg-moss-light">
+            <Button href="/wyjazdy" size="lg" className="bg-moss hover:bg-moss-light">
               Zobacz wyjazdy
             </Button>
           </motion.div>
