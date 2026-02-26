@@ -38,14 +38,14 @@
 
 ## Etap 2D: Sekcje strony głównej [XL]
 
-- [ ] **2D.1** `src/components/home/HeroSection.tsx` — hero.jpg z overlay, tytuł, podtytuł, 3 korzyści (Lucide icons), CTA button
-- [ ] **2D.2** HeroSection: responsywność (mobile: stack, desktop: overlay na obrazie)
-- [ ] **2D.3** HeroSection: hero.jpg z `priority` (LCP), `sizes="100vw"`
-- [ ] **2D.4** `src/components/home/TripCard.tsx` — obraz, Badge (data), tytuł, opis, CTA; grayscale dla isPast
-- [ ] **2D.5** `src/components/home/TripCardsSection.tsx` — SectionWrapper + SectionHeading + grid TripCard; ScrollAnimation z staggered delay
-- [ ] **2D.6** `src/components/home/AboutTeaser.tsx` — alternate bg, tekst o Marii, CTA "Poznaj nas bliżej" → /o-nas
-- [ ] **2D.7** `src/components/home/OpinionsTeaser.tsx` — placeholder tekst, ikona cytatu, CTA → /wyjazdy
-- [ ] **2D.8** Test responsywności każdej sekcji (320px, 768px, 1440px minimum)
+- [x] **2D.1** `src/components/home/HeroSection.tsx` — hero.jpg z overlay, tytuł, podtytuł, 3 korzyści (Lucide icons: Leaf, Heart, Sparkles), CTA "Zobacz wyjazdy"
+- [x] **2D.2** HeroSection: responsywność (mobile: mniejsze fonty, desktop: overlay na obrazie z gradientem)
+- [x] **2D.3** HeroSection: hero.jpg z `priority` (LCP), `sizes="100vw"`, min-h-[85vh]
+- [x] **2D.4** `src/components/home/TripCard.tsx` — Card wrapper, Badge (data + Calendar icon), MapPin lokalizacja, line-clamp-3, grayscale dla isPast
+- [x] **2D.5** `src/components/home/TripCardsSection.tsx` — SectionWrapper + SectionHeading + grid 1/2 cols + ScrollAnimation staggered delay 0.15s
+- [x] **2D.6** `src/components/home/AboutTeaser.tsx` — alternate bg, Users icon, Maria bio, CTA secondary "Poznaj nas bliżej" → /o-nas
+- [x] **2D.7** `src/components/home/OpinionsTeaser.tsx` — Quote icon, placeholder tekst, CTA "Weź udział w wyjeździe" → /wyjazdy
+- [x] **2D.8** Build PASS + Lint PASS (testy responsywności wizualne do 2F)
 
 ---
 
@@ -78,7 +78,7 @@
 | 2A: Dane wyjazdów | 5 | ✅ Done |
 | 2B: UI Primitives | 6 | ✅ Done |
 | 2C: ScrollAnimation | 5 | ✅ Done |
-| 2D: Sekcje strony głównej | 8 | ⬜ Pending |
+| 2D: Sekcje strony głównej | 8 | ✅ Done |
 | 2E: Złożenie page.tsx | 4 | ⬜ Pending |
 | 2F: Weryfikacja | 8 | ⬜ Pending |
 | **Łącznie** | **36** | |

@@ -1,7 +1,7 @@
 # Kontekst: Faza 2 — Strona Główna
 
 > **Branch:** `feature/faza2-strona-glowna`
-> **Ostatnia aktualizacja:** 2026-02-26 (etapy 2A+2B+2C)
+> **Ostatnia aktualizacja:** 2026-02-26 (etap 2D)
 
 ---
 
@@ -141,4 +141,13 @@ import { motion } from "motion/react";
 - **useReducedMotion:** Eksportowane z `motion/react` — działa OK z React 19.
 - **Button:** Discriminated union `ButtonAsLink | ButtonAsButton` zamiast jednego typu — czyste rozdzielenie props.
 - **Card:** `grayscale` prop gotowy na przyszłe minione wyjazdy (isPast).
+- **Build + Lint:** PASS (0 errors).
+
+### Etap 2D (2026-02-26)
+- **HeroSection:** Client component z motion/react (fade-up on load, nie scroll). `useReducedMotion()` — skip animacji. Gradient overlay `from-black/70 via-black/40 to-black/20`. Min-h `85vh`.
+- **TripCard:** Kompozycja Card + Badge + ikony (Calendar, MapPin). `line-clamp-3` na opisie. `group-hover:underline` na CTA. Grayscale gotowe (isPast).
+- **TripCardsSection:** Grid `sm:grid-cols-2`, staggered ScrollAnimation z delay `index * 0.15`.
+- **AboutTeaser:** Ikona Users zamiast zdjęcia Marii (brak zdjęcia). HTML entities `&bdquo;` / `&rdquo;` dla polskich cudzysłowów.
+- **OpinionsTeaser:** Ikona Quote. Placeholder tekst z zachętą. CTA do /wyjazdy.
+- **Decyzja:** Komponenty `TripCardsSection`, `AboutTeaser`, `OpinionsTeaser` to Server Components (ScrollAnimation jest client boundary). Tylko `HeroSection` jest "use client" (direct motion usage for initial animation).
 - **Build + Lint:** PASS (0 errors).
