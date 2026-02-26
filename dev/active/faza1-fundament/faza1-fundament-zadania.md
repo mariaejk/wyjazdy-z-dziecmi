@@ -13,9 +13,9 @@ Ostatnia aktualizacja: 2026-02-26
 
 ## Etap 1B: Design System i fonty
 
-- ⬜ **1.4** Konfiguracja `globals.css` — `@import "tailwindcss"` + `@theme` (kolory, fonty) + `color-scheme: light`
-- ⬜ **1.5** Załadowanie fontów Playfair Display + Inter (`next/font/local`, self-hosted .woff2)
-- ⬜ **1.6** Kopiowanie i optymalizacja obrazów do `public/images/` (priorytet: `image_5.png` 1.3MB)
+- ✅ **1.4** Konfiguracja `globals.css` — `@import "tailwindcss"` + `@theme` (6 kolorów + 2 fonty) + `color-scheme: light` + focus/selection styles
+- ✅ **1.5** Załadowanie fontów Playfair Display + Inter (`next/font/google` z auto self-hosting, RODO OK)
+- ✅ **1.6** Kopiowanie + optymalizacja 6 obrazów do `public/images/` — yoga-konie.png: 1.3MB → 256KB JPG (-80%)
 
 ## Etap 1C: Utility files i dane
 
@@ -59,9 +59,9 @@ Ostatnia aktualizacja: 2026-02-26
 | Etap | Zadania | Ukończone | Status |
 |------|---------|-----------|--------|
 | 1A: Inicjalizacja | 3 | 3 | ✅ Ukończony |
-| 1B: Design System | 3 | 0 | ⬜ Oczekuje |
+| 1B: Design System | 3 | 3 | ✅ Ukończony |
 | 1C: Utils i dane | 4 | 0 | ⬜ Oczekuje |
 | 1D: Komponenty | 5 | 0 | ⬜ Oczekuje |
 | 1E: Layout | 3 | 0 | ⬜ Oczekuje |
 | 1F: Weryfikacja | 1 | 0 | ⬜ Oczekuje |
-| **Łącznie** | **19** | **3** | **16%** |
+| **Łącznie** | **19** | **6** | **32%** |

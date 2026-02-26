@@ -131,3 +131,14 @@ Footer links:
 - Dev server testowo uruchomiony — HTTP 200 OK
 
 **Decyzja:** Użyto Next.js 16 zamiast 15 (plan mówi 15, ale @latest daje 16). API App Router jest identyczne. React 19 + motion działa bez zmian.
+
+### Sesja 2 kontynuacja — Etap 1B: Design System i fonty
+- `globals.css` skonfigurowany: `@import "tailwindcss"` + `@theme` z 6 kolorami + 2 fontami
+- Dodano globalne style: `color-scheme: light`, `scroll-behavior: smooth`, `:focus-visible`, `::selection`
+- Fonty załadowane przez `next/font/google` (auto self-hosting, pliki serwowane z domeny, zero requestów do Google)
+- Obrazy skopiowane z semantycznymi nazwami: hero.jpg, galeria-1.jpg, kacze-bagno.jpg, matka-corka.jpg, yoga-konie.jpg, logo.jpeg
+- `image_5.png` (1.3MB) → zoptymalizowany `yoga-konie.jpg` (256KB, -80%) przez sharp-cli
+- `page.tsx` tymczasowo zastąpiony stroną testową z design tokenami
+- `npm run build` PASS, dev server HTTP 200
+
+**Decyzja:** Użyto `next/font/google` zamiast `next/font/local` — efekt identyczny (auto self-hosting w Next.js), mniej pracy z plikami .woff2. RODO OK — zero requestów do Google w runtime.
