@@ -167,3 +167,11 @@ Footer links:
 2. MobileMenu slide from right (nie left/top) — intuicyjne, hamburger jest po prawej
 3. Footer newsletter disabled z "Wkrótce dostępne" — jasna komunikacja
 4. Container z `as` prop — pozwala na <section>, <article> itp. bez wrapperów
+
+### Sesja 3 kontynuacja — Etap 1E: Root layout i error states
+- `layout.tsx` zaktualizowany: SkipToContent + Header + `<main id="main-content" className="min-h-screen">` + Footer
+- Metadata rozszerzone: `title.template` ("%s | Wyjazdy z Dziećmi"), `metadataBase`, OpenGraph (type, locale, siteName, image hero.jpg)
+- `page.tsx` uproszczony: usunięto `<main>` wrapper (jest w layout), usunięto Image import, dodano tekst "Strona w budowie"
+- `loading.tsx` — spinner (animate-spin, border-t-moss) z tekstem "Ładowanie...", min-h-[50vh] centered
+- `error.tsx` — "use client", komunikat "Coś poszło nie tak", przycisk "Spróbuj ponownie" z reset(), bg-moss hover:bg-moss-light
+- `tsc --noEmit` PASS, `npm run build` PASS

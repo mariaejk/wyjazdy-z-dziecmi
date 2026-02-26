@@ -34,9 +34,9 @@ Ostatnia aktualizacja: 2026-02-27
 
 ## Etap 1E: Root layout i error states
 
-- ⬜ **1.16** Root `layout.tsx` (`<html lang="pl">`, fonty CSS vars, SkipToContent + Header + main + Footer, metadata)
-- ⬜ **1.17** `loading.tsx` (spinner/skeleton w kolorach design systemu)
-- ⬜ **1.18** `error.tsx` (client component, komunikat + reset button)
+- ✅ **1.16** Root `layout.tsx` — `<html lang="pl">`, fonty CSS vars, SkipToContent + Header + `<main id="main-content">` + Footer, rozszerzone metadata (title template, OG image, metadataBase)
+- ✅ **1.17** `loading.tsx` — spinner (animate-spin border-t-moss) + "Ładowanie..." tekst, min-h-[50vh] centered
+- ✅ **1.18** `error.tsx` — "use client", komunikat "Coś poszło nie tak" + przycisk "Spróbuj ponownie" (reset())
 
 ## Etap 1F: Weryfikacja
 
@@ -62,6 +62,6 @@ Ostatnia aktualizacja: 2026-02-27
 | 1B: Design System | 3 | 3 | ✅ Ukończony |
 | 1C: Utils i dane | 4 | 4 | ✅ Ukończony |
 | 1D: Komponenty | 5 | 5 | ✅ Ukończony |
-| 1E: Layout | 3 | 0 | ⬜ Oczekuje |
+| 1E: Layout | 3 | 3 | ✅ Ukończony |
 | 1F: Weryfikacja | 1 | 0 | ⬜ Oczekuje |
-| **Łącznie** | **19** | **15** | **79%** |
+| **Łącznie** | **19** | **18** | **95%** |
