@@ -5,7 +5,9 @@ import { SectionWrapper } from "@/components/ui/SectionWrapper";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Button } from "@/components/ui/Button";
 import { ScrollAnimation } from "@/components/shared/ScrollAnimation";
-import { ROUTES } from "@/lib/constants";
+import { StructuredData } from "@/components/shared/StructuredData";
+import { ROUTES, SITE_CONFIG } from "@/lib/constants";
+import { getBreadcrumbSchema } from "@/lib/structured-data";
 
 export const metadata: Metadata = {
   title: "Single Parents",
@@ -55,6 +57,11 @@ const benefits = [
 export default function SingleParentsPage() {
   return (
     <>
+      <StructuredData data={getBreadcrumbSchema([
+        { name: "Strona główna", url: SITE_CONFIG.url },
+        { name: "Single Parents", url: `${SITE_CONFIG.url}/single-parents` },
+      ])} />
+
       {/* Hero */}
       <SectionWrapper>
         <Container>

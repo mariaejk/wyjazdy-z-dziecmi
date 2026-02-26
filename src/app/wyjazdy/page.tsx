@@ -4,7 +4,10 @@ import { Container } from "@/components/layout/Container";
 import { SectionWrapper } from "@/components/ui/SectionWrapper";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { ScrollAnimation } from "@/components/shared/ScrollAnimation";
+import { StructuredData } from "@/components/shared/StructuredData";
 import { TripCard } from "@/components/home/TripCard";
+import { SITE_CONFIG } from "@/lib/constants";
+import { getBreadcrumbSchema } from "@/lib/structured-data";
 
 export const metadata: Metadata = {
   title: "Wyjazdy",
@@ -18,6 +21,11 @@ export default function TripsPage() {
 
   return (
     <>
+      <StructuredData data={getBreadcrumbSchema([
+        { name: "Strona główna", url: SITE_CONFIG.url },
+        { name: "Wyjazdy", url: `${SITE_CONFIG.url}/wyjazdy` },
+      ])} />
+
       <SectionWrapper>
         <Container>
           <SectionHeading

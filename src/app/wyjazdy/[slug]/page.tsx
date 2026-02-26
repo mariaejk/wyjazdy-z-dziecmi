@@ -2,6 +2,8 @@ import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { getTripBySlug, getAllTrips, getUpcomingTrips } from "@/data/trips";
 import { SITE_CONFIG } from "@/lib/constants";
+import { StructuredData } from "@/components/shared/StructuredData";
+import { getEventSchema, getFAQSchema, getBreadcrumbSchema } from "@/lib/structured-data";
 import { TripHero } from "@/components/trips/TripHero";
 import { TripTargetAudience } from "@/components/trips/TripTargetAudience";
 import { TripDescription } from "@/components/trips/TripDescription";
@@ -41,6 +43,12 @@ export async function generateMetadata({
       description: trip.shortDescription,
       images: [{ url: trip.image }],
     },
+    twitter: {
+      card: "summary_large_image",
+      title: `${trip.title} | ${SITE_CONFIG.name}`,
+      description: trip.shortDescription,
+      images: [trip.image],
+    },
   };
 }
 
@@ -62,8 +70,19 @@ export default async function TripPage({ params }: PageProps) {
   const hasFAQ = trip.faq.length > 0;
   const hasCollaborator = trip.collaborator.name !== "Wkrótce";
 
+  const baseUrl = SITE_CONFIG.url;
+  const breadcrumbItems = [
+    { name: "Strona główna", url: baseUrl },
+    { name: "Wyjazdy", url: `${baseUrl}/wyjazdy` },
+    { name: trip.title, url: `${baseUrl}/wyjazdy/${trip.slug}` },
+  ];
+
   return (
     <>
+      <StructuredData data={getEventSchema(trip)} />
+      {hasFAQ && <StructuredData data={getFAQSchema(trip.faq)} />}
+      <StructuredData data={getBreadcrumbSchema(breadcrumbItems)} />
+
       {/* 1. Hero */}
       <TripHero
         title={trip.title}

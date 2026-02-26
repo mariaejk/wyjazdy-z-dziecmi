@@ -4,6 +4,10 @@ import { Playfair_Display, Inter } from "next/font/google";
 import { SkipToContent } from "@/components/layout/SkipToContent";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
+import { CookieBanner } from "@/components/layout/CookieBanner";
+import { StructuredData } from "@/components/shared/StructuredData";
+import { GoogleAnalytics } from "@/components/shared/GoogleAnalytics";
+import { getOrganizationSchema } from "@/lib/structured-data";
 import "./globals.css";
 
 const playfair = Playfair_Display({
@@ -37,6 +41,17 @@ export const metadata: Metadata = {
       "Warsztaty rozwojowe dla rodzin w otoczeniu natury. Joga, taniec, ceramika, konie.",
     images: [{ url: "/images/hero.jpg", width: 1200, height: 630, alt: "Wyjazdy z Dziećmi" }],
   },
+  twitter: {
+    card: "summary_large_image",
+    title: "Wyjazdy z Dziećmi — Rodzinne wyjazdy warsztatowe w naturze",
+    description:
+      "Warsztaty rozwojowe dla rodzin w otoczeniu natury. Joga, taniec, ceramika, konie.",
+    images: ["/images/hero.jpg"],
+  },
+  icons: {
+    icon: "/favicon.ico",
+    // TODO: Add apple-touch-icon after generating from logo
+  },
 };
 
 export default function RootLayout({
@@ -46,15 +61,20 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pl">
+      <head>
+        <StructuredData data={getOrganizationSchema()} />
+      </head>
       <body
         className={`${playfair.variable} ${inter.variable} font-body bg-parchment text-graphite antialiased`}
       >
+        <GoogleAnalytics />
         <SkipToContent />
         <Header />
         <main id="main-content" className="min-h-screen">
           {children}
         </main>
         <Footer />
+        <CookieBanner />
       </body>
     </html>
   );

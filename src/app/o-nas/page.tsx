@@ -4,11 +4,13 @@ import { SectionWrapper } from "@/components/ui/SectionWrapper";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Button } from "@/components/ui/Button";
 import { ScrollAnimation } from "@/components/shared/ScrollAnimation";
+import { StructuredData } from "@/components/shared/StructuredData";
 import { PersonBio } from "@/components/about/PersonBio";
 import { PlaceCard } from "@/components/about/PlaceCard";
 import { getTeamMember } from "@/data/team";
 import { places } from "@/data/places";
-import { ROUTES } from "@/lib/constants";
+import { ROUTES, SITE_CONFIG } from "@/lib/constants";
+import { getBreadcrumbSchema } from "@/lib/structured-data";
 
 export const metadata: Metadata = {
   title: "O nas",
@@ -22,6 +24,11 @@ export default function AboutPage() {
 
   return (
     <>
+      <StructuredData data={getBreadcrumbSchema([
+        { name: "Strona główna", url: SITE_CONFIG.url },
+        { name: "O nas", url: `${SITE_CONFIG.url}/o-nas` },
+      ])} />
+
       {/* Intro */}
       <SectionWrapper>
         <Container>

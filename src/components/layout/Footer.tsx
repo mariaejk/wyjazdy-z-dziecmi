@@ -1,6 +1,8 @@
 import Link from "next/link";
 import { Mail, Phone, Facebook, Instagram } from "lucide-react";
 import { Container } from "./Container";
+import { CookieSettingsButton } from "./CookieSettingsButton";
+import { NewsletterForm } from "@/components/shared/NewsletterForm";
 import { footerLegalLinks } from "@/data/navigation";
 import { CONTACT, SOCIAL_LINKS, SITE_CONFIG } from "@/lib/constants";
 
@@ -57,6 +59,7 @@ export function Footer() {
                   href={SOCIAL_LINKS.facebook}
                   target="_blank"
                   rel="noopener noreferrer"
+                  aria-label="Facebook (otwiera się w nowej karcie)"
                   className="inline-flex items-center gap-2 text-sm text-graphite-light transition-colors hover:text-moss"
                 >
                   <Facebook className="h-4 w-4" strokeWidth={1.5} />
@@ -68,6 +71,7 @@ export function Footer() {
                   href={SOCIAL_LINKS.instagram}
                   target="_blank"
                   rel="noopener noreferrer"
+                  aria-label="Instagram (otwiera się w nowej karcie)"
                   className="inline-flex items-center gap-2 text-sm text-graphite-light transition-colors hover:text-moss"
                 >
                   <Instagram className="h-4 w-4" strokeWidth={1.5} />
@@ -94,51 +98,14 @@ export function Footer() {
                 </li>
               ))}
               <li>
-                <button
-                  type="button"
-                  className="text-sm text-graphite-light transition-colors hover:text-moss"
-                  aria-label="Otwórz ustawienia cookies"
-                >
-                  Ustawienia cookies
-                </button>
+                <CookieSettingsButton />
               </li>
             </ul>
           </div>
         </div>
 
-        {/* Newsletter placeholder */}
-        <form
-          className="mt-10 border-t border-parchment pt-8"
-          action="#"
-          aria-label="Formularz newslettera"
-        >
-          <div className="flex flex-col items-start gap-4 sm:flex-row sm:items-center sm:justify-between">
-            <div>
-              <p className="text-sm font-medium text-graphite">
-                Zapisz się na newsletter
-              </p>
-              <p className="mt-1 text-xs text-graphite-light">
-                Wkrótce dostępne.
-              </p>
-            </div>
-            <div className="flex w-full gap-2 sm:w-auto">
-              <input
-                type="email"
-                placeholder="Twój email"
-                disabled
-                className="w-full cursor-not-allowed rounded-md border border-parchment bg-white px-3 py-2 text-sm text-graphite-light opacity-60 sm:w-56"
-                aria-label="Adres email do newslettera (wkrótce dostępne)"
-              />
-              <button
-                type="submit"
-                disabled
-                className="cursor-not-allowed rounded-md bg-moss/50 px-4 py-2 text-sm font-medium text-white opacity-60"
-              >
-                Zapisz
-              </button>
-            </div>
-          </div>
-        </form>
+        {/* Newsletter */}
+        <NewsletterForm />
 
         {/* Copyright */}
         <div className="mt-8 border-t border-parchment pt-6 text-center">

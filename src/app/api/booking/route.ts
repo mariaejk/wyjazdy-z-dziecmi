@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 import { bookingSchema } from "@/lib/validations/booking";
 import { rateLimit } from "@/lib/rate-limit";
+import { log } from "@/lib/logger";
 
 export async function POST(request: NextRequest) {
   // Rate limiting
@@ -59,7 +60,7 @@ export async function POST(request: NextRequest) {
   //   body: JSON.stringify(data),
   // });
 
-  console.log("[Booking]", {
+  log("Booking", {
     name: data.name,
     email: data.email,
     trip: data.trip,
