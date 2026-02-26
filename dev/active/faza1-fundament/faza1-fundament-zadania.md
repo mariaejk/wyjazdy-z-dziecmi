@@ -1,7 +1,7 @@
 # Zadania: Faza 1 — Fundament
 
 Branch: `feature/faza1-fundament`
-Ostatnia aktualizacja: 2026-02-26
+Ostatnia aktualizacja: 2026-02-27
 
 ---
 
@@ -26,11 +26,11 @@ Ostatnia aktualizacja: 2026-02-26
 
 ## Etap 1D: Komponenty layout
 
-- ⬜ **1.11** Zbudowanie `SkipToContent` (ukryty link, widoczny na Tab, href="#main-content")
-- ⬜ **1.12** Zbudowanie `Container` (max-w-7xl, responsive padding)
-- ⬜ **1.13** Zbudowanie `Header` (sticky, logo + nav desktop + hamburger mobile, semantyczny HTML)
-- ⬜ **1.14** Zbudowanie `MobileMenu` (client component, motion AnimatePresence, focus trap, Escape)
-- ⬜ **1.15** Zbudowanie `Footer` (kontakt, social, legal, "Ustawienia cookies" placeholder, newsletter placeholder, copyright)
+- ✅ **1.11** Zbudowanie `SkipToContent` (ukryty link `fixed z-50`, widoczny na focus/Tab, href="#main-content")
+- ✅ **1.12** Zbudowanie `Container` (max-w-7xl, responsive padding, `as` prop do zmiany elementu)
+- ✅ **1.13** Zbudowanie `Header` (sticky, logo+nav desktop, hamburger mobile, `aria-label`, `aria-expanded`, semantyczny HTML)
+- ✅ **1.14** Zbudowanie `MobileMenu` (client component, motion AnimatePresence, slide-from-right, focus trap, Escape, overlay click, body scroll lock)
+- ✅ **1.15** Zbudowanie `Footer` (4-kolumnowy grid: brand/kontakt/social/legal, newsletter placeholder disabled, "Ustawienia cookies" button, dynamiczny copyright)
 
 ## Etap 1E: Root layout i error states
 
@@ -61,7 +61,7 @@ Ostatnia aktualizacja: 2026-02-26
 | 1A: Inicjalizacja | 3 | 3 | ✅ Ukończony |
 | 1B: Design System | 3 | 3 | ✅ Ukończony |
 | 1C: Utils i dane | 4 | 4 | ✅ Ukończony |
-| 1D: Komponenty | 5 | 0 | ⬜ Oczekuje |
+| 1D: Komponenty | 5 | 5 | ✅ Ukończony |
 | 1E: Layout | 3 | 0 | ⬜ Oczekuje |
 | 1F: Weryfikacja | 1 | 0 | ⬜ Oczekuje |
-| **Łącznie** | **19** | **10** | **53%** |
+| **Łącznie** | **19** | **15** | **79%** |

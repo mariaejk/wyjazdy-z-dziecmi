@@ -152,3 +152,18 @@ Footer links:
 - `types/place.ts` — Place
 - `types/forms.ts` — BookingFormData, ContactFormData, NewsletterFormData (wszystkie z honeypot `website?`)
 - `tsc --noEmit` PASS, `npm run build` PASS
+
+### Sesja 3 (2026-02-27) — Etap 1D: Komponenty layout
+- `components/layout/SkipToContent.tsx` — fixed z-50, -translate-y-full, widoczny na focus:translate-y-0
+- `components/layout/Container.tsx` — max-w-7xl, responsive padding, polymorphic `as` prop
+- `components/layout/Header.tsx` — "use client", sticky top z backdrop-blur, logo (next/image rounded-full) + nav desktop (hidden md:block) + hamburger (md:hidden), aria-expanded/aria-controls
+- `components/layout/MobileMenu.tsx` — "use client", motion AnimatePresence, slide from right (spring damping:25 stiffness:300), overlay bg-graphite/40, focus trap (Tab cycling), Escape closes, body scroll lock, close button auto-focus
+- `components/layout/Footer.tsx` — server component, 4-kolumnowy grid (brand/kontakt/social/legal), newsletter placeholder (disabled), "Ustawienia cookies" button (placeholder), dynamiczny copyright
+- `components/layout/index.ts` — barrel export
+- `tsc --noEmit` PASS, `npm run build` PASS
+
+**Decyzje:**
+1. Header solid od razu (nie transparent→solid on scroll) — prostsze na MVP
+2. MobileMenu slide from right (nie left/top) — intuicyjne, hamburger jest po prawej
+3. Footer newsletter disabled z "Wkrótce dostępne" — jasna komunikacja
+4. Container z `as` prop — pozwala na <section>, <article> itp. bez wrapperów
