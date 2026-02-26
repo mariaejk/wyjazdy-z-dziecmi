@@ -51,10 +51,10 @@
 
 ## Etap 2E: Złożenie strony głównej [S]
 
-- [ ] **2E.1** Zaktualizować `src/app/page.tsx` — import sekcji, ułożenie: Hero → TripCards → AboutTeaser → OpinionsTeaser
-- [ ] **2E.2** Opcjonalnie: poprawki Footer newsletter (cursor-not-allowed, form wrapper)
-- [ ] **2E.3** `npm run build` — zero błędów
-- [ ] **2E.4** `npm run lint` — zero błędów
+- [x] **2E.1** Zaktualizować `src/app/page.tsx` — import sekcji, ułożenie: Hero → TripCards → AboutTeaser → OpinionsTeaser
+- [x] **2E.2** Footer newsletter — już poprawiony w Fazie 1 (cursor-not-allowed, opacity-60, form wrapper)
+- [x] **2E.3** `npm run build` — PASS (0 errors)
+- [x] **2E.4** `npm run lint` — PASS (0 errors)
 
 ---
 
@@ -79,6 +79,6 @@
 | 2B: UI Primitives | 6 | ✅ Done |
 | 2C: ScrollAnimation | 5 | ✅ Done |
 | 2D: Sekcje strony głównej | 8 | ✅ Done |
-| 2E: Złożenie page.tsx | 4 | ⬜ Pending |
+| 2E: Złożenie page.tsx | 4 | ✅ Done |
 | 2F: Weryfikacja | 8 | ⬜ Pending |
 | **Łącznie** | **36** | |

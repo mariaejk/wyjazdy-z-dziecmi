@@ -1,7 +1,7 @@
 # Kontekst: Faza 2 — Strona Główna
 
 > **Branch:** `feature/faza2-strona-glowna`
-> **Ostatnia aktualizacja:** 2026-02-26 (etap 2D)
+> **Ostatnia aktualizacja:** 2026-02-26 (etap 2E)
 
 ---
 
@@ -151,3 +151,8 @@ import { motion } from "motion/react";
 - **OpinionsTeaser:** Ikona Quote. Placeholder tekst z zachętą. CTA do /wyjazdy.
 - **Decyzja:** Komponenty `TripCardsSection`, `AboutTeaser`, `OpinionsTeaser` to Server Components (ScrollAnimation jest client boundary). Tylko `HeroSection` jest "use client" (direct motion usage for initial animation).
 - **Build + Lint:** PASS (0 errors).
+
+### Etap 2E (2026-02-26)
+- **page.tsx:** Zamieniono placeholder na 4 sekcje: `<HeroSection />` → `<TripCardsSection />` → `<AboutTeaser />` → `<OpinionsTeaser />`. Fragment (`<>...</>`) zamiast wrapper div.
+- **Footer newsletter:** Poprawki z code review Fazy 1 już zastosowane (form wrapper, cursor-not-allowed, opacity-60).
+- **Build + Lint:** PASS (0 errors). Dev server kompiluje stronę poprawnie.
