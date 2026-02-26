@@ -25,7 +25,7 @@ export function AboutTeaser() {
 
             <p className="text-lg leading-relaxed text-graphite-light sm:text-xl">
               <strong className="text-graphite">Maria Kordalewska</strong> —
-              wieloletnia organizatorka wyjazdów i eventów, pilotka wycieczek,
+              nauczycielka jogi, wieloletnia organizatorka wyjazdów i eventów, pilotka wycieczek,
               specjalistka od komunikacji, wykładowca uniwersytecki i mama Laury.
               Kocha podróże, ale coraz częściej wraca do miejsc, gdzie czuje spokój.
             </p>

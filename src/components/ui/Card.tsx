@@ -50,7 +50,13 @@ export function Card({
 
   if (href) {
     return (
-      <Link href={href} className="block focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-moss focus-visible:ring-offset-2 rounded-2xl">
+      <Link
+        href={href}
+        className={cn(
+          "block rounded-2xl focus-visible:outline-none",
+          "focus-visible:ring-2 focus-visible:ring-moss focus-visible:ring-offset-2",
+        )}
+      >
         {content}
       </Link>
     );

@@ -71,6 +71,17 @@
 
 ---
 
+## Do poprawy po review Fazy 2
+
+- [x] 🟠 [important] **HeroSection.tsx** — Wczesny return z czystym HTML przy `prefers-reduced-motion` (spójne z ScrollAnimation)
+- [x] 🟠 [important] **AboutTeaser.tsx** — Dodano "nauczycielka jogi" do bio Marii
+- [x] 🟠 [important] **HeroSection.tsx** — CTA zmienione na `href="#wyjazdy"` (scroll do sekcji zamiast 404)
+- [x] 🟠 [important] **Button.tsx** — ButtonAsLink rozszerzony o aria-label, target, rel + przekazanie do Link
+- [x] 🟡 [nit] **ScrollAnimation.tsx** — Usunięte zbędne `cn()` z jednym argumentem + nieużywany import
+- [x] 🟡 [nit] **Card.tsx** — Link className rozbite na multiline z `cn()`
+
+---
+
 ## Podsumowanie
 
 | Etap | Zadań | Status |
@@ -81,4 +92,5 @@
 | 2D: Sekcje strony głównej | 8 | ✅ Done |
 | 2E: Złożenie page.tsx | 4 | ✅ Done |
 | 2F: Weryfikacja | 8 | ✅ Done |
-| **Łącznie** | **36** | |
+| Review poprawki | 6 | ✅ Done |
+| **Łącznie** | **42** | |

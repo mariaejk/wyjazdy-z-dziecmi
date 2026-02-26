@@ -1,7 +1,7 @@
 # Kontekst: Faza 2 — Strona Główna
 
 > **Branch:** `feature/faza2-strona-glowna`
-> **Ostatnia aktualizacja:** 2026-02-26 (etap 2F — FAZA 2 UKONCZONA)
+> **Ostatnia aktualizacja:** 2026-02-26 (review poprawki — FAZA 2 KOMPLETNA)
 
 ---
 
@@ -161,3 +161,16 @@ import { motion } from "motion/react";
 - **Responsive fixes:** TripCardsSection gap-6 sm:gap-8 (było gap-8). Card sizes z `calc(100vw - 2rem)`. Card padding p-4 sm:p-5 lg:p-6 (3 breakpoints). SectionHeading mb-8 sm:mb-10 lg:mb-12.
 - **Weryfikacja:** Wszystkie 7 punktów PASS (build, lint, responsive, animations, reduced-motion, navigation, images).
 - **FAZA 2 UKONCZONA** — 36/36 zadań wykonanych. Gotowe do code review.
+
+### Code Review (2026-02-26)
+- **Decyzja:** APPROVE WITH COMMENTS (0 blocking, 4 important, 5 nit, 4 suggestion)
+- **Raport:** `dev/active/faza2-strona-glowna/review-faza-2.md`
+- **Kluczowe do poprawy:** HeroSection reduced-motion (niespojnosc), AboutTeaser bio (brak "nauczycielka jogi"), CTA href (#wyjazdy zamiast /wyjazdy), Button typ rozszerzenie.
+
+### Poprawki z review (2026-02-26)
+- **HeroSection:** Early return z czystym HTML dla `prefers-reduced-motion` (spójne z ScrollAnimation). CTA zmienione z `/wyjazdy` (404) na `#wyjazdy` (scroll). Usunięty nieużywany import ROUTES.
+- **AboutTeaser:** Dodano "nauczycielka jogi" do bio Marii (kluczowa kompetencja).
+- **Button:** `ButtonAsLink` rozszerzony o `aria-label`, `target`, `rel`. Link renderuje te atrybuty.
+- **ScrollAnimation:** Usunięte zbędne `cn(className)` → `className`. Usunięty nieużywany import `cn`.
+- **Card:** Link className rozbite na multiline z `cn()` (czytelność).
+- **Build + Lint:** PASS (0 errors). FAZA 2 KOMPLETNA — wszystkie 42 zadania ukończone.

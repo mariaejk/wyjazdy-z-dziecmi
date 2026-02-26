@@ -15,6 +15,9 @@ type ButtonBaseProps = {
 
 type ButtonAsLink = ButtonBaseProps & {
   href: string;
+  "aria-label"?: string;
+  target?: string;
+  rel?: string;
   disabled?: never;
   type?: never;
   onClick?: never;
@@ -60,8 +63,15 @@ export function Button({
   );
 
   if ("href" in props && props.href) {
+    const { href, "aria-label": ariaLabel, target, rel } = props as ButtonAsLink;
     return (
-      <Link href={props.href} className={classes}>
+      <Link
+        href={href}
+        className={classes}
+        aria-label={ariaLabel}
+        target={target}
+        rel={rel}
+      >
         {icon && <span className="shrink-0">{icon}</span>}
         {children}
       </Link>

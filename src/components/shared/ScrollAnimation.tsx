@@ -2,7 +2,6 @@
 
 import type { ReactNode } from "react";
 import { motion, useReducedMotion } from "motion/react";
-import { cn } from "@/lib/utils";
 
 type AnimationVariant = "fadeIn" | "fadeUp" | "fadeLeft" | "fadeRight" | "scaleIn";
 
@@ -62,7 +61,7 @@ export function ScrollAnimation({
       whileInView={visible}
       viewport={{ once, amount: threshold }}
       transition={{ duration, delay, ease: "easeOut" }}
-      className={cn(className)}
+      className={className}
     >
       {children}
     </motion.div>
