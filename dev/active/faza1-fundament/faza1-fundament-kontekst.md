@@ -142,3 +142,13 @@ Footer links:
 - `npm run build` PASS, dev server HTTP 200
 
 **Decyzja:** Użyto `next/font/google` zamiast `next/font/local` — efekt identyczny (auto self-hosting w Next.js), mniej pracy z plikami .woff2. RODO OK — zero requestów do Google w runtime.
+
+### Sesja 2 kontynuacja — Etap 1C: Utils i dane
+- `lib/constants.ts` — SITE_CONFIG, CONTACT, SOCIAL_LINKS, ROUTES (9 ścieżek)
+- `lib/utils.ts` — cn() (clsx+twMerge), formatDate(), formatDateShort(), formatCurrency() (pl-PL locale)
+- `data/navigation.ts` — mainNavigation (5 items) + footerLegalLinks (2 items), NavItem type
+- `types/trip.ts` — Trip + 7 subtypów (Schedule, Pricing, FAQ, Gallery, Collaborator)
+- `types/team.ts` — TeamMember
+- `types/place.ts` — Place
+- `types/forms.ts` — BookingFormData, ContactFormData, NewsletterFormData (wszystkie z honeypot `website?`)
+- `tsc --noEmit` PASS, `npm run build` PASS

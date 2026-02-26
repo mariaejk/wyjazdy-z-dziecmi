@@ -19,10 +19,10 @@ Ostatnia aktualizacja: 2026-02-26
 
 ## Etap 1C: Utility files i dane
 
-- ⬜ **1.7** Utworzenie `lib/constants.ts` (SITE_CONFIG, ROUTES, SOCIAL_LINKS, CONTACT)
-- ⬜ **1.8** Utworzenie `lib/utils.ts` (cn(), formatDate, formatCurrency)
-- ⬜ **1.9** Utworzenie `data/navigation.ts` (5 pozycji menu: O nas, Wyjazdy, Single Parents, Opinie, Kontakt)
-- ⬜ **1.10** Utworzenie typów w `types/` (trip.ts, team.ts, place.ts, forms.ts)
+- ✅ **1.7** `lib/constants.ts` — SITE_CONFIG, ROUTES (9 stron), SOCIAL_LINKS, CONTACT
+- ✅ **1.8** `lib/utils.ts` — cn(), formatDate(), formatDateShort(), formatCurrency() (polskie locale)
+- ✅ **1.9** `data/navigation.ts` — 5 pozycji menu + 2 legal links, importuje z ROUTES
+- ✅ **1.10** `types/` — trip.ts (Trip + 7 subtypów), team.ts, place.ts, forms.ts (3 formularze + honeypot)
 
 ## Etap 1D: Komponenty layout
 
@@ -60,8 +60,8 @@ Ostatnia aktualizacja: 2026-02-26
 |------|---------|-----------|--------|
 | 1A: Inicjalizacja | 3 | 3 | ✅ Ukończony |
 | 1B: Design System | 3 | 3 | ✅ Ukończony |
-| 1C: Utils i dane | 4 | 0 | ⬜ Oczekuje |
+| 1C: Utils i dane | 4 | 4 | ✅ Ukończony |
 | 1D: Komponenty | 5 | 0 | ⬜ Oczekuje |
 | 1E: Layout | 3 | 0 | ⬜ Oczekuje |
 | 1F: Weryfikacja | 1 | 0 | ⬜ Oczekuje |
-| **Łącznie** | **19** | **6** | **32%** |
+| **Łącznie** | **19** | **10** | **53%** |
