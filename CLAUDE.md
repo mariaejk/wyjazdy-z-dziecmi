@@ -6,7 +6,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 Landing page / sales funnel for "Wyjazdy z Dziećmi" — a brand organizing family workshop retreats in nature (yoga, dance, ceramics, horses). Client: Maria Kordalewska. Domain: wyjazdyzdziecmi.pl.
 
-**Status:** Phase 1 (Fundament) + Phase 2 (Homepage) + Phase 3 (Trip Subpages + Booking Form) COMPLETE. Ready for Phase 4.
+**Status:** Phase 1 (Fundament) + Phase 2 (Homepage) + Phase 3 (Trip Subpages + Booking Form) + Phase 4 (Remaining Subpages) COMPLETE. Ready for Phase 5.
 
 ## Tech Stack
 
@@ -54,10 +54,13 @@ src/components/ui/       — Button, SectionWrapper, SectionHeading, Badge, Card
 src/components/shared/   — ScrollAnimation (motion/react, cross-page)
 src/components/home/     — HeroSection, TripCard, TripCardsSection, AboutTeaser, OpinionsTeaser
 src/components/trips/    — TripHero, TripTargetAudience, TripDescription, TripProgram, TripPracticalInfo, TripPricing, TripCollaborator, TripFAQ, TripGallery, BookingForm
+src/components/about/    — PersonBio, PlaceCard
+src/components/contact/  — ContactForm, ContactInfo
 src/lib/                 — constants.ts, utils.ts, rate-limit.ts
-src/lib/validations/     — booking.ts (Zod schema, shared client+server)
+src/lib/validations/     — booking.ts, contact.ts (Zod schemas, shared client+server)
 src/app/api/booking/     — POST route (Zod + honeypot + rate limit)
-src/data/                — navigation.ts, trips.ts (hardcoded trip data + helpers)
+src/app/api/contact/     — POST route (Zod + honeypot + rate limit)
+src/data/                — navigation.ts, trips.ts, team.ts, places.ts (hardcoded data + helpers)
 src/types/               — trip.ts, team.ts, place.ts, forms.ts
 public/images/           — 6 optimized images (hero, logo, etc.)
 ```
@@ -105,6 +108,16 @@ npm run lint       # ESLint
 - **Honeypot fake 200**: Return `{ success: true }` for bots (non-empty `website` field) — don't reveal detection.
 - **Gallery hide on ≤1 image**: No point showing gallery with single image (same as hero).
 
+## Phase 4 Lessons Learned
+
+- **Data access via helpers, not array indices**: `getTeamMember("Maria Kordalewska")` instead of `teamMembers[0]`. Indices are brittle — reordering breaks silently.
+- **`<h1>` on every subpage**: `SectionHeading` always renders `<h2>`. Subpages need manual `<h1>` inline. Future: add `as` prop to `SectionHeading`.
+- **Extract values from URL constants**: `extractHandle(SOCIAL_LINKS.facebook, "facebook.com/")` instead of hardcoded `"wyjazdyzdziecmi"`. Resilient to URL changes.
+- **`aria-label` on `target="_blank"` links**: Screen readers don't announce new tab. Add `aria-label="X (otwiera się w nowej karcie)"`.
+- **`robots: { index: false }` on placeholder pages**: Pages without content shouldn't be indexed. Remove after adding full content.
+- **`cn()` over template literals**: Project consistently uses `cn()` from clsx + tailwind-merge. Template literals bypass merge and can cause class conflicts.
+- **Contact form pattern**: Identical to BookingForm but simpler (3 fields vs 8). Same 4-state machine (idle/submitting/success/error), same Zod + RHF + honeypot pattern.
+
 ## Content Sources
 
-All copy comes from `docs/tresc_na_strone.md`. The first trip "Matka i Córka — Wspólny Rytm" has complete content (description, schedule, pricing, collaborator bio). Second trip "Yoga i Konie" is placeholder only.
+All copy comes from `docs/tresc_na_strone.md`. The first trip "Matka i Córka — Wspólny Rytm" has complete content (description, schedule, pricing, collaborator bio). Second trip "Yoga i Konie" is placeholder only. Single Parents page content was generated (not in source doc).
