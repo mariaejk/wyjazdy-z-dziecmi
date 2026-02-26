@@ -1,0 +1,14 @@
+import { z } from "zod";
+
+export const newsletterSchema = z.object({
+  email: z
+    .string()
+    .email("Podaj prawid\u0142owy adres e-mail"),
+  consentRodo: z
+    .literal(true, {
+      error: "Zgoda na przetwarzanie danych jest wymagana",
+    }),
+  website: z.string(),
+});
+
+export type NewsletterFormValues = z.infer<typeof newsletterSchema>;

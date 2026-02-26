@@ -6,7 +6,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 Landing page / sales funnel for "Wyjazdy z Dziećmi" — a brand organizing family workshop retreats in nature (yoga, dance, ceramics, horses). Client: Maria Kordalewska. Domain: wyjazdyzdziecmi.pl.
 
-**Status:** Phase 1 (Fundament) + Phase 2 (Homepage) + Phase 3 (Trip Subpages + Booking Form) + Phase 4 (Remaining Subpages) COMPLETE. Ready for Phase 5.
+**Status:** Phase 1-5 COMPLETE. Site is production-ready (SEO, newsletter, cookie banner RODO, GA4, security headers).
 
 ## Tech Stack
 
@@ -51,17 +51,20 @@ docs/                    — PRD, content, UI guidelines, source images
 src/app/                 — Next.js pages (layout, page, loading, error)
 src/components/layout/   — SkipToContent, Container, Header, MobileMenu, Footer
 src/components/ui/       — Button, SectionWrapper, SectionHeading, Badge, Card, Accordion, Input, Textarea, Select, Checkbox, HoneypotField
-src/components/shared/   — ScrollAnimation (motion/react, cross-page)
+src/components/shared/   — ScrollAnimation, StructuredData, NewsletterForm, GoogleAnalytics
 src/components/home/     — HeroSection, TripCard, TripCardsSection, AboutTeaser, OpinionsTeaser
 src/components/trips/    — TripHero, TripTargetAudience, TripDescription, TripProgram, TripPracticalInfo, TripPricing, TripCollaborator, TripFAQ, TripGallery, BookingForm
 src/components/about/    — PersonBio, PlaceCard
 src/components/contact/  — ContactForm, ContactInfo
-src/lib/                 — constants.ts, utils.ts, rate-limit.ts
-src/lib/validations/     — booking.ts, contact.ts (Zod schemas, shared client+server)
+src/lib/                 — constants.ts, utils.ts, rate-limit.ts, logger.ts, structured-data.ts
+src/lib/validations/     — booking.ts, contact.ts, newsletter.ts (Zod schemas, shared client+server)
+src/hooks/               — useCookieConsent.ts
 src/app/api/booking/     — POST route (Zod + honeypot + rate limit)
 src/app/api/contact/     — POST route (Zod + honeypot + rate limit)
+src/app/api/newsletter/  — POST route (Zod + honeypot + rate limit)
 src/data/                — navigation.ts, trips.ts, team.ts, places.ts (hardcoded data + helpers)
-src/types/               — trip.ts, team.ts, place.ts, forms.ts
+src/types/               — trip.ts, team.ts, place.ts, forms.ts, cookies.ts
+src/components/layout/   — + CookieBanner, CookieSettingsButton
 public/images/           — 6 optimized images (hero, logo, etc.)
 ```
 
@@ -117,6 +120,20 @@ npm run lint       # ESLint
 - **`robots: { index: false }` on placeholder pages**: Pages without content shouldn't be indexed. Remove after adding full content.
 - **`cn()` over template literals**: Project consistently uses `cn()` from clsx + tailwind-merge. Template literals bypass merge and can cause class conflicts.
 - **Contact form pattern**: Identical to BookingForm but simpler (3 fields vs 8). Same 4-state machine (idle/submitting/success/error), same Zod + RHF + honeypot pattern.
+
+## Phase 5 Lessons Learned
+
+- **`useSyncExternalStore` for localStorage**: React 19 lint rules flag `setState` inside effects. Use `useSyncExternalStore` with custom events for same-tab reactivity when reading from localStorage.
+- **Cookie banner visibility**: Derive from consent state + footer trigger flag. Don't sync `showBanner` to `isVisible` in useEffect — compute `isVisible = showBanner || openedFromFooter`.
+- **CSP needs `'unsafe-inline'` + `'unsafe-eval'`**: Next.js uses inline scripts. Without these, pages break.
+- **StructuredData in `<head>`**: Place `<StructuredData>` inside `<head>` in layout.tsx for Organization schema. Page-level schemas go in page components.
+- **SectionHeading `as` prop**: `as?: "h1" | "h2" | "h3"` with default `"h2"`. Now subpages can use `<SectionHeading as="h1">` instead of inline `<h1>`.
+- **Logger pattern**: `log(label, data)` with `NODE_ENV !== "production"` guard. Applied to all API routes.
+- **Newsletter form compact layout**: Email + button in one row, RODO checkbox below. Inline validation, same 4-state machine as ContactForm.
+- **Sentinel value for SSR hydration**: `getServerSnapshot()` must return a distinct value (e.g. `"__ssr__"`) — not `null` (same as "no data in localStorage"). Otherwise `isLoaded` can't distinguish SSR from client.
+- **Schema.org EventStatus**: `isPast` ≠ cancelled. Past events = `EventScheduled`. `EventCancelled` only for truly cancelled events.
+- **Focus management in `role="dialog"`**: When toggling panel content, move focus to first focusable element via `useEffect` + `querySelector`.
+- **Placeholder pages out of sitemap**: Pages with `robots: { index: false }` must NOT appear in sitemap.xml — contradictory signals to crawlers.
 
 ## Content Sources
 

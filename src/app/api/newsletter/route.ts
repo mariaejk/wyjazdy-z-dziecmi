@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
-import { contactSchema } from "@/lib/validations/contact";
+import { newsletterSchema } from "@/lib/validations/newsletter";
 import { rateLimit } from "@/lib/rate-limit";
 import { log } from "@/lib/logger";
 
@@ -42,7 +42,7 @@ export async function POST(request: NextRequest) {
   }
 
   // Zod validation
-  const result = contactSchema.safeParse(body);
+  const result = newsletterSchema.safeParse(body);
   if (!result.success) {
     const errors = result.error.issues.map((issue) => ({
       field: issue.path.join("."),
@@ -53,18 +53,14 @@ export async function POST(request: NextRequest) {
 
   const data = result.data;
 
-  // TODO: Send webhook to n8n for email notification
-  // await fetch(process.env.N8N_CONTACT_WEBHOOK_URL!, {
+  // TODO: Send webhook to n8n for newsletter subscription
+  // await fetch(process.env.N8N_NEWSLETTER_WEBHOOK_URL!, {
   //   method: "POST",
   //   headers: { "Content-Type": "application/json" },
   //   body: JSON.stringify(data),
   // });
 
-  log("Contact", {
-    name: data.name,
-    email: data.email,
-    message: data.message.substring(0, 100),
-  });
+  log("Newsletter", { email: data.email });
 
   return NextResponse.json({ success: true });
 }
