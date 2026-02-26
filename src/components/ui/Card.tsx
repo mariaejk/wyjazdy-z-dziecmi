@@ -35,7 +35,7 @@ export function Card({
             src={image.src}
             alt={image.alt}
             fill
-            sizes="(max-width: 768px) 100vw, 50vw"
+            sizes="(max-width: 640px) calc(100vw - 2rem), (max-width: 1024px) 50vw, 33vw"
             className={cn(
               "object-cover transition-transform duration-500",
               href && "group-hover:scale-105",
@@ -44,7 +44,7 @@ export function Card({
           />
         </div>
       )}
-      <div className="p-5 sm:p-6">{children}</div>
+      <div className="p-4 sm:p-5 lg:p-6">{children}</div>
     </div>
   );
 

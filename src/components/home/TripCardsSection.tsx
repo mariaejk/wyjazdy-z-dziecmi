@@ -18,7 +18,7 @@ export function TripCardsSection() {
           />
         </ScrollAnimation>
 
-        <div className="grid gap-8 sm:grid-cols-2">
+        <div className="grid gap-6 sm:gap-8 sm:grid-cols-2">
           {upcomingTrips.map((trip, index) => (
             <ScrollAnimation
               key={trip.slug}

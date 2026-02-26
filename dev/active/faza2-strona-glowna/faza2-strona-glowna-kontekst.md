@@ -1,7 +1,7 @@
 # Kontekst: Faza 2 — Strona Główna
 
 > **Branch:** `feature/faza2-strona-glowna`
-> **Ostatnia aktualizacja:** 2026-02-26 (etap 2E)
+> **Ostatnia aktualizacja:** 2026-02-26 (etap 2F — FAZA 2 UKONCZONA)
 
 ---
 
@@ -156,3 +156,8 @@ import { motion } from "motion/react";
 - **page.tsx:** Zamieniono placeholder na 4 sekcje: `<HeroSection />` → `<TripCardsSection />` → `<AboutTeaser />` → `<OpinionsTeaser />`. Fragment (`<>...</>`) zamiast wrapper div.
 - **Footer newsletter:** Poprawki z code review Fazy 1 już zastosowane (form wrapper, cursor-not-allowed, opacity-60).
 - **Build + Lint:** PASS (0 errors). Dev server kompiluje stronę poprawnie.
+
+### Etap 2F (2026-02-26)
+- **Responsive fixes:** TripCardsSection gap-6 sm:gap-8 (było gap-8). Card sizes z `calc(100vw - 2rem)`. Card padding p-4 sm:p-5 lg:p-6 (3 breakpoints). SectionHeading mb-8 sm:mb-10 lg:mb-12.
+- **Weryfikacja:** Wszystkie 7 punktów PASS (build, lint, responsive, animations, reduced-motion, navigation, images).
+- **FAZA 2 UKONCZONA** — 36/36 zadań wykonanych. Gotowe do code review.

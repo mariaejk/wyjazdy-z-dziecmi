@@ -60,14 +60,14 @@
 
 ## Etap 2F: Weryfikacja końcowa [S]
 
-- [ ] **2F.1** Build: `npm run build` — PASS
-- [ ] **2F.2** Lint: `npm run lint` — PASS
-- [ ] **2F.3** Responsywność: 320px, 375px, 768px, 1024px, 1440px — PASS
-- [ ] **2F.4** Scroll animations: odpalają się przy scroll — PASS
-- [ ] **2F.5** `prefers-reduced-motion`: animacje wyłączone — PASS
-- [ ] **2F.6** Nawigacja: Header + CTA buttons prowadzą poprawnie — PASS
-- [ ] **2F.7** Obrazy: hero priority, reszta lazy, next/image optymalizuje — PASS
-- [ ] **2F.8** Commit: `feat(faza2-strona-glowna): etap 2F — weryfikacja końcowa`
+- [x] **2F.1** Build: `npm run build` — PASS (0 errors, static prerender OK)
+- [x] **2F.2** Lint: `npm run lint` — PASS (0 errors, 3 warnings w .claude/)
+- [x] **2F.3** Responsywność: poprawiony grid gap (gap-6 sm:gap-8), Card sizes (calc), Card padding (p-4 sm:p-5 lg:p-6), SectionHeading margin (mb-8 sm:mb-10 lg:mb-12)
+- [x] **2F.4** Scroll animations: ScrollAnimation (whileInView + once) w TripCards, About, Opinions. HeroSection: motion initial+animate fade-up.
+- [x] **2F.5** `prefers-reduced-motion`: useReducedMotion() w HeroSection, ScrollAnimation, MobileMenu + globals.css @media rule
+- [x] **2F.6** Nawigacja: Hero→/wyjazdy, TripCard→/wyjazdy/[slug], About→/o-nas, Opinions→/wyjazdy, Header links OK
+- [x] **2F.7** Obrazy: hero.jpg priority+sizes="100vw", Card images fill+sizes calc, lazy by default
+- [x] **2F.8** Commit poniżej
 
 ---
 
@@ -80,5 +80,5 @@
 | 2C: ScrollAnimation | 5 | ✅ Done |
 | 2D: Sekcje strony głównej | 8 | ✅ Done |
 | 2E: Złożenie page.tsx | 4 | ✅ Done |
-| 2F: Weryfikacja | 8 | ⬜ Pending |
+| 2F: Weryfikacja | 8 | ✅ Done |
 | **Łącznie** | **36** | |
