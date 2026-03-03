@@ -7,6 +7,7 @@ import { Footer } from "@/components/layout/Footer";
 import { CookieBanner } from "@/components/layout/CookieBanner";
 import { StructuredData } from "@/components/shared/StructuredData";
 import { GoogleAnalytics } from "@/components/shared/GoogleAnalytics";
+import { ClarityScript } from "@/components/shared/ClarityScript";
 import { getOrganizationSchema } from "@/lib/structured-data";
 import "./globals.css";
 
@@ -68,6 +69,7 @@ export default function RootLayout({
         className={`${playfair.variable} ${inter.variable} font-body bg-parchment text-graphite antialiased`}
       >
         <GoogleAnalytics />
+        <ClarityScript />
         <SkipToContent />
         <Header />
         <main id="main-content" className="min-h-screen">

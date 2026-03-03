@@ -5,6 +5,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Send, CheckCircle, AlertCircle } from "lucide-react";
 import { bookingSchema, type BookingFormValues } from "@/lib/validations/booking";
+import { analytics } from "@/lib/analytics";
 import { Container } from "@/components/layout/Container";
 import { SectionWrapper } from "@/components/ui/SectionWrapper";
 import { SectionHeading } from "@/components/ui/SectionHeading";
@@ -37,6 +38,7 @@ export function BookingForm({ trips, preselectedTrip }: BookingFormProps) {
     handleSubmit,
     formState: { errors },
     reset,
+    watch,
   } = useForm<BookingFormValues>({
     resolver: zodResolver(bookingSchema),
     defaultValues: {
@@ -53,6 +55,8 @@ export function BookingForm({ trips, preselectedTrip }: BookingFormProps) {
       website: "",
     },
   });
+
+  const childrenCount = watch("children");
 
   const tripOptions = trips.map((t) => ({
     value: t.slug,
@@ -88,10 +92,11 @@ export function BookingForm({ trips, preselectedTrip }: BookingFormProps) {
       }
 
       setStatus("success");
+      analytics.bookingSubmit(data.trip);
       reset();
     } catch {
       setStatus("error");
-      setErrorMessage("Nie udało się wysłać formularza. Sprawdź połączenie z internetem.");
+      setErrorMessage("Nie uda\u0142o si\u0119 wys\u0142a\u0107 formularza. Sprawd\u017A po\u0142\u0105czenie z internetem.");
     }
   };
 
@@ -163,9 +168,9 @@ export function BookingForm({ trips, preselectedTrip }: BookingFormProps) {
             />
           </div>
 
-          <div className="grid gap-5 sm:grid-cols-3">
+          <div className="grid gap-5 sm:grid-cols-2">
             <Input
-              label="Dorośli"
+              label="Doro\u015Bli"
               type="number"
               min={1}
               max={10}
@@ -182,13 +187,16 @@ export function BookingForm({ trips, preselectedTrip }: BookingFormProps) {
               {...register("children", { valueAsNumber: true })}
               error={errors.children?.message}
             />
+          </div>
+
+          {Number(childrenCount) > 0 && (
             <Input
               label="Wiek dzieci"
               placeholder="np. 5, 8"
               {...register("childrenAges")}
               error={errors.childrenAges?.message}
             />
-          </div>
+          )}
 
           <Textarea
             label="Uwagi"
@@ -236,11 +244,11 @@ export function BookingForm({ trips, preselectedTrip }: BookingFormProps) {
             <Button
               type="submit"
               size="lg"
-              disabled={status === "submitting"}
+              loading={status === "submitting"}
               icon={<Send className="h-5 w-5" strokeWidth={1.5} />}
               className="w-full sm:w-auto"
             >
-              {status === "submitting" ? "Wysyłanie..." : "Wyślij zgłoszenie"}
+              {status === "submitting" ? "Wysy\u0142anie..." : "Wy\u015Blij zg\u0142oszenie"}
             </Button>
           </div>
         </form>

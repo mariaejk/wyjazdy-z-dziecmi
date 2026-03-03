@@ -2,9 +2,12 @@
 
 import { useEffect, useRef, useCallback } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { X } from "lucide-react";
 import { motion, AnimatePresence, useReducedMotion } from "motion/react";
 import { mainNavigation } from "@/data/navigation";
+import { ROUTES } from "@/lib/constants";
+import { cn, isNavActive } from "@/lib/utils";
 
 type MobileMenuProps = {
   isOpen: boolean;
@@ -15,6 +18,7 @@ export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
   const menuRef = useRef<HTMLDivElement>(null);
   const closeButtonRef = useRef<HTMLButtonElement>(null);
   const shouldReduceMotion = useReducedMotion();
+  const pathname = usePathname();
 
   // Focus trap + Escape handler
   const handleKeyDown = useCallback(
@@ -104,18 +108,38 @@ export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
             {/* Navigation links */}
             <nav aria-label="Menu mobilne" className="flex-1 px-4">
               <ul className="flex flex-col gap-1">
-                {mainNavigation.map((item) => (
-                  <li key={item.href}>
-                    <Link
-                      href={item.href}
-                      onClick={onClose}
-                      className="block rounded-md px-3 py-3 text-base font-medium text-graphite transition-colors hover:bg-parchment-dark hover:text-moss"
-                    >
-                      {item.label}
-                    </Link>
-                  </li>
-                ))}
+                {mainNavigation.map((item) => {
+                  const active = isNavActive(item.href, pathname);
+                  return (
+                    <li key={item.href}>
+                      <Link
+                        href={item.href}
+                        onClick={onClose}
+                        className={cn(
+                          "block rounded-md px-3 py-3 text-base font-medium transition-colors",
+                          active
+                            ? "bg-moss/10 text-moss"
+                            : "text-graphite hover:bg-parchment-dark hover:text-moss",
+                        )}
+                        {...(active ? { "aria-current": "page" as const } : {})}
+                      >
+                        {item.label}
+                      </Link>
+                    </li>
+                  );
+                })}
               </ul>
+
+              {/* CTA */}
+              <div className="mt-6 px-3">
+                <Link
+                  href={ROUTES.trips}
+                  onClick={onClose}
+                  className="inline-flex w-full items-center justify-center rounded-lg bg-moss px-6 py-3 text-base font-medium text-white transition-all duration-200 hover:bg-moss-light focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-moss focus-visible:ring-offset-2 active:scale-[0.98]"
+                >
+                  Zarezerwuj
+                </Link>
+              </div>
             </nav>
           </motion.div>
         </>

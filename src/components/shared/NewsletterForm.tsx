@@ -5,6 +5,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { CheckCircle, AlertCircle } from "lucide-react";
 import { newsletterSchema, type NewsletterFormValues } from "@/lib/validations/newsletter";
+import { analytics } from "@/lib/analytics";
 import { HoneypotField } from "@/components/ui/HoneypotField";
 import { ROUTES } from "@/lib/constants";
 
@@ -54,6 +55,7 @@ export function NewsletterForm() {
       }
 
       setStatus("success");
+      analytics.newsletterSignup();
       reset();
     } catch {
       setStatus("error");

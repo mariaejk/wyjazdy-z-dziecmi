@@ -2,6 +2,7 @@ import Image from "next/image";
 import { Calendar, MapPin } from "lucide-react";
 import { Container } from "@/components/layout/Container";
 import { Badge } from "@/components/ui/Badge";
+import { Button } from "@/components/ui/Button";
 import { formatDate } from "@/lib/utils";
 
 type TripHeroProps = {
@@ -11,6 +12,7 @@ type TripHeroProps = {
   dateEnd: string;
   location: string;
   image: string;
+  isPast: boolean;
 };
 
 export function TripHero({
@@ -20,9 +22,10 @@ export function TripHero({
   dateEnd,
   location,
   image,
+  isPast,
 }: TripHeroProps) {
   return (
-    <section className="relative flex min-h-[60vh] items-end overflow-hidden">
+    <section id="hero" className="relative flex min-h-[60vh] items-end overflow-hidden">
       <Image
         src={image}
         alt={title}
@@ -52,6 +55,24 @@ export function TripHero({
           <p className="mt-3 text-lg text-white/90 sm:text-xl">
             {subtitle}
           </p>
+
+          <div className="mt-6 flex flex-wrap gap-3">
+            {!isPast && (
+              <Button
+                href="#formularz"
+                className="bg-white text-moss hover:bg-white/90 focus-visible:ring-white"
+              >
+                Zapisz si\u0119
+              </Button>
+            )}
+            <Button
+              href="#opis"
+              variant="secondary"
+              className="border-white/60 text-white hover:bg-white/20 hover:text-white focus-visible:ring-white"
+            >
+              Poznaj szczeg\u00F3\u0142y
+            </Button>
+          </div>
         </div>
       </Container>
     </section>

@@ -57,6 +57,11 @@ export type Trip = {
   };
   pricing: TripPricing[];
   deposit: number;
+  spotsTotal?: number;
+  spotsLeft?: number;
+  // TODO: Early bird UI — zaimplementowa\u0107 badge/info w TripCard + TripPricing
+  earlyBirdDeadline?: string;
+  earlyBirdPrice?: number;
   collaborator: TripCollaborator;
   faq: TripFAQ[];
   gallery: TripGalleryImage[];

@@ -6,14 +6,6 @@ import { useCookieConsent } from "@/hooks/useCookieConsent";
 
 const GA_ID = process.env.NEXT_PUBLIC_GA_ID;
 
-declare global {
-  interface Window {
-    gtag: (...args: unknown[]) => void;
-    dataLayer: unknown[];
-    [key: `ga-disable-${string}`]: boolean;
-  }
-}
-
 export function GoogleAnalytics() {
   const { isLoaded, hasAnalyticsConsent } = useCookieConsent();
 

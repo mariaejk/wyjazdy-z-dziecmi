@@ -1,5 +1,6 @@
 import type { ReactNode } from "react";
 import Link from "next/link";
+import { Loader2 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 type ButtonVariant = "primary" | "secondary" | "ghost";
@@ -19,6 +20,7 @@ type ButtonAsLink = ButtonBaseProps & {
   target?: string;
   rel?: string;
   disabled?: never;
+  loading?: never;
   type?: never;
   onClick?: never;
 };
@@ -26,6 +28,7 @@ type ButtonAsLink = ButtonBaseProps & {
 type ButtonAsButton = ButtonBaseProps & {
   href?: never;
   disabled?: boolean;
+  loading?: boolean;
   type?: "button" | "submit" | "reset";
   onClick?: () => void;
 };
@@ -56,7 +59,7 @@ export function Button({
   ...props
 }: ButtonProps) {
   const classes = cn(
-    "inline-flex items-center justify-center font-medium rounded-lg transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2",
+    "inline-flex items-center justify-center font-medium rounded-lg transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 active:scale-[0.98]",
     variantStyles[variant],
     sizeStyles[size],
     className,
@@ -78,16 +81,21 @@ export function Button({
     );
   }
 
-  const { disabled, type = "button", onClick } = props as ButtonAsButton;
+  const { disabled, loading, type = "button", onClick } = props as ButtonAsButton;
+  const isDisabled = disabled || loading;
 
   return (
     <button
       type={type}
-      disabled={disabled}
+      disabled={isDisabled}
       onClick={onClick}
-      className={cn(classes, disabled && "opacity-60 cursor-not-allowed")}
+      className={cn(classes, isDisabled && "opacity-60 cursor-not-allowed")}
     >
-      {icon && <span className="shrink-0">{icon}</span>}
+      {loading ? (
+        <Loader2 className="h-5 w-5 shrink-0 animate-spin" strokeWidth={1.5} />
+      ) : (
+        icon && <span className="shrink-0">{icon}</span>
+      )}
       {children}
     </button>
   );

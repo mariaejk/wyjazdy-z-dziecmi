@@ -2,18 +2,39 @@ import type { Trip } from "@/types/trip";
 import { MapPin, Calendar } from "lucide-react";
 import { Card } from "@/components/ui/Card";
 import { Badge } from "@/components/ui/Badge";
-import { formatDate } from "@/lib/utils";
+import { Button } from "@/components/ui/Button";
+import { formatDate, formatCurrency } from "@/lib/utils";
 import { ROUTES } from "@/lib/constants";
 
 type TripCardProps = {
   trip: Trip;
 };
 
+function getScarcityBadge(spotsLeft?: number) {
+  if (spotsLeft === undefined) return null;
+  if (spotsLeft === 0) {
+    return <Badge className="bg-red-100 text-red-700 border-0">Komplet</Badge>;
+  }
+  if (spotsLeft <= 3) {
+    return <Badge className="bg-amber-100 text-amber-700 border-0">Ostatnie miejsca!</Badge>;
+  }
+  return null;
+}
+
+function getMinPrice(pricing: Trip["pricing"]): number | null {
+  if (pricing.length === 0) return null;
+  return Math.min(...pricing.map((p) => p.price));
+}
+
 export function TripCard({ trip }: TripCardProps) {
+  const tripUrl = `${ROUTES.trips}/${trip.slug}`;
+  const minPrice = getMinPrice(trip.pricing);
+  const scarcityBadge = getScarcityBadge(trip.spotsLeft);
+  const isSoldOut = trip.spotsLeft === 0;
+
   return (
     <Card
       image={{ src: trip.image, alt: trip.title }}
-      href={`${ROUTES.trips}/${trip.slug}`}
       grayscale={trip.isPast}
     >
       <div className="flex flex-wrap items-center gap-2 mb-3">
@@ -21,7 +42,8 @@ export function TripCard({ trip }: TripCardProps) {
           <Calendar className="mr-1 h-3 w-3" strokeWidth={1.5} />
           {formatDate(trip.date)}
         </Badge>
-        {trip.isPast && <Badge variant="outline">Zakończony</Badge>}
+        {trip.isPast && <Badge variant="outline">Zako\u0144czony</Badge>}
+        {!trip.isPast && scarcityBadge}
       </div>
 
       <h3 className="font-heading text-xl font-bold text-graphite sm:text-2xl">
@@ -35,13 +57,32 @@ export function TripCard({ trip }: TripCardProps) {
         <span>{trip.location}</span>
       </div>
 
+      {minPrice !== null && (
+        <p className="mt-1 text-sm font-medium text-moss">
+          od {formatCurrency(minPrice)}
+        </p>
+      )}
+
       <p className="mt-4 text-base text-graphite-light line-clamp-3">
         {trip.shortDescription}
       </p>
 
-      <span className="mt-4 inline-flex items-center text-sm font-medium text-moss group-hover:underline">
-        Dowiedz się więcej &rarr;
-      </span>
+      <div className="mt-4 flex flex-col gap-2 sm:flex-row">
+        <Button href={tripUrl} variant="secondary" size="sm">
+          Szczeg\u00F3\u0142y
+        </Button>
+        {!trip.isPast && (
+          isSoldOut ? (
+            <Button size="sm" disabled>
+              Zarezerwuj
+            </Button>
+          ) : (
+            <Button href={`${tripUrl}#formularz`} size="sm">
+              Zarezerwuj
+            </Button>
+          )
+        )}
+      </div>
     </Card>
   );
 }

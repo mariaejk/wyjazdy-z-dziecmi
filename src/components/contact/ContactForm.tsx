@@ -5,6 +5,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Send, CheckCircle, AlertCircle } from "lucide-react";
 import { contactSchema, type ContactFormValues } from "@/lib/validations/contact";
+import { analytics } from "@/lib/analytics";
 import { Input } from "@/components/ui/Input";
 import { Textarea } from "@/components/ui/Textarea";
 import { Checkbox } from "@/components/ui/Checkbox";
@@ -63,6 +64,7 @@ export function ContactForm() {
       }
 
       setStatus("success");
+      analytics.contactSubmit();
       reset();
     } catch {
       setStatus("error");
