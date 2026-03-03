@@ -3,9 +3,9 @@ import type { TeamMember } from "@/types/team";
 export const teamMembers: TeamMember[] = [
   {
     name: "Maria Kordalewska",
-    role: "Organizatorka, nauczycielka jogi, pilotka wycieczek",
+    role: "Tw\u00F3rczyni projektu, nauczycielka jogi, organizatorka event\u00F3w",
     image: "/images/maria.jpg",
-    bio: "Wieloletnia organizatorka wyjazd\u00F3w i event\u00F3w, pilotka wycieczek, specjalistka od komunikacji, wyk\u0142adowca uniwersytecki z tytu\u0142em doktora nauk o mediach, nauczycielka jogi i mama Laury.\n\nKocha podr\u00F3\u017Ce, ale coraz cz\u0119\u015Bciej wraca do miejsc, gdzie czuje spok\u00F3j. To tam odnajduje, to za czym tak bardzo t\u0119sknimy. Po\u015Br\u00F3d ciszy, w \u201Ebezinterneciu\u201D i w \u201Ebezzasi\u0119gowie\u201D organizuje spotkania dla doros\u0142ych i dzieci, kt\u00F3re przybli\u017Caj\u0105 ich do nich samych. Zaprasza do wsp\u00F3\u0142pracy najlepszych specjalist\u00F3w z tzw. rozwoju, tworz\u0105c niepowtarzalne spotkania.",
+    bio: "Jestem mam\u0105 Laury, nauczycielk\u0105 jogi i wieloletni\u0105 organizatork\u0105 event\u00F3w, kt\u00F3ra od ponad dekady \u0142\u0105czy \u015Bwiat profesjonalnej komunikacji z mi\u0142o\u015Bci\u0105 do podr\u00F3\u017Cy. Posiadam tytu\u0142 doktora nauk o mediach (Uniwersytet Warszawski), a moje do\u015Bwiadczenie zawodowe obejmuje zar\u00F3wno prac\u0119 akademick\u0105, jak i zarz\u0105dzanie relacjami w du\u017Cych agencjach eventowych.\n\nProjekt \u201EWyjazdy z Dzie\u0107mi\u201D zrodzi\u0142 si\u0119 z mojej osobistej potrzeby sp\u0119dzania z c\u00F3rk\u0105 czasu, kt\u00F3ry jest naprawd\u0119 warto\u015Bciowy. W \u015Bwiecie pe\u0142nym bod\u017Ac\u00F3w szukam miejsc w \u201Ebezinterneciu\u201D i \u201Ebezzasi\u0119gowie\u201D, gdzie po\u015Br\u00F3d ciszy i natury mo\u017Cemy zbli\u017Cy\u0107 si\u0119 do siebie samych. Zapraszam do wsp\u00F3\u0142pracy najlepszych specjalist\u00F3w od rozwoju, aby tworzy\u0107 spotkania, kt\u00F3re \u2013 jak m\u00F3wi\u0105 uczestnicy \u2013 s\u0105 \u201Elepsze ni\u017C bajka\u201D.",
   },
   {
     name: "Kamila Janczurewicz",

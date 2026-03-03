@@ -1,4 +1,4 @@
-import { Users } from "lucide-react";
+import { User } from "lucide-react";
 import { Container } from "@/components/layout/Container";
 import { SectionWrapper } from "@/components/ui/SectionWrapper";
 import { SectionHeading } from "@/components/ui/SectionHeading";
@@ -12,33 +12,31 @@ export function AboutTeaser() {
       <Container>
         <ScrollAnimation variant="fadeUp">
           <SectionHeading
-            title="O nas"
-            subtitle="Poznaj ludzi, którzy tworzą wyjazdy z sercem"
+            title="O mnie"
+            subtitle="Poznaj tw\u00F3rczyni\u0119 wyjazd\u00F3w \u2014 Mari\u0119 Kordalewsk\u0105"
           />
         </ScrollAnimation>
 
         <ScrollAnimation variant="fadeUp" delay={0.15}>
           <div className="mx-auto max-w-3xl text-center">
             <div className="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-full bg-moss/10">
-              <Users className="h-8 w-8 text-moss" strokeWidth={1.5} />
+              <User className="h-8 w-8 text-moss" strokeWidth={1.5} />
             </div>
 
             <p className="text-lg leading-relaxed text-graphite-light sm:text-xl">
               <strong className="text-graphite">Maria Kordalewska</strong> —
-              nauczycielka jogi, wieloletnia organizatorka wyjazdów i eventów, pilotka wycieczek,
-              specjalistka od komunikacji, wykładowca uniwersytecki i mama Laury.
-              Kocha podróże, ale coraz częściej wraca do miejsc, gdzie czuje spokój.
+              jestem mamą Laury, nauczycielką jogi i wieloletnią organizatorką eventów.
+              Od ponad dekady łączę świat profesjonalnej komunikacji z miłością do podróży.
             </p>
 
             <p className="mt-4 text-base text-graphite-light">
-              Pośród ciszy, w &bdquo;bezinterneciu&rdquo; i w &bdquo;bezzasięgowie&rdquo;
-              organizuje spotkania dla dorosłych i dzieci, które przybliżają ich
-              do nich samych.
+              Projekt &bdquo;Wyjazdy z Dziećmi&rdquo; zrodził się z mojej osobistej potrzeby
+              spędzania z córką czasu, który jest naprawdę wartościowy.
             </p>
 
             <div className="mt-8">
               <Button href={ROUTES.about} variant="secondary">
-                Poznaj nas bliżej
+                Poznaj mnie bliżej
               </Button>
             </div>
           </div>

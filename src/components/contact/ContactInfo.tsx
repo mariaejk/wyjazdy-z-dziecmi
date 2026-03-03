@@ -1,6 +1,8 @@
+import Image from "next/image";
 import { Mail, Phone, Facebook, Instagram } from "lucide-react";
 import { CONTACT, SOCIAL_LINKS } from "@/lib/constants";
 import { ScrollAnimation } from "@/components/shared/ScrollAnimation";
+import { getTeamMember } from "@/data/team";
 
 function extractHandle(url: string, prefix: string): string {
   return url.split(prefix).pop() ?? url;
@@ -36,14 +38,35 @@ const contactItems = [
 ];
 
 export function ContactInfo() {
+  const maria = getTeamMember("Maria Kordalewska");
+
   return (
     <div className="space-y-6">
       <ScrollAnimation variant="fadeUp">
+        {maria?.image && (
+          <div className="mb-4 flex items-center gap-3">
+            <div className="relative h-16 w-16 shrink-0 overflow-hidden rounded-full">
+              <Image
+                src={maria.image}
+                alt={maria.name}
+                fill
+                sizes="64px"
+                className="object-cover"
+              />
+            </div>
+            <div>
+              <p className="font-heading text-base font-bold text-graphite">
+                {maria.name}
+              </p>
+              <p className="text-sm text-graphite-light">{maria.role}</p>
+            </div>
+          </div>
+        )}
         <h2 className="font-heading text-2xl font-bold text-graphite sm:text-3xl">
           Dane kontaktowe
         </h2>
         <p className="mt-3 text-graphite-light">
-          Masz pytania? Napisz do nas lub zadzwo\u0144 &mdash; ch\u0119tnie pomo\u017Cemy.
+          Masz pytania? Napisz do mnie lub zadzwo\u0144 &mdash; ch\u0119tnie pomog\u0119.
         </p>
       </ScrollAnimation>
 

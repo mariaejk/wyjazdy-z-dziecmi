@@ -10,7 +10,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${baseUrl}/wyjazdy`, changeFrequency: "weekly", priority: 0.9 },
     { url: `${baseUrl}/o-nas`, changeFrequency: "monthly", priority: 0.7 },
     { url: `${baseUrl}/kontakt`, changeFrequency: "monthly", priority: 0.7 },
-    // /opinie and /single-parents excluded — placeholder content, robots: { index: false }
+    { url: `${baseUrl}/opinie`, changeFrequency: "monthly", priority: 0.6 },
+    // /single-parents excluded — placeholder content, robots: { index: false }
   ];
 
   const tripPages: MetadataRoute.Sitemap = getAllTrips().map((trip) => ({
