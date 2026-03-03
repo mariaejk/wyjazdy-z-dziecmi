@@ -116,42 +116,59 @@
 
 ## Faza 6: Treści i zdjęcia od klientki
 
-### Etap A: Zdjęcia i zasoby
-- [ ] 6.1 Skopiować zdjęcia do `public/images/` (`Marysia.JPG` → `maria.jpg`, `Kamila.JPG` → `kamila.jpg`, wybrane `IMG_*.jpg` → galeria)
-- [ ] 6.2 Dodać pole `image` do obu członków w `src/data/team.ts`
-- [ ] 6.3 `PersonBio.tsx` — wyświetlić `next/image` zamiast ikony `User` (fallback na ikonę gdy brak image)
+### Etap A: Zdjęcia i zasoby ✅
+- [x] 6.1 Skopiować zdjęcia do `public/images/` (`Marysia.JPG` → `maria.jpg`, `Kamila.JPG` → `kamila.jpg`, wybrane `IMG_*.jpg` → galeria)
+- [x] 6.2 Dodać pole `image` do obu członków w `src/data/team.ts`
+- [x] 6.3 `PersonBio.tsx` — wyświetlić `next/image` zamiast ikony `User` (fallback na ikonę gdy brak image)
 
-### Etap B: "O mnie" — bio i rename
-- [ ] 6.4 Nowe bio Marii w `src/data/team.ts` (pełny tekst z DOCX, 2 akapity)
-- [ ] 6.5 Rename "O nas" → "O mnie" w `navigation.ts`, `o-nas/page.tsx`, `AboutTeaser.tsx` (URL `/o-nas` bez zmian)
-- [ ] 6.6 Przepisać `/o-nas/page.tsx` — nowa hierarchia: H1 → PersonBio Marii → Misja → Współpracują ze mną → Miejsca → CTA
-- [ ] 6.7 Sekcja "Moja misja / Wartości" — 3 karty z ikonami (`Leaf`, `Heart`, `Star`) inline w `o-nas/page.tsx`
+### Etap B: "O mnie" — bio i rename ✅
+- [x] 6.4 Nowe bio Marii w `src/data/team.ts` (pełny tekst z DOCX, 2 akapity)
+- [x] 6.5 Rename "O nas" → "O mnie" w `navigation.ts`, `o-nas/page.tsx`, `AboutTeaser.tsx` (URL `/o-nas` bez zmian)
+- [x] 6.6 Przepisać `/o-nas/page.tsx` — nowa hierarchia: H1 → PersonBio Marii → Misja → Współpracują ze mną → Miejsca → CTA
+- [x] 6.7 Sekcja "Moja misja / Wartości" — 3 karty z ikonami (`Leaf`, `Heart`, `Star`) inline w `o-nas/page.tsx`
 
-### Etap C: Opinie — dane i komponenty
-- [ ] 6.8 Nowy plik `src/data/testimonials.ts` — typ `Testimonial` + 4 opinie z DOCX
-- [ ] 6.9 Nowy komponent `src/components/shared/TestimonialCard.tsx`
-- [ ] 6.10 Zastąpić `/opinie/page.tsx` prawdziwymi opiniami, usunąć `robots: { index: false }`, dodać do `sitemap.ts`
-- [ ] 6.11 Przepisać `OpinionsTeaser.tsx` — 2 wybrane opinie + CTA "Zobacz wszystkie"
+### Etap C: Opinie — dane i komponenty ✅
+- [x] 6.8 Nowy plik `src/data/testimonials.ts` — typ `Testimonial` + 4 opinie z DOCX
+- [x] 6.9 Nowy komponent `src/components/shared/TestimonialCard.tsx`
+- [x] 6.10 Zastąpić `/opinie/page.tsx` prawdziwymi opiniami, usunąć `robots: { index: false }`, dodać do `sitemap.ts`
+- [x] 6.11 Przepisać `OpinionsTeaser.tsx` — 2 wybrane opinie + CTA "Zobacz wszystkie"
 
-### Etap D: "Yoga i Konie" — pełna treść
-- [ ] 6.12 Rozszerzyć typ `TripCollaborator` o `role?: string` w `src/types/trip.ts`
-- [ ] 6.13 Wypełnić dane "Yoga i Konie" w `src/data/trips.ts` (opis, schedule, FAQ, Kamila, gallery; pricing `[]` tymczasowo)
-- [ ] 6.14 `TripCollaborator.tsx` — wyświetlić `collaborator.role` pod imieniem
+### Etap D: "Yoga i Konie" — pełna treść ✅
+- [x] 6.12 Rozszerzyć typ `TripCollaborator` o `role?: string` w `src/types/trip.ts`
+- [x] 6.13 Wypełnić dane "Yoga i Konie" w `src/data/trips.ts` (opis, schedule, FAQ, Kamila, gallery; pricing `[]` tymczasowo)
+- [x] 6.14 `TripCollaborator.tsx` — wyświetlić `collaborator.role` pod imieniem
 
-### Etap E: Poprawki wizualne i tekstowe
-- [ ] 6.15 Logo — powiększyć w `Header.tsx` z `width={44}` na `width={56}`
-- [ ] 6.16 "Cennik" → "Twoja inwestycja" w `TripPricing.tsx`
-- [ ] 6.17 "Social" → "Znajdź nas" w `Footer.tsx`
+### Etap E: Poprawki wizualne i tekstowe ✅
+- [x] 6.15 Logo — powiększyć w `Header.tsx` z `width={44}` na `width={56}`
+- [x] 6.16 "Cennik" → "Twoja inwestycja" w `TripPricing.tsx`
+- [x] 6.17 "Social" → "Znajdź nas" w `Footer.tsx`
 
-### Etap F: Lead magnet
-- [ ] 6.18 `NewsletterForm.tsx` — nowy copy o poradniku PDF, przycisk "Pobierz"
+### Etap F: Lead magnet ✅
+- [x] 6.18 `NewsletterForm.tsx` — nowy copy o poradniku PDF, przycisk "Pobierz"
 
-### Etap G: Kontakt
-- [ ] 6.19 `ContactInfo.tsx` — mini avatar Marii (64px) + imię i rola
+### Etap G: Kontakt ✅
+- [x] 6.19 `ContactInfo.tsx` — mini avatar Marii (64px) + imię i rola
 
-### Weryfikacja Fazy 6
-- [ ] 6.20 `npm run build` — zero błędów
-- [ ] 6.21 Weryfikacja wizualna: `/o-nas`, `/opinie`, `/wyjazdy/yoga-i-konie`, `/kontakt`, Footer
+### Weryfikacja Fazy 6 ✅
+- [x] 6.20 `npm run build` — zero błędów
+- [x] 6.21 Weryfikacja wizualna: `/o-nas`, `/opinie`, `/wyjazdy/yoga-i-konie`, `/kontakt`, Footer
+
+---
+
+## Do poprawy po review Etapów D-G
+
+> Code review przeprowadzony 2026-03-03. Raport: `dev/review-faza6-etapy-d-g.md`
+
+### Problemy ważne (🟠 important):
+- [x] R1 `src/data/trips.ts` linia 218 — naprawić mieszane kodowanie w FAQ "Yoga i Konie" (literalne `wyżywienie`, `Posiłki`, `składników` → unicode escapes)
+- [x] R2 `src/data/trips.ts` vs `src/data/team.ts` — zsynchronizować bio Kamili Janczurewicz (import z team.ts via `getTeamMember`)
+- [x] R3 `src/components/trips/TripCollaborator.tsx` — dodać prop `sectionTitle?: string` zamiast hardcoded "Prowadząca" (domyślnie "Współpraca")
+- [x] R4 `src/app/o-nas/page.tsx` — PersonBio Kamili `variant="alternate"` (spójne tło z nagłówkiem sekcji)
+
+### Drobne uwagi (🟡 nit — opcjonalne):
+- [ ] R5 `src/components/shared/NewsletterForm.tsx` linia 90 — ujednolicić kodowanie stringu (mix unicode escapes + literalne `wskazówki`)
+- [ ] R6 `src/data/trips.ts` linia 138 — dodać komentarz wyjaśniający `slug: "yoga-i-konie"` przy tytule "Joga i Konie" (celowa decyzja SEO vs brak spójności)
+- [ ] R7 `src/components/contact/ContactInfo.tsx` — rozważyć przeniesienie `extractHandle` do `src/lib/utils.ts` jeśli używana w >1 miejscu
 
 ---
 
@@ -203,7 +220,7 @@
 | Faza 3: Wyjazd + formularz | 17 | Ukończona |
 | Faza 4: Pozostałe podstrony | 14 | Ukończona |
 | Faza 5: SEO + compliance | 14 | Ukończona |
-| Faza 6: Treści i zdjęcia | 21 | Oczekuje |
+| Faza 6: Treści i zdjęcia | 21 | Ukończona |
 | Faza 7: Konwersja + UX | 21 | Oczekuje |
 | **Razem** | **120** | |
 

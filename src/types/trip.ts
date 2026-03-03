@@ -27,6 +27,7 @@ export type TripGalleryImage = {
 
 export type TripCollaborator = {
   name: string;
+  role?: string;
   bio: string;
   image?: string;
 };

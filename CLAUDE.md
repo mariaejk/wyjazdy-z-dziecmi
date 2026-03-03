@@ -6,7 +6,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 Landing page / sales funnel for "Wyjazdy z Dziećmi" — a brand organizing family workshop retreats in nature (yoga, dance, ceramics, horses). Client: Maria Kordalewska. Domain: wyjazdyzdziecmi.pl.
 
-**Status:** Phase 1-5 COMPLETE. Site is production-ready (SEO, newsletter, cookie banner RODO, GA4, security headers).
+**Status:** Phase 1-6 COMPLETE. Site is production-ready with full content (SEO, newsletter, cookie banner RODO, GA4, security headers, real testimonials, both trips with content).
 
 ## Tech Stack
 
@@ -135,6 +135,17 @@ npm run lint       # ESLint
 - **Focus management in `role="dialog"`**: When toggling panel content, move focus to first focusable element via `useEffect` + `querySelector`.
 - **Placeholder pages out of sitemap**: Pages with `robots: { index: false }` must NOT appear in sitemap.xml — contradictory signals to crawlers.
 
+## Phase 6 Lessons Learned
+
+- **Unicode escapes consistently**: Mixing literal Polish chars with unicode escapes in the same `.ts` file is easy to miss. Always use escapes in `.ts`, check in review.
+- **Single Source of Truth for bios**: Don't duplicate person bio in `team.ts` and `trips.ts`. Import via `getTeamMember()` helper to keep one source.
+- **Neutral section titles**: "Prowadząca" assumes gender/role. Use configurable `sectionTitle` prop with neutral default like "Współpraca".
+- **SectionWrapper variant consistency**: When heading and content are in separate `SectionWrapper`s, they must share the same `variant` — otherwise visual "jump" in background color.
+- **Semantic HTML for testimonials**: `<blockquote>` + `<footer>` + `<cite>` is the correct pattern for quotes/testimonials.
+- **Lead magnet > newsletter**: "Pobierz poradnik" converts better than "Zapisz się na newsletter" — offer value exchange.
+- **`TestimonialCard` pattern**: Follows `PlaceCard` structure — `ScrollAnimation` wrapper, staggered delay via `index` prop, semantic HTML inside.
+- **`getFeaturedTestimonials(ids)` with type guard**: Filter by ID array + `.filter(Boolean)` for safe featured selection.
+
 ## Content Sources
 
-All copy comes from `docs/tresc_na_strone.md`. The first trip "Matka i Córka — Wspólny Rytm" has complete content (description, schedule, pricing, collaborator bio). Second trip "Yoga i Konie" is placeholder only. Single Parents page content was generated (not in source doc).
+All copy comes from `docs/tresc_na_strone.md` and `docs/TODO POPRAWIC landing page 2.03.2026.docx`. Both trips have complete content. "Yoga i Konie" pricing is TBD (empty array). Single Parents page content was generated (not in source doc).

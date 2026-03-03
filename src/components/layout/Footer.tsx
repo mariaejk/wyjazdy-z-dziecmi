@@ -51,7 +51,7 @@ export function Footer() {
           {/* Social */}
           <div>
             <h3 className="text-sm font-semibold uppercase tracking-wider text-graphite">
-              Social
+              Znajdź nas
             </h3>
             <ul className="mt-3 flex flex-col gap-2">
               <li>

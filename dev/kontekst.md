@@ -93,7 +93,7 @@ Głównie mamy 30-42 lata z dziećmi 3-12 lat, przeglądające oferty na telefon
 
 ## Aktualny status
 
-**Faza:** 1-5 UKOŃCZONE. Faza 6 w kolejce.
+**Faza:** 1-6 UKOŃCZONE. Faza 7 w kolejce.
 **Ostatnia aktualizacja:** 2026-03-03
 
 ### Co zostało zrobione:
@@ -156,3 +156,45 @@ Głównie mamy 30-42 lata z dziećmi 3-12 lat, przeglądające oferty na telefon
 - Dodano Fazę 6 (21 zadań: treści, zdjęcia, opinie, "Yoga i Konie") i Fazę 7 (21 zadań: konwersja, UX, analityka)
 - Zaktualizowano plan.md, task.md, kontekst.md
 - Logo `logo_inne.jpeg` = identyczny obraz jak obecne logo (1024x1024px) — wystarczy powiększyć renderowanie w Header
+
+### Sesja 4 (2026-03-03) — Faza 6 Etap A
+- Skopiowano zdjęcia zespołu: `Marysia.JPG` → `public/images/maria.jpg`, `Kamila.JPG` → `public/images/kamila.jpg`
+- Dodano `image` field do obu TeamMember w `src/data/team.ts`
+- `PersonBio.tsx` — conditional rendering: `next/image` (fill + rounded-full) gdy `member.image`, fallback na ikonę `User`
+- Rozmiar avatara: 192px (mobile) → 224px (lg+), `object-cover` w kółku
+- Build: zero błędów
+
+### Sesja 5 (2026-03-03) — Faza 6 Etap B
+- Nowe bio Marii w 1. osobie (z DOCX), role → "Twórczyni projektu, nauczycielka jogi, organizatorka eventów"
+- Rename "O nas" → "O mnie" w nawigacji, metadata, breadcrumb, h1 (URL `/o-nas` bez zmian — SEO)
+- Nowa hierarchia `/o-nas`: H1 "O mnie" → intro (osobisty ton) → PersonBio Maria → "Moja misja" (3 karty: Leaf/Heart/Star) → "Współpracują ze mną" + Kamila → Miejsca → CTA "Dołącz do mnie"
+- `AboutTeaser.tsx` — ikona `User` zamiast `Users`, nowy tekst 1. osoba, CTA "Poznaj mnie bliżej"
+- Build: zero błędów
+
+### Sesja 6 (2026-03-03) — Faza 6 Etap C
+- Nowy typ `Testimonial` w `src/types/testimonial.ts`
+- 4 opinie z DOCX w `src/data/testimonials.ts` (Ania, Katarzyna, Małgorzata, Marta) + helpery `getTestimonials()`, `getFeaturedTestimonials()`
+- `TestimonialCard.tsx` — `<blockquote>` + Quote icon + ScrollAnimation (staggered), wzór PlaceCard
+- `/opinie/page.tsx` — SectionHeading as="h1" + grid 2-kolumnowy (md+) z 4 kartami + CTA
+- `sitemap.ts` — dodano `/opinie` z `priority: 0.6`, `changeFrequency: "monthly"`
+- `OpinionsTeaser.tsx` — 2 featured opinie (Ania + Katarzyna) + CTA "Zobacz wszystkie opinie" → /opinie
+- Build: zero błędów
+
+### Sesja 7 (2026-03-03) — Faza 6 Etap D
+- Dodano `role?: string` do typu `TripCollaborator` w `src/types/trip.ts`
+- Dodano `role` do obu collaborators: Ilona ("Tancerka, choreografka, nauczycielka jogi"), Kamila ("Konsultantka i terapeutka ajurwedyjska")
+- Zastąpiono placeholder "Yoga i Konie" pełną treścią z DOCX: nowy tytuł "Joga i Konie — Harmonia Natury na Mazurach", longDescription (5 akapitów z intro + "Dlaczego konie i joga?" + "Co na was czeka?"), 4 targetAudience, schedule 3-dniowy (piątek–niedziela), practicalInfo z DOCX, Kamila jako collaborator z bio z team.ts, 5 FAQ
+- Pricing `[]` i deposit `0` — brak cen w DOCX
+- `TripCollaborator.tsx` — wyświetla `role` pod imieniem (text-sm text-graphite-light)
+- Build: zero błędów
+
+### Sesja 8 (2026-03-03) — Code Review Fazy 6, Etapy D-G
+- Przeprowadzono code review 19 plików (Etapy D-G: zadania 6.12-6.19 + powiązane z B-C)
+- Raport: `dev/review-faza6-etapy-d-g.md`
+- Wynik: 0 krytycznych, 4 ważnych, 3 drobne uwagi
+- Kluczowe problemy do naprawy (R1-R4 w task.md):
+  - R1: mieszane kodowanie linia 218 w trips.ts (FAQ Yoga i Konie)
+  - R2: duplikacja bio Kamili między trips.ts i team.ts (rozbita spójność)
+  - R3: hardcoded "Prowadząca" w TripCollaborator.tsx (nie pasuje do Kamili)
+  - R4: weryfikacja wizualna sekcji "Współpracują ze mną" w o-nas (podwójne tło SectionWrapper)
+- Etapy D-G generalnie dobrej jakości: wzorce SC/client poprawne, helper pattern zachowany, testimoniale semantycznie poprawne

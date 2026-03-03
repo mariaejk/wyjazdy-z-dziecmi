@@ -15,7 +15,7 @@ export function TripPricing({ pricing, deposit }: TripPricingProps) {
   return (
     <SectionWrapper>
       <Container>
-        <SectionHeading title="Cennik" />
+        <SectionHeading title="Twoja inwestycja" />
         <div className="mx-auto max-w-2xl">
           <ScrollAnimation>
             <div className="overflow-hidden rounded-2xl bg-white shadow-sm">

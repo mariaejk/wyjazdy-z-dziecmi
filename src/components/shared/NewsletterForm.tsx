@@ -67,7 +67,7 @@ export function NewsletterForm() {
         <div className="flex items-center gap-3 text-moss">
           <CheckCircle className="h-5 w-5 shrink-0" strokeWidth={1.5} />
           <p className="text-sm font-medium">
-            Dzi\u0119kujemy! Zosta\u0142e\u015B zapisana/y do newslettera.
+            Dzi\u0119kujemy! Poradnik wysy\u0142amy na Tw\u00F3j adres e-mail.
           </p>
         </div>
       </div>
@@ -84,10 +84,10 @@ export function NewsletterForm() {
       <div className="flex flex-col gap-4">
         <div>
           <p className="text-sm font-medium text-graphite">
-            Zapisz si\u0119 na newsletter
+            Pobierz darmowy poradnik PDF
           </p>
           <p className="mt-1 text-xs text-graphite-light">
-            B\u0105d\u017A na bie\u017C\u0105co z nowymi wyjazdami i wydarzeniami.
+            \u201EJak przygotowa\u0107 dziecko do wyjazdu warsztatowego\u201D \u2014 praktyczne wskazówki dla rodzic\u00F3w blisko\u015Bciowych.
           </p>
         </div>
 
@@ -116,7 +116,7 @@ export function NewsletterForm() {
             disabled={status === "submitting"}
             className="shrink-0 rounded-md bg-moss px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-moss-light disabled:cursor-not-allowed disabled:opacity-60"
           >
-            {status === "submitting" ? "..." : "Zapisz"}
+            {status === "submitting" ? "..." : "Pobierz"}
           </button>
         </div>
 

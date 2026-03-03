@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { User } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Container } from "@/components/layout/Container";
@@ -27,17 +28,29 @@ export function PersonBio({
             imagePosition === "right" && "lg:flex-row-reverse",
           )}
         >
-          {/* Avatar — TODO: add next/image when photos available */}
+          {/* Avatar */}
           <ScrollAnimation
             variant={imagePosition === "left" ? "fadeLeft" : "fadeRight"}
             className="shrink-0"
           >
-            <div className="flex h-48 w-48 items-center justify-center rounded-full bg-moss/10 lg:h-56 lg:w-56">
-              <User
-                className="h-20 w-20 text-moss/60"
-                strokeWidth={1.5}
-              />
-            </div>
+            {member.image ? (
+              <div className="relative h-48 w-48 overflow-hidden rounded-full lg:h-56 lg:w-56">
+                <Image
+                  src={member.image}
+                  alt={member.name}
+                  fill
+                  sizes="(max-width: 1024px) 192px, 224px"
+                  className="object-cover"
+                />
+              </div>
+            ) : (
+              <div className="flex h-48 w-48 items-center justify-center rounded-full bg-moss/10 lg:h-56 lg:w-56">
+                <User
+                  className="h-20 w-20 text-moss/60"
+                  strokeWidth={1.5}
+                />
+              </div>
+            )}
           </ScrollAnimation>
 
           {/* Bio Text */}

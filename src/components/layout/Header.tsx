@@ -21,8 +21,8 @@ export function Header() {
             <Image
               src="/images/logo.jpeg"
               alt="Wyjazdy z Dziećmi"
-              width={44}
-              height={44}
+              width={56}
+              height={56}
               className="rounded-full"
               priority
             />

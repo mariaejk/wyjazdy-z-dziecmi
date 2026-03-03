@@ -6,7 +6,7 @@ export type NavItem = {
 };
 
 export const mainNavigation: NavItem[] = [
-  { label: "O nas", href: ROUTES.about },
+  { label: "O mnie", href: ROUTES.about },
   { label: "Wyjazdy", href: ROUTES.trips },
   { label: "Single Parents", href: ROUTES.singleParents },
   { label: "Opinie", href: ROUTES.opinions },
