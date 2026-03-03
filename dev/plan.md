@@ -202,6 +202,86 @@ src/
 
 **Rezultat:** Strona gotowa do produkcji.
 
+### Faza 6: Treści i zdjęcia od klientki
+
+> **Źródło:** `docs/TODO POPRAWIC landing page 2.03.2026.docx` + `docs/Images/` + `docs/poradnik.md`
+> Scalono z draftem `dev/plan_faza6_usprawnienia.md`.
+
+**Etap A: Zdjęcia i zasoby**
+1. Skopiować zdjęcia do `public/images/` — `Marysia.JPG` → `maria.jpg`, `Kamila.JPG` → `kamila.jpg`, wybrane `IMG_*.jpg` → galeria (4-6 zdjęć)
+2. Dodać pole `image` w `src/data/team.ts` (pole `image?: string` już istnieje w typie `TeamMember`)
+3. `PersonBio.tsx` — wyświetlić `next/image` zamiast ikony `User` (fallback na ikonę gdy brak image)
+
+**Etap B: "O mnie" — bio i rename**
+4. Nowe bio Marii w `src/data/team.ts` — pełny tekst z DOCX (2 akapity, polskie cudzysłowy `\u201E`/`\u201D`)
+5. Rename "O nas" → "O mnie" w 4 miejscach: `navigation.ts`, `o-nas/page.tsx` (metadata + h1 + breadcrumb), `AboutTeaser.tsx`. URL `/o-nas` bez zmian (SEO)
+6. Przepisać `/o-nas/page.tsx` — nowa hierarchia: H1 "O mnie" → PersonBio Marii → Misja → "Współpracują ze mną" + Kamila → Miejsca → CTA
+7. Sekcja "Moja misja / Wartości" — inline w `o-nas/page.tsx`, 3 karty z ikonami (`Leaf`, `Heart`, `Star`): natura i cisza, autentyczne relacje, najlepsi specjaliści
+
+**Etap C: Opinie — dane i komponenty**
+8. Nowy plik `src/data/testimonials.ts` — typ `Testimonial` + 4 opinie z DOCX (Ania, Katarzyna, Małgorzata, Marta)
+9. Nowy komponent `src/components/shared/TestimonialCard.tsx` — `<blockquote>` z ikoną `Quote`, `bg-white rounded-2xl shadow-sm`
+10. Zastąpić `/opinie/page.tsx` — usunąć placeholder, siatka 4 TestimonialCard, usunąć `robots: { index: false }`, dodać do `sitemap.ts`
+11. Przepisać `OpinionsTeaser.tsx` — 2 wybrane opinie + CTA "Zobacz wszystkie"
+
+**Etap D: "Yoga i Konie" — pełna treść**
+12. Rozszerzyć typ `TripCollaborator` o `role?: string` w `src/types/trip.ts`
+13. Wypełnić dane "Yoga i Konie" w `src/data/trips.ts` — opis, targetAudience, schedule (3 dni), practicalInfo, collaborator (Kamila), faq, gallery. Pricing `[]` (Maria poda później)
+14. `TripCollaborator.tsx` — wyświetlić `collaborator.role` pod imieniem
+
+**Etap E: Poprawki wizualne i tekstowe**
+15. Logo — powiększyć w `Header.tsx`: `width={44}` → `width={56}` (logo_inne.jpeg = ten sam obraz 1024x1024)
+16. "Cennik" → "Twoja inwestycja" w `TripPricing.tsx` (prop `title` z default)
+17. "Social" → "Znajdź nas" w `Footer.tsx`
+
+**Etap F: Lead magnet — poradnik w newsletterze**
+18. `NewsletterForm.tsx` — nowy copy: "Pobierz bezpłatny poradnik", przycisk "Pobierz", success: "Poradnik zostanie wysłany na Twój email". Wysyłka PDF przez n8n webhook
+
+**Etap G: Zdjęcie Marii na kontakcie**
+19. `ContactInfo.tsx` — mini avatar (64px) z `next/image` + imię i rola
+
+**Rezultat:** Prawdziwe treści, zdjęcia, opinie, pełny wyjazd "Yoga i Konie", lead magnet w newsletterze.
+
+### Faza 7: Konwersja, UX i analityka
+
+> **Źródło:** `dev/plan_faza6_usprawnienia.md` (etapy A-D) + `docs/TODO POPRAWIC landing page 2.03.2026.docx`
+
+**Etap A: Nawigacja i CTA**
+1. CTA "Zarezerwuj" w `Header.tsx` (Button `size="sm"`, link do `/wyjazdy`) i `MobileMenu.tsx` (full-width)
+2. Active state w nawigacji + `aria-current` — `usePathname()` + `pathname.startsWith(item.href)`
+3. Numer telefonu w headerze (desktop `lg+`) — `<a href="tel:...">` z ikoną `Phone`
+4. "Porozmawiaj z Marią" — soft CTA w `TripPricing.tsx` (link tel + link do `/kontakt`)
+5. Przyciski CTA w `TripHero.tsx` — "Zapisz się" (`#formularz`) + "Poznaj szczegóły" (`#opis`), prop `isPast`
+
+**Etap B: Dwa przyciski na kartach wyjazdów**
+6. `TripCard.tsx` — "Więcej" + "Zarezerwuj" + wyświetlenie ceny `od X zł`
+
+**Etap C: Scarcity — dostępność miejsc**
+7. Rozszerzyć typ `Trip` o `spotsTotal?`, `spotsLeft?`, `earlyBirdDeadline?`, `earlyBirdPrice?`
+8. Dodać dane scarcity do `trips.ts` — "Matka i Córka": `spotsTotal: 12`, `spotsLeft: 5`
+9. Badge "Ostatnie miejsca!" na `TripCard.tsx` (amber ≤3, red =0 "Komplet")
+10. Pasek dostępności w `TripPricing.tsx` — "Zostało X z Y miejsc" + progress bar
+
+**Etap D: UX fixes**
+11. Ukryć "Wiek dzieci" gdy `children === 0` — `BookingForm.tsx`, `watch()` z RHF
+12. Button `active:scale-[0.98]` + loading spinner — `Button.tsx`, prop `loading?: boolean`
+13. Sticky CTA bar na mobile — nowy `StickyBookingCTA.tsx`, `IntersectionObserver`, `z-30`
+
+**Etap E: SEO i analityka**
+14. GA4 event tracking — nowy `src/lib/analytics.ts`, helper `trackEvent()`, integracja z formularzami
+15. FAQPage Schema — weryfikacja (już zaimplementowane, sprawdzić po wypełnieniu FAQ "Yoga i Konie")
+16. Microsoft Clarity — nowy `ClarityScript.tsx`, za zgodą "analityczne", `NEXT_PUBLIC_CLARITY_ID`
+
+**Etap F: Pozostałe poprawki treści**
+17. FAQ "Matka i Córka" — rozszerzenie z `docs/poradnik.md` (co zabrać, jak dojechać, brak zasięgu)
+18. Ograniczenie wiekowe "Matka i Córka" — ujednoznacznienie: "dzieci od 5 lat"
+
+**Rezultat:** Optymalizacja konwersji, lepszy UX, śledzenie zdarzeń GA4, scarcity signals.
+
+---
+
+**Elementy odroczone (poza Fazą 6-7):** Blog, CMS/Google Drive, integracja n8n, płatności, ceny "Yoga i Konie", interaktywny kalendarz warsztatów.
+
 ---
 
 ## Formularze — strategia MVP

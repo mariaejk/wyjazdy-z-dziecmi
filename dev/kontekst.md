@@ -77,7 +77,9 @@ Głównie mamy 30-42 lata z dziećmi 3-12 lat, przeglądające oferty na telefon
 | `docs/tresc_na_strone.md` | Pełne treści: hero, O nas, wyjazd "Matka i Córka" (opis, program, cennik, bio) |
 | `docs/PRD_Wyjazdy_z_Dziecmi.md` | PRD — wymagania, persony, KPI, architektura informacji |
 | `docs/UI_przyklad.md` | Wytyczne designu |
-| `docs/Images/` | logo.jpeg + image_1..5 (zdjęcia z wyjazdów) |
+| `docs/Images/` | logo + 40 zdjęć: Marysia.JPG, Kamila.JPG, laura.jpg, IMG_*.jpg (z wyjazdów) |
+| `docs/TODO POPRAWIC landing page 2.03.2026.docx` | Bio "O mnie", 4 opinie, treść "Yoga i Konie", lista poprawek UI/UX |
+| `docs/poradnik.md` | Lead magnet — "Jak przygotować dziecko do wyjazdu warsztatowego" |
 
 ## Pliki projektowe
 
@@ -91,24 +93,34 @@ Głównie mamy 30-42 lata z dziećmi 3-12 lat, przeglądające oferty na telefon
 
 ## Aktualny status
 
-**Faza:** Plan zaktualizowany po review, implementacja nie rozpoczęta
+**Faza:** 1-5 UKOŃCZONE. Faza 6 w kolejce.
+**Ostatnia aktualizacja:** 2026-03-03
 
 ### Co zostało zrobione:
 - Analiza PRD, UI guidelines, treści i zdjęć
 - Wywiad z klientem (4 rundy pytań)
-- Wybór technologii (Next.js 15 + Tailwind v4 + TypeScript)
-- Szczegółowy plan implementacji w 5 fazach
-- Task list z 70 checkboxami
-- **Review planu (ocena 7.5/10)** — zidentyfikowano 3 problemy krytyczne, 7 ważnych
-- **Aktualizacja planu v1.1** — naprawiono wszystkie problemy z review, dodano ~8 nowych tasków (78 łącznie)
+- Wybór technologii (Next.js 16 + Tailwind v4 + TypeScript)
+- Szczegółowy plan implementacji — 5 faz, 78 zadań
+- **Fazy 1-5 zaimplementowane** — strona produkcyjna (SEO, newsletter, cookie banner, GA4, security headers)
+- **Review planu v1.1** — naprawiono 3 krytyczne + 7 ważnych problemów
+- **Faza 5 code review** — 29/31 zadań ukończonych, 10/12 issues naprawionych
+- **Plan Fazy 6-7** (2026-03-03) — na podstawie DOCX od klientki + analiz UX (Claude + Gemini)
 
-### Zmiany z review (krytyczne):
-1. `framer-motion` → `motion` (kompatybilność z React 19)
-2. Honeypot + rate limiting na formularzach (ochrona przed spamem)
-3. Cookie banner RODO/ePrivacy 2026 (kategorie, 3 przyciski, zmiana decyzji)
+### Faza 6 (następna): Treści i zdjęcia od klientki
+- Nowe bio "O mnie" (rename z "O nas") + zdjęcia Marii i Kamili
+- 4 prawdziwe opinie uczestniczek (zastąpienie placeholdera)
+- Pełna treść wyjazdu "Yoga i Konie" (opis, program, FAQ, Kamila)
+- Lead magnet (poradnik PDF) w newsletterze
+- Poprawki: logo powiększenie, "Cennik" → "Twoja inwestycja", "Social" → "Znajdź nas"
 
-### Następny krok:
-- Faza 1: Inicjalizacja projektu Next.js i setup fundamentu (task 1.1)
+### Faza 7 (po Fazie 6): Konwersja, UX i analityka
+- CTA "Zarezerwuj" w nawigacji, telefon w headerze, active nav
+- Dwa przyciski na kartach, scarcity ("Ostatnie miejsca!")
+- Sticky CTA mobile, ukrycie "Wiek dzieci" gdy 0, Button loading
+- GA4 event tracking, Microsoft Clarity
+
+### Elementy odroczone:
+- Blog, CMS/Google Drive, integracja n8n, płatności, interaktywny kalendarz
 
 ---
 
@@ -136,3 +148,11 @@ Głównie mamy 30-42 lata z dziećmi 3-12 lat, przeglądające oferty na telefon
 - Zaktualizowano plan.md i task.md (v1.1)
 - Dodano ~8 nowych zadań (honeypot, rate limiting, FAQ, galeria, "Dla kogo?", env, loading/error, skip-to-content)
 - Plan gotowy do implementacji Fazy 1
+
+### Sesja 3 (2026-03-03) — Plan Fazy 6-7
+- Klientka dostarczyła DOCX z poprawkami + zdjęcia (Marysia.JPG, Kamila.JPG, 30+ IMG_*.jpg)
+- Przeanalizowano 3 audyty UX (2x Claude, 1x Gemini) z `dev/gemini/`
+- Scalono draft `dev/plan_faza6_usprawnienia.md` z treścią DOCX
+- Dodano Fazę 6 (21 zadań: treści, zdjęcia, opinie, "Yoga i Konie") i Fazę 7 (21 zadań: konwersja, UX, analityka)
+- Zaktualizowano plan.md, task.md, kontekst.md
+- Logo `logo_inne.jpeg` = identyczny obraz jak obecne logo (1024x1024px) — wystarczy powiększyć renderowanie w Header
