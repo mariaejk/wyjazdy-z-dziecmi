@@ -116,10 +116,10 @@
 
 ## Faza 6: Treści i zdjęcia od klientki
 
-### Etap A: Zdjęcia i zasoby
-- [ ] 6.1 Skopiować zdjęcia do `public/images/` (`Marysia.JPG` → `maria.jpg`, `Kamila.JPG` → `kamila.jpg`, wybrane `IMG_*.jpg` → galeria)
-- [ ] 6.2 Dodać pole `image` do obu członków w `src/data/team.ts`
-- [ ] 6.3 `PersonBio.tsx` — wyświetlić `next/image` zamiast ikony `User` (fallback na ikonę gdy brak image)
+### Etap A: Zdjęcia i zasoby ✅
+- [x] 6.1 Skopiować zdjęcia do `public/images/` (`Marysia.JPG` → `maria.jpg`, `Kamila.JPG` → `kamila.jpg`, wybrane `IMG_*.jpg` → galeria)
+- [x] 6.2 Dodać pole `image` do obu członków w `src/data/team.ts`
+- [x] 6.3 `PersonBio.tsx` — wyświetlić `next/image` zamiast ikony `User` (fallback na ikonę gdy brak image)
 
 ### Etap B: "O mnie" — bio i rename
 - [ ] 6.4 Nowe bio Marii w `src/data/team.ts` (pełny tekst z DOCX, 2 akapity)

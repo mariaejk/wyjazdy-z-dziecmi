@@ -156,3 +156,10 @@ Głównie mamy 30-42 lata z dziećmi 3-12 lat, przeglądające oferty na telefon
 - Dodano Fazę 6 (21 zadań: treści, zdjęcia, opinie, "Yoga i Konie") i Fazę 7 (21 zadań: konwersja, UX, analityka)
 - Zaktualizowano plan.md, task.md, kontekst.md
 - Logo `logo_inne.jpeg` = identyczny obraz jak obecne logo (1024x1024px) — wystarczy powiększyć renderowanie w Header
+
+### Sesja 4 (2026-03-03) — Faza 6 Etap A
+- Skopiowano zdjęcia zespołu: `Marysia.JPG` → `public/images/maria.jpg`, `Kamila.JPG` → `public/images/kamila.jpg`
+- Dodano `image` field do obu TeamMember w `src/data/team.ts`
+- `PersonBio.tsx` — conditional rendering: `next/image` (fill + rounded-full) gdy `member.image`, fallback na ikonę `User`
+- Rozmiar avatara: 192px (mobile) → 224px (lg+), `object-cover` w kółku
+- Build: zero błędów
