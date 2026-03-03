@@ -20,16 +20,17 @@ export const trips: Trip[] = [
     isPast: false,
     targetAudience: [
       {
-        label: "Mamy, które chcą świadomie budować relację z córką",
+        label: "Mamy, kt\u00F3re chc\u0105 \u015Bwiadomie budowa\u0107 relacj\u0119 z c\u00F3rk\u0105",
       },
       {
-        label: "Córki 5+, które lubią ruch, taniec i tworzenie",
+        label: "C\u00F3rki od 5 lat, kt\u00F3re lubi\u0105 ruch, taniec i tworzenie",
+        description: "Warsztaty s\u0105 projektowane z my\u015Bl\u0105 o dziewczynkach w wieku 5+. Je\u015Bli Twoja c\u00F3rka jest nieco m\u0142odsza \u2014 skontaktuj si\u0119 z nami, ocenimy indywidualnie.",
       },
       {
-        label: "Kobiety szukające wytchnienia od codziennego pośpiechu",
+        label: "Kobiety szukaj\u0105ce wytchnienia od codziennego po\u015Bpiechu",
       },
       {
-        label: "Pary mama-córka, które chcą się poznać na nowo",
+        label: "Pary mama-c\u00F3rka, kt\u00F3re chc\u0105 si\u0119 pozna\u0107 na nowo",
       },
     ],
     schedule: [
@@ -89,6 +90,8 @@ export const trips: Trip[] = [
       { label: "Dziecko do lat 8", price: 750 },
     ],
     deposit: 450,
+    spotsTotal: 12,
+    spotsLeft: 5,
     collaborator: {
       name: "Ilona Bekier-Ekwa",
       role: "Tancerka, choreografka, nauczycielka jogi",
@@ -96,29 +99,34 @@ export const trips: Trip[] = [
     },
     faq: [
       {
-        question: "Czy mogę przyjechać z dzieckiem młodszym niż 5 lat?",
+        question: "Czy mog\u0119 przyjecha\u0107 z dzieckiem m\u0142odszym ni\u017C 5 lat?",
         answer:
-          "Warsztaty są projektowane z myślą o dziewczynkach w wieku 5+. Jeśli Twoje dziecko jest nieco młodsze, skontaktuj się z nami — ocenimy indywidualnie, czy program będzie odpowiedni.",
+          "Warsztaty s\u0105 projektowane z my\u015Bl\u0105 o dziewczynkach w wieku 5+. Je\u015Bli Twoje dziecko jest nieco m\u0142odsze, skontaktuj si\u0119 z nami \u2014 ocenimy indywidualnie, czy program b\u0119dzie odpowiedni.",
       },
       {
-        question: "Jak dojechać do Kaczego Bagna?",
+        question: "Co zabra\u0107 ze sob\u0105?",
         answer:
-          "Kacze Bagno znajduje się w malowniczej okolicy. Szczegółowe wskazówki dojazdu otrzymasz po potwierdzeniu rezerwacji. Dojazd własny.",
+          "Wygodne buty terenowe (najlepiej dwie pary), ubrania \u201Enieszkoda\u201D \u2014 takie, kt\u00F3re mog\u0105 si\u0119 wybrodzi\u0107 b\u0142otem czy glin\u0105. Ciep\u0142a warstwa na wieczory, krem z filtrem, bidon na wod\u0119 i ulubiona przytulanka dziecka. Maty do jogi i materia\u0142y warsztatowe zapewniamy na miejscu.",
       },
       {
-        question: "Czy wyżywienie jest wliczone w cenę?",
+        question: "Czy jest zasi\u0119g telefoniczny?",
         answer:
-          "Tak, pełne wyżywienie (śniadania, obiady, kolacje) jest wliczone w cenę. Posiłki są przygotowywane z ekologicznych składników z uwzględnieniem diet i alergii.",
+          "Kacze Bagno to miejsce, gdzie telefon s\u0142u\u017Cy g\u0142\u00F3wnie jako aparat fotograficzny. Ograniczony zasi\u0119g to luksus \u2014 dzi\u0119ki temu macie wi\u0119cej czasu na wsp\u00F3lne ogniska, rozmowy i bycie razem. Traktujcie to jako cyfrowy detoks dla ca\u0142ej rodziny.",
       },
       {
-        question: "Czy mogę wpłacić zaliczkę przelewem?",
+        question: "Jak dojecha\u0107 do Kaczego Bagna?",
         answer:
-          "Tak, zaliczka 450 zł gwarantuje miejsce na wyjeździe. Dane do przelewu otrzymasz po wypełnieniu formularza zgłoszeniowego.",
+          "Dojazd w\u0142asny. Szczeg\u00F3\u0142owe wskaz\u00F3wki dojazdu wraz ze wsp\u00F3\u0142rz\u0119dnymi GPS otrzymasz po potwierdzeniu rezerwacji. Kacze Bagno znajduje si\u0119 w malowniczej okolicy \u2014 idealnej na rodzinny weekend.",
       },
       {
-        question: "Co zabrać ze sobą?",
+        question: "Czy wy\u017Cywienie jest wliczone w cen\u0119?",
         answer:
-          "Wygodne ubrania do ćwiczeń (joga, taniec), cieplejszą warstwę na wieczory, obuwie na zewnątrz. Maty do jogi i materiały warsztatowe zapewniamy na miejscu.",
+          "Tak, pe\u0142ne wy\u017Cywienie (\u015Bniadania, obiady, kolacje) jest wliczone w cen\u0119. Posi\u0142ki s\u0105 przygotowywane z ekologicznych sk\u0142adnik\u00F3w z uwzgl\u0119dnieniem diet i alergii.",
+      },
+      {
+        question: "Czy mog\u0119 wp\u0142aci\u0107 zaliczk\u0119 przelewem?",
+        answer:
+          "Tak, zaliczka 450 z\u0142 gwarantuje miejsce na wyje\u017Adzie. Dane do przelewu otrzymasz po wype\u0142nieniu formularza zg\u0142oszeniowego.",
       },
     ],
     gallery: [

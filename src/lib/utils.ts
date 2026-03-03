@@ -28,3 +28,8 @@ export function formatCurrency(amount: number): string {
     maximumFractionDigits: 0,
   }).format(amount);
 }
+
+export function isNavActive(href: string, pathname: string): boolean {
+  if (href === "/") return pathname === "/";
+  return pathname.startsWith(href);
+}

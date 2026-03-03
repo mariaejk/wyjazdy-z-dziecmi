@@ -14,6 +14,7 @@ import { TripCollaborator } from "@/components/trips/TripCollaborator";
 import { TripFAQ } from "@/components/trips/TripFAQ";
 import { TripGallery } from "@/components/trips/TripGallery";
 import { BookingForm } from "@/components/trips/BookingForm";
+import { StickyBookingCTA } from "@/components/trips/StickyBookingCTA";
 
 type PageProps = {
   params: Promise<{ slug: string }>;
@@ -91,6 +92,7 @@ export default async function TripPage({ params }: PageProps) {
         dateEnd={trip.dateEnd}
         location={trip.location}
         image={trip.image}
+        isPast={trip.isPast}
       />
 
       {/* 2. Target Audience */}
@@ -99,10 +101,12 @@ export default async function TripPage({ params }: PageProps) {
       )}
 
       {/* 3. Description */}
-      <TripDescription
-        shortDescription={trip.shortDescription}
-        longDescription={trip.longDescription}
-      />
+      <div id="opis">
+        <TripDescription
+          shortDescription={trip.shortDescription}
+          longDescription={trip.longDescription}
+        />
+      </div>
 
       {/* 4. Program */}
       {hasSchedule && <TripProgram schedule={trip.schedule} />}
@@ -111,7 +115,14 @@ export default async function TripPage({ params }: PageProps) {
       <TripPracticalInfo info={trip.practicalInfo} />
 
       {/* 6. Pricing */}
-      {hasPricing && <TripPricing pricing={trip.pricing} deposit={trip.deposit} />}
+      {hasPricing && (
+        <TripPricing
+          pricing={trip.pricing}
+          deposit={trip.deposit}
+          spotsTotal={trip.spotsTotal}
+          spotsLeft={trip.spotsLeft}
+        />
+      )}
 
       {/* 7. Collaborator */}
       {hasCollaborator && <TripCollaborator collaborator={trip.collaborator} />}
@@ -123,9 +134,12 @@ export default async function TripPage({ params }: PageProps) {
       <TripGallery images={trip.gallery} />
 
       {/* 10. Booking Form */}
-      {!trip.isPast && (
+      {!trip.isPast && trip.spotsLeft !== 0 && (
         <BookingForm trips={upcomingTrips} preselectedTrip={trip.slug} />
       )}
+
+      {/* Sticky CTA mobile */}
+      {!trip.isPast && trip.spotsLeft !== 0 && <StickyBookingCTA />}
     </>
   );
 }
