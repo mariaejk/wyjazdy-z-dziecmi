@@ -6,7 +6,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 Landing page / sales funnel for "Wyjazdy z Dziećmi" — a brand organizing family workshop retreats in nature (yoga, dance, ceramics, horses). Client: Maria Kordalewska. Domain: wyjazdyzdziecmi.pl.
 
-**Status:** Phase 1-6 COMPLETE. Site is production-ready with full content (SEO, newsletter, cookie banner RODO, GA4, security headers, real testimonials, both trips with content).
+**Status:** Phase 1-7 COMPLETE. Site is a production-ready sales funnel with CTA buttons, scarcity signals, GA4 event tracking, Microsoft Clarity, loading states, and sticky mobile CTA.
 
 ## Tech Stack
 
@@ -51,19 +51,19 @@ docs/                    — PRD, content, UI guidelines, source images
 src/app/                 — Next.js pages (layout, page, loading, error)
 src/components/layout/   — SkipToContent, Container, Header, MobileMenu, Footer
 src/components/ui/       — Button, SectionWrapper, SectionHeading, Badge, Card, Accordion, Input, Textarea, Select, Checkbox, HoneypotField
-src/components/shared/   — ScrollAnimation, StructuredData, NewsletterForm, GoogleAnalytics
+src/components/shared/   — ScrollAnimation, StructuredData, NewsletterForm, GoogleAnalytics, ClarityScript
 src/components/home/     — HeroSection, TripCard, TripCardsSection, AboutTeaser, OpinionsTeaser
-src/components/trips/    — TripHero, TripTargetAudience, TripDescription, TripProgram, TripPracticalInfo, TripPricing, TripCollaborator, TripFAQ, TripGallery, BookingForm
+src/components/trips/    — TripHero, TripTargetAudience, TripDescription, TripProgram, TripPracticalInfo, TripPricing, TripCollaborator, TripFAQ, TripGallery, BookingForm, StickyBookingCTA, PhoneLink
 src/components/about/    — PersonBio, PlaceCard
 src/components/contact/  — ContactForm, ContactInfo
-src/lib/                 — constants.ts, utils.ts, rate-limit.ts, logger.ts, structured-data.ts
+src/lib/                 — constants.ts, utils.ts, rate-limit.ts, logger.ts, structured-data.ts, analytics.ts
 src/lib/validations/     — booking.ts, contact.ts, newsletter.ts (Zod schemas, shared client+server)
 src/hooks/               — useCookieConsent.ts
 src/app/api/booking/     — POST route (Zod + honeypot + rate limit)
 src/app/api/contact/     — POST route (Zod + honeypot + rate limit)
 src/app/api/newsletter/  — POST route (Zod + honeypot + rate limit)
 src/data/                — navigation.ts, trips.ts, team.ts, places.ts (hardcoded data + helpers)
-src/types/               — trip.ts, team.ts, place.ts, forms.ts, cookies.ts
+src/types/               — trip.ts, team.ts, place.ts, forms.ts, cookies.ts, global.d.ts
 src/components/layout/   — + CookieBanner, CookieSettingsButton
 public/images/           — 6 optimized images (hero, logo, etc.)
 ```
@@ -145,6 +145,19 @@ npm run lint       # ESLint
 - **Lead magnet > newsletter**: "Pobierz poradnik" converts better than "Zapisz się na newsletter" — offer value exchange.
 - **`TestimonialCard` pattern**: Follows `PlaceCard` structure — `ScrollAnimation` wrapper, staggered delay via `index` prop, semantic HTML inside.
 - **`getFeaturedTestimonials(ids)` with type guard**: Filter by ID array + `.filter(Boolean)` for safe featured selection.
+
+## Phase 7 Lessons Learned
+
+- **`inert` for hidden interactive elements**: `aria-hidden` doesn't block keyboard focus. Use `el.setAttribute("inert", "")` via ref to fully remove hidden content from tab order. WCAG 2.1.1 requirement.
+- **`getElementById` over `querySelector`**: `querySelector("section")` is fragile — breaks if DOM order changes. Always use stable IDs (`id="hero"`) for IntersectionObserver targets.
+- **Extract client boundaries narrowly**: Don't add `"use client"` to a whole component for one `onClick`. Extract the interactive part (e.g. `PhoneLink.tsx`) as a separate Client Component. Keeps parent as Server Component.
+- **`isNavActive()` in utils.ts**: Navigation active state logic shared between Header and MobileMenu. Exact match for `/`, `startsWith` for subpages. Single source of truth.
+- **`cn()` always over template literals**: Project convention. Template literals bypass tailwind-merge and can cause class conflicts. Even for conditional classes like `isVisible ? "translate-y-0" : "translate-y-full"`.
+- **Button `loading` prop pattern**: `loading` replaces `icon` slot with `Loader2` spinner. `isDisabled = disabled || loading`. Only on `ButtonAsButton` — links don't have loading state.
+- **`spotsLeft !== 0` not `!spotsLeft`**: `undefined !== 0` is `true`, so trips without scarcity data still show BookingForm. `!spotsLeft` would hide form when `spotsLeft` is `undefined` (falsy). Use strict comparison.
+- **`declare global` in dedicated file**: Put `window.gtag` types in `src/types/global.d.ts`, not scattered in component files. Avoids implicit dependencies.
+- **Scarcity badge thresholds**: `spotsLeft <= 3` = amber "Ostatnie miejsca!", `spotsLeft === 0` = red "Komplet", `> 3` = no badge. Simple, effective urgency signals.
+- **StickyBookingCTA z-index layering**: `z-30` below header (`z-40`) and cookie banner (`z-50`). Use `transition-transform` with `useReducedMotion` guard.
 
 ## Content Sources
 
