@@ -12,7 +12,7 @@ import { getTestimonials } from "@/data/testimonials";
 export const metadata: Metadata = {
   title: "Opinie",
   description:
-    "Opinie rodzin, kt\u00F3re uczestniczy\u0142y w naszych wyjazdach warsztatowych w naturze.",
+    "Opinie rodzin, które uczestniczyły w naszych wyjazdach warsztatowych w naturze.",
 };
 
 export default function OpinionsPage() {
@@ -21,7 +21,7 @@ export default function OpinionsPage() {
   return (
     <>
       <StructuredData data={getBreadcrumbSchema([
-        { name: "Strona g\u0142\u00F3wna", url: SITE_CONFIG.url },
+        { name: "Strona główna", url: SITE_CONFIG.url },
         { name: "Opinie", url: `${SITE_CONFIG.url}/opinie` },
       ])} />
 
@@ -30,7 +30,7 @@ export default function OpinionsPage() {
           <SectionHeading
             as="h1"
             title="Opinie"
-            subtitle="Co m\u00F3wi\u0105 uczestnicy naszych wyjazd\u00F3w"
+            subtitle="Co mówią uczestnicy naszych wyjazdów"
           />
 
           <div className="mx-auto grid max-w-4xl gap-6 md:grid-cols-2">
@@ -45,7 +45,7 @@ export default function OpinionsPage() {
 
           <div className="mt-12 text-center">
             <Button href={ROUTES.trips}>
-              We\u017A udzia\u0142 w wyje\u017Adzie
+              Weź udział w wyjeździe
             </Button>
           </div>
         </Container>

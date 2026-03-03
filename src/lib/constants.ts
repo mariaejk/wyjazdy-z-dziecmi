@@ -21,8 +21,11 @@ export const SOCIAL_LINKS = {
 export const ROUTES = {
   home: "/",
   about: "/o-nas",
+  motherDaughter: "/matka-z-corka",
+  familyTrips: "/wyjazd-z-dziecmi",
   trips: "/wyjazdy",
-  singleParents: "/single-parents",
+  gallery: "/galeria",
+  blog: "/blog",
   opinions: "/opinie",
   contact: "/kontakt",
   terms: "/regulamin",

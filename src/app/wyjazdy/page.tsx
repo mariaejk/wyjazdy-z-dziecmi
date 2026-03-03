@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
-import { getUpcomingTrips, getPastTrips } from "@/data/trips";
+import { getUpcomingTrips, getPastTrips, getUpcomingTripsByCategory } from "@/data/trips";
+import type { Trip } from "@/types/trip";
 import { Container } from "@/components/layout/Container";
 import { SectionWrapper } from "@/components/ui/SectionWrapper";
 import { SectionHeading } from "@/components/ui/SectionHeading";
@@ -15,8 +16,29 @@ export const metadata: Metadata = {
     "Zobacz nasze nadchodzące i zakończone wyjazdy warsztatowe dla rodzin. Joga, taniec, ceramika, konie — w otoczeniu natury.",
 };
 
-export default function TripsPage() {
-  const upcomingTrips = getUpcomingTrips();
+type PageProps = {
+  searchParams: Promise<{ kategoria?: string }>;
+};
+
+const categoryLabels: Record<string, string> = {
+  rodzinny: "Wyjazdy rodzinne",
+  "matka-corka": "Wyjazdy matka z córką",
+};
+
+export default async function TripsPage({ searchParams }: PageProps) {
+  const { kategoria } = await searchParams;
+
+  let upcomingTrips: Trip[];
+  let subtitle: string;
+
+  if (kategoria && (kategoria === "rodzinny" || kategoria === "matka-corka")) {
+    upcomingTrips = getUpcomingTripsByCategory(kategoria);
+    subtitle = categoryLabels[kategoria] ?? "Wybierz swój wyjazd i dołącz do nas!";
+  } else {
+    upcomingTrips = getUpcomingTrips();
+    subtitle = "Wybierz swój wyjazd i dołącz do nas!";
+  }
+
   const pastTrips = getPastTrips();
 
   return (
@@ -30,7 +52,7 @@ export default function TripsPage() {
         <Container>
           <SectionHeading
             title="Nadchodzące wyjazdy"
-            subtitle="Wybierz wyjazd i dołącz do nas!"
+            subtitle={subtitle}
           />
           {upcomingTrips.length > 0 ? (
             <div className="grid gap-6 sm:grid-cols-2 lg:gap-8">
@@ -42,8 +64,8 @@ export default function TripsPage() {
             </div>
           ) : (
             <p className="text-center text-graphite-light">
-              Aktualnie nie mamy zaplanowanych wyjazdów. Śledź nas w mediach
-              społecznościowych, aby być na bieżąco!
+              Aktualnie nie mamy zaplanowanych wyjazdów w tej kategorii. Śledź
+              nas w mediach społecznościowych, aby być na bieżąco!
             </p>
           )}
         </Container>

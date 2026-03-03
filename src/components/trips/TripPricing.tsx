@@ -1,5 +1,5 @@
 import type { TripPricing as TripPricingType } from "@/types/trip";
-import { MessageCircle } from "lucide-react";
+import { Check, MessageCircle, X } from "lucide-react";
 import { Container } from "@/components/layout/Container";
 import { SectionWrapper } from "@/components/ui/SectionWrapper";
 import { SectionHeading } from "@/components/ui/SectionHeading";
@@ -14,9 +14,11 @@ type TripPricingProps = {
   deposit: number;
   spotsTotal?: number;
   spotsLeft?: number;
+  priceIncludes?: string[];
+  priceExcludes?: string[];
 };
 
-export function TripPricing({ pricing, deposit, spotsTotal, spotsLeft }: TripPricingProps) {
+export function TripPricing({ pricing, deposit, spotsTotal, spotsLeft, priceIncludes, priceExcludes }: TripPricingProps) {
   const showAvailability =
     spotsTotal !== undefined && spotsLeft !== undefined && spotsLeft > 0;
   const isLow = spotsLeft !== undefined && spotsLeft <= 3;
@@ -55,13 +57,47 @@ export function TripPricing({ pricing, deposit, spotsTotal, spotsLeft }: TripPri
             </div>
           </ScrollAnimation>
 
+          {/* Price includes/excludes */}
+          {(priceIncludes || priceExcludes) && (
+            <ScrollAnimation delay={0.1}>
+              <div className="mt-4 rounded-lg bg-white p-5 shadow-sm">
+                {priceIncludes && priceIncludes.length > 0 && (
+                  <div>
+                    <p className="text-sm font-medium text-graphite">Cena zawiera:</p>
+                    <ul className="mt-2 space-y-1.5">
+                      {priceIncludes.map((item) => (
+                        <li key={item} className="flex items-center gap-2 text-sm text-graphite-light">
+                          <Check className="h-4 w-4 shrink-0 text-moss" strokeWidth={1.5} />
+                          {item}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+                {priceExcludes && priceExcludes.length > 0 && (
+                  <div className={priceIncludes ? "mt-4" : ""}>
+                    <p className="text-sm font-medium text-graphite">Dodatkowo płatne:</p>
+                    <ul className="mt-2 space-y-1.5">
+                      {priceExcludes.map((item) => (
+                        <li key={item} className="flex items-center gap-2 text-sm text-graphite-light">
+                          <X className="h-4 w-4 shrink-0 text-graphite-light/60" strokeWidth={1.5} />
+                          {item}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+              </div>
+            </ScrollAnimation>
+          )}
+
           {/* Availability bar */}
           {showAvailability && (
             <ScrollAnimation delay={0.1}>
               <div className="mt-4 rounded-lg bg-white p-4 shadow-sm">
                 <div className="flex items-center justify-between text-sm">
                   <span className="text-graphite">
-                    Zosta\u0142o{" "}
+                    Zostało{" "}
                     <span className={isLow ? "font-bold text-amber-600" : "font-medium text-moss"}>
                       {spotsLeft} z {spotsTotal}
                     </span>{" "}
@@ -74,7 +110,7 @@ export function TripPricing({ pricing, deposit, spotsTotal, spotsLeft }: TripPri
                   aria-valuenow={spotsLeft}
                   aria-valuemin={0}
                   aria-valuemax={spotsTotal}
-                  aria-label={`Dost\u0119pno\u015B\u0107: ${spotsLeft} z ${spotsTotal} miejsc`}
+                  aria-label={`Dostępność: ${spotsLeft} z ${spotsTotal} miejsc`}
                 >
                   <div
                     className={cn(
@@ -91,7 +127,7 @@ export function TripPricing({ pricing, deposit, spotsTotal, spotsLeft }: TripPri
           {deposit > 0 && (
             <ScrollAnimation delay={0.15}>
               <p className="mt-4 text-center text-graphite-light">
-                Zaliczka gwarantuj\u0105ca miejsce:{" "}
+                Zaliczka gwarantująca miejsce:{" "}
                 <span className="font-medium text-moss">
                   {formatCurrency(deposit)}
                 </span>
@@ -102,7 +138,7 @@ export function TripPricing({ pricing, deposit, spotsTotal, spotsLeft }: TripPri
           <ScrollAnimation delay={0.3}>
             <div className="mt-8 text-center">
               <Button href="#formularz" size="lg">
-                Zapisz si\u0119 na wyjazd
+                Zapisz się na wyjazd
               </Button>
 
               {/* Soft CTA */}

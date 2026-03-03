@@ -49,7 +49,7 @@ export function ContactForm() {
       if (response.status === 429) {
         setStatus("error");
         setErrorMessage(
-          "Zbyt wiele pr\u00F3b. Spr\u00F3buj ponownie za kilka minut.",
+          "Zbyt wiele prób. Spróbuj ponownie za kilka minut.",
         );
         return;
       }
@@ -58,7 +58,7 @@ export function ContactForm() {
         const result = await response.json();
         setStatus("error");
         setErrorMessage(
-          result.error ?? "Wyst\u0105pi\u0142 b\u0142\u0105d. Spr\u00F3buj ponownie.",
+          result.error ?? "Wystąpił błąd. Spróbuj ponownie.",
         );
         return;
       }
@@ -68,7 +68,7 @@ export function ContactForm() {
       reset();
     } catch {
       setStatus("error");
-      setErrorMessage("Nie uda\u0142o si\u0119 wys\u0142a\u0107 wiadomo\u015Bci. Sprawd\u017A po\u0142\u0105czenie z internetem.");
+      setErrorMessage("Nie udało się wysłać wiadomości. Sprawdź połączenie z internetem.");
     }
   };
 
@@ -77,10 +77,10 @@ export function ContactForm() {
       <div className="text-center">
         <CheckCircle className="mx-auto h-16 w-16 text-moss" strokeWidth={1.5} />
         <h3 className="mt-4 font-heading text-2xl font-bold text-graphite">
-          Wiadomo\u015B\u0107 wys\u0142ana!
+          Wiadomość wysłana!
         </h3>
         <p className="mt-3 text-graphite-light">
-          Dzi\u0119kujemy za kontakt. Odpowiemy najszybciej jak to mo\u017Cliwe.
+          Dziękujemy za kontakt. Odpowiemy najszybciej jak to możliwe.
         </p>
       </div>
     );
@@ -93,7 +93,7 @@ export function ContactForm() {
       className="space-y-5"
     >
       <Input
-        label="Imi\u0119 i nazwisko"
+        label="Imię i nazwisko"
         placeholder="Jan Kowalski"
         required
         {...register("name")}
@@ -108,7 +108,7 @@ export function ContactForm() {
         error={errors.email?.message}
       />
       <Textarea
-        label="Wiadomo\u015B\u0107"
+        label="Wiadomość"
         placeholder="Napisz do nas..."
         required
         {...register("message")}
@@ -120,15 +120,15 @@ export function ContactForm() {
       <Checkbox
         label={
           <>
-            Wyra\u017Cam zgod\u0119 na przetwarzanie moich danych osobowych w celu
-            obs\u0142ugi zg\u0142oszenia zgodnie z{" "}
+            Wyrażam zgodę na przetwarzanie moich danych osobowych w celu
+            obsługi zgłoszenia zgodnie z{" "}
             <a
               href={ROUTES.privacy}
               className="text-moss underline hover:text-moss-light"
               target="_blank"
               rel="noopener noreferrer"
             >
-              polityk\u0105 prywatno\u015Bci
+              polityką prywatności
             </a>
             . *
           </>
@@ -152,7 +152,7 @@ export function ContactForm() {
           icon={<Send className="h-5 w-5" strokeWidth={1.5} />}
           className="w-full sm:w-auto"
         >
-          {status === "submitting" ? "Wysy\u0142anie..." : "Wy\u015Blij wiadomo\u015B\u0107"}
+          {status === "submitting" ? "Wysyłanie..." : "Wyślij wiadomość"}
         </Button>
       </div>
     </form>

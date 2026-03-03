@@ -1,7 +1,8 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
+import { usePathname } from "next/navigation";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { CheckCircle, AlertCircle } from "lucide-react";
 import { newsletterSchema, type NewsletterFormValues } from "@/lib/validations/newsletter";
@@ -14,6 +15,7 @@ type FormStatus = "idle" | "submitting" | "success" | "error";
 export function NewsletterForm() {
   const [status, setStatus] = useState<FormStatus>("idle");
   const [errorMessage, setErrorMessage] = useState("");
+  const pathname = usePathname();
 
   const {
     register,
@@ -30,6 +32,13 @@ export function NewsletterForm() {
     },
   });
 
+  // Reset form errors and status when navigating between pages
+  useEffect(() => {
+    reset();
+    setStatus("idle");
+    setErrorMessage("");
+  }, [pathname, reset]);
+
   const onSubmit = async (data: NewsletterFormValues) => {
     setStatus("submitting");
     setErrorMessage("");
@@ -43,14 +52,14 @@ export function NewsletterForm() {
 
       if (response.status === 429) {
         setStatus("error");
-        setErrorMessage("Zbyt wiele pr\u00F3b. Spr\u00F3buj ponownie za kilka minut.");
+        setErrorMessage("Zbyt wiele prób. Spróbuj ponownie za kilka minut.");
         return;
       }
 
       if (!response.ok) {
         const result = await response.json();
         setStatus("error");
-        setErrorMessage(result.error ?? "Wyst\u0105pi\u0142 b\u0142\u0105d. Spr\u00F3buj ponownie.");
+        setErrorMessage(result.error ?? "Wystąpił błąd. Spróbuj ponownie.");
         return;
       }
 
@@ -59,7 +68,7 @@ export function NewsletterForm() {
       reset();
     } catch {
       setStatus("error");
-      setErrorMessage("Nie uda\u0142o si\u0119 zapisa\u0107. Sprawd\u017A po\u0142\u0105czenie z internetem.");
+      setErrorMessage("Nie udało się zapisać. Sprawdź połączenie z internetem.");
     }
   };
 
@@ -69,7 +78,7 @@ export function NewsletterForm() {
         <div className="flex items-center gap-3 text-moss">
           <CheckCircle className="h-5 w-5 shrink-0" strokeWidth={1.5} />
           <p className="text-sm font-medium">
-            Dzi\u0119kujemy! Poradnik wysy\u0142amy na Tw\u00F3j adres e-mail.
+            Dziękujemy! Poradnik wysyłamy na Twój adres e-mail.
           </p>
         </div>
       </div>
@@ -89,7 +98,7 @@ export function NewsletterForm() {
             Pobierz darmowy poradnik PDF
           </p>
           <p className="mt-1 text-xs text-graphite-light">
-            \u201EJak przygotowa\u0107 dziecko do wyjazdu warsztatowego\u201D \u2014 praktyczne wskazówki dla rodzic\u00F3w blisko\u015Bciowych.
+            „Jak przygotować dziecko do wyjazdu warsztatowego” — praktyczne wskazówki dla rodziców bliskościowych.
           </p>
         </div>
 
@@ -101,7 +110,7 @@ export function NewsletterForm() {
             <input
               id="newsletter-email"
               type="email"
-              placeholder="Tw\u00F3j email"
+              placeholder="Twój email"
               aria-invalid={!!errors.email}
               aria-describedby={errors.email ? "newsletter-email-error" : undefined}
               className="w-full rounded-md border border-graphite/20 bg-white px-3 py-2 text-sm text-graphite placeholder:text-graphite-light/60 focus:border-moss focus:outline-none focus:ring-2 focus:ring-moss/20"
@@ -134,14 +143,14 @@ export function NewsletterForm() {
             {...register("consentRodo")}
           />
           <label htmlFor="newsletter-consent" className="text-xs leading-relaxed text-graphite-light">
-            Wyra\u017Cam zgod\u0119 na przetwarzanie danych zgodnie z{" "}
+            Wyrażam zgodę na przetwarzanie danych zgodnie z{" "}
             <a
               href={ROUTES.privacy}
               className="text-moss underline hover:text-moss-light"
               target="_blank"
               rel="noopener noreferrer"
             >
-              polityk\u0105 prywatno\u015Bci
+              polityką prywatności
             </a>
             . *
           </label>

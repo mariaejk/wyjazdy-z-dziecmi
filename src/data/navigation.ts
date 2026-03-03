@@ -7,8 +7,11 @@ export type NavItem = {
 
 export const mainNavigation: NavItem[] = [
   { label: "O mnie", href: ROUTES.about },
+  { label: "Matka z córką", href: ROUTES.motherDaughter },
+  { label: "Wyjazd z dziećmi", href: ROUTES.familyTrips },
   { label: "Wyjazdy", href: ROUTES.trips },
-  { label: "Single Parents", href: ROUTES.singleParents },
+  { label: "Galeria", href: ROUTES.gallery },
+  { label: "Blog", href: ROUTES.blog },
   { label: "Opinie", href: ROUTES.opinions },
   { label: "Kontakt", href: ROUTES.contact },
 ];

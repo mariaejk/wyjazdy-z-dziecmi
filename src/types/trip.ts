@@ -37,6 +37,10 @@ export type TripTargetAudience = {
   description?: string;
 };
 
+export type ContentBlock =
+  | { type: "text"; text: string }
+  | { type: "image"; src: string; alt: string };
+
 export type Trip = {
   slug: string;
   title: string;
@@ -48,6 +52,7 @@ export type Trip = {
   longDescription: string;
   image: string;
   isPast: boolean;
+  category: "rodzinny" | "matka-corka";
   targetAudience: TripTargetAudience[];
   schedule: TripScheduleDay[];
   practicalInfo: {
@@ -59,10 +64,12 @@ export type Trip = {
   deposit: number;
   spotsTotal?: number;
   spotsLeft?: number;
-  // TODO: Early bird UI — zaimplementowa\u0107 badge/info w TripCard + TripPricing
   earlyBirdDeadline?: string;
   earlyBirdPrice?: number;
-  collaborator: TripCollaborator;
+  priceIncludes?: string[];
+  priceExcludes?: string[];
+  collaborator?: TripCollaborator;
   faq: TripFAQ[];
   gallery: TripGalleryImage[];
+  contentBlocks?: ContentBlock[];
 };

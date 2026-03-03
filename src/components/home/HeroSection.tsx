@@ -43,7 +43,7 @@ export function HeroSection() {
               Wyjazdy z Dziećmi
             </h1>
             <p className="mt-4 text-lg text-white/90 sm:mt-6 sm:text-xl lg:text-2xl">
-              Projekt, który zrodził się z potrzeby spędzania jakościowego czasu
+              Projekt, który powstał z potrzeby spędzania jakościowego czasu
               z dziećmi.
             </p>
             <ul className="mt-8 space-y-4 sm:mt-10">
@@ -61,7 +61,7 @@ export function HeroSection() {
             </ul>
             <div className="mt-10 sm:mt-12">
               <Button href="/wyjazdy" size="lg" className="bg-moss hover:bg-moss-light">
-                Zobacz wyjazdy
+                Znajdź swój wyjazd
               </Button>
             </div>
           </div>
@@ -103,7 +103,7 @@ export function HeroSection() {
             transition={{ duration: 0.7, delay: 0.25 }}
             className="mt-4 text-lg text-white/90 sm:mt-6 sm:text-xl lg:text-2xl"
           >
-            Projekt, który zrodził się z potrzeby spędzania jakościowego czasu
+            Projekt, który powstał z potrzeby spędzania jakościowego czasu
             z dziećmi.
           </motion.p>
 
@@ -133,7 +133,7 @@ export function HeroSection() {
             className="mt-10 sm:mt-12"
           >
             <Button href="/wyjazdy" size="lg" className="bg-moss hover:bg-moss-light">
-              Zobacz wyjazdy
+              Znajdź swój wyjazd
             </Button>
           </motion.div>
         </div>

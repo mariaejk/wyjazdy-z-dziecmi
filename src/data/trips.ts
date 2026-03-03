@@ -12,25 +12,26 @@ export const trips: Trip[] = [
     date: "2026-03-06",
     dateEnd: "2026-03-08",
     location: "Kacze Bagno — Miejsce Inicjatyw Pozytywnych",
+    category: "matka-corka",
     shortDescription:
-      "Zapraszamy Cię w podróż poza codzienny pośpiech, hałas i role, w które tak łatwo wpadamy. \u201EMatka i Córka \u2013 Wspólny Rytm\u201D to wyjazdowe warsztaty stworzone z myślą o kobietach \u2014 tych dużych i tych małych \u2014 które pragną spotkać się naprawdę: w ruchu, w uważności i w sercu.",
+      "Zapraszamy Cię w podróż poza codzienny pośpiech, hałas i role, w które tak łatwo wpadamy. „Matka i Córka – Wspólny Rytm” to wyjazdowe warsztaty stworzone z myślą o kobietach — tych dużych i tych małych — które pragną spotkać się naprawdę: w ruchu, w uważności i w sercu.",
     longDescription:
       "Podczas wyjazdu będziemy spotykać się w ruchu i obecności — poprzez jogę, taniec intuicyjny, medytacje, sztukę, muzykę i głos.\n\nTworzymy przestrzeń, w której córki poczują się częścią kręgu kobiet — widziane, ważne i zaproszone do bycia sobą.\n\nJednocześnie zadbamy o równowagę. Będzie czas wspólny, pogłębiający relację matki i córki, ale także czas oddzielny — moment tylko dla mam, na regenerację, refleksję i bycie w kobiecym kręgu. W tym czasie małe kobiety spędzą czas razem, budując własne relacje, ucząc się współbycia i wspólnej zabawy w bezpiecznej, uważnej przestrzeni.\n\nPoznasz praktyki, które zabierzesz ze sobą do codzienności — proste, a jednocześnie głębokie rytuały ruchu, oddechu i obecności, które mogą stać się Waszym wspólnym językiem także po powrocie do domu.\n\nSpotkasz inne kobiety — mamy i córki — i razem stworzymy krąg wspólnej kreacji i autentycznego bycia. Przestrzeń, w której nie trzeba nic udowadniać, przyspieszać ani dopasowywać się. Wystarczy być.\n\nJeśli czujesz, że chcesz zatrzymać się, odetchnąć i spotkać swoją córkę w nowy sposób — ten wyjazd jest dla Was.\n\nJeśli pragniesz, by Twoje dziecko od najmłodszych lat doświadczało mocy kobiecych spotkań, ruchu i uważności — zapraszamy Was do Wspólnego Rytmu.",
     image: "/images/matka-corka.jpg",
     isPast: false,
     targetAudience: [
       {
-        label: "Mamy, kt\u00F3re chc\u0105 \u015Bwiadomie budowa\u0107 relacj\u0119 z c\u00F3rk\u0105",
+        label: "Mamy, które chcą świadomie budować relację z córką",
       },
       {
-        label: "C\u00F3rki od 5 lat, kt\u00F3re lubi\u0105 ruch, taniec i tworzenie",
-        description: "Warsztaty s\u0105 projektowane z my\u015Bl\u0105 o dziewczynkach w wieku 5+. Je\u015Bli Twoja c\u00F3rka jest nieco m\u0142odsza \u2014 skontaktuj si\u0119 z nami, ocenimy indywidualnie.",
+        label: "Córki od 5 lat, które lubią ruch, taniec i tworzenie",
+        description: "Warsztaty są projektowane z myślą o dziewczynkach w wieku 5+. Jeśli Twoja córka jest nieco młodsza — skontaktuj się z nami, ocenimy indywidualnie.",
       },
       {
-        label: "Kobiety szukaj\u0105ce wytchnienia od codziennego po\u015Bpiechu",
+        label: "Kobiety szukające wytchnienia od codziennego pośpiechu",
       },
       {
-        label: "Pary mama-c\u00F3rka, kt\u00F3re chc\u0105 si\u0119 pozna\u0107 na nowo",
+        label: "Pary mama-córka, które chcą się poznać na nowo",
       },
     ],
     schedule: [
@@ -99,34 +100,34 @@ export const trips: Trip[] = [
     },
     faq: [
       {
-        question: "Czy mog\u0119 przyjecha\u0107 z dzieckiem m\u0142odszym ni\u017C 5 lat?",
+        question: "Czy mogę przyjechać z dzieckiem młodszym niż 5 lat?",
         answer:
-          "Warsztaty s\u0105 projektowane z my\u015Bl\u0105 o dziewczynkach w wieku 5+. Je\u015Bli Twoje dziecko jest nieco m\u0142odsze, skontaktuj si\u0119 z nami \u2014 ocenimy indywidualnie, czy program b\u0119dzie odpowiedni.",
+          "Warsztaty są projektowane z myślą o dziewczynkach w wieku 5+. Jeśli Twoje dziecko jest nieco młodsze, skontaktuj się z nami — ocenimy indywidualnie, czy program będzie odpowiedni.",
       },
       {
-        question: "Co zabra\u0107 ze sob\u0105?",
+        question: "Co zabrać ze sobą?",
         answer:
-          "Wygodne buty terenowe (najlepiej dwie pary), ubrania \u201Enieszkoda\u201D \u2014 takie, kt\u00F3re mog\u0105 si\u0119 wybrodzi\u0107 b\u0142otem czy glin\u0105. Ciep\u0142a warstwa na wieczory, krem z filtrem, bidon na wod\u0119 i ulubiona przytulanka dziecka. Maty do jogi i materia\u0142y warsztatowe zapewniamy na miejscu.",
+          "Wygodne buty terenowe (najlepiej dwie pary), ubrania „nieszkoda” — takie, które mogą się wybrodzić błotem czy gliną. Ciepła warstwa na wieczory, krem z filtrem, bidon na wodę i ulubiona przytulanka dziecka. Maty do jogi i materiały warsztatowe zapewniamy na miejscu.",
       },
       {
-        question: "Czy jest zasi\u0119g telefoniczny?",
+        question: "Czy jest zasięg telefoniczny?",
         answer:
-          "Kacze Bagno to miejsce, gdzie telefon s\u0142u\u017Cy g\u0142\u00F3wnie jako aparat fotograficzny. Ograniczony zasi\u0119g to luksus \u2014 dzi\u0119ki temu macie wi\u0119cej czasu na wsp\u00F3lne ogniska, rozmowy i bycie razem. Traktujcie to jako cyfrowy detoks dla ca\u0142ej rodziny.",
+          "Kacze Bagno to miejsce, gdzie telefon służy głównie jako aparat fotograficzny. Ograniczony zasięg to luksus — dzięki temu macie więcej czasu na wspólne ogniska, rozmowy i bycie razem. Traktujcie to jako cyfrowy detoks dla całej rodziny.",
       },
       {
-        question: "Jak dojecha\u0107 do Kaczego Bagna?",
+        question: "Jak dojechać do Kaczego Bagna?",
         answer:
-          "Dojazd w\u0142asny. Szczeg\u00F3\u0142owe wskaz\u00F3wki dojazdu wraz ze wsp\u00F3\u0142rz\u0119dnymi GPS otrzymasz po potwierdzeniu rezerwacji. Kacze Bagno znajduje si\u0119 w malowniczej okolicy \u2014 idealnej na rodzinny weekend.",
+          "Dojazd własny. Szczegółowe wskazówki dojazdu wraz ze współrzędnymi GPS otrzymasz po potwierdzeniu rezerwacji. Kacze Bagno znajduje się w malowniczej okolicy — idealnej na rodzinny weekend.",
       },
       {
-        question: "Czy wy\u017Cywienie jest wliczone w cen\u0119?",
+        question: "Czy wyżywienie jest wliczone w cenę?",
         answer:
-          "Tak, pe\u0142ne wy\u017Cywienie (\u015Bniadania, obiady, kolacje) jest wliczone w cen\u0119. Posi\u0142ki s\u0105 przygotowywane z ekologicznych sk\u0142adnik\u00F3w z uwzgl\u0119dnieniem diet i alergii.",
+          "Tak, pełne wyżywienie (śniadania, obiady, kolacje) jest wliczone w cenę. Posiłki są przygotowywane z ekologicznych składników z uwzględnieniem diet i alergii.",
       },
       {
-        question: "Czy mog\u0119 wp\u0142aci\u0107 zaliczk\u0119 przelewem?",
+        question: "Czy mogę wpłacić zaliczkę przelewem?",
         answer:
-          "Tak, zaliczka 450 z\u0142 gwarantuje miejsce na wyje\u017Adzie. Dane do przelewu otrzymasz po wype\u0142nieniu formularza zg\u0142oszeniowego.",
+          "Tak, zaliczka 450 zł gwarantuje miejsce na wyjeździe. Dane do przelewu otrzymasz po wypełnieniu formularza zgłoszeniowego.",
       },
     ],
     gallery: [
@@ -144,47 +145,60 @@ export const trips: Trip[] = [
         alt: "Wspólne warsztaty dla mam i córek",
       },
     ],
+    contentBlocks: [
+      { type: "text", text: "Podczas wyjazdu będziemy spotykać się w ruchu i obecności — poprzez jogę, taniec intuicyjny, medytacje, sztukę, muzykę i głos." },
+      { type: "image", src: "/images/matki-corki-1.jpg", alt: "Warsztaty matka i córka — ruch i taniec" },
+      { type: "text", text: "Tworzymy przestrzeń, w której córki poczują się częścią kręgu kobiet — widziane, ważne i zaproszone do bycia sobą." },
+      { type: "image", src: "/images/matki-corki-2.jpg", alt: "Krąg kobiet — matki i córki" },
+      { type: "text", text: "Jednocześnie zadbamy o równowagę. Będzie czas wspólny, pogłębiający relację matki i córki, ale także czas oddzielny — moment tylko dla mam, na regenerację, refleksję i bycie w kobiecym kręgu." },
+      { type: "image", src: "/images/matki-corki-3.jpg", alt: "Czas dla mam — regeneracja" },
+      { type: "text", text: "Poznasz praktyki, które zabierzesz ze sobą do codzienności — proste, a jednocześnie głębokie rytuały ruchu, oddechu i obecności, które mogą stać się Waszym wspólnym językiem także po powrocie do domu." },
+      { type: "image", src: "/images/matki-corki-4.jpg", alt: "Rytuały ruchu i obecności" },
+      { type: "text", text: "Spotkasz inne kobiety — mamy i córki — i razem stworzymy krąg wspólnej kreacji i autentycznego bycia. Przestrzeń, w której nie trzeba nic udowadniać, przyspieszać ani dopasowywać się. Wystarczy być." },
+      { type: "image", src: "/images/matki-corki-5.jpg", alt: "Wspólna kreacja — warsztaty" },
+    ],
   },
   {
     slug: "yoga-i-konie",
-    title: "Joga i Konie \u2014 Harmonia Natury na Mazurach",
-    subtitle: "Rodzinne warsztaty uwa\u017Cno\u015Bci, blisko\u015Bci i przygody",
+    title: "Joga i Konie — Harmonia Natury na Mazurach",
+    subtitle: "Rodzinne warsztaty uważności, bliskości i przygody",
     date: "2026-06-20",
     dateEnd: "2026-06-22",
-    location: "Sasek Ma\u0142y \u2014 Mazury",
+    location: "Sasek Mały — Mazury",
+    category: "rodzinny",
     shortDescription:
-      "Zapraszamy Was do miejsca, gdzie czas mierzy si\u0119 t\u0119tnem lasu i spokojnym oddechem stada koni. To przestrze\u0144 dla rodzin, kt\u00F3re chc\u0105 zamieni\u0107 miejski zgie\u0142k na zapach siana, ch\u0142\u00F3d jeziora i autentyczn\u0105 relacj\u0119 z natur\u0105.",
+      "Zapraszamy Was do miejsca, gdzie czas mierzy się tętnem lasu i spokojnym oddechem stada koni. To przestrzeń dla rodzin, które chcą zamienić miejski zgiełk na zapach siana, chłód jeziora i autentyczną relację z naturą.",
     longDescription:
-      "Wyjazd \u201EJoga i Konie\u201D to spotkanie dw\u00F3ch \u015Bwiat\u00F3w, kt\u00F3re ucz\u0105 nas tego samego: jak by\u0107 w pe\u0142ni obecnym \u201Etu i teraz\u201D. W Sasku, po\u015Br\u00F3d kilkudziesi\u0119ciu koni i mazurskich las\u00F3w, stworzymy bezpieczny kr\u0105g, w kt\u00F3rym ka\u017Cde dziecko i ka\u017Cdy rodzic poczuje si\u0119 wa\u017Cny i us\u0142yszany.\n\nKonie s\u0105 mistrzami uwa\u017Cno\u015Bci. Wyczuwaj\u0105 nasze emocje i ucz\u0105 nas spokoju, cierpliwo\u015Bci oraz \u0142agodno\u015Bci. Joga z kolei pozwala nam wr\u00F3ci\u0107 do w\u0142asnego cia\u0142a, wyciszy\u0107 uk\u0142ad nerwowy i otworzy\u0107 si\u0119 na spotkanie z drugim cz\u0142owiekiem \u2014 tym ma\u0142ym i tym du\u017Cym.\n\nNa wyjazd czeka na Was poranna joga na trawie z widokiem na jezioro, dostosowana do mo\u017Cliwo\u015Bci doros\u0142ych i dzieci. Poznacie ko\u0144ski j\u0119zyk \u2014 nauk\u0119 opieki, czyszczenia i rozumienia koni pod okiem do\u015Bwiadczonych instruktor\u00F3w. Profesjonalna infrastruktura Saska pozwala na bezpieczny start dla pocz\u0105tkuj\u0105cych i pi\u0119kne trasy le\u015Bne dla zaawansowanych.\n\nKamila poprowadzi warsztaty z ajurwedyjskimi wskaz\u00F3wkami dotycz\u0105cymi wyciszenia i regeneracji, nauk\u0105 koj\u0105cego dotyku i wsp\u00F3lnymi rytua\u0142ami blisko\u015Bci.\n\nA po warsztatach? K\u0105piele w piaszczystym jeziorze, wsp\u00F3lne ogniska, sp\u0142ywy kajakowe Sawic\u0105 i wieczorne rozmowy pod gwiazdami. Mazurski chill w najlepszym wydaniu.",
+      "Wyjazd „Joga i Konie” to spotkanie dwóch światów, które uczą nas tego samego: jak być w pełni obecnym „tu i teraz”. W Sasku, pośród kilkudziesięciu koni i mazurskich lasów, stworzymy bezpieczny krąg, w którym każde dziecko i każdy rodzic poczuje się ważny i usłyszany.\n\nKonie są mistrzami uważności. Wyczuwają nasze emocje i uczą nas spokoju, cierpliwości oraz łagodności. Joga z kolei pozwala nam wrócić do własnego ciała, wyciszyć układ nerwowy i otworzyć się na spotkanie z drugim człowiekiem — tym małym i tym dużym.\n\nNa wyjazd czeka na Was poranna joga na trawie z widokiem na jezioro, dostosowana do możliwości dorosłych i dzieci. Poznacie koński język — naukę opieki, czyszczenia i rozumienia koni pod okiem doświadczonych instruktorów. Profesjonalna infrastruktura Saska pozwala na bezpieczny start dla początkujących i piękne trasy leśne dla zaawansowanych.\n\nKamila poprowadzi warsztaty z ajurwedyjskimi wskazówkami dotyczącymi wyciszenia i regeneracji, nauką kojącego dotyku i wspólnymi rytuałami bliskości.\n\nA po warsztatach? Kąpiele w piaszczystym jeziorze, wspólne ogniska, spływy kajakowe Sawicą i wieczorne rozmowy pod gwiazdami. Mazurski chill w najlepszym wydaniu.",
     image: "/images/yoga-konie.jpg",
     isPast: false,
     targetAudience: [
-      { label: "Rodziny szukaj\u0105ce aktywnego wypoczynku w naturze" },
-      { label: "Rodzice pragn\u0105cy wzmocni\u0107 wi\u0119\u017A z dzieckiem" },
-      { label: "Mi\u0142o\u015Bnicy koni \u2014 pocz\u0105tkuj\u0105cy i zaawansowani" },
-      { label: "Osoby szukaj\u0105ce cyfrowego detoksu i wyciszenia" },
+      { label: "Rodziny szukające aktywnego wypoczynku w naturze" },
+      { label: "Rodzice pragnący wzmocnić więź z dzieckiem" },
+      { label: "Miłośnicy koni — początkujący i zaawansowani" },
+      { label: "Osoby szukające cyfrowego detoksu i wyciszenia" },
     ],
     schedule: [
       {
         date: "2026-06-20",
-        dayLabel: "Pi\u0105tek, 20 czerwca",
+        dayLabel: "Piątek, 20 czerwca",
         activities: [
           { time: "od 16:00", activity: "Przyjazd, zakwaterowanie, zwiedzanie Saska" },
           { time: "19:00", activity: "Kolacja powitalna" },
-          { time: "20:00", activity: "Kr\u0105g otwarcia i integracja przy ognisku" },
+          { time: "20:00", activity: "Krąg otwarcia i integracja przy ognisku" },
         ],
       },
       {
         date: "2026-06-21",
         dayLabel: "Sobota, 21 czerwca",
         activities: [
-          { time: "8:00", activity: "Rodzinna joga i \u015Bwiadomy oddech na powitanie dnia" },
-          { time: "9:00", activity: "Pyszne, lokalne \u015Bniadanie" },
-          { time: "10:30", activity: "Blok warsztatowy: dzieci w stajni (nauka blisko\u015Bci z ko\u0144mi) // mamy w kr\u0119gu uwa\u017Cno\u015Bci" },
-          { time: "14:00", activity: "Wsp\u00F3lny mazurski obiad" },
-          { time: "15:30", activity: "Czas wolny: pla\u017Ca, kajaki lub wsp\u00F3lny spacer do lasu" },
-          { time: "17:00", activity: "Jazdy konne / p\u0142awienie koni" },
-          { time: "19:00", activity: "Kolacja i wieczorne opowie\u015Bci o naturze przy ognisku" },
+          { time: "8:00", activity: "Rodzinna joga i świadomy oddech na powitanie dnia" },
+          { time: "9:00", activity: "Pyszne, lokalne śniadanie" },
+          { time: "10:30", activity: "Blok warsztatowy: dzieci w stajni (nauka bliskości z końmi) // mamy w kręgu uważności" },
+          { time: "14:00", activity: "Wspólny mazurski obiad" },
+          { time: "15:30", activity: "Czas wolny: plaża, kajaki lub wspólny spacer do lasu" },
+          { time: "17:00", activity: "Jazdy konne / pławienie koni" },
+          { time: "19:00", activity: "Kolacja i wieczorne opowieści o naturze przy ognisku" },
         ],
       },
       {
@@ -192,20 +206,33 @@ export const trips: Trip[] = [
         dayLabel: "Niedziela, 22 czerwca",
         activities: [
           { time: "8:00", activity: "Poranna joga na trawie" },
-          { time: "9:00", activity: "\u015Aniadanie" },
-          { time: "10:30", activity: "Warsztaty z Kamil\u0105: ajurweda, koj\u0105cy dotyk i rytua\u0142y blisko\u015Bci" },
-          { time: "14:00", activity: "Obiad po\u017Cegnalny" },
-          { time: "15:00", activity: "Kr\u0105g zamykaj\u0105cy i po\u017Cegnanie" },
+          { time: "9:00", activity: "Śniadanie" },
+          { time: "10:30", activity: "Warsztaty z Kamilą: ajurweda, kojący dotyk i rytuały bliskości" },
+          { time: "14:00", activity: "Obiad pożegnalny" },
+          { time: "15:00", activity: "Krąg zamykający i pożegnanie" },
         ],
       },
     ],
     practicalInfo: {
       accommodation:
-        "Przytulne apartamenty w Sasku Ma\u0142ym \u2014 bezpieczny, ogrodzony teren z dost\u0119pem do jeziora.",
-      food: "Pe\u0142ne, lokalne wy\u017Cywienie z uwzgl\u0119dnieniem diet i preferencji dzieci.",
+        "Przytulne apartamenty w Sasku Małym — bezpieczny, ogrodzony teren z dostępem do jeziora.",
+      food: "Pełne, lokalne wyżywienie z uwzględnieniem diet i preferencji dzieci.",
     },
-    pricing: [],
-    deposit: 0,
+    pricing: [
+      { label: "Warsztaty + joga \u2014 doros\u0142y", price: 900 },
+      { label: "Warsztaty + joga \u2014 dziecko", price: 700 },
+    ],
+    priceIncludes: [
+      "Warsztaty rozwojowe i joga",
+      "Animacje i opieka dla dzieci",
+      "Gry i zabawy na \u015Bwie\u017Cym powietrzu",
+    ],
+    priceExcludes: [
+      "Nocleg (od 100 z\u0142/os, p\u0142atny w pensjonacie)",
+      "Wy\u017Cywienie (140 z\u0142/dzie\u0144 doros\u0142y, 70 z\u0142 dzieci do 10 lat, 0 z\u0142 dzieci do 3 lat)",
+      "Jazda konna (p\u0142atna w pensjonacie)",
+    ],
+    deposit: 300,
     collaborator: {
       name: kamila?.name ?? "Kamila Janczurewicz",
       role: kamila?.role,
@@ -226,7 +253,7 @@ export const trips: Trip[] = [
       {
         question: "Czy wy\u017Cywienie jest wliczone w cen\u0119?",
         answer:
-          "Tak, pe\u0142ne wy\u017Cywienie jest wliczone. Posi\u0142ki przygotowywane s\u0105 z lokalnych sk\u0142adnik\u00F3w z uwzgl\u0119dnieniem diet i preferencji dzieci (alergie, nietolerancje).",
+          "Wy\u017Cywienie jest p\u0142atne osobno: 140 z\u0142/dzie\u0144 (doros\u0142y), 70 z\u0142 (dzieci do 10 lat), bezp\u0142atnie (dzieci do 3 lat). Posi\u0142ki przygotowywane s\u0105 z lokalnych sk\u0142adnik\u00F3w.",
       },
       {
         question: "Jak dojecha\u0107 do Saska?",
@@ -238,13 +265,270 @@ export const trips: Trip[] = [
         answer:
           "Wygodne ubrania na cebulk\u0119 (pogoda nad jeziorem bywa zmienna), buty terenowe, str\u00F3j k\u0105pielowy, krem z filtrem i ulubion\u0105 przytulank\u0119 dziecka. Maty do jogi zapewniamy na miejscu.",
       },
+      {
+        question: "Ile kosztuje nocleg?",
+        answer:
+          "Noclegi od 100 z\u0142/os/noc. Pe\u0142ny cennik pokoi dost\u0119pny na stronie sasek.pl/cennik.",
+      },
     ],
     gallery: [
       {
         src: "/images/yoga-konie.jpg",
-        alt: "Joga i konie na Mazurach \u2014 rodzinne warsztaty w Sasku",
+        alt: "Joga i konie na Mazurach — rodzinne warsztaty w Sasku",
         isMain: true,
       },
+    ],
+  },
+  {
+    slug: "krag-uwaznosci-2026",
+    title: "W Kręgu Uważności — wyjazd dla rodziców i dzieci",
+    subtitle: "Weekend pełen uważności, rozmów i wspólnego bycia",
+    date: "2026-05-29",
+    dateEnd: "2026-05-31",
+    location: "Kacze Bagno — Miejsce Inicjatyw Pozytywnych",
+    category: "rodzinny",
+    shortDescription:
+      "Z okazji dnia dziecka, matki i ojca spotkamy się w jeden weekend, aby z uważnością spojrzeć na każdego i każdą z Was. To czas, by pokazać, jak ważny jesteś w swej roli i jak ważne jest, aby zadbać o siebie — tak jak o swoje dziecko.",
+    longDescription:
+      "W kręgu spotkasz rodziców — tych, którzy w pojedynkę wychowują dzieci, i tych, którzy mają na co dzień wsparcie partnera. Będzie okazja do wymiany doświadczeń, szczerej i wspierającej rozmowy oraz nawiązania wartościowych znajomości.\n\nKrąg, w którym każdy jest ważny i wysłuchany, rozmowa i uważność, a także dużo pracy twórczej, joga, treningi, sesja oddechowa, sauna, balia, ognisko, kajaki i długie rozmowy pod gwiazdami.",
+    image: "/images/kazce-bagno-1.jpg",
+    isPast: false,
+    targetAudience: [
+      { label: "Rodzice szukający chwili zatrzymania i uważności" },
+      { label: "Samodzielni rodzice potrzebujący wsparcia" },
+      { label: "Rodziny chcące pogłębić relację" },
+    ],
+    schedule: [],
+    practicalInfo: {
+      accommodation: "Eko-domki lub sala wspólna w Kaczym Bagnie.",
+      food: "Pełne wyżywienie z ekologicznych składników.",
+    },
+    pricing: [],
+    deposit: 0,
+    faq: [
+      {
+        question: "Czy mogę przyjechać sam/sama z dzieckiem?",
+        answer: "Oczywiście! Wyjazd jest dla wszystkich rodziców — niezależnie od sytuacji rodzinnej.",
+      },
+      {
+        question: "Co nas czeka na wyjeździe?",
+        answer: "Krąg uważności, joga, sesje oddechowe, warsztaty twórcze, sauna, balia, ognisko, kajaki i dużo rozmów.",
+      },
+    ],
+    gallery: [],
+  },
+  {
+    slug: "rodzinny-konie-joga-2026",
+    title: "Rodzinny tydzień z końmi i jogą",
+    subtitle: "Tydzień natury, bliskości i dobrej energii na Mazurach",
+    date: "2026-08-01",
+    dateEnd: "2026-08-07",
+    location: "Sasek Mały — Mazury",
+    category: "rodzinny",
+    shortDescription:
+      "Zapraszamy na wyjątkowy, rodzinny wyjazd pełen natury, bliskości i dobrej energii. Spędzimy tydzień w malowniczym Sasku Małym — wśród lasów, nad czystym jeziorem, w rytmie natury i w towarzystwie koni.",
+    longDescription:
+      "To przestrzeń, w której można naprawdę zwolnić, odetchnąć i pobyć razem.\n\nNa wyjazd czekają na Was: przejażdżki konne w terenie, nauka jazdy z instruktorem, codzienna opieka nad końmi, pływanie z końmi w jeziorze, joga na polanie wśród koni. Poranna joga nad brzegiem jeziora, fun joga dla rodziców i dzieci, relaksacje i świadomy oddech.\n\nKamila poprowadzi warsztaty ajurwedyjskie — naturalny sposób na regulację układu nerwowego, warsztat świadomego dotyku dla rodziców i dzieci. Codzienne zabawy inspirowane naturą, kąpiele w jeziorze, rodzinne ogniska pod gwiazdami.\n\nZapewniamy gry i zabawy dla dzieci każdego dnia oraz częściową opiekę dla dzieci, podczas gdy dorośli będą na jodze lub na warsztacie im dedykowanym.",
+    image: "/images/yoga-konie.jpg",
+    isPast: false,
+    targetAudience: [
+      { label: "Rodziny kochające naturę i życie w jej rytmie" },
+      { label: "Rodzice chcący spędzić jakościowy czas z dziećmi" },
+      { label: "Osoby potrzebujące wyciszenia i regeneracji" },
+      { label: "Miłośnicy koni — początkujący i zaawansowani" },
+    ],
+    schedule: [
+      {
+        date: "2026-08-01",
+        dayLabel: "Sobota, 1 sierpnia — dzień przyjazdu",
+        activities: [
+          { time: "od 14:00", activity: "Przyjazd, zakwaterowanie, zwiedzanie Saska" },
+          { time: "19:00", activity: "Kolacja powitalna" },
+          { time: "20:00", activity: "Krąg otwarcia i integracja przy ognisku" },
+        ],
+      },
+    ],
+    practicalInfo: {
+      accommodation: "Przytulne apartamenty w pensjonacie Sasek Mały — bezpieczny, ogrodzony teren z dostępem do jeziora.",
+      food: "Całodzienne wyżywienie: 140 zł/dzień dorosły, 70 zł dzieci do 10 lat, 0 zł dzieci do 3 lat.",
+      transport: "Dojazd własny. Szczegółowe wskazówki otrzymasz po rezerwacji.",
+    },
+    pricing: [
+      { label: "Warsztaty — dorosły", price: 900 },
+      { label: "Warsztaty — dziecko", price: 700 },
+    ],
+    priceIncludes: [
+      "Warsztaty rozwojowe i joga",
+      "Animacje i opieka dla dzieci",
+      "Gry i zabawy na świeżym powietrzu",
+    ],
+    priceExcludes: [
+      "Nocleg (od 100 zł/os, płatny w pensjonacie)",
+      "Wyżywienie (140 zł/dzień dorosły)",
+      "Jazda konna (płatna w pensjonacie)",
+    ],
+    deposit: 300,
+    collaborator: {
+      name: kamila?.name ?? "Kamila Janczurewicz",
+      role: kamila?.role,
+      bio: kamila?.bio ?? "",
+      image: kamila?.image,
+    },
+    faq: [
+      {
+        question: "Czy potrzebne jest doświadczenie w jeździe konnej?",
+        answer: "Nie, zupełnie nie! Doświadczeni instruktorzy zadbają o komfort zarówno dzieci, jak i dorosłych.",
+      },
+      {
+        question: "Jak zarezerwować miejsce?",
+        answer: "Napisz do nas, a następnie zarezerwuj nocleg na stronie sasek.pl. Wpłata zaliczki 30% gwarantuje miejsce.",
+      },
+      {
+        question: "Ile kosztuje nocleg?",
+        answer: "Noclegi od 100 zł/os/noc. Cennik pokoi na stronie sasek.pl.",
+      },
+    ],
+    gallery: [],
+  },
+  {
+    slug: "zlot-kaczek-2026",
+    title: "Festiwal Rodzinny \u201EZlot Kaczek\u201D — III edycja",
+    subtitle: "Cztery dni warsztatów, muzyki i rodzinnej atmosfery",
+    date: "2026-08-20",
+    dateEnd: "2026-08-23",
+    location: "Kacze Bagno — Miejsce Inicjatyw Pozytywnych",
+    category: "rodzinny",
+    shortDescription:
+      "Wpiszcie w kalendarz: 20-23 sierpnia 2026! Po raz trzeci spotkamy się pod koniec sierpnia, by wspólnie spędzić przedostatni letni weekend. Jeszcze więcej warsztatów i wyjątkowych gości, jeszcze więcej magicznych wieczorów i niespiesznych poranków.",
+    longDescription:
+      "To wyjątkowe wydarzenie dla małych i nieco większych, dla mamy, taty i dzieci w każdym wieku. Nie ma znaczenia, czy na Festiwal wybierzesz się całą rodziną, czy samemu z dziećmi, z kolegą, babcią, sąsiadką — na miejscu spotkasz ludzi podobnych do Ciebie.\n\nWarsztaty muzyczne, plastyczne, ceramiczne, strefy tematyczne oraz kameralne koncerty to świetna okazja, aby spędzić naprawdę wyjątkowo czas w nadchodzące wakacje. W niespiesznej atmosferze, w bliskości, w naturze — po prostu pobyć razem.\n\nNa Zlocie Kaczek nie ma oddzielnej strefy warsztatowej dla rodzica i dziecka. Wszystkie warsztaty są zaproszeniem do wspólnie spędzonego, wartościowego czasu — jednocześnie dbasz o rozwój własny i Twojego dziecka.",
+    image: "/images/kazce-bagno-2.jpg",
+    isPast: false,
+    targetAudience: [
+      { label: "Rodziny z dziećmi w każdym wieku" },
+      { label: "Samodzielni rodzice szukający wspólnoty" },
+      { label: "Dziadkowie, ciocie, przyjaciele z dziećmi" },
+    ],
+    schedule: [],
+    practicalInfo: {
+      accommodation: "Pole namiotowe (w cenie biletu), sala wspólna z łóżkami (60 zł/os/noc), pokoje eko-domki (100 zł/os/noc), przyczepy campingowe (700 zł/4 dni).",
+      food: "Pełne wyżywienie w cenie biletu: śniadanie, obiad, kolacja, domowe wypieki. Opcje: wegetariańska, wegańska, bezglutenowa.",
+    },
+    pricing: [
+      { label: "Bilet early bird (czw-nd)", price: 690 },
+      { label: "Bilet early bird (pt-nd)", price: 560 },
+    ],
+    priceIncludes: [
+      "Pełne wyżywienie (3 posiłki + przekąski)",
+      "Nocleg na polu namiotowym/campingowym",
+      "Wszystkie warsztaty i atrakcje",
+    ],
+    priceExcludes: [
+      "Nocleg w pokoju/eko-domku (dopłata)",
+      "Przyczepa campingowa (dopłata)",
+    ],
+    earlyBirdDeadline: "2026-03-31",
+    deposit: 0,
+    spotsTotal: 35,
+    faq: [
+      {
+        question: "Czy dzieci do 3 lat wchodzą za darmo?",
+        answer: "Tak! Dzieci do lat 3 uczestniczą bezpłatnie.",
+      },
+      {
+        question: "Co jeśli nie będę mógł przyjechać?",
+        answer: "Bilety przebukujemy na kolejny rok — bez straty pieniędzy.",
+      },
+      {
+        question: "Czy mogę przyjechać z namiotem?",
+        answer: "Tak! Pole namiotowe jest w cenie biletu. To idealna opcja na pierwszy camping z dzieckiem.",
+      },
+    ],
+    gallery: [],
+  },
+  {
+    slug: "zlot-kaczek-swieta-2025",
+    title: "Świąteczna Edycja Festiwalu Rodzinnego \u201EZlot Kaczek\u201D",
+    subtitle: "Mikołajkowy weekend pełen warsztatów, magii i rodzinnego ciepła",
+    date: "2025-12-05",
+    dateEnd: "2025-12-07",
+    location: "Kacze Bagno — Miejsce Inicjatyw Pozytywnych",
+    category: "rodzinny",
+    shortDescription:
+      "Wyobraźcie sobie wszystko, co najpiękniejsze w Zlocie Kaczek — domowa atmosfera, kameralność, wartościowe warsztaty, cudowni ludzie. Całość przyprószona śniegiem, z zapachem cynamonu, otulona ciepłem świateł choinkowych.",
+    longDescription:
+      "Warsztaty mikołajkowe, teatralne czy ceramiczne to świetna okazja, aby spędzić naprawdę wyjątkowo ten świąteczny czas. W niespiesznej atmosferze, w bliskości — po prostu pobyć razem.\n\nAnimacje dla najmłodszych zapewnią chwile wytchnienia dla rodziców, którzy w tym czasie mogą skorzystać z zajęć im dedykowanych lub zwyczajnie nie robić nic. Program, chociaż bardzo bogaty, daje przestrzeń na odpoczynek i wytchnienie.\n\nPosiłki przygotowujemy na bazie naturalnych składników z naszego ogródka, jaj od naszych kur, świeżych produktów dostarczanych przez lokalnych wytwórców.",
+    image: "/images/kazce-bagno-3.jpg",
+    isPast: true,
+    targetAudience: [
+      { label: "Rodziny z dziećmi w każdym wieku" },
+      { label: "Samodzielni rodzice szukający świątecznej atmosfery" },
+    ],
+    schedule: [
+      {
+        date: "2025-12-05",
+        dayLabel: "Piątek, 5 grudnia",
+        activities: [
+          { time: "18:00", activity: "Wspólna kolacja" },
+          { time: "19:00", activity: "Otwarcie Festiwalu w kręgu — Kamila Janczurewicz" },
+        ],
+      },
+      {
+        date: "2025-12-06",
+        dayLabel: "Sobota, 6 grudnia",
+        activities: [
+          { time: "8:00", activity: "Joga o poranku dla dużych i małych" },
+          { time: "9:00", activity: "Śniadanie" },
+          { time: "10:30–14:00", activity: "Mikołajki dla dzieci / ceramika dla rodziców" },
+          { time: "14:30", activity: "Obiad" },
+          { time: "16:00–18:00", activity: "Rodzinne warsztaty teatralne — Edyta Machul" },
+          { time: "18:30", activity: "Kolacja" },
+          { time: "20:00", activity: "Świąteczne karaoke" },
+        ],
+      },
+      {
+        date: "2025-12-07",
+        dayLabel: "Niedziela, 7 grudnia",
+        activities: [
+          { time: "8:00", activity: "Joga o poranku" },
+          { time: "9:00", activity: "Śniadanie" },
+          { time: "10:00–13:00", activity: "Warsztaty ceramiczne, pierniczkowe i bębniarskie" },
+          { time: "14:00", activity: "Obiad" },
+          { time: "15:00", activity: "Zakończenie Festiwalu w kręgu" },
+        ],
+      },
+    ],
+    practicalInfo: {
+      accommodation: "Wspólna sala z łóżkami piętrowymi (w cenie biletu), eko-domki (450 zł/weekend/pokój), przyczepy campingowe (500 zł/weekend).",
+      food: "Pełne wyżywienie w cenie biletu. Opcje: wegańska, wegetariańska, bezglutenowa.",
+    },
+    pricing: [
+      { label: "Dzieci 3+ i dorośli", price: 650 },
+      { label: "Dzieci do lat 3", price: 0 },
+    ],
+    priceIncludes: [
+      "Pełne wyżywienie (3 posiłki + przekąski)",
+      "Nocleg na sali wspólnej",
+      "Wszystkie warsztaty i atrakcje",
+    ],
+    priceExcludes: [
+      "Nocleg w eko-domku (dopłata)",
+    ],
+    deposit: 0,
+    spotsLeft: 0,
+    faq: [
+      {
+        question: "Czy jest zniżka dla dużych rodzin?",
+        answer: "Tak, posiadacze Karty Dużej Rodziny mogą uzyskać zniżkę — prosimy o kontakt mailowy.",
+      },
+    ],
+    gallery: [],
+    contentBlocks: [
+      { type: "text", text: "Warsztaty mikołajkowe, teatralne czy ceramiczne to świetna okazja, aby spędzić naprawdę wyjątkowo ten świąteczny czas." },
+      { type: "image", src: "/images/kazce-bagno-4.jpg", alt: "Świąteczny Zlot Kaczek w Kaczym Bagnie" },
+      { type: "text", text: "Piękno i radość zamknięte w prostocie. Wspólne pieczenie pierników, zabawy, rodzinny czas." },
+      { type: "image", src: "/images/przeszly-1.jpg", alt: "Rodzinne warsztaty — wspólne chwile" },
+      { type: "text", text: "Posiłki przygotowujemy na bazie naturalnych składników z naszego ogródka, jaj od naszych kur, świeżych produktów dostarczanych przez lokalnych wytwórców." },
     ],
   },
 ];
@@ -263,4 +547,12 @@ export function getUpcomingTrips(): Trip[] {
 
 export function getPastTrips(): Trip[] {
   return trips.filter((trip) => trip.isPast);
+}
+
+export function getTripsByCategory(cat: Trip["category"]): Trip[] {
+  return trips.filter((trip) => trip.category === cat);
+}
+
+export function getUpcomingTripsByCategory(cat: Trip["category"]): Trip[] {
+  return trips.filter((trip) => !trip.isPast && trip.category === cat);
 }

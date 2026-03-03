@@ -96,7 +96,7 @@ export function BookingForm({ trips, preselectedTrip }: BookingFormProps) {
       reset();
     } catch {
       setStatus("error");
-      setErrorMessage("Nie uda\u0142o si\u0119 wys\u0142a\u0107 formularza. Sprawd\u017A po\u0142\u0105czenie z internetem.");
+      setErrorMessage("Nie udało się wysłać formularza. Sprawdź połączenie z internetem.");
     }
   };
 
@@ -170,7 +170,7 @@ export function BookingForm({ trips, preselectedTrip }: BookingFormProps) {
 
           <div className="grid gap-5 sm:grid-cols-2">
             <Input
-              label="Doro\u015Bli"
+              label="Dorośli"
               type="number"
               min={1}
               max={10}
@@ -248,7 +248,7 @@ export function BookingForm({ trips, preselectedTrip }: BookingFormProps) {
               icon={<Send className="h-5 w-5" strokeWidth={1.5} />}
               className="w-full sm:w-auto"
             >
-              {status === "submitting" ? "Wysy\u0142anie..." : "Wy\u015Blij zg\u0142oszenie"}
+              {status === "submitting" ? "Wysyłanie..." : "Wyślij zgłoszenie"}
             </Button>
           </div>
         </form>

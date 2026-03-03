@@ -12,8 +12,9 @@ import { TripPracticalInfo } from "@/components/trips/TripPracticalInfo";
 import { TripPricing } from "@/components/trips/TripPricing";
 import { TripCollaborator } from "@/components/trips/TripCollaborator";
 import { TripFAQ } from "@/components/trips/TripFAQ";
-import { TripGallery } from "@/components/trips/TripGallery";
+// TripGallery removed — images now inline via contentBlocks
 import { BookingForm } from "@/components/trips/BookingForm";
+import { WaitlistForm } from "@/components/trips/WaitlistForm";
 import { StickyBookingCTA } from "@/components/trips/StickyBookingCTA";
 
 type PageProps = {
@@ -69,7 +70,7 @@ export default async function TripPage({ params }: PageProps) {
   const hasSchedule = trip.schedule.length > 0;
   const hasPricing = trip.pricing.length > 0;
   const hasFAQ = trip.faq.length > 0;
-  const hasCollaborator = trip.collaborator.name !== "Wkrótce";
+  const hasCollaborator = trip.collaborator && trip.collaborator.name !== "Wkrótce";
 
   const baseUrl = SITE_CONFIG.url;
   const breadcrumbItems = [
@@ -105,6 +106,7 @@ export default async function TripPage({ params }: PageProps) {
         <TripDescription
           shortDescription={trip.shortDescription}
           longDescription={trip.longDescription}
+          contentBlocks={trip.contentBlocks}
         />
       </div>
 
@@ -121,19 +123,23 @@ export default async function TripPage({ params }: PageProps) {
           deposit={trip.deposit}
           spotsTotal={trip.spotsTotal}
           spotsLeft={trip.spotsLeft}
+          priceIncludes={trip.priceIncludes}
+          priceExcludes={trip.priceExcludes}
         />
       )}
 
       {/* 7. Collaborator */}
-      {hasCollaborator && <TripCollaborator collaborator={trip.collaborator} />}
+      {trip.collaborator && hasCollaborator && <TripCollaborator collaborator={trip.collaborator} />}
 
       {/* 8. FAQ */}
       {hasFAQ && <TripFAQ items={trip.faq} />}
 
-      {/* 9. Gallery */}
-      <TripGallery images={trip.gallery} />
+      {/* Gallery removed — images are now inline in contentBlocks */}
 
-      {/* 10. Booking Form */}
+      {/* 10. Booking Form or Waitlist */}
+      {!trip.isPast && trip.spotsLeft === 0 && (
+        <WaitlistForm tripSlug={trip.slug} tripTitle={trip.title} />
+      )}
       {!trip.isPast && trip.spotsLeft !== 0 && (
         <BookingForm trips={upcomingTrips} preselectedTrip={trip.slug} />
       )}

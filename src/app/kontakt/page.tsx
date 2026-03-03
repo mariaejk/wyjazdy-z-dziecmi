@@ -11,7 +11,7 @@ import { getBreadcrumbSchema } from "@/lib/structured-data";
 export const metadata: Metadata = {
   title: "Kontakt",
   description:
-    "Skontaktuj si\u0119 z nami \u2014 napisz wiadomo\u015B\u0107, zadzwo\u0144 lub znajd\u017A nas w mediach spo\u0142eczno\u015Bciowych.",
+    "Skontaktuj się z nami — napisz wiadomość, zadzwoń lub znajdź nas w mediach społecznościowych.",
 };
 
 export default function ContactPage() {
@@ -29,7 +29,7 @@ export default function ContactPage() {
               Kontakt
             </h1>
             <p className="-mt-4 text-center text-lg text-graphite-light sm:-mt-6 sm:text-xl">
-              Masz pytania? Ch\u0119tnie pomo\u017Cemy.
+              Masz pytania? Chętnie pomożemy.
             </p>
           </ScrollAnimation>
 

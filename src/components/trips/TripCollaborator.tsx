@@ -10,7 +10,7 @@ type TripCollaboratorProps = {
   sectionTitle?: string;
 };
 
-export function TripCollaborator({ collaborator, sectionTitle = "Wsp\u00F3\u0142praca" }: TripCollaboratorProps) {
+export function TripCollaborator({ collaborator, sectionTitle = "Współpraca" }: TripCollaboratorProps) {
   return (
     <SectionWrapper variant="alternate">
       <Container>

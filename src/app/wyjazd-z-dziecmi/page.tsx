@@ -10,9 +10,9 @@ import { ROUTES, SITE_CONFIG } from "@/lib/constants";
 import { getBreadcrumbSchema } from "@/lib/structured-data";
 
 export const metadata: Metadata = {
-  title: "Single Parents",
+  title: "Wyjazd z dziećmi",
   description:
-    "Wyjazdy dla samodzielnych rodzic\u00F3w z dzie\u0107mi. Odpoczynek, wsparcie i czas pe\u0142en blisko\u015Bci w otoczeniu natury.",
+    "Wyjazdy rodzinne z dziećmi. Odpoczynek, wsparcie i czas pełen bliskości w otoczeniu natury — dla mam, babć, cioć i koleżanek.",
 };
 
 const benefits = [
@@ -20,46 +20,46 @@ const benefits = [
     icon: Heart,
     title: "Czas tylko dla Was",
     description:
-      "Wyjazdy zaprojektowane tak, aby\u015B m\u00F3g\u0142/mog\u0142a cieszy\u0107 si\u0119 czasem z dzieckiem bez po\u015Bpiechu i codziennych obowi\u0105zk\u00F3w.",
+      "Wyjazdy zaprojektowane tak, abyś mógł/mogła cieszyć się czasem z dzieckiem bez pośpiechu i codziennych obowiązków.",
   },
   {
     icon: Shield,
-    title: "Bezpieczna przestrze\u0144",
+    title: "Bezpieczna przestrzeń",
     description:
-      "Kameralna grupa, w kt\u00F3rej ka\u017Cdy jest mile widziany. Bez oceniania, z pe\u0142nym szacunkiem dla Twojej historii.",
+      "Kameralna grupa, w której każdy jest mile widziany. Bez oceniania, z pełnym szacunkiem dla Twojej historii.",
   },
   {
     icon: Users,
-    title: "Spo\u0142eczno\u015B\u0107",
+    title: "Społeczność",
     description:
-      "Mo\u017Cliwo\u015B\u0107 poznania innych rodzic\u00F3w w podobnej sytuacji. Wsp\u00F3lne do\u015Bwiadczenia buduj\u0105 trwa\u0142e relacje.",
+      "Możliwość poznania innych rodziców, babć, cioć i opiekunów. Wspólne doświadczenia budują trwałe relacje.",
   },
   {
     icon: TreePine,
     title: "Natura leczy",
     description:
-      "Las, jezioro, cisza \u2014 przyroda daje si\u0142\u0119 i spok\u00F3j, kt\u00F3rych tak bardzo potrzebujesz.",
+      "Las, jezioro, cisza — przyroda daje siłę i spokój, których tak bardzo potrzebujesz.",
   },
   {
     icon: Smile,
-    title: "Zabawa i rozw\u00F3j",
+    title: "Zabawa i rozwój",
     description:
-      "Warsztaty kreatywne, ruch i zabawy na \u015Bwie\u017Cym powietrzu \u2014 dzieci poznaj\u0105 nowych przyjaci\u00F3\u0142.",
+      "Warsztaty kreatywne, ruch i zabawy na świeżym powietrzu — dzieci poznają nowych przyjaciół.",
   },
   {
     icon: Sparkles,
     title: "Chwila dla Ciebie",
     description:
-      "W programie znajdziesz czas na jog\u0119, relaks i oddech \u2014 bo Ty te\u017C zas\u0142ugujesz na regeneracj\u0119.",
+      "W programie znajdziesz czas na jogę, relaks i oddech — bo Ty też zasługujesz na regenerację.",
   },
 ];
 
-export default function SingleParentsPage() {
+export default function FamilyTripsPage() {
   return (
     <>
       <StructuredData data={getBreadcrumbSchema([
         { name: "Strona główna", url: SITE_CONFIG.url },
-        { name: "Single Parents", url: `${SITE_CONFIG.url}/single-parents` },
+        { name: "Wyjazd z dziećmi", url: `${SITE_CONFIG.url}/wyjazd-z-dziecmi` },
       ])} />
 
       {/* Hero */}
@@ -68,13 +68,13 @@ export default function SingleParentsPage() {
           <ScrollAnimation variant="fadeUp">
             <div className="mx-auto max-w-3xl text-center">
               <h1 className="font-heading text-4xl font-bold text-graphite sm:text-5xl lg:text-6xl">
-                Single Parents
+                Wyjazd z dziećmi
               </h1>
               <p className="mt-6 text-lg leading-relaxed text-graphite-light sm:text-xl">
-                Samodzielne rodzicielstwo to codzienne wyzwanie. Wiemy, \u017Ce potrzebujesz
-                chwili wytchnienia &mdash; i \u017Ce zas\u0142ugujesz na ni\u0105 razem ze swoim dzieckiem.
-                Nasze wyjazdy to bezpieczna przestrze\u0144, w kt\u00F3rej mo\u017Cesz odpocz\u0105\u0107,
-                odetchn\u0105\u0107 i po prostu by\u0107.
+                Nie musisz być samodzielnym rodzicem, żeby potrzebować chwili
+                wytchnienia. Nasze wyjazdy to bezpieczna przestrzeń dla każdego,
+                kto chce spędzić wyjątkowy czas z dzieckiem &mdash; mamy, babcie,
+                ciocie, koleżanki. Odpoczywaj, oddychaj i po prostu bądź.
               </p>
             </div>
           </ScrollAnimation>
@@ -87,7 +87,7 @@ export default function SingleParentsPage() {
           <ScrollAnimation variant="fadeUp">
             <SectionHeading
               title="Dlaczego warto?"
-              subtitle="Wyjazdy dopasowane do potrzeb samodzielnych rodzic\u00F3w"
+              subtitle="Wyjazdy dopasowane do potrzeb rodziców i opiekunów"
             />
           </ScrollAnimation>
 
@@ -126,17 +126,17 @@ export default function SingleParentsPage() {
           <ScrollAnimation variant="fadeUp">
             <div className="mx-auto max-w-3xl text-center">
               <h2 className="font-heading text-3xl font-bold text-graphite sm:text-4xl">
-                Jak wygl\u0105da wyjazd?
+                Jak wygląda wyjazd?
               </h2>
               <div className="mt-6 space-y-4 text-lg leading-relaxed text-graphite-light">
                 <p>
-                  Ka\u017Cdy dzie\u0144 zaczyna si\u0119 spokojnie &mdash; od porannej jogi lub
-                  spaceru w ciszy. Potem warsztaty: kreatywne zaj\u0119cia dla dzieci
-                  i doros\u0142ych, wsp\u00F3lne gotowanie, zabawy na \u015Bwie\u017Cym powietrzu.
+                  Każdy dzień zaczyna się spokojnie &mdash; od porannej jogi lub
+                  spaceru w ciszy. Potem warsztaty: kreatywne zajęcia dla dzieci
+                  i dorosłych, wspólne gotowanie, zabawy na świeżym powietrzu.
                 </p>
                 <p>
-                  Wieczorem ognisko, rozmowy i cisza. Bez po\u015Bpiechu, bez planu
-                  dnia w\u0142o\u017Conego w ramki. Ka\u017Cdy mo\u017Ce uczestniczy\u0107 w swoim tempie.
+                  Wieczorem ognisko, rozmowy i cisza. Bez pośpiechu, bez planu
+                  dnia włożonego w ramki. Każdy może uczestniczyć w swoim tempie.
                 </p>
               </div>
             </div>
@@ -150,14 +150,14 @@ export default function SingleParentsPage() {
           <ScrollAnimation variant="fadeUp">
             <div className="mx-auto max-w-2xl text-center">
               <h2 className="font-heading text-3xl font-bold text-graphite sm:text-4xl">
-                Do\u0142\u0105cz do nas
+                Dołącz do nas
               </h2>
               <p className="mt-4 text-lg text-graphite-light">
-                Sprawd\u017A dost\u0119pne terminy lub napisz do nas &mdash; pomo\u017Cemy
-                znale\u017A\u0107 wyjazd idealny dla Ciebie i Twojego dziecka.
+                Sprawdź dostępne terminy lub napisz do nas &mdash; pomożemy
+                znaleźć wyjazd idealny dla Ciebie i Twojego dziecka.
               </p>
               <div className="mt-8 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
-                <Button href={ROUTES.trips}>
+                <Button href={`${ROUTES.trips}?kategoria=rodzinny`}>
                   Zobacz wyjazdy
                 </Button>
                 <Button href={ROUTES.contact} variant="secondary">

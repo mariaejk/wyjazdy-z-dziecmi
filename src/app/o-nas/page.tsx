@@ -16,7 +16,7 @@ import { getBreadcrumbSchema } from "@/lib/structured-data";
 export const metadata: Metadata = {
   title: "O mnie",
   description:
-    "Poznaj Mari\u0119 Kordalewsk\u0105 \u2014 tw\u00F3rczyni\u0119 projektu Wyjazdy z Dzie\u0107mi, nauczycielk\u0119 jogi i organizatork\u0119 event\u00F3w.",
+    "Poznaj Marię Kordalewską — twórczynię projektu Wyjazdy z Dziećmi, nauczycielkę jogi i organizatorkę eventów.",
 };
 
 const missionCards = [
@@ -24,19 +24,19 @@ const missionCards = [
     icon: Leaf,
     title: "Natura i cisza",
     description:
-      "Szukam miejsc w \u201Ebezinterneciu\u201D i \u201Ebezzasi\u0119gowie\u201D, gdzie mo\u017Cemy zbli\u017Cy\u0107 si\u0119 do siebie.",
+      "Szukam miejsc w „bezinterneciu” i „bezzasięgowie”, gdzie możemy zbliżyć się do siebie.",
   },
   {
     icon: Heart,
     title: "Autentyczne relacje",
     description:
-      "Tworz\u0119 przestrze\u0144 do wsp\u00F3lnego bycia \u2014 bez po\u015Bpiechu, bez oceniania, z pe\u0142n\u0105 obecno\u015Bci\u0105.",
+      "Tworzę przestrzeń do wspólnego bycia — bez pośpiechu, bez oceniania, z pełną obecnością.",
   },
   {
     icon: Star,
-    title: "Najlepsi specjali\u015Bci",
+    title: "Najlepsi specjaliści",
     description:
-      "Zapraszam do wsp\u00F3\u0142pracy specjalist\u00F3w od rozwoju, aby tworzy\u0107 spotkania \u201Elepsze ni\u017C bajka\u201D.",
+      "Zapraszam do współpracy specjalistów od rozwoju, aby tworzyć spotkania „lepsze niż bajka”.",
   },
 ];
 
@@ -47,7 +47,7 @@ export default function AboutPage() {
   return (
     <>
       <StructuredData data={getBreadcrumbSchema([
-        { name: "Strona g\u0142\u00F3wna", url: SITE_CONFIG.url },
+        { name: "Strona główna", url: SITE_CONFIG.url },
         { name: "O mnie", url: `${SITE_CONFIG.url}/o-nas` },
       ])} />
 
@@ -59,14 +59,14 @@ export default function AboutPage() {
               O mnie
             </h1>
             <p className="mx-auto -mt-4 max-w-3xl text-center text-lg text-graphite-light sm:-mt-6 sm:text-xl">
-              Poznaj moj\u0105 histori\u0119 i warto\u015Bci
+              Poznaj moją historię i wartości
             </p>
           </ScrollAnimation>
           <ScrollAnimation variant="fadeUp" delay={0.15}>
             <p className="mx-auto max-w-3xl text-center text-lg leading-relaxed text-graphite-light">
-              Tworz\u0119 wyjazdy dla rodzin, kt\u00F3re szukaj\u0105 chwili zatrzymania.
-              W otoczeniu natury, z dala od codziennego po\u015Bpiechu,
-              buduj\u0119 przestrze\u0144 do wsp\u00F3lnego bycia, zabawy i rozwoju.
+              Tworzę wyjazdy dla rodzin, które szukają chwili zatrzymania.
+              W otoczeniu natury, z dala od codziennego pośpiechu,
+              buduję przestrzeń do wspólnego bycia, zabawy i rozwoju.
             </p>
           </ScrollAnimation>
         </Container>
@@ -81,7 +81,7 @@ export default function AboutPage() {
           <ScrollAnimation variant="fadeUp">
             <SectionHeading
               title="Moja misja"
-              subtitle="Warto\u015Bci, kt\u00F3re stoj\u0105 za ka\u017Cdym wyjazdem"
+              subtitle="Wartości, które stoją za każdym wyjazdem"
             />
           </ScrollAnimation>
 
@@ -105,13 +105,13 @@ export default function AboutPage() {
         </Container>
       </SectionWrapper>
 
-      {/* Wsp\u00F3\u0142pracuj\u0105 ze mn\u0105 */}
+      {/* Współpracują ze mną */}
       <SectionWrapper variant="alternate">
         <Container>
           <ScrollAnimation variant="fadeUp">
             <SectionHeading
-              title="Wsp\u00F3\u0142pracuj\u0105 ze mn\u0105"
-              subtitle="Specjali\u015Bci, kt\u00F3rzy wsp\u00F3\u0142tworz\u0105 nasze wyjazdy"
+              title="Współpracują ze mną"
+              subtitle="Specjaliści, którzy współtworzą nasze wyjazdy"
             />
           </ScrollAnimation>
         </Container>
@@ -124,7 +124,7 @@ export default function AboutPage() {
           <ScrollAnimation variant="fadeUp">
             <SectionHeading
               title="Nasze miejsca"
-              subtitle="Wyj\u0105tkowe przestrzenie, w kt\u00F3rych organizujemy wyjazdy"
+              subtitle="Wyjątkowe przestrzenie, w których organizujemy wyjazdy"
             />
           </ScrollAnimation>
 
@@ -142,17 +142,17 @@ export default function AboutPage() {
           <ScrollAnimation variant="fadeUp">
             <div className="mx-auto max-w-2xl text-center">
               <h2 className="font-heading text-3xl font-bold text-graphite sm:text-4xl">
-                Do\u0142\u0105cz do mnie
+                Dołącz do mnie
               </h2>
               <p className="mt-4 text-lg text-graphite-light">
-                Sprawd\u017A nadchodz\u0105ce wyjazdy i znajd\u017A co\u015B dla siebie i swoich dzieci.
+                Sprawdź nadchodzące wyjazdy i znajdź coś dla siebie i swoich dzieci.
               </p>
               <div className="mt-8 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
                 <Button href={ROUTES.trips}>
                   Zobacz wyjazdy
                 </Button>
                 <Button href={ROUTES.contact} variant="secondary">
-                  Skontaktuj si\u0119
+                  Skontaktuj się
                 </Button>
               </div>
             </div>

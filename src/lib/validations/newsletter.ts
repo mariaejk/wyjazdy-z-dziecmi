@@ -3,7 +3,7 @@ import { z } from "zod";
 export const newsletterSchema = z.object({
   email: z
     .string()
-    .email("Podaj prawid\u0142owy adres e-mail"),
+    .email("Podaj prawidłowy adres e-mail"),
   consentRodo: z
     .literal(true, {
       error: "Zgoda na przetwarzanie danych jest wymagana",

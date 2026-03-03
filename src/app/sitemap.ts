@@ -9,9 +9,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: baseUrl, changeFrequency: "weekly", priority: 1 },
     { url: `${baseUrl}/wyjazdy`, changeFrequency: "weekly", priority: 0.9 },
     { url: `${baseUrl}/o-nas`, changeFrequency: "monthly", priority: 0.7 },
+    { url: `${baseUrl}/matka-z-corka`, changeFrequency: "monthly", priority: 0.7 },
+    { url: `${baseUrl}/wyjazd-z-dziecmi`, changeFrequency: "monthly", priority: 0.7 },
+    { url: `${baseUrl}/galeria`, changeFrequency: "monthly", priority: 0.6 },
+    { url: `${baseUrl}/blog`, changeFrequency: "monthly", priority: 0.6 },
     { url: `${baseUrl}/kontakt`, changeFrequency: "monthly", priority: 0.7 },
     { url: `${baseUrl}/opinie`, changeFrequency: "monthly", priority: 0.6 },
-    // /single-parents excluded — placeholder content, robots: { index: false }
   ];
 
   const tripPages: MetadataRoute.Sitemap = getAllTrips().map((trip) => ({

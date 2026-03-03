@@ -22,24 +22,24 @@ export function Header() {
       <Container>
         <div className="flex h-16 items-center justify-between sm:h-20">
           {/* Logo */}
-          <Link href={ROUTES.home} className="flex items-center gap-3">
+          <Link href={ROUTES.home} className="group flex items-center gap-3">
             <Image
               src="/images/logo.jpeg"
-              alt="Wyjazdy z Dzie\u0107mi"
-              width={56}
-              height={56}
+              alt="Wyjazdy z Dziećmi"
+              width={80}
+              height={80}
               className="rounded-full"
               priority
             />
-            <span className="font-heading text-lg font-bold text-moss sm:text-xl">
-              Wyjazdy z Dzie\u0107mi
+            <span className="font-heading text-lg font-bold text-moss transition-colors group-hover:text-moss-light sm:text-xl">
+              Wyjazdy z Dziećmi
             </span>
           </Link>
 
           {/* Right side: nav + phone + CTA + hamburger */}
           <div className="flex items-center gap-4">
             {/* Desktop navigation */}
-            <nav aria-label="Nawigacja g\u0142\u00F3wna" className="hidden md:block">
+            <nav aria-label="Nawigacja główna" className="hidden md:block">
               <ul className="flex items-center gap-1">
                 {mainNavigation.map((item) => {
                   const active = isNavActive(item.href, pathname);
@@ -67,7 +67,7 @@ export function Header() {
             <a
               href={`tel:${CONTACT.phone.replace(/\s/g, "")}`}
               className="hidden items-center gap-1.5 rounded-md px-3 py-2 text-sm font-medium text-graphite transition-colors hover:bg-parchment-dark hover:text-moss lg:inline-flex"
-              aria-label={`Zadzwo\u0144: ${CONTACT.phoneDisplay}`}
+              aria-label={`Zadzwoń: ${CONTACT.phoneDisplay}`}
               onClick={() => analytics.phoneClick()}
             >
               <Phone className="h-4 w-4" strokeWidth={1.5} />
@@ -88,7 +88,7 @@ export function Header() {
               className="inline-flex items-center justify-center rounded-md p-2 text-graphite transition-colors hover:bg-parchment-dark hover:text-moss md:hidden"
               aria-expanded={mobileMenuOpen}
               aria-controls="mobile-menu"
-              aria-label="Otw\u00F3rz menu"
+              aria-label="Otwórz menu"
             >
               <Menu className="h-6 w-6" strokeWidth={1.5} />
             </button>

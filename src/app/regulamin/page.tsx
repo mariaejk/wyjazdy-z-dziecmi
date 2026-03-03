@@ -7,7 +7,7 @@ import { ROUTES } from "@/lib/constants";
 
 export const metadata: Metadata = {
   title: "Regulamin",
-  description: "Regulamin serwisu Wyjazdy z Dzie\u0107mi.",
+  description: "Regulamin serwisu Wyjazdy z Dziećmi.",
   robots: { index: false, follow: false },
 };
 
@@ -21,11 +21,11 @@ export default function TermsPage() {
               Regulamin
             </h1>
             <p className="mt-6 text-lg text-graphite-light">
-              Regulamin jest w przygotowaniu. Wkr\u00F3tce zostanie opublikowany na tej stronie.
+              Regulamin jest w przygotowaniu. Wkrótce zostanie opublikowany na tej stronie.
             </p>
             <div className="mt-8">
               <Button href={ROUTES.home} variant="secondary">
-                Wr\u00F3\u0107 na stron\u0119 g\u0142\u00F3wn\u0105
+                Wróć na stronę główną
               </Button>
             </div>
           </div>

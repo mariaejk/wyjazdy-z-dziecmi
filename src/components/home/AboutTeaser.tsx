@@ -13,7 +13,7 @@ export function AboutTeaser() {
         <ScrollAnimation variant="fadeUp">
           <SectionHeading
             title="O mnie"
-            subtitle="Poznaj tw\u00F3rczyni\u0119 wyjazd\u00F3w \u2014 Mari\u0119 Kordalewsk\u0105"
+            subtitle="Poznaj twórczynię wyjazdów — Marię Kordalewską"
           />
         </ScrollAnimation>
 
@@ -30,7 +30,7 @@ export function AboutTeaser() {
             </p>
 
             <p className="mt-4 text-base text-graphite-light">
-              Projekt &bdquo;Wyjazdy z Dziećmi&rdquo; zrodził się z mojej osobistej potrzeby
+              Projekt &bdquo;Wyjazdy z Dziećmi&rdquo; powstał z mojej osobistej potrzeby
               spędzania z córką czasu, który jest naprawdę wartościowy.
             </p>
 

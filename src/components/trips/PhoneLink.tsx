@@ -12,7 +12,7 @@ export function PhoneLink() {
       onClick={() => analytics.phoneClick()}
     >
       <Phone className="h-4 w-4" strokeWidth={1.5} />
-      <span>Zadzwo\u0144: {CONTACT.phoneDisplay}</span>
+      <span>Zadzwoń: {CONTACT.phoneDisplay}</span>
     </a>
   );
 }

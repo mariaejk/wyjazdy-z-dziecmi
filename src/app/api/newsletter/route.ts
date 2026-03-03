@@ -14,7 +14,7 @@ export async function POST(request: NextRequest) {
   const { success } = rateLimit(ip);
   if (!success) {
     return NextResponse.json(
-      { error: "Zbyt wiele pr\u00F3b. Spr\u00F3buj ponownie p\u00F3\u017Aniej." },
+      { error: "Zbyt wiele prób. Spróbuj ponownie później." },
       { status: 429 },
     );
   }
@@ -25,7 +25,7 @@ export async function POST(request: NextRequest) {
     body = await request.json();
   } catch {
     return NextResponse.json(
-      { error: "Nieprawid\u0142owy format danych." },
+      { error: "Nieprawidłowy format danych." },
       { status: 400 },
     );
   }
@@ -48,7 +48,7 @@ export async function POST(request: NextRequest) {
       field: issue.path.join("."),
       message: issue.message,
     }));
-    return NextResponse.json({ error: "B\u0142\u0105d walidacji.", errors }, { status: 400 });
+    return NextResponse.json({ error: "Błąd walidacji.", errors }, { status: 400 });
   }
 
   const data = result.data;

@@ -42,7 +42,7 @@ export function TripCard({ trip }: TripCardProps) {
           <Calendar className="mr-1 h-3 w-3" strokeWidth={1.5} />
           {formatDate(trip.date)}
         </Badge>
-        {trip.isPast && <Badge variant="outline">Zako\u0144czony</Badge>}
+        {trip.isPast && <Badge variant="outline">Zakończony — komplet</Badge>}
         {!trip.isPast && scarcityBadge}
       </div>
 
@@ -69,7 +69,7 @@ export function TripCard({ trip }: TripCardProps) {
 
       <div className="mt-4 flex flex-col gap-2 sm:flex-row">
         <Button href={tripUrl} variant="secondary" size="sm">
-          Szczeg\u00F3\u0142y
+          Szczegóły
         </Button>
         {!trip.isPast && (
           isSoldOut ? (

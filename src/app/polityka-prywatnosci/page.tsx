@@ -6,8 +6,8 @@ import { Button } from "@/components/ui/Button";
 import { ROUTES } from "@/lib/constants";
 
 export const metadata: Metadata = {
-  title: "Polityka prywatno\u015Bci",
-  description: "Polityka prywatno\u015Bci serwisu Wyjazdy z Dzie\u0107mi.",
+  title: "Polityka prywatności",
+  description: "Polityka prywatności serwisu Wyjazdy z Dziećmi.",
   robots: { index: false, follow: false },
 };
 
@@ -18,14 +18,14 @@ export default function PrivacyPage() {
         <ScrollAnimation variant="fadeUp">
           <div className="mx-auto max-w-2xl text-center">
             <h1 className="font-heading text-4xl font-bold text-graphite sm:text-5xl">
-              Polityka prywatno\u015Bci
+              Polityka prywatności
             </h1>
             <p className="mt-6 text-lg text-graphite-light">
-              Polityka prywatno\u015Bci jest w przygotowaniu. Wkr\u00F3tce zostanie opublikowana na tej stronie.
+              Polityka prywatności jest w przygotowaniu. Wkrótce zostanie opublikowana na tej stronie.
             </p>
             <div className="mt-8">
               <Button href={ROUTES.home} variant="secondary">
-                Wr\u00F3\u0107 na stron\u0119 g\u0142\u00F3wn\u0105
+                Wróć na stronę główną
               </Button>
             </div>
           </div>

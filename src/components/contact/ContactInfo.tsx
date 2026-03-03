@@ -66,7 +66,7 @@ export function ContactInfo() {
           Dane kontaktowe
         </h2>
         <p className="mt-3 text-graphite-light">
-          Masz pytania? Napisz do mnie lub zadzwo\u0144 &mdash; ch\u0119tnie pomog\u0119.
+          Masz pytania? Napisz do mnie lub zadzwoń &mdash; chętnie pomogę.
         </p>
       </ScrollAnimation>
 
@@ -79,7 +79,7 @@ export function ContactInfo() {
                 ? {
                     target: "_blank",
                     rel: "noopener noreferrer",
-                    "aria-label": `${item.label} (otwiera si\u0119 w nowej karcie)`,
+                    "aria-label": `${item.label} (otwiera się w nowej karcie)`,
                   }
                 : {})}
               className="flex items-center gap-4 rounded-xl border border-graphite/10 bg-white p-4 transition-colors hover:border-moss/30 hover:bg-moss/5"

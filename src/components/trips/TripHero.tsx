@@ -56,23 +56,16 @@ export function TripHero({
             {subtitle}
           </p>
 
-          <div className="mt-6 flex flex-wrap gap-3">
-            {!isPast && (
+          {!isPast && (
+            <div className="mt-6">
               <Button
                 href="#formularz"
                 className="bg-white text-moss hover:bg-white/90 focus-visible:ring-white"
               >
-                Zapisz si\u0119
+                Zapisz się
               </Button>
-            )}
-            <Button
-              href="#opis"
-              variant="secondary"
-              className="border-white/60 text-white hover:bg-white/20 hover:text-white focus-visible:ring-white"
-            >
-              Poznaj szczeg\u00F3\u0142y
-            </Button>
-          </div>
+            </div>
+          )}
         </div>
       </Container>
     </section>

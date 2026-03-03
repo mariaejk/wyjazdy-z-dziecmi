@@ -38,6 +38,14 @@ export const analytics = {
     });
   },
 
+  waitlistSignup(tripSlug: string) {
+    trackEvent({
+      action: "waitlist_signup",
+      category: "conversion",
+      label: tripSlug,
+    });
+  },
+
   phoneClick() {
     trackEvent({
       action: "phone_click",

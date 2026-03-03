@@ -14,7 +14,7 @@ export function OpinionsTeaser() {
       <Container>
         <SectionHeading
           title="Opinie"
-          subtitle="Co m\u00F3wi\u0105 rodziny po naszych wyjazdach"
+          subtitle="Co mówią rodziny po naszych wyjazdach"
         />
 
         <div className="mx-auto grid max-w-4xl gap-6 md:grid-cols-2">
