@@ -13,6 +13,7 @@ type TripHeroProps = {
   location: string;
   image: string;
   isPast: boolean;
+  spotsLeft?: number;
 };
 
 export function TripHero({
@@ -23,7 +24,9 @@ export function TripHero({
   location,
   image,
   isPast,
+  spotsLeft,
 }: TripHeroProps) {
+  const isSoldOut = spotsLeft === 0;
   return (
     <section id="hero" className="relative flex min-h-[60vh] items-end overflow-hidden">
       <Image
@@ -59,10 +62,10 @@ export function TripHero({
           {!isPast && (
             <div className="mt-6">
               <Button
-                href="#formularz"
+                href={isSoldOut ? "#lista-oczekujacych" : "#formularz"}
                 className="bg-white text-moss hover:bg-white/90 focus-visible:ring-white"
               >
-                Zapisz się
+                {isSoldOut ? "Zapisz się na listę oczekujących" : "Zapisz się"}
               </Button>
             </div>
           )}

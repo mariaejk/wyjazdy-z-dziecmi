@@ -94,6 +94,7 @@ export default async function TripPage({ params }: PageProps) {
         location={trip.location}
         image={trip.image}
         isPast={trip.isPast}
+        spotsLeft={trip.spotsLeft}
       />
 
       {/* 2. Target Audience */}

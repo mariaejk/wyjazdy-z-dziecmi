@@ -73,8 +73,8 @@ export function TripCard({ trip }: TripCardProps) {
         </Button>
         {!trip.isPast && (
           isSoldOut ? (
-            <Button size="sm" disabled>
-              Zarezerwuj
+            <Button href={`${tripUrl}#lista-oczekujacych`} size="sm">
+              Lista oczekujących
             </Button>
           ) : (
             <Button href={`${tripUrl}#formularz`} size="sm">
