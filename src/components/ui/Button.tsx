@@ -67,6 +67,21 @@ export function Button({
 
   if ("href" in props && props.href) {
     const { href, "aria-label": ariaLabel, target, rel } = props as ButtonAsLink;
+
+    // Hash-only links use native <a> for proper scroll behavior
+    if (href.startsWith("#")) {
+      return (
+        <a
+          href={href}
+          className={classes}
+          aria-label={ariaLabel}
+        >
+          {icon && <span className="shrink-0">{icon}</span>}
+          {children}
+        </a>
+      );
+    }
+
     return (
       <Link
         href={href}
