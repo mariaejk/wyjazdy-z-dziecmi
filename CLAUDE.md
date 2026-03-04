@@ -6,7 +6,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 Landing page / sales funnel for "Wyjazdy z Dziećmi" — a brand organizing family workshop retreats in nature (yoga, dance, ceramics, horses). Client: Maria Kordalewska. Domain: wyjazdyzdziecmi.pl.
 
-**Status:** Phase 1-7 COMPLETE. Site is a production-ready sales funnel with CTA buttons, scarcity signals, GA4 event tracking, Microsoft Clarity, loading states, and sticky mobile CTA.
+**Status:** Phase 1-7 + Poprawki klientki COMPLETE. Site is a production-ready sales funnel with CTA buttons, scarcity signals, GA4 event tracking, Microsoft Clarity, loading states, sticky mobile CTA, trip calendar, waitlist, blog, gallery, and category filtering.
 
 ## Tech Stack
 
@@ -159,6 +159,15 @@ npm run lint       # ESLint
 - **Scarcity badge thresholds**: `spotsLeft <= 3` = amber "Ostatnie miejsca!", `spotsLeft === 0` = red "Komplet", `> 3` = no badge. Simple, effective urgency signals.
 - **StickyBookingCTA z-index layering**: `z-30` below header (`z-40`) and cookie banner (`z-50`). Use `transition-transform` with `useReducedMotion` guard.
 
+## Poprawki Klientki 03.03.2026 Lessons Learned
+
+- **`contentBlocks` pattern**: `{ type: "text" | "image", text?, src?, alt? }[]` in trip data. Replaces Gallery component — images interleaved with text blocks for richer layout.
+- **Trip categories with URL filter**: `?kategoria=matka-corka` + `useSearchParams()` — simpler than separate pages per category.
+- **React "adjust state during render"**: `if (pathname !== prevPathname) { setPrevPathname(pathname); reset(); }` — replaces `useEffect` anti-pattern, eliminates extra commit+paint cycle.
+- **`role="region"` + `aria-label`**: Interactive components like calendars need both attributes for screen reader identification.
+- **spotsTotal/spotsLeft pairs**: Always provide both — even if conditional rendering doesn't require both, data should be complete and consistent.
+- **WaitlistForm when spotsLeft === 0**: Show waitlist form instead of hiding sold-out trips. Better UX and lead capture.
+
 ## Content Sources
 
-All copy comes from `docs/tresc_na_strone.md` and `docs/TODO POPRAWIC landing page 2.03.2026.docx`. Both trips have complete content. "Yoga i Konie" pricing is TBD (empty array). Single Parents page content was generated (not in source doc).
+All copy comes from `docs/tresc_na_strone.md` and `docs/TODO POPRAWIC landing page 2.03.2026.docx`. Both trips have complete content. "Yoga i Konie" pricing: 900/700 zł (warsztaty + joga). `/single-parents` redirects 301 to `/wyjazd-z-dziecmi`.

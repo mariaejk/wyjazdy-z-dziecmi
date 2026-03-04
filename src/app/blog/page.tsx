@@ -19,7 +19,7 @@ const sections = [
     title: "Zrozum emocje dziecka (i swoje)",
     paragraphs: [
       "Dzieci przed pierwszym wyjazdem często czują mieszankę radości, ciekawości i niepokoju, a lekkie objawy lęku separacyjnego są w takim momencie zupełnie normalne. Badania i praktyka psychologów pokazują, że to, jak dorosły reaguje na te emocje, ma ogromny wpływ na to, jak dziecko poradzi sobie z rozstaniem.",
-      `Nie warto udawać, że trudnych uczuć nie ma — lepiej je nazwać: \u201EWidzę, że trochę się boisz spania poza domem, to normalne przed czymś nowym\u201D. Z drugiej strony ważne jest, aby rodzic na zewnątrz był spokojny i pewny decyzji, bo dziecko bardzo mocno \u201Eczyta\u201D nasz niepokój.`,
+      `Nie warto udawać, że trudnych uczuć nie ma — lepiej je nazwać: „Widzę, że trochę się boisz spania poza domem, to normalne przed czymś nowym". Z drugiej strony ważne jest, aby rodzic na zewnątrz był spokojny i pewny decyzji, bo dziecko bardzo mocno „czyta" nasz niepokój.`,
     ],
   },
   {
@@ -33,21 +33,21 @@ const sections = [
     title: "Pracuj z lękiem separacyjnym",
     paragraphs: [
       "Psycholodzy podkreślają, że łagodne rytuały rozstań i przewidywalność bardzo zmniejszają lęk separacyjny. Pomaga jasna informacja: kiedy wyjazd, jak długo potrwa, kto będzie z dzieckiem. Stały, krótki rytuał pożegnania zamiast długiego, przeciąganego rozstania.",
-      `Specjaliści odradzają zdanie \u201EJeśli będzie źle, przyjadę od razu i zabiorę cię do domu\u201D, bo nasila ono skupienie na lęku. Lepiej powiedzieć: \u201EWiem, że dasz sobie radę, a jeśli będzie ci trudno, porozmawiaj z opiekunem — oni są tam po to, żeby ci pomóc\u201D.`,
+      `Specjaliści odradzają zdanie „Jeśli będzie źle, przyjadę od razu i zabiorę cię do domu", bo nasila ono skupienie na lęku. Lepiej powiedzieć: „Wiem, że dasz sobie radę, a jeśli będzie ci trudno, porozmawiaj z opiekunem — oni są tam po to, żeby ci pomóc".`,
     ],
   },
   {
     title: "Zrób małe próby przed wyjazdem",
     paragraphs: [
-      `Wielu wychowawców rekomenduje stopniowe oswajanie dziecka z nocowaniem poza domem. Możesz zorganizować kilka nocowań u dziadków, cioci czy zaprzyjaźnionej rodziny. Spróbować \u201Epół-wyjazdu\u201D — np. jednodniowe warsztaty bez rodziców.`,
-      `Takie doświadczenia budują w dziecku poczucie: \u201EJuż to kiedyś zrobiłem/am, poradziłem/am sobie — dam radę znowu\u201D.`,
+      `Wielu wychowawców rekomenduje stopniowe oswajanie dziecka z nocowaniem poza domem. Możesz zorganizować kilka nocowań u dziadków, cioci czy zaprzyjaźnionej rodziny. Spróbować „pół-wyjazdu" — np. jednodniowe warsztaty bez rodziców.`,
+      `Takie doświadczenia budują w dziecku poczucie: „Już to kiedyś zrobiłem/am, poradziłem/am sobie — dam radę znowu".`,
     ],
   },
   {
     title: "Włącz dziecko w przygotowania i pakowanie",
     paragraphs: [
-      `Eksperci podkreślają, że dziecko powinno aktywnie uczestniczyć w pakowaniu, a nie tylko dostać \u201Egotową walizkę\u201D. Wspólne przygotowania dają dziecku poczucie kontroli i sprawczości, pomagają zapamiętać, co jest gdzie spakowane, i zamieniają stres w konkretne działanie.`,
-      `Jeśli organizator na to pozwala, spakuj dziecku \u201Ekawałek domu\u201D: małego pluszaka, małą poduszkę czy zdjęcie rodziny — takie przedmioty bardzo pomagają w chwilach tęsknoty.`,
+      `Eksperci podkreślają, że dziecko powinno aktywnie uczestniczyć w pakowaniu, a nie tylko dostać „gotową walizkę". Wspólne przygotowania dają dziecku poczucie kontroli i sprawczości, pomagają zapamiętać, co jest gdzie spakowane, i zamieniają stres w konkretne działanie.`,
+      `Jeśli organizator na to pozwala, spakuj dziecku „kawałek domu": małego pluszaka, małą poduszkę czy zdjęcie rodziny — takie przedmioty bardzo pomagają w chwilach tęsknoty.`,
     ],
   },
   {
@@ -91,7 +91,7 @@ export default function BlogPage() {
               <p className="mt-4 text-lg leading-relaxed text-graphite-light">
                 Pierwszy wyjazd warsztatowy to duży krok w stronę samodzielności
                 dziecka, ale też spore emocje dla rodziców. Dobra przygotówka
-                &mdash; zwłaszcza emocjonalna &mdash; zmniejsza ryzyko silnej
+                — zwłaszcza emocjonalna — zmniejsza ryzyko silnej
                 tęsknoty i pomaga zamienić lęk w ekscytację.
               </p>
             </ScrollAnimation>

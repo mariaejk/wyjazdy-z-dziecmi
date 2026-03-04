@@ -37,6 +37,7 @@ export function WaitlistForm({ tripSlug, tripTitle }: WaitlistFormProps) {
       email: "",
       phone: "",
       trip: tripSlug,
+      // RHF/Zod type mismatch workaround — Zod literal(true) enforces on server
       consentRodo: false as unknown as true,
       website: "",
     },

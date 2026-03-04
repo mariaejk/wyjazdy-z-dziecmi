@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { usePathname } from "next/navigation";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -32,12 +32,14 @@ export function NewsletterForm() {
     },
   });
 
-  // Reset form errors and status when navigating between pages
-  useEffect(() => {
+  // Reset form state when navigating between pages (adjust state during render)
+  const [prevPathname, setPrevPathname] = useState(pathname);
+  if (pathname !== prevPathname) {
+    setPrevPathname(pathname);
     reset();
     setStatus("idle");
     setErrorMessage("");
-  }, [pathname, reset]);
+  }
 
   const onSubmit = async (data: NewsletterFormValues) => {
     setStatus("submitting");

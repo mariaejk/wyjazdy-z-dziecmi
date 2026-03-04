@@ -92,7 +92,7 @@ export const trips: Trip[] = [
     ],
     deposit: 450,
     spotsTotal: 12,
-    spotsLeft: 5,
+    spotsLeft: 0,
     collaborator: {
       name: "Ilona Bekier-Ekwa",
       role: "Tancerka, choreografka, nauczycielka jogi",
@@ -430,6 +430,7 @@ export const trips: Trip[] = [
     earlyBirdDeadline: "2026-03-31",
     deposit: 0,
     spotsTotal: 35,
+    spotsLeft: 35,
     faq: [
       {
         question: "Czy dzieci do 3 lat wchodzą za darmo?",
@@ -515,6 +516,7 @@ export const trips: Trip[] = [
       "Nocleg w eko-domku (dopłata)",
     ],
     deposit: 0,
+    spotsTotal: 30,
     spotsLeft: 0,
     faq: [
       {

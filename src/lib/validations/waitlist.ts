@@ -3,15 +3,15 @@ import { z } from "zod";
 export const waitlistSchema = z.object({
   name: z
     .string()
-    .min(2, "Imi\u0119 musi mie\u0107 co najmniej 2 znaki")
-    .max(100, "Imi\u0119 mo\u017Ce mie\u0107 maksymalnie 100 znak\u00F3w"),
+    .min(2, "Imię musi mieć co najmniej 2 znaki")
+    .max(100, "Imię może mieć maksymalnie 100 znaków"),
   email: z
     .string()
-    .email("Podaj prawid\u0142owy adres e-mail"),
+    .email("Podaj prawidłowy adres e-mail"),
   phone: z
     .string()
-    .min(9, "Numer telefonu musi mie\u0107 co najmniej 9 cyfr")
-    .max(20, "Numer telefonu jest za d\u0142ugi")
+    .min(9, "Numer telefonu musi mieć co najmniej 9 cyfr")
+    .max(20, "Numer telefonu jest za długi")
     .regex(/^[+\d\s()-]+$/, "Numer telefonu zawiera niedozwolone znaki"),
   trip: z
     .string()

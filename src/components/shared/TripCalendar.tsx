@@ -110,7 +110,7 @@ export function TripCalendar({ trips }: TripCalendarProps) {
   for (let d = 1; d <= daysInMonth; d++) cells.push(d);
 
   return (
-    <div className="overflow-hidden rounded-2xl border border-graphite/10 bg-white">
+    <div className="overflow-hidden rounded-2xl border border-graphite/10 bg-white" aria-label="Kalendarz wyjazdów" role="region">
       {/* Header */}
       <div className="flex items-center justify-between border-b border-graphite/10 px-4 py-3">
         <button
