@@ -2,67 +2,125 @@
 
 import Image from "next/image";
 import { motion, useReducedMotion } from "motion/react";
-import { Leaf, Heart, Sparkles } from "lucide-react";
+import { Leaf, Heart, Sparkles, Star } from "lucide-react";
 import { Container } from "@/components/layout/Container";
 import { Button } from "@/components/ui/Button";
+import { cn } from "@/lib/utils";
 
 const benefits = [
   {
     icon: Leaf,
     text: "Miejsca w otoczeniu natury, które przynoszą spokój i ukojenie",
+    bgClass: "bg-sage/10",
+    iconClass: "text-sage-dark",
   },
   {
     icon: Heart,
-    text: "Warsztaty rozwojowe, które zapraszają w podróż wgłąb siebie i budują więź z dzieckiem",
+    text: "Warsztaty rozwojowe budujące więź z dzieckiem",
+    bgClass: "bg-peach/15",
+    iconClass: "text-peach",
   },
   {
     icon: Sparkles,
     text: "Mnóstwo niebanalnych atrakcji, lepszych od niejednej bajki!",
+    bgClass: "bg-sky/15",
+    iconClass: "text-sky",
   },
 ];
+
+function DecorativeDots() {
+  return (
+    <>
+      <div className="absolute top-[15%] right-[10%] h-2 w-2 rounded-full bg-sage opacity-30 animate-float-slow" />
+      <div className="absolute top-[40%] right-[5%] h-3 w-3 rounded-full bg-peach opacity-25 animate-float-medium" />
+      <div className="absolute bottom-[20%] right-[15%] h-2 w-2 rounded-full bg-sky opacity-30 animate-float-reverse" />
+      <div className="absolute top-[25%] left-[48%] h-2.5 w-2.5 rounded-full bg-lavender opacity-20 animate-float-medium hidden lg:block" />
+      <div className="absolute bottom-[35%] left-[52%] h-2 w-2 rounded-full bg-sage opacity-20 animate-float-slow hidden lg:block" />
+    </>
+  );
+}
 
 export function HeroSection() {
   const prefersReducedMotion = useReducedMotion();
 
-  // Early return: plain HTML without motion (consistent with ScrollAnimation)
   if (prefersReducedMotion) {
     return (
-      <section className="relative min-h-[85vh] flex items-center overflow-hidden">
-        <Image
-          src="/images/hero.jpg"
-          alt="Rodzina na wyjeździe warsztatowym w naturze"
-          fill
-          priority
-          sizes="100vw"
-          className="object-cover"
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-black/20" />
-        <Container className="relative z-10 py-20 sm:py-28 lg:py-32">
-          <div className="max-w-2xl">
-            <h1 className="font-heading text-4xl font-bold text-white sm:text-5xl lg:text-6xl">
-              Wyjazdy z Dziećmi
-            </h1>
-            <p className="mt-4 text-lg text-white/90 sm:mt-6 sm:text-xl lg:text-2xl">
-              Projekt, który powstał z potrzeby spędzania jakościowego czasu
-              z dziećmi.
-            </p>
-            <ul className="mt-8 space-y-4 sm:mt-10">
-              {benefits.map((benefit) => (
-                <li key={benefit.text} className="flex items-start gap-3">
-                  <benefit.icon
-                    className="mt-0.5 h-5 w-5 shrink-0 text-white/80"
-                    strokeWidth={1.5}
+      <section
+        id="hero"
+        className="relative overflow-hidden bg-gradient-to-br from-parchment via-white to-peach-light/30"
+      >
+        <DecorativeDots />
+        <Container className="relative z-10 py-16 sm:py-20 lg:py-28">
+          <div className="flex flex-col lg:flex-row lg:items-center lg:gap-12">
+            {/* Image — left */}
+            <div className="relative mx-auto w-full max-w-md lg:mx-0 lg:w-[45%] lg:max-w-none">
+              <div className="absolute -top-4 -right-4 h-32 w-32 rounded-full bg-sage/20" />
+              <div className="absolute -bottom-4 -left-4 h-24 w-24 rounded-full bg-peach/30" />
+              <div className="absolute -top-6 -left-6 h-20 w-20 rounded-full bg-sky/20" />
+              <div className="relative rotate-[-2deg] overflow-hidden rounded-3xl shadow-2xl">
+                <Image
+                  src="/images/hero.jpg"
+                  alt="Rodzina na wyjeździe warsztatowym w naturze"
+                  width={720}
+                  height={540}
+                  priority
+                  sizes="(max-width: 1024px) calc(100vw - 2rem), 45vw"
+                  className="aspect-[4/3] w-full object-cover"
+                />
+              </div>
+            </div>
+
+            {/* Text — right */}
+            <div className="mt-10 lg:mt-0 lg:w-[55%]">
+              <span className="inline-block rounded-full border border-sage/30 bg-sage/10 px-4 py-1 text-sm font-medium text-sage-dark">
+                Wyjazdy 2026
+              </span>
+              <h1 className="mt-4 font-heading text-4xl font-bold text-graphite sm:text-5xl lg:text-6xl">
+                Wyjazdy z{" "}
+                <span className="text-sage-dark">Dziećmi</span>
+              </h1>
+              <p className="mt-4 max-w-lg text-lg leading-relaxed text-graphite-light sm:mt-6">
+                Projekt, który powstał z potrzeby spędzania jakościowego czasu
+                z dziećmi. Warsztaty, natura i niezapomniane przygody.
+              </p>
+
+              <div className="mt-8 grid gap-3 sm:grid-cols-3">
+                {benefits.map((benefit) => (
+                  <div
+                    key={benefit.text}
+                    className={cn("rounded-xl p-4", benefit.bgClass)}
+                  >
+                    <benefit.icon
+                      className={cn("mb-2 h-5 w-5", benefit.iconClass)}
+                      strokeWidth={1.5}
+                    />
+                    <p className="text-sm leading-snug text-graphite">
+                      {benefit.text}
+                    </p>
+                  </div>
+                ))}
+              </div>
+
+              <div className="mt-8 sm:mt-10">
+                <Button
+                  href="/wyjazdy"
+                  size="lg"
+                  className="rounded-xl bg-sage-dark hover:bg-sage"
+                >
+                  Znajdź swój wyjazd
+                </Button>
+              </div>
+
+              <div className="mt-4 flex items-center gap-1.5 text-sm text-graphite-light">
+                {Array.from({ length: 5 }).map((_, i) => (
+                  <Star
+                    key={i}
+                    className="h-4 w-4 fill-peach text-peach"
+                    strokeWidth={1}
                   />
-                  <span className="text-base text-white/85 sm:text-lg">
-                    {benefit.text}
-                  </span>
-                </li>
-              ))}
-            </ul>
-            <div className="mt-10 sm:mt-12">
-              <Button href="/wyjazdy" size="lg" className="bg-moss hover:bg-moss-light">
-                Znajdź swój wyjazd
-              </Button>
+                ))}
+                <span className="ml-1">Polecane przez rodziców</span>
+              </div>
             </div>
           </div>
         </Container>
@@ -71,71 +129,137 @@ export function HeroSection() {
   }
 
   return (
-    <section className="relative min-h-[85vh] flex items-center overflow-hidden">
-      {/* Background image */}
-      <Image
-        src="/images/hero.jpg"
-        alt="Rodzina na wyjeździe warsztatowym w naturze"
-        fill
-        priority
-        sizes="100vw"
-        className="object-cover"
-      />
+    <section
+      id="hero"
+      className="relative overflow-hidden bg-gradient-to-br from-parchment via-white to-peach-light/30"
+    >
+      <DecorativeDots />
 
-      {/* Gradient overlay */}
-      <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-black/20" />
-
-      {/* Content */}
-      <Container className="relative z-10 py-20 sm:py-28 lg:py-32">
-        <div className="max-w-2xl">
-          <motion.h1
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.1 }}
-            className="font-heading text-4xl font-bold text-white sm:text-5xl lg:text-6xl"
-          >
-            Wyjazdy z Dziećmi
-          </motion.h1>
-
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.25 }}
-            className="mt-4 text-lg text-white/90 sm:mt-6 sm:text-xl lg:text-2xl"
-          >
-            Projekt, który powstał z potrzeby spędzania jakościowego czasu
-            z dziećmi.
-          </motion.p>
-
-          <motion.ul
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.4 }}
-            className="mt-8 space-y-4 sm:mt-10"
-          >
-            {benefits.map((benefit) => (
-              <li key={benefit.text} className="flex items-start gap-3">
-                <benefit.icon
-                  className="mt-0.5 h-5 w-5 shrink-0 text-white/80"
-                  strokeWidth={1.5}
-                />
-                <span className="text-base text-white/85 sm:text-lg">
-                  {benefit.text}
-                </span>
-              </li>
-            ))}
-          </motion.ul>
-
+      <Container className="relative z-10 py-16 sm:py-20 lg:py-28">
+        <div className="flex flex-col lg:flex-row lg:items-center lg:gap-12">
+          {/* Image — left */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.55 }}
-            className="mt-10 sm:mt-12"
+            initial={{ opacity: 0, x: -60, rotate: -5 }}
+            animate={{ opacity: 1, x: 0, rotate: -2 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            className="relative mx-auto w-full max-w-md lg:mx-0 lg:w-[45%] lg:max-w-none"
           >
-            <Button href="/wyjazdy" size="lg" className="bg-moss hover:bg-moss-light">
-              Znajdź swój wyjazd
-            </Button>
+            {/* Decorative circles behind image */}
+            <div className="absolute -top-4 -right-4 h-32 w-32 rounded-full bg-sage/20 animate-float-slow" />
+            <div className="absolute -bottom-4 -left-4 h-24 w-24 rounded-full bg-peach/30 animate-float-medium" />
+            <div className="absolute -top-6 -left-6 h-20 w-20 rounded-full bg-sky/20 animate-float-reverse" />
+
+            <div className="relative overflow-hidden rounded-3xl shadow-2xl">
+              <Image
+                src="/images/hero.jpg"
+                alt="Rodzina na wyjeździe warsztatowym w naturze"
+                width={720}
+                height={540}
+                priority
+                sizes="(max-width: 1024px) calc(100vw - 2rem), 45vw"
+                className="aspect-[4/3] w-full object-cover"
+              />
+            </div>
           </motion.div>
+
+          {/* Text — right */}
+          <div className="mt-10 lg:mt-0 lg:w-[55%]">
+            {/* Badge */}
+            <motion.span
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{
+                duration: 0.5,
+                delay: 0.3,
+                type: "spring",
+                stiffness: 300,
+                damping: 15,
+              }}
+              className="inline-block rounded-full border border-sage/30 bg-sage/10 px-4 py-1 text-sm font-medium text-sage-dark"
+            >
+              Wyjazdy 2026
+            </motion.span>
+
+            {/* H1 */}
+            <motion.h1
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.2 }}
+              className="mt-4 font-heading text-4xl font-bold text-graphite sm:text-5xl lg:text-6xl"
+            >
+              Wyjazdy z{" "}
+              <span className="text-sage-dark">Dziećmi</span>
+            </motion.h1>
+
+            {/* Subtitle */}
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.35 }}
+              className="mt-4 max-w-lg text-lg leading-relaxed text-graphite-light sm:mt-6"
+            >
+              Projekt, który powstał z potrzeby spędzania jakościowego czasu
+              z dziećmi. Warsztaty, natura i niezapomniane przygody.
+            </motion.p>
+
+            {/* Benefit cards */}
+            <div className="mt-8 grid gap-3 sm:grid-cols-3">
+              {benefits.map((benefit, index) => (
+                <motion.div
+                  key={benefit.text}
+                  initial={{ opacity: 0, y: 24, rotate: 2 }}
+                  animate={{ opacity: 1, y: 0, rotate: 0 }}
+                  transition={{
+                    duration: 0.5,
+                    delay: 0.5 + index * 0.12,
+                    ease: "easeOut",
+                  }}
+                  className={cn("rounded-xl p-4", benefit.bgClass)}
+                >
+                  <benefit.icon
+                    className={cn("mb-2 h-5 w-5", benefit.iconClass)}
+                    strokeWidth={1.5}
+                  />
+                  <p className="text-sm leading-snug text-graphite">
+                    {benefit.text}
+                  </p>
+                </motion.div>
+              ))}
+            </div>
+
+            {/* CTA */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.85 }}
+              className="mt-8 sm:mt-10"
+            >
+              <Button
+                href="/wyjazdy"
+                size="lg"
+                className="rounded-xl bg-sage-dark hover:bg-sage"
+              >
+                Znajdź swój wyjazd
+              </Button>
+            </motion.div>
+
+            {/* Social proof */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.6, delay: 1.0 }}
+              className="mt-4 flex items-center gap-1.5 text-sm text-graphite-light"
+            >
+              {Array.from({ length: 5 }).map((_, i) => (
+                <Star
+                  key={i}
+                  className="h-4 w-4 fill-peach text-peach"
+                  strokeWidth={1}
+                />
+              ))}
+              <span className="ml-1">Polecane przez rodziców</span>
+            </motion.div>
+          </div>
         </div>
       </Container>
     </section>
