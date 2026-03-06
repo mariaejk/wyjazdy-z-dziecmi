@@ -34,6 +34,9 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
+# keystatic temp files
+*.tmp
+
 # project specific
 claude-code-infrastructure-showcase/
 temp-next/

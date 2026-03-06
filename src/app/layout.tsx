@@ -1,21 +1,5 @@
 import type { ReactNode } from "react";
 import type { Metadata } from "next";
-import { Playfair_Display, Inter } from "next/font/google";
-import "./globals.css";
-
-const playfair = Playfair_Display({
-  variable: "--font-playfair",
-  subsets: ["latin", "latin-ext"],
-  display: "swap",
-  weight: ["400", "700"],
-});
-
-const inter = Inter({
-  variable: "--font-inter",
-  subsets: ["latin", "latin-ext"],
-  display: "swap",
-  weight: ["400", "500", "600"],
-});
 
 export const metadata: Metadata = {
   title: {
@@ -53,11 +37,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pl">
-      <body
-        className={`${playfair.variable} ${inter.variable} font-body bg-parchment text-graphite antialiased`}
-      >
-        {children}
-      </body>
+      <body>{children}</body>
     </html>
   );
 }

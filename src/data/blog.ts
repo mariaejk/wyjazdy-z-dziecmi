@@ -25,7 +25,7 @@ export async function getAllBlogPosts(): Promise<BlogPost[]> {
 
 export async function getBlogPost(slug: string) {
   const entry = await reader.collections.blog.read(slug);
-  if (!entry) return null;
+  if (!entry) return undefined;
   return {
     slug,
     title: entry.title,

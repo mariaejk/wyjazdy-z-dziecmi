@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import { Playfair_Display, Inter } from "next/font/google";
 import { SkipToContent } from "@/components/layout/SkipToContent";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
@@ -7,6 +8,21 @@ import { StructuredData } from "@/components/shared/StructuredData";
 import { GoogleAnalytics } from "@/components/shared/GoogleAnalytics";
 import { ClarityScript } from "@/components/shared/ClarityScript";
 import { getOrganizationSchema } from "@/lib/structured-data";
+import "../globals.css";
+
+const playfair = Playfair_Display({
+  variable: "--font-playfair",
+  subsets: ["latin", "latin-ext"],
+  display: "swap",
+  weight: ["400", "700"],
+});
+
+const inter = Inter({
+  variable: "--font-inter",
+  subsets: ["latin", "latin-ext"],
+  display: "swap",
+  weight: ["400", "500", "600"],
+});
 
 export default function MainLayout({
   children,
@@ -14,7 +30,9 @@ export default function MainLayout({
   children: ReactNode;
 }>) {
   return (
-    <>
+    <div
+      className={`${playfair.variable} ${inter.variable} font-body bg-parchment text-graphite antialiased`}
+    >
       <StructuredData data={getOrganizationSchema()} />
       <GoogleAnalytics />
       <ClarityScript />
@@ -25,6 +43,6 @@ export default function MainLayout({
       </main>
       <Footer />
       <CookieBanner />
-    </>
+    </div>
   );
 }

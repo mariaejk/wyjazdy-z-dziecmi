@@ -2,6 +2,7 @@ import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import Markdoc from "@markdoc/markdoc";
 import React from "react";
+
 import { Container } from "@/components/layout/Container";
 import { SectionWrapper } from "@/components/ui/SectionWrapper";
 import { SectionHeading } from "@/components/ui/SectionHeading";
@@ -47,7 +48,7 @@ export default async function BlogPostPage({ params }: PageProps) {
 
   const { node } = await post.content();
   const renderable = Markdoc.transform(node);
-  const html = Markdoc.renderers.html(renderable);
+  const content = Markdoc.renderers.react(renderable, React);
 
   return (
     <>
@@ -78,10 +79,9 @@ export default async function BlogPostPage({ params }: PageProps) {
         <Container>
           <article className="mx-auto max-w-3xl">
             <ScrollAnimation variant="fadeUp">
-              <div
-                className="prose prose-graphite max-w-none"
-                dangerouslySetInnerHTML={{ __html: html }}
-              />
+              <div className="prose prose-graphite max-w-none">
+                {content}
+              </div>
             </ScrollAnimation>
 
             <ScrollAnimation variant="fadeUp">

@@ -3,9 +3,8 @@ import { reader } from "@/lib/keystatic";
 
 async function mapTrip(
   slug: string,
-  entry: Awaited<ReturnType<typeof reader.collections.trips.read>>
+  entry: NonNullable<Awaited<ReturnType<typeof reader.collections.trips.read>>>
 ): Promise<Trip> {
-  if (!entry) throw new Error(`Trip not found: ${slug}`);
   return {
     slug,
     title: entry.title,
