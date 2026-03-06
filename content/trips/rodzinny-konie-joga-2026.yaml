@@ -1,0 +1,103 @@
+title: 'Rodzinny tydzień z końmi i jogą'
+subtitle: 'Tydzień natury, bliskości i dobrej energii na Mazurach'
+date: '2026-08-01'
+dateEnd: '2026-08-07'
+location: 'Sasek Mały — Mazury'
+category: rodzinny
+shortDescription: >-
+  Zapraszamy na wyjątkowy, rodzinny wyjazd pełen natury, bliskości i dobrej
+  energii. Spędzimy tydzień w malowniczym Sasku Małym — wśród lasów, nad
+  czystym jeziorem, w rytmie natury i w towarzystwie koni.
+longDescription: >-
+  To przestrzeń, w której można naprawdę zwolnić, odetchnąć i pobyć razem.
+
+
+  Na wyjazd czekają na Was: przejażdżki konne w terenie, nauka jazdy z
+  instruktorem, codzienna opieka nad końmi, pływanie z końmi w jeziorze, joga
+  na polanie wśród koni. Poranna joga nad brzegiem jeziora, fun joga dla
+  rodziców i dzieci, relaksacje i świadomy oddech.
+
+
+  Kamila poprowadzi warsztaty ajurwedyjskie — naturalny sposób na regulację
+  układu nerwowego, warsztat świadomego dotyku dla rodziców i dzieci. Codzienne
+  zabawy inspirowane naturą, kąpiele w jeziorze, rodzinne ogniska pod
+  gwiazdami.
+
+
+  Zapewniamy gry i zabawy dla dzieci każdego dnia oraz częściową opiekę dla
+  dzieci, podczas gdy dorośli będą na jodze lub na warsztacie im dedykowanym.
+image: /images/yoga-konie.jpg
+isPast: false
+spotsTotal: null
+spotsLeft: null
+deposit: 300
+earlyBirdDeadline: ''
+earlyBirdPrice: null
+targetAudience:
+  - label: Rodziny kochające naturę i życie w jej rytmie
+    description: ''
+  - label: Rodzice chcący spędzić jakościowy czas z dziećmi
+    description: ''
+  - label: Osoby potrzebujące wyciszenia i regeneracji
+    description: ''
+  - label: 'Miłośnicy koni — początkujący i zaawansowani'
+    description: ''
+schedule:
+  - date: '2026-08-01'
+    dayLabel: 'Sobota, 1 sierpnia — dzień przyjazdu'
+    activities:
+      - time: 'od 14:00'
+        activity: 'Przyjazd, zakwaterowanie, zwiedzanie Saska'
+      - time: '19:00'
+        activity: Kolacja powitalna
+      - time: '20:00'
+        activity: Krąg otwarcia i integracja przy ognisku
+practicalInfo:
+  accommodation: >-
+    Przytulne apartamenty w pensjonacie Sasek Mały — bezpieczny, ogrodzony
+    teren z dostępem do jeziora.
+  food: >-
+    Całodzienne wyżywienie: 140 zł/dzień dorosły, 70 zł dzieci do 10 lat, 0 zł
+    dzieci do 3 lat.
+  transport: Dojazd własny. Szczegółowe wskazówki otrzymasz po rezerwacji.
+pricing:
+  - label: 'Warsztaty — dorosły'
+    price: 900
+  - label: 'Warsztaty — dziecko'
+    price: 700
+priceIncludes:
+  - Warsztaty rozwojowe i joga
+  - Animacje i opieka dla dzieci
+  - Gry i zabawy na świeżym powietrzu
+priceExcludes:
+  - 'Nocleg (od 100 zł/os, płatny w pensjonacie)'
+  - Wyżywienie (140 zł/dzień dorosły)
+  - Jazda konna (płatna w pensjonacie)
+collaborator:
+  name: Kamila Janczurewicz
+  role: Konsultantka i terapeutka ajurwedyjska
+  bio: >-
+    Mama Gai i Niny, pasjonatka bliskiego kontaktu z naturą oraz holistycznego
+    podejścia do zdrowia i życia. Konsultantka i terapeutka ajurwedyjska,
+    wspierająca przede wszystkim kobiety wysoko wrażliwe w procesie odzyskiwania
+    równowagi i wyciszenia układu nerwowego.
+
+
+    Kocha konie, ciszę lasu i przestrzeń, jaką daje przebywanie na łonie
+    natury. Prowadzi również warsztaty w nurcie bliskości dla dzieci i rodziców,
+    oparte na ciepłym i intuicyjnym dotyku, wspierając budowanie głębokiej
+    więzi między dzieckiem a rodzicem.
+  image: /images/kamila.jpg
+faq:
+  - question: Czy potrzebne jest doświadczenie w jeździe konnej?
+    answer: >-
+      Nie, zupełnie nie! Doświadczeni instruktorzy zadbają o komfort zarówno
+      dzieci, jak i dorosłych.
+  - question: Jak zarezerwować miejsce?
+    answer: >-
+      Napisz do nas, a następnie zarezerwuj nocleg na stronie sasek.pl. Wpłata
+      zaliczki 30% gwarantuje miejsce.
+  - question: Ile kosztuje nocleg?
+    answer: 'Noclegi od 100 zł/os/noc. Cennik pokoi na stronie sasek.pl.'
+gallery: []
+contentBlocks: []

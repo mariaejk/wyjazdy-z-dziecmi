@@ -9,7 +9,7 @@ import { StructuredData } from "@/components/shared/StructuredData";
 import { PersonBio } from "@/components/about/PersonBio";
 import { PlaceCard } from "@/components/about/PlaceCard";
 import { getTeamMember } from "@/data/team";
-import { places } from "@/data/places";
+import { getAllPlaces } from "@/data/places";
 import { ROUTES, SITE_CONFIG } from "@/lib/constants";
 import { getBreadcrumbSchema } from "@/lib/structured-data";
 
@@ -24,7 +24,7 @@ const missionCards = [
     icon: Leaf,
     title: "Natura i cisza",
     description:
-      "Szukam miejsc w „bezinterneciu” i „bezzasięgowie”, gdzie możemy zbliżyć się do siebie.",
+      "Szukam miejsc w \u201Ebezinterneciu\u201D i \u201Ebezzasięgowie\u201D, gdzie możemy zbliżyć się do siebie.",
   },
   {
     icon: Heart,
@@ -36,13 +36,14 @@ const missionCards = [
     icon: Star,
     title: "Najlepsi specjaliści",
     description:
-      "Zapraszam do współpracy specjalistów od rozwoju, aby tworzyć spotkania „lepsze niż bajka”.",
+      "Zapraszam do współpracy specjalistów od rozwoju, aby tworzyć spotkania \u201Elepsze niż bajka\u201D.",
   },
 ];
 
-export default function AboutPage() {
-  const maria = getTeamMember("Maria Kordalewska")!;
-  const kamila = getTeamMember("Kamila Janczurewicz")!;
+export default async function AboutPage() {
+  const maria = (await getTeamMember("Maria Kordalewska"))!;
+  const kamila = (await getTeamMember("Kamila Janczurewicz"))!;
+  const places = await getAllPlaces();
 
   return (
     <>

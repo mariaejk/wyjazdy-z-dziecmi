@@ -10,8 +10,9 @@ import { ScrollAnimation } from "@/components/shared/ScrollAnimation";
 import { TripCalendar } from "@/components/shared/TripCalendar";
 import { getAllTrips } from "@/data/trips";
 
-export default function Home() {
-  const calendarTrips = getAllTrips().map((t) => ({
+export default async function Home() {
+  const allTrips = await getAllTrips();
+  const calendarTrips = allTrips.map((t) => ({
     slug: t.slug,
     title: t.title,
     date: t.date,

@@ -1,39 +1,19 @@
 import type { Place } from "@/types/place";
+import { reader } from "@/lib/keystatic";
 
-export const places: Place[] = [
-  {
-    name: "Kacze Bagno",
-    description:
-      "Miejsce wyjątkowe. Każdy, kto go doświadczył, potwierdzi, że zaklęty w nim jest pewien rodzaj magii. Każdy dzień w tej wyjątkowej przestrzeni napawa mocą, podnosi wibracje, koi i uspokaja.\n\nEko-Domki budowane ze słomy i gliny przynoszą głęboki sen, ogród permakulturowy karmi przez cały rok, a szczęśliwe kurki dbają o smak porannej jajecznicy. Do tego duże przestrzenie warsztatowe, pracownia ceramiczna, sauna, balia dają wiele opcji do spędzenia kreatywnego, ale i pełnego relaksu czasu. Kacze Bagno — miejsce inicjatyw pozytywnych — to przestrzeń edukacyjna, która od 20 lat wychowuje dzieci i młodzież zaszczepiając w nich wartości.",
-    url: "https://www.facebook.com/KaczeBagnoMiejsceInicjatywPozytywnych",
-    images: [
-      "/images/kazce-bagno-1.jpg",
-      "/images/kazce-bagno-2.jpg",
-      "/images/kazce-bagno-3.jpg",
-      "/images/kazce-bagno-4.jpg",
-    ],
-    features: [
-      "Eko-domki ze słomy i gliny",
-      "Ogród permakulturowy",
-      "Pracownia ceramiczna",
-      "Sauna i balia",
-      "Duże przestrzenie warsztatowe",
-    ],
-  },
-  {
-    name: "Sasek",
-    description:
-      "Jedyne w swoim rodzaju miejsce na Mazurach położone nad brzegiem jeziora, otoczone lasami, z kilkudziesięcioma mieszkańcami oraz licznym stadem koni. Miejsce znane i uznane w „końskim” świecie, idealne na wypoczynek dla rodzin, z dala od zgiełku miasta.\n\nCzyste jezioro z piaszczystą plażą, las, padoki i łąki, a także profesjonalna infrastruktura do jazdy konnej: kryta ujeżdżalnia, parkur, olbrzymie tereny do jazdy konnej.",
-    features: [
-      "Jezioro z piaszczystą plażą",
-      "Kryta ujeżdżalnia",
-      "Stado koni",
-      "Las i łąki",
-      "Parkur",
-    ],
-  },
-];
+export async function getAllPlaces(): Promise<Place[]> {
+  const data = await reader.singletons.places.read();
+  if (!data) return [];
+  return data.items.map((p) => ({
+    name: p.name,
+    description: p.description,
+    url: p.url || undefined,
+    images: p.images.length > 0 ? [...p.images] : undefined,
+    features: p.features.length > 0 ? [...p.features] : undefined,
+  }));
+}
 
-export function getPlace(name: string): Place | undefined {
-  return places.find((p) => p.name === name);
+export async function getPlace(name: string): Promise<Place | undefined> {
+  const all = await getAllPlaces();
+  return all.find((p) => p.name === name);
 }

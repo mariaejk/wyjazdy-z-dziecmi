@@ -5,8 +5,8 @@ import { ScrollAnimation } from "@/components/shared/ScrollAnimation";
 import { TripCard } from "@/components/home/TripCard";
 import { getUpcomingTrips } from "@/data/trips";
 
-export function TripCardsSection() {
-  const upcomingTrips = getUpcomingTrips();
+export async function TripCardsSection() {
+  const upcomingTrips = await getUpcomingTrips();
 
   return (
     <SectionWrapper id="wyjazdy">

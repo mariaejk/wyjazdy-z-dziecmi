@@ -15,8 +15,8 @@ export const metadata: Metadata = {
     "Opinie rodzin, które uczestniczyły w naszych wyjazdach warsztatowych w naturze.",
 };
 
-export default function OpinionsPage() {
-  const testimonials = getTestimonials();
+export default async function OpinionsPage() {
+  const testimonials = await getTestimonials();
 
   return (
     <>

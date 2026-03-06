@@ -37,8 +37,8 @@ const contactItems = [
   },
 ];
 
-export function ContactInfo() {
-  const maria = getTeamMember("Maria Kordalewska");
+export async function ContactInfo() {
+  const maria = await getTeamMember("Maria Kordalewska");
 
   return (
     <div className="space-y-6">

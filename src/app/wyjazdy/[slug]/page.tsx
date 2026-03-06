@@ -22,7 +22,8 @@ type PageProps = {
 };
 
 export async function generateStaticParams() {
-  return getAllTrips().map((trip) => ({
+  const allTrips = await getAllTrips();
+  return allTrips.map((trip) => ({
     slug: trip.slug,
   }));
 }
@@ -31,7 +32,7 @@ export async function generateMetadata({
   params,
 }: PageProps): Promise<Metadata> {
   const { slug } = await params;
-  const trip = getTripBySlug(slug);
+  const trip = await getTripBySlug(slug);
 
   if (!trip) {
     return { title: "Wyjazd nie znaleziony" };
@@ -56,13 +57,14 @@ export async function generateMetadata({
 
 export default async function TripPage({ params }: PageProps) {
   const { slug } = await params;
-  const trip = getTripBySlug(slug);
+  const trip = await getTripBySlug(slug);
 
   if (!trip) {
     notFound();
   }
 
-  const upcomingTrips = getUpcomingTrips().map((t) => ({
+  const upcoming = await getUpcomingTrips();
+  const upcomingTrips = upcoming.map((t) => ({
     slug: t.slug,
     title: t.title,
   }));

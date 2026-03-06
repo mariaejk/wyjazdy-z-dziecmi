@@ -5,8 +5,8 @@ import { SectionHeading } from "@/components/ui/SectionHeading";
 import { ScrollAnimation } from "@/components/shared/ScrollAnimation";
 import { TripCard } from "@/components/home/TripCard";
 
-export function PastTripsSection() {
-  const pastTrips = getPastTrips();
+export async function PastTripsSection() {
+  const pastTrips = await getPastTrips();
 
   if (pastTrips.length === 0) return null;
 

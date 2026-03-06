@@ -32,14 +32,14 @@ export default async function TripsPage({ searchParams }: PageProps) {
   let subtitle: string;
 
   if (kategoria && (kategoria === "rodzinny" || kategoria === "matka-corka")) {
-    upcomingTrips = getUpcomingTripsByCategory(kategoria);
+    upcomingTrips = await getUpcomingTripsByCategory(kategoria);
     subtitle = categoryLabels[kategoria] ?? "Wybierz swój wyjazd i dołącz do nas!";
   } else {
-    upcomingTrips = getUpcomingTrips();
+    upcomingTrips = await getUpcomingTrips();
     subtitle = "Wybierz swój wyjazd i dołącz do nas!";
   }
 
-  const pastTrips = getPastTrips();
+  const pastTrips = await getPastTrips();
 
   return (
     <>

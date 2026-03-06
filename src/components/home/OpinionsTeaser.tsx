@@ -5,9 +5,11 @@ import { Button } from "@/components/ui/Button";
 import { TestimonialCard } from "@/components/shared/TestimonialCard";
 import { ROUTES } from "@/lib/constants";
 import { getFeaturedTestimonials } from "@/data/testimonials";
+import { getFeaturedTestimonialIds } from "@/data/homepage";
 
-export function OpinionsTeaser() {
-  const featured = getFeaturedTestimonials(["ania", "katarzyna"]);
+export async function OpinionsTeaser() {
+  const ids = await getFeaturedTestimonialIds();
+  const featured = await getFeaturedTestimonials(ids);
 
   return (
     <SectionWrapper>
