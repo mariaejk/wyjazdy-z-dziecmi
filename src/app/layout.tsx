@@ -1,14 +1,6 @@
 import type { ReactNode } from "react";
 import type { Metadata } from "next";
 import { Playfair_Display, Inter } from "next/font/google";
-import { SkipToContent } from "@/components/layout/SkipToContent";
-import { Header } from "@/components/layout/Header";
-import { Footer } from "@/components/layout/Footer";
-import { CookieBanner } from "@/components/layout/CookieBanner";
-import { StructuredData } from "@/components/shared/StructuredData";
-import { GoogleAnalytics } from "@/components/shared/GoogleAnalytics";
-import { ClarityScript } from "@/components/shared/ClarityScript";
-import { getOrganizationSchema } from "@/lib/structured-data";
 import "./globals.css";
 
 const playfair = Playfair_Display({
@@ -51,7 +43,6 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: "/favicon.ico",
-    // TODO: Add apple-touch-icon after generating from logo
   },
 };
 
@@ -62,21 +53,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pl">
-      <head>
-        <StructuredData data={getOrganizationSchema()} />
-      </head>
       <body
         className={`${playfair.variable} ${inter.variable} font-body bg-parchment text-graphite antialiased`}
       >
-        <GoogleAnalytics />
-        <ClarityScript />
-        <SkipToContent />
-        <Header />
-        <main id="main-content" className="min-h-screen">
-          {children}
-        </main>
-        <Footer />
-        <CookieBanner />
+        {children}
       </body>
     </html>
   );
