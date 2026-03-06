@@ -169,56 +169,51 @@ gallery:
     alt: Wspólne warsztaty dla mam i córek
     isMain: false
 contentBlocks:
-  - type: text
-    text: >-
-      Podczas wyjazdu będziemy spotykać się w ruchu i obecności — poprzez jogę,
-      taniec intuicyjny, medytacje, sztukę, muzykę i głos.
-    src: ''
-    alt: ''
-  - type: image
-    text: ''
-    src: /images/matki-corki-1.jpg
-    alt: 'Warsztaty matka i córka — ruch i taniec'
-  - type: text
-    text: >-
-      Tworzymy przestrzeń, w której córki poczują się częścią kręgu kobiet —
-      widziane, ważne i zaproszone do bycia sobą.
-    src: ''
-    alt: ''
-  - type: image
-    text: ''
-    src: /images/matki-corki-2.jpg
-    alt: 'Krąg kobiet — matki i córki'
-  - type: text
-    text: >-
-      Jednocześnie zadbamy o równowagę. Będzie czas wspólny, pogłębiający
-      relację matki i córki, ale także czas oddzielny — moment tylko dla mam,
-      na regenerację, refleksję i bycie w kobiecym kręgu.
-    src: ''
-    alt: ''
-  - type: image
-    text: ''
-    src: /images/matki-corki-3.jpg
-    alt: 'Czas dla mam — regeneracja'
-  - type: text
-    text: >-
-      Poznasz praktyki, które zabierzesz ze sobą do codzienności — proste, a
-      jednocześnie głębokie rytuały ruchu, oddechu i obecności, które mogą stać
-      się Waszym wspólnym językiem także po powrocie do domu.
-    src: ''
-    alt: ''
-  - type: image
-    text: ''
-    src: /images/matki-corki-4.jpg
-    alt: 'Rytuały ruchu i obecności'
-  - type: text
-    text: >-
-      Spotkasz inne kobiety — mamy i córki — i razem stworzymy krąg wspólnej
-      kreacji i autentycznego bycia. Przestrzeń, w której nie trzeba nic
-      udowadniać, przyspieszać ani dopasowywać się. Wystarczy być.
-    src: ''
-    alt: ''
-  - type: image
-    text: ''
-    src: /images/matki-corki-5.jpg
-    alt: 'Wspólna kreacja — warsztaty'
+  - discriminant: text
+    value:
+      text: >-
+        Podczas wyjazdu będziemy spotykać się w ruchu i obecności — poprzez jogę,
+        taniec intuicyjny, medytacje, sztukę, muzykę i głos.
+  - discriminant: image
+    value:
+      image: /images/content/matki-corki-1.jpg
+      alt: 'Warsztaty matka i córka — ruch i taniec'
+  - discriminant: text
+    value:
+      text: >-
+        Tworzymy przestrzeń, w której córki poczują się częścią kręgu kobiet —
+        widziane, ważne i zaproszone do bycia sobą.
+  - discriminant: image
+    value:
+      image: /images/content/matki-corki-2.jpg
+      alt: 'Krąg kobiet — matki i córki'
+  - discriminant: text
+    value:
+      text: >-
+        Jednocześnie zadbamy o równowagę. Będzie czas wspólny, pogłębiający
+        relację matki i córki, ale także czas oddzielny — moment tylko dla mam,
+        na regenerację, refleksję i bycie w kobiecym kręgu.
+  - discriminant: image
+    value:
+      image: /images/content/matki-corki-3.jpg
+      alt: 'Czas dla mam — regeneracja'
+  - discriminant: text
+    value:
+      text: >-
+        Poznasz praktyki, które zabierzesz ze sobą do codzienności — proste, a
+        jednocześnie głębokie rytuały ruchu, oddechu i obecności, które mogą stać
+        się Waszym wspólnym językiem także po powrocie do domu.
+  - discriminant: image
+    value:
+      image: /images/content/matki-corki-4.jpg
+      alt: 'Rytuały ruchu i obecności'
+  - discriminant: text
+    value:
+      text: >-
+        Spotkasz inne kobiety — mamy i córki — i razem stworzymy krąg wspólnej
+        kreacji i autentycznego bycia. Przestrzeń, w której nie trzeba nic
+        udowadniać, przyspieszać ani dopasowywać się. Wystarczy być.
+  - discriminant: image
+    value:
+      image: /images/content/matki-corki-5.jpg
+      alt: 'Wspólna kreacja — warsztaty'

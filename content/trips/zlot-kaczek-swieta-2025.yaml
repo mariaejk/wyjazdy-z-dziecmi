@@ -100,30 +100,27 @@ faq:
       kontakt mailowy.
 gallery: []
 contentBlocks:
-  - type: text
-    text: >-
-      Warsztaty mikołajkowe, teatralne czy ceramiczne to świetna okazja, aby
-      spędzić naprawdę wyjątkowo ten świąteczny czas.
-    src: ''
-    alt: ''
-  - type: image
-    text: ''
-    src: /images/kazce-bagno-4.jpg
-    alt: Świąteczny Zlot Kaczek w Kaczym Bagnie
-  - type: text
-    text: >-
-      Piękno i radość zamknięte w prostocie. Wspólne pieczenie pierników,
-      zabawy, rodzinny czas.
-    src: ''
-    alt: ''
-  - type: image
-    text: ''
-    src: /images/przeszly-1.jpg
-    alt: 'Rodzinne warsztaty — wspólne chwile'
-  - type: text
-    text: >-
-      Posiłki przygotowujemy na bazie naturalnych składników z naszego ogródka,
-      jaj od naszych kur, świeżych produktów dostarczanych przez lokalnych
-      wytwórców.
-    src: ''
-    alt: ''
+  - discriminant: text
+    value:
+      text: >-
+        Warsztaty mikołajkowe, teatralne czy ceramiczne to świetna okazja, aby
+        spędzić naprawdę wyjątkowo ten świąteczny czas.
+  - discriminant: image
+    value:
+      image: /images/content/kazce-bagno-4.jpg
+      alt: Świąteczny Zlot Kaczek w Kaczym Bagnie
+  - discriminant: text
+    value:
+      text: >-
+        Piękno i radość zamknięte w prostocie. Wspólne pieczenie pierników,
+        zabawy, rodzinny czas.
+  - discriminant: image
+    value:
+      image: /images/content/przeszly-1.jpg
+      alt: 'Rodzinne warsztaty — wspólne chwile'
+  - discriminant: text
+    value:
+      text: >-
+        Posiłki przygotowujemy na bazie naturalnych składników z naszego ogródka,
+        jaj od naszych kur, świeżych produktów dostarczanych przez lokalnych
+        wytwórców.

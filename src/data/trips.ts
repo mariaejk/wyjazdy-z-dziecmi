@@ -1,4 +1,4 @@
-import type { Trip } from "@/types/trip";
+import type { Trip, ContentBlock } from "@/types/trip";
 import { reader } from "@/lib/keystatic";
 
 async function mapTrip(
@@ -67,11 +67,15 @@ async function mapTrip(
     })),
     contentBlocks:
       entry.contentBlocks.length > 0
-        ? entry.contentBlocks.map((cb) =>
-            cb.type === "text"
-              ? { type: "text" as const, text: cb.text }
-              : { type: "image" as const, src: cb.src, alt: cb.alt }
-          )
+        ? entry.contentBlocks
+            .map((cb) =>
+              cb.discriminant === "text"
+                ? { type: "text" as const, text: cb.value.text }
+                : cb.value.image
+                  ? { type: "image" as const, src: cb.value.image, alt: cb.value.alt }
+                  : null
+            )
+            .filter(Boolean) as ContentBlock[]
         : undefined,
   };
 }

@@ -164,30 +164,33 @@ export default config({
           }
         ),
         contentBlocks: fields.array(
-          fields.object({
-            type: fields.select({
-              label: "Typ",
+          fields.conditional(
+            fields.select({
+              label: "Typ bloku",
               options: [
                 { label: "Tekst", value: "text" },
                 { label: "Zdjęcie", value: "image" },
               ],
               defaultValue: "text",
             }),
-            text: fields.text({
-              label: "Treść (dla typu tekst)",
-              multiline: true,
-            }),
-            src: fields.text({ label: "Ścieżka do zdjęcia (dla typu image)" }),
-            alt: fields.text({
-              label: "Opis alternatywny (dla typu image)",
-            }),
-          }),
+            {
+              text: fields.object({
+                text: fields.text({ label: "Treść", multiline: true }),
+              }),
+              image: fields.object({
+                image: fields.image({
+                  label: "Zdjęcie",
+                  directory: "public/images/content",
+                  publicPath: "/images/content/",
+                }),
+                alt: fields.text({ label: "Opis alternatywny" }),
+              }),
+            }
+          ),
           {
             label: "Bloki treści",
             itemLabel: (props) =>
-              props.fields.type.value === "text"
-                ? (props.fields.text.value || "Tekst...").slice(0, 50)
-                : props.fields.alt.value || "Zdjęcie...",
+              props.discriminant === "text" ? "Tekst" : "Zdjęcie",
           }
         ),
       },
