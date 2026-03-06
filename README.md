@@ -58,9 +58,13 @@ Lokalnie Keystatic edytuje pliki na dysku. Na Vercel (read-only filesystem) potr
 
 ### Konfiguracja
 
-1. **GitHub OAuth App** — stwórz na github.com → Settings → Developer settings → OAuth Apps:
+1. **GitHub App** (NIE OAuth App!) — stwórz na github.com → Settings → Developer settings → **GitHub Apps** → New:
    - Homepage URL: `https://wyjazdy-z-dziecmi.vercel.app`
    - Callback URL: `https://wyjazdy-z-dziecmi.vercel.app/api/keystatic/github/oauth/callback`
+   - Request user authorization (OAuth) during installation: ✅
+   - Webhook Active: ❌
+   - Permissions: Contents (Read & write), Metadata (Read-only)
+   - Po stworzeniu: Install App → Only select repositories → `wyjazdy-z-dziecmi`
 2. **Env vars na Vercel** (Settings → Environment Variables):
    ```
    NEXT_PUBLIC_KEYSTATIC_GITHUB_OWNER=TatianaG-ka
