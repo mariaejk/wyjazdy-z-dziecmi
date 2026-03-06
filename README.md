@@ -26,7 +26,7 @@ Panel administracyjny do edycji treści dostępny pod `/keystatic`.
 - Instrukcja dla klienta: **[docs/instrukcja-cms.md](docs/instrukcja-cms.md)**
 - Konfiguracja: `keystatic.config.ts`
 - Dane: pliki YAML/Markdoc w folderze `content/`
-- Autentykacja: HTTP Basic Auth (env vars `KEYSTATIC_ADMIN_USER` / `KEYSTATIC_ADMIN_PASSWORD`)
+- Autentykacja: GitHub OAuth na Vercel (użytkownik musi mieć dostęp do repo), bez logowania lokalnie
 
 ### Co mozna edytowac przez CMS
 
@@ -71,11 +71,28 @@ Lokalnie Keystatic edytuje pliki na dysku. Na Vercel (read-only filesystem) potr
    ```
 3. Redeploy na Vercel → panel CMS dostępny pod `/keystatic`
 
+### Nadawanie dostępu do CMS (dla nowych osób)
+
+1. Osoba musi mieć **konto na GitHub** (darmowe) — https://github.com/signup
+2. Wejdź na https://github.com/TatianaG-ka/wyjazdy-z-dziecmi/settings/access
+3. Kliknij **"Add people"**
+4. Wpisz GitHub username lub email tej osoby
+5. Wybierz rolę **Write** (musi móc commitować zmiany przez CMS)
+6. Osoba dostanie zaproszenie na email — musi je zaakceptować
+
+### Logowanie do CMS (Vercel)
+
+1. Otwórz https://wyjazdy-z-dziecmi.vercel.app/keystatic
+2. Kliknij **"Sign in with GitHub"**
+3. GitHub zapyta o autoryzację — zatwierdź
+4. Gotowe — jesteś w panelu CMS
+
+> **Uwaga:** Nie potrzebujesz żadnego hasła do CMS. Logowanie odbywa się przez konto GitHub.
+
 ### Jak działa
 
-- Edycja w panelu → commit w repo → Vercel automatycznie buduje nową wersję
-- Logowanie przez GitHub (trzeba mieć dostęp do repo)
-- Lokalnie (`npm run dev`) panel działa bez logowania i bez tych env vars
+- Edycja w panelu → commit w repo → Vercel automatycznie buduje nową wersję (~1-2 min)
+- Lokalnie (`npm run dev`) panel działa bez logowania i bez env vars GitHub
 
 ## Zmienne środowiskowe
 
