@@ -23,6 +23,8 @@ export const ROUTES = {
   about: "/o-nas",
   motherDaughter: "/matka-z-corka",
   familyTrips: "/wyjazd-z-dziecmi",
+  singleParents: "/single-parents",
+  adultOnly: "/dla-doroslych",
   trips: "/wyjazdy",
   gallery: "/galeria",
   blog: "/blog",

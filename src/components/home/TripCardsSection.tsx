@@ -18,7 +18,7 @@ export async function TripCardsSection() {
           />
         </ScrollAnimation>
 
-        <div className="grid gap-6 sm:gap-8 sm:grid-cols-2">
+        <div className="mx-auto grid max-w-2xl gap-6 sm:gap-8">
           {upcomingTrips.map((trip, index) => (
             <ScrollAnimation
               key={trip.slug}

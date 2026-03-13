@@ -32,14 +32,14 @@ export function Header() {
               priority
             />
             <span className="font-heading text-lg font-bold text-moss transition-colors group-hover:text-moss-light sm:text-xl">
-              Wyjazdy z Dziećmi
+              Warsztaty wyjazdowe dla dorosłych i dzieci
             </span>
           </Link>
 
           {/* Right side: nav + phone + CTA + hamburger */}
           <div className="flex items-center gap-4">
             {/* Desktop navigation */}
-            <nav aria-label="Nawigacja główna" className="hidden md:block">
+            <nav aria-label="Nawigacja główna" className="hidden lg:block">
               <ul className="flex items-center gap-1">
                 {mainNavigation.map((item) => {
                   const active = isNavActive(item.href, pathname);
@@ -74,8 +74,8 @@ export function Header() {
               <span>{CONTACT.phoneDisplay}</span>
             </a>
 
-            {/* CTA — visible md+ */}
-            <div className="hidden md:block">
+            {/* CTA — visible lg+ */}
+            <div className="hidden lg:block">
               <Button href={ROUTES.trips} size="sm">
                 Zarezerwuj
               </Button>
@@ -85,7 +85,7 @@ export function Header() {
             <button
               type="button"
               onClick={() => setMobileMenuOpen(true)}
-              className="inline-flex items-center justify-center rounded-md p-2 text-graphite transition-colors hover:bg-parchment-dark hover:text-moss md:hidden"
+              className="inline-flex items-center justify-center rounded-md p-2 text-graphite transition-colors hover:bg-parchment-dark hover:text-moss lg:hidden"
               aria-expanded={mobileMenuOpen}
               aria-controls="mobile-menu"
               aria-label="Otwórz menu"

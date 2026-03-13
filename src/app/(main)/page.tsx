@@ -40,6 +40,8 @@ export default async function Home() {
       </SectionWrapper>
 
       <TripCardsSection />
+      <AboutTeaser />
+      <OpinionsTeaser />
 
       {/* Calendar */}
       <SectionWrapper variant="alternate">
@@ -56,8 +58,6 @@ export default async function Home() {
         </Container>
       </SectionWrapper>
 
-      <AboutTeaser />
-      <OpinionsTeaser />
       <PastTripsSection />
     </>
   );

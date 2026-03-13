@@ -6,14 +6,16 @@ export type NavItem = {
 };
 
 export const mainNavigation: NavItem[] = [
-  { label: "O mnie", href: ROUTES.about },
-  { label: "Matka z córką", href: ROUTES.motherDaughter },
-  { label: "Wyjazd z dziećmi", href: ROUTES.familyTrips },
-  { label: "Wyjazdy", href: ROUTES.trips },
+  { label: "O nas", href: ROUTES.about },
+  { label: "Wszystkie warsztaty", href: ROUTES.trips },
+  { label: "Warsztaty z dziećmi", href: ROUTES.familyTrips },
+  { label: "Matka i córka", href: ROUTES.motherDaughter },
+  { label: "Single parents", href: ROUTES.singleParents },
+  { label: "Dla dorosłych", href: ROUTES.adultOnly },
   { label: "Galeria", href: ROUTES.gallery },
-  { label: "Blog", href: ROUTES.blog },
   { label: "Opinie", href: ROUTES.opinions },
   { label: "Kontakt", href: ROUTES.contact },
+  { label: "Blog", href: ROUTES.blog },
 ];
 
 export const footerLegalLinks: NavItem[] = [

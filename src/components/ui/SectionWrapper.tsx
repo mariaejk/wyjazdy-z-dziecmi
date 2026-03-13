@@ -3,7 +3,7 @@ import { cn } from "@/lib/utils";
 
 type SectionWrapperProps = {
   children: ReactNode;
-  variant?: "default" | "alternate";
+  variant?: "default" | "alternate" | "highlight";
   id?: string;
   className?: string;
 };
@@ -19,7 +19,11 @@ export function SectionWrapper({
       id={id}
       className={cn(
         "py-16 sm:py-20 lg:py-24",
-        variant === "alternate" ? "bg-parchment-dark" : "bg-parchment",
+        variant === "alternate"
+          ? "bg-parchment-dark"
+          : variant === "highlight"
+            ? "bg-coral/10"
+            : "bg-parchment",
         className,
       )}
     >

@@ -6,7 +6,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 Landing page / sales funnel for "Wyjazdy z Dziećmi" — a brand organizing family workshop retreats in nature (yoga, dance, ceramics, horses). Client: Maria Kordalewska. Domain: wyjazdyzdziecmi.pl.
 
-**Status:** Phase 1-7 + Poprawki klientki COMPLETE. Site is a production-ready sales funnel with CTA buttons, scarcity signals, GA4 event tracking, Microsoft Clarity, loading states, sticky mobile CTA, trip calendar, waitlist, blog, gallery, and category filtering.
+**Status:** Phase 1-7 + Poprawki klientki + Redesign wizualny 13.03 COMPLETE. Site is a production-ready sales funnel with CTA buttons, scarcity signals, GA4 event tracking, Microsoft Clarity, loading states, sticky mobile CTA, trip calendar, waitlist, blog, gallery, category filtering, and warm Terakota+Oliwka color scheme.
 
 ## Tech Stack
 
@@ -28,16 +28,19 @@ Landing page / sales funnel for "Wyjazdy z Dziećmi" — a brand organizing fami
 - **`lang="pl"`** on `<html>` element in root layout.tsx.
 - **No automatic email confirmation** in MVP — don't promise it in microcopy.
 
-## Design System: "Natural Minimalism"
+## Design System: "Warm Natural" (Terakota + Oliwka)
 
 ```
-Background:    #F9F7F2 (warm parchment)
-Alt sections:  #F5F3EE
-CTA/Accents:   #2D4635 (moss green)
-Text:          #1A1A1A (dark graphite)
+Background:    #F4EFE6 (ciepły piasek)
+Alt sections:  #EADCC8 (karmel)
+CTA Primary:   #D9734E (terakota) — hover: #B85331
+Secondary:     #5C713B (ciepła oliwka) — hover: #7A8F53
+Text:          #2C241B (espresso)
+Text light:    #5A4F44 (ciepły szary)
+Accents:       #DDB74A (mustard), #E2856E (coral)
 ```
 
-Mobile-first, generous whitespace, line icons. Past trips rendered with `grayscale(100%)`.
+Mobile-first, generous whitespace, line icons. Past trips rendered in full color (no grayscale).
 
 ## Project Structure
 
@@ -52,7 +55,7 @@ src/app/                 — Next.js pages (layout, page, loading, error)
 src/components/layout/   — SkipToContent, Container, Header, MobileMenu, Footer
 src/components/ui/       — Button, SectionWrapper, SectionHeading, Badge, Card, Accordion, Input, Textarea, Select, Checkbox, HoneypotField
 src/components/shared/   — ScrollAnimation, StructuredData, NewsletterForm, GoogleAnalytics, ClarityScript
-src/components/home/     — HeroSection, TripCard, TripCardsSection, AboutTeaser, OpinionsTeaser
+src/components/home/     — HeroSection, HeroSlideshow, TripCard, TripCardsSection, AboutTeaser, OpinionsTeaser
 src/components/trips/    — TripHero, TripTargetAudience, TripDescription, TripProgram, TripPracticalInfo, TripPricing, TripCollaborator, TripFAQ, TripGallery, BookingForm, StickyBookingCTA, PhoneLink
 src/components/about/    — PersonBio, PlaceCard
 src/components/contact/  — ContactForm, ContactInfo
@@ -168,6 +171,15 @@ npm run lint       # ESLint
 - **spotsTotal/spotsLeft pairs**: Always provide both — even if conditional rendering doesn't require both, data should be complete and consistent.
 - **WaitlistForm when spotsLeft === 0**: Show waitlist form instead of hiding sold-out trips. Better UX and lead capture.
 
+## Redesign 13.03.2026 Lessons Learned
+
+- **CTA hierarchy**: Primary (terracotta) for main actions, Secondary (moss/olive) for lower-priority. Don't use same color for both.
+- **HeroSlideshow component**: Separate `"use client"` component with `AnimatePresence mode="wait"`, `priority` only on first image. Auto-advance with `setInterval` + cleanup in `useEffect`.
+- **Nav breakpoint 10 items**: 10 menu items don't fit at `md` (768px). Bumped to `lg` (1024px). Hamburger shows on screens < lg.
+- **Redirect vs placeholder**: When a menu item needs its own page, replace 301 redirect with a placeholder page (`robots: { index: false }`). Redirects cause duplicate links in navigation.
+- **Single-column trip cards**: `max-w-2xl mx-auto` constrains width when only 2 trips. Better visual balance than 2-column grid.
+- **Grayscale removal**: Remove `grayscale` prop from Card type AND usage in TripCard in same commit to avoid build errors.
+
 ## Content Sources
 
-All copy comes from `docs/tresc_na_strone.md` and `docs/TODO POPRAWIC landing page 2.03.2026.docx`. Both trips have complete content. "Yoga i Konie" pricing: 900/700 zł (warsztaty + joga). `/single-parents` redirects 301 to `/wyjazd-z-dziecmi`.
+All copy comes from `docs/tresc_na_strone.md` and `docs/TODO POPRAWIC landing page 2.03.2026.docx`. Both trips have complete content. "Yoga i Konie" pricing: 900/700 zł (warsztaty + joga). `/single-parents` is a placeholder page (noindex). `/dla-doroslych` is a placeholder page (noindex).
