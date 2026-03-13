@@ -15,8 +15,7 @@ export async function OpinionsTeaser() {
     <SectionWrapper>
       <Container>
         <SectionHeading
-          title="Opinie"
-          subtitle="Co mówią rodziny po naszych wyjazdach"
+          title="Opinie uczestników"
         />
 
         <div className="mx-auto grid max-w-4xl gap-6 md:grid-cols-2">

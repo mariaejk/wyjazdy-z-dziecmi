@@ -14,7 +14,7 @@ export async function PastTripsSection() {
     <SectionWrapper variant="alternate">
       <Container>
         <SectionHeading
-          title="Minione wyjazdy"
+          title="Zrealizowane warsztaty"
           subtitle="Zobacz jak wyglądały nasze poprzednie wyjazdy"
         />
         <div className="grid gap-6 sm:grid-cols-2 lg:gap-8">

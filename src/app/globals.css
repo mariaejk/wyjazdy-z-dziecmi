@@ -1,14 +1,18 @@
 @import "tailwindcss";
 
 @theme {
-  /* Colors — Natural Minimalism */
-  --color-parchment: #F9F7F2;
-  --color-parchment-dark: #F5F3EE;
-  --color-moss: #2D4635;
-  --color-moss-light: #3A5A47;
-  --color-graphite: #1A1A1A;
-  --color-graphite-light: #4A4A4A;
+  /* Colors — Warm Natural */
+  --color-parchment: #F4EFE6;
+  --color-parchment-dark: #EADCC8;
+  --color-moss: #5C713B;
+  --color-moss-light: #7A8F53;
+  --color-graphite: #2C241B;
+  --color-graphite-light: #5A4F44;
   --color-white: #FFFFFF;
+  --color-terracotta: #D9734E;
+  --color-terracotta-dark: #B85331;
+  --color-mustard: #DDB74A;
+  --color-coral: #E2856E;
 
   /* Colors — Bright & Playful */
   --color-sage: #7BA187;
@@ -39,13 +43,13 @@ body {
 
 /* Focus visible for accessibility */
 :focus-visible {
-  outline: 2px solid var(--color-moss);
+  outline: 2px solid var(--color-terracotta);
   outline-offset: 2px;
 }
 
 /* Selection colors */
 ::selection {
-  background-color: var(--color-moss);
+  background-color: var(--color-terracotta);
   color: var(--color-white);
 }
 

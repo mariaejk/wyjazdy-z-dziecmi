@@ -12,7 +12,7 @@ export function AboutTeaser() {
       <Container>
         <ScrollAnimation variant="fadeUp">
           <SectionHeading
-            title="O mnie"
+            title="Poznaj twórczynię warsztatów"
             subtitle="Poznaj twórczynię wyjazdów — Marię Kordalewską"
           />
         </ScrollAnimation>

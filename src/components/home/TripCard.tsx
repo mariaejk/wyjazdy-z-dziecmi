@@ -35,7 +35,6 @@ export function TripCard({ trip }: TripCardProps) {
   return (
     <Card
       image={{ src: trip.image, alt: trip.title }}
-      grayscale={trip.isPast}
     >
       <div className="flex flex-wrap items-center gap-2 mb-3">
         <Badge>

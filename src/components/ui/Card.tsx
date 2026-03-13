@@ -9,7 +9,6 @@ type CardProps = {
     alt: string;
   };
   href?: string;
-  grayscale?: boolean;
   className?: string;
   children: ReactNode;
 };
@@ -17,7 +16,6 @@ type CardProps = {
 export function Card({
   image,
   href,
-  grayscale = false,
   className,
   children,
 }: CardProps) {
@@ -39,7 +37,6 @@ export function Card({
             className={cn(
               "object-cover transition-transform duration-500",
               href && "group-hover:scale-105",
-              grayscale && "grayscale",
             )}
           />
         </div>
@@ -54,7 +51,7 @@ export function Card({
         href={href}
         className={cn(
           "block rounded-2xl focus-visible:outline-none",
-          "focus-visible:ring-2 focus-visible:ring-moss focus-visible:ring-offset-2",
+          "focus-visible:ring-2 focus-visible:ring-terracotta focus-visible:ring-offset-2",
         )}
       >
         {content}

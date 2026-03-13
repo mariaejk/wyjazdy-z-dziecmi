@@ -18,7 +18,7 @@ export default function Error({
         <button
           type="button"
           onClick={reset}
-          className="rounded-md bg-moss px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-moss-light"
+          className="rounded-md bg-terracotta px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-terracotta-dark"
         >
           Spróbuj ponownie
         </button>
