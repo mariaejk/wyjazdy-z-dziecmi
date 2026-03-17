@@ -23,9 +23,7 @@ export default async function Home() {
 
   return (
     <>
-      <HeroSection />
-
-      {/* USP */}
+      {/* USP — pod menu, przed hero */}
       <SectionWrapper>
         <Container>
           <ScrollAnimation variant="fadeUp">
@@ -38,6 +36,8 @@ export default async function Home() {
           </ScrollAnimation>
         </Container>
       </SectionWrapper>
+
+      <HeroSection />
 
       <TripCardsSection />
       <AboutTeaser />

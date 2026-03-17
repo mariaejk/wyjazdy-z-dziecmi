@@ -175,9 +175,11 @@ npm run lint       # ESLint
 
 - **CTA hierarchy**: Primary (terracotta) for main actions, Secondary (moss/olive) for lower-priority. Don't use same color for both.
 - **HeroSlideshow component**: Separate `"use client"` component with `AnimatePresence mode="wait"`, `priority` only on first image. Auto-advance with `setInterval` + cleanup in `useEffect`.
-- **Nav breakpoint 10 items**: 10 menu items don't fit at `md` (768px). Bumped to `lg` (1024px). Hamburger shows on screens < lg.
+- **Nav breakpoint with dropdown**: "O nas" has hover dropdown (Galeria, Opinie, Kontakt, Blog) on desktop, accordion on mobile. Reduces top-level items from 10 to 7. Hamburger shows on screens < lg.
 - **Redirect vs placeholder**: When a menu item needs its own page, replace 301 redirect with a placeholder page (`robots: { index: false }`). Redirects cause duplicate links in navigation.
-- **Single-column trip cards**: `max-w-2xl mx-auto` constrains width when only 2 trips. Better visual balance than 2-column grid.
+- **Trip cards 3-column grid**: `sm:grid-cols-2 lg:grid-cols-3` for upcoming trips. Removed `max-w-2xl` constraint.
+- **USP before hero**: "Jedyne w Polsce..." text moved above HeroSection slideshow, directly under header.
+- **Hero H1**: Changed from "Wyjazdy z Dziećmi" to "Warsztaty wyjazdowe dla dorosłych i dzieci". Logo text shortened to "Warsztaty wyjazdowe".
 - **Grayscale removal**: Remove `grayscale` prop from Card type AND usage in TripCard in same commit to avoid build errors.
 
 ## Content Sources

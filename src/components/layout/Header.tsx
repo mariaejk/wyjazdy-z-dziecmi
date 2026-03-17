@@ -1,17 +1,110 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef, useEffect, useCallback } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { Menu, Phone } from "lucide-react";
+import { Menu, Phone, ChevronDown } from "lucide-react";
 import { Container } from "./Container";
 import { MobileMenu } from "./MobileMenu";
 import { Button } from "@/components/ui/Button";
 import { mainNavigation } from "@/data/navigation";
+import type { NavItem } from "@/data/navigation";
 import { ROUTES, CONTACT } from "@/lib/constants";
 import { analytics } from "@/lib/analytics";
 import { cn, isNavActive } from "@/lib/utils";
+
+function DropdownNavItem({
+  item,
+  pathname,
+}: {
+  item: NavItem;
+  pathname: string;
+}) {
+  const [open, setOpen] = useState(false);
+  const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const containerRef = useRef<HTMLLIElement>(null);
+
+  const active =
+    isNavActive(item.href, pathname) ||
+    item.children?.some((child) => isNavActive(child.href, pathname));
+
+  const openDropdown = useCallback(() => {
+    if (timeoutRef.current) clearTimeout(timeoutRef.current);
+    setOpen(true);
+  }, []);
+
+  const closeDropdown = useCallback(() => {
+    timeoutRef.current = setTimeout(() => setOpen(false), 150);
+  }, []);
+
+  useEffect(() => {
+    return () => {
+      if (timeoutRef.current) clearTimeout(timeoutRef.current);
+    };
+  }, []);
+
+  return (
+    <li
+      ref={containerRef}
+      className="relative"
+      onMouseEnter={openDropdown}
+      onMouseLeave={closeDropdown}
+    >
+      <Link
+        href={item.href}
+        className={cn(
+          "inline-flex items-center gap-1 rounded-md px-3 py-2 text-sm font-medium transition-colors",
+          active
+            ? "bg-moss/10 text-moss"
+            : "text-graphite hover:bg-parchment-dark hover:text-moss"
+        )}
+        {...(active ? { "aria-current": "page" as const } : {})}
+        aria-expanded={open}
+        aria-haspopup="true"
+      >
+        {item.label}
+        <ChevronDown
+          className={cn(
+            "h-3.5 w-3.5 transition-transform",
+            open && "rotate-180"
+          )}
+          strokeWidth={1.5}
+        />
+      </Link>
+
+      {open && (
+        <ul
+          className="absolute left-0 top-full z-50 mt-1 min-w-[160px] rounded-lg border border-parchment-dark bg-parchment py-1 shadow-lg"
+          role="menu"
+        >
+          {item.children?.map((child) => {
+            const childActive = isNavActive(child.href, pathname);
+            return (
+              <li key={child.href} role="none">
+                <Link
+                  href={child.href}
+                  role="menuitem"
+                  className={cn(
+                    "block px-4 py-2 text-sm font-medium transition-colors",
+                    childActive
+                      ? "bg-moss/10 text-moss"
+                      : "text-graphite hover:bg-parchment-dark hover:text-moss"
+                  )}
+                  {...(childActive
+                    ? { "aria-current": "page" as const }
+                    : {})}
+                >
+                  {child.label}
+                </Link>
+              </li>
+            );
+          })}
+        </ul>
+      )}
+    </li>
+  );
+}
 
 export function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -32,7 +125,7 @@ export function Header() {
               priority
             />
             <span className="font-heading text-lg font-bold text-moss transition-colors group-hover:text-moss-light sm:text-xl">
-              Warsztaty wyjazdowe dla dorosłych i dzieci
+              Warsztaty wyjazdowe
             </span>
           </Link>
 
@@ -42,6 +135,15 @@ export function Header() {
             <nav aria-label="Nawigacja główna" className="hidden lg:block">
               <ul className="flex items-center gap-1">
                 {mainNavigation.map((item) => {
+                  if (item.children) {
+                    return (
+                      <DropdownNavItem
+                        key={item.href}
+                        item={item}
+                        pathname={pathname}
+                      />
+                    );
+                  }
                   const active = isNavActive(item.href, pathname);
                   return (
                     <li key={item.href}>

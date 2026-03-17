@@ -65,8 +65,8 @@ export function HeroSection() {
             {/* Text — right */}
             <div className="mt-10 lg:mt-0 lg:w-[55%]">
               <h1 className="font-heading text-4xl font-bold text-graphite sm:text-5xl lg:text-6xl">
-                Wyjazdy z{" "}
-                <span className="text-terracotta">Dziećmi</span>
+                Warsztaty wyjazdowe dla{" "}
+                <span className="text-terracotta">dorosłych i dzieci</span>
               </h1>
               <p className="mt-4 max-w-lg text-lg leading-relaxed text-graphite-light sm:mt-6">
                 Projekt, który powstał z potrzeby spędzania jakościowego czasu
@@ -148,8 +148,8 @@ export function HeroSection() {
               transition={{ duration: 0.7, delay: 0.2 }}
               className="font-heading text-4xl font-bold text-graphite sm:text-5xl lg:text-6xl"
             >
-              Wyjazdy z{" "}
-              <span className="text-terracotta">Dziećmi</span>
+              Warsztaty wyjazdowe dla{" "}
+              <span className="text-terracotta">dorosłych i dzieci</span>
             </motion.h1>
 
             {/* Subtitle */}
