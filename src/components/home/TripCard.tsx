@@ -37,8 +37,8 @@ export function TripCard({ trip }: TripCardProps) {
       image={{ src: trip.image, alt: trip.title }}
     >
       <div className="flex flex-wrap items-center gap-2 mb-3">
-        <Badge>
-          <Calendar className="mr-1 h-3 w-3" strokeWidth={1.5} />
+        <Badge className="px-4 py-1.5 text-sm font-semibold">
+          <Calendar className="mr-1.5 h-4 w-4" strokeWidth={1.5} />
           {formatDate(trip.date)}
         </Badge>
         {trip.isPast && <Badge variant="outline">Zakończony — komplet</Badge>}

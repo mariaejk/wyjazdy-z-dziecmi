@@ -52,7 +52,7 @@ export type Trip = {
   longDescription: string;
   image: string;
   isPast: boolean;
-  category: "rodzinny" | "matka-corka";
+  category: "rodzinny" | "matka-corka" | "single-parents" | "dla-doroslych";
   targetAudience: TripTargetAudience[];
   schedule: TripScheduleDay[];
   practicalInfo: {

@@ -11,7 +11,7 @@ type CalendarTrip = {
   title: string;
   date: string;
   dateEnd: string;
-  category: "rodzinny" | "matka-corka";
+  category: "rodzinny" | "matka-corka" | "single-parents" | "dla-doroslych";
   isPast: boolean;
 };
 
@@ -29,6 +29,8 @@ const DAY_NAMES = ["Pn", "Wt", "Śr", "Cz", "Pt", "Sb", "Nd"];
 const CATEGORY_COLORS: Record<string, string> = {
   rodzinny: "bg-moss text-white",
   "matka-corka": "bg-amber-500 text-white",
+  "single-parents": "bg-terracotta text-white",
+  "dla-doroslych": "bg-coral text-white",
 };
 
 function getDaysInMonth(year: number, month: number): number {
@@ -189,6 +191,14 @@ export function TripCalendar({ trips }: TripCalendarProps) {
         <div className="flex items-center gap-2 text-xs text-graphite-light">
           <span className="inline-block h-3 w-3 rounded bg-amber-500" />
           Matka z córką
+        </div>
+        <div className="flex items-center gap-2 text-xs text-graphite-light">
+          <span className="inline-block h-3 w-3 rounded bg-terracotta" />
+          Single parents
+        </div>
+        <div className="flex items-center gap-2 text-xs text-graphite-light">
+          <span className="inline-block h-3 w-3 rounded bg-coral" />
+          Dla dorosłych
         </div>
         <div className="flex items-center gap-2 text-xs text-graphite-light">
           <span className="inline-block h-3 w-3 rounded bg-graphite/20" />

@@ -12,7 +12,7 @@ async function mapTrip(
     date: entry.date,
     dateEnd: entry.dateEnd,
     location: entry.location,
-    category: entry.category as "rodzinny" | "matka-corka",
+    category: entry.category as "rodzinny" | "matka-corka" | "single-parents" | "dla-doroslych",
     shortDescription: entry.shortDescription,
     longDescription: entry.longDescription,
     image: entry.image,

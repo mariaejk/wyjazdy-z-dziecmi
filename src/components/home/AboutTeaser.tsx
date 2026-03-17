@@ -1,4 +1,4 @@
-import { User } from "lucide-react";
+import Image from "next/image";
 import { Container } from "@/components/layout/Container";
 import { SectionWrapper } from "@/components/ui/SectionWrapper";
 import { SectionHeading } from "@/components/ui/SectionHeading";
@@ -19,8 +19,14 @@ export function AboutTeaser() {
 
         <ScrollAnimation variant="fadeUp" delay={0.15}>
           <div className="mx-auto max-w-3xl text-center">
-            <div className="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-full bg-moss/10">
-              <User className="h-8 w-8 text-moss" strokeWidth={1.5} />
+            <div className="mx-auto mb-6 h-32 w-32 overflow-hidden rounded-full shadow-md sm:h-40 sm:w-40">
+              <Image
+                src="/images/maria.jpg"
+                alt="Maria Kordalewska"
+                width={160}
+                height={160}
+                className="h-full w-full object-cover"
+              />
             </div>
 
             <p className="text-lg leading-relaxed text-graphite-light sm:text-xl">

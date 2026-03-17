@@ -24,7 +24,7 @@ export default async function Home() {
   return (
     <>
       {/* USP — pod menu, przed hero */}
-      <SectionWrapper>
+      <SectionWrapper className="py-4 sm:py-6">
         <Container>
           <ScrollAnimation variant="fadeUp">
             <div className="mx-auto max-w-3xl text-center">
@@ -39,11 +39,7 @@ export default async function Home() {
 
       <HeroSection />
 
-      <TripCardsSection />
-      <AboutTeaser />
-      <OpinionsTeaser />
-
-      {/* Calendar */}
+      {/* Calendar — przed Nadchodzącymi wyjazdami */}
       <SectionWrapper variant="alternate">
         <Container>
           <SectionHeading
@@ -57,6 +53,10 @@ export default async function Home() {
           </div>
         </Container>
       </SectionWrapper>
+
+      <TripCardsSection />
+      <AboutTeaser />
+      <OpinionsTeaser />
 
       <PastTripsSection />
     </>

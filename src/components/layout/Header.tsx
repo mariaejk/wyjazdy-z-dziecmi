@@ -54,7 +54,7 @@ function DropdownNavItem({
       <Link
         href={item.href}
         className={cn(
-          "inline-flex items-center gap-1 rounded-md px-3 py-2 text-sm font-medium transition-colors",
+          "inline-flex items-center justify-center gap-1 rounded-md px-4 py-2.5 text-base font-medium transition-colors",
           active
             ? "bg-moss/10 text-moss"
             : "text-graphite hover:bg-parchment-dark hover:text-moss"
@@ -150,7 +150,7 @@ export function Header() {
                       <Link
                         href={item.href}
                         className={cn(
-                          "rounded-md px-3 py-2 text-sm font-medium transition-colors",
+                          "inline-flex items-center justify-center rounded-md px-4 py-2.5 text-base font-medium transition-colors",
                           active
                             ? "bg-moss/10 text-moss"
                             : "text-graphite hover:bg-parchment-dark hover:text-moss",
@@ -178,7 +178,7 @@ export function Header() {
 
             {/* CTA — visible lg+ */}
             <div className="hidden lg:block">
-              <Button href={ROUTES.trips} size="sm">
+              <Button href={ROUTES.trips} size="md">
                 Zarezerwuj
               </Button>
             </div>
