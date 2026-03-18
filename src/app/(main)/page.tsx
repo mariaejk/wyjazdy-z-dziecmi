@@ -24,11 +24,11 @@ export default async function Home() {
   return (
     <>
       {/* USP — pod menu, przed hero */}
-      <SectionWrapper className="py-4 sm:py-6">
+      <SectionWrapper className="pt-4 pb-2 sm:pt-6 sm:pb-2">
         <Container>
           <ScrollAnimation variant="fadeUp">
             <div className="mx-auto max-w-3xl text-center">
-              <p className="text-lg font-medium leading-relaxed text-moss sm:text-xl">
+              <p className="text-xl font-medium leading-relaxed text-moss sm:text-2xl">
                 Jedyne w Polsce wyjazdy warsztatowe łączące rozwój osobisty
                 rodziców z programem dla dzieci.
               </p>

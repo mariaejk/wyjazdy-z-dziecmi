@@ -50,7 +50,7 @@ export function HeroSection() {
         className="relative overflow-hidden bg-gradient-to-br from-parchment via-parchment to-coral/15"
       >
         <DecorativeDots />
-        <Container className="relative z-10 py-16 sm:py-20 lg:py-28">
+        <Container className="relative z-10 pt-8 pb-16 sm:pt-10 sm:pb-20 lg:pt-12 lg:pb-28">
           <div className="flex flex-col lg:flex-row lg:items-center lg:gap-12">
             {/* Image — left */}
             <div className="relative mx-auto w-full max-w-md lg:mx-0 lg:w-[45%] lg:max-w-none">

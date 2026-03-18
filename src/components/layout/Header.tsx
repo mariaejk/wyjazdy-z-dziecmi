@@ -54,7 +54,7 @@ function DropdownNavItem({
       <Link
         href={item.href}
         className={cn(
-          "inline-flex items-center justify-center gap-1 rounded-md px-4 py-2.5 text-base font-medium transition-colors",
+          "inline-flex items-center justify-center gap-1 whitespace-nowrap rounded-md px-4 py-2.5 text-base font-medium transition-colors",
           active
             ? "bg-moss/10 text-moss"
             : "text-graphite hover:bg-parchment-dark hover:text-moss"
@@ -63,7 +63,7 @@ function DropdownNavItem({
         aria-expanded={open}
         aria-haspopup="true"
       >
-        {item.label}
+        <span className="uppercase tracking-wide">{item.label}</span>
         <ChevronDown
           className={cn(
             "h-3.5 w-3.5 transition-transform",
@@ -124,9 +124,6 @@ export function Header() {
               className="rounded-full"
               priority
             />
-            <span className="font-heading text-lg font-bold text-moss transition-colors group-hover:text-moss-light sm:text-xl">
-              Warsztaty wyjazdowe
-            </span>
           </Link>
 
           {/* Right side: nav + phone + CTA + hamburger */}
@@ -150,7 +147,7 @@ export function Header() {
                       <Link
                         href={item.href}
                         className={cn(
-                          "inline-flex items-center justify-center rounded-md px-4 py-2.5 text-base font-medium transition-colors",
+                          "inline-flex items-center justify-center rounded-md px-4 py-2.5 text-base font-medium uppercase tracking-wide transition-colors",
                           active
                             ? "bg-moss/10 text-moss"
                             : "text-graphite hover:bg-parchment-dark hover:text-moss",
@@ -168,7 +165,7 @@ export function Header() {
             {/* Phone — visible lg+ */}
             <a
               href={`tel:${CONTACT.phone.replace(/\s/g, "")}`}
-              className="hidden items-center gap-1.5 rounded-md px-3 py-2 text-sm font-medium text-graphite transition-colors hover:bg-parchment-dark hover:text-moss lg:inline-flex"
+              className="hidden items-center gap-1.5 whitespace-nowrap rounded-md px-3 py-2 text-sm font-medium text-graphite transition-colors hover:bg-parchment-dark hover:text-moss lg:inline-flex"
               aria-label={`Zadzwoń: ${CONTACT.phoneDisplay}`}
               onClick={() => analytics.phoneClick()}
             >
