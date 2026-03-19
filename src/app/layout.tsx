@@ -13,14 +13,14 @@ export const metadata: Metadata = {
     type: "website",
     locale: "pl_PL",
     siteName: "Wyjazdy z Dziećmi",
-    title: "Wyjazdy z Dziećmi — Warsztaty w naturze, czas dla siebie i dziecka",
+    title: "Wyjazdy z Dziećmi — czas dla siebie i dziecka w naturze",
     description:
       "Wyjazdy warsztatowe w naturze — czas na regenerację dla rodziców i przygodę dla dzieci.",
     images: [{ url: "/images/hero.jpg", width: 1200, height: 630, alt: "Wyjazdy z Dziećmi" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Wyjazdy z Dziećmi — Warsztaty w naturze, czas dla siebie i dziecka",
+    title: "Wyjazdy z Dziećmi — czas dla siebie i dziecka w naturze",
     description:
       "Wyjazdy warsztatowe w naturze — czas na regenerację dla rodziców i przygodę dla dzieci.",
     images: ["/images/hero.jpg"],

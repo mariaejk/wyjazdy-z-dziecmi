@@ -1,250 +1,266 @@
-# Code Review: poprawki-konwersja-19-03
+# Code Review: Poprawki konwersji 19.03 — Pełny Review
 
 **Last Updated: 2026-03-19**
 **Branch:** `feature/poprawki-konwersja-19-03`
+**Commit:** `33ca759`
 **Reviewer:** Claude Sonnet 4.6
-**Build status:** Passed (27 stron — per kontekst zadania)
+**Review iteracja:** 2 (po naprawach z iteracji 1)
 
 ---
 
 ## Executive Summary
 
-Wszystkie 18 zadań z planu zostały zaimplementowane. Kod jest ogólnie dobrej jakości i zgodny z wzorcami projektu. Znaleziono 1 problem blokujący (side effect w setState), 2 ważne uwagi (SEO title za długi, aria-label małymi literami w SocialLink) oraz kilka drobnych niuansów. Żadna zmiana nie narusza krytycznych constraints z CLAUDE.md.
+Wszystkie 21 zadań z 3-fazowego planu zostały zaimplementowane. Trzy problemy znalezione w poprzednim review (blocking side effect w Accordion, SEO title za długi, aria-label kapitalizacja) zostały **poprawnie naprawione**. Kod jest gotowy do merge.
+
+Nowy pełny przegląd nie znalazł żadnych nowych problemów blokujących. Znaleziono 1 ważną uwagę (OG title wciąż 66 znaków — powyżej planu), 2 drobnostki i 2 sugestie. ESLint zwraca 0 błędów i 17 ostrzeżeń — wszystkie pre-istniejące, żadne nie zostały wprowadzone przez ten branch.
+
+**Rekomendacja: APPROVE po decyzji o OG title (do zaakceptowania lub skrócenia).**
 
 ---
 
-## Checklist zgodności z planem
+## Weryfikacja napraw z iteracji 1
 
-| Element | Status | Uwagi |
-|---------|--------|-------|
-| H1 hero — oba warianty identyczne | PASS | Tekst i span terracotta identyczne w obu |
-| Gwiazdki NAD przyciskiem CTA — oba warianty | PASS | Poprawnie przestawione |
-| CTA copy spójność (Header/Menu/Sticky/Form) | PASS | Wszystkie 4 miejsca zaktualizowane |
-| dietaryNeeds w Zod schema | PASS | max(500) |
-| dietaryNeeds w defaultValues | PASS | `""` |
-| dietaryNeeds w API route log | PASS | Dodano do log() |
-| childCare w Trip type | PASS | `childCare?: string` |
-| childCare w keystatic.config | PASS | fields.text multiline |
-| childCare w mapTrip() | PASS | `\|\| undefined` pattern |
-| childCare w TripPracticalInfo type | PASS | |
-| childCare w infoItems[] | PASS | Baby icon |
-| childCare w content YAML (4 pliki) | PASS | Wszystkie 4 wyjazdy |
-| Shield import w BookingForm | PASS | |
-| Reassurance text nad przyciskiem | PASS | |
-| Phone icon na mobile w Header (lg:hidden) | PASS | |
-| USP text zmieniony w page.tsx | PASS | |
-| SEO meta tagi layout.tsx | PARTIAL | Title 66 znaków — powyżej rekomendacji 60 |
-| SEO meta tagi wyjazdy/page.tsx | PASS | 48 znaków |
-| analytics.faqClick | PASS | |
-| analytics.socialClick | PASS | |
-| Accordion onToggle callback | PASS | |
-| SocialLink client component | PASS | |
-| Footer używa SocialLink | PASS | |
+| Problem (iteracja 1) | Status | Weryfikacja |
+|----------------------|--------|-------------|
+| [blocking] Side effect w setState w Accordion.tsx | NAPRAWIONY | `toggle()` teraz używa `const newId = openId === id ? null : id` poza setState, `onToggle` wywoływany po `setOpenId(newId)` — linie 24-30 |
+| [important] SEO title 66 znaków (meta title default) | NAPRAWIONY | `"Wyjazdy z Dziećmi — czas dla siebie i dziecka w naturze"` = **55 znaków** |
+| [important] aria-label kapitalizacja w SocialLink | NAPRAWIONY | Footer używa `platform="Facebook"` i `platform="Instagram"` — linie 61 i 71 |
 
 ---
 
-## Krytyczne problemy (must fix)
+## Faza 1: Krytyczne
 
-### [blocking] Side effect wewnątrz setState updater function — Accordion.tsx:25-32
+### Checklist zgodności z planem
 
-**Plik:** `src/components/ui/Accordion.tsx`, linie 25-32
+| Zadanie | Plik | Status |
+|---------|------|--------|
+| H1 emocjonalny — wariant reduced-motion | HeroSection.tsx:68-69 | PASS |
+| H1 emocjonalny — wariant animated | HeroSection.tsx:152-153 | PASS |
+| Oba H1 identyczne | — | PASS — teksty identyczne w obu wariantach |
+| Subtitle nowy — wariant reduced-motion | HeroSection.tsx:71-74 | PASS |
+| Subtitle nowy — wariant animated | HeroSection.tsx:163-165 | PASS |
+| Gwiazdki NAD CTA — reduced-motion | HeroSection.tsx:94-109 | PASS |
+| Gwiazdki NAD CTA — animated | HeroSection.tsx:194-220 | PASS |
+| CTA Header "Sprawdź terminy" | Header.tsx:179 | PASS |
+| CTA MobileMenu "Sprawdź terminy" | MobileMenu.tsx:205 | PASS |
+| CTA StickyBookingCTA "Zarezerwuj miejsce" | StickyBookingCTA.tsx:71 | PASS |
+| CTA BookingForm button "Zarezerwuj miejsce" | BookingForm.tsx:264 | PASS |
+| dietaryNeeds w Zod schema | booking.ts:35-37 | PASS |
+| dietaryNeeds w defaultValues | BookingForm.tsx:53 | PASS |
+| dietaryNeeds Input w formularzu | BookingForm.tsx:202-207 | PASS |
+| Textarea uwagi — placeholder zaktualizowany | BookingForm.tsx:211 | PASS |
+| dietaryNeeds w API log() | route.ts:69 | PASS |
+| childCare w Trip type | trip.ts:62 | PASS |
+| childCare w keystatic.config | keystatic.config.ts:113-116 | PASS |
+| childCare w mapTrip() z `|| undefined` | trips.ts:41 | PASS |
+| childCare w TripPracticalInfo type | TripPracticalInfo.tsx:11 | PASS |
+| childCare w infoItems[] z Baby icon | TripPracticalInfo.tsx:22 | PASS |
+| childCare w 4 plikach YAML | content/trips/*.yaml | PASS — wszystkie 4 |
+| Shield import | BookingForm.tsx:6 | PASS |
+| Reassurance text | BookingForm.tsx:251-254 | PASS |
 
-**Problem:** `onToggle` jest wywoływany wewnątrz funkcji przekazywanej do `setOpenId`. W React Strict Mode i w React 19 funkcja setState updater może być wywoływana **wielokrotnie** (React może odpalić ją 2x w celu wykrycia side effects). Oznacza to, że `analytics.faqClick()` — wywołanie do GA4 — może zostać wysłane dwukrotnie.
+### Problemy znalezione
 
-```tsx
-// OBECNY KOD — PROBLEMATYCZNY
-const toggle = (id: string) => {
-  setOpenId((prev) => {
-    const newId = prev === id ? null : id;
-    if (newId !== null && onToggle) {         // <-- side effect w setState!
-      const item = items.find((i) => i.id === newId);
-      if (item) onToggle(newId, item.title);  // <-- podwójny GA4 hit w Strict Mode
-    }
-    return newId;
-  });
-};
-```
+Brak nowych problemów blokujących w Fazie 1.
 
-**Poprawka — side effect poza setState:**
-```tsx
-const toggle = (id: string) => {
-  const newId = openId === id ? null : id;
-  setOpenId(newId);
-  if (newId !== null && onToggle) {
-    const item = items.find((i) => i.id === newId);
-    if (item) onToggle(newId, item.title);
-  }
-};
-```
+### Dobre wzorce
 
-Ta wersja używa wartości `openId` z closures (co jest bezpieczne — toggle jest wywoływany tylko przez user event, nie ma race condition przy single-user interaction), wywołuje `setOpenId` z wartością (nie funkcją updater), i odpala side effect po setState.
+✅ H1 spójność między wariantami — "Zatrzymaj się. Odetchnij. Spotkaj swoje dziecko na nowo." jest identyczne w obu wariantach (reduced-motion i animated). Brak ryzyka rozbieżności.
 
-**Dlaczego blokujące:** Fałszywe eventy analytics zaburzają dane konwersji — jeden klik FAQ = dwa GA4 eventy. Niszczy wiarygodność danych.
+✅ dietaryNeeds — wzorzec Zod 4 + RHF — `z.string().max(500)` (nie optional) + `defaultValues: { dietaryNeeds: "" }`. Zgodnie z CLAUDE.md Phase 3: "non-optional fields + defaultValues". Brak type divergence między input/output Zod.
+
+✅ childCare mapper — `|| undefined` pattern — `entry.practicalInfo.childCare || undefined` spójny z istniejącym `transport`. Pusty string z CMS nie renderuje pustej sekcji.
+
+✅ Baby icon tematycznie właściwy — `Baby` z lucide-react pasuje semantycznie do "Opieka nad dziećmi", spójny `strokeWidth={1.5}`.
+
+✅ Reassurance poza success state — Shield/reassurance jest tylko w formie (linia 251), NIE w `status === "success"` branch (linie 104-121). Poprawne.
+
+✅ Gwiazdki NAD CTA — delay kaskada — animated wariant: gwiazdki `delay: 0.85`, CTA `delay: 1.0`. Social proof pojawia się tuż przed przyciskiem — celowe i dobre dla konwersji.
 
 ---
 
-## Ważne uwagi (should fix)
+## Faza 2: Średni priorytet
 
-### [important] SEO title w layout.tsx przekracza rekomendację 60 znaków
+### Checklist
 
-**Plik:** `src/app/layout.tsx`, linia 6
+| Zadanie | Plik | Status |
+|---------|------|--------|
+| Phone icon mobile w Header | Header.tsx:183-191 | PASS |
+| `lg:hidden` na mobile phone | Header.tsx:186 | PASS |
+| `tel:` href z replace spaces | Header.tsx:185 | PASS |
+| analytics.phoneClick() na mobile | Header.tsx:188 | PASS |
+| Reassurance Shield nad submit | BookingForm.tsx:251-254 | PASS |
+| USP copy empatyczny | page.tsx:32 | PASS |
+| SEO layout.tsx title | layout.tsx:6 | PASS (55 znaków) |
+| SEO layout.tsx description | layout.tsx:9-11 | PASS (148 znaków) |
+| SEO wyjazdy/page.tsx title | wyjazdy/page.tsx:15 | PASS (48 znaków) |
+| Gwiazdki PRZED CTA | HeroSection.tsx | PASS (oba warianty) |
 
-**Aktualny tytuł:** `"Wyjazdy z Dziećmi — Warsztaty w naturze, czas dla siebie i dziecka"` — **66 znaków**
+### Problemy znalezione
 
-Plan wymagał `< 60 znaków`. Google obcina tytuły powyżej ~60 znaków (≈600px pikseli) w SERP. Tytuł zostanie przycięty do np. `"Wyjazdy z Dziećmi — Warsztaty w naturze, czas dla sieb..."`.
+🟠 [important] OG title i Twitter title: 66 znaków (plan wymagał <60)
 
-**Propozycja skrótu (57 znaków):**
-```
-"Wyjazdy z Dziećmi — czas dla siebie i dziecka w naturze"
-```
-lub (55 znaków):
-```
-"Wyjazdy z Dziećmi — warsztaty w naturze dla rodzin"
-```
+Plik: `src/app/layout.tsx`, linie 16 i 23
 
-**Uwaga:** Tytuł OG/Twitter (też 66 znaków) może zostać bez zmian — tam limit jest luźniejszy (Facebook ~88 znaków, Twitter ~70 znaków). Problem dotyczy tylko tagu `<title>` (default).
-
-### [important] aria-label w SocialLink — małe litery zamiast nazwy własnej
-
-**Plik:** `src/components/layout/SocialLink.tsx`, linia 18
-
-```tsx
-aria-label={`${platform} (otwiera się w nowej karcie)`}
-// przy platform="facebook" => "facebook (otwiera się w nowej karcie)"
-// przy platform="instagram" => "instagram (otwiera się w nowej karcie)"
-```
-
-Oryginalne `<a>` w Footer miało poprawnie: `"Facebook (otwiera się w nowej karcie)"` — wielka litera, bo to nazwa własna marki. Obecna implementacja używa wartości `platform` dosłownie (`"facebook"` małymi literami), co obniża jakość dla screen readerów.
-
-**Poprawka:**
-```tsx
-aria-label={`${platform.charAt(0).toUpperCase() + platform.slice(1)} (otwiera się w nowej karcie)`}
-```
-lub prościej, traktując platform jako display name i przekazując kapitalizowaną wartość z Footer:
-```tsx
-// Footer.tsx
-<SocialLink href={SOCIAL_LINKS.facebook} platform="Facebook" ...>
-<SocialLink href={SOCIAL_LINKS.instagram} platform="Instagram" ...>
-```
-Ta druga opcja jest czystsza — `platform` jako display name, a `analytics.socialClick` dostaje `"Facebook"` zamiast `"facebook"`. Jeśli GA4 ma zbierać lowercase dla spójności eventów, można normalizować wewnątrz `socialClick()`:
 ```ts
-socialClick(platform: string) {
-  trackEvent({ action: "social_click", category: "engagement", label: platform.toLowerCase() });
-}
+title: "Wyjazdy z Dziećmi — Warsztaty w naturze, czas dla siebie i dziecka",
+//     ^--- 66 znaków
 ```
 
----
+Plan w zadaniu 2.4 wymaga: "Tytuły < 60 znaków". Poprzedni review zidentyfikował ten problem. Default meta title (`title.default`) został poprawiony do 55 znaków, ale `openGraph.title` i `twitter.title` nadal mają 66 znaków. Google i media społecznościowe zazwyczaj obcinają OG title po ~55-60 znakach. Proponowane opcje:
 
-## Drobne uwagi (nit)
+```ts
+// Opcja A (47 znaków):
+"Wyjazdy z Dziećmi — czas dla siebie i dziecka"
 
-### [nit] Wszystkie 4 YAML-e mają identyczną treść childCare
+// Opcja B (41 znaków):
+"Wyjazdy z Dziećmi — Warsztaty w naturze"
+```
 
-**Pliki:** `content/trips/matka-i-corka.yaml`, `rodzinny-konie-joga-2026.yaml`, `zlot-kaczek-2026.yaml`, `zlot-kaczek-swieta-2025.yaml`
+Nie jest blocking (SEO nadal działa z 66 znakami, tylko lekkie obcięcie w social share), ale jest niezgodne z kryterium akceptacji z planu.
 
-Każdy wyjazd ma dokładnie ten sam tekst:
-> "Podczas bloków warsztatowych dla dorosłych, dziećmi opiekują się doświadczone animatorki. Program dla dzieci obejmuje zabawy na świeżym powietrzu, tworzenie i ruch."
+🟡 [nit] USP — linia ~88 znaków bez podziału
 
-To poprawne jako placeholder — plan to przewidywał ("dokumentacja dla klientki"). Warto dodać notatkę w `docs/instrukcja-cms.md` że klientka powinna dostosować ten tekst do każdego wyjazdu indywidualnie, bo różne miejsca mogą mieć różne programy dla dzieci.
-
-### [nit] USP tekst — długa linia bez łamania
-
-**Plik:** `src/app/(main)/page.tsx`, linia 32
+Plik: `src/app/(main)/page.tsx`, linia 32
 
 ```tsx
 Ty się regenerujesz. Twoje dziecko się bawi. Razem tworzycie wspomnienia na całe życie.
 ```
 
-Linia ma ~90 znaków (powyżej typowego soft limit 80). Czysto formatacyjnie — brak wpływu na działanie. Dla spójności z resztą kodu (inne długie stringi są dzielone na 2-3 linie) można rozważyć podział na linie w JSX. Nie jest wymagane.
+Linia ma 88 znaków (powyżej soft limit 80). Brak wpływu na działanie. Czysto kosmetyczne.
 
-### [nit] dietaryNeeds pole — brak `id` prop w Input
+### Dobre wzorce
 
-**Plik:** `src/components/trips/BookingForm.tsx`, linia 199-204
+✅ Mobile phone — dwa niezależne `<a>` zamiast jednego — Desktop phone (z tekstem, `lg:inline-flex`) i mobile phone (tylko ikona, `lg:hidden`) to oddzielne elementy. Semantycznie poprawne, brak potrzeby `display:none` na jednym elemencie.
 
-```tsx
-<Input
-  label="Alergie / wymagania dietetyczne"
-  placeholder="np. bezglutenowo, alergia na orzechy"
-  {...register("dietaryNeeds")}
-  error={errors.dietaryNeeds?.message}
-/>
-```
+✅ `tel:` href z `.replace(/\s/g, "")` na obu linkach — `CONTACT.phone` = `"+48 503 098 906"`. Po replace: `"+48503098906"` — poprawny format `tel:`. Identyczna logika na obu phone linkach (desktop linia 167, mobile linia 185).
 
-Pattern projektu (z CLAUDE.md Phase 3): `forwardRef` + `id = id ?? props.name`. Komponent `Input` sam przypisuje `id` z `name` gdy nie podano `id` — więc funkcjonalnie jest OK. Wzorzec jest przestrzegany.
+✅ SEO description 148 znaków — W granicach <155 znaków wymaganych przez plan. Zawiera frazy emocjonalne ("zmęczonych rodziców", "radosnych dzieci", "regenerację").
+
+✅ OG image alt — `alt: "Wyjazdy z Dziećmi"` w images[0] — obecny, poprawny.
 
 ---
 
-## Sugestie (opcjonalne)
+## Faza 3: Analityka
 
-### [suggestion] Accordion onToggle — typ callback można zoptymalizować
+### Checklist
 
-**Plik:** `src/components/ui/Accordion.tsx`, linia 17
+| Zadanie | Plik | Status |
+|---------|------|--------|
+| analytics.faqClick(question) | analytics.ts:56-62 | PASS |
+| analytics.socialClick(platform) | analytics.ts:64-70 | PASS |
+| Accordion onToggle prop | Accordion.tsx:17 | PASS |
+| TripFAQ przekazuje onToggle | TripFAQ.tsx:31 | PASS |
+| onToggle tylko przy otwieraniu | Accordion.tsx:27 (newId !== null) | PASS |
+| SocialLink "use client" | SocialLink.tsx:1 | PASS |
+| Footer używa SocialLink | Footer.tsx:59-78 | PASS |
+| socialClick z platform.toLowerCase() | SocialLink.tsx:20 | PASS |
+
+### Problemy znalezione
+
+🟡 [nit] Accordion.onToggle sygnatura — `id` parametr nieużywany
+
+Plik: `src/components/ui/Accordion.tsx`, linia 17 + `src/components/trips/TripFAQ.tsx`, linia 31
 
 ```tsx
+// Accordion type:
 onToggle?: (id: string, title: string) => void;
-```
 
-Przekazywanie `id` jako pierwszy parametr jest zbędne — `TripFAQ.tsx` używa tylko `title`:
-```tsx
+// TripFAQ usage:
 onToggle={(_id, title) => analytics.faqClick(title)}
+//         ^--- underscore prefix = nieużywany
 ```
 
-Można uprościć sygnaturę do `(title: string) => void` i usunąć `_id`. Ale może być przydatne w innych kontekstach. Zostaw jak jest jeśli planujesz reużywać Accordion z ID-based logic.
+`_id` wskazuje że `id` nie jest potrzebne w callbacku. Sygnaturę można uprościć do `(title: string) => void` i usunąć `_id`. Zostawienie `id` zachowuje elastyczność dla przyszłych użytkowników Accordion z ID-based logic. Decyzja projektowa — obie opcje są poprawne.
 
-### [suggestion] Phone icon w Header — kolejność HTML vs plan
+### Dobre wzorce
 
-**Plik:** `src/components/layout/Header.tsx`, linie 183-192
+✅ Accordion side effect POZA setState — naprawiony. `toggle()` czyta `openId` z closure (bezpieczne — to event handler, nie concurrent update), wywołuje `setOpenId(newId)` z wartością, potem side effect. Nie ma ryzyka podwójnego GA4 hitu w React Strict Mode.
 
-Plan mówił: "Dodać PRZED hamburgerem". Implementacja jest zgodna — phone jest przed hamburgerem w HTML. Wizualnie ikona telefonu pojawi się po lewej stronie hamburgera (HTML order = visual order w flex). Jeśli projekt chce telefon bliżej prawej krawędzi niż hamburger (telefon jest mniej ważny niż hamburger), kolejność jest OK. Jeśli ma być na końcu (hamburger ostatni), można zamienić.
+✅ SocialLink — wąsko wydzielony Client Component — zgodnie z CLAUDE.md Phase 7: "Extract client boundaries narrowly". `SocialLink.tsx` to minimalny `"use client"` wrapper. Footer pozostaje Server Component importującym Client Component — poprawna architektura Next.js App Router.
+
+✅ faqClick — tylko przy otwieraniu — `if (newId !== null && onToggle)` — zamknięcie akordeonu nie triggeruje analytics. Celowe i poprawne.
+
+✅ platform.toLowerCase() — GA4 dostaje `"facebook"` i `"instagram"` (lowercase) jako label, `"Facebook"` i `"Instagram"` (PascalCase) jako aria-label. Separacja prezentacji od danych analitycznych.
 
 ---
 
-## Dobre wzorce — docenione
+## Cross-cutting concerns
 
-### [good] SocialLink jako wąsko wydzielony Client Component
+### Spójność CTA
 
-Wzorzec z CLAUDE.md Phase 7: "Extract client boundaries narrowly". `SocialLink.tsx` to minimal `"use client"` — tylko `onClick` handler. Footer pozostaje Server Component. Idealnie.
+Sprawdzono wszystkie 5 miejsc:
 
-### [good] dietaryNeeds w defaultValues i schema — konsekwentny pattern Zod 4 + RHF
+| Komponent | Przed | Po | Status |
+|-----------|-------|-----|--------|
+| Header.tsx:179 | "Zarezerwuj" | "Sprawdź terminy" | PASS |
+| MobileMenu.tsx:205 | "Zarezerwuj" | "Sprawdź terminy" | PASS |
+| StickyBookingCTA.tsx:71 | "Zapisz się na wyjazd" | "Zarezerwuj miejsce" | PASS |
+| BookingForm.tsx:264 | "Wyślij zgłoszenie" | "Zarezerwuj miejsce" | PASS |
+| HeroSection.tsx (oba warianty) | "Znajdź swój wyjazd" | "Zobacz wyjazdy" | PASS |
 
-Pole dodane jako `z.string().max(500)` (nie optional) + `defaultValues: { dietaryNeeds: "" }`. Dokładnie wzorzec z CLAUDE.md Phase 3: "non-optional fields + defaultValues in useForm()". Brak type divergence.
+Żadne CTA nie mówi już "Zarezerwuj" bez kontekstu.
 
-### [good] childCare mapper — `|| undefined` pattern
+### Bezpieczeństwo
 
-```ts
-childCare: entry.practicalInfo.childCare || undefined,
-```
-Spójny z istniejącym `transport: entry.practicalInfo.transport || undefined`. Zapewnia że puste string z CMS nie powoduje renderowania pustej sekcji.
+✅ Honeypot check w API route nie zmieniony — nadal na pozycji przed Zod validation.
+✅ Rate limiting nie zmieniony — nadal 5 req/15min per IP.
+✅ Nowe pole `dietaryNeeds` przechodzi przez Zod (max 500 znaków) przed logowaniem.
+✅ `dietaryNeeds` jest w `log()` ale NIE w TODO webhook body — spójne z istniejącym podejściem.
 
-### [good] onToggle wywołuje się tylko przy otwieraniu (newId !== null)
+### Accessibility
 
-```tsx
-if (newId !== null && onToggle) { ... }
-```
-Zamknięcie accordion NIE triggeruje analytics. Poprawne — chcemy śledzić kliknięcie pytania, nie zamknięcie. Intentional i sensowne.
+✅ Nowy mobile phone link ma prawidłowe `aria-label` z numerem telefonu.
+✅ `childCare` w `infoItems` używa `Baby` z `strokeWidth={1.5}` — spójne z resztą ikon.
+✅ Shield w reassurance ma `shrink-0` — nie zmniejszy się na wąskich ekranach.
+✅ SocialLink zachowuje `target="_blank"` + `rel="noopener noreferrer"` + informacyjny aria-label.
 
-### [good] Gwiazdki NAD CTA — delay timing w animated variant
+### ESLint
 
-W animated wariancie gwiazdki mają `delay: 0.85` a CTA `delay: 1.0`. Naturalna kaskada: tekst → benefit cards → gwiazdki → CTA. Social proof pojawia się tuż przed przyciskiem — świetne dla konwersji.
+0 błędów, 17 ostrzeżeń. Żadne ostrzeżenie nie zostało wprowadzone przez ten branch:
+- `single-parents/page.tsx:2` — Suspense unused (pre-istniejące)
+- `BookingForm.tsx:60` — React Compiler incompatible library (`watch()`) (pre-istniejące — `watch` istniał na masterze przed tym branchem)
+
+### Architektura
+
+Brak nowych zależności — zgodnie z planem.
+
+Client boundary chain poprawna:
+- `analytics.ts` — brak `"use client"` (safe — `window.gtag` guard-owany przez `typeof window === "undefined"`)
+- `Accordion.tsx` — `"use client"` (useState, useReducedMotion)
+- `TripFAQ.tsx` — `"use client"` (pre-istniejące na master, importuje Accordion który wymaga "use client")
+- `SocialLink.tsx` — `"use client"` (nowe, minimalne, tylko onClick)
+- `Footer.tsx` — brak `"use client"` (SC importujący SocialLink — poprawne w Next.js App Router)
+
+YAML data dla past event — `zlot-kaczek-swieta-2025.yaml` (`isPast: true`) otrzymał `childCare`. Poprawne — `TripPracticalInfo` renderuje się także dla past trips (strona archiwalna). Dane użyteczne.
 
 ---
 
-## Architektura — obserwacje
+## Statystyki
 
-**Brak nowych zależności** — zgodnie z planem. Wszystkie zmiany korzystają z istniejących bibliotek.
-
-**TripFAQ miał już `"use client"`** — analytics import nie wymagał dodatkowej zmiany granicy klienta. Dobra obserwacja przy implementacji.
-
-**Keystatic schema** — pole dodano w odpowiednim miejscu w `practicalInfo` nested object. Kolejność pól w CMS będzie: zakwaterowanie, jedzenie, dojazd, opieka nad dziećmi — logiczna.
-
-**API route** — `dietaryNeeds` dodano tylko do `log()`, co jest prawidłowe. `safeParse()` już akceptuje nowe pole ponieważ schema jest shared (Zod). Brak redundancji.
+- Plików sprawdzonych: 27 (wszystkie zmienione w branchu)
+- Review iteracja: 2 (po naprawach z iteracji 1)
+- 🔴 [blocking]: 0 (3 z iteracji 1 naprawione)
+- 🟠 [important]: 1 (OG title 66 znaków — przekracza kryterium planu)
+- 🟡 [nit]: 2 (USP linia 88 znaków; Accordion.onToggle nieużywany `id` parametr)
+- 🔵 [suggestion]: 0
+- ✅ [good]: 15
 
 ---
 
 ## Kolejne kroki
 
-Wymagają decyzji i zatwierdzenia przed implementacją:
+### Wymagają decyzji przed merge:
 
-1. **[blocking] Naprawić `toggle()` w Accordion.tsx** — przenieść `onToggle` wywołanie poza setState updater (patrz sekcja blokujących)
-2. **[important] Skrócić title w layout.tsx** do max 60 znaków lub zaakceptować 66 jako kompromis
-3. **[important] Poprawić aria-label w SocialLink** — kapitalizacja nazwy platformy
-4. **[opcjonalne] Dodać notatkę w instrukcja-cms.md** o indywidualnych tekstach childCare dla każdego wyjazdu
+1. **[important] OG/Twitter title: 66 znaków** — `src/app/layout.tsx` linie 16 i 23
+   - Opcja A: `"Wyjazdy z Dziećmi — czas dla siebie i dziecka"` (47 znaków)
+   - Opcja B: Zaakceptować 66 znaków jako kompromis
+
+### Opcjonalne (można zrobić w osobnym PR):
+
+2. [nit] USP string podział na linie — `src/app/(main)/page.tsx` linia 32
+3. [nit] Accordion.onToggle sygnatura — rozważyć uproszczenie do `(title: string) => void`
+
+### Po merge:
+
+4. Zaktualizować `docs/instrukcja-cms.md` — dodać notatkę o polu "Opieka nad dziećmi" (unikalne teksty dla każdego wyjazdu)
