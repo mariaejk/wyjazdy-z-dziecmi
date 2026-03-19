@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Send, CheckCircle, AlertCircle } from "lucide-react";
+import { Send, CheckCircle, AlertCircle, Shield } from "lucide-react";
 import { bookingSchema, type BookingFormValues } from "@/lib/validations/booking";
 import { analytics } from "@/lib/analytics";
 import { Container } from "@/components/layout/Container";
@@ -50,6 +50,7 @@ export function BookingForm({ trips, preselectedTrip }: BookingFormProps) {
       children: 0,
       childrenAges: "",
       notes: "",
+      dietaryNeeds: "",
       consentRodo: false as unknown as true,
       consentMarketing: false,
       website: "",
@@ -198,9 +199,16 @@ export function BookingForm({ trips, preselectedTrip }: BookingFormProps) {
             />
           )}
 
+          <Input
+            label="Alergie / wymagania dietetyczne"
+            placeholder="np. bezglutenowo, alergia na orzechy"
+            {...register("dietaryNeeds")}
+            error={errors.dietaryNeeds?.message}
+          />
+
           <Textarea
             label="Uwagi"
-            placeholder="Alergie, dieta, pytania..."
+            placeholder="Pytania, uwagi..."
             {...register("notes")}
             error={errors.notes?.message}
           />
@@ -240,6 +248,11 @@ export function BookingForm({ trips, preselectedTrip }: BookingFormProps) {
             </div>
           )}
 
+          <p className="flex items-center gap-2 text-sm text-graphite-light">
+            <Shield className="h-4 w-4 shrink-0 text-moss" strokeWidth={1.5} />
+            Rezerwacja jest bezpłatna — nie płacisz z góry. Szczegóły płatności otrzymasz po potwierdzeniu.
+          </p>
+
           <div className="pt-2">
             <Button
               type="submit"
@@ -248,7 +261,7 @@ export function BookingForm({ trips, preselectedTrip }: BookingFormProps) {
               icon={<Send className="h-5 w-5" strokeWidth={1.5} />}
               className="w-full sm:w-auto"
             >
-              {status === "submitting" ? "Wysyłanie..." : "Wyślij zgłoszenie"}
+              {status === "submitting" ? "Wysyłanie..." : "Zarezerwuj miejsce"}
             </Button>
           </div>
         </form>

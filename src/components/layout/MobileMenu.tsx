@@ -202,7 +202,7 @@ export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
                 onClick={onClose}
                 className="inline-flex w-full items-center justify-center rounded-lg bg-terracotta px-6 py-3 text-base font-medium text-white transition-all duration-200 hover:bg-terracotta-dark focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta focus-visible:ring-offset-2 active:scale-[0.98]"
               >
-                Zarezerwuj
+                Sprawdź terminy
               </Link>
             </div>
           </motion.div>

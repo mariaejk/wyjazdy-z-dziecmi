@@ -110,6 +110,10 @@ export default config({
               label: "Dojazd (opcjonalny)",
               multiline: true,
             }),
+            childCare: fields.text({
+              label: "Opieka nad dziećmi (opcjonalny)",
+              multiline: true,
+            }),
           },
           { label: "Informacje praktyczne" }
         ),

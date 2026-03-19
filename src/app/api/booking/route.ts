@@ -66,6 +66,7 @@ export async function POST(request: NextRequest) {
     trip: data.trip,
     adults: data.adults,
     children: data.children,
+    dietaryNeeds: data.dietaryNeeds,
   });
 
   return NextResponse.json({ success: true });

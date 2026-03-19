@@ -60,6 +60,10 @@ practicalInfo:
     Całodzienne wyżywienie: 140 zł/dzień dorosły, 70 zł dzieci do 10 lat, 0 zł
     dzieci do 3 lat.
   transport: Dojazd własny. Szczegółowe wskazówki otrzymasz po rezerwacji.
+  childCare: >-
+    Podczas bloków warsztatowych dla dorosłych, dziećmi opiekują się
+    doświadczone animatorki. Program dla dzieci obejmuje zabawy na świeżym
+    powietrzu, tworzenie i ruch.
 pricing:
   - label: 'Warsztaty — dorosły'
     price: 900

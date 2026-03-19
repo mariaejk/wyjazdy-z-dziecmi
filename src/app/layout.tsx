@@ -3,26 +3,26 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: {
-    default: "Wyjazdy z Dziećmi — Rodzinne wyjazdy warsztatowe w naturze",
+    default: "Wyjazdy z Dziećmi — czas dla siebie i dziecka w naturze",
     template: "%s | Wyjazdy z Dziećmi",
   },
   description:
-    "Warsztaty rozwojowe dla rodzin w otoczeniu natury. Joga, taniec, ceramika, konie. Organizatorka: Maria Kordalewska.",
+    "Wyjazdy warsztatowe w naturze dla zmęczonych rodziców i radosnych dzieci. Joga, taniec, ceramika, konie — czas na regenerację i wspólne wspomnienia.",
   metadataBase: new URL("https://www.wyjazdyzdziecmi.pl"),
   openGraph: {
     type: "website",
     locale: "pl_PL",
     siteName: "Wyjazdy z Dziećmi",
-    title: "Wyjazdy z Dziećmi — Rodzinne wyjazdy warsztatowe w naturze",
+    title: "Wyjazdy z Dziećmi — Warsztaty w naturze, czas dla siebie i dziecka",
     description:
-      "Warsztaty rozwojowe dla rodzin w otoczeniu natury. Joga, taniec, ceramika, konie.",
+      "Wyjazdy warsztatowe w naturze — czas na regenerację dla rodziców i przygodę dla dzieci.",
     images: [{ url: "/images/hero.jpg", width: 1200, height: 630, alt: "Wyjazdy z Dziećmi" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Wyjazdy z Dziećmi — Rodzinne wyjazdy warsztatowe w naturze",
+    title: "Wyjazdy z Dziećmi — Warsztaty w naturze, czas dla siebie i dziecka",
     description:
-      "Warsztaty rozwojowe dla rodzin w otoczeniu natury. Joga, taniec, ceramika, konie.",
+      "Wyjazdy warsztatowe w naturze — czas na regenerację dla rodziców i przygodę dla dzieci.",
     images: ["/images/hero.jpg"],
   },
   icons: {

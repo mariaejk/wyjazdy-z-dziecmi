@@ -48,6 +48,10 @@ practicalInfo:
     Pełne wyżywienie w cenie biletu: śniadanie, obiad, kolacja, domowe
     wypieki. Opcje: wegetariańska, wegańska, bezglutenowa.
   transport: ''
+  childCare: >-
+    Podczas bloków warsztatowych dla dorosłych, dziećmi opiekują się
+    doświadczone animatorki. Program dla dzieci obejmuje zabawy na świeżym
+    powietrzu, tworzenie i ruch.
 pricing:
   - label: Bilet early bird (czw-nd)
     price: 690

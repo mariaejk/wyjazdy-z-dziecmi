@@ -32,6 +32,9 @@ export const bookingSchema = z.object({
   notes: z
     .string()
     .max(1000, "Uwagi mogą mieć maksymalnie 1000 znaków"),
+  dietaryNeeds: z
+    .string()
+    .max(500, "Opis wymagań dietetycznych jest za długi"),
   consentRodo: z
     .literal(true, {
       error: "Zgoda na przetwarzanie danych jest wymagana",

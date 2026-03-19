@@ -12,7 +12,7 @@ import { SITE_CONFIG } from "@/lib/constants";
 import { getBreadcrumbSchema } from "@/lib/structured-data";
 
 export const metadata: Metadata = {
-  title: "Wyjazdy",
+  title: "Nadchodzące wyjazdy warsztatowe — terminy i ceny",
   description:
     "Zobacz nasze nadchodzące i zakończone wyjazdy warsztatowe dla rodzin. Joga, taniec, ceramika, konie — w otoczeniu natury.",
 };

@@ -59,6 +59,7 @@ export type Trip = {
     accommodation: string;
     food: string;
     transport?: string;
+    childCare?: string;
   };
   pricing: TripPricing[];
   deposit: number;

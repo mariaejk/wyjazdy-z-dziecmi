@@ -38,6 +38,7 @@ async function mapTrip(
       accommodation: entry.practicalInfo.accommodation,
       food: entry.practicalInfo.food,
       transport: entry.practicalInfo.transport || undefined,
+      childCare: entry.practicalInfo.childCare || undefined,
     },
     pricing: entry.pricing.map((p) => ({
       label: p.label,

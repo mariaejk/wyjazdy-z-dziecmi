@@ -1,4 +1,4 @@
-import { Home, UtensilsCrossed, Car } from "lucide-react";
+import { Home, UtensilsCrossed, Car, Baby } from "lucide-react";
 import { Container } from "@/components/layout/Container";
 import { SectionWrapper } from "@/components/ui/SectionWrapper";
 import { SectionHeading } from "@/components/ui/SectionHeading";
@@ -8,6 +8,7 @@ type PracticalInfo = {
   accommodation: string;
   food: string;
   transport?: string;
+  childCare?: string;
 };
 
 type TripPracticalInfoProps = {
@@ -18,6 +19,7 @@ const infoItems = [
   { key: "accommodation" as const, icon: Home, label: "Zakwaterowanie" },
   { key: "food" as const, icon: UtensilsCrossed, label: "Wyżywienie" },
   { key: "transport" as const, icon: Car, label: "Dojazd" },
+  { key: "childCare" as const, icon: Baby, label: "Opieka nad dziećmi" },
 ];
 
 export function TripPracticalInfo({ info }: TripPracticalInfoProps) {
