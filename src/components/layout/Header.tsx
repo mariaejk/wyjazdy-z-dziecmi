@@ -176,9 +176,19 @@ export function Header() {
             {/* CTA — visible lg+ */}
             <div className="hidden lg:block">
               <Button href={ROUTES.trips} size="md">
-                Zarezerwuj
+                Sprawdź terminy
               </Button>
             </div>
+
+            {/* Phone icon — visible on mobile only */}
+            <a
+              href={`tel:${CONTACT.phone.replace(/\s/g, "")}`}
+              className="inline-flex items-center justify-center rounded-md p-2 text-graphite transition-colors hover:bg-parchment-dark hover:text-moss lg:hidden"
+              aria-label={`Zadzwoń: ${CONTACT.phoneDisplay}`}
+              onClick={() => analytics.phoneClick()}
+            >
+              <Phone className="h-5 w-5" strokeWidth={1.5} />
+            </a>
 
             {/* Mobile hamburger */}
             <button

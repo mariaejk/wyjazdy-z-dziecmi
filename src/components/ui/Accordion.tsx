@@ -14,14 +14,20 @@ type AccordionItem = {
 type AccordionProps = {
   items: AccordionItem[];
   className?: string;
+  onToggle?: (id: string, title: string) => void;
 };
 
-export function Accordion({ items, className }: AccordionProps) {
+export function Accordion({ items, className, onToggle }: AccordionProps) {
   const [openId, setOpenId] = useState<string | null>(null);
   const prefersReducedMotion = useReducedMotion();
 
   const toggle = (id: string) => {
-    setOpenId((prev) => (prev === id ? null : id));
+    const newId = openId === id ? null : id;
+    setOpenId(newId);
+    if (newId !== null && onToggle) {
+      const item = items.find((i) => i.id === newId);
+      if (item) onToggle(newId, item.title);
+    }
   };
 
   return (

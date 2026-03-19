@@ -65,12 +65,13 @@ export function HeroSection() {
             {/* Text — right */}
             <div className="mt-10 lg:mt-0 lg:w-[55%]">
               <h1 className="font-heading text-4xl font-bold text-graphite sm:text-5xl lg:text-6xl">
-                Warsztaty wyjazdowe dla{" "}
-                <span className="text-terracotta">dorosłych i dzieci</span>
+                Zatrzymaj się. Odetchnij. Spotkaj swoje dziecko{" "}
+                <span className="text-terracotta">na nowo</span>.
               </h1>
               <p className="mt-4 max-w-lg text-lg leading-relaxed text-graphite-light sm:mt-6">
-                Projekt, który powstał z potrzeby spędzania jakościowego czasu
-                z dziećmi. Warsztaty, natura i niezapomniane przygody.
+                Wyjazdy warsztatowe w naturze, gdzie Ty się regenerujesz,
+                a Twoje dziecko się bawi i rozwija. Joga, taniec, ceramika,
+                konie — i wreszcie czas dla siebie.
               </p>
 
               <div className="mt-8 grid gap-3 sm:grid-cols-3">
@@ -90,13 +91,7 @@ export function HeroSection() {
                 ))}
               </div>
 
-              <div className="mt-8 sm:mt-10">
-                <Button href="/wyjazdy" size="lg" className="rounded-xl">
-                  Znajdź swój wyjazd
-                </Button>
-              </div>
-
-              <div className="mt-4 flex items-center gap-1.5 text-sm text-graphite-light">
+              <div className="mt-8 flex items-center gap-1.5 text-sm text-graphite-light sm:mt-10">
                 {Array.from({ length: 5 }).map((_, i) => (
                   <Star
                     key={i}
@@ -105,6 +100,12 @@ export function HeroSection() {
                   />
                 ))}
                 <span className="ml-1">Polecane przez rodziców</span>
+              </div>
+
+              <div className="mt-4">
+                <Button href="/wyjazdy" size="lg" className="rounded-xl">
+                  Zobacz wyjazdy
+                </Button>
               </div>
             </div>
           </div>
@@ -148,8 +149,8 @@ export function HeroSection() {
               transition={{ duration: 0.7, delay: 0.2 }}
               className="font-heading text-4xl font-bold text-graphite sm:text-5xl lg:text-6xl"
             >
-              Warsztaty wyjazdowe dla{" "}
-              <span className="text-terracotta">dorosłych i dzieci</span>
+              Zatrzymaj się. Odetchnij. Spotkaj swoje dziecko{" "}
+              <span className="text-terracotta">na nowo</span>.
             </motion.h1>
 
             {/* Subtitle */}
@@ -159,8 +160,9 @@ export function HeroSection() {
               transition={{ duration: 0.7, delay: 0.35 }}
               className="mt-4 max-w-lg text-lg leading-relaxed text-graphite-light sm:mt-6"
             >
-              Projekt, który powstał z potrzeby spędzania jakościowego czasu
-              z dziećmi. Warsztaty, natura i niezapomniane przygody.
+              Wyjazdy warsztatowe w naturze, gdzie Ty się regenerujesz,
+              a Twoje dziecko się bawi i rozwija. Joga, taniec, ceramika,
+              konie — i wreszcie czas dla siebie.
             </motion.p>
 
             {/* Benefit cards */}
@@ -188,24 +190,12 @@ export function HeroSection() {
               ))}
             </div>
 
-            {/* CTA */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.85 }}
-              className="mt-8 sm:mt-10"
-            >
-              <Button href="/wyjazdy" size="lg" className="rounded-xl">
-                Znajdź swój wyjazd
-              </Button>
-            </motion.div>
-
             {/* Social proof */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              transition={{ duration: 0.6, delay: 1.0 }}
-              className="mt-4 flex items-center gap-1.5 text-sm text-graphite-light"
+              transition={{ duration: 0.6, delay: 0.85 }}
+              className="mt-8 flex items-center gap-1.5 text-sm text-graphite-light sm:mt-10"
             >
               {Array.from({ length: 5 }).map((_, i) => (
                 <Star
@@ -215,6 +205,18 @@ export function HeroSection() {
                 />
               ))}
               <span className="ml-1">Polecane przez rodziców</span>
+            </motion.div>
+
+            {/* CTA */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 1.0 }}
+              className="mt-4"
+            >
+              <Button href="/wyjazdy" size="lg" className="rounded-xl">
+                Zobacz wyjazdy
+              </Button>
             </motion.div>
           </div>
         </div>

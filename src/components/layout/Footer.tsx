@@ -2,6 +2,7 @@ import Link from "next/link";
 import { Mail, Phone, Facebook, Instagram } from "lucide-react";
 import { Container } from "./Container";
 import { CookieSettingsButton } from "./CookieSettingsButton";
+import { SocialLink } from "./SocialLink";
 import { NewsletterForm } from "@/components/shared/NewsletterForm";
 import { footerLegalLinks } from "@/data/navigation";
 import { CONTACT, SOCIAL_LINKS, SITE_CONFIG } from "@/lib/constants";
@@ -55,28 +56,24 @@ export function Footer() {
             </h3>
             <ul className="mt-3 flex flex-col gap-2">
               <li>
-                <a
+                <SocialLink
                   href={SOCIAL_LINKS.facebook}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="Facebook (otwiera się w nowej karcie)"
+                  platform="Facebook"
                   className="inline-flex items-center gap-2 text-sm text-graphite-light transition-colors hover:text-moss"
                 >
                   <Facebook className="h-4 w-4" strokeWidth={1.5} />
                   Facebook
-                </a>
+                </SocialLink>
               </li>
               <li>
-                <a
+                <SocialLink
                   href={SOCIAL_LINKS.instagram}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="Instagram (otwiera się w nowej karcie)"
+                  platform="Instagram"
                   className="inline-flex items-center gap-2 text-sm text-graphite-light transition-colors hover:text-moss"
                 >
                   <Instagram className="h-4 w-4" strokeWidth={1.5} />
                   Instagram
-                </a>
+                </SocialLink>
               </li>
             </ul>
           </div>

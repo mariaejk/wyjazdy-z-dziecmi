@@ -81,6 +81,10 @@ practicalInfo:
     Pełne wyżywienie w cenie biletu. Opcje: wegańska, wegetariańska,
     bezglutenowa.
   transport: ''
+  childCare: >-
+    Podczas bloków warsztatowych dla dorosłych, dziećmi opiekują się
+    doświadczone animatorki. Program dla dzieci obejmuje zabawy na świeżym
+    powietrzu, tworzenie i ruch.
 pricing:
   - label: Dzieci 3+ i dorośli
     price: 650

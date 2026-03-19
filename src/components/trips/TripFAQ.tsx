@@ -6,6 +6,7 @@ import { SectionWrapper } from "@/components/ui/SectionWrapper";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { ScrollAnimation } from "@/components/shared/ScrollAnimation";
 import { Accordion } from "@/components/ui/Accordion";
+import { analytics } from "@/lib/analytics";
 
 type TripFAQProps = {
   items: TripFAQType[];
@@ -25,7 +26,10 @@ export function TripFAQ({ items }: TripFAQProps) {
         <div className="mx-auto max-w-3xl">
           <ScrollAnimation>
             <div className="rounded-2xl bg-white px-5 shadow-sm sm:px-6 lg:px-8">
-              <Accordion items={accordionItems} />
+              <Accordion
+                items={accordionItems}
+                onToggle={(_id, title) => analytics.faqClick(title)}
+              />
             </div>
           </ScrollAnimation>
         </div>

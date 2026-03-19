@@ -69,7 +69,7 @@ export function StickyBookingCTA() {
       aria-hidden={!isVisible}
     >
       <Button href="#formularz" className="w-full">
-        Zapisz się na wyjazd
+        Zarezerwuj miejsce
       </Button>
     </div>
   );

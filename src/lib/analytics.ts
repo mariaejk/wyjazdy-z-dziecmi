@@ -52,4 +52,20 @@ export const analytics = {
       category: "engagement",
     });
   },
+
+  faqClick(question: string) {
+    trackEvent({
+      action: "faq_click",
+      category: "engagement",
+      label: question,
+    });
+  },
+
+  socialClick(platform: string) {
+    trackEvent({
+      action: "social_click",
+      category: "engagement",
+      label: platform,
+    });
+  },
 };

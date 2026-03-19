@@ -29,8 +29,7 @@ export default async function Home() {
           <ScrollAnimation variant="fadeUp">
             <div className="mx-auto max-w-3xl text-center">
               <p className="text-xl font-medium leading-relaxed text-moss sm:text-2xl">
-                Jedyne w Polsce wyjazdy warsztatowe łączące rozwój osobisty
-                rodziców z programem dla dzieci.
+                Ty się regenerujesz. Twoje dziecko się bawi. Razem tworzycie wspomnienia na całe życie.
               </p>
             </div>
           </ScrollAnimation>
