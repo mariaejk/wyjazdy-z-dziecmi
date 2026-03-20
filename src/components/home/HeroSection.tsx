@@ -64,10 +64,13 @@ export function HeroSection() {
 
             {/* Text — right */}
             <div className="mt-10 lg:mt-0 lg:w-[55%]">
-              <h1 className="font-heading text-4xl font-bold text-graphite sm:text-5xl lg:text-6xl">
+              <h1 className="text-sm font-semibold uppercase tracking-wider text-moss">
+                Rodzinne wyjazdy warsztatowe w naturze
+              </h1>
+              <h2 className="mt-2 font-heading text-4xl font-bold text-graphite sm:text-5xl lg:text-6xl">
                 Zatrzymaj się. Odetchnij. Spotkaj swoje dziecko{" "}
                 <span className="text-terracotta">na nowo</span>.
-              </h1>
+              </h2>
               <p className="mt-4 max-w-lg text-lg leading-relaxed text-graphite-light sm:mt-6">
                 Wyjazdy warsztatowe w naturze, gdzie Ty się regenerujesz,
                 a Twoje dziecko się bawi i rozwija. Joga, taniec, ceramika,
@@ -142,16 +145,26 @@ export function HeroSection() {
 
           {/* Text — right */}
           <div className="mt-10 lg:mt-0 lg:w-[55%]">
-            {/* H1 */}
+            {/* H1 — SEO descriptive */}
             <motion.h1
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.15 }}
+              className="text-sm font-semibold uppercase tracking-wider text-moss"
+            >
+              Rodzinne wyjazdy warsztatowe w naturze
+            </motion.h1>
+
+            {/* H2 — emotional */}
+            <motion.h2
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.2 }}
-              className="font-heading text-4xl font-bold text-graphite sm:text-5xl lg:text-6xl"
+              className="mt-2 font-heading text-4xl font-bold text-graphite sm:text-5xl lg:text-6xl"
             >
               Zatrzymaj się. Odetchnij. Spotkaj swoje dziecko{" "}
               <span className="text-terracotta">na nowo</span>.
-            </motion.h1>
+            </motion.h2>
 
             {/* Subtitle */}
             <motion.p

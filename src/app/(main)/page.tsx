@@ -2,7 +2,7 @@ import { HeroSection } from "@/components/home/HeroSection";
 import { TripCardsSection } from "@/components/home/TripCardsSection";
 import { AboutTeaser } from "@/components/home/AboutTeaser";
 import { OpinionsTeaser } from "@/components/home/OpinionsTeaser";
-import { PastTripsSection } from "@/components/home/PastTripsSection";
+import { HomeFAQ } from "@/components/home/HomeFAQ";
 import { Container } from "@/components/layout/Container";
 import { SectionWrapper } from "@/components/ui/SectionWrapper";
 import { SectionHeading } from "@/components/ui/SectionHeading";
@@ -52,8 +52,7 @@ export default async function Home() {
       <TripCardsSection />
       <AboutTeaser />
       <OpinionsTeaser />
-
-      <PastTripsSection />
+      <HomeFAQ />
     </>
   );
 }

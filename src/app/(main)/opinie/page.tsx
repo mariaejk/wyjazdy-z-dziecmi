@@ -30,7 +30,7 @@ export default async function OpinionsPage() {
           <SectionHeading
             as="h1"
             title="Opinie"
-            subtitle="Co mówią uczestnicy naszych wyjazdów"
+            subtitle="Co mówią uczestnicy naszych warsztatów"
           />
 
           <div className="mx-auto grid max-w-4xl gap-6 md:grid-cols-2">
