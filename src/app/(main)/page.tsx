@@ -37,7 +37,7 @@ export default async function Home() {
       <SectionWrapper variant="alternate" className="relative overflow-hidden">
         <Container>
           <SectionHeading
-            title="Kalendarz wyjazdów"
+            title="Kalendarz warsztatów"
             subtitle="Znajdź termin idealny dla siebie"
           />
           <div className="mx-auto max-w-3xl">

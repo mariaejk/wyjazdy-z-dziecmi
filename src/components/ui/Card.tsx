@@ -22,7 +22,7 @@ export function Card({
   const content = (
     <div
       className={cn(
-        "group overflow-hidden rounded-2xl bg-white shadow-sm transition-shadow duration-300",
+        "group flex h-full flex-col overflow-hidden rounded-2xl bg-white shadow-sm transition-shadow duration-300",
         href && "hover:shadow-lg",
         className,
       )}
@@ -41,7 +41,7 @@ export function Card({
           />
         </div>
       )}
-      <div className="p-4 sm:p-5 lg:p-6">{children}</div>
+      <div className="flex flex-1 flex-col p-4 sm:p-5 lg:p-6">{children}</div>
     </div>
   );
 

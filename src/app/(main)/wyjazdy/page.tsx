@@ -38,7 +38,7 @@ export default async function TripsPage() {
       <SectionWrapper className="relative overflow-hidden">
         <Container>
           <SectionHeading
-            title="Kalendarz wyjazdów"
+            title="Kalendarz warsztatów"
             subtitle="Znajdź termin idealny dla siebie"
           />
           <div className="mx-auto max-w-3xl">
@@ -52,7 +52,7 @@ export default async function TripsPage() {
 
       <SectionWrapper variant="alternate">
         <Container>
-          <SectionHeading title="Nadchodzące wyjazdy" />
+          <SectionHeading title="Nadchodzące warsztaty" />
           <Suspense fallback={null}>
             <TripsFilter upcomingTrips={upcomingTrips} />
           </Suspense>
@@ -63,12 +63,12 @@ export default async function TripsPage() {
         <SectionWrapper>
           <Container>
             <SectionHeading
-              title="Zakończone wyjazdy"
+              title="Zakończone warsztaty"
               subtitle="Zobacz, co było wcześniej"
             />
             <div className="grid gap-6 sm:grid-cols-2 lg:gap-8">
               {pastTrips.map((trip, index) => (
-                <ScrollAnimation key={trip.slug} delay={index * 0.15}>
+                <ScrollAnimation key={trip.slug} delay={index * 0.15} className="h-full">
                   <TripCard trip={trip} />
                 </ScrollAnimation>
               ))}

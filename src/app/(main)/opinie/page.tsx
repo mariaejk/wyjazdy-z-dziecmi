@@ -45,7 +45,7 @@ export default async function OpinionsPage() {
 
           <div className="mt-12 text-center">
             <Button href={ROUTES.trips}>
-              Weź udział w wyjeździe
+              Weź udział w warsztatach
             </Button>
           </div>
         </Container>

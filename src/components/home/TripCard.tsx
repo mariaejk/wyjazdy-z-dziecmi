@@ -70,7 +70,7 @@ export function TripCard({ trip }: TripCardProps) {
         {trip.shortDescription}
       </p>
 
-      <div className="mt-4 flex flex-col gap-2 sm:flex-row">
+      <div className="mt-auto flex flex-col gap-2 pt-4 sm:flex-row">
         <Button href={tripUrl} variant="secondary" size="sm">
           Szczegóły
         </Button>

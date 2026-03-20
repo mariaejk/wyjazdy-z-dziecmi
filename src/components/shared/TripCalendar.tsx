@@ -58,12 +58,16 @@ function MonthGrid({
   trips,
   activeFilter,
   now,
+  onPrev,
+  onNext,
 }: {
   year: number;
   month: number;
   trips: CalendarTrip[];
   activeFilter: CategoryKey | null;
   now: Date;
+  onPrev?: () => void;
+  onNext?: () => void;
 }) {
   const daysInMonth = getDaysInMonth(year, month);
   const firstDay = getFirstDayOfMonth(year, month);
@@ -98,8 +102,32 @@ function MonthGrid({
   return (
     <div>
       {/* Month header */}
-      <div className="pb-2 text-center font-heading text-sm font-bold text-graphite sm:text-base">
-        {MONTH_NAMES[month]} {year}
+      <div className="flex items-center justify-between pb-2">
+        {onPrev ? (
+          <button
+            onClick={onPrev}
+            className="rounded-md p-1 text-graphite-light transition-colors hover:bg-parchment-dark hover:text-graphite"
+            aria-label="Poprzedni miesiąc"
+          >
+            <ChevronLeft className="h-4 w-4 sm:h-5 sm:w-5" strokeWidth={1.5} />
+          </button>
+        ) : (
+          <div className="w-6 sm:w-7" />
+        )}
+        <span className="font-heading text-sm font-bold text-graphite sm:text-base">
+          {MONTH_NAMES[month]} {year}
+        </span>
+        {onNext ? (
+          <button
+            onClick={onNext}
+            className="rounded-md p-1 text-graphite-light transition-colors hover:bg-parchment-dark hover:text-graphite"
+            aria-label="Następny miesiąc"
+          >
+            <ChevronRight className="h-4 w-4 sm:h-5 sm:w-5" strokeWidth={1.5} />
+          </button>
+        ) : (
+          <div className="w-6 sm:w-7" />
+        )}
       </div>
 
       {/* Day names */}
@@ -180,28 +208,7 @@ export function TripCalendar({ trips }: TripCalendarProps) {
   }
 
   return (
-    <div className="overflow-hidden rounded-2xl border border-graphite/10 bg-white" aria-label="Kalendarz wyjazdów" role="region">
-      {/* Navigation */}
-      <div className="flex items-center justify-between border-b border-graphite/10 px-4 py-3">
-        <button
-          onClick={goToPrevMonth}
-          className="rounded-md p-1.5 text-graphite-light transition-colors hover:bg-parchment-dark hover:text-graphite"
-          aria-label="Poprzedni miesiąc"
-        >
-          <ChevronLeft className="h-5 w-5" strokeWidth={1.5} />
-        </button>
-        <span className="font-heading text-sm font-bold text-graphite sm:text-base">
-          {MONTH_NAMES[currentMonth]} – {MONTH_NAMES[next.month]} {next.year !== currentYear ? `${currentYear}/${next.year}` : currentYear}
-        </span>
-        <button
-          onClick={goToNextMonth}
-          className="rounded-md p-1.5 text-graphite-light transition-colors hover:bg-parchment-dark hover:text-graphite"
-          aria-label="Następny miesiąc"
-        >
-          <ChevronRight className="h-5 w-5" strokeWidth={1.5} />
-        </button>
-      </div>
-
+    <div className="overflow-hidden rounded-2xl border border-graphite/10 bg-white" aria-label="Kalendarz warsztatów" role="region">
       {/* Two-month grid */}
       <div className="grid grid-cols-1 gap-4 p-4 sm:grid-cols-2 sm:gap-6" aria-live="polite">
         <MonthGrid
@@ -210,6 +217,7 @@ export function TripCalendar({ trips }: TripCalendarProps) {
           trips={trips}
           activeFilter={activeFilter}
           now={now}
+          onPrev={goToPrevMonth}
         />
         <MonthGrid
           year={next.year}
@@ -217,6 +225,7 @@ export function TripCalendar({ trips }: TripCalendarProps) {
           trips={trips}
           activeFilter={activeFilter}
           now={now}
+          onNext={goToNextMonth}
         />
       </div>
 

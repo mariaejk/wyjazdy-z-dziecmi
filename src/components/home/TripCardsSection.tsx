@@ -13,7 +13,7 @@ export async function TripCardsSection() {
       <Container>
         <ScrollAnimation variant="fadeUp">
           <SectionHeading
-            title="Nadchodzące wyjazdy"
+            title="Nadchodzące warsztaty"
             subtitle="Wybierz wyjazd dla siebie i swojego dziecka"
           />
         </ScrollAnimation>
