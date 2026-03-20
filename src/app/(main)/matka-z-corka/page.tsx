@@ -6,6 +6,8 @@ import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Button } from "@/components/ui/Button";
 import { ScrollAnimation } from "@/components/shared/ScrollAnimation";
 import { StructuredData } from "@/components/shared/StructuredData";
+import { TripCard } from "@/components/home/TripCard";
+import { getUpcomingTripsByCategory } from "@/data/trips";
 import { ROUTES, SITE_CONFIG } from "@/lib/constants";
 import { getBreadcrumbSchema } from "@/lib/structured-data";
 
@@ -54,7 +56,9 @@ const benefits = [
   },
 ];
 
-export default function MotherDaughterPage() {
+export default async function MotherDaughterPage() {
+  const trips = await getUpcomingTripsByCategory("matka-corka");
+
   return (
     <>
       <StructuredData data={getBreadcrumbSchema([
@@ -147,8 +151,29 @@ export default function MotherDaughterPage() {
         </Container>
       </SectionWrapper>
 
+      {/* Trips */}
+      {trips.length > 0 && (
+        <SectionWrapper variant="alternate">
+          <Container>
+            <SectionHeading
+              title="Nadchodzące wyjazdy"
+              subtitle="Wybierz termin i dołącz do nas"
+            />
+            <div className="mx-auto max-w-2xl">
+              <div className="grid gap-6">
+                {trips.map((trip, index) => (
+                  <ScrollAnimation key={trip.slug} delay={index * 0.15}>
+                    <TripCard trip={trip} />
+                  </ScrollAnimation>
+                ))}
+              </div>
+            </div>
+          </Container>
+        </SectionWrapper>
+      )}
+
       {/* CTA */}
-      <SectionWrapper variant="alternate">
+      <SectionWrapper>
         <Container>
           <ScrollAnimation variant="fadeUp">
             <div className="mx-auto max-w-2xl text-center">
@@ -160,8 +185,8 @@ export default function MotherDaughterPage() {
                 swoją córkę w nowy sposób &mdash; ten wyjazd jest dla Was.
               </p>
               <div className="mt-8 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
-                <Button href={`${ROUTES.trips}?kategoria=matka-corka`}>
-                  Zobacz wyjazdy
+                <Button href={ROUTES.trips}>
+                  Zobacz wszystkie warsztaty
                 </Button>
                 <Button href={ROUTES.contact} variant="secondary">
                   Napisz do nas

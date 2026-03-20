@@ -5,6 +5,7 @@ import Link from "next/link";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { ROUTES } from "@/lib/constants";
+import { CATEGORY_CONFIG, PAST_CATEGORY } from "@/lib/category-config";
 
 type CalendarTrip = {
   slug: string;
@@ -26,12 +27,6 @@ const MONTH_NAMES = [
 
 const DAY_NAMES = ["Pn", "Wt", "Śr", "Cz", "Pt", "Sb", "Nd"];
 
-const CATEGORY_COLORS: Record<string, string> = {
-  rodzinny: "bg-moss text-white",
-  "matka-corka": "bg-amber-500 text-white",
-  "single-parents": "bg-terracotta text-white",
-  "dla-doroslych": "bg-coral text-white",
-};
 
 function getDaysInMonth(year: number, month: number): number {
   return new Date(year, month + 1, 0).getDate();
@@ -160,8 +155,8 @@ export function TripCalendar({ trips }: TripCalendarProps) {
               className={cn(
                 "relative flex aspect-square items-center justify-center border-b border-r border-graphite/5 text-sm",
                 isToday(day) && "font-bold",
-                trip && !trip.isPast && CATEGORY_COLORS[trip.category],
-                trip && trip.isPast && "bg-graphite/10 text-graphite-light",
+                trip && !trip.isPast && CATEGORY_CONFIG[trip.category].calendarBg,
+                trip && trip.isPast && PAST_CATEGORY.calendarBg,
                 isStart && "rounded-l-lg",
                 isEnd && "rounded-r-lg",
               )}
@@ -184,25 +179,15 @@ export function TripCalendar({ trips }: TripCalendarProps) {
 
       {/* Legend */}
       <div className="flex flex-wrap gap-4 border-t border-graphite/10 px-4 py-3">
+        {Object.values(CATEGORY_CONFIG).map((config) => (
+          <div key={config.label} className="flex items-center gap-2 text-xs text-graphite-light">
+            <span className={cn("inline-block h-3 w-3 rounded", config.legendBg)} />
+            {config.label}
+          </div>
+        ))}
         <div className="flex items-center gap-2 text-xs text-graphite-light">
-          <span className="inline-block h-3 w-3 rounded bg-moss" />
-          Rodzinne
-        </div>
-        <div className="flex items-center gap-2 text-xs text-graphite-light">
-          <span className="inline-block h-3 w-3 rounded bg-amber-500" />
-          Matka z córką
-        </div>
-        <div className="flex items-center gap-2 text-xs text-graphite-light">
-          <span className="inline-block h-3 w-3 rounded bg-terracotta" />
-          Single parents
-        </div>
-        <div className="flex items-center gap-2 text-xs text-graphite-light">
-          <span className="inline-block h-3 w-3 rounded bg-coral" />
-          Dla dorosłych
-        </div>
-        <div className="flex items-center gap-2 text-xs text-graphite-light">
-          <span className="inline-block h-3 w-3 rounded bg-graphite/20" />
-          Zakończone
+          <span className={cn("inline-block h-3 w-3 rounded", PAST_CATEGORY.legendBg)} />
+          {PAST_CATEGORY.label}
         </div>
       </div>
     </div>

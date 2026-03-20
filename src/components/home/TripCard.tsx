@@ -3,8 +3,9 @@ import { MapPin, Calendar } from "lucide-react";
 import { Card } from "@/components/ui/Card";
 import { Badge } from "@/components/ui/Badge";
 import { Button } from "@/components/ui/Button";
-import { formatDate, formatCurrency } from "@/lib/utils";
+import { formatDateRange, formatCurrency, cn } from "@/lib/utils";
 import { ROUTES } from "@/lib/constants";
+import { CATEGORY_CONFIG } from "@/lib/category-config";
 
 type TripCardProps = {
   trip: Trip;
@@ -39,7 +40,10 @@ export function TripCard({ trip }: TripCardProps) {
       <div className="flex flex-wrap items-center gap-2 mb-3">
         <Badge className="px-4 py-1.5 text-sm font-semibold">
           <Calendar className="mr-1.5 h-4 w-4" strokeWidth={1.5} />
-          {formatDate(trip.date)}
+          {formatDateRange(trip.date, trip.dateEnd)}
+        </Badge>
+        <Badge className={cn(CATEGORY_CONFIG[trip.category].badgeBg, CATEGORY_CONFIG[trip.category].badgeText, "border-0")}>
+          {CATEGORY_CONFIG[trip.category].label}
         </Badge>
         {trip.isPast && <Badge variant="outline">Zakończony — komplet</Badge>}
         {!trip.isPast && scarcityBadge}

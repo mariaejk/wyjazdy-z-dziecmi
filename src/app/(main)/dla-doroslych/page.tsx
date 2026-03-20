@@ -6,7 +6,7 @@ import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Button } from "@/components/ui/Button";
 import { ScrollAnimation } from "@/components/shared/ScrollAnimation";
 import { TripCard } from "@/components/home/TripCard";
-import { getTripBySlug } from "@/data/trips";
+import { getUpcomingTripsByCategory } from "@/data/trips";
 import { ROUTES } from "@/lib/constants";
 
 export const metadata: Metadata = {
@@ -56,7 +56,7 @@ const benefits = [
 ];
 
 export default async function AdultOnlyPage() {
-  const yogaTrip = await getTripBySlug("yoga-i-konie");
+  const trips = await getUpcomingTripsByCategory("dla-doroslych");
 
   return (
     <>
@@ -117,18 +117,22 @@ export default async function AdultOnlyPage() {
         </Container>
       </SectionWrapper>
 
-      {/* Trip */}
-      {yogaTrip && (
+      {/* Trips */}
+      {trips.length > 0 && (
         <SectionWrapper>
           <Container>
             <SectionHeading
-              title="Nadchodzący wyjazd"
-              subtitle="Najbliższy warsztat tylko dla dorosłych"
+              title="Nadchodzące wyjazdy"
+              subtitle="Najbliższe warsztaty tylko dla dorosłych"
             />
             <div className="mx-auto max-w-2xl">
-              <ScrollAnimation>
-                <TripCard trip={yogaTrip} />
-              </ScrollAnimation>
+              <div className="grid gap-6">
+                {trips.map((trip, index) => (
+                  <ScrollAnimation key={trip.slug} delay={index * 0.15}>
+                    <TripCard trip={trip} />
+                  </ScrollAnimation>
+                ))}
+              </div>
             </div>
           </Container>
         </SectionWrapper>
@@ -148,7 +152,7 @@ export default async function AdultOnlyPage() {
               </p>
               <div className="mt-8 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
                 <Button href={ROUTES.trips}>
-                  Zobacz wszystkie wyjazdy
+                  Zobacz wszystkie warsztaty
                 </Button>
                 <Button href={ROUTES.contact} variant="secondary">
                   Napisz do nas
