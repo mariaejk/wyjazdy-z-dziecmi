@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { Suspense } from "react";
 import { Heart, Shield, Users, TreePine, Smile, Sparkles } from "lucide-react";
 import { Container } from "@/components/layout/Container";
 import { SectionWrapper } from "@/components/ui/SectionWrapper";
@@ -57,7 +56,7 @@ const benefits = [
 ];
 
 export default async function SingleParentsPage() {
-  const trips = await getUpcomingTripsByCategory("rodzinny");
+  const trips = await getUpcomingTripsByCategory("single-parents");
 
   return (
     <>
@@ -153,7 +152,7 @@ export default async function SingleParentsPage() {
               </p>
               <div className="mt-8 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
                 <Button href={ROUTES.trips}>
-                  Zobacz wszystkie wyjazdy
+                  Zobacz wszystkie warsztaty
                 </Button>
                 <Button href={ROUTES.contact} variant="secondary">
                   Napisz do nas

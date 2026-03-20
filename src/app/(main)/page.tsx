@@ -8,18 +8,11 @@ import { SectionWrapper } from "@/components/ui/SectionWrapper";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { ScrollAnimation } from "@/components/shared/ScrollAnimation";
 import { TripCalendar } from "@/components/shared/TripCalendar";
-import { getAllTrips } from "@/data/trips";
+import { ForestPattern } from "@/components/shared/ForestPattern";
+import { getCalendarTrips } from "@/data/trips";
 
 export default async function Home() {
-  const allTrips = await getAllTrips();
-  const calendarTrips = allTrips.map((t) => ({
-    slug: t.slug,
-    title: t.title,
-    date: t.date,
-    dateEnd: t.dateEnd,
-    category: t.category,
-    isPast: t.isPast,
-  }));
+  const calendarTrips = await getCalendarTrips();
 
   return (
     <>
@@ -39,7 +32,7 @@ export default async function Home() {
       <HeroSection />
 
       {/* Calendar — przed Nadchodzącymi wyjazdami */}
-      <SectionWrapper variant="alternate">
+      <SectionWrapper variant="alternate" className="relative overflow-hidden">
         <Container>
           <SectionHeading
             title="Kalendarz wyjazdów"
@@ -51,6 +44,7 @@ export default async function Home() {
             </ScrollAnimation>
           </div>
         </Container>
+        <ForestPattern variant="fairytale" />
       </SectionWrapper>
 
       <TripCardsSection />

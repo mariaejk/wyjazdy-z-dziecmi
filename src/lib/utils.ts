@@ -20,6 +20,28 @@ export function formatDateShort(date: string | Date): string {
   }).format(new Date(date));
 }
 
+export function formatDateRange(start: string | Date, end: string | Date): string {
+  const s = new Date(start);
+  const e = new Date(end);
+
+  const dayStart = s.getDate();
+  const dayEnd = e.getDate();
+  const monthStart = s.getMonth();
+  const monthEnd = e.getMonth();
+  const yearEnd = e.getFullYear();
+
+  const monthNames = [
+    "stycznia", "lutego", "marca", "kwietnia", "maja", "czerwca",
+    "lipca", "sierpnia", "września", "października", "listopada", "grudnia",
+  ];
+
+  if (monthStart === monthEnd) {
+    return `${dayStart}–${dayEnd} ${monthNames[monthEnd]} ${yearEnd}`;
+  }
+
+  return `${dayStart} ${monthNames[monthStart]} – ${dayEnd} ${monthNames[monthEnd]} ${yearEnd}`;
+}
+
 export function formatCurrency(amount: number): string {
   return new Intl.NumberFormat("pl-PL", {
     style: "currency",

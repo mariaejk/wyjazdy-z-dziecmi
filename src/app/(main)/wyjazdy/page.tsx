@@ -1,12 +1,14 @@
 import type { Metadata } from "next";
 import { Suspense } from "react";
-import { getUpcomingTrips, getPastTrips } from "@/data/trips";
+import { getAllTrips, toCalendarTrips } from "@/data/trips";
 import { Container } from "@/components/layout/Container";
 import { SectionWrapper } from "@/components/ui/SectionWrapper";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { ScrollAnimation } from "@/components/shared/ScrollAnimation";
 import { StructuredData } from "@/components/shared/StructuredData";
 import { TripCard } from "@/components/home/TripCard";
+import { TripCalendar } from "@/components/shared/TripCalendar";
+import { ForestPattern } from "@/components/shared/ForestPattern";
 import { TripsFilter } from "@/components/trips/TripsFilter";
 import { SITE_CONFIG } from "@/lib/constants";
 import { getBreadcrumbSchema } from "@/lib/structured-data";
@@ -18,8 +20,10 @@ export const metadata: Metadata = {
 };
 
 export default async function TripsPage() {
-  const upcomingTrips = await getUpcomingTrips();
-  const pastTrips = await getPastTrips();
+  const allTrips = await getAllTrips();
+  const upcomingTrips = allTrips.filter((t) => !t.isPast);
+  const pastTrips = allTrips.filter((t) => t.isPast);
+  const calendarTrips = toCalendarTrips(allTrips);
 
   return (
     <>
@@ -28,7 +32,23 @@ export default async function TripsPage() {
         { name: "Wyjazdy", url: `${SITE_CONFIG.url}/wyjazdy` },
       ])} />
 
-      <SectionWrapper>
+      {/* Calendar */}
+      <SectionWrapper className="relative overflow-hidden">
+        <Container>
+          <SectionHeading
+            title="Kalendarz wyjazdów"
+            subtitle="Znajdź termin idealny dla siebie"
+          />
+          <div className="mx-auto max-w-md">
+            <ScrollAnimation variant="fadeUp">
+              <TripCalendar trips={calendarTrips} />
+            </ScrollAnimation>
+          </div>
+        </Container>
+        <ForestPattern variant="realistic" />
+      </SectionWrapper>
+
+      <SectionWrapper variant="alternate">
         <Container>
           <SectionHeading title="Nadchodzące wyjazdy" />
           <Suspense fallback={null}>
@@ -38,7 +58,7 @@ export default async function TripsPage() {
       </SectionWrapper>
 
       {pastTrips.length > 0 && (
-        <SectionWrapper variant="alternate">
+        <SectionWrapper>
           <Container>
             <SectionHeading
               title="Zakończone wyjazdy"

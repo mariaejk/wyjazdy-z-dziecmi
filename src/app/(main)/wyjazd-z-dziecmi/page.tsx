@@ -6,6 +6,8 @@ import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Button } from "@/components/ui/Button";
 import { ScrollAnimation } from "@/components/shared/ScrollAnimation";
 import { StructuredData } from "@/components/shared/StructuredData";
+import { TripCard } from "@/components/home/TripCard";
+import { getUpcomingTripsByCategory } from "@/data/trips";
 import { ROUTES, SITE_CONFIG } from "@/lib/constants";
 import { getBreadcrumbSchema } from "@/lib/structured-data";
 
@@ -54,7 +56,9 @@ const benefits = [
   },
 ];
 
-export default function FamilyTripsPage() {
+export default async function FamilyTripsPage() {
+  const trips = await getUpcomingTripsByCategory("rodzinny");
+
   return (
     <>
       <StructuredData data={getBreadcrumbSchema([
@@ -144,8 +148,29 @@ export default function FamilyTripsPage() {
         </Container>
       </SectionWrapper>
 
+      {/* Trips */}
+      {trips.length > 0 && (
+        <SectionWrapper variant="alternate">
+          <Container>
+            <SectionHeading
+              title="Nadchodzące wyjazdy"
+              subtitle="Wybierz termin i dołącz do nas"
+            />
+            <div className="mx-auto max-w-2xl">
+              <div className="grid gap-6">
+                {trips.map((trip, index) => (
+                  <ScrollAnimation key={trip.slug} delay={index * 0.15}>
+                    <TripCard trip={trip} />
+                  </ScrollAnimation>
+                ))}
+              </div>
+            </div>
+          </Container>
+        </SectionWrapper>
+      )}
+
       {/* CTA */}
-      <SectionWrapper variant="alternate">
+      <SectionWrapper>
         <Container>
           <ScrollAnimation variant="fadeUp">
             <div className="mx-auto max-w-2xl text-center">
@@ -157,8 +182,8 @@ export default function FamilyTripsPage() {
                 znaleźć wyjazd idealny dla Ciebie i Twojego dziecka.
               </p>
               <div className="mt-8 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
-                <Button href={`${ROUTES.trips}?kategoria=rodzinny`}>
-                  Zobacz wyjazdy
+                <Button href={ROUTES.trips}>
+                  Zobacz wszystkie warsztaty
                 </Button>
                 <Button href={ROUTES.contact} variant="secondary">
                   Napisz do nas
