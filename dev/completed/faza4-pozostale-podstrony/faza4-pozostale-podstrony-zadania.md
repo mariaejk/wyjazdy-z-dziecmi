@@ -33,13 +33,12 @@
 
 ## Do poprawy po review fazy 4
 
-- [x] 🟠 [important] **src/app/o-nas/page.tsx:20-21** — Użyć `getTeamMember()` zamiast dostępu przez indeks tablicy
-- [x] 🟠 [important] **src/app/o-nas/page.tsx** — Brak `<h1>` na stronie (SectionHeading renderuje `<h2>`)
-- [x] 🟠 [important] **src/components/contact/ContactInfo.tsx:10** — Twarde wartości display name FB/IG zamiast stałych
-- [x] 🟡 [nit] **src/data/places.ts** — Dodać eksport `getPlace()` dla spójności z `team.ts`
-- [x] 🟡 [nit] **src/components/about/PersonBio.tsx:24** — Użyć `cn()` zamiast template literal dla className
-- [x] 🟡 [nit] **src/components/contact/ContactInfo.tsx** — Dodać `aria-label` na linkach FB/IG otwierających nową kartę
-- [x] 🟡 [nit] **src/components/about/PersonBio.tsx** — Dodać komentarz TODO o `next/image` gdy zdjęcia będą dostępne
-- [x] 🟡 [nit] **src/components/about/PlaceCard.tsx** — Dodać komentarz TODO o `place.image` gdy zdjęcia będą dostępne
-- [x] 🔵 [suggestion] **src/app/regulamin/page.tsx, polityka-prywatnosci/page.tsx** — Dodać `robots: { index: false }` na stronach placeholder
-- [x] 🟠 [important] **src/app/kontakt/page.tsx** — Dodać `<h1>` + naprawić asymetrię animacji kolumn
+- [ ] 🟠 [important] **src/app/o-nas/page.tsx:20-21** — Użyć `getTeamMember()` zamiast dostępu przez indeks tablicy
+- [ ] 🟠 [important] **src/app/o-nas/page.tsx** — Brak `<h1>` na stronie (SectionHeading renderuje `<h2>`)
+- [ ] 🟠 [important] **src/components/contact/ContactInfo.tsx:10** — Twarde wartości display name FB/IG zamiast stałych
+- [ ] 🟡 [nit] **src/data/places.ts** — Dodać eksport `getPlace()` dla spójności z `team.ts`
+- [ ] 🟡 [nit] **src/components/about/PersonBio.tsx:24** — Użyć `cn()` zamiast template literal dla className
+- [ ] 🟡 [nit] **src/components/contact/ContactInfo.tsx** — Dodać `aria-label` na linkach FB/IG otwierających nową kartę
+- [ ] 🟡 [nit] **src/components/about/PersonBio.tsx** — Dodać komentarz TODO o `next/image` gdy zdjęcia będą dostępne
+- [ ] 🟡 [nit] **src/components/about/PlaceCard.tsx** — Dodać komentarz TODO o `place.image` gdy zdjęcia będą dostępne
+- [ ] 🔵 [suggestion] **src/app/regulamin/page.tsx, polityka-prywatnosci/page.tsx** — Dodać `robots: { index: false }` na stronach placeholder

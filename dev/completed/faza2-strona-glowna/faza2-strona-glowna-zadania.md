@@ -73,12 +73,12 @@
 
 ## Do poprawy po review Fazy 2
 
-- [x] 🟠 [important] **HeroSection.tsx** — Wczesny return z czystym HTML przy `prefers-reduced-motion` (spójne z ScrollAnimation)
-- [x] 🟠 [important] **AboutTeaser.tsx** — Dodano "nauczycielka jogi" do bio Marii
-- [x] 🟠 [important] **HeroSection.tsx** — CTA zmienione na `href="#wyjazdy"` (scroll do sekcji zamiast 404)
-- [x] 🟠 [important] **Button.tsx** — ButtonAsLink rozszerzony o aria-label, target, rel + przekazanie do Link
-- [x] 🟡 [nit] **ScrollAnimation.tsx** — Usunięte zbędne `cn()` z jednym argumentem + nieużywany import
-- [x] 🟡 [nit] **Card.tsx** — Link className rozbite na multiline z `cn()`
+- [ ] 🟠 [important] **HeroSection.tsx:53-96** — Niespojnosc wzorca `prefers-reduced-motion`: uzyc wczesnego return z czystym HTML (jak ScrollAnimation)
+- [ ] 🟠 [important] **AboutTeaser.tsx:28-30** — Dodac "nauczycielka jogi" do bio Marii (kluczowa kompetencja)
+- [ ] 🟠 [important] **HeroSection.tsx:93** — CTA "Zobacz wyjazdy" prowadzi do 404; zmienic na `href="#wyjazdy"` do czasu istnienia podstrony
+- [ ] 🟠 [important] **Button.tsx:16-21** — Link-variant nie akceptuje aria-label, target, rel; rozszerzyc typ
+- [ ] 🟡 [nit] **ScrollAnimation.tsx:65** — Zbedne `cn()` z jednym argumentem
+- [ ] 🟡 [nit] **Card.tsx:53** — Dlugi single-line className; uzyc `cn()` multiline
 
 ---
 
@@ -92,5 +92,5 @@
 | 2D: Sekcje strony głównej | 8 | ✅ Done |
 | 2E: Złożenie page.tsx | 4 | ✅ Done |
 | 2F: Weryfikacja | 8 | ✅ Done |
-| Review poprawki | 6 | ✅ Done |
+| Review poprawki | 6 | ⬜ Pending |
 | **Łącznie** | **42** | |

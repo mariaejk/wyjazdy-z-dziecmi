@@ -1,7 +1,7 @@
 # Kontekst: Faza 2 — Strona Główna
 
 > **Branch:** `feature/faza2-strona-glowna`
-> **Ostatnia aktualizacja:** 2026-02-26 (review poprawki — FAZA 2 KOMPLETNA)
+> **Ostatnia aktualizacja:** 2026-02-26 (etap 2F — FAZA 2 UKONCZONA)
 
 ---
 
@@ -166,11 +166,3 @@ import { motion } from "motion/react";
 - **Decyzja:** APPROVE WITH COMMENTS (0 blocking, 4 important, 5 nit, 4 suggestion)
 - **Raport:** `dev/active/faza2-strona-glowna/review-faza-2.md`
 - **Kluczowe do poprawy:** HeroSection reduced-motion (niespojnosc), AboutTeaser bio (brak "nauczycielka jogi"), CTA href (#wyjazdy zamiast /wyjazdy), Button typ rozszerzenie.
-
-### Poprawki z review (2026-02-26)
-- **HeroSection:** Early return z czystym HTML dla `prefers-reduced-motion` (spójne z ScrollAnimation). CTA zmienione z `/wyjazdy` (404) na `#wyjazdy` (scroll). Usunięty nieużywany import ROUTES.
-- **AboutTeaser:** Dodano "nauczycielka jogi" do bio Marii (kluczowa kompetencja).
-- **Button:** `ButtonAsLink` rozszerzony o `aria-label`, `target`, `rel`. Link renderuje te atrybuty.
-- **ScrollAnimation:** Usunięte zbędne `cn(className)` → `className`. Usunięty nieużywany import `cn`.
-- **Card:** Link className rozbite na multiline z `cn()` (czytelność).
-- **Build + Lint:** PASS (0 errors). FAZA 2 KOMPLETNA — wszystkie 42 zadania ukończone.

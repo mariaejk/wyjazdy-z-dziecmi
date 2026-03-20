@@ -6,7 +6,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 Landing page / sales funnel for "Wyjazdy z Dziećmi" — a brand organizing family workshop retreats in nature (yoga, dance, ceramics, horses). Client: Maria Kordalewska. Domain: wyjazdyzdziecmi.pl.
 
-**Status:** Phase 1-7 + Poprawki klientki + Redesign wizualny 13.03 + Poprawki konwersji 19.03 + Kategorie/kalendarz/las 20.03 COMPLETE. Site is a production-ready sales funnel with CTA buttons, scarcity signals, GA4 event tracking, Microsoft Clarity, loading states, sticky mobile CTA, trip calendar on homepage + /wyjazdy, waitlist, blog, gallery, category filtering with colored badges, ForestPattern SVG decorations, warm Terakota+Oliwka color scheme, emocjonalny H1, childCare w CMS, FAQ/social analytics tracking.
+**Status:** Phase 1-7 + Poprawki klientki + Redesign wizualny 13.03 + Poprawki konwersji 19.03 + Kategorie/kalendarz/las 20.03 + Poprawki UX 20.03 + Poprawki nazewnictwo/SEO/FAQ 20.03 COMPLETE. Site is a production-ready sales funnel with CTA buttons, scarcity signals, GA4 event tracking, Microsoft Clarity, loading states, sticky mobile CTA, two-month trip calendar with interactive category filters + auto-navigation on homepage + /wyjazdy, auto-isPast from dateEnd + ISR, waitlist, blog, gallery, category filtering with colored badges, ForestPattern SVG decorations, warm Terakota+Oliwka color scheme, SEO H1 descriptive + H2 emotional, FAQ accordion (7 questions) with FAQPage schema.org, childCare w CMS, FAQ/social analytics tracking, testimonials sorted newest-first, "warsztaty" naming consistency.
 
 ## Tech Stack
 
@@ -204,6 +204,27 @@ npm run lint       # ESLint
 - **SectionWrapper variant alternation**: When inserting a new section (e.g., trips between content and CTA), adjust `variant` props to maintain visual rhythm (default/alternate/default).
 - **Tinted badges vs full-color calendar**: Card category badges use light tinted background (`bg-moss/15 text-moss`) to not compete with CTA buttons. Calendar cells use full saturated colors.
 - **TripsFilter category validation**: Use `Object.keys(CATEGORY_CONFIG)` + `.includes()` instead of hardcoded category list. Automatically supports new categories.
+
+## Poprawki UX 20.03.2026 Lessons Learned
+
+- **Auto-isPast from dateEnd**: `isPast` is computed via `parseLocalDate(entry.dateEnd) < new Date()` in `mapTrip()`. CMS checkbox `isPast` is ignored (label updated to inform editors). Requires ISR (`revalidate = 3600`) on all pages that filter by `isPast`.
+- **`parseLocalDate(dateStr)`**: Parses `YYYY-MM-DD` as local midnight via `new Date(year, month - 1, day)`. Avoids UTC offset bug where `new Date("2026-08-23")` = UTC midnight = previous day evening in CET/CEST. Use everywhere instead of `new Date(dateStr)` for date-only strings.
+- **ISR on trip-dependent pages**: `export const revalidate = 3600` on homepage, /wyjazdy, and all 4 category pages. Without ISR, auto-isPast only updates on rebuild.
+- **Two-month calendar**: `MonthGrid` sub-component renders one month; `TripCalendar` renders two side-by-side (`sm:grid-cols-2`). Single column on mobile. Container widened from `max-w-md` to `max-w-3xl`.
+- **Interactive legend filters**: Legend items are `<button>` with `aria-pressed`. Click toggles filter — non-matching trips get `bg-graphite/5` (dimmed). Click again to clear. Past category is not filterable (static `<div>`).
+- **Testimonials date field**: Optional `date?: string` (YYYY-MM-DD) in CMS + type. `getTestimonials()` sorts newest first. `getFeaturedTestimonials(ids)` preserves editorial order from `ids` array — intentionally not date-sorted.
+
+## Poprawki nazewnictwo/SEO/FAQ 20.03.2026 Lessons Learned
+
+- **"warsztaty" not "wyjazdy" in UI copy**: All user-facing section titles, subtitles, buttons, and meta titles use "warsztaty" consistently. "wyjazdy" only in internal code (variable names, routes, slugs).
+- **SEO H1/H2 inversion**: H1 = descriptive keyword-rich overline ("Rodzinne wyjazdy warsztatowe w naturze"), H2 = emotional headline. Both motion and reduced-motion variants must stay in sync. Documented with comment in HeroSection.
+- **FAQ on homepage**: `HomeFAQ` client component with `faqData` exported for schema.org reuse. `Accordion` is analytics-agnostic — tracking injected via `onToggle`. FAQ data uses `question`/`answer` fields, mapped to `id`/`title`/`content` for Accordion.
+- **FAQPage schema.org**: `getFAQSchema(faqData)` + `<StructuredData>` in `page.tsx`. Uses same `faqData` export — single source of truth for FAQ content.
+- **Calendar filter auto-navigation**: `toggleFilter()` finds first upcoming trip in category via `trips.find()` and sets `currentYear`/`currentMonth` to that trip's month. Without this, filter dims trips but user sees empty calendar if trips are in different months.
+- **Card h-full + flex-col + mt-auto**: `Card` component uses `h-full flex-col`, content div uses `flex-1 flex-col`. TripCard buttons use `mt-auto pt-4` to pin to bottom. All `ScrollAnimation` wrappers in grids need `className="h-full"`.
+- **Empty state pattern**: `TripCardsSection` returns `null` when no upcoming trips (same as `PastTripsSection`). Prevents rendering empty section with just title and button.
+- **Polish typographic quotes in JS strings**: `„"` (U+201E, U+201D) inside double-quoted JS strings cause parse errors. Use `\u201E` and `\u201D` escapes for these specific characters only. All other Polish characters use literal UTF-8.
+- **`toDate()` private helper in utils.ts**: Converts `string | Date` to `Date` using `parseLocalDate` for strings. Used internally by `formatDate`, `formatDateShort`, `formatDateRange` — ensures consistent timezone handling.
 
 ## Content Sources
 
