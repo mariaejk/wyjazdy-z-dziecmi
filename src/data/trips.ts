@@ -1,5 +1,6 @@
 import type { Trip, ContentBlock } from "@/types/trip";
 import { reader } from "@/lib/keystatic";
+import { parseLocalDate } from "@/lib/utils";
 
 async function mapTrip(
   slug: string,
@@ -16,7 +17,7 @@ async function mapTrip(
     shortDescription: entry.shortDescription,
     longDescription: entry.longDescription,
     image: entry.image,
-    isPast: entry.isPast,
+    isPast: parseLocalDate(entry.dateEnd) < new Date(),
     spotsTotal: entry.spotsTotal ?? undefined,
     spotsLeft: entry.spotsLeft ?? undefined,
     deposit: entry.deposit ?? 0,

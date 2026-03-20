@@ -46,7 +46,7 @@ export default config({
         }),
         image: fields.text({ label: "Zdjęcie główne (ścieżka)" }),
         isPast: fields.checkbox({
-          label: "Zakończony",
+          label: "Zakończony (ignorowane — obliczane automatycznie z daty końca)",
           defaultValue: false,
         }),
         spotsTotal: fields.integer({
@@ -223,6 +223,7 @@ export default config({
         quote: fields.text({ label: "Cytat", multiline: true }),
         context: fields.text({ label: "Kontekst (np. mama 7-letniej Zuzi)" }),
         trip: fields.text({ label: "Wyjazd (opcjonalny)" }),
+        date: fields.text({ label: "Data dodania (YYYY-MM-DD)", defaultValue: "" }),
       },
     }),
 

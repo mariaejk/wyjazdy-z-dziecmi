@@ -11,6 +11,8 @@ import { TripCalendar } from "@/components/shared/TripCalendar";
 import { ForestPattern } from "@/components/shared/ForestPattern";
 import { getCalendarTrips } from "@/data/trips";
 
+export const revalidate = 3600; // ISR: revalidate every hour for auto-isPast
+
 export default async function Home() {
   const calendarTrips = await getCalendarTrips();
 
@@ -38,7 +40,7 @@ export default async function Home() {
             title="Kalendarz wyjazdów"
             subtitle="Znajdź termin idealny dla siebie"
           />
-          <div className="mx-auto max-w-md">
+          <div className="mx-auto max-w-3xl">
             <ScrollAnimation variant="fadeUp">
               <TripCalendar trips={calendarTrips} />
             </ScrollAnimation>

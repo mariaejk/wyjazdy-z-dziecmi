@@ -13,9 +13,16 @@ export async function getTestimonials(): Promise<Testimonial[]> {
       author: entry.author,
       context: entry.context,
       trip: entry.trip || undefined,
+      date: entry.date || undefined,
     });
   }
-  return testimonials;
+  // Sort newest first (testimonials with dates before those without)
+  return testimonials.sort((a, b) => {
+    if (!a.date && !b.date) return 0;
+    if (!a.date) return 1;
+    if (!b.date) return -1;
+    return b.date.localeCompare(a.date);
+  });
 }
 
 export async function getFeaturedTestimonials(

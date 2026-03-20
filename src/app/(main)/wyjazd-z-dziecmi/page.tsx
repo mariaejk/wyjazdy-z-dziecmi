@@ -11,6 +11,8 @@ import { getUpcomingTripsByCategory } from "@/data/trips";
 import { ROUTES, SITE_CONFIG } from "@/lib/constants";
 import { getBreadcrumbSchema } from "@/lib/structured-data";
 
+export const revalidate = 3600;
+
 export const metadata: Metadata = {
   title: "Wyjazd z dziećmi",
   description:

@@ -9,6 +9,8 @@ import { TripCard } from "@/components/home/TripCard";
 import { getUpcomingTripsByCategory } from "@/data/trips";
 import { ROUTES } from "@/lib/constants";
 
+export const revalidate = 3600;
+
 export const metadata: Metadata = {
   title: "Warsztaty dla dorosłych — Wyjazdy z Dziećmi",
   description:

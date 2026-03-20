@@ -13,6 +13,8 @@ import { TripsFilter } from "@/components/trips/TripsFilter";
 import { SITE_CONFIG } from "@/lib/constants";
 import { getBreadcrumbSchema } from "@/lib/structured-data";
 
+export const revalidate = 3600; // ISR: revalidate every hour for auto-isPast
+
 export const metadata: Metadata = {
   title: "Nadchodzące wyjazdy warsztatowe — terminy i ceny",
   description:
@@ -39,7 +41,7 @@ export default async function TripsPage() {
             title="Kalendarz wyjazdów"
             subtitle="Znajdź termin idealny dla siebie"
           />
-          <div className="mx-auto max-w-md">
+          <div className="mx-auto max-w-3xl">
             <ScrollAnimation variant="fadeUp">
               <TripCalendar trips={calendarTrips} />
             </ScrollAnimation>

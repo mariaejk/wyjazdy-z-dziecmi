@@ -4,4 +4,5 @@ export type Testimonial = {
   author: string;
   context: string;
   trip?: string;
+  date?: string;
 };
