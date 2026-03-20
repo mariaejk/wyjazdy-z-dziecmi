@@ -204,7 +204,20 @@ export function TripCalendar({ trips }: TripCalendarProps) {
   }
 
   function toggleFilter(category: CategoryKey) {
-    setActiveFilter((prev) => (prev === category ? null : category));
+    const newFilter = activeFilter === category ? null : category;
+    setActiveFilter(newFilter);
+
+    // Auto-navigate to the month of the first upcoming trip in this category
+    if (newFilter) {
+      const firstTrip = trips.find(
+        (t) => t.category === newFilter && !t.isPast
+      );
+      if (firstTrip) {
+        const tripDate = parseLocalDate(firstTrip.date);
+        setCurrentYear(tripDate.getFullYear());
+        setCurrentMonth(tripDate.getMonth());
+      }
+    }
   }
 
   return (

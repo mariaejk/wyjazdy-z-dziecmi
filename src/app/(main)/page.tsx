@@ -2,7 +2,9 @@ import { HeroSection } from "@/components/home/HeroSection";
 import { TripCardsSection } from "@/components/home/TripCardsSection";
 import { AboutTeaser } from "@/components/home/AboutTeaser";
 import { OpinionsTeaser } from "@/components/home/OpinionsTeaser";
-import { HomeFAQ } from "@/components/home/HomeFAQ";
+import { HomeFAQ, faqData } from "@/components/home/HomeFAQ";
+import { StructuredData } from "@/components/shared/StructuredData";
+import { getFAQSchema } from "@/lib/structured-data";
 import { Container } from "@/components/layout/Container";
 import { SectionWrapper } from "@/components/ui/SectionWrapper";
 import { SectionHeading } from "@/components/ui/SectionHeading";
@@ -16,8 +18,12 @@ export const revalidate = 3600; // ISR: revalidate every hour for auto-isPast
 export default async function Home() {
   const calendarTrips = await getCalendarTrips();
 
+  const faqSchema = getFAQSchema(faqData);
+
   return (
     <>
+      {faqSchema && <StructuredData data={faqSchema} />}
+
       {/* USP — pod menu, przed hero */}
       <SectionWrapper className="pt-4 pb-2 sm:pt-6 sm:pb-2">
         <Container>

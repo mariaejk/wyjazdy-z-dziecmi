@@ -9,6 +9,7 @@ import { ROUTES } from "@/lib/constants";
 
 export async function TripCardsSection() {
   const upcomingTrips = await getUpcomingTrips();
+  if (upcomingTrips.length === 0) return null;
   const displayTrips = upcomingTrips.slice(0, 3);
 
   return (
@@ -17,7 +18,7 @@ export async function TripCardsSection() {
         <ScrollAnimation variant="fadeUp">
           <SectionHeading
             title="Nadchodzące warsztaty"
-            subtitle="Wybierz wyjazd dla siebie i swojego dziecka"
+            subtitle="Wybierz warsztat dla siebie i swojego dziecka"
           />
         </ScrollAnimation>
 

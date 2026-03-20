@@ -24,7 +24,7 @@ export function TripsFilter({ upcomingTrips }: TripsFilterProps) {
 
   const subtitle = validCategory
     ? (CATEGORY_CONFIG[validCategory].label)
-    : "Wybierz swój wyjazd i dołącz do nas!";
+    : "Wybierz warsztat i dołącz do nas!";
 
   return (
     <>

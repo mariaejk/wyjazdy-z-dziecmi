@@ -64,6 +64,8 @@ export function HeroSection() {
 
             {/* Text — right */}
             <div className="mt-10 lg:mt-0 lg:w-[55%]">
+              {/* H1 = SEO descriptive keyword-rich, styled as overline badge.
+                  H2 = emotional headline for users. Intentional hierarchy inversion for SEO. */}
               <h1 className="text-sm font-semibold uppercase tracking-wider text-moss">
                 Rodzinne wyjazdy warsztatowe w naturze
               </h1>
