@@ -3,9 +3,10 @@
 import { useState } from "react";
 import Link from "next/link";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import { cn } from "@/lib/utils";
+import { cn, parseLocalDate } from "@/lib/utils";
 import { ROUTES } from "@/lib/constants";
 import { CATEGORY_CONFIG, PAST_CATEGORY } from "@/lib/category-config";
+import type { CategoryKey } from "@/lib/category-config";
 import type { CalendarTrip } from "@/data/trips";
 
 type TripCalendarProps = {
@@ -43,65 +44,144 @@ function isDateInRange(date: Date, start: Date, end: Date): boolean {
   return d >= s && d <= e;
 }
 
-export function TripCalendar({ trips }: TripCalendarProps) {
-  const now = new Date();
-  const [currentYear, setCurrentYear] = useState(now.getFullYear());
-  const [currentMonth, setCurrentMonth] = useState(now.getMonth());
+function getNextMonth(year: number, month: number): { year: number; month: number } {
+  return month === 11 ? { year: year + 1, month: 0 } : { year, month: month + 1 };
+}
 
-  const daysInMonth = getDaysInMonth(currentYear, currentMonth);
-  const firstDay = getFirstDayOfMonth(currentYear, currentMonth);
+function getPrevMonth(year: number, month: number): { year: number; month: number } {
+  return month === 0 ? { year: year - 1, month: 11 } : { year, month: month - 1 };
+}
 
-  function goToPrevMonth() {
-    if (currentMonth === 0) {
-      setCurrentMonth(11);
-      setCurrentYear(currentYear - 1);
-    } else {
-      setCurrentMonth(currentMonth - 1);
-    }
-  }
-
-  function goToNextMonth() {
-    if (currentMonth === 11) {
-      setCurrentMonth(0);
-      setCurrentYear(currentYear + 1);
-    } else {
-      setCurrentMonth(currentMonth + 1);
-    }
-  }
+function MonthGrid({
+  year,
+  month,
+  trips,
+  activeFilter,
+  now,
+}: {
+  year: number;
+  month: number;
+  trips: CalendarTrip[];
+  activeFilter: CategoryKey | null;
+  now: Date;
+}) {
+  const daysInMonth = getDaysInMonth(year, month);
+  const firstDay = getFirstDayOfMonth(year, month);
 
   // Returns first matching trip for a given day.
   // Assumption: trips don't overlap on the same dates in the current data model.
   function getTripForDay(day: number): CalendarTrip | undefined {
-    const date = new Date(currentYear, currentMonth, day);
+    const date = new Date(year, month, day);
     return trips.find((trip) => {
-      const start = new Date(trip.date);
-      const end = new Date(trip.dateEnd);
+      const start = parseLocalDate(trip.date);
+      const end = parseLocalDate(trip.dateEnd);
       return isDateInRange(date, start, end);
     });
   }
 
   function isStartDay(day: number, trip: CalendarTrip): boolean {
-    const date = new Date(currentYear, currentMonth, day);
-    return isSameDay(date, new Date(trip.date));
+    return isSameDay(new Date(year, month, day), parseLocalDate(trip.date));
   }
 
   function isEndDay(day: number, trip: CalendarTrip): boolean {
-    const date = new Date(currentYear, currentMonth, day);
-    return isSameDay(date, new Date(trip.dateEnd));
+    return isSameDay(new Date(year, month, day), parseLocalDate(trip.dateEnd));
   }
 
   function isToday(day: number): boolean {
-    return currentYear === now.getFullYear() && currentMonth === now.getMonth() && day === now.getDate();
+    return year === now.getFullYear() && month === now.getMonth() && day === now.getDate();
   }
 
-  // Build grid: empty cells for first day offset + day cells
   const cells: (number | null)[] = [];
   for (let i = 0; i < firstDay; i++) cells.push(null);
   for (let d = 1; d <= daysInMonth; d++) cells.push(d);
 
   return (
+    <div>
+      {/* Month header */}
+      <div className="pb-2 text-center font-heading text-sm font-bold text-graphite sm:text-base">
+        {MONTH_NAMES[month]} {year}
+      </div>
+
+      {/* Day names */}
+      <div className="grid grid-cols-7">
+        {DAY_NAMES.map((name) => (
+          <div key={name} className="py-1.5 text-center text-xs font-medium text-graphite-light">
+            {name}
+          </div>
+        ))}
+      </div>
+
+      {/* Days grid */}
+      <div className="grid grid-cols-7">
+        {cells.map((day, i) => {
+          if (day === null) {
+            return <div key={`empty-${month}-${i}`} className="aspect-square" />;
+          }
+
+          const trip = getTripForDay(day);
+          const isStart = trip ? isStartDay(day, trip) : false;
+          const isEnd = trip ? isEndDay(day, trip) : false;
+          const isFiltered = activeFilter && trip && trip.category !== activeFilter;
+
+          return (
+            <div
+              key={day}
+              className={cn(
+                "relative flex aspect-square items-center justify-center text-xs sm:text-sm",
+                isToday(day) && "font-bold",
+                trip && !trip.isPast && !isFiltered && CATEGORY_CONFIG[trip.category].calendarBg,
+                trip && !trip.isPast && isFiltered && "bg-graphite/5 text-graphite-light",
+                trip && trip.isPast && cn(PAST_CATEGORY.calendarBg, "cursor-default"),
+                isStart && "rounded-l-md",
+                isEnd && "rounded-r-md",
+              )}
+            >
+              {trip && !trip.isPast && !isFiltered ? (
+                <Link
+                  href={`${ROUTES.trips}/${trip.slug}`}
+                  className="flex h-full w-full items-center justify-center hover:opacity-80"
+                  aria-label={`${trip.title} — dzień ${day}`}
+                >
+                  {day}
+                </Link>
+              ) : (
+                <span className={cn(!trip && "text-graphite", isFiltered && "text-graphite-light/50")}>{day}</span>
+              )}
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  );
+}
+
+export function TripCalendar({ trips }: TripCalendarProps) {
+  const now = new Date();
+  const [currentYear, setCurrentYear] = useState(now.getFullYear());
+  const [currentMonth, setCurrentMonth] = useState(now.getMonth());
+  const [activeFilter, setActiveFilter] = useState<CategoryKey | null>(null);
+
+  const next = getNextMonth(currentYear, currentMonth);
+
+  function goToPrevMonth() {
+    const prev = getPrevMonth(currentYear, currentMonth);
+    setCurrentYear(prev.year);
+    setCurrentMonth(prev.month);
+  }
+
+  function goToNextMonth() {
+    const n = getNextMonth(currentYear, currentMonth);
+    setCurrentYear(n.year);
+    setCurrentMonth(n.month);
+  }
+
+  function toggleFilter(category: CategoryKey) {
+    setActiveFilter((prev) => (prev === category ? null : category));
+  }
+
+  return (
     <div className="overflow-hidden rounded-2xl border border-graphite/10 bg-white" aria-label="Kalendarz wyjazdów" role="region">
-      {/* Header */}
+      {/* Navigation */}
       <div className="flex items-center justify-between border-b border-graphite/10 px-4 py-3">
         <button
           onClick={goToPrevMonth}
@@ -110,8 +190,8 @@ export function TripCalendar({ trips }: TripCalendarProps) {
         >
           <ChevronLeft className="h-5 w-5" strokeWidth={1.5} />
         </button>
-        <span className="font-heading text-base font-bold text-graphite sm:text-lg">
-          {MONTH_NAMES[currentMonth]} {currentYear}
+        <span className="font-heading text-sm font-bold text-graphite sm:text-base">
+          {MONTH_NAMES[currentMonth]} – {MONTH_NAMES[next.month]} {next.year !== currentYear ? `${currentYear}/${next.year}` : currentYear}
         </span>
         <button
           onClick={goToNextMonth}
@@ -122,64 +202,47 @@ export function TripCalendar({ trips }: TripCalendarProps) {
         </button>
       </div>
 
-      {/* Day names */}
-      <div className="grid grid-cols-7 border-b border-graphite/10">
-        {DAY_NAMES.map((name) => (
-          <div key={name} className="py-2 text-center text-xs font-medium text-graphite-light">
-            {name}
-          </div>
-        ))}
+      {/* Two-month grid */}
+      <div className="grid grid-cols-1 gap-4 p-4 sm:grid-cols-2 sm:gap-6" aria-live="polite">
+        <MonthGrid
+          year={currentYear}
+          month={currentMonth}
+          trips={trips}
+          activeFilter={activeFilter}
+          now={now}
+        />
+        <MonthGrid
+          year={next.year}
+          month={next.month}
+          trips={trips}
+          activeFilter={activeFilter}
+          now={now}
+        />
       </div>
 
-      {/* Days grid */}
-      <div className="grid grid-cols-7">
-        {cells.map((day, i) => {
-          if (day === null) {
-            return <div key={`empty-${i}`} className="aspect-square border-b border-r border-graphite/5" />;
-          }
-
-          const trip = getTripForDay(day);
-          const isStart = trip ? isStartDay(day, trip) : false;
-          const isEnd = trip ? isEndDay(day, trip) : false;
-
-          return (
-            <div
-              key={day}
-              className={cn(
-                "relative flex aspect-square items-center justify-center border-b border-r border-graphite/5 text-sm",
-                isToday(day) && "font-bold",
-                trip && !trip.isPast && CATEGORY_CONFIG[trip.category].calendarBg,
-                trip && trip.isPast && PAST_CATEGORY.calendarBg,
-                isStart && "rounded-l-lg",
-                isEnd && "rounded-r-lg",
-              )}
-            >
-              {trip && !trip.isPast ? (
-                <Link
-                  href={`${ROUTES.trips}/${trip.slug}`}
-                  className="flex h-full w-full items-center justify-center hover:opacity-80"
-                  aria-label={`${trip.title} — dzień ${day}`}
-                >
-                  {day}
-                </Link>
-              ) : (
-                <span className={!trip ? "text-graphite" : ""}>{day}</span>
-              )}
-            </div>
-          );
-        })}
-      </div>
-
-      {/* Legend */}
-      <div className="flex flex-wrap gap-4 border-t border-graphite/10 px-4 py-3">
-        {Object.values(CATEGORY_CONFIG).map((config) => (
-          <div key={config.label} className="flex items-center gap-2 text-xs text-graphite-light">
-            <span className={cn("inline-block h-3 w-3 rounded", config.legendBg)} />
+      {/* Legend — interactive filters */}
+      <div className="flex flex-wrap items-center justify-center gap-3 border-t border-graphite/10 px-4 py-3 sm:gap-4">
+        {(Object.entries(CATEGORY_CONFIG) as [CategoryKey, typeof CATEGORY_CONFIG[CategoryKey]][]).map(([key, config]) => (
+          <button
+            key={key}
+            onClick={() => toggleFilter(key)}
+            className={cn(
+              "flex items-center gap-2 rounded-full px-3 py-1.5 text-xs font-medium transition-all sm:text-sm",
+              activeFilter === key
+                ? cn(config.badgeBg, config.badgeText, "ring-1 ring-current")
+                : activeFilter === null
+                  ? "text-graphite-light hover:text-graphite"
+                  : "text-graphite-light/50 hover:text-graphite-light",
+            )}
+            aria-pressed={activeFilter === key}
+            aria-label={`Filtruj: ${config.label}`}
+          >
+            <span className={cn("inline-block h-3 w-3 rounded-full", config.legendBg)} />
             {config.label}
-          </div>
+          </button>
         ))}
-        <div className="flex items-center gap-2 text-xs text-graphite-light">
-          <span className={cn("inline-block h-3 w-3 rounded", PAST_CATEGORY.legendBg)} />
+        <div className="flex items-center gap-2 text-xs text-graphite-light/60 sm:text-sm">
+          <span className={cn("inline-block h-3 w-3 rounded-full", PAST_CATEGORY.legendBg)} />
           {PAST_CATEGORY.label}
         </div>
       </div>

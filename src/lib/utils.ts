@@ -5,6 +5,12 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 
+/** Parses YYYY-MM-DD as local midnight (avoids UTC offset issues). */
+export function parseLocalDate(dateStr: string): Date {
+  const [year, month, day] = dateStr.split("-").map(Number);
+  return new Date(year, month - 1, day);
+}
+
 export function formatDate(date: string | Date): string {
   return new Intl.DateTimeFormat("pl-PL", {
     day: "numeric",
