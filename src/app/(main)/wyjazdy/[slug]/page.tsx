@@ -17,6 +17,8 @@ import { BookingForm } from "@/components/trips/BookingForm";
 import { WaitlistForm } from "@/components/trips/WaitlistForm";
 import { StickyBookingCTA } from "@/components/trips/StickyBookingCTA";
 
+export const revalidate = 3600;
+
 type PageProps = {
   params: Promise<{ slug: string }>;
 };

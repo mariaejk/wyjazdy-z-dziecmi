@@ -124,13 +124,13 @@ export default async function AdultOnlyPage() {
         <SectionWrapper>
           <Container>
             <SectionHeading
-              title="Nadchodzące wyjazdy"
+              title="Nadchodzące warsztaty"
               subtitle="Najbliższe warsztaty tylko dla dorosłych"
             />
             <div className="mx-auto max-w-2xl">
               <div className="grid gap-6">
                 {trips.map((trip, index) => (
-                  <ScrollAnimation key={trip.slug} delay={index * 0.15}>
+                  <ScrollAnimation key={trip.slug} delay={index * 0.15} className="h-full">
                     <TripCard trip={trip} />
                   </ScrollAnimation>
                 ))}

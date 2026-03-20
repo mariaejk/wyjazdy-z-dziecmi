@@ -24,6 +24,7 @@ export async function TripCardsSection() {
               key={trip.slug}
               variant="fadeUp"
               delay={index * 0.15}
+              className="h-full"
             >
               <TripCard trip={trip} />
             </ScrollAnimation>

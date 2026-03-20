@@ -124,13 +124,13 @@ export default async function SingleParentsPage() {
         <SectionWrapper>
           <Container>
             <SectionHeading
-              title="Nadchodzące wyjazdy"
+              title="Nadchodzące warsztaty"
               subtitle="Wybierz termin i dołącz do nas"
             />
             <div className="mx-auto max-w-2xl">
               <div className="grid gap-6">
                 {trips.map((trip, index) => (
-                  <ScrollAnimation key={trip.slug} delay={index * 0.15}>
+                  <ScrollAnimation key={trip.slug} delay={index * 0.15} className="h-full">
                     <TripCard trip={trip} />
                   </ScrollAnimation>
                 ))}

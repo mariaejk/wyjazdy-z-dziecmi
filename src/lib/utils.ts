@@ -11,24 +11,28 @@ export function parseLocalDate(dateStr: string): Date {
   return new Date(year, month - 1, day);
 }
 
+function toDate(d: string | Date): Date {
+  return typeof d === "string" ? parseLocalDate(d) : d;
+}
+
 export function formatDate(date: string | Date): string {
   return new Intl.DateTimeFormat("pl-PL", {
     day: "numeric",
     month: "long",
     year: "numeric",
-  }).format(new Date(date));
+  }).format(toDate(date));
 }
 
 export function formatDateShort(date: string | Date): string {
   return new Intl.DateTimeFormat("pl-PL", {
     day: "numeric",
     month: "short",
-  }).format(new Date(date));
+  }).format(toDate(date));
 }
 
 export function formatDateRange(start: string | Date, end: string | Date): string {
-  const s = new Date(start);
-  const e = new Date(end);
+  const s = toDate(start);
+  const e = toDate(end);
 
   const dayStart = s.getDate();
   const dayEnd = e.getDate();

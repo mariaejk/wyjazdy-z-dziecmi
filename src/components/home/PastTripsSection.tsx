@@ -19,7 +19,7 @@ export async function PastTripsSection() {
         />
         <div className="grid gap-6 sm:grid-cols-2 lg:gap-8">
           {pastTrips.map((trip, index) => (
-            <ScrollAnimation key={trip.slug} delay={index * 0.15}>
+            <ScrollAnimation key={trip.slug} delay={index * 0.15} className="h-full">
               <TripCard trip={trip} />
             </ScrollAnimation>
           ))}

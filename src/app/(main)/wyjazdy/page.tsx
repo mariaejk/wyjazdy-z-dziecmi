@@ -16,7 +16,7 @@ import { getBreadcrumbSchema } from "@/lib/structured-data";
 export const revalidate = 3600; // ISR: revalidate every hour for auto-isPast
 
 export const metadata: Metadata = {
-  title: "Nadchodzące wyjazdy warsztatowe — terminy i ceny",
+  title: "Nadchodzące warsztaty wyjazdowe — terminy i ceny",
   description:
     "Zobacz nasze nadchodzące i zakończone wyjazdy warsztatowe dla rodzin. Joga, taniec, ceramika, konie — w otoczeniu natury.",
 };
