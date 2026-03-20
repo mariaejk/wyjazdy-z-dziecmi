@@ -6,7 +6,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 Landing page / sales funnel for "Wyjazdy z Dziećmi" — a brand organizing family workshop retreats in nature (yoga, dance, ceramics, horses). Client: Maria Kordalewska. Domain: wyjazdyzdziecmi.pl.
 
-**Status:** Phase 1-7 + Poprawki klientki + Redesign wizualny 13.03 + Poprawki konwersji 19.03 COMPLETE. Site is a production-ready sales funnel with CTA buttons, scarcity signals, GA4 event tracking, Microsoft Clarity, loading states, sticky mobile CTA, trip calendar, waitlist, blog, gallery, category filtering, warm Terakota+Oliwka color scheme, emocjonalny H1, childCare w CMS, FAQ/social analytics tracking.
+**Status:** Phase 1-7 + Poprawki klientki + Redesign wizualny 13.03 + Poprawki konwersji 19.03 + Kategorie/kalendarz/las 20.03 COMPLETE. Site is a production-ready sales funnel with CTA buttons, scarcity signals, GA4 event tracking, Microsoft Clarity, loading states, sticky mobile CTA, trip calendar on homepage + /wyjazdy, waitlist, blog, gallery, category filtering with colored badges, ForestPattern SVG decorations, warm Terakota+Oliwka color scheme, emocjonalny H1, childCare w CMS, FAQ/social analytics tracking.
 
 ## Tech Stack
 
@@ -192,6 +192,18 @@ npm run lint       # ESLint
 - **childCare field**: Optional `childCare?: string` in Trip type + Keystatic CMS (text, multiline) + `|| undefined` in mapper. Renders in TripPracticalInfo only when filled. Baby icon from lucide-react.
 - **Hero H1 updated**: Changed from "Warsztaty wyjazdowe dla dorosłych i dzieci" to "Zatrzymaj się. Odetchnij. Spotkaj swoje dziecko na nowo." — empathetic, benefit-oriented.
 - **CTA copy hierarchy**: "Zobacz wyjazdy" (Hero, passive) → "Sprawdź terminy" (Header/Menu, exploratory) → "Zarezerwuj miejsce" (Form/Sticky, action). Escalating commitment level.
+
+## Kategorie/Kalendarz/Las 20.03.2026 Lessons Learned
+
+- **`CATEGORY_CONFIG` as Single Source of Truth**: All category colors (calendar, legend, card badges) come from `src/lib/category-config.ts`. Never hardcode category colors in components — import from config.
+- **Calendar color contrast**: Use colors from different parts of the color wheel: green (moss) → gold (mustard) → purple (lavender) → orange (terracotta). Amber/coral/terracotta were too similar before.
+- **`formatDateRange(start, end)`**: Same month → `"15–18 kwietnia 2026"`, different months → `"28 marca – 1 kwietnia 2026"`. Polish genitive month names hardcoded (Intl.DateTimeFormat doesn't output genitive reliably).
+- **Category pages need trips section**: All category landing pages (`/wyjazd-z-dziecmi`, `/matka-z-corka`, `/dla-doroslych`, `/single-parents`) should show upcoming trips from their category. Pattern: `async` page + `getUpcomingTripsByCategory(cat)` + conditional render `{trips.length > 0 && ...}`.
+- **Optimize data fetching on listing pages**: `/wyjazdy` uses one `getAllTrips()` call and derives `upcomingTrips`, `pastTrips`, and `calendarTrips` from it — instead of separate `getUpcomingTrips()` + `getPastTrips()`.
+- **ForestPattern SVG**: Inline SVG with `aria-hidden="true"`, `pointer-events-none`. Start at 6-7% opacity. Two variants: `fairytale` (rounded circles) for homepage, `realistic` (triangle pines) for /wyjazdy.
+- **SectionWrapper variant alternation**: When inserting a new section (e.g., trips between content and CTA), adjust `variant` props to maintain visual rhythm (default/alternate/default).
+- **Tinted badges vs full-color calendar**: Card category badges use light tinted background (`bg-moss/15 text-moss`) to not compete with CTA buttons. Calendar cells use full saturated colors.
+- **TripsFilter category validation**: Use `Object.keys(CATEGORY_CONFIG)` + `.includes()` instead of hardcoded category list. Automatically supports new categories.
 
 ## Content Sources
 

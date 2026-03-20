@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Suspense } from "react";
-import { getAllTrips } from "@/data/trips";
+import { getAllTrips, toCalendarTrips } from "@/data/trips";
 import { Container } from "@/components/layout/Container";
 import { SectionWrapper } from "@/components/ui/SectionWrapper";
 import { SectionHeading } from "@/components/ui/SectionHeading";
@@ -23,14 +23,7 @@ export default async function TripsPage() {
   const allTrips = await getAllTrips();
   const upcomingTrips = allTrips.filter((t) => !t.isPast);
   const pastTrips = allTrips.filter((t) => t.isPast);
-  const calendarTrips = allTrips.map((t) => ({
-    slug: t.slug,
-    title: t.title,
-    date: t.date,
-    dateEnd: t.dateEnd,
-    category: t.category,
-    isPast: t.isPast,
-  }));
+  const calendarTrips = toCalendarTrips(allTrips);
 
   return (
     <>

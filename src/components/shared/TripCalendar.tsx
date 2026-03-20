@@ -6,15 +6,7 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { ROUTES } from "@/lib/constants";
 import { CATEGORY_CONFIG, PAST_CATEGORY } from "@/lib/category-config";
-
-type CalendarTrip = {
-  slug: string;
-  title: string;
-  date: string;
-  dateEnd: string;
-  category: "rodzinny" | "matka-corka" | "single-parents" | "dla-doroslych";
-  isPast: boolean;
-};
+import type { CalendarTrip } from "@/data/trips";
 
 type TripCalendarProps = {
   trips: CalendarTrip[];
@@ -26,7 +18,6 @@ const MONTH_NAMES = [
 ];
 
 const DAY_NAMES = ["Pn", "Wt", "Śr", "Cz", "Pt", "Sb", "Nd"];
-
 
 function getDaysInMonth(year: number, month: number): number {
   return new Date(year, month + 1, 0).getDate();
@@ -78,6 +69,8 @@ export function TripCalendar({ trips }: TripCalendarProps) {
     }
   }
 
+  // Returns first matching trip for a given day.
+  // Assumption: trips don't overlap on the same dates in the current data model.
   function getTripForDay(day: number): CalendarTrip | undefined {
     const date = new Date(currentYear, currentMonth, day);
     return trips.find((trip) => {
@@ -97,9 +90,9 @@ export function TripCalendar({ trips }: TripCalendarProps) {
     return isSameDay(date, new Date(trip.dateEnd));
   }
 
-  const isToday = (day: number) => {
+  function isToday(day: number): boolean {
     return currentYear === now.getFullYear() && currentMonth === now.getMonth() && day === now.getDate();
-  };
+  }
 
   // Build grid: empty cells for first day offset + day cells
   const cells: (number | null)[] = [];
@@ -165,7 +158,7 @@ export function TripCalendar({ trips }: TripCalendarProps) {
                 <Link
                   href={`${ROUTES.trips}/${trip.slug}`}
                   className="flex h-full w-full items-center justify-center hover:opacity-80"
-                  title={trip.title}
+                  aria-label={`${trip.title} — dzień ${day}`}
                 >
                   {day}
                 </Link>

@@ -117,6 +117,32 @@ export async function getTripsByCategory(
   return all.filter((trip) => trip.category === cat);
 }
 
+export type CalendarTrip = {
+  slug: string;
+  title: string;
+  date: string;
+  dateEnd: string;
+  category: Trip["category"];
+  isPast: boolean;
+};
+
+/** Maps full Trip objects to lightweight CalendarTrip format. */
+export function toCalendarTrips(trips: Trip[]): CalendarTrip[] {
+  return trips.map((t) => ({
+    slug: t.slug,
+    title: t.title,
+    date: t.date,
+    dateEnd: t.dateEnd,
+    category: t.category,
+    isPast: t.isPast,
+  }));
+}
+
+export async function getCalendarTrips(): Promise<CalendarTrip[]> {
+  const all = await getAllTrips();
+  return toCalendarTrips(all);
+}
+
 export async function getUpcomingTripsByCategory(
   cat: Trip["category"]
 ): Promise<Trip[]> {

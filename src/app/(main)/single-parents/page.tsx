@@ -56,7 +56,7 @@ const benefits = [
 ];
 
 export default async function SingleParentsPage() {
-  const trips = await getUpcomingTripsByCategory("rodzinny");
+  const trips = await getUpcomingTripsByCategory("single-parents");
 
   return (
     <>
