@@ -6,7 +6,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 Landing page / sales funnel for "Wyjazdy z Dziećmi" — a brand organizing family workshop retreats in nature (yoga, dance, ceramics, horses). Client: Maria Kordalewska. Domain: wyjazdyzdziecmi.pl.
 
-**Status:** Phase 1-7 + Poprawki klientki + Redesign wizualny 13.03 + Poprawki konwersji 19.03 + Kategorie/kalendarz/las 20.03 + Poprawki UX 20.03 + Poprawki nazewnictwo/SEO/FAQ 20.03 + Poprawki UI 21.03 COMPLETE. Site is a production-ready sales funnel with CTA buttons, scarcity signals, GA4 event tracking, Microsoft Clarity, loading states, sticky mobile CTA, two-month trip calendar with interactive category filters + auto-navigation on homepage + /wyjazdy, auto-isPast from dateEnd + ISR, waitlist, blog, gallery, category filtering with colored badges, ForestPattern SVG decorations, warm Terakota+Oliwka color scheme, SEO H1 descriptive + H2 emotional, FAQ accordion (7 questions) with FAQPage schema.org, childCare w CMS, FAQ/social analytics tracking, testimonials sorted newest-first, "warsztaty" naming consistency, USP under hero slideshow, 3 testimonials in row, compact hero section.
+**Status:** Phase 1-7 + Poprawki klientki + Redesign wizualny 13.03 + Poprawki konwersji 19.03 + Kategorie/kalendarz/las 20.03 + Poprawki UX 20.03 + Poprawki nazewnictwo/SEO/FAQ 20.03 + Poprawki UI 21.03 + Trip Video 21.03 COMPLETE. Site is a production-ready sales funnel with CTA buttons, scarcity signals, GA4 event tracking, Microsoft Clarity, loading states, sticky mobile CTA, two-month trip calendar with interactive category filters + auto-navigation on homepage + /wyjazdy, auto-isPast from dateEnd + ISR, waitlist, blog, gallery, category filtering with colored badges, ForestPattern SVG decorations, warm Terakota+Oliwka color scheme, SEO H1 descriptive + H2 emotional, FAQ accordion (7 questions) with FAQPage schema.org, childCare w CMS, FAQ/social analytics tracking, testimonials sorted newest-first, "warsztaty" naming consistency, USP under hero slideshow, 3 testimonials in row, compact hero section, optional trip video (TripVideo component), chronological trip sorting, "O nas" last in nav.
 
 ## Tech Stack
 
@@ -225,6 +225,21 @@ npm run lint       # ESLint
 - **Empty state pattern**: `TripCardsSection` returns `null` when no upcoming trips (same as `PastTripsSection`). Prevents rendering empty section with just title and button.
 - **Polish typographic quotes in JS strings**: `„"` (U+201E, U+201D) inside double-quoted JS strings cause parse errors. Use `\u201E` and `\u201D` escapes for these specific characters only. All other Polish characters use literal UTF-8.
 - **`toDate()` private helper in utils.ts**: Converts `string | Date` to `Date` using `parseLocalDate` for strings. Used internally by `formatDate`, `formatDateShort`, `formatDateRange` — ensures consistent timezone handling.
+
+## Content Sources
+
+## Poprawki UI + Trip Video 21.03.2026 Lessons Learned
+
+- **`<video>` as Server Component**: Native HTML5 `<video>` with `controls` doesn't need `"use client"` — zero JS added to bundle. Only add client boundary if you need analytics events (play/pause tracking).
+- **`preload="metadata"` over poster**: Browser extracts first frame automatically. Avoids the problem of CMS image paths not being valid public URLs for `poster` attribute.
+- **`playsInline` required for iOS**: Without it, iOS Safari forces fullscreen on play. Always add for inline video playback.
+- **Video in `public/videos/`**: Vercel serves static files from `public/` via CDN. 8.6MB is fine. For multiple videos in the future, consider Vercel Blob or Cloudflare R2.
+- **`aria-label` on `<video>`**: Screen readers can't identify video content without it. Always add descriptive `aria-label`.
+- **Optional CMS field pattern**: `videoUrl: fields.text({ label: "..." })` in Keystatic + `entry.videoUrl || undefined` in mapper + `videoUrl?: string` in type. Same pattern as `earlyBirdDeadline`, `childCare`.
+- **`SectionWrapper` with reduced padding**: `className="py-8 sm:py-12"` overrides default `py-16 sm:py-20 lg:py-24` for tighter spacing when section should be visually close to previous one.
+- **`getAllTrips()` sort**: Sorting in the data layer (`getAllTrips`) means all consumers automatically get chronological order — homepage, /wyjazdy, category pages. Single source of truth for sort order.
+- **Testimonial equal heights**: `blockquote` needs `h-full flex flex-col` + `flex-1` on quote text + `ScrollAnimation className="h-full"` for grid alignment.
+- **Navigation order matters**: Moving "O nas" to last position in `mainNavigation` array changes both desktop nav and mobile menu simultaneously — single source of truth.
 
 ## Content Sources
 
