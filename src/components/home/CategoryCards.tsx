@@ -7,10 +7,10 @@ import { ROUTES } from "@/lib/constants";
 
 const categories = [
   {
-    label: "Wyjazdy z Dziećmi",
+    label: "Rodzinny czas",
     href: ROUTES.familyTrips,
     image: "/images/hero.jpg",
-    alt: "Rodzina na warsztatach wyjazdowych w naturze",
+    alt: "Rodzinne warsztaty wyjazdowe w naturze",
   },
   {
     label: "Dla Matki i Córki",
@@ -24,13 +24,19 @@ const categories = [
     image: "/images/przeszly-1.jpg",
     alt: "Warsztaty dla singli z dziećmi w naturze",
   },
+  {
+    label: "Dla Dorosłych",
+    href: ROUTES.adultOnly,
+    image: "/images/kazce-bagno-1.jpg",
+    alt: "Warsztaty wyjazdowe dla dorosłych",
+  },
 ];
 
 export function CategoryCards() {
   return (
     <SectionWrapper className="py-10 sm:py-14">
       <Container>
-        <div className="grid gap-4 sm:grid-cols-3 sm:gap-6" role="region" aria-label="Kategorie warsztatów">
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4 sm:gap-6" role="region" aria-label="Kategorie warsztatów">
           {categories.map((cat, index) => (
             <ScrollAnimation
               key={cat.href}
@@ -47,7 +53,7 @@ export function CategoryCards() {
                     src={cat.image}
                     alt={cat.alt}
                     fill
-                    sizes="(max-width: 640px) calc(100vw - 2rem), calc((100vw - 5rem) / 3)"
+                    sizes="(max-width: 640px) calc(50vw - 1.5rem), calc(25vw - 2rem)"
                     className="object-cover transition-transform duration-500 group-hover:scale-105"
                   />
                 </div>
