@@ -11,17 +11,7 @@ export function Footer() {
   return (
     <footer className="border-t border-parchment-dark bg-parchment-dark">
       <Container className="py-12">
-        <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
-          {/* Brand */}
-          <div>
-            <p className="font-heading text-lg font-bold text-moss">
-              {SITE_CONFIG.name}
-            </p>
-            <p className="mt-2 text-sm text-graphite-light">
-              Rodzinne wyjazdy warsztatowe w naturze.
-            </p>
-          </div>
-
+        <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
           {/* Contact */}
           <div>
             <h3 className="text-sm font-semibold uppercase tracking-wider text-graphite">

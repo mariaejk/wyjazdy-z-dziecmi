@@ -3,6 +3,8 @@ import { Container } from "@/components/layout/Container";
 import { SectionWrapper } from "@/components/ui/SectionWrapper";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Button } from "@/components/ui/Button";
+import { ScrollAnimation } from "@/components/shared/ScrollAnimation";
+import { StarRating } from "@/components/shared/StarRating";
 import { TestimonialCard } from "@/components/shared/TestimonialCard";
 import { StructuredData } from "@/components/shared/StructuredData";
 import { ROUTES, SITE_CONFIG } from "@/lib/constants";
@@ -32,6 +34,12 @@ export default async function OpinionsPage() {
             title="Opinie"
             subtitle="Co mówią uczestnicy naszych warsztatów"
           />
+
+          <ScrollAnimation variant="fadeUp">
+            <div className="mb-8">
+              <StarRating />
+            </div>
+          </ScrollAnimation>
 
           <div className="mx-auto grid max-w-4xl gap-6 md:grid-cols-2">
             {testimonials.map((testimonial, index) => (

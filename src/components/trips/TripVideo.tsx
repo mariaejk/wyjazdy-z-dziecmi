@@ -25,7 +25,7 @@ export function TripVideo({
         <div
           className={
             hasDescription
-              ? "mx-auto flex max-w-5xl flex-col items-start gap-8 lg:flex-row lg:gap-12"
+              ? "mx-auto flex max-w-5xl flex-col-reverse items-start gap-8 lg:flex-row lg:gap-12"
               : "mx-auto max-w-lg sm:max-w-xl"
           }
         >

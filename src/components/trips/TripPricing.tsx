@@ -138,7 +138,7 @@ export function TripPricing({ pricing, deposit, spotsTotal, spotsLeft, priceIncl
           <ScrollAnimation delay={0.3}>
             <div className="mt-8 text-center">
               <Button href={spotsLeft === 0 ? "#lista-oczekujacych" : "#formularz"} size="lg">
-                {spotsLeft === 0 ? "Zapisz się na listę oczekujących" : "Zapisz się na wyjazd"}
+                {spotsLeft === 0 ? "Zapisz się na listę oczekujących" : "Zapisz się na warsztat"}
               </Button>
 
               {/* Soft CTA */}

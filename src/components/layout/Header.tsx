@@ -17,26 +17,30 @@ import { cn, isNavActive } from "@/lib/utils";
 function DropdownNavItem({
   item,
   pathname,
+  isOpen,
+  onOpen,
+  onClose,
 }: {
   item: NavItem;
   pathname: string;
+  isOpen: boolean;
+  onOpen: () => void;
+  onClose: () => void;
 }) {
-  const [open, setOpen] = useState(false);
   const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
-  const containerRef = useRef<HTMLLIElement>(null);
 
-  const active =
-    isNavActive(item.href, pathname) ||
-    item.children?.some((child) => isNavActive(child.href, pathname));
+  const active = item.children?.some((child) =>
+    isNavActive(child.href, pathname)
+  );
 
   const openDropdown = useCallback(() => {
     if (timeoutRef.current) clearTimeout(timeoutRef.current);
-    setOpen(true);
-  }, []);
+    onOpen();
+  }, [onOpen]);
 
   const closeDropdown = useCallback(() => {
-    timeoutRef.current = setTimeout(() => setOpen(false), 150);
-  }, []);
+    timeoutRef.current = setTimeout(() => onClose(), 150);
+  }, [onClose]);
 
   useEffect(() => {
     return () => {
@@ -46,34 +50,33 @@ function DropdownNavItem({
 
   return (
     <li
-      ref={containerRef}
       className="relative"
       onMouseEnter={openDropdown}
       onMouseLeave={closeDropdown}
     >
-      <Link
-        href={item.href}
+      <button
+        type="button"
         className={cn(
           "inline-flex items-center justify-center gap-1 whitespace-nowrap rounded-md px-4 py-2.5 text-base font-medium transition-colors",
           active
             ? "bg-moss/10 text-moss"
             : "text-graphite hover:bg-parchment-dark hover:text-moss"
         )}
-        {...(active ? { "aria-current": "page" as const } : {})}
-        aria-expanded={open}
-        aria-haspopup="true"
+        aria-expanded={isOpen}
+        aria-haspopup="menu"
+        onClick={() => (isOpen ? onClose() : onOpen())}
       >
         <span className="uppercase tracking-wide">{item.label}</span>
         <ChevronDown
           className={cn(
             "h-3.5 w-3.5 transition-transform",
-            open && "rotate-180"
+            isOpen && "rotate-180"
           )}
           strokeWidth={1.5}
         />
-      </Link>
+      </button>
 
-      {open && (
+      {isOpen && (
         <ul
           className="absolute left-0 top-full z-50 mt-1 min-w-[160px] rounded-lg border border-parchment-dark bg-parchment py-1 shadow-lg"
           role="menu"
@@ -108,7 +111,21 @@ function DropdownNavItem({
 
 export function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [openDropdown, setOpenDropdown] = useState<string | null>(null);
+  const navRef = useRef<HTMLElement>(null);
   const pathname = usePathname();
+
+  // Close dropdown when clicking outside nav
+  useEffect(() => {
+    if (!openDropdown) return;
+    function handleClick(e: MouseEvent) {
+      if (navRef.current && !navRef.current.contains(e.target as Node)) {
+        setOpenDropdown(null);
+      }
+    }
+    document.addEventListener("click", handleClick);
+    return () => document.removeEventListener("click", handleClick);
+  }, [openDropdown]);
 
   return (
     <header className="sticky top-0 z-40 border-b border-parchment-dark bg-parchment/95 backdrop-blur-sm">
@@ -129,21 +146,24 @@ export function Header() {
           {/* Right side: nav + phone + CTA + hamburger */}
           <div className="flex items-center gap-4">
             {/* Desktop navigation */}
-            <nav aria-label="Nawigacja główna" className="hidden lg:block">
+            <nav ref={navRef} aria-label="Nawigacja główna" className="hidden lg:block">
               <ul className="flex items-center gap-1">
                 {mainNavigation.map((item) => {
                   if (item.children) {
                     return (
                       <DropdownNavItem
-                        key={item.href}
+                        key={item.label}
                         item={item}
                         pathname={pathname}
+                        isOpen={openDropdown === item.label}
+                        onOpen={() => setOpenDropdown(item.label)}
+                        onClose={() => setOpenDropdown((prev) => prev === item.label ? null : prev)}
                       />
                     );
                   }
                   const active = isNavActive(item.href, pathname);
                   return (
-                    <li key={item.href}>
+                    <li key={item.label}>
                       <Link
                         href={item.href}
                         className={cn(

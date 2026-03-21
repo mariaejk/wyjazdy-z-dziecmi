@@ -22,72 +22,83 @@ function MobileNavLinks({
     <nav aria-label="Menu mobilne" className="flex-1 px-4">
       <ul className="flex flex-col gap-1">
         {mainNavigation.map((item) => {
-          const active = isNavActive(item.href, pathname);
           const hasChildren = item.children && item.children.length > 0;
-          const isExpanded = expandedItem === item.href;
+          const isExpanded = expandedItem === item.label;
 
-          return (
-            <li key={item.href}>
-              <div className="flex items-center">
-                <Link
-                  href={item.href}
-                  onClick={onClose}
+          if (hasChildren) {
+            const childActive = item.children!.some((child) =>
+              isNavActive(child.href, pathname)
+            );
+            return (
+              <li key={item.label}>
+                <button
+                  type="button"
+                  onClick={() =>
+                    setExpandedItem(isExpanded ? null : item.label)
+                  }
                   className={cn(
-                    "block flex-1 rounded-md px-3 py-3 text-base font-medium transition-colors",
-                    active
+                    "flex w-full items-center justify-between rounded-md px-3 py-3 text-base font-medium transition-colors",
+                    childActive
                       ? "bg-moss/10 text-moss"
                       : "text-graphite hover:bg-parchment-dark hover:text-moss"
                   )}
-                  {...(active ? { "aria-current": "page" as const } : {})}
+                  aria-expanded={isExpanded}
                 >
                   {item.label}
-                </Link>
-                {hasChildren && (
-                  <button
-                    type="button"
-                    onClick={() =>
-                      setExpandedItem(isExpanded ? null : item.href)
-                    }
-                    className="rounded-md p-3 text-graphite transition-colors hover:bg-parchment-dark hover:text-moss"
-                    aria-expanded={isExpanded}
-                    aria-label={`${isExpanded ? "Zwiń" : "Rozwiń"} ${item.label}`}
-                  >
-                    <ChevronDown
-                      className={cn(
-                        "h-4 w-4 transition-transform",
-                        isExpanded && "rotate-180"
-                      )}
-                      strokeWidth={1.5}
-                    />
-                  </button>
+                  <ChevronDown
+                    className={cn(
+                      "h-4 w-4 transition-transform",
+                      isExpanded && "rotate-180"
+                    )}
+                    strokeWidth={1.5}
+                  />
+                </button>
+                {isExpanded && (
+                  <ul className="ml-4 flex flex-col gap-1 border-l-2 border-parchment-dark pl-2">
+                    {item.children!.map((child) => {
+                      const active = isNavActive(child.href, pathname);
+                      return (
+                        <li key={child.href}>
+                          <Link
+                            href={child.href}
+                            onClick={onClose}
+                            className={cn(
+                              "block rounded-md px-3 py-2.5 text-sm font-medium transition-colors",
+                              active
+                                ? "bg-moss/10 text-moss"
+                                : "text-graphite hover:bg-parchment-dark hover:text-moss"
+                            )}
+                            {...(active
+                              ? { "aria-current": "page" as const }
+                              : {})}
+                          >
+                            {child.label}
+                          </Link>
+                        </li>
+                      );
+                    })}
+                  </ul>
                 )}
-              </div>
-              {hasChildren && isExpanded && (
-                <ul className="ml-4 flex flex-col gap-1 border-l-2 border-parchment-dark pl-2">
-                  {item.children!.map((child) => {
-                    const childActive = isNavActive(child.href, pathname);
-                    return (
-                      <li key={child.href}>
-                        <Link
-                          href={child.href}
-                          onClick={onClose}
-                          className={cn(
-                            "block rounded-md px-3 py-2.5 text-sm font-medium transition-colors",
-                            childActive
-                              ? "bg-moss/10 text-moss"
-                              : "text-graphite hover:bg-parchment-dark hover:text-moss"
-                          )}
-                          {...(childActive
-                            ? { "aria-current": "page" as const }
-                            : {})}
-                        >
-                          {child.label}
-                        </Link>
-                      </li>
-                    );
-                  })}
-                </ul>
-              )}
+              </li>
+            );
+          }
+
+          const active = isNavActive(item.href, pathname);
+          return (
+            <li key={item.label}>
+              <Link
+                href={item.href}
+                onClick={onClose}
+                className={cn(
+                  "block rounded-md px-3 py-3 text-base font-medium transition-colors",
+                  active
+                    ? "bg-moss/10 text-moss"
+                    : "text-graphite hover:bg-parchment-dark hover:text-moss"
+                )}
+                {...(active ? { "aria-current": "page" as const } : {})}
+              >
+                {item.label}
+              </Link>
             </li>
           );
         })}

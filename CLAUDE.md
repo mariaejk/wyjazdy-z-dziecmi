@@ -6,7 +6,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 Landing page / sales funnel for "Wyjazdy z Dziećmi" — a brand organizing family workshop retreats in nature (yoga, dance, ceramics, horses). Client: Maria Kordalewska. Domain: wyjazdyzdziecmi.pl.
 
-**Status:** Phase 1-7 + Poprawki klientki + Redesign wizualny 13.03 + Poprawki konwersji 19.03 + Kategorie/kalendarz/las 20.03 + Poprawki UX 20.03 + Poprawki nazewnictwo/SEO/FAQ 20.03 + Poprawki UI 21.03 + Trip Video 21.03 COMPLETE. Site is a production-ready sales funnel with CTA buttons, scarcity signals, GA4 event tracking, Microsoft Clarity, loading states, sticky mobile CTA, two-month trip calendar with interactive category filters + auto-navigation on homepage + /wyjazdy, auto-isPast from dateEnd + ISR, waitlist, blog, gallery, category filtering with colored badges, ForestPattern SVG decorations, warm Terakota+Oliwka color scheme, SEO H1 descriptive + H2 emotional, FAQ accordion (7 questions) with FAQPage schema.org, childCare w CMS, FAQ/social analytics tracking, testimonials sorted newest-first, "warsztaty" naming consistency, USP under hero slideshow, 3 testimonials in row, compact hero section, optional trip video (TripVideo component), chronological trip sorting, "O nas" last in nav.
+**Status:** Phase 1-7 + Poprawki klientki + Redesign wizualny 13.03 + Poprawki konwersji 19.03 + Kategorie/kalendarz/las 20.03 + Poprawki UX 20.03 + Poprawki nazewnictwo/SEO/FAQ 20.03 + Poprawki UI 21.03 + Trip Video 21.03 + Poprawki UI+Nav 21.03 COMPLETE. Site is a production-ready sales funnel with CTA buttons, scarcity signals, GA4 event tracking, Microsoft Clarity, loading states, sticky mobile CTA, two-month trip calendar with interactive category filters + auto-navigation on homepage + /wyjazdy, auto-isPast from dateEnd + ISR, waitlist, blog, gallery, category filtering with colored badges, ForestPattern SVG decorations, warm Terakota+Oliwka color scheme, SEO H1 descriptive + H2 emotional, FAQ accordion (7 questions) with FAQPage schema.org + id="faq" anchor, childCare w CMS, FAQ/social analytics tracking, testimonials sorted newest-first, "warsztaty" naming consistency, StarRating above opinions, compact hero section, optional trip video (TripVideo component, flex-col-reverse mobile), chronological trip sorting, 4 top-level nav items (Warsztaty dropdown, Poznajmy się dropdown, Blog, Kontakt), CategoryCards (4 image tiles under hero), FAQ link on trip pages.
 
 ## Tech Stack
 
@@ -240,6 +240,21 @@ npm run lint       # ESLint
 - **`getAllTrips()` sort**: Sorting in the data layer (`getAllTrips`) means all consumers automatically get chronological order — homepage, /wyjazdy, category pages. Single source of truth for sort order.
 - **Testimonial equal heights**: `blockquote` needs `h-full flex flex-col` + `flex-1` on quote text + `ScrollAnimation className="h-full"` for grid alignment.
 - **Navigation order matters**: Moving "O nas" to last position in `mainNavigation` array changes both desktop nav and mobile menu simultaneously — single source of truth.
+
+## Poprawki UI + Nawigacja 21.03.2026 Lessons Learned
+
+- **Multiple dropdowns — central state**: `openDropdown: string | null` in Header, not in each DropdownNavItem. Allows closing other dropdowns when opening a new one. Key pattern: `onClose={() => setOpenDropdown(prev => prev === item.label ? null : prev)}` to avoid race conditions with hover timeouts.
+- **Non-clickable nav items = button, not Link**: `<Link href="">` navigates to `/`. Use `<button>` for dropdown headers that only open menus. Correct HTML semantics.
+- **`isNavActive("")` guard**: `"".startsWith("")` is always `true`. Add `if (!href) return false` as first line in `isNavActive()` for non-clickable dropdown headers with empty href.
+- **Click-outside detection for dropdowns**: `useEffect` with `document.addEventListener("click")` + `navRef.contains()`. Only attach when dropdown is open. Cleanup in return.
+- **StarRating as shared component**: When identical JSX appears in 2+ places, extract immediately. `src/components/shared/StarRating.tsx` with `role="img"` + `aria-label` for screen readers.
+- **`role="img"` on decorative star ratings**: Without `role`, screen readers may ignore `aria-label` on a `<div>`. Always pair `role="img"` with `aria-label` for icon-based ratings.
+- **Hash navigation cross-page**: `/#faq` requires `id="faq"` on the target `SectionWrapper`. Easy to forget — always verify the anchor exists on the destination page.
+- **Conditional CTA on past trips**: Don't show action buttons (FAQ link, booking) on `isPast` trips — they're irrelevant and confusing.
+- **Navigation structure**: 4 top-level items: Warsztaty (dropdown), Poznajmy się (dropdown), Blog, Kontakt. Desktop: hover dropdowns. Mobile: accordion sections with independent expand/collapse.
+- **CategoryCards**: Server Component, 4 clickable image cards (Rodzinny czas, Dla Matki i Córki, Dla Singli z Dziećmi, Dla Dorosłych). Grid: sm:2col, lg:4col. Placed under hero, before calendar.
+- **Hero H2**: "Ty się regenerujesz. Twoje dziecko się bawi. Razem tworzycie wspomnienia na całe życie." — replaces previous H2 and USP (same text, no duplication).
+- **Footer simplified**: Brand section (name + tagline) removed. Grid 4→3 columns (Contact, Social, Legal).
 
 ## Content Sources
 
