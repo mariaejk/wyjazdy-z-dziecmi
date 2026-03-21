@@ -159,18 +159,20 @@ export default async function TripPage({ params }: PageProps) {
 
       {/* Gallery removed — images are now inline in contentBlocks */}
 
-      {/* 9. FAQ link to homepage */}
-      <SectionWrapper className="py-8 sm:py-12">
-        <Container>
-          <ScrollAnimation variant="fadeUp">
-            <div className="text-center">
-              <Button href="/#faq" variant="secondary">
-                Masz więcej pytań? Zobacz FAQ
-              </Button>
-            </div>
-          </ScrollAnimation>
-        </Container>
-      </SectionWrapper>
+      {/* 9. FAQ link to homepage (only for active trips) */}
+      {!trip.isPast && (
+        <SectionWrapper className="py-8 sm:py-12">
+          <Container>
+            <ScrollAnimation variant="fadeUp">
+              <div className="text-center">
+                <Button href="/#faq" variant="secondary">
+                  Masz więcej pytań? Zobacz FAQ
+                </Button>
+              </div>
+            </ScrollAnimation>
+          </Container>
+        </SectionWrapper>
+      )}
 
       {/* 10. Booking Form or Waitlist */}
       {!trip.isPast && trip.spotsLeft === 0 && (

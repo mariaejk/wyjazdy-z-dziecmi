@@ -53,7 +53,7 @@ const accordionItems = faqData.map((item, i) => ({
 
 export function HomeFAQ() {
   return (
-    <SectionWrapper variant="alternate">
+    <SectionWrapper variant="alternate" id="faq">
       <Container>
         <ScrollAnimation variant="fadeUp">
           <SectionHeading

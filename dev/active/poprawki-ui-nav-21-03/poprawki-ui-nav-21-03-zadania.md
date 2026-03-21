@@ -65,7 +65,12 @@ Ostatnia aktualizacja: 2026-03-21
   - [x] Pozycja: pod sekcjami warsztatu, przed BookingForm
 - [x] 3.3 Zmiana nagłówka w `BookingForm.tsx` + `TripPricing.tsx`: "Zapisz się na wyjazd" → "Zapisz się na warsztat"
 - [x] 3.4 Build check — OK
-- [x] 3.5 Commit fazy 3
+- [x] 3.5 Commit fazy 3 — `3bb6746`
+
+## Do poprawy po review fazy 3
+
+- [x] 🔴 [blocking] **HomeFAQ.tsx** — dodane `id="faq"` na SectionWrapper
+- [x] 🟠 [important] **[slug]/page.tsx** — FAQ link warunkowy: `{!trip.isPast && ...}`
 
 ## Faza 4: Footer (zmiana 4)
 
