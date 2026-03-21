@@ -102,22 +102,32 @@ export default async function TripPage({ params }: PageProps) {
         spotsLeft={trip.spotsLeft}
       />
 
-      {/* 1.5. Video */}
-      {trip.videoUrl && <TripVideo videoUrl={trip.videoUrl} />}
+      {/* 1.5. Video + Description (side by side) */}
+      {trip.videoUrl && (
+        <div id="opis">
+          <TripVideo
+            videoUrl={trip.videoUrl}
+            shortDescription={trip.shortDescription}
+            longDescription={trip.longDescription}
+          />
+        </div>
+      )}
 
       {/* 2. Target Audience */}
       {trip.targetAudience.length > 0 && (
         <TripTargetAudience items={trip.targetAudience} />
       )}
 
-      {/* 3. Description */}
-      <div id="opis">
-        <TripDescription
-          shortDescription={trip.shortDescription}
-          longDescription={trip.longDescription}
-          contentBlocks={trip.contentBlocks}
-        />
-      </div>
+      {/* 3. Description (only when no video — otherwise shown alongside video) */}
+      {!trip.videoUrl && (
+        <div id="opis">
+          <TripDescription
+            shortDescription={trip.shortDescription}
+            longDescription={trip.longDescription}
+            contentBlocks={trip.contentBlocks}
+          />
+        </div>
+      )}
 
       {/* 4. Program */}
       {hasSchedule && <TripProgram schedule={trip.schedule} />}
