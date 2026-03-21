@@ -90,7 +90,10 @@ export async function getAllTrips(): Promise<Trip[]> {
     if (!entry) continue;
     trips.push(await mapTrip(slug, entry));
   }
-  return trips;
+  // Sort chronologically by start date (earliest first)
+  return trips.sort(
+    (a, b) => parseLocalDate(a.date).getTime() - parseLocalDate(b.date).getTime()
+  );
 }
 
 export async function getTripBySlug(
