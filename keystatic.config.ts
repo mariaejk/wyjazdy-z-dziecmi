@@ -45,6 +45,9 @@ export default config({
           multiline: true,
         }),
         image: fields.text({ label: "Zdjęcie główne (ścieżka)" }),
+        videoUrl: fields.text({
+          label: "URL wideo promocyjnego (opcjonalne, np. /videos/nazwa.mp4)",
+        }),
         isPast: fields.checkbox({
           label: "Zakończony (ignorowane — obliczane automatycznie z daty końca)",
           defaultValue: false,

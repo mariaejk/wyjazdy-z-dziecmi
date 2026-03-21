@@ -17,6 +17,7 @@ async function mapTrip(
     shortDescription: entry.shortDescription,
     longDescription: entry.longDescription,
     image: entry.image,
+    videoUrl: entry.videoUrl || undefined,
     isPast: parseLocalDate(entry.dateEnd) < new Date(),
     spotsTotal: entry.spotsTotal ?? undefined,
     spotsLeft: entry.spotsLeft ?? undefined,

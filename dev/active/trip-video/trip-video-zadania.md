@@ -5,9 +5,9 @@
 
 ## Faza 1: Infrastruktura danych [S]
 
-- [ ] 1.1 Dodać `videoUrl?: string` do typu `Trip` w `src/types/trip.ts`
-- [ ] 1.2 Dodać pole `videoUrl` (text, opcjonalne) w Keystatic schema `keystatic.config.ts`
-- [ ] 1.3 Zmapować `videoUrl` w `mapTrip()` w `src/data/trips.ts` (`entry.videoUrl || undefined`)
+- [x] 1.1 Dodać `videoUrl?: string` do typu `Trip` w `src/types/trip.ts`
+- [x] 1.2 Dodać pole `videoUrl` (text, opcjonalne) w Keystatic schema `keystatic.config.ts`
+- [x] 1.3 Zmapować `videoUrl` w `mapTrip()` w `src/data/trips.ts` (`entry.videoUrl || undefined`)
 
 ## Faza 2: Plik wideo + komponent [M]
 
