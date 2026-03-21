@@ -72,11 +72,12 @@ Ostatnia aktualizacja: 2026-03-21
 - [x] 🔴 [blocking] **HomeFAQ.tsx** — dodane `id="faq"` na SectionWrapper
 - [x] 🟠 [important] **[slug]/page.tsx** — FAQ link warunkowy: `{!trip.isPast && ...}`
 
-## Faza 4: Footer (zmiana 4)
+## Faza 4: Footer (zmiana 4) ✅
 
-- [ ] 4.1 Usunięcie "Wyjazdy z Dziećmi" + tagline z `Footer.tsx`
-- [ ] 4.2 Weryfikacja wizualna footer
-- [ ] 4.3 Commit fazy 4
+- [x] 4.1 Usunięcie "Wyjazdy z Dziećmi" + tagline z `Footer.tsx`
+- [x] 4.2 Grid zmieniony z lg:grid-cols-4 na lg:grid-cols-3
+- [x] 4.3 Build check — OK
+- [x] 4.4 Commit fazy 4
 
 ## Finalizacja
 
