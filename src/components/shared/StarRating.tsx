@@ -3,7 +3,7 @@ import { Star } from "lucide-react";
 export function StarRating() {
   return (
     <div
-      className="flex items-center justify-center gap-1.5 text-sm text-graphite-light"
+      className="flex flex-wrap items-center justify-center gap-1.5 text-sm text-graphite-light"
       role="img"
       aria-label="5 z 5 gwiazdek — polecane przez rodziców"
     >
