@@ -81,7 +81,7 @@ Ostatnia aktualizacja: 2026-03-21
 
 ## Finalizacja
 
-- [ ] 5.1 Build check (`npm run build`)
-- [ ] 5.2 Lint check (`npm run lint`)
+- [x] 5.1 Build check — OK (27 stron, 0 błędów)
+- [x] 5.2 Lint check — 0 errors, 16 warnings (istniejące)
 - [ ] 5.3 Review wizualny wszystkich zmian
 - [ ] 5.4 Merge do master (po akceptacji)
