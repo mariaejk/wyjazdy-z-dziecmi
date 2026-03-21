@@ -6,7 +6,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 Landing page / sales funnel for "Wyjazdy z Dziećmi" — a brand organizing family workshop retreats in nature (yoga, dance, ceramics, horses). Client: Maria Kordalewska. Domain: wyjazdyzdziecmi.pl.
 
-**Status:** Phase 1-7 + Poprawki klientki + Redesign wizualny 13.03 + Poprawki konwersji 19.03 + Kategorie/kalendarz/las 20.03 + Poprawki UX 20.03 + Poprawki nazewnictwo/SEO/FAQ 20.03 + Poprawki UI 21.03 + Trip Video 21.03 + Poprawki UI+Nav 21.03 COMPLETE. Site is a production-ready sales funnel with CTA buttons, scarcity signals, GA4 event tracking, Microsoft Clarity, loading states, sticky mobile CTA, two-month trip calendar with interactive category filters + auto-navigation on homepage + /wyjazdy, auto-isPast from dateEnd + ISR, waitlist, blog, gallery, category filtering with colored badges, ForestPattern SVG decorations, warm Terakota+Oliwka color scheme, SEO H1 descriptive + H2 emotional, FAQ accordion (7 questions) with FAQPage schema.org + id="faq" anchor, childCare w CMS, FAQ/social analytics tracking, testimonials sorted newest-first, "warsztaty" naming consistency, StarRating above opinions, compact hero section, optional trip video (TripVideo component, flex-col-reverse mobile), chronological trip sorting, 4 top-level nav items (Warsztaty dropdown, Poznajmy się dropdown, Blog, Kontakt), CategoryCards (4 image tiles under hero), FAQ link on trip pages.
+**Status:** Phase 1-7 + Poprawki klientki + Redesign wizualny 13.03 + Poprawki konwersji 19.03 + Kategorie/kalendarz/las 20.03 + Poprawki UX 20.03 + Poprawki nazewnictwo/SEO/FAQ 20.03 + Poprawki UI 21.03 + Trip Video 21.03 + Poprawki UI+Nav 21.03 + Logo kompas SVG 22.03 COMPLETE. Site is a production-ready sales funnel with CTA buttons, scarcity signals, GA4 event tracking, Microsoft Clarity, loading states, sticky mobile CTA, two-month trip calendar with interactive category filters + auto-navigation on homepage + /wyjazdy, auto-isPast from dateEnd + ISR, waitlist, blog, gallery, category filtering with colored badges, ForestPattern SVG decorations, warm Terakota+Oliwka color scheme, SEO H1 descriptive + H2 emotional, FAQ accordion (7 questions) with FAQPage schema.org + id="faq" anchor, childCare w CMS, FAQ/social analytics tracking, testimonials sorted newest-first, "warsztaty" naming consistency, StarRating above opinions, compact hero section, optional trip video (TripVideo component, flex-col-reverse mobile), chronological trip sorting, 4 top-level nav items (Warsztaty dropdown, Poznajmy się dropdown, Blog, Kontakt), CategoryCards (4 image tiles under hero), FAQ link on trip pages, SVG compass logo (Lora + Caveat fonts) with mobile sygnet-only mode, compass favicon.
 
 ## Tech Stack
 
@@ -17,7 +17,7 @@ Landing page / sales funnel for "Wyjazdy z Dziećmi" — a brand organizing fami
 - **Lucide React 0.575** — line icons (strokeWidth 1.5)
 - **clsx 2.1 + tailwind-merge 3.5** — className utility `cn()`
 - **Vercel** — deployment
-- Fonts: **Playfair Display** (headings) + **Inter** (body), self-hosted via `next/font/google` (auto self-hosting, RODO OK)
+- Fonts: **Playfair Display** (headings) + **Inter** (body) + **Lora** (logo main text) + **Caveat** (logo script text), self-hosted via `next/font/google` (auto self-hosting, RODO OK)
 
 ## Critical Constraints
 
@@ -52,7 +52,7 @@ dev/completed/           — Archived completed phases
 dev/active/              — Current active phase docs
 docs/                    — PRD, content, UI guidelines, source images
 src/app/                 — Next.js pages (layout, page, loading, error)
-src/components/layout/   — SkipToContent, Container, Header, MobileMenu, Footer
+src/components/layout/   — SkipToContent, Container, Header, MobileMenu, Footer, Logo
 src/components/ui/       — Button, SectionWrapper, SectionHeading, Badge, Card, Accordion, Input, Textarea, Select, Checkbox, HoneypotField
 src/components/shared/   — ScrollAnimation, StructuredData, NewsletterForm, GoogleAnalytics, ClarityScript
 src/components/home/     — HeroSection, HeroSlideshow, TripCard, TripCardsSection, AboutTeaser, OpinionsTeaser
@@ -85,7 +85,7 @@ npm run lint       # ESLint
 - **Trip subpage template** follows PRD section 6.3 order: Hero → "Dla kogo?" → Description → Program → Practical Info → Pricing → Collaborator → FAQ → Gallery → Booking Form
 - **API routes** at `api/booking/`, `api/contact/`, `api/newsletter/` — each with Zod validation + honeypot + rate limiting + commented webhook URL for future n8n integration
 - **Booking form fields**: name, email, phone, trip (dropdown), adults count, children count + ages, notes, RODO consent (required), marketing consent (optional)
-- **Logo**: use as raster JPG via `next/image` (SVG conversion is non-trivial, needs vector file from client)
+- **Logo**: SVG compass component (`src/components/layout/Logo.tsx`) with Lora + Caveat fonts. Mobile: compass sygnet only. Desktop: compass + "Warsztaty z dziećmi" text. Color: `#48351b` (gorzka czekolada).
 - **Skip-to-content** link from Phase 1, not deferred to accessibility audit
 
 ## Phase 1 Lessons Learned
@@ -255,6 +255,16 @@ npm run lint       # ESLint
 - **CategoryCards**: Server Component, 4 clickable image cards (Rodzinny czas, Dla Matki i Córki, Dla Singli z Dziećmi, Dla Dorosłych). Grid: sm:2col, lg:4col. Placed under hero, before calendar.
 - **Hero H2**: "Ty się regenerujesz. Twoje dziecko się bawi. Razem tworzycie wspomnienia na całe życie." — replaces previous H2 and USP (same text, no duplication).
 - **Footer simplified**: Brand section (name + tagline) removed. Grid 4→3 columns (Contact, Social, Legal).
+
+## Logo SVG + Favicon 22.03.2026 Lessons Learned
+
+- **CSS Art → SVG component**: Don't embed CSS-drawn icons (absolute positioning, border hacks) into React. Convert to `<svg>` for clean scaling, Tailwind color control via `currentColor`, and zero layout issues.
+- **Logo fonts separate from page fonts**: Logo uses Lora (serif) + Caveat (handwriting). Page uses Playfair Display + Inter. All 4 loaded via `next/font/google` with CSS variables (`--font-lora`, `--font-caveat`).
+- **`font-[family-name:var(--font-lora)]`**: Tailwind v4 syntax for referencing CSS variable fonts. Works with `next/font/google` variable approach.
+- **Mobile logo = sygnet only**: `hidden md:flex` on text part. Compass icon always visible. Saves space on narrow screens, improves recognition.
+- **SVG favicon in App Router**: Place `icon.svg` in `src/app/` — Next.js auto-detects and serves it. Update `metadata.icons` to `"/icon.svg"`. Simpler than generating multiple PNG sizes.
+- **Logo `aria-label` on Link, `aria-hidden` on SVG**: The wrapping `<Link>` gets `aria-label="Wyjazdy z Dziećmi — strona główna"`. The decorative SVG gets `aria-hidden="true"`. Text in logo is visible but supplementary.
+- **Logo sizing in header**: `size={44}` fits within `h-16 sm:h-20` header with natural padding from flexbox. No need for explicit padding on the logo itself.
 
 ## Content Sources
 

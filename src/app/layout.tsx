@@ -26,7 +26,7 @@ export const metadata: Metadata = {
     images: ["/images/hero.jpg"],
   },
   icons: {
-    icon: "/favicon.ico",
+    icon: "/icon.svg",
   },
 };
 

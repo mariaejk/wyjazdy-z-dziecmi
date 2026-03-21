@@ -1,5 +1,5 @@
 import type { ReactNode } from "react";
-import { Playfair_Display, Inter } from "next/font/google";
+import { Playfair_Display, Inter, Lora, Caveat } from "next/font/google";
 import { SkipToContent } from "@/components/layout/SkipToContent";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
@@ -24,6 +24,20 @@ const inter = Inter({
   weight: ["400", "500", "600"],
 });
 
+const lora = Lora({
+  variable: "--font-lora",
+  subsets: ["latin", "latin-ext"],
+  display: "swap",
+  weight: ["400", "500"],
+});
+
+const caveat = Caveat({
+  variable: "--font-caveat",
+  subsets: ["latin", "latin-ext"],
+  display: "swap",
+  weight: ["500", "600"],
+});
+
 export default function MainLayout({
   children,
 }: Readonly<{
@@ -31,7 +45,7 @@ export default function MainLayout({
 }>) {
   return (
     <div
-      className={`${playfair.variable} ${inter.variable} font-body bg-parchment text-graphite antialiased`}
+      className={`${playfair.variable} ${inter.variable} ${lora.variable} ${caveat.variable} font-body bg-parchment text-graphite antialiased`}
     >
       <StructuredData data={getOrganizationSchema()} />
       <GoogleAnalytics />

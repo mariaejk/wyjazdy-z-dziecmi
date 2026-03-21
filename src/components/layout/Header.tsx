@@ -2,7 +2,7 @@
 
 import { useState, useRef, useEffect, useCallback } from "react";
 import Link from "next/link";
-import Image from "next/image";
+import { Logo } from "./Logo";
 import { usePathname } from "next/navigation";
 import { Menu, Phone, ChevronDown } from "lucide-react";
 import { Container } from "./Container";
@@ -132,15 +132,8 @@ export function Header() {
       <Container>
         <div className="flex h-16 items-center justify-between sm:h-20">
           {/* Logo */}
-          <Link href={ROUTES.home} className="group flex items-center gap-3">
-            <Image
-              src="/images/logo.jpeg"
-              alt="Wyjazdy z Dziećmi"
-              width={80}
-              height={80}
-              className="rounded-full"
-              priority
-            />
+          <Link href={ROUTES.home} className="group flex items-center" aria-label="Wyjazdy z Dziećmi — strona główna">
+            <Logo size={44} color="#48351b" className="sm:gap-3" />
           </Link>
 
           {/* Right side: nav + phone + CTA + hamburger */}
