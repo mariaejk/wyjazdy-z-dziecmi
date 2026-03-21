@@ -20,7 +20,15 @@ Ostatnia aktualizacja: 2026-03-21
   - [x] Nieklikalne headers (button zamiast Link)
   - [x] Blog i Kontakt jako zwykłe linki
 - [x] 1.4 Build check — OK (27 stron, 0 błędów)
-- [ ] 1.5 Commit fazy 1
+- [x] 1.5 Commit fazy 1 — `489250c`
+
+## Do poprawy po review fazy 1
+
+- [x] 🔴 [blocking] **Header.tsx:onClose** — race condition przy rapid hover → fix: `setOpenDropdown(prev => ...)`
+- [x] 🔴 [blocking] **Header.tsx:onClick** — brak toggle → fix: `isOpen ? onClose() : onOpen()`
+- [x] 🟠 [important] **Header.tsx** — click-outside detection → fix: `useEffect` + document click listener
+- [x] 🟠 [important] **utils.ts:isNavActive** — guard `if (!href) return false`
+- [x] 🟠 [important] **Header.tsx:aria-haspopup** → `"menu"`
 
 ## Faza 2: Hero + Kafelki kategorii (zmiany 5, 9, 10)
 

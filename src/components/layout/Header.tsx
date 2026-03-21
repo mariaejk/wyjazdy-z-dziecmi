@@ -63,8 +63,8 @@ function DropdownNavItem({
             : "text-graphite hover:bg-parchment-dark hover:text-moss"
         )}
         aria-expanded={isOpen}
-        aria-haspopup="true"
-        onClick={openDropdown}
+        aria-haspopup="menu"
+        onClick={() => (isOpen ? onClose() : onOpen())}
       >
         <span className="uppercase tracking-wide">{item.label}</span>
         <ChevronDown
@@ -112,7 +112,20 @@ function DropdownNavItem({
 export function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
+  const navRef = useRef<HTMLElement>(null);
   const pathname = usePathname();
+
+  // Close dropdown when clicking outside nav
+  useEffect(() => {
+    if (!openDropdown) return;
+    function handleClick(e: MouseEvent) {
+      if (navRef.current && !navRef.current.contains(e.target as Node)) {
+        setOpenDropdown(null);
+      }
+    }
+    document.addEventListener("click", handleClick);
+    return () => document.removeEventListener("click", handleClick);
+  }, [openDropdown]);
 
   return (
     <header className="sticky top-0 z-40 border-b border-parchment-dark bg-parchment/95 backdrop-blur-sm">
@@ -133,7 +146,7 @@ export function Header() {
           {/* Right side: nav + phone + CTA + hamburger */}
           <div className="flex items-center gap-4">
             {/* Desktop navigation */}
-            <nav aria-label="Nawigacja główna" className="hidden lg:block">
+            <nav ref={navRef} aria-label="Nawigacja główna" className="hidden lg:block">
               <ul className="flex items-center gap-1">
                 {mainNavigation.map((item) => {
                   if (item.children) {
@@ -144,7 +157,7 @@ export function Header() {
                         pathname={pathname}
                         isOpen={openDropdown === item.label}
                         onOpen={() => setOpenDropdown(item.label)}
-                        onClose={() => setOpenDropdown(null)}
+                        onClose={() => setOpenDropdown((prev) => prev === item.label ? null : prev)}
                       />
                     );
                   }
