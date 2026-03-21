@@ -17,6 +17,10 @@ import { TripFAQ } from "@/components/trips/TripFAQ";
 import { BookingForm } from "@/components/trips/BookingForm";
 import { WaitlistForm } from "@/components/trips/WaitlistForm";
 import { StickyBookingCTA } from "@/components/trips/StickyBookingCTA";
+import { Container } from "@/components/layout/Container";
+import { SectionWrapper } from "@/components/ui/SectionWrapper";
+import { Button } from "@/components/ui/Button";
+import { ScrollAnimation } from "@/components/shared/ScrollAnimation";
 
 export const revalidate = 3600;
 
@@ -154,6 +158,19 @@ export default async function TripPage({ params }: PageProps) {
       {hasFAQ && <TripFAQ items={trip.faq} />}
 
       {/* Gallery removed — images are now inline in contentBlocks */}
+
+      {/* 9. FAQ link to homepage */}
+      <SectionWrapper className="py-8 sm:py-12">
+        <Container>
+          <ScrollAnimation variant="fadeUp">
+            <div className="text-center">
+              <Button href="/#faq" variant="secondary">
+                Masz więcej pytań? Zobacz FAQ
+              </Button>
+            </div>
+          </ScrollAnimation>
+        </Container>
+      </SectionWrapper>
 
       {/* 10. Booking Form or Waitlist */}
       {!trip.isPast && trip.spotsLeft === 0 && (

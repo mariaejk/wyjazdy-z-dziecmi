@@ -124,7 +124,7 @@ export function BookingForm({ trips, preselectedTrip }: BookingFormProps) {
     <SectionWrapper variant="alternate" id="formularz">
       <Container>
         <SectionHeading
-          title="Zapisz się na wyjazd"
+          title="Zapisz się na warsztat"
           subtitle="Wypełnij formularz, a my skontaktujemy się z Tobą w ciągu 48 godzin."
         />
         <form

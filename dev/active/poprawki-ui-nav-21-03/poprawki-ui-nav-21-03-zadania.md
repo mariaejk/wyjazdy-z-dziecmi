@@ -56,16 +56,16 @@ Ostatnia aktualizacja: 2026-03-21
 - [x] 🟡 [nit] CategoryCards: `role="region" aria-label="Kategorie warsztatów"`
 - [x] 🟡 [nit] CategoryCards: `sizes` poprawiony na `calc`
 
-## Faza 3: Strony warsztatów (zmiany 1, 2, 3)
+## Faza 3: Strony warsztatów (zmiany 1, 2, 3) ✅
 
-- [ ] 3.1 Odwrócenie kolejności mobile w `TripVideo.tsx` (`flex-col-reverse`)
-- [ ] 3.2 Przycisk FAQ w `[slug]/page.tsx` — link do `/#faq`
-  - [ ] Tekst: "Masz więcej pytań? Zobacz FAQ"
-  - [ ] Wariant: secondary button
-  - [ ] Pozycja: pod sekcjami warsztatu (np. pod TripFAQ lub pod BookingForm)
-- [ ] 3.3 Zmiana nagłówka w `BookingForm.tsx`: "Zapisz się na wyjazd" → "Zapisz się na warsztat"
-- [ ] 3.4 Testy na stronie warsztatu (mobile + desktop)
-- [ ] 3.5 Commit fazy 3
+- [x] 3.1 Odwrócenie kolejności mobile w `TripVideo.tsx` (`flex-col-reverse`)
+- [x] 3.2 Przycisk FAQ w `[slug]/page.tsx` — link do `/#faq`
+  - [x] Tekst: "Masz więcej pytań? Zobacz FAQ"
+  - [x] Wariant: secondary button
+  - [x] Pozycja: pod sekcjami warsztatu, przed BookingForm
+- [x] 3.3 Zmiana nagłówka w `BookingForm.tsx` + `TripPricing.tsx`: "Zapisz się na wyjazd" → "Zapisz się na warsztat"
+- [x] 3.4 Build check — OK
+- [x] 3.5 Commit fazy 3
 
 ## Faza 4: Footer (zmiana 4)
 
