@@ -56,3 +56,23 @@ Ostatnia aktualizacja: 2026-03-21
 - CategoryCards powinien być Server Component (linki, zdjęcia, bez interaktywności)
 - Zmiana H2 w hero musi być w OBU wariantach (motion + reduced-motion)
 - USP pod slideshow to ten sam tekst co nowy H2 — usunąć żeby nie dublować
+
+## Faza 1 — Zmiany (2026-03-21)
+
+### navigation.ts
+- 4 top-level items zamiast 7: Warsztaty (dropdown), Poznajmy się (dropdown), Blog, Kontakt
+- "Warsztaty" i "Poznajmy się" mają `href: ""` — nieklikalne
+- Blog usunięty z dropdown "Poznajmy się"
+- "O mnie" dodane jako pierwszy item w "Poznajmy się"
+
+### Header.tsx
+- `DropdownNavItem` — zmieniony z `Link` na `button` (nieklikalne dropdown headers)
+- Stan dropdownów przeniesiony z komponentu dropdown do `Header` (`openDropdown: string | null`)
+- Props: `isOpen`, `onOpen`, `onClose` — pozwala zamykać inne dropdowny przy otwarciu nowego
+- Key zmieniony z `item.href` na `item.label` (bo href jest pusty dla dropdownów)
+
+### MobileMenu.tsx
+- Dropdown items renderują `<button>` zamiast `<Link>` + oddzielny chevron button
+- Cały wiersz jest teraz jednym buttonem z chevronem po prawej
+- `expandedItem` trzyma `item.label` zamiast `item.href`
+- Zwykłe linki (Blog, Kontakt) renderowane jako `<Link>` bez accordion

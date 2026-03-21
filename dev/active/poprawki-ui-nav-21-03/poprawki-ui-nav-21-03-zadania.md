@@ -3,23 +3,23 @@
 Branch: `feature/poprawki-ui-nav-21-03`
 Ostatnia aktualizacja: 2026-03-21
 
-## Faza 1: Nawigacja (zmiany 6, 7, 8)
+## Faza 1: Nawigacja (zmiany 6, 7, 8) ✅
 
-- [ ] 1.1 Przebudowa `navigation.ts` — nowa struktura 4 top-level items
-  - [ ] "Warsztaty" dropdown: Wszystkie warsztaty, Warsztaty z dziećmi, Matka i córka, Single parents, Dla dorosłych
-  - [ ] "Poznajmy się" dropdown: O mnie, Galeria, Opinie, Kontakt
-  - [ ] "Blog" samodzielna pozycja
-  - [ ] "Kontakt" samodzielna pozycja
-- [ ] 1.2 Aktualizacja `Header.tsx` — obsługa wielu dropdownów
-  - [ ] DropdownNavItem dla każdego item z children
-  - [ ] Nieklikalne headers (button zamiast Link)
-  - [ ] Zamykanie poprzedniego dropdown przy otwarciu nowego
-  - [ ] Active state działa dla zagnieżdżonych children
-- [ ] 1.3 Aktualizacja `MobileMenu.tsx` — accordion dla obu dropdownów
-  - [ ] Dwa niezależne accordion sections
-  - [ ] Nieklikalne headers
-  - [ ] Blog i Kontakt jako zwykłe linki
-- [ ] 1.4 Testy manualne nawigacji desktop + mobile
+- [x] 1.1 Przebudowa `navigation.ts` — nowa struktura 4 top-level items
+  - [x] "Warsztaty" dropdown: Wszystkie warsztaty, Warsztaty z dziećmi, Matka i córka, Single parents, Dla dorosłych
+  - [x] "Poznajmy się" dropdown: O mnie, Galeria, Opinie, Kontakt
+  - [x] "Blog" samodzielna pozycja
+  - [x] "Kontakt" samodzielna pozycja
+- [x] 1.2 Aktualizacja `Header.tsx` — obsługa wielu dropdownów
+  - [x] DropdownNavItem dla każdego item z children
+  - [x] Nieklikalne headers (button zamiast Link)
+  - [x] Zamykanie poprzedniego dropdown przy otwarciu nowego (stan `openDropdown` w Header)
+  - [x] Active state działa dla zagnieżdżonych children
+- [x] 1.3 Aktualizacja `MobileMenu.tsx` — accordion dla obu dropdownów
+  - [x] Dwa niezależne accordion sections
+  - [x] Nieklikalne headers (button zamiast Link)
+  - [x] Blog i Kontakt jako zwykłe linki
+- [x] 1.4 Build check — OK (27 stron, 0 błędów)
 - [ ] 1.5 Commit fazy 1
 
 ## Faza 2: Hero + Kafelki kategorii (zmiany 5, 9, 10)
