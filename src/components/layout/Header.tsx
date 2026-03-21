@@ -175,7 +175,7 @@ export function Header() {
 
             {/* CTA — visible lg+ */}
             <div className="hidden lg:block">
-              <Button href={ROUTES.trips} size="md">
+              <Button href={ROUTES.trips} size="md" className="whitespace-nowrap">
                 Sprawdź terminy
               </Button>
             </div>

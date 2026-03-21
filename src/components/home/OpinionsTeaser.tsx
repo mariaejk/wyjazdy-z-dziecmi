@@ -18,7 +18,7 @@ export async function OpinionsTeaser() {
           title="Opinie uczestników"
         />
 
-        <div className="mx-auto grid max-w-4xl gap-6 md:grid-cols-2">
+        <div className="mx-auto grid max-w-5xl gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {featured.map((testimonial, index) => (
             <TestimonialCard
               key={testimonial.id}

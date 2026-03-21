@@ -24,27 +24,13 @@ export default async function Home() {
     <>
       {faqSchema && <StructuredData data={faqSchema} />}
 
-      {/* USP — pod menu, przed hero */}
-      <SectionWrapper className="pt-4 pb-2 sm:pt-6 sm:pb-2">
-        <Container>
-          <ScrollAnimation variant="fadeUp">
-            <div className="mx-auto max-w-3xl text-center">
-              <p className="text-xl font-medium leading-relaxed text-moss sm:text-2xl">
-                Ty się regenerujesz. Twoje dziecko się bawi. Razem tworzycie wspomnienia na całe życie.
-              </p>
-            </div>
-          </ScrollAnimation>
-        </Container>
-      </SectionWrapper>
-
       <HeroSection />
 
       {/* Calendar — przed Nadchodzącymi wyjazdami */}
       <SectionWrapper variant="alternate" className="relative overflow-hidden">
         <Container>
           <SectionHeading
-            title="Kalendarz warsztatów"
-            subtitle="Znajdź termin idealny dla siebie"
+            title="Znajdź termin idealny dla siebie"
           />
           <div className="mx-auto max-w-3xl">
             <ScrollAnimation variant="fadeUp">

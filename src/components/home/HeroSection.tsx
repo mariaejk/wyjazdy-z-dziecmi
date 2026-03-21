@@ -50,7 +50,7 @@ export function HeroSection() {
         className="relative overflow-hidden bg-gradient-to-br from-parchment via-parchment to-coral/15"
       >
         <DecorativeDots />
-        <Container className="relative z-10 pt-8 pb-16 sm:pt-10 sm:pb-20 lg:pt-12 lg:pb-28">
+        <Container className="relative z-10 pt-8 pb-12 sm:pt-10 sm:pb-16 lg:pt-12 lg:pb-20">
           <div className="flex flex-col lg:flex-row lg:items-center lg:gap-12">
             {/* Image — left */}
             <div className="relative mx-auto w-full max-w-md lg:mx-0 lg:w-[45%] lg:max-w-none">
@@ -60,24 +60,23 @@ export function HeroSection() {
               <div className="relative rotate-[-2deg] overflow-hidden rounded-3xl shadow-2xl">
                 <HeroSlideshow />
               </div>
+              {/* USP — directly under slideshow */}
+              <p className="relative z-10 mt-4 text-center text-lg font-medium leading-relaxed text-moss sm:text-xl">
+                Ty się regenerujesz. Twoje dziecko się bawi. Razem tworzycie wspomnienia na całe życie.
+              </p>
             </div>
 
             {/* Text — right */}
-            <div className="mt-10 lg:mt-0 lg:w-[55%]">
+            <div className="mt-6 lg:mt-0 lg:w-[55%]">
               {/* H1 = SEO descriptive keyword-rich, styled as overline badge.
                   H2 = emotional headline for users. Intentional hierarchy inversion for SEO. */}
               <h1 className="text-sm font-semibold uppercase tracking-wider text-moss">
                 Rodzinne wyjazdy warsztatowe w naturze
               </h1>
-              <h2 className="mt-2 font-heading text-4xl font-bold text-graphite sm:text-5xl lg:text-6xl">
+              <h2 className="mt-2 font-heading text-3xl font-bold text-graphite sm:text-4xl lg:text-5xl">
                 Zatrzymaj się. Odetchnij. Spotkaj swoje dziecko{" "}
                 <span className="text-terracotta">na nowo</span>.
               </h2>
-              <p className="mt-4 max-w-lg text-lg leading-relaxed text-graphite-light sm:mt-6">
-                Wyjazdy warsztatowe w naturze, gdzie Ty się regenerujesz,
-                a Twoje dziecko się bawi i rozwija. Joga, taniec, ceramika,
-                konie — i wreszcie czas dla siebie.
-              </p>
 
               <div className="mt-8 grid gap-3 sm:grid-cols-3">
                 {benefits.map((benefit) => (
@@ -126,7 +125,7 @@ export function HeroSection() {
     >
       <DecorativeDots />
 
-      <Container className="relative z-10 py-16 sm:py-20 lg:py-28">
+      <Container className="relative z-10 py-12 sm:py-16 lg:py-20">
         <div className="flex flex-col lg:flex-row lg:items-center lg:gap-12">
           {/* Image — left */}
           <motion.div
@@ -143,10 +142,19 @@ export function HeroSection() {
             <div className="relative overflow-hidden rounded-3xl shadow-2xl">
               <HeroSlideshow />
             </div>
+            {/* USP — directly under slideshow */}
+            <motion.p
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.4 }}
+              className="relative z-10 mt-4 text-center text-lg font-medium leading-relaxed text-moss sm:text-xl"
+            >
+              Ty się regenerujesz. Twoje dziecko się bawi. Razem tworzycie wspomnienia na całe życie.
+            </motion.p>
           </motion.div>
 
           {/* Text — right */}
-          <div className="mt-10 lg:mt-0 lg:w-[55%]">
+          <div className="mt-6 lg:mt-0 lg:w-[55%]">
             {/* H1 — SEO descriptive */}
             <motion.h1
               initial={{ opacity: 0, y: 10 }}
@@ -162,23 +170,11 @@ export function HeroSection() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.2 }}
-              className="mt-2 font-heading text-4xl font-bold text-graphite sm:text-5xl lg:text-6xl"
+              className="mt-2 font-heading text-3xl font-bold text-graphite sm:text-4xl lg:text-5xl"
             >
               Zatrzymaj się. Odetchnij. Spotkaj swoje dziecko{" "}
               <span className="text-terracotta">na nowo</span>.
             </motion.h2>
-
-            {/* Subtitle */}
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.35 }}
-              className="mt-4 max-w-lg text-lg leading-relaxed text-graphite-light sm:mt-6"
-            >
-              Wyjazdy warsztatowe w naturze, gdzie Ty się regenerujesz,
-              a Twoje dziecko się bawi i rozwija. Joga, taniec, ceramika,
-              konie — i wreszcie czas dla siebie.
-            </motion.p>
 
             {/* Benefit cards */}
             <div className="mt-8 grid gap-3 sm:grid-cols-3">

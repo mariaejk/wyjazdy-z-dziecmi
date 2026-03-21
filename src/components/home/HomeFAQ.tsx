@@ -58,7 +58,6 @@ export function HomeFAQ() {
         <ScrollAnimation variant="fadeUp">
           <SectionHeading
             title="Najczęściej zadawane pytania"
-            subtitle="Odpowiadamy na pytania rodziców"
           />
         </ScrollAnimation>
 
