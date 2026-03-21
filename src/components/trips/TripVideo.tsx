@@ -16,6 +16,7 @@ export function TripVideo({ videoUrl }: TripVideoProps) {
               controls
               playsInline
               preload="metadata"
+              aria-label="Film promocyjny z warsztatów"
               className="aspect-video w-full bg-graphite object-cover"
             >
               <source src={videoUrl} type="video/mp4" />
