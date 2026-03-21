@@ -21,8 +21,8 @@
 
 ## Faza 3: Integracja [S]
 
-- [ ] 3.1 Import + warunkowe renderowanie `TripVideo` w `[slug]/page.tsx` (między Hero a "Dla kogo?")
-- [ ] 3.2 Dodać `videoUrl: /videos/warsztaty-z-konmi.mp4` w YAML warsztatu w CMS
+- [x] 3.1 Import + warunkowe renderowanie `TripVideo` w `[slug]/page.tsx` (między Hero a "Dla kogo?")
+- [x] 3.2 Dodać `videoUrl: /videos/warsztaty-z-konmi.mp4` w YAML warsztatu w CMS (`rodzinny-konie-joga-2026`)
 
 ## Faza 4: Weryfikacja [S]
 

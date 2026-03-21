@@ -5,6 +5,7 @@ import { SITE_CONFIG } from "@/lib/constants";
 import { StructuredData } from "@/components/shared/StructuredData";
 import { getEventSchema, getFAQSchema, getBreadcrumbSchema } from "@/lib/structured-data";
 import { TripHero } from "@/components/trips/TripHero";
+import { TripVideo } from "@/components/trips/TripVideo";
 import { TripTargetAudience } from "@/components/trips/TripTargetAudience";
 import { TripDescription } from "@/components/trips/TripDescription";
 import { TripProgram } from "@/components/trips/TripProgram";
@@ -100,6 +101,9 @@ export default async function TripPage({ params }: PageProps) {
         isPast={trip.isPast}
         spotsLeft={trip.spotsLeft}
       />
+
+      {/* 1.5. Video */}
+      {trip.videoUrl && <TripVideo videoUrl={trip.videoUrl} />}
 
       {/* 2. Target Audience */}
       {trip.targetAudience.length > 0 && (
