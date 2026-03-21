@@ -30,7 +30,7 @@ export function CategoryCards() {
   return (
     <SectionWrapper className="py-10 sm:py-14">
       <Container>
-        <div className="grid gap-4 sm:grid-cols-3 sm:gap-6">
+        <div className="grid gap-4 sm:grid-cols-3 sm:gap-6" role="region" aria-label="Kategorie warsztatów">
           {categories.map((cat, index) => (
             <ScrollAnimation
               key={cat.href}
@@ -47,7 +47,7 @@ export function CategoryCards() {
                     src={cat.image}
                     alt={cat.alt}
                     fill
-                    sizes="(max-width: 640px) 100vw, 33vw"
+                    sizes="(max-width: 640px) calc(100vw - 2rem), calc((100vw - 5rem) / 3)"
                     className="object-cover transition-transform duration-500 group-hover:scale-105"
                   />
                 </div>

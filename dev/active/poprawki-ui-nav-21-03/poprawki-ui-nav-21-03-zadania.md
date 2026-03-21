@@ -47,7 +47,14 @@ Ostatnia aktualizacja: 2026-03-21
   - [x] Linki do kategorii
 - [x] 2.7 Integracja `CategoryCards` w `page.tsx` (pod hero, przed kalendarzem)
 - [x] 2.8 Build check — OK
-- [x] 2.9 Commit fazy 2
+- [x] 2.9 Commit fazy 2 — `1b043e1`
+
+## Do poprawy po review fazy 2
+
+- [x] 🟠 [important] Duplikacja gwiazdek → nowy `StarRating` w `shared/`
+- [x] 🟠 [important] Gwiazdki `role="img"` + `aria-label` w `StarRating`
+- [x] 🟡 [nit] CategoryCards: `role="region" aria-label="Kategorie warsztatów"`
+- [x] 🟡 [nit] CategoryCards: `sizes` poprawiony na `calc`
 
 ## Faza 3: Strony warsztatów (zmiany 1, 2, 3)
 
