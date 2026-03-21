@@ -11,8 +11,8 @@
 
 ## Faza 2: Plik wideo + komponent [M]
 
-- [ ] 2.1 Utworzyć `public/videos/` i skopiować `warsztaty z konmy.mp4` → `public/videos/warsztaty-z-konmi.mp4`
-- [ ] 2.2 Utworzyć `src/components/trips/TripVideo.tsx` (Server Component):
+- [x] 2.1 Utworzyć `public/videos/` i skopiować `warsztaty z konmy.mp4` → `public/videos/warsztaty-z-konmi.mp4`
+- [x] 2.2 Utworzyć `src/components/trips/TripVideo.tsx` (Server Component):
   - SectionWrapper dla spacingu
   - ScrollAnimation variant="fadeUp"
   - Natywny `<video controls playsInline preload="metadata">`
