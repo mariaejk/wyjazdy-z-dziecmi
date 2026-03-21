@@ -26,6 +26,6 @@
 
 ## Faza 4: Weryfikacja [S]
 
-- [ ] 4.1 `npm run build` — zero błędów
-- [ ] 4.2 Weryfikacja wizualna (mobile + desktop)
-- [ ] 4.3 Sprawdzenie że inne warsztaty (bez videoUrl) nie mają zmian
+- [x] 4.1 `npm run build` — zero błędów ✅
+- [x] 4.2 Weryfikacja wizualna — `<video>` renderuje się na `/wyjazdy/rodzinny-konie-joga-2026` z controls, playsInline, preload="metadata" ✅
+- [x] 4.3 Sprawdzenie że inne warsztaty (bez videoUrl) nie mają zmian — `/wyjazdy/matka-i-corka` = 0 tagów `<video>` ✅
