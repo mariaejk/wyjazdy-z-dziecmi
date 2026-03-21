@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, useReducedMotion } from "motion/react";
-import { Leaf, Heart, Sparkles, Star } from "lucide-react";
+import { Leaf, Heart, Sparkles } from "lucide-react";
 import { Container } from "@/components/layout/Container";
 import { Button } from "@/components/ui/Button";
 import { HeroSlideshow } from "@/components/home/HeroSlideshow";
@@ -60,10 +60,6 @@ export function HeroSection() {
               <div className="relative rotate-[-2deg] overflow-hidden rounded-3xl shadow-2xl">
                 <HeroSlideshow />
               </div>
-              {/* USP — directly under slideshow */}
-              <p className="relative z-10 mt-4 text-center text-lg font-medium leading-relaxed text-moss sm:text-xl">
-                Ty się regenerujesz. Twoje dziecko się bawi. Razem tworzycie wspomnienia na całe życie.
-              </p>
             </div>
 
             {/* Text — right */}
@@ -74,8 +70,8 @@ export function HeroSection() {
                 Rodzinne wyjazdy warsztatowe w naturze
               </h1>
               <h2 className="mt-2 font-heading text-3xl font-bold text-graphite sm:text-4xl lg:text-5xl">
-                Zatrzymaj się. Odetchnij. Spotkaj swoje dziecko{" "}
-                <span className="text-terracotta">na nowo</span>.
+                Ty się regenerujesz. Twoje dziecko się bawi. Razem tworzycie wspomnienia{" "}
+                <span className="text-terracotta">na całe życie</span>.
               </h2>
 
               <div className="mt-8 grid gap-3 sm:grid-cols-3">
@@ -95,18 +91,7 @@ export function HeroSection() {
                 ))}
               </div>
 
-              <div className="mt-8 flex items-center gap-1.5 text-sm text-graphite-light sm:mt-10">
-                {Array.from({ length: 5 }).map((_, i) => (
-                  <Star
-                    key={i}
-                    className="h-4 w-4 fill-mustard text-mustard"
-                    strokeWidth={1}
-                  />
-                ))}
-                <span className="ml-1">Polecane przez rodziców</span>
-              </div>
-
-              <div className="mt-4">
+              <div className="mt-6">
                 <Button href="/wyjazdy" size="lg" className="rounded-xl">
                   Zobacz wyjazdy
                 </Button>
@@ -142,15 +127,6 @@ export function HeroSection() {
             <div className="relative overflow-hidden rounded-3xl shadow-2xl">
               <HeroSlideshow />
             </div>
-            {/* USP — directly under slideshow */}
-            <motion.p
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.4 }}
-              className="relative z-10 mt-4 text-center text-lg font-medium leading-relaxed text-moss sm:text-xl"
-            >
-              Ty się regenerujesz. Twoje dziecko się bawi. Razem tworzycie wspomnienia na całe życie.
-            </motion.p>
           </motion.div>
 
           {/* Text — right */}
@@ -172,8 +148,8 @@ export function HeroSection() {
               transition={{ duration: 0.7, delay: 0.2 }}
               className="mt-2 font-heading text-3xl font-bold text-graphite sm:text-4xl lg:text-5xl"
             >
-              Zatrzymaj się. Odetchnij. Spotkaj swoje dziecko{" "}
-              <span className="text-terracotta">na nowo</span>.
+              Ty się regenerujesz. Twoje dziecko się bawi. Razem tworzycie wspomnienia{" "}
+              <span className="text-terracotta">na całe życie</span>.
             </motion.h2>
 
             {/* Benefit cards */}
@@ -201,29 +177,12 @@ export function HeroSection() {
               ))}
             </div>
 
-            {/* Social proof */}
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.6, delay: 0.85 }}
-              className="mt-8 flex items-center gap-1.5 text-sm text-graphite-light sm:mt-10"
-            >
-              {Array.from({ length: 5 }).map((_, i) => (
-                <Star
-                  key={i}
-                  className="h-4 w-4 fill-mustard text-mustard"
-                  strokeWidth={1}
-                />
-              ))}
-              <span className="ml-1">Polecane przez rodziców</span>
-            </motion.div>
-
             {/* CTA */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 1.0 }}
-              className="mt-4"
+              transition={{ duration: 0.6, delay: 0.85 }}
+              className="mt-6"
             >
               <Button href="/wyjazdy" size="lg" className="rounded-xl">
                 Zobacz wyjazdy

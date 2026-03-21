@@ -1,4 +1,5 @@
 import { HeroSection } from "@/components/home/HeroSection";
+import { CategoryCards } from "@/components/home/CategoryCards";
 import { TripCardsSection } from "@/components/home/TripCardsSection";
 import { AboutTeaser } from "@/components/home/AboutTeaser";
 import { OpinionsTeaser } from "@/components/home/OpinionsTeaser";
@@ -25,6 +26,8 @@ export default async function Home() {
       {faqSchema && <StructuredData data={faqSchema} />}
 
       <HeroSection />
+
+      <CategoryCards />
 
       {/* Calendar — przed Nadchodzącymi wyjazdami */}
       <SectionWrapper variant="alternate" className="relative overflow-hidden">

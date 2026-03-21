@@ -30,24 +30,24 @@ Ostatnia aktualizacja: 2026-03-21
 - [x] 🟠 [important] **utils.ts:isNavActive** — guard `if (!href) return false`
 - [x] 🟠 [important] **Header.tsx:aria-haspopup** → `"menu"`
 
-## Faza 2: Hero + Kafelki kategorii (zmiany 5, 9, 10)
+## Faza 2: Hero + Kafelki kategorii (zmiany 5, 9, 10) ✅
 
-- [ ] 2.1 Zmiana H2 w `HeroSection.tsx`
-  - [ ] Nowy tekst: "Ty się regenerujesz. Twoje dziecko się bawi. Razem tworzycie wspomnienia na całe życie."
-  - [ ] Zmiana w wariancie motion
-  - [ ] Zmiana w wariancie reduced-motion
-- [ ] 2.2 Usunięcie USP pod slideshow w `HeroSection.tsx`
-- [ ] 2.3 Usunięcie "Polecane przez rodziców" + gwiazdek z `HeroSection.tsx`
-- [ ] 2.4 Dodanie gwiazdek + "Polecane przez rodziców" w `OpinionsTeaser.tsx`
-- [ ] 2.5 Dodanie gwiazdek + "Polecane przez rodziców" w `/opinie/page.tsx`
-- [ ] 2.6 Nowy komponent `CategoryCards.tsx`
-  - [ ] 3 karty ze zdjęciami: Wyjazdy z Dziećmi, Dla Matki i Córki, Dla Singli z Dziećmi
-  - [ ] Responsive grid (1 col mobile, 3 col desktop)
-  - [ ] ScrollAnimation z staggered delay
-  - [ ] Linki do kategorii
-- [ ] 2.7 Integracja `CategoryCards` w `page.tsx` (pod hero, przed kalendarzem)
-- [ ] 2.8 Testy wizualne hero + kafelki + opinie
-- [ ] 2.9 Commit fazy 2
+- [x] 2.1 Zmiana H2 w `HeroSection.tsx`
+  - [x] Nowy tekst: "Ty się regenerujesz. Twoje dziecko się bawi. Razem tworzycie wspomnienia na całe życie."
+  - [x] Zmiana w wariancie motion
+  - [x] Zmiana w wariancie reduced-motion
+- [x] 2.2 Usunięcie USP pod slideshow w `HeroSection.tsx`
+- [x] 2.3 Usunięcie "Polecane przez rodziców" + gwiazdek z `HeroSection.tsx`
+- [x] 2.4 Dodanie gwiazdek + "Polecane przez rodziców" w `OpinionsTeaser.tsx`
+- [x] 2.5 Dodanie gwiazdek + "Polecane przez rodziców" w `/opinie/page.tsx`
+- [x] 2.6 Nowy komponent `CategoryCards.tsx`
+  - [x] 3 karty ze zdjęciami: Wyjazdy z Dziećmi, Dla Matki i Córki, Dla Singli z Dziećmi
+  - [x] Responsive grid (1 col mobile, 3 col desktop)
+  - [x] ScrollAnimation z staggered delay
+  - [x] Linki do kategorii
+- [x] 2.7 Integracja `CategoryCards` w `page.tsx` (pod hero, przed kalendarzem)
+- [x] 2.8 Build check — OK
+- [x] 2.9 Commit fazy 2
 
 ## Faza 3: Strony warsztatów (zmiany 1, 2, 3)
 
