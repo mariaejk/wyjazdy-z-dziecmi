@@ -21,7 +21,7 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
             aria-invalid={!!error}
             aria-describedby={error ? `${checkboxId}-error` : undefined}
             className={cn(
-              "mt-1 h-4 w-4 shrink-0 rounded border-graphite/20 text-moss",
+              "mt-1 h-4 w-4 shrink-0 rounded-none border-graphite/20 text-moss",
               "focus:ring-2 focus:ring-moss/20 focus:ring-offset-0",
             )}
             {...props}
