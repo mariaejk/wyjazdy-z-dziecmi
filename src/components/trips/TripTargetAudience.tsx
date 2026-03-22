@@ -17,7 +17,7 @@ export function TripTargetAudience({ items }: TripTargetAudienceProps) {
         <div className="mx-auto max-w-2xl space-y-4">
           {items.map((item, index) => (
             <ScrollAnimation key={item.label} delay={index * 0.15}>
-              <div className="flex items-start gap-3 rounded-xl bg-white p-4 shadow-sm sm:p-5">
+              <div className="flex items-start gap-3 rounded-none bg-white p-4 shadow-sm sm:p-5">
                 <Heart
                   className="mt-0.5 h-5 w-5 shrink-0 text-moss"
                   strokeWidth={1.5}

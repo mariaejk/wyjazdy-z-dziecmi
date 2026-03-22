@@ -87,7 +87,7 @@ export default async function AboutPage() {
             {missionCards.map((card, index) => (
               <ScrollAnimation key={card.title} variant="fadeUp" delay={index * 0.15}>
                 <div className="text-center">
-                  <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-moss/10">
+                  <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-none bg-moss/10">
                     <card.icon className="h-8 w-8 text-moss" strokeWidth={1.5} />
                   </div>
                   <h3 className="mb-2 font-heading text-xl font-semibold text-graphite">

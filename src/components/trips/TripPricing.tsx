@@ -29,7 +29,7 @@ export function TripPricing({ pricing, deposit, spotsTotal, spotsLeft, priceIncl
         <SectionHeading title="Twoja inwestycja" />
         <div className="mx-auto max-w-2xl">
           <ScrollAnimation>
-            <div className="overflow-hidden rounded-2xl bg-white shadow-sm">
+            <div className="overflow-hidden rounded-none bg-white shadow-sm">
               <table className="w-full">
                 <thead>
                   <tr className="border-b border-graphite/10">
@@ -60,7 +60,7 @@ export function TripPricing({ pricing, deposit, spotsTotal, spotsLeft, priceIncl
           {/* Price includes/excludes */}
           {(priceIncludes || priceExcludes) && (
             <ScrollAnimation delay={0.1}>
-              <div className="mt-4 rounded-lg bg-white p-5 shadow-sm">
+              <div className="mt-4 rounded-none bg-white p-5 shadow-sm">
                 {priceIncludes && priceIncludes.length > 0 && (
                   <div>
                     <p className="text-sm font-medium text-graphite">Cena zawiera:</p>
@@ -94,7 +94,7 @@ export function TripPricing({ pricing, deposit, spotsTotal, spotsLeft, priceIncl
           {/* Availability bar */}
           {showAvailability && (
             <ScrollAnimation delay={0.1}>
-              <div className="mt-4 rounded-lg bg-white p-4 shadow-sm">
+              <div className="mt-4 rounded-none bg-white p-4 shadow-sm">
                 <div className="flex items-center justify-between text-sm">
                   <span className="text-graphite">
                     Zostało{" "}
@@ -105,7 +105,7 @@ export function TripPricing({ pricing, deposit, spotsTotal, spotsLeft, priceIncl
                   </span>
                 </div>
                 <div
-                  className="mt-2 h-2 overflow-hidden rounded-full bg-graphite/10"
+                  className="mt-2 h-2 overflow-hidden rounded-none bg-graphite/10"
                   role="progressbar"
                   aria-valuenow={spotsLeft}
                   aria-valuemin={0}
@@ -114,7 +114,7 @@ export function TripPricing({ pricing, deposit, spotsTotal, spotsLeft, priceIncl
                 >
                   <div
                     className={cn(
-                      "h-full rounded-full transition-all duration-500",
+                      "h-full rounded-none transition-all duration-500",
                       isLow ? "bg-amber-500" : "bg-moss",
                     )}
                     style={{ width: `${((spotsTotal! - spotsLeft!) / spotsTotal!) * 100}%` }}

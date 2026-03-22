@@ -20,7 +20,7 @@ export function TripGallery({ images }: TripGalleryProps) {
           {images.map((image, index) => (
             <ScrollAnimation key={image.src} delay={index * 0.1}>
               <div
-                className={`relative overflow-hidden rounded-2xl ${
+                className={`relative overflow-hidden rounded-none ${
                   image.isMain ? "sm:col-span-2 sm:row-span-2" : ""
                 }`}
               >

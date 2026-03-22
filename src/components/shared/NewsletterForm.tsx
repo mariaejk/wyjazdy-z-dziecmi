@@ -115,7 +115,7 @@ export function NewsletterForm() {
               placeholder="Twój email"
               aria-invalid={!!errors.email}
               aria-describedby={errors.email ? "newsletter-email-error" : undefined}
-              className="w-full rounded-md border border-graphite/20 bg-white px-3 py-2 text-sm text-graphite placeholder:text-graphite-light/60 focus:border-moss focus:outline-none focus:ring-2 focus:ring-moss/20"
+              className="w-full rounded-none border border-graphite/20 bg-white px-3 py-2 text-sm text-graphite placeholder:text-graphite-light/60 focus:border-moss focus:outline-none focus:ring-2 focus:ring-moss/20"
               {...register("email")}
             />
             {errors.email && (
@@ -127,7 +127,7 @@ export function NewsletterForm() {
           <button
             type="submit"
             disabled={status === "submitting"}
-            className="shrink-0 rounded-md bg-moss px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-moss-light disabled:cursor-not-allowed disabled:opacity-60"
+            className="shrink-0 rounded-none bg-moss px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-moss-light disabled:cursor-not-allowed disabled:opacity-60"
           >
             {status === "submitting" ? "..." : "Pobierz"}
           </button>
@@ -164,7 +164,7 @@ export function NewsletterForm() {
         )}
 
         {status === "error" && errorMessage && (
-          <div className="flex items-start gap-2 rounded-md border border-red-200 bg-red-50 p-3" role="alert">
+          <div className="flex items-start gap-2 rounded-none border border-red-200 bg-red-50 p-3" role="alert">
             <AlertCircle className="mt-0.5 h-4 w-4 shrink-0 text-red-600" strokeWidth={1.5} />
             <p className="text-xs text-red-700">{errorMessage}</p>
           </div>

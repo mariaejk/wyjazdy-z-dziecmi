@@ -40,7 +40,7 @@ export const CATEGORY_CONFIG: Record<CategoryKey, CategoryConfig> = {
     calendarBg: "bg-terracotta text-white",
     legendBg: "bg-terracotta",
     badgeBg: "bg-terracotta/15",
-    badgeText: "text-terracotta",
+    badgeText: "text-terracotta-dark",
   },
 };
 

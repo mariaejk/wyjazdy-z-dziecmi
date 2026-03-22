@@ -85,7 +85,7 @@ export function CookieBanner() {
 
   // All 3 buttons share the same base style for equal visual weight (RODO/ePrivacy 2026)
   const buttonBase =
-    "w-full rounded-md border border-terracotta px-4 py-2.5 text-sm font-medium transition-colors sm:w-auto";
+    "w-full rounded-none border border-terracotta px-4 py-2.5 text-sm font-medium transition-colors sm:w-auto";
 
   return (
     <div

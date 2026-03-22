@@ -57,7 +57,7 @@ export function HeroSection() {
               <div className="absolute -top-4 -right-4 h-32 w-32 rounded-full bg-moss/15" />
               <div className="absolute -bottom-4 -left-4 h-24 w-24 rounded-full bg-coral/20" />
               <div className="absolute -top-6 -left-6 h-20 w-20 rounded-full bg-mustard/15" />
-              <div className="relative overflow-hidden rounded-3xl shadow-2xl">
+              <div className="relative overflow-hidden rounded-none shadow-2xl">
                 <HeroSlideshow />
               </div>
             </div>
@@ -78,7 +78,7 @@ export function HeroSection() {
                 {benefits.map((benefit) => (
                   <div
                     key={benefit.text}
-                    className={cn("rounded-xl p-4", benefit.bgClass)}
+                    className={cn("rounded-none p-4", benefit.bgClass)}
                   >
                     <benefit.icon
                       className={cn("mb-2 h-5 w-5", benefit.iconClass)}
@@ -92,7 +92,7 @@ export function HeroSection() {
               </div>
 
               <div className="mt-6">
-                <Button href="/wyjazdy" size="lg" className="rounded-xl">
+                <Button href="/wyjazdy" size="lg" className="rounded-none">
                   Zobacz wyjazdy
                 </Button>
               </div>
@@ -124,7 +124,7 @@ export function HeroSection() {
             <div className="absolute -bottom-4 -left-4 h-24 w-24 rounded-full bg-coral/20 animate-float-medium" />
             <div className="absolute -top-6 -left-6 h-20 w-20 rounded-full bg-mustard/15 animate-float-reverse" />
 
-            <div className="relative overflow-hidden rounded-3xl shadow-2xl">
+            <div className="relative overflow-hidden rounded-none shadow-2xl">
               <HeroSlideshow />
             </div>
           </motion.div>
@@ -164,7 +164,7 @@ export function HeroSection() {
                     delay: 0.5 + index * 0.12,
                     ease: "easeOut",
                   }}
-                  className={cn("rounded-xl p-4", benefit.bgClass)}
+                  className={cn("rounded-none p-4", benefit.bgClass)}
                 >
                   <benefit.icon
                     className={cn("mb-2 h-5 w-5", benefit.iconClass)}
@@ -184,7 +184,7 @@ export function HeroSection() {
               transition={{ duration: 0.6, delay: 0.85 }}
               className="mt-6"
             >
-              <Button href="/wyjazdy" size="lg" className="rounded-xl">
+              <Button href="/wyjazdy" size="lg" className="rounded-none">
                 Zobacz wyjazdy
               </Button>
             </motion.div>

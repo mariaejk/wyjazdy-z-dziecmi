@@ -16,10 +16,10 @@ export function TripCollaborator({ collaborator, sectionTitle = "Współpraca" }
       <Container>
         <SectionHeading title={sectionTitle} />
         <ScrollAnimation>
-          <div className="mx-auto max-w-3xl rounded-2xl bg-white p-6 shadow-sm sm:p-8">
+          <div className="mx-auto max-w-3xl rounded-none bg-white p-6 shadow-sm sm:p-8">
             <div className="flex flex-col items-center gap-6 sm:flex-row sm:items-start">
               {collaborator.image && (
-                <div className="relative h-32 w-32 shrink-0 overflow-hidden rounded-full">
+                <div className="relative h-32 w-32 shrink-0 overflow-hidden rounded-none">
                   <Image
                     src={collaborator.image}
                     alt={collaborator.name}

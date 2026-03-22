@@ -57,7 +57,7 @@ function DropdownNavItem({
       <button
         type="button"
         className={cn(
-          "inline-flex items-center justify-center gap-1 whitespace-nowrap rounded-md px-4 py-2.5 text-base font-medium transition-colors",
+          "inline-flex items-center justify-center gap-1 whitespace-nowrap rounded-none px-4 py-2.5 text-base font-medium transition-colors",
           active
             ? "bg-moss/10 text-moss"
             : "text-graphite hover:bg-parchment-dark hover:text-moss"
@@ -78,7 +78,7 @@ function DropdownNavItem({
 
       {isOpen && (
         <ul
-          className="absolute left-0 top-full z-50 mt-1 min-w-[160px] rounded-lg border border-parchment-dark bg-parchment py-1 shadow-lg"
+          className="absolute left-0 top-full z-50 mt-1 min-w-[160px] rounded-none border border-parchment-dark bg-parchment py-1 shadow-lg"
           role="menu"
         >
           {item.children?.map((child) => {
@@ -160,7 +160,7 @@ export function Header() {
                       <Link
                         href={item.href}
                         className={cn(
-                          "inline-flex items-center justify-center rounded-md px-4 py-2.5 text-base font-medium uppercase tracking-wide transition-colors",
+                          "inline-flex items-center justify-center rounded-none px-4 py-2.5 text-base font-medium uppercase tracking-wide transition-colors",
                           active
                             ? "bg-moss/10 text-moss"
                             : "text-graphite hover:bg-parchment-dark hover:text-moss",
@@ -178,7 +178,7 @@ export function Header() {
             {/* Phone — visible lg+ */}
             <a
               href={`tel:${CONTACT.phone.replace(/\s/g, "")}`}
-              className="hidden items-center gap-1.5 whitespace-nowrap rounded-md px-3 py-2 text-sm font-medium text-graphite transition-colors hover:bg-parchment-dark hover:text-moss lg:inline-flex"
+              className="hidden items-center gap-1.5 whitespace-nowrap rounded-none px-3 py-2 text-sm font-medium text-graphite transition-colors hover:bg-parchment-dark hover:text-moss lg:inline-flex"
               aria-label={`Zadzwoń: ${CONTACT.phoneDisplay}`}
               onClick={() => analytics.phoneClick()}
             >
@@ -199,7 +199,7 @@ export function Header() {
             {/* Phone icon — visible on mobile only */}
             <a
               href={`tel:${CONTACT.phone.replace(/\s/g, "")}`}
-              className="inline-flex items-center justify-center rounded-md p-2 text-graphite transition-colors hover:bg-parchment-dark hover:text-moss lg:hidden"
+              className="inline-flex items-center justify-center rounded-none p-2 text-graphite transition-colors hover:bg-parchment-dark hover:text-moss lg:hidden"
               aria-label={`Zadzwoń: ${CONTACT.phoneDisplay}`}
               onClick={() => analytics.phoneClick()}
             >
@@ -210,7 +210,7 @@ export function Header() {
             <button
               type="button"
               onClick={() => setMobileMenuOpen(true)}
-              className="inline-flex items-center justify-center rounded-md p-2 text-graphite transition-colors hover:bg-parchment-dark hover:text-moss lg:hidden"
+              className="inline-flex items-center justify-center rounded-none p-2 text-graphite transition-colors hover:bg-parchment-dark hover:text-moss lg:hidden"
               aria-expanded={mobileMenuOpen}
               aria-controls="mobile-menu"
               aria-label="Otwórz menu"

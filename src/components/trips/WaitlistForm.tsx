@@ -83,7 +83,7 @@ export function WaitlistForm({ tripSlug, tripTitle }: WaitlistFormProps) {
   return (
     <SectionWrapper id="lista-oczekujacych" variant="alternate">
       <Container>
-        <div className="mx-auto max-w-lg rounded-2xl bg-white p-8 shadow-sm">
+        <div className="mx-auto max-w-lg rounded-none bg-white p-8 shadow-sm">
           <div className="mb-6 text-center">
             <Clock className="mx-auto h-12 w-12 text-amber-600" strokeWidth={1.5} />
             <h2 className="mt-4 font-heading text-2xl font-bold text-graphite">
@@ -160,7 +160,7 @@ export function WaitlistForm({ tripSlug, tripTitle }: WaitlistFormProps) {
               />
 
               {status === "error" && errorMessage && (
-                <div className="flex items-start gap-3 rounded-lg border border-red-200 bg-red-50 p-4" role="alert">
+                <div className="flex items-start gap-3 rounded-none border border-red-200 bg-red-50 p-4" role="alert">
                   <AlertCircle className="mt-0.5 h-5 w-5 shrink-0 text-red-600" strokeWidth={1.5} />
                   <p className="text-sm text-red-700">{errorMessage}</p>
                 </div>

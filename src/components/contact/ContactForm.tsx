@@ -138,7 +138,7 @@ export function ContactForm() {
       />
 
       {status === "error" && errorMessage && (
-        <div className="flex items-start gap-3 rounded-lg border border-red-200 bg-red-50 p-4" role="alert">
+        <div className="flex items-start gap-3 rounded-none border border-red-200 bg-red-50 p-4" role="alert">
           <AlertCircle className="mt-0.5 h-5 w-5 shrink-0 text-red-600" strokeWidth={1.5} />
           <p className="text-sm text-red-700">{errorMessage}</p>
         </div>

@@ -31,7 +31,7 @@ export function TripVideo({
         >
           {/* Video */}
           <ScrollAnimation variant="fadeUp" className={hasDescription ? "w-full lg:w-2/5 lg:shrink-0" : ""}>
-            <div className="overflow-hidden rounded-2xl shadow-xl ring-1 ring-graphite/5">
+            <div className="overflow-hidden rounded-none shadow-xl ring-1 ring-graphite/5">
               <video
                 controls
                 playsInline

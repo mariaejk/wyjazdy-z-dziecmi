@@ -17,7 +17,7 @@ export function TripProgram({ schedule }: TripProgramProps) {
         <div className="mx-auto max-w-3xl space-y-8">
           {schedule.map((day, dayIndex) => (
             <ScrollAnimation key={day.date} delay={dayIndex * 0.15}>
-              <div className="rounded-2xl bg-white p-5 shadow-sm sm:p-6 lg:p-8">
+              <div className="rounded-none bg-white p-5 shadow-sm sm:p-6 lg:p-8">
                 <h3 className="font-heading text-xl font-bold text-graphite sm:text-2xl">
                   {day.dayLabel}
                 </h3>

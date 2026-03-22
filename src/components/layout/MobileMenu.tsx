@@ -37,7 +37,7 @@ function MobileNavLinks({
                     setExpandedItem(isExpanded ? null : item.label)
                   }
                   className={cn(
-                    "flex w-full items-center justify-between rounded-md px-3 py-3 text-base font-medium transition-colors",
+                    "flex w-full items-center justify-between rounded-none px-3 py-3 text-base font-medium transition-colors",
                     childActive
                       ? "bg-moss/10 text-moss"
                       : "text-graphite hover:bg-parchment-dark hover:text-moss"
@@ -63,7 +63,7 @@ function MobileNavLinks({
                             href={child.href}
                             onClick={onClose}
                             className={cn(
-                              "block rounded-md px-3 py-2.5 text-sm font-medium transition-colors",
+                              "block rounded-none px-3 py-2.5 text-sm font-medium transition-colors",
                               active
                                 ? "bg-moss/10 text-moss"
                                 : "text-graphite hover:bg-parchment-dark hover:text-moss"
@@ -90,7 +90,7 @@ function MobileNavLinks({
                 href={item.href}
                 onClick={onClose}
                 className={cn(
-                  "block rounded-md px-3 py-3 text-base font-medium transition-colors",
+                  "block rounded-none px-3 py-3 text-base font-medium transition-colors",
                   active
                     ? "bg-moss/10 text-moss"
                     : "text-graphite hover:bg-parchment-dark hover:text-moss"
@@ -196,7 +196,7 @@ export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
                 ref={closeButtonRef}
                 type="button"
                 onClick={onClose}
-                className="inline-flex items-center justify-center rounded-md p-2 text-graphite transition-colors hover:bg-parchment-dark hover:text-moss"
+                className="inline-flex items-center justify-center rounded-none p-2 text-graphite transition-colors hover:bg-parchment-dark hover:text-moss"
                 aria-label="Zamknij menu"
               >
                 <X className="h-6 w-6" strokeWidth={1.5} />
@@ -211,7 +211,7 @@ export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
               <Link
                 href={ROUTES.trips}
                 onClick={onClose}
-                className="inline-flex w-full items-center justify-center rounded-lg bg-terracotta px-6 py-3 text-base font-medium text-white transition-all duration-200 hover:bg-terracotta-dark focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta focus-visible:ring-offset-2 active:scale-[0.98]"
+                className="inline-flex w-full items-center justify-center rounded-none bg-terracotta px-6 py-3 text-base font-medium text-white transition-all duration-200 hover:bg-terracotta-dark focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta focus-visible:ring-offset-2 active:scale-[0.98]"
               >
                 Sprawdź terminy
               </Link>

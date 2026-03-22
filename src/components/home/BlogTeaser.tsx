@@ -30,7 +30,7 @@ export async function BlogTeaser() {
             <ScrollAnimation key={post.slug} variant="fadeUp" delay={index * 0.1} className="h-full">
               <Link
                 href={`/blog/${post.slug}`}
-                className="group flex h-full flex-col overflow-hidden rounded-2xl border border-graphite/10 bg-white transition-colors hover:border-moss/30 hover:bg-moss/5"
+                className="group flex h-full flex-col overflow-hidden rounded-none border border-graphite/10 bg-white transition-colors hover:border-moss/30 hover:bg-moss/5"
               >
                 {post.image && (
                   <div className="relative aspect-[3/2] overflow-hidden">

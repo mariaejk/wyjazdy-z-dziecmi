@@ -34,7 +34,7 @@ export function TripPracticalInfo({ info }: TripPracticalInfoProps) {
 
             return (
               <ScrollAnimation key={item.key} delay={index * 0.15}>
-                <div className="flex items-start gap-4 rounded-xl bg-white p-4 shadow-sm sm:p-5">
+                <div className="flex items-start gap-4 rounded-none bg-white p-4 shadow-sm sm:p-5">
                   <item.icon
                     className="mt-0.5 h-6 w-6 shrink-0 text-moss"
                     strokeWidth={1.5}

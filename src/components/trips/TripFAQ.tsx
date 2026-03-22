@@ -25,7 +25,7 @@ export function TripFAQ({ items }: TripFAQProps) {
         <SectionHeading title="Najczęściej zadawane pytania" />
         <div className="mx-auto max-w-3xl">
           <ScrollAnimation>
-            <div className="rounded-2xl bg-white px-5 shadow-sm sm:px-6 lg:px-8">
+            <div className="rounded-none bg-white px-5 shadow-sm sm:px-6 lg:px-8">
               <Accordion
                 items={accordionItems}
                 onToggle={(_id, title) => analytics.faqClick(title)}

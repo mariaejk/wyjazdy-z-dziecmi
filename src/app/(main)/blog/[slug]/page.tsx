@@ -83,7 +83,7 @@ export default async function BlogPostPage({ params }: PageProps) {
             </ScrollAnimation>
 
             <ScrollAnimation variant="fadeUp">
-              <div className="mt-16 rounded-2xl border border-graphite/10 bg-white p-6 sm:p-8">
+              <div className="mt-16 rounded-none border border-graphite/10 bg-white p-6 sm:p-8">
                 <h3 className="font-heading text-xl font-bold text-graphite">
                   Chcesz więcej praktycznych wskazówek?
                 </h3>

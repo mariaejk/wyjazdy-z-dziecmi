@@ -45,7 +45,7 @@ export async function ContactInfo() {
       <ScrollAnimation variant="fadeUp">
         {maria?.image && (
           <div className="mb-4 flex items-center gap-3">
-            <div className="relative h-16 w-16 shrink-0 overflow-hidden rounded-full">
+            <div className="relative h-16 w-16 shrink-0 overflow-hidden rounded-none">
               <Image
                 src={maria.image}
                 alt={maria.name}
@@ -82,9 +82,9 @@ export async function ContactInfo() {
                     "aria-label": `${item.label} (otwiera się w nowej karcie)`,
                   }
                 : {})}
-              className="flex items-center gap-4 rounded-xl border border-graphite/10 bg-white p-4 transition-colors hover:border-moss/30 hover:bg-moss/5"
+              className="flex items-center gap-4 rounded-none border border-graphite/10 bg-white p-4 transition-colors hover:border-moss/30 hover:bg-moss/5"
             >
-              <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-moss/10">
+              <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-none bg-moss/10">
                 <item.icon className="h-5 w-5 text-moss" strokeWidth={1.5} />
               </div>
               <div>

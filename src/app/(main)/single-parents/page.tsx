@@ -98,8 +98,8 @@ export default async function SingleParentsPage() {
                   variant="fadeUp"
                   delay={index * 0.1}
                 >
-                  <div className="rounded-2xl border border-graphite/10 bg-white p-6">
-                    <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-moss/10">
+                  <div className="rounded-none border border-graphite/10 bg-white p-6">
+                    <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-none bg-moss/10">
                       <benefit.icon
                         className="h-6 w-6 text-moss"
                         strokeWidth={1.5}

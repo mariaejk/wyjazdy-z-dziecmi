@@ -72,7 +72,7 @@ export default function ProjectsPage() {
 
             {/* Video */}
             <ScrollAnimation variant="fadeUp" delay={0.15}>
-              <div className="mx-auto mb-8 max-w-lg overflow-hidden rounded-2xl shadow-xl ring-1 ring-graphite/5 sm:max-w-xl">
+              <div className="mx-auto mb-8 max-w-lg overflow-hidden rounded-none shadow-xl ring-1 ring-graphite/5 sm:max-w-xl">
                 <video
                   controls
                   playsInline
@@ -140,7 +140,7 @@ export default function ProjectsPage() {
           <div className="mx-auto flex max-w-5xl flex-col items-center gap-8 lg:flex-row-reverse lg:gap-12">
           {/* Photo */}
           <ScrollAnimation variant="fadeRight" className="shrink-0">
-            <div className="relative h-72 w-56 overflow-hidden rounded-3xl shadow-lg sm:h-80 sm:w-64 lg:h-96 lg:w-72">
+            <div className="relative h-72 w-56 overflow-hidden rounded-none shadow-lg sm:h-80 sm:w-64 lg:h-96 lg:w-72">
               <Image
                 src="/images/marysia.png"
                 alt="Maria Kordalewska"

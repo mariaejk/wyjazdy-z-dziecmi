@@ -38,7 +38,7 @@ export default async function GalleryPage() {
           <div className="columns-1 gap-4 sm:columns-2 lg:columns-3">
             {galleryImages.map((image, index) => (
               <ScrollAnimation key={image.src} variant="fadeUp" delay={(index % 6) * 0.05}>
-                <div className="mb-4 break-inside-avoid overflow-hidden rounded-2xl">
+                <div className="mb-4 break-inside-avoid overflow-hidden rounded-none">
                   <Image
                     src={image.src}
                     alt={image.alt}

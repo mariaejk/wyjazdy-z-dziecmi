@@ -38,7 +38,7 @@ export function TripDescription({
                   </ScrollAnimation>
                 ) : (
                   <ScrollAnimation key={index} delay={index * 0.05}>
-                    <div className="overflow-hidden rounded-2xl">
+                    <div className="overflow-hidden rounded-none">
                       <Image
                         src={block.src}
                         alt={block.alt}

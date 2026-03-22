@@ -106,7 +106,7 @@ function MonthGrid({
         {onPrev ? (
           <button
             onClick={onPrev}
-            className="rounded-md p-1 text-graphite-light transition-colors hover:bg-parchment-dark hover:text-graphite"
+            className="rounded-none p-1 text-graphite-light transition-colors hover:bg-parchment-dark hover:text-graphite"
             aria-label="Poprzedni miesiąc"
           >
             <ChevronLeft className="h-4 w-4 sm:h-5 sm:w-5" strokeWidth={1.5} />
@@ -120,7 +120,7 @@ function MonthGrid({
         {onNext ? (
           <button
             onClick={onNext}
-            className="rounded-md p-1 text-graphite-light transition-colors hover:bg-parchment-dark hover:text-graphite"
+            className="rounded-none p-1 text-graphite-light transition-colors hover:bg-parchment-dark hover:text-graphite"
             aria-label="Następny miesiąc"
           >
             <ChevronRight className="h-4 w-4 sm:h-5 sm:w-5" strokeWidth={1.5} />
@@ -221,7 +221,7 @@ export function TripCalendar({ trips }: TripCalendarProps) {
   }
 
   return (
-    <div className="overflow-hidden rounded-2xl border border-graphite/10 bg-white" aria-label="Kalendarz warsztatów" role="region">
+    <div className="overflow-hidden rounded-none border border-graphite/10 bg-white" aria-label="Kalendarz warsztatów" role="region">
       {/* Two-month grid */}
       <div className="grid grid-cols-1 gap-4 p-4 sm:grid-cols-2 sm:gap-6" aria-live="polite">
         <MonthGrid
@@ -249,7 +249,7 @@ export function TripCalendar({ trips }: TripCalendarProps) {
             key={key}
             onClick={() => toggleFilter(key)}
             className={cn(
-              "flex items-center gap-2 rounded-full px-3 py-1.5 text-xs font-medium transition-all sm:text-sm",
+              "flex items-center gap-2 rounded-sm px-3 py-1.5 text-xs font-medium transition-all sm:text-sm",
               activeFilter === key
                 ? cn(config.badgeBg, config.badgeText, "ring-1 ring-current")
                 : activeFilter === null
@@ -259,12 +259,12 @@ export function TripCalendar({ trips }: TripCalendarProps) {
             aria-pressed={activeFilter === key}
             aria-label={`Filtruj: ${config.label}`}
           >
-            <span className={cn("inline-block h-3 w-3 rounded-full", config.legendBg)} />
+            <span className={cn("inline-block h-3 w-3 rounded-sm", config.legendBg)} />
             {config.label}
           </button>
         ))}
         <div className="flex items-center gap-2 text-xs text-graphite-light/60 sm:text-sm">
-          <span className={cn("inline-block h-3 w-3 rounded-full", PAST_CATEGORY.legendBg)} />
+          <span className={cn("inline-block h-3 w-3 rounded-sm", PAST_CATEGORY.legendBg)} />
           {PAST_CATEGORY.label}
         </div>
       </div>
