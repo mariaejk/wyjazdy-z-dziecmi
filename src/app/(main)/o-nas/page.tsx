@@ -114,7 +114,7 @@ export default async function AboutPage() {
           </ScrollAnimation>
         </Container>
       </SectionWrapper>
-      <PersonBio member={kamila} variant="alternate" imagePosition="right" />
+      <PersonBio member={kamila} variant="alternate" imagePosition="left" />
 
       {/* Places */}
       <SectionWrapper variant="alternate">

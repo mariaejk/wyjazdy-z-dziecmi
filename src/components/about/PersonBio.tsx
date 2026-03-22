@@ -53,7 +53,7 @@ export function PersonBio({
             className="shrink-0"
           >
             {member.image ? (
-              <div className="relative h-80 w-64 overflow-hidden rounded-3xl shadow-xl sm:h-[420px] sm:w-80 lg:h-[500px] lg:w-96">
+              <div className="relative h-80 w-64 overflow-hidden rounded-3xl bg-parchment-dark shadow-xl sm:h-[420px] sm:w-80 lg:h-[500px] lg:w-96">
                 <Image
                   src={member.image}
                   alt={member.name}
