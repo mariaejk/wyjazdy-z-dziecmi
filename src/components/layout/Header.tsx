@@ -186,7 +186,10 @@ export function Header() {
               <span>{CONTACT.phoneDisplay}</span>
             </a>
 
-            {/* CTA — visible lg+ */}
+            {/* CTA — always visible */}
+            <Button href={ROUTES.trips} size="sm" className="whitespace-nowrap lg:hidden">
+              Sprawdź terminy
+            </Button>
             <div className="hidden lg:block">
               <Button href={ROUTES.trips} size="md" className="whitespace-nowrap">
                 Sprawdź terminy

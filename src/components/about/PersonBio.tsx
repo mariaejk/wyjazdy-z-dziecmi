@@ -7,6 +7,20 @@ import { SectionWrapper } from "@/components/ui/SectionWrapper";
 import { ScrollAnimation } from "@/components/shared/ScrollAnimation";
 import type { TeamMember } from "@/types/team";
 
+function renderBoldText(text: string) {
+  const parts = text.split(/(\*\*[^*]+\*\*)/g);
+  return parts.map((part, i) => {
+    if (part.startsWith("**") && part.endsWith("**")) {
+      return (
+        <strong key={i} className="text-graphite font-semibold">
+          {part.slice(2, -2)}
+        </strong>
+      );
+    }
+    return part;
+  });
+}
+
 type PersonBioProps = {
   member: TeamMember;
   variant?: "default" | "alternate";
@@ -81,7 +95,7 @@ export function PersonBio({
                   key={i}
                   className="text-base leading-relaxed text-graphite-light sm:text-lg"
                 >
-                  {paragraph}
+                  {renderBoldText(paragraph)}
                 </p>
               ))}
             </div>

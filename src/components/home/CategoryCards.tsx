@@ -14,19 +14,19 @@ const categories = [
     alt: "Rodzinne warsztaty wyjazdowe w naturze",
   },
   {
-    label: "Dla Matki i Córki",
+    label: "Dla matki i córki",
     href: ROUTES.motherDaughter,
     image: "/images/matki-corki-1.jpg",
     alt: "Warsztaty matka i córka",
   },
   {
-    label: "Samodzielni rodzice",
+    label: "Samodzielny rodzic",
     href: ROUTES.singleParents,
     image: "/images/przeszly-1.jpg",
     alt: "Warsztaty dla singli z dziećmi w naturze",
   },
   {
-    label: "Dla Dorosłych",
+    label: "Czas bez dzieci",
     href: ROUTES.adultOnly,
     image: "/images/kazce-bagno-1.jpg",
     alt: "Warsztaty wyjazdowe dla dorosłych",
@@ -37,7 +37,7 @@ export function CategoryCards() {
   return (
     <SectionWrapper className="py-10 sm:py-14">
       <Container>
-        <SectionHeading title="Dopasuj wyjazd do swojego aktualnego momentu w życiu" />
+        <SectionHeading title="Najczęściej wybierane warsztaty" />
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4 sm:gap-6" role="region" aria-label="Kategorie warsztatów">
           {categories.map((cat, index) => (
             <ScrollAnimation
