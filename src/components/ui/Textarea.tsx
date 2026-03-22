@@ -29,7 +29,7 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
           aria-describedby={error ? `${textareaId}-error` : undefined}
           rows={4}
           className={cn(
-            "mt-1.5 block w-full resize-y rounded-lg border bg-white px-3 py-2.5 text-graphite transition-colors",
+            "mt-1.5 block w-full resize-y rounded-none border bg-white px-3 py-2.5 text-graphite transition-colors",
             "placeholder:text-graphite-light/60",
             "focus:border-moss focus:outline-none focus:ring-2 focus:ring-moss/20",
             error

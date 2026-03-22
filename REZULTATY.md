@@ -1,46 +1,46 @@
-# REZULTATY - Wariant 3: "Bright & Playful"
+# REZULTATY - Redesign TripCards + Opinions + Blog + FAQ (dolna polowa homepage)
 
 ## Podsumowanie wykonanych zmian
 
-Przepisano od zera HeroSection na jasny, radosny wariant z kolorowymi akcentami. Dodano nowe kolory do systemu designu w globals.css. Sekcja hero ma teraz jasne tlo z gradientem, zdjecie jako "floating card" po lewej stronie z dekoracyjnymi kolkami, kolorowe karty benefitow i social proof z gwiazdkami.
+Zamiana zaokraglonych elementow (rounded-2xl, rounded-xl, rounded-lg, rounded-full, rounded-md, rounded) na ostre krawedzie (rounded-none, rounded-sm dla Badge) w calej dolnej polowie homepage oraz komponentach formularzy. Styl magazynowy z prostymi krawedziami.
 
 ## Lista zmodyfikowanych plikow
 
-1. `src/app/globals.css` — dodano 6 nowych kolorow (sage, sage-dark, peach, peach-light, sky, lavender) w bloku @theme oraz 3 keyframes animacji float (float-slow, float-medium, float-reverse) z klasami utility
-2. `src/components/home/HeroSection.tsx` — przepisano od zera na wariant "Bright & Playful"
+1. **`src/components/ui/Card.tsx`** -- `rounded-2xl` na `rounded-none` (kontener karty + focus-visible na Link)
+2. **`src/components/ui/Badge.tsx`** -- `rounded-full` na `rounded-sm` (male prostokatne badge)
+3. **`src/components/ui/Button.tsx`** -- `rounded-lg` na `rounded-none` (wszystkie warianty buttonow)
+4. **`src/components/shared/TestimonialCard.tsx`** -- `rounded-2xl` na `rounded-none`, `border-graphite/5` na `border-graphite/10` (mocniejszy border), usunieto `shadow-sm` (border zamiast shadow)
+5. **`src/components/home/BlogTeaser.tsx`** -- `rounded-2xl` na `rounded-none` na kartach bloga
+6. **`src/components/ui/Input.tsx`** -- `rounded-lg` na `rounded-none`
+7. **`src/components/ui/Textarea.tsx`** -- `rounded-lg` na `rounded-none`
+8. **`src/components/ui/Select.tsx`** -- `rounded-lg` na `rounded-none`
+9. **`src/components/ui/Checkbox.tsx`** -- `rounded` na `rounded-none`
+10. **`src/components/shared/NewsletterForm.tsx`** -- `rounded-md` na `rounded-none` (input, button, checkbox, error alert)
+11. **`src/components/trips/BookingForm.tsx`** -- `rounded-lg` na `rounded-none` (error alert)
+12. **`src/components/contact/ContactForm.tsx`** -- `rounded-lg` na `rounded-none` (error alert)
+
+## Pliki przejrzane bez zmian
+
+- **`src/components/home/TripCardsSection.tsx`** -- brak wlasnych zaokraglen (karty sa w Card.tsx)
+- **`src/components/home/OpinionsTeaser.tsx`** -- brak wlasnych zaokraglen (karty sa w TestimonialCard.tsx)
+- **`src/components/home/HomeFAQ.tsx`** -- brak zaokraglen (Accordion uzywa divide-y)
+- **`src/components/ui/Accordion.tsx`** -- brak zaokraglen (uzywa divide-y divide-graphite/10)
+- **`src/components/shared/StarRating.tsx`** -- brak hardcoded hex kolorow, uzywa klas Tailwind (text-mustard, fill-mustard)
 
 ## Podjete decyzje implementacyjne
 
-- **Split layout odwrocony**: zdjecie po lewej (45%), tekst po prawej (55%) na desktop; stack na mobile (zdjecie gora, tekst dol)
-- **Floating card**: zdjecie z `rotate-[-2deg]`, `rounded-3xl`, `shadow-2xl` i trzema dekoracyjnymi kolkami za nim (sage, peach, sky)
-- **Kolorowe benefit cards**: 3 karty w gridzie, kazda z innym pastelowym tlem (sage/10, peach/15, sky/15) — flat design bez cieni
-- **Badge bounce-in**: spring animation ze stiffness 300 i damping 15 dla naturalnego bounce
-- **Animacje float jako CSS keyframes**: dekoracyjne kolka i kropki uzywaja CSS animations zamiast motion — lepsze performance dla infinite animations
-- **DecorativeDots jako oddzielny komponent**: wyodrebniony dla czytelnosci, uzywany zarowno w reduced-motion jak i w animowanej wersji
-- **Social proof**: 5 gwiazdek (Star z lucide) w kolorze peach + tekst "Polecane przez rodzicow"
-- **Skrocony tekst benefitu nr 2**: oryginaly byl za dlugi do karty, skrocono do "Warsztaty rozwojowe budujace wiez z dzieckiem"
-- **CTA rounded-xl**: zgodnie ze specyfikacja — nie rounded-full, nie kwadratowy
-- **useReducedMotion early return**: zachowano wzorzec projektu — plain HTML bez motion elements
+1. **Badge: rounded-sm zamiast rounded-none** -- Badge z calkowicie ostrymi rogami wyglada nienaturalnie przy malych elementach. `rounded-sm` daje subtelny, magazynowy efekt male prostokaty zamiast pilulki.
+2. **TestimonialCard: border zamiast shadow** -- Zgodnie z zadaniem, karty opinii maja `border border-graphite/10` (wzmocniony z /5) i bez `shadow-sm`. Daje to czystszy, editorial look.
+3. **Card.tsx jako centralne miejsce zmian** -- TripCard uzywa komponentu Card, wiec zmiana w Card.tsx automatycznie wplywa na TripCard i wszystkie inne uzycia Card w projekcie.
+4. **Formularze -- error alerty tez rounded-none** -- Dla spojnosci zamieniono rowniez zaokraglenia na alertach bledow w formularzach.
+5. **Nie zmieniono nazw klas kolorow** -- Zgodnie z instrukcja, nazwy klas Tailwind (bg-terracotta, text-moss, itp.) pozostaja bez zmian. Nie znaleziono hardcoded hex kolorow w modyfikowanych plikach.
 
 ## Napotkane problemy i rozwiazania
 
-Brak problemow — build przeszedl bez bledow za pierwszym razem (27 stron).
+- **Accordion bez zaokraglen** -- Accordion juz uzywal flat designu (divide-y), nie wymagal zmian.
+- **StarRating bez hardcoded kolorow** -- Komponent juz uzywal klas Tailwind (text-mustard, fill-mustard), nie wymagal zmian.
+- **TripCard nie ma wlasnych rounded** -- Karty wyjazdow uzywaja komponentu Card.tsx, wiec zmiana w jednym miejscu pokrywa wszystkie uzycia.
 
-## Samoocena kompletnosci: 100%
+## Samoocena kompletnosci
 
-Wszystkie elementy ze specyfikacji zaimplementowane:
-- [x] Jasne tlo z gradientem from-parchment via-white to-peach-light/30
-- [x] Split layout odwrocony (zdjecie lewo, tekst prawo)
-- [x] Floating card ze zdjieciem (rotate, shadow, rounded-3xl)
-- [x] 3 dekoracyjne kolka za zdjeciem (sage, peach, sky)
-- [x] Badge "Wyjazdy 2026" z bounce-in
-- [x] H1 z "Dziecmi" w text-sage-dark
-- [x] Kolorowe benefit cards (3 rozne kolory)
-- [x] CTA bg-sage-dark rounded-xl
-- [x] Social proof z gwiazdkami
-- [x] Dekoracyjne kropki (absolute, opacity-30)
-- [x] Wszystkie animacje (slide-in, bounce, fade-up, stagger, float)
-- [x] useReducedMotion z early return
-- [x] Mobile stack
-- [x] Nowe kolory w @theme globals.css
-- [x] Build PASS (0 errors, 27 pages)
+**95%** -- Wszystkie wymienione w zadaniu pliki zostaly przejrzane i zmodyfikowane tam gdzie to wymagane. Zaokraglenia zamienione na ostre krawedzie w calym UI. Jedynym potencjalnym niedociagnieciem jest to, ze zmiany w Card.tsx i Button.tsx wplywaja globalnie na caly projekt (nie tylko dolna polowe homepage), co jest zamierzone dla spojnosci designu.
