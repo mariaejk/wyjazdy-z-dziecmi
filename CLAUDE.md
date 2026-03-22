@@ -6,7 +6,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 Landing page / sales funnel for "Wyjazdy z Dziećmi" — a brand organizing family workshop retreats in nature (yoga, dance, ceramics, horses). Client: Maria Kordalewska. Domain: wyjazdyzdziecmi.pl.
 
-**Status:** Phase 1-7 + Poprawki klientki + Redesign wizualny 13.03 + Poprawki konwersji 19.03 + Kategorie/kalendarz/las 20.03 + Poprawki UX 20.03 + Poprawki nazewnictwo/SEO/FAQ 20.03 + Poprawki UI 21.03 + Trip Video 21.03 + Poprawki UI+Nav 21.03 + Logo kompas SVG 22.03 COMPLETE. Site is a production-ready sales funnel with CTA buttons, scarcity signals, GA4 event tracking, Microsoft Clarity, loading states, sticky mobile CTA, two-month trip calendar with interactive category filters + auto-navigation on homepage + /wyjazdy, auto-isPast from dateEnd + ISR, waitlist, blog, gallery, category filtering with colored badges, ForestPattern SVG decorations, warm Terakota+Oliwka color scheme, SEO H1 descriptive + H2 emotional, FAQ accordion (7 questions) with FAQPage schema.org + id="faq" anchor, childCare w CMS, FAQ/social analytics tracking, testimonials sorted newest-first, "warsztaty" naming consistency, StarRating above opinions, compact hero section, optional trip video (TripVideo component, flex-col-reverse mobile), chronological trip sorting, 4 top-level nav items (Warsztaty dropdown, Poznajmy się dropdown, Blog, Kontakt), CategoryCards (4 image tiles under hero), FAQ link on trip pages, SVG compass logo (Lora + Caveat fonts) with mobile sygnet-only mode, compass favicon.
+**Status:** Phase 1-7 + Poprawki klientki + Redesign wizualny 13.03 + Poprawki konwersji 19.03 + Kategorie/kalendarz/las 20.03 + Poprawki UX 20.03 + Poprawki nazewnictwo/SEO/FAQ 20.03 + Poprawki UI 21.03 + Trip Video 21.03 + Poprawki UI+Nav 21.03 + Logo kompas SVG 22.03 + Blog na homepage 22.03 COMPLETE. Site is a production-ready sales funnel with CTA buttons, scarcity signals, GA4 event tracking, Microsoft Clarity, loading states, sticky mobile CTA, two-month trip calendar with interactive category filters + auto-navigation on homepage + /wyjazdy, auto-isPast from dateEnd + ISR, waitlist, blog, gallery, category filtering with colored badges, ForestPattern SVG decorations, warm Terakota+Oliwka color scheme, SEO H1 descriptive + H2 emotional, FAQ accordion (7 questions) with FAQPage schema.org + id="faq" anchor, childCare w CMS, FAQ/social analytics tracking, testimonials sorted newest-first, "warsztaty" naming consistency, StarRating above opinions, compact hero section, optional trip video (TripVideo component, flex-col-reverse mobile), chronological trip sorting, 4 top-level nav items (Warsztaty dropdown, Poznajmy się dropdown, Blog, Kontakt), CategoryCards (4 image tiles under hero), FAQ link on trip pages, SVG compass logo (Lora + Caveat fonts) with mobile sygnet-only mode, compass favicon.
 
 ## Tech Stack
 
@@ -55,7 +55,7 @@ src/app/                 — Next.js pages (layout, page, loading, error)
 src/components/layout/   — SkipToContent, Container, Header, MobileMenu, Footer, Logo
 src/components/ui/       — Button, SectionWrapper, SectionHeading, Badge, Card, Accordion, Input, Textarea, Select, Checkbox, HoneypotField
 src/components/shared/   — ScrollAnimation, StructuredData, NewsletterForm, GoogleAnalytics, ClarityScript
-src/components/home/     — HeroSection, HeroSlideshow, TripCard, TripCardsSection, AboutTeaser, OpinionsTeaser
+src/components/home/     — HeroSection, HeroSlideshow, TripCard, TripCardsSection, AboutTeaser, OpinionsTeaser, BlogTeaser
 src/components/trips/    — TripHero, TripTargetAudience, TripDescription, TripProgram, TripPracticalInfo, TripPricing, TripCollaborator, TripFAQ, TripGallery, BookingForm, StickyBookingCTA, PhoneLink
 src/components/about/    — PersonBio, PlaceCard
 src/components/contact/  — ContactForm, ContactInfo
@@ -265,6 +265,14 @@ npm run lint       # ESLint
 - **SVG favicon in App Router**: Place `icon.svg` in `src/app/` — Next.js auto-detects and serves it. Update `metadata.icons` to `"/icon.svg"`. Simpler than generating multiple PNG sizes.
 - **Logo `aria-label` on Link, `aria-hidden` on SVG**: The wrapping `<Link>` gets `aria-label="Wyjazdy z Dziećmi — strona główna"`. The decorative SVG gets `aria-hidden="true"`. Text in logo is visible but supplementary.
 - **Logo sizing in header**: `size={44}` fits within `h-16 sm:h-20` header with natural padding from flexbox. No need for explicit padding on the logo itself.
+
+## Blog na homepage 22.03.2026 Lessons Learned
+
+- **`BlogTeaser` Server Component on homepage**: Fetches `getLatestBlogPosts(3)` and renders cards with title, date, subtitle. Placed between OpinionsTeaser and HomeFAQ. Returns `null` when no posts exist.
+- **`getLatestBlogPosts(limit)` helper**: Sorts by `publishedDate` descending, slices to limit. Single function for homepage teaser — avoids fetching all posts and filtering in component.
+- **Blog content structure**: Each post = directory in `content/blog/{slug}/` with `index.json` (title, subtitle, publishedDate) + `content.mdoc` (Markdoc body). Keystatic reads both automatically.
+- **SEO link juice from homepage**: Blog teaser on homepage passes authority to individual blog posts via internal links. New posts are discovered faster by crawlers because homepage is most-crawled page.
+- **Blog post Markdoc formatting**: Use H2 headings and bullet lists for structure. No emoji in content — consistency with site tone. Subtitle field = SEO-friendly summary for listings.
 
 ## Content Sources
 
