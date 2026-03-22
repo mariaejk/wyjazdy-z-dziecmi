@@ -34,17 +34,17 @@ export function PersonBio({
             className="shrink-0"
           >
             {member.image ? (
-              <div className="relative h-48 w-48 overflow-hidden rounded-full lg:h-56 lg:w-56">
+              <div className="relative h-72 w-56 overflow-hidden rounded-3xl shadow-lg sm:h-80 sm:w-64 lg:h-96 lg:w-72">
                 <Image
                   src={member.image}
                   alt={member.name}
                   fill
-                  sizes="(max-width: 1024px) 192px, 224px"
+                  sizes="(max-width: 640px) 224px, (max-width: 1024px) 256px, 288px"
                   className="object-cover"
                 />
               </div>
             ) : (
-              <div className="flex h-48 w-48 items-center justify-center rounded-full bg-moss/10 lg:h-56 lg:w-56">
+              <div className="flex h-72 w-56 items-center justify-center rounded-3xl bg-moss/10 lg:h-96 lg:w-72">
                 <User
                   className="h-20 w-20 text-moss/60"
                   strokeWidth={1.5}

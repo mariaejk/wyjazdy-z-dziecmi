@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { ExternalLink } from "lucide-react";
 import { Container } from "@/components/layout/Container";
 import { SectionWrapper } from "@/components/ui/SectionWrapper";
@@ -136,7 +137,21 @@ export default function ProjectsPage() {
             subtitle="Firma z przesłaniem — Prezenty i eventy dla Twojego zespołu"
           />
 
-          <div className="mx-auto max-w-3xl">
+          <div className="mx-auto flex max-w-5xl flex-col items-center gap-8 lg:flex-row-reverse lg:gap-12">
+          {/* Photo */}
+          <ScrollAnimation variant="fadeRight" className="shrink-0">
+            <div className="relative h-72 w-56 overflow-hidden rounded-3xl shadow-lg sm:h-80 sm:w-64 lg:h-96 lg:w-72">
+              <Image
+                src="/images/marysia.png"
+                alt="Maria Kordalewska"
+                fill
+                sizes="(max-width: 640px) 224px, (max-width: 1024px) 256px, 288px"
+                className="object-cover"
+              />
+            </div>
+          </ScrollAnimation>
+
+          <div className="flex-1">
             <ScrollAnimation variant="fadeUp">
               <p className="mb-6 text-lg leading-relaxed text-graphite-light">
                 Czy w świecie biznesu jest miejsce na autentyczne emocje,
@@ -175,6 +190,7 @@ export default function ProjectsPage() {
                 Facebook — Enviar
               </Button>
             </ScrollAnimation>
+          </div>
           </div>
         </Container>
       </SectionWrapper>

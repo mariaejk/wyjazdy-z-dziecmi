@@ -63,13 +63,6 @@ export default async function AboutPage() {
               Poznaj moją historię i wartości
             </p>
           </ScrollAnimation>
-          <ScrollAnimation variant="fadeUp" delay={0.15}>
-            <p className="mx-auto max-w-3xl text-center text-lg leading-relaxed text-graphite-light">
-              Tworzę wyjazdy dla rodzin, które szukają chwili zatrzymania.
-              W otoczeniu natury, z dala od codziennego pośpiechu,
-              buduję przestrzeń do wspólnego bycia, zabawy i rozwoju.
-            </p>
-          </ScrollAnimation>
         </Container>
       </SectionWrapper>
 
@@ -103,6 +96,25 @@ export default async function AboutPage() {
               </ScrollAnimation>
             ))}
           </div>
+        </Container>
+      </SectionWrapper>
+
+      {/* Moje inne projekty CTA */}
+      <SectionWrapper variant="alternate">
+        <Container>
+          <ScrollAnimation variant="fadeUp">
+            <div className="mx-auto max-w-2xl text-center">
+              <p className="text-lg text-graphite-light">
+                Chcesz poznać moje inne projekty? Joga, eventy firmowe
+                i więcej.
+              </p>
+              <div className="mt-6">
+                <Button href={ROUTES.projects} variant="secondary">
+                  Moje inne projekty
+                </Button>
+              </div>
+            </div>
+          </ScrollAnimation>
         </Container>
       </SectionWrapper>
 
