@@ -6,7 +6,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 Landing page / sales funnel for "Wyjazdy z Dziećmi" — a brand organizing family workshop retreats in nature (yoga, dance, ceramics, horses). Client: Maria Kordalewska. Domain: wyjazdyzdziecmi.pl.
 
-**Status:** Phase 1-7 + Poprawki klientki + Redesign wizualny 13.03 + Poprawki konwersji 19.03 + Kategorie/kalendarz/las 20.03 + Poprawki UX 20.03 + Poprawki nazewnictwo/SEO/FAQ 20.03 + Poprawki UI 21.03 + Trip Video 21.03 + Poprawki UI+Nav 21.03 + Logo kompas SVG 22.03 + Blog na homepage 22.03 + Moje inne projekty 22.03 + Poprawki O mnie 22.03 + Poprawki layout/slideshow 22.03 + Poprawki nazwy/CTA/bio 22.03 COMPLETE. Site is a production-ready sales funnel with CTA buttons, scarcity signals, GA4 event tracking, Microsoft Clarity, loading states, sticky mobile CTA, two-month trip calendar with interactive category filters + auto-navigation on homepage + /wyjazdy, auto-isPast from dateEnd + ISR, waitlist, blog, gallery, category filtering with colored badges, ForestPattern SVG decorations, warm Terakota+Oliwka color scheme, SEO H1 descriptive + H2 emotional, FAQ accordion (7 questions) with FAQPage schema.org + id="faq" anchor, childCare w CMS, FAQ/social analytics tracking, testimonials sorted newest-first, "warsztaty" naming consistency, StarRating above opinions, compact hero section, optional trip video (TripVideo component, flex-col-reverse mobile), chronological trip sorting, 4 top-level nav items (Warsztaty dropdown, Poznajmy się dropdown, Blog, Kontakt), CategoryCards (4 image tiles under hero), FAQ link on trip pages, SVG compass logo (Lora + Caveat fonts) with mobile sygnet-only mode, compass favicon, /moje-projekty page (Joga z Marią + Enviar), large rounded-3xl photos (PersonBio, AboutTeaser) instead of small circles, no rotate on hero slideshow, CategoryCards H2 "Dopasuj wyjazd...", "Samodzielni rodzice" (not "Singli"), AboutTeaser 2-column layout, PersonBio hideNameHeading prop, mobile CTA "Sprawdź terminy" in header, PersonBio renderBoldText (**text** → strong), CategoryCards H2 "Najczęściej wybierane warsztaty", category labels: "Samodzielny rodzic", "Dla matki i córki", "Czas bez dzieci".
+**Status:** Phase 1-7 + Poprawki klientki + Redesign wizualny 13.03 + Poprawki konwersji 19.03 + Kategorie/kalendarz/las 20.03 + Poprawki UX 20.03 + Poprawki nazewnictwo/SEO/FAQ 20.03 + Poprawki UI 21.03 + Trip Video 21.03 + Poprawki UI+Nav 21.03 + Logo kompas SVG 22.03 + Blog na homepage 22.03 + Moje inne projekty 22.03 + Poprawki O mnie 22.03 + Poprawki layout/slideshow 22.03 + Poprawki nazwy/CTA/bio 22.03 + Redesign Leśna Zieleń 22.03 COMPLETE. Site is a production-ready sales funnel with CTA buttons, scarcity signals, GA4 event tracking, Microsoft Clarity, loading states, sticky mobile CTA, two-month trip calendar with interactive category filters + auto-navigation on homepage + /wyjazdy, auto-isPast from dateEnd + ISR, waitlist, blog, gallery, category filtering with colored badges, ForestPattern SVG decorations, Forest Green + Sage color scheme (rectangular shapes, no rounded corners), SEO H1 descriptive + H2 emotional (smaller text-xl/2xl/3xl), FAQ accordion (7 questions) with FAQPage schema.org + id="faq" anchor, childCare w CMS, FAQ/social analytics tracking, testimonials sorted newest-first, "warsztaty" naming consistency, StarRating above opinions, compact hero section with editorial decorative lines (not dots), optional trip video (TripVideo component, flex-col-reverse mobile), chronological trip sorting, 4 top-level nav items (Warsztaty dropdown, Poznajmy się dropdown, Blog, Kontakt), CategoryCards (4 image tiles under hero), FAQ link on trip pages, SVG compass logo (Lora + Caveat fonts) with mobile sygnet-only mode, compass favicon, /moje-projekty page (Joga z Marią + Enviar), rectangular photos (rounded-none, PersonBio, AboutTeaser) with border-graphite/10, no rotate on hero slideshow, CategoryCards H2 "Najczęściej wybierane warsztaty", "Samodzielny rodzic" (not "Singli"), AboutTeaser 2-column layout, PersonBio hideNameHeading prop, mobile CTA "Sprawdź terminy" in header, PersonBio renderBoldText (**text** → strong), category labels: "Samodzielny rodzic", "Dla matki i córki", "Czas bez dzieci", hero benefit cards neutral (bg-parchment-dark/50, text-graphite-light icons).
 
 ## Tech Stack
 
@@ -28,19 +28,19 @@ Landing page / sales funnel for "Wyjazdy z Dziećmi" — a brand organizing fami
 - **`lang="pl"`** on `<html>` element in root layout.tsx.
 - **No automatic email confirmation** in MVP — don't promise it in microcopy.
 
-## Design System: "Warm Natural" (Terakota + Oliwka)
+## Design System: "Fresh Forest" (Leśna Zieleń + Szałwia)
 
 ```
-Background:    #F4EFE6 (ciepły piasek)
-Alt sections:  #EADCC8 (karmel)
-CTA Primary:   #D9734E (terakota) — hover: #B85331
-Secondary:     #5C713B (ciepła oliwka) — hover: #7A8F53
-Text:          #2C241B (espresso)
-Text light:    #5A4F44 (ciepły szary)
-Accents:       #DDB74A (mustard), #E2856E (coral)
+Background:    #F7F5F0 (kremowa biel)
+Alt sections:  #EBE8E0 (jasny len)
+CTA Primary:   #2D6A4F (leśna zieleń) — hover: #1B4332
+Secondary:     #52796F (szałwia/teal) — hover: #6B9080
+Text:          #1A1A1A (głęboka czerń)
+Text light:    #4A5568 (neutralny szary)
+Accents:       #DDB74A (mustard), #95D5B2 (miętowa zieleń)
 ```
 
-Mobile-first, generous whitespace, line icons. Past trips rendered in full color (no grayscale).
+Mobile-first, generous whitespace, line icons, rectangular shapes (rounded-none everywhere, Badge rounded-sm). Editorial decorative lines in hero. Past trips rendered in full color (no grayscale).
 
 ## Project Structure
 
@@ -279,3 +279,12 @@ npm run lint       # ESLint
 ## Content Sources
 
 All copy comes from `docs/tresc_na_strone.md` and `docs/TODO POPRAWIC landing page 2.03.2026.docx`. Both trips have complete content. "Yoga i Konie" pricing: 900/700 zł (warsztaty + joga). `/single-parents` is a placeholder page (noindex). `/dla-doroslych` is a placeholder page (noindex).
+
+## Redesign Leśna Zieleń 22.03.2026 Lessons Learned
+
+- **Turbopack CSS cache**: After changing `@theme {}` colors in `globals.css`, compiled CSS in `.next/dev/` keeps old values. Fix: `rm -rf .next` + restart `npm run dev`. `Ctrl+Shift+R` alone is NOT enough.
+- **Parallel worktree overlap**: Agent 1 (core UI) covered ~40 files including files assigned to agents 2 and 3. Merge strategy: use broadest agent as base, cherry-pick unique changes from others (editorial hero from agent 2).
+- **Editorial decorative elements**: Replace `rounded-full` floating dots with thin `h-px`/`w-px` lines for magazine feel. Less playful, more refined.
+- **Neutral benefit cards**: Remove per-card `bgClass`/`iconClass`, use uniform `bg-parchment-dark/50` + `text-graphite-light` for clean, non-distracting hero.
+- **Rectangular design system**: `rounded-none` everywhere. Exception: `Badge` uses `rounded-sm` — fully sharp corners look wrong on tiny elements. No other exceptions.
+- **Color variable names preserved**: `--color-terracotta` now holds green `#2D6A4F`. Renaming would break 100+ Tailwind class usages. The semantic disconnect (name vs color) is acceptable — all existing `bg-terracotta`, `text-terracotta` classes automatically pick up the new green.
