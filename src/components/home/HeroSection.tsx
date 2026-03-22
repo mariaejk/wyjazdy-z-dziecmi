@@ -11,20 +11,14 @@ const benefits = [
   {
     icon: Leaf,
     text: "Miejsca w otoczeniu natury, które przynoszą spokój i ukojenie",
-    bgClass: "bg-moss/10",
-    iconClass: "text-moss",
   },
   {
     icon: Heart,
     text: "Warsztaty rozwojowe budujące więź z dzieckiem",
-    bgClass: "bg-coral/15",
-    iconClass: "text-coral",
   },
   {
     icon: Sparkles,
     text: "Mnóstwo niebanalnych atrakcji, lepszych od niejednej bajki!",
-    bgClass: "bg-mustard/15",
-    iconClass: "text-mustard",
   },
 ];
 
@@ -66,19 +60,19 @@ export function HeroSection() {
               <h1 className="text-sm font-semibold uppercase tracking-wider text-moss">
                 Rodzinne wyjazdy warsztatowe w naturze
               </h1>
-              <h2 className="mt-3 font-heading text-3xl font-bold text-graphite sm:text-4xl lg:text-5xl">
+              <h2 className="mt-3 font-heading text-xl font-bold text-graphite sm:text-2xl lg:text-3xl">
                 Ty się regenerujesz. Twoje dziecko się bawi. Razem tworzycie wspomnienia{" "}
                 <span className="text-terracotta">na całe życie</span>.
               </h2>
 
-              <div className="mt-10 grid gap-4 sm:grid-cols-3">
+              <div className="mt-8 grid gap-4 sm:grid-cols-3">
                 {benefits.map((benefit) => (
                   <div
                     key={benefit.text}
-                    className={cn("rounded-none border border-graphite/8 p-4", benefit.bgClass)}
+                    className="rounded-none border border-graphite/8 bg-parchment-dark/50 p-4"
                   >
                     <benefit.icon
-                      className={cn("mb-2 h-5 w-5", benefit.iconClass)}
+                      className="mb-2 h-5 w-5 text-graphite-light"
                       strokeWidth={1.5}
                     />
                     <p className="text-sm leading-snug text-graphite">
@@ -138,14 +132,14 @@ export function HeroSection() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.2 }}
-              className="mt-3 font-heading text-3xl font-bold text-graphite sm:text-4xl lg:text-5xl"
+              className="mt-3 font-heading text-xl font-bold text-graphite sm:text-2xl lg:text-3xl"
             >
               Ty się regenerujesz. Twoje dziecko się bawi. Razem tworzycie wspomnienia{" "}
               <span className="text-terracotta">na całe życie</span>.
             </motion.h2>
 
             {/* Benefit cards */}
-            <div className="mt-10 grid gap-4 sm:grid-cols-3">
+            <div className="mt-8 grid gap-4 sm:grid-cols-3">
               {benefits.map((benefit, index) => (
                 <motion.div
                   key={benefit.text}
@@ -156,10 +150,10 @@ export function HeroSection() {
                     delay: 0.5 + index * 0.12,
                     ease: "easeOut",
                   }}
-                  className={cn("rounded-none border border-graphite/8 p-4", benefit.bgClass)}
+                  className="rounded-none border border-graphite/8 bg-parchment-dark/50 p-4"
                 >
                   <benefit.icon
-                    className={cn("mb-2 h-5 w-5", benefit.iconClass)}
+                    className="mb-2 h-5 w-5 text-graphite-light"
                     strokeWidth={1.5}
                   />
                   <p className="text-sm leading-snug text-graphite">
