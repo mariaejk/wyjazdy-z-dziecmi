@@ -23,6 +23,13 @@ export async function getAllBlogPosts(): Promise<BlogPost[]> {
   return posts;
 }
 
+export async function getLatestBlogPosts(limit = 3): Promise<BlogPost[]> {
+  const posts = await getAllBlogPosts();
+  return posts
+    .sort((a, b) => b.publishedDate.localeCompare(a.publishedDate))
+    .slice(0, limit);
+}
+
 export async function getBlogPost(slug: string) {
   const entry = await reader.collections.blog.read(slug);
   if (!entry) return undefined;

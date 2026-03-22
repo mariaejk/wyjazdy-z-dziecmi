@@ -3,6 +3,7 @@ import { CategoryCards } from "@/components/home/CategoryCards";
 import { TripCardsSection } from "@/components/home/TripCardsSection";
 import { AboutTeaser } from "@/components/home/AboutTeaser";
 import { OpinionsTeaser } from "@/components/home/OpinionsTeaser";
+import { BlogTeaser } from "@/components/home/BlogTeaser";
 import { HomeFAQ, faqData } from "@/components/home/HomeFAQ";
 import { StructuredData } from "@/components/shared/StructuredData";
 import { getFAQSchema } from "@/lib/structured-data";
@@ -47,6 +48,7 @@ export default async function Home() {
       <TripCardsSection />
       <AboutTeaser />
       <OpinionsTeaser />
+      <BlogTeaser />
       <HomeFAQ />
     </>
   );
