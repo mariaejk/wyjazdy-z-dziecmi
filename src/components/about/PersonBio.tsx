@@ -53,7 +53,7 @@ export function PersonBio({
             className="shrink-0"
           >
             {member.image ? (
-              <div className="relative h-80 w-64 overflow-hidden rounded-3xl bg-parchment-dark shadow-xl sm:h-[420px] sm:w-80 lg:h-[500px] lg:w-96">
+              <div className="relative h-80 w-64 overflow-hidden rounded-none border border-graphite/10 bg-parchment-dark shadow-sm sm:h-[420px] sm:w-80 lg:h-[500px] lg:w-96">
                 <Image
                   src={member.image}
                   alt={member.name}
@@ -63,7 +63,7 @@ export function PersonBio({
                 />
               </div>
             ) : (
-              <div className="flex h-80 w-64 items-center justify-center rounded-3xl bg-moss/10 lg:h-[500px] lg:w-96">
+              <div className="flex h-80 w-64 items-center justify-center rounded-none border border-graphite/10 bg-moss/10 lg:h-[500px] lg:w-96">
                 <User
                   className="h-20 w-20 text-moss/60"
                   strokeWidth={1.5}

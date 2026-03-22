@@ -1,46 +1,50 @@
-# REZULTATY - Wariant 3: "Bright & Playful"
+# REZULTATY - Redesign Hero + CategoryCards + AboutTeaser (styl magazynowy)
 
 ## Podsumowanie wykonanych zmian
 
-Przepisano od zera HeroSection na jasny, radosny wariant z kolorowymi akcentami. Dodano nowe kolory do systemu designu w globals.css. Sekcja hero ma teraz jasne tlo z gradientem, zdjecie jako "floating card" po lewej stronie z dekoracyjnymi kolkami, kolorowe karty benefitow i social proof z gwiazdkami.
+Przeprowadzono redesign stylu magazynowego (editorial layout) na 5 komponentach: usuniecie zaokraglonych krawedzi, dekoracyjnych koleczek, gradientow. Dodanie ostrych krawedzi, subtelnych obramowek i wiekszego whitespace.
 
 ## Lista zmodyfikowanych plikow
 
-1. `src/app/globals.css` — dodano 6 nowych kolorow (sage, sage-dark, peach, peach-light, sky, lavender) w bloku @theme oraz 3 keyframes animacji float (float-slow, float-medium, float-reverse) z klasami utility
-2. `src/components/home/HeroSection.tsx` — przepisano od zera na wariant "Bright & Playful"
+1. **src/components/home/HeroSection.tsx**
+   - Usuniety gradient `bg-gradient-to-br from-parchment via-parchment to-coral/15` -> czysty `bg-parchment`
+   - `DecorativeDots` (koleczka) zamienione na `DecorativeElements` (proste linie poziome i pionowe)
+   - Usuniete dekoracyjne kola za zdjeciem (3x rounded-full)
+   - `rounded-3xl shadow-2xl` na kontenerze slideshow -> `rounded-none shadow-lg`
+   - Proporcje kolumn zmienione z 45%/55% na 50%/50% (`lg:w-1/2`)
+   - Gap miedzy kolumnami zwiekszone z `lg:gap-12` na `lg:gap-16`
+   - Benefit cards: `rounded-xl` -> `rounded-none border border-graphite/8`
+   - CTA Button: `rounded-xl` -> `rounded-none`
+   - Spacing zwiekszone: mt-8->mt-10 (benefits), mt-6->mt-8 (CTA), mt-2->mt-3 (H2)
+   - Obie wersje (reduced-motion i animated) zsynchronizowane
+
+2. **src/components/home/HeroSlideshow.tsx**
+   - Bez zmian (kontener w HeroSection juz ma rounded-none, slideshow nie ma wlasnych zaokraglen)
+
+3. **src/components/home/CategoryCards.tsx**
+   - `rounded-2xl shadow-lg hover:shadow-xl` -> `rounded-none border border-graphite/10 shadow-sm hover:shadow-md`
+
+4. **src/components/home/AboutTeaser.tsx**
+   - `rounded-3xl shadow-xl` -> `rounded-none border border-graphite/10 shadow-sm`
+
+5. **src/components/about/PersonBio.tsx**
+   - `rounded-3xl shadow-xl` -> `rounded-none border border-graphite/10 shadow-sm` (wariant ze zdjeciem)
+   - `rounded-3xl` -> `rounded-none border border-graphite/10` (wariant placeholder)
+   - Zachowane: renderBoldText, hideNameHeading, imagePosition, variant
 
 ## Podjete decyzje implementacyjne
 
-- **Split layout odwrocony**: zdjecie po lewej (45%), tekst po prawej (55%) na desktop; stack na mobile (zdjecie gora, tekst dol)
-- **Floating card**: zdjecie z `rotate-[-2deg]`, `rounded-3xl`, `shadow-2xl` i trzema dekoracyjnymi kolkami za nim (sage, peach, sky)
-- **Kolorowe benefit cards**: 3 karty w gridzie, kazda z innym pastelowym tlem (sage/10, peach/15, sky/15) — flat design bez cieni
-- **Badge bounce-in**: spring animation ze stiffness 300 i damping 15 dla naturalnego bounce
-- **Animacje float jako CSS keyframes**: dekoracyjne kolka i kropki uzywaja CSS animations zamiast motion — lepsze performance dla infinite animations
-- **DecorativeDots jako oddzielny komponent**: wyodrebniony dla czytelnosci, uzywany zarowno w reduced-motion jak i w animowanej wersji
-- **Social proof**: 5 gwiazdek (Star z lucide) w kolorze peach + tekst "Polecane przez rodzicow"
-- **Skrocony tekst benefitu nr 2**: oryginaly byl za dlugi do karty, skrocono do "Warsztaty rozwojowe budujace wiez z dzieckiem"
-- **CTA rounded-xl**: zgodnie ze specyfikacja — nie rounded-full, nie kwadratowy
-- **useReducedMotion early return**: zachowano wzorzec projektu — plain HTML bez motion elements
+- **Dekoracje**: Koleczka (`rounded-full`) zamienione na cienkie linie (h-px/w-px) -- subtelna tekstura tla w stylu editorial
+- **Cienie**: Konsekwentna redukcja: shadow-2xl -> shadow-lg (hero), shadow-xl -> shadow-sm (about/bio/category)
+- **Border**: Dodane `border border-graphite/8` lub `border-graphite/10` gdzie usunieto zaokraglenia
+- **Whitespace**: Zwiekszone gapy i marginesy dla stylu editorial
+- **Kolory**: Nie zmieniano nazw klas -- zostana zmienione globalnie przez innego agenta
+- **HeroSlideshow**: Swiadomie bez zmian -- nie ma wlasnych zaokraglen
 
 ## Napotkane problemy i rozwiazania
 
-Brak problemow — build przeszedl bez bledow za pierwszym razem (27 stron).
+Brak problemow. Pliki sa czyste, bez hardcoded kolorow hex, bez pozostalosci zaokraglen.
 
-## Samoocena kompletnosci: 100%
+## Samoocena kompletnosci: 95%
 
-Wszystkie elementy ze specyfikacji zaimplementowane:
-- [x] Jasne tlo z gradientem from-parchment via-white to-peach-light/30
-- [x] Split layout odwrocony (zdjecie lewo, tekst prawo)
-- [x] Floating card ze zdjieciem (rotate, shadow, rounded-3xl)
-- [x] 3 dekoracyjne kolka za zdjeciem (sage, peach, sky)
-- [x] Badge "Wyjazdy 2026" z bounce-in
-- [x] H1 z "Dziecmi" w text-sage-dark
-- [x] Kolorowe benefit cards (3 rozne kolory)
-- [x] CTA bg-sage-dark rounded-xl
-- [x] Social proof z gwiazdkami
-- [x] Dekoracyjne kropki (absolute, opacity-30)
-- [x] Wszystkie animacje (slide-in, bounce, fade-up, stagger, float)
-- [x] useReducedMotion z early return
-- [x] Mobile stack
-- [x] Nowe kolory w @theme globals.css
-- [x] Build PASS (0 errors, 27 pages)
+Wszystkie 5 plikow przejrzane i zmodyfikowane. Kazda zmiana dotyczy TYLKO stylow, logika nienaruszona. Zachowane: cn() pattern, responsywnosc, motion/reduced-motion.
