@@ -57,7 +57,7 @@ export function HeroSection() {
               <div className="absolute -top-4 -right-4 h-32 w-32 rounded-full bg-moss/15" />
               <div className="absolute -bottom-4 -left-4 h-24 w-24 rounded-full bg-coral/20" />
               <div className="absolute -top-6 -left-6 h-20 w-20 rounded-full bg-mustard/15" />
-              <div className="relative rotate-[-2deg] overflow-hidden rounded-3xl shadow-2xl">
+              <div className="relative overflow-hidden rounded-3xl shadow-2xl">
                 <HeroSlideshow />
               </div>
             </div>
@@ -114,8 +114,8 @@ export function HeroSection() {
         <div className="flex flex-col lg:flex-row lg:items-center lg:gap-12">
           {/* Image — left */}
           <motion.div
-            initial={{ opacity: 0, x: -60, rotate: -5 }}
-            animate={{ opacity: 1, x: 0, rotate: -2 }}
+            initial={{ opacity: 0, x: -60 }}
+            animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
             className="relative mx-auto w-full max-w-md lg:mx-0 lg:w-[45%] lg:max-w-none"
           >
@@ -157,8 +157,8 @@ export function HeroSection() {
               {benefits.map((benefit, index) => (
                 <motion.div
                   key={benefit.text}
-                  initial={{ opacity: 0, y: 24, rotate: 2 }}
-                  animate={{ opacity: 1, y: 0, rotate: 0 }}
+                  initial={{ opacity: 0, y: 24 }}
+                  animate={{ opacity: 1, y: 0 }}
                   transition={{
                     duration: 0.5,
                     delay: 0.5 + index * 0.12,
