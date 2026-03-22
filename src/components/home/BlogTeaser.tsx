@@ -1,5 +1,6 @@
 import Link from "next/link";
-import { ArrowRight, Calendar } from "lucide-react";
+import Image from "next/image";
+import { Calendar } from "lucide-react";
 import { Container } from "@/components/layout/Container";
 import { SectionWrapper } from "@/components/ui/SectionWrapper";
 import { SectionHeading } from "@/components/ui/SectionHeading";
@@ -24,30 +25,35 @@ export async function BlogTeaser() {
           />
         </ScrollAnimation>
 
-        <div className="mx-auto max-w-4xl space-y-4">
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {posts.map((post, index) => (
-            <ScrollAnimation key={post.slug} variant="fadeUp" delay={index * 0.1}>
+            <ScrollAnimation key={post.slug} variant="fadeUp" delay={index * 0.1} className="h-full">
               <Link
                 href={`/blog/${post.slug}`}
-                className="group block rounded-2xl border border-graphite/10 bg-white p-5 transition-colors hover:border-moss/30 hover:bg-moss/5 sm:p-6"
+                className="group flex h-full flex-col overflow-hidden rounded-2xl border border-graphite/10 bg-white transition-colors hover:border-moss/30 hover:bg-moss/5"
               >
-                <div className="flex items-start justify-between gap-4">
-                  <div className="min-w-0 flex-1">
-                    <h3 className="font-heading text-lg font-bold text-graphite group-hover:text-moss sm:text-xl">
-                      {post.title}
-                    </h3>
-                    <p className="mt-1.5 flex items-center gap-1.5 text-sm text-graphite-light">
-                      <Calendar className="h-3.5 w-3.5 shrink-0" strokeWidth={1.5} />
-                      {formatDate(post.publishedDate)}
-                    </p>
-                    <p className="mt-2 line-clamp-2 text-base leading-relaxed text-graphite-light">
-                      {post.subtitle}
-                    </p>
+                {post.image && (
+                  <div className="relative aspect-[3/2] overflow-hidden">
+                    <Image
+                      src={post.image}
+                      alt={post.title}
+                      fill
+                      className="object-cover transition-transform duration-300 group-hover:scale-105"
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                    />
                   </div>
-                  <ArrowRight
-                    className="mt-1 h-5 w-5 shrink-0 text-graphite-light transition-transform group-hover:translate-x-1 group-hover:text-moss"
-                    strokeWidth={1.5}
-                  />
+                )}
+                <div className="flex flex-1 flex-col p-5">
+                  <h3 className="font-heading text-lg font-bold text-graphite group-hover:text-moss">
+                    {post.title}
+                  </h3>
+                  <p className="mt-1.5 flex items-center gap-1.5 text-sm text-graphite-light">
+                    <Calendar className="h-3.5 w-3.5 shrink-0" strokeWidth={1.5} />
+                    {formatDate(post.publishedDate)}
+                  </p>
+                  <p className="mt-2 line-clamp-2 flex-1 text-sm leading-relaxed text-graphite-light">
+                    {post.subtitle}
+                  </p>
                 </div>
               </Link>
             </ScrollAnimation>

@@ -11,6 +11,7 @@ export type BlogPost = {
   title: string;
   subtitle: string;
   publishedDate: string;
+  image?: string;
 };
 
 export async function getAllBlogPosts(): Promise<BlogPost[]> {
@@ -53,7 +54,7 @@ export async function getBlogPost(slug: string) {
 
 async function readBlogMeta(
   slug: string
-): Promise<{ title: string; subtitle: string; publishedDate: string } | null> {
+): Promise<Omit<BlogPost, "slug"> | null> {
   const dir = path.join(BLOG_DIR, slug);
 
   // Try YAML first, then JSON
@@ -69,6 +70,7 @@ async function readBlogMeta(
         title: data.title,
         subtitle: data.subtitle,
         publishedDate: data.publishedDate,
+        image: data.image || undefined,
       };
     } catch {
       continue;
