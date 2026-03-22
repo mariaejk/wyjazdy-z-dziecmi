@@ -268,9 +268,11 @@ npm run lint       # ESLint
 
 ## Blog na homepage 22.03.2026 Lessons Learned
 
-- **`BlogTeaser` Server Component on homepage**: Fetches `getLatestBlogPosts(3)` and renders cards with title, date, subtitle. Placed between OpinionsTeaser and HomeFAQ. Returns `null` when no posts exist.
-- **`getLatestBlogPosts(limit)` helper**: Sorts by `publishedDate` descending, slices to limit. Single function for homepage teaser — avoids fetching all posts and filtering in component.
-- **Blog content structure**: Each post = directory in `content/blog/{slug}/` with `index.json` (title, subtitle, publishedDate) + `content.mdoc` (Markdoc body). Keystatic reads both automatically.
+- **`BlogTeaser` Server Component on homepage**: Grid `sm:grid-cols-2 lg:grid-cols-3` with hero images. Fetches `getLatestBlogPosts(3)`. Placed between OpinionsTeaser and HomeFAQ. Returns `null` when no posts exist.
+- **Blog page `/blog`**: Same grid layout as BlogTeaser — consistent card design with images, formatted dates, hover effects.
+- **Blog reader — NOT Keystatic reader**: Keystatic `createReader` with `format: { contentField }` has a bug — `listCollection` uses `getDataFileExtension(formatInfo)` which returns `.mdoc` (content extension) instead of `.yaml` (data extension), so it looks for `*.mdoc` files instead of directories with `index.yaml`. Fix: direct `fs.readdir` + `js-yaml` + `Markdoc.parse/transform` in `src/data/blog.ts`.
+- **Blog content structure**: Each post = directory in `content/blog/{slug}/` with `index.yaml` (title, subtitle, publishedDate, image?) + `content.mdoc` (Markdoc body).
+- **Blog post `image` field**: Optional `image?: string` in BlogPost type + `index.yaml`. Path to image in `public/images/blog/`. Used in cards on homepage and /blog page.
 - **SEO link juice from homepage**: Blog teaser on homepage passes authority to individual blog posts via internal links. New posts are discovered faster by crawlers because homepage is most-crawled page.
 - **Blog post Markdoc formatting**: Use H2 headings and bullet lists for structure. No emoji in content — consistency with site tone. Subtitle field = SEO-friendly summary for listings.
 
