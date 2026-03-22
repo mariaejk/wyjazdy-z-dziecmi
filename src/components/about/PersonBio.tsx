@@ -1,3 +1,4 @@
+import type { ReactNode } from "react";
 import Image from "next/image";
 import { User } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -10,12 +11,14 @@ type PersonBioProps = {
   member: TeamMember;
   variant?: "default" | "alternate";
   imagePosition?: "left" | "right";
+  children?: ReactNode;
 };
 
 export function PersonBio({
   member,
   variant = "default",
   imagePosition = "left",
+  children,
 }: PersonBioProps) {
   const paragraphs = member.bio.split("\n\n");
 
@@ -24,27 +27,27 @@ export function PersonBio({
       <Container>
         <div
           className={cn(
-            "flex flex-col items-center gap-8 lg:flex-row lg:gap-12",
+            "flex flex-col items-center gap-8 lg:flex-row lg:items-start lg:gap-14",
             imagePosition === "right" && "lg:flex-row-reverse",
           )}
         >
-          {/* Avatar */}
+          {/* Photo — large rounded rectangle */}
           <ScrollAnimation
             variant={imagePosition === "left" ? "fadeLeft" : "fadeRight"}
             className="shrink-0"
           >
             {member.image ? (
-              <div className="relative h-72 w-56 overflow-hidden rounded-3xl shadow-lg sm:h-80 sm:w-64 lg:h-96 lg:w-72">
+              <div className="relative h-80 w-64 overflow-hidden rounded-3xl shadow-xl sm:h-[420px] sm:w-80 lg:h-[500px] lg:w-96">
                 <Image
                   src={member.image}
                   alt={member.name}
                   fill
-                  sizes="(max-width: 640px) 224px, (max-width: 1024px) 256px, 288px"
+                  sizes="(max-width: 640px) 256px, (max-width: 1024px) 320px, 384px"
                   className="object-cover"
                 />
               </div>
             ) : (
-              <div className="flex h-72 w-56 items-center justify-center rounded-3xl bg-moss/10 lg:h-96 lg:w-72">
+              <div className="flex h-80 w-64 items-center justify-center rounded-3xl bg-moss/10 lg:h-[500px] lg:w-96">
                 <User
                   className="h-20 w-20 text-moss/60"
                   strokeWidth={1.5}
@@ -75,6 +78,7 @@ export function PersonBio({
                 </p>
               ))}
             </div>
+            {children && <div className="mt-6">{children}</div>}
           </ScrollAnimation>
         </div>
       </Container>

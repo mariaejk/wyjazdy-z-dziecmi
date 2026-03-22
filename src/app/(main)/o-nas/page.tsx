@@ -67,7 +67,11 @@ export default async function AboutPage() {
       </SectionWrapper>
 
       {/* Maria */}
-      <PersonBio member={maria} variant="alternate" imagePosition="left" />
+      <PersonBio member={maria} variant="alternate" imagePosition="left">
+        <Button href={ROUTES.projects} variant="secondary">
+          Moje inne projekty
+        </Button>
+      </PersonBio>
 
       {/* Moja misja */}
       <SectionWrapper>
@@ -96,25 +100,6 @@ export default async function AboutPage() {
               </ScrollAnimation>
             ))}
           </div>
-        </Container>
-      </SectionWrapper>
-
-      {/* Moje inne projekty CTA */}
-      <SectionWrapper variant="alternate">
-        <Container>
-          <ScrollAnimation variant="fadeUp">
-            <div className="mx-auto max-w-2xl text-center">
-              <p className="text-lg text-graphite-light">
-                Chcesz poznać moje inne projekty? Joga, eventy firmowe
-                i więcej.
-              </p>
-              <div className="mt-6">
-                <Button href={ROUTES.projects} variant="secondary">
-                  Moje inne projekty
-                </Button>
-              </div>
-            </div>
-          </ScrollAnimation>
         </Container>
       </SectionWrapper>
 
