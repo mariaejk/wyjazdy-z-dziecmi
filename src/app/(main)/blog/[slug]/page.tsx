@@ -46,9 +46,7 @@ export default async function BlogPostPage({ params }: PageProps) {
     notFound();
   }
 
-  const { node } = await post.content();
-  const renderable = Markdoc.transform(node);
-  const content = Markdoc.renderers.react(renderable, React);
+  const content = Markdoc.renderers.react(post.content, React);
 
   return (
     <>
