@@ -25,6 +25,7 @@ export const mainNavigation: NavItem[] = [
       { label: "O mnie", href: ROUTES.about },
       { label: "Galeria", href: ROUTES.gallery },
       { label: "Opinie", href: ROUTES.opinions },
+      { label: "Moje inne projekty", href: ROUTES.projects },
     ],
   },
   { label: "Blog", href: ROUTES.blog },

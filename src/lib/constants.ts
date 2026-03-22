@@ -31,5 +31,6 @@ export const ROUTES = {
   opinions: "/opinie",
   contact: "/kontakt",
   terms: "/regulamin",
+  projects: "/moje-projekty",
   privacy: "/polityka-prywatnosci",
 } as const;
