@@ -48,7 +48,7 @@ export function CategoryCards() {
             >
               <Link
                 href={cat.href}
-                className="group relative block overflow-hidden rounded-none shadow-lg transition-shadow hover:shadow-xl"
+                className="group relative block overflow-hidden rounded-none border border-graphite/10 shadow-sm transition-shadow hover:shadow-md"
               >
                 <div className="aspect-[4/3]">
                   <Image

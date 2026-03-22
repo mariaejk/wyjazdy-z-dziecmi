@@ -12,7 +12,7 @@ export function AboutTeaser() {
         <div className="mx-auto flex max-w-5xl flex-col items-center gap-8 lg:flex-row lg:items-start lg:gap-12">
           {/* Large photo */}
           <ScrollAnimation variant="fadeLeft" className="shrink-0">
-            <div className="relative h-80 w-64 overflow-hidden rounded-none shadow-xl sm:h-[420px] sm:w-80 lg:h-[500px] lg:w-96">
+            <div className="relative h-80 w-64 overflow-hidden rounded-none border border-graphite/10 shadow-sm sm:h-[420px] sm:w-80 lg:h-[500px] lg:w-96">
               <Image
                 src="/images/marysia.png"
                 alt="Maria Kordalewska"

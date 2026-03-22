@@ -1,0 +1,175 @@
+Chcę, żebyś przeanalizował naszą stronę typu landing page:
+
+Kontekst:
+Strona jest poświęcona warsztatom i wyjazdom rozwojowo‑relaksacyjnym:
+- część oferty jest z dziećmi (np. rodzinne warsztaty, wyjazdy rodzinne),
+- część oferty jest bez dzieci (np. wyjazdy dla mam/rodziców, retreaty rozwojowe, czas na regenerację).
+
+Grupa docelowa:
+Głównie rodzice (często zmęczeni, przebodźcowani, z poczuciem winy, że mają “za mało czasu dla dziecka” albo “za mało czasu dla siebie”). 
+Bardzo ważne są:
+- poczucie bezpieczeństwa (dla dziecka i dla rodzica),
+- zaufanie do organizatora,
+- delikatny, nieosądzający język (zero shamingu),
+- pokazanie realnych korzyści emocjonalnych: spokój, bliskość, odpoczynek, wsparcie.
+
+Twoje zadanie:
+Przeanalizuj stronę pod kątem: wyglądu wizualnego, CTA, psychologii rodzica, UX, SEO, treści, zaufania i konwersji. Na końcu zaproponuj konkretne zmiany w kolejności priorytetów (co zrobić najpierw, żeby najbardziej podnieść konwersję).
+
+STRUKTURA ODPOWIEDZI
+1) podsumowanie (co działa, co nie).
+2) Tabela „Problem – Dlaczego szkodzi – Rekomendowana poprawka”.
+3) Lista w kolejności priorytetu (od największego wpływu na konwersję / zaufanie do najmniejszego).
+
+CZĘŚĆ 1: WYGLĄD WIZUALNY I STRUKTURA
+Oceń:
+- Hierarchię wizualną: czy od razu widać:
+  - o czym jest strona,
+  - dla kogo,
+  - jaki jest główny efekt/korzyść po warsztacie/wyjeździe,
+  - co ma zrobić użytkownik (główne CTA)?
+- Użycie kolorów, czcionek i zdjęć:
+  - Czy wspierają poczucie spokoju, bezpieczeństwa, bycia zaopiekowanym?
+  - Czy zdjęcia są autentyczne (ludzie, dzieci, emocje), a nie tylko stockowe?
+- Przejrzystość:
+  - Czy strona jest „lekka” i nieprzeładowana (dużo powietrza/whitespace)?
+  - Czy sekcje są logicznie ułożone (nad foldem: jasny komunikat + CTA, niżej: korzyści, szczegóły, social proof, FAQ, znów CTA)?
+- Responsywność:
+  - Jak strona wygląda na mobile? Czy kluczowe elementy (nagłówek, opis, CTA) są wygodnie dostępne bez zoomowania i poziomego scrolla?
+
+Wypisz:
+- 3–5 największych plusów wizualnych,
+- 3–5 największych problemów wizualnych z krótkim uzasadnieniem i propozycją poprawki.
+
+CZĘŚĆ 2: CTA I KONWERSJA
+Oceń:
+- Czy jest JEDNO główne CTA (np. „Zapisz się na warsztaty”, „Zarezerwuj miejsce na warsztat”), czy użytkownik gubi się w wielu opcjach?
+- Umiejscowienie CTA:
+  - Czy główne CTA jest widoczne nad „foldem” (bez scrollowania)?
+  - Czy CTA powtarza się w kluczowych miejscach (po sekcji korzyści, po opisie programu, po social proof, przy FAQ)?
+- Copy CTA:
+  - Czy komunikaty są konkretne, działaniowe i osadzone w korzyści (np. „Zarezerwuj swój czas na odpoczynek” zamiast ogólnego „Wyślij”)?
+- Kontrast i widoczność:
+  - Czy przycisk CTA ma wyraźny kolor, dobrą wielkość i odstęp od innych elementów?
+
+Podaj:
+- Co jest głównym CTA (jeśli je rozpoznajesz) i czy jest spójne przez całą stronę.
+- propozycji lepszego copy CTA dopasowanego do:
+  - warsztatów z dziećmi,
+  - wyjazdów bez dzieci (self‑care, regeneracja, rozwój).
+
+CZĘŚĆ 3: PSYCHOLOGIA RODZICA I JĘZYK
+Załóż, że głównym napędem decyzji są emocje: zmęczenie, potrzeba odpoczynku, potrzeba bliskości z dzieckiem, ale też potrzeba bycia tylko dorosłym człowiekiem bez roli rodzica przez chwilę.
+
+Oceń:
+- Czy strona:
+  - pokazuje, że rozumie codzienność rodzica (zmęczenie, chaos, nadmiar obowiązków, poczucie winy),
+  - normalizuje te emocje (nic nie jest „twoją winą”, to naturalne),
+  - daje nadzieję i konkretny obraz pożądanej zmiany po warsztacie/wyjeździe (np. „więcej spokoju”, „bliższa relacja”, „poczucie, że nie jesteś sam/a”).
+- Czy język:
+  - jest ciepły, empatyczny, nienarzucający, bez manipulacji,
+  - unika straszenia („jak nie pojedziesz, to…”), zawstydzania i presji?
+- Czy wyraźnie rozdziela komunikaty:
+  - dla wyjazdów z dziećmi (wspólny czas, relacja),
+  - dla wyjazdów bez dzieci (prawo do odpoczynku, regeneracja, zadbanie o siebie bez poczucia winy)?
+
+Wypisz:
+- Konkretnie, które teksty/sekcje wspierają psychologię rodzica.
+- Gdzie brakuje empatii i jak byś przepisał/a 3–5 kluczowych zdań, by:
+  - były bardziej empatyczne,
+  - lepiej nazywały emocje,
+  - zawierały obietnicę zmiany po udziale w wyjeździe/warsztacie.
+
+CZĘŚĆ 4: ZAUFANIE I SPOŁECZNY DOWÓD SŁUSZNOŚCI
+Oceń:
+- Czy są:
+  - opinie uczestników (najlepiej z imieniem, zdjęciem, wiekiem dziecka lub kontekstem),
+  - zdjęcia z poprzednich edycji,
+  - informacje o prowadzących (kompetencje, doświadczenie, „po ludzku”: kim są, dlaczego to robią),
+  - certyfikaty, partnerzy, media, w których byliście?
+- Czy z perspektywy rodzica szybko widać odpowiedzi na pytania:
+  - „Czy to jest bezpieczne dla mojego dziecka?”
+  - „Kto będzie się nim zajmował?”
+  - „Czy mogę zaufać tym ludziom także w tematach emocji / psychiki?”
+
+Zaproponuj:
+- Jakie dokładnie elementy social proof dodać lub wzmocnić (opinie, case study, sekcję „Poznaj nas”, zdjęcia, logotypy, itp.).
+- W którym miejscu strony je wstawić, żeby najmocniej wpływały na zaufanie i konwersję.
+
+CZĘŚĆ 5: UX, NAWIGACJA I FORMULARZE
+Oceń:
+- Czy użytkownik intuicyjnie rozumie:
+  - dokąd ma przewijać,
+  - jak znaleźć informacje o terminach, cenie, miejscu, programie,
+  - jak się zapisać, zadać pytanie lub umówić na rozmowę?
+- Czy formularz zapisu:
+  - ma tylko niezbędne pola,
+  - jasno komunikuje, co się stanie po wysłaniu (np. „Odezwę się w ciągu 24h”, „Dostaniesz mail z potwierdzeniem i szczegółami”),
+  - jest przyjazny mobilnie (duże pola, czytelne etykiety, brak zbędnych kroków)?
+
+Zaproponuj:
+- Co uprościć/usunąć (kroki, pola formularza, linki rozpraszające).
+- Jak inaczej ułożyć sekcje, by ścieżka użytkownika była bardziej liniowa (od poznania oferty → zaufanie → decyzja → zapis).
+
+CZĘŚĆ 6: SEO I STRUKTURA TREŚCI
+Oceń:
+- Tytuł strony (title) i nagłówek główny (H1):
+  - Czy jasno komunikują: co, dla kogo, po co (np. „Weekendowe wyjazdy rozwojowe dla mam – odpoczynek z dala od obowiązków”).
+- Podnagłówki (H2, H3):
+  - Czy grupują treści w logiczne bloki (dla kogo, program, korzyści, praktyczne informacje, opinie, FAQ)?
+- Słowa kluczowe:
+  - Czy naturalnie pojawiają się frazy typu: „warsztaty dla rodziców”, „wyjazd rozwojowy dla mam”, „rodzinny wyjazd z dziećmi”, „retreat dla kobiet/rodziców”, „wyjazd bez dzieci”, itp.?
+- Meta opis:
+  - Czy zachęca do kliknięcia i obiecuje konkretną korzyść?
+
+Podaj:
+- Propozycje nowego title, meta opisu i 3–5 wariantów H1,
+- Listę 10–15 fraz kluczowych, które warto naturalnie wpleść w treść (PL, ewentualnie też EN, jeśli to ma sens dla oferty).
+
+CZĘŚĆ 7: ANALITYKA I TESTY
+Zaproponuj:
+- Jakie zdarzenia warto mierzyć (np. klik w CTA, rozpoczęcie wypełniania formularza, wysłanie formularza, klik w telefon/mail, scroll do określonych sekcji).
+- pomysły na testy A/B:
+  - np. różne nagłówki, inne zdjęcie hero, długość strony, różne wersje CTA, różne ułożenie sekcji „z dziećmi” vs „bez dzieci”.
+
+CZĘŚĆ 8: STRUKTURA CAŁEJ STRONY I PODSTRONY
+
+Oceń spójność całego serwisu, nie tylko landing page.
+
+1) Architektura informacji i podstrony
+- Jak wygląda główna nawigacja (menu)?
+  - Czy liczba pozycji jest rozsądna (5–7 głównych pozycji w menu)?
+  - Czy etykiety są zrozumiałe i opisowe dla rodzica (np. „O warsztatach”, „Oferta”, „Dla kogo”, „Kontakt”, „Blog/Inspiracje” zamiast ogólnych „Info”)? 
+- Jak logicznie mogłyby być pogrupowane podstrony:
+  - Strona główna (ogólna obietnica marki).
+  - Oferta / Programy:
+    - Warsztaty z dziećmi.
+    - Czas bez dzieci (retreaty, weekendy dla dorosłych).
+  - O mnie / O nas (kim jesteśmy, dlaczego to robimy).
+  - Opinie / Historie uczestników.
+  - FAQ (bezpieczeństwo, dzieci, noclegi, dojazd, płatności).
+  - Kontakt / Zapis / Kalendarz terminów.
+- Czy użytkownik dotrze do każdej kluczowej informacji w maksymalnie 3 kliknięciach?
+
+2) Spójność między podstronami
+- Czy na wszystkich podstronach:
+  - wygląd i układ są spójne (nagłówek, stopka, typografii, kolory),
+  - zachowanie menu i CTA jest takie samo (to samo miejsce, ta sama etykieta)?
+- Czy komunikaty (tone of voice, obietnica, korzyści) są wszędzie zgodne z tym, co obiecujesz na landing page?
+- Czy nie ma „osieroconych” stron (do których trudno dotrzeć z menu lub z innych stron)?
+
+3) Rekomendacje
+- Podaj, jakie podstrony warto:
+  - dodać,
+  - połączyć,
+  - uprościć lub usunąć.
+- Zaproponuj przykładową, prostą strukturę menu (nagłówek + stopka) dla serwisu warsztatowo‑rodzinnego:
+  - pozycji w głównym menu,
+  - jasne etykiety dla rodzica,
+  - spójne miejsca na CTA (np. „Zapisz się” w prawym górnym rogu + w stopce).
+
+
+NA KONIEC:
+Na końcu odpowiedzi:
+- Zrób listę zmian, które można wdrożyć i które prawdopodobnie dadzą największy wzrost konwersji albo zaufania.
+- Zaznacz osobno, które rekomendacje są krytyczne z punktu widzenia psychologii rodzica (np. bezpieczeństwo dziecka, normalizowanie emocji, prawo do odpoczywania bez dzieci).
