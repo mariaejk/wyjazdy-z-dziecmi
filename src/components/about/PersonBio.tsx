@@ -11,6 +11,7 @@ type PersonBioProps = {
   member: TeamMember;
   variant?: "default" | "alternate";
   imagePosition?: "left" | "right";
+  hideNameHeading?: boolean;
   children?: ReactNode;
 };
 
@@ -18,6 +19,7 @@ export function PersonBio({
   member,
   variant = "default",
   imagePosition = "left",
+  hideNameHeading = false,
   children,
 }: PersonBioProps) {
   const paragraphs = member.bio.split("\n\n");
@@ -62,10 +64,15 @@ export function PersonBio({
             delay={0.15}
             className="flex-1"
           >
-            <h2 className="font-heading text-2xl font-bold text-graphite sm:text-3xl">
-              {member.name}
-            </h2>
-            <p className="mt-1 text-sm font-medium tracking-wide text-moss uppercase">
+            {!hideNameHeading && (
+              <h2 className="font-heading text-2xl font-bold text-graphite sm:text-3xl">
+                {member.name}
+              </h2>
+            )}
+            <p className={cn(
+              "text-sm font-medium tracking-wide text-moss uppercase",
+              hideNameHeading ? "font-heading text-xl font-bold sm:text-2xl" : "mt-1",
+            )}>
               {member.role}
             </p>
             <div className="mt-4 space-y-4">

@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Container } from "@/components/layout/Container";
 import { SectionWrapper } from "@/components/ui/SectionWrapper";
+import { SectionHeading } from "@/components/ui/SectionHeading";
 import { ScrollAnimation } from "@/components/shared/ScrollAnimation";
 import { ROUTES } from "@/lib/constants";
 
@@ -19,7 +20,7 @@ const categories = [
     alt: "Warsztaty matka i córka",
   },
   {
-    label: "Dla Singli z Dziećmi",
+    label: "Samodzielni rodzice",
     href: ROUTES.singleParents,
     image: "/images/przeszly-1.jpg",
     alt: "Warsztaty dla singli z dziećmi w naturze",
@@ -36,6 +37,7 @@ export function CategoryCards() {
   return (
     <SectionWrapper className="py-10 sm:py-14">
       <Container>
+        <SectionHeading title="Dopasuj wyjazd do swojego aktualnego momentu w życiu" />
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4 sm:gap-6" role="region" aria-label="Kategorie warsztatów">
           {categories.map((cat, index) => (
             <ScrollAnimation

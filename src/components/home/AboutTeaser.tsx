@@ -1,7 +1,6 @@
 import Image from "next/image";
 import { Container } from "@/components/layout/Container";
 import { SectionWrapper } from "@/components/ui/SectionWrapper";
-import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Button } from "@/components/ui/Button";
 import { ScrollAnimation } from "@/components/shared/ScrollAnimation";
 import { ROUTES } from "@/lib/constants";
@@ -10,14 +9,7 @@ export function AboutTeaser() {
   return (
     <SectionWrapper variant="alternate">
       <Container>
-        <ScrollAnimation variant="fadeUp">
-          <SectionHeading
-            title="Poznajmy się!"
-            subtitle="Nazywam się Maria Kordalewska"
-          />
-        </ScrollAnimation>
-
-        <div className="mx-auto flex max-w-5xl flex-col items-center gap-8 lg:flex-row lg:gap-12">
+        <div className="mx-auto flex max-w-5xl flex-col items-center gap-8 lg:flex-row lg:items-start lg:gap-12">
           {/* Large photo */}
           <ScrollAnimation variant="fadeLeft" className="shrink-0">
             <div className="relative h-80 w-64 overflow-hidden rounded-3xl shadow-xl sm:h-[420px] sm:w-80 lg:h-[500px] lg:w-96">
@@ -33,7 +25,14 @@ export function AboutTeaser() {
 
           {/* Text */}
           <ScrollAnimation variant="fadeRight" delay={0.15} className="flex-1">
-            <p className="text-lg leading-relaxed text-graphite-light sm:text-xl">
+            <h2 className="font-heading text-2xl font-bold text-graphite sm:text-3xl">
+              Poznajmy się!
+            </h2>
+            <p className="mt-1 text-lg font-medium text-moss">
+              Nazywam się Maria Kordalewska
+            </p>
+
+            <p className="mt-4 text-lg leading-relaxed text-graphite-light">
               Jestem mamą Laury, nauczycielką jogi, pilotką wycieczek
               i wieloletnią organizatorką eventów z tytułem doktora. Od lat
               łączę świat profesjonalnej komunikacji z miłością do natury.

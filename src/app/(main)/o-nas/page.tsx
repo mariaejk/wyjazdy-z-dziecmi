@@ -67,7 +67,7 @@ export default async function AboutPage() {
       </SectionWrapper>
 
       {/* Maria */}
-      <PersonBio member={maria} variant="alternate" imagePosition="left">
+      <PersonBio member={maria} variant="alternate" imagePosition="left" hideNameHeading>
         <Button href={ROUTES.projects} variant="secondary">
           Moje inne projekty
         </Button>
