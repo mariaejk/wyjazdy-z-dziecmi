@@ -12,7 +12,7 @@ export function AboutTeaser() {
         <div className="mx-auto flex max-w-5xl flex-col items-center gap-8 lg:flex-row lg:items-start lg:gap-12">
           {/* Large photo */}
           <ScrollAnimation variant="fadeLeft" className="shrink-0">
-            <div className="relative h-80 w-64 overflow-hidden rounded-none border border-graphite/10 shadow-sm sm:h-[420px] sm:w-80 lg:h-[500px] lg:w-96">
+            <div className="relative h-80 w-64 overflow-hidden rounded-none sm:h-[420px] sm:w-80 lg:h-[500px] lg:w-96">
               <Image
                 src="/images/marysia.png"
                 alt="Maria Kordalewska"
@@ -25,12 +25,12 @@ export function AboutTeaser() {
 
           {/* Text */}
           <ScrollAnimation variant="fadeRight" delay={0.15} className="flex-1">
-            <h2 className="font-heading text-2xl font-bold text-graphite sm:text-3xl">
-              Poznajmy się!
-            </h2>
-            <p className="mt-1 text-lg font-medium text-moss">
-              Nazywam się Maria Kordalewska
+            <p className="text-[11px] font-medium uppercase tracking-[0.25em] text-graphite-light">
+              Poznajmy się
             </p>
+            <h2 className="mt-2 font-heading text-2xl font-light italic text-graphite sm:text-3xl">
+              Maria Kordalewska
+            </h2>
 
             <p className="mt-4 text-lg leading-relaxed text-graphite-light">
               Jestem mamą Laury, nauczycielką jogi, pilotką wycieczek

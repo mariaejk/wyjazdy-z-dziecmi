@@ -2,6 +2,8 @@ import { cn } from "@/lib/utils";
 
 type SectionHeadingProps = {
   title: string;
+  italicText?: string;
+  overline?: string;
   subtitle?: string;
   align?: "center" | "left";
   as?: "h1" | "h2" | "h3";
@@ -10,6 +12,8 @@ type SectionHeadingProps = {
 
 export function SectionHeading({
   title,
+  italicText,
+  overline,
   subtitle,
   align = "center",
   as: Tag = "h2",
@@ -23,8 +27,19 @@ export function SectionHeading({
         className,
       )}
     >
-      <Tag className="font-heading text-3xl font-bold text-graphite sm:text-4xl lg:text-5xl">
+      {overline && (
+        <p className="mb-3 text-[11px] font-medium uppercase tracking-[0.25em] text-graphite-light">
+          {overline}
+        </p>
+      )}
+      <Tag className="font-heading text-3xl font-light text-graphite sm:text-4xl lg:text-5xl">
         {title}
+        {italicText && (
+          <>
+            {" "}
+            <em className="italic text-graphite-light">{italicText}</em>
+          </>
+        )}
       </Tag>
       {subtitle && (
         <p className="mt-3 text-lg text-graphite-light sm:mt-4 sm:text-xl">

@@ -22,8 +22,8 @@ export function Card({
   const content = (
     <div
       className={cn(
-        "group flex h-full flex-col overflow-hidden rounded-none bg-white shadow-sm transition-shadow duration-300",
-        href && "hover:shadow-lg",
+        "group flex h-full flex-col overflow-hidden rounded-none border border-graphite/8 bg-white transition-colors duration-300",
+        href && "hover:border-graphite/20",
         className,
       )}
     >
@@ -51,7 +51,7 @@ export function Card({
         href={href}
         className={cn(
           "block rounded-none focus-visible:outline-none",
-          "focus-visible:ring-2 focus-visible:ring-terracotta focus-visible:ring-offset-2",
+          "focus-visible:ring-2 focus-visible:ring-graphite focus-visible:ring-offset-2",
         )}
       >
         {content}

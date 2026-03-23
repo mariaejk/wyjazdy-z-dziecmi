@@ -57,7 +57,7 @@ function DropdownNavItem({
       <button
         type="button"
         className={cn(
-          "inline-flex items-center justify-center gap-1 whitespace-nowrap rounded-none px-4 py-2.5 text-base font-medium transition-colors",
+          "inline-flex items-center justify-center gap-1 whitespace-nowrap rounded-none px-4 py-2.5 text-[13px] font-medium uppercase tracking-[0.12em] transition-colors",
           active
             ? "bg-moss/10 text-moss"
             : "text-graphite hover:bg-parchment-dark hover:text-moss"
@@ -66,7 +66,7 @@ function DropdownNavItem({
         aria-haspopup="menu"
         onClick={() => (isOpen ? onClose() : onOpen())}
       >
-        <span className="uppercase tracking-wide">{item.label}</span>
+        <span className="uppercase tracking-[0.12em] text-[13px]">{item.label}</span>
         <ChevronDown
           className={cn(
             "h-3.5 w-3.5 transition-transform",
@@ -160,7 +160,7 @@ export function Header() {
                       <Link
                         href={item.href}
                         className={cn(
-                          "inline-flex items-center justify-center rounded-none px-4 py-2.5 text-base font-medium uppercase tracking-wide transition-colors",
+                          "inline-flex items-center justify-center rounded-none px-4 py-2.5 text-[13px] font-medium uppercase tracking-[0.12em] transition-colors",
                           active
                             ? "bg-moss/10 text-moss"
                             : "text-graphite hover:bg-parchment-dark hover:text-moss",

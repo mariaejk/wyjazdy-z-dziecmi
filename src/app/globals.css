@@ -1,29 +1,30 @@
 @import "tailwindcss";
 
 @theme {
-  /* Colors — Fresh Forest Green */
-  --color-parchment: #F7F5F0;
-  --color-parchment-dark: #EBE8E0;
-  --color-moss: #52796F;
-  --color-moss-light: #6B9080;
-  --color-graphite: #1A1A1A;
-  --color-graphite-light: #4A5568;
+  /* Colors — TCW Monochrome (The Common Wanderer style) */
+  --color-parchment: #FFFFFF;
+  --color-parchment-dark: #F7F5F2;
+  --color-moss: #1D1D1D;
+  --color-moss-light: #3A3A3A;
+  --color-graphite: #1D1D1D;
+  --color-graphite-light: #6B6B6B;
   --color-white: #FFFFFF;
-  --color-terracotta: #2D6A4F;
-  --color-terracotta-dark: #1B4332;
-  --color-mustard: #DDB74A;
-  --color-coral: #95D5B2;
+  --color-terracotta: #1D1D1D;
+  --color-terracotta-dark: #000000;
+  --color-mustard: #C4A94D;
+  --color-coral: #D4D4D4;
 
-  /* Colors — Bright & Playful */
-  --color-sage: #7BA187;
-  --color-sage-dark: #5D8A6B;
-  --color-peach: #F4A77A;
-  --color-peach-light: #FFD4B8;
-  --color-sky: #A8D4E6;
-  --color-lavender: #C4B5D4;
+  /* Colors — Muted (monochrome overrides) */
+  --color-sage: #8A8A8A;
+  --color-sage-dark: #6B6B6B;
+  --color-peach: #B8B8B8;
+  --color-peach-light: #D4D4D4;
+  --color-sky: #C8C8C8;
+  --color-lavender: #B0B0B0;
+  --color-taupe: #8B857B;
 
   /* Typography */
-  --font-heading: var(--font-playfair);
+  --font-heading: var(--font-cormorant);
   --font-body: var(--font-inter);
   --font-lora: var(--font-lora);
   --font-caveat: var(--font-caveat);
@@ -45,7 +46,7 @@ body {
 
 /* Focus visible for accessibility */
 :focus-visible {
-  outline: 2px solid var(--color-terracotta);
+  outline: 2px solid var(--color-graphite);
   outline-offset: 2px;
 }
 

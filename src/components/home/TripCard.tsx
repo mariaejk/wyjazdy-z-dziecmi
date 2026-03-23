@@ -49,7 +49,7 @@ export function TripCard({ trip }: TripCardProps) {
         {!trip.isPast && scarcityBadge}
       </div>
 
-      <h3 className="font-heading text-xl font-bold text-graphite sm:text-2xl">
+      <h3 className="font-heading text-xl font-light italic text-graphite sm:text-2xl">
         {trip.title}
       </h3>
 
