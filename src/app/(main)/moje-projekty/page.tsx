@@ -89,7 +89,7 @@ export default function ProjectsPage() {
             <ScrollAnimation variant="fadeUp" delay={0.2}>
               <p className="mb-8 text-base leading-relaxed text-graphite-light">
                 Prowadzę zajęcia, które pomagają zrzucić z barków codzienne
-                napięcie i dają przestrzeń, by po prostu &bdquo;być&rdquo; tu
+                napięcie i dają przestrzeń, by po prostu „być" tu
                 i teraz. Niezależnie od tego, czy dopiero zaczynasz, czy
                 praktykujesz od dawna, znajdziesz u mnie bezpieczną,
                 nieoceniającą przystań.

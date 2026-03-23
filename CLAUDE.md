@@ -288,3 +288,12 @@ All copy comes from `docs/tresc_na_strone.md` and `docs/TODO POPRAWIC landing pa
 - **Neutral benefit cards**: Remove per-card `bgClass`/`iconClass`, use uniform `bg-parchment-dark/50` + `text-graphite-light` for clean, non-distracting hero.
 - **Rectangular design system**: `rounded-none` everywhere. Exception: `Badge` uses `rounded-sm` — fully sharp corners look wrong on tiny elements. No other exceptions.
 - **Color variable names preserved**: `--color-terracotta` now holds green `#2D6A4F`. Renaming would break 100+ Tailwind class usages. The semantic disconnect (name vs color) is acceptable — all existing `bg-terracotta`, `text-terracotta` classes automatically pick up the new green.
+
+## Keystatic Audit 23.03.2026 Lessons Learned
+
+- **CMS select must match TypeScript union**: `keystatic.config.ts` category select had only 2 options ("rodzinny", "matka-corka") but TypeScript type and code supported 4. CMS users couldn't set "single-parents" or "dla-doroslych". Fix: always keep CMS field options in sync with TypeScript union types.
+- **Blog `image` field missing from CMS schema**: Field existed in YAML files and data reader but was invisible in `/keystatic` admin panel. Fix: add `image: fields.text()` to blog collection schema. Pattern: when adding optional fields to content YAML, always add to `keystatic.config.ts` too.
+- **Explicit `js-yaml` dependency**: Blog reader used `js-yaml` (workaround for Keystatic reader bug) but it wasn't in `package.json` — worked only as transitive dependency. Fix: `npm install js-yaml` + `@types/js-yaml` as explicit dependencies. Remove `@ts-expect-error` after adding types.
+- **`Place` type had unused `image?: string`**: CMS and data layer use `images: string[]` (plural). Type had both singular and plural. Fix: remove unused singular `image` field from type. Always verify types match actual CMS schema.
+- **`BookingFormData` type incomplete**: `dietaryNeeds` existed in Zod schema, form UI, and API route but was missing from the `forms.ts` type. Fix: keep all type definitions in sync when adding new form fields.
+- **Keystatic consistency audit checklist**: When reviewing Keystatic setup, check 5 layers: (1) `keystatic.config.ts` schema, (2) `content/` YAML files, (3) `src/data/*.ts` readers/mappers, (4) `src/types/*.ts` TypeScript types, (5) `package.json` dependencies.

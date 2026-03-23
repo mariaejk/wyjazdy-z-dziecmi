@@ -105,6 +105,7 @@ function MonthGrid({
       <div className="flex items-center justify-between pb-2">
         {onPrev ? (
           <button
+            type="button"
             onClick={onPrev}
             className="rounded-none p-1 text-graphite-light transition-colors hover:bg-parchment-dark hover:text-graphite"
             aria-label="Poprzedni miesiąc"
@@ -119,6 +120,7 @@ function MonthGrid({
         </span>
         {onNext ? (
           <button
+            type="button"
             onClick={onNext}
             className="rounded-none p-1 text-graphite-light transition-colors hover:bg-parchment-dark hover:text-graphite"
             aria-label="Następny miesiąc"

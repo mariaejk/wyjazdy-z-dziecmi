@@ -79,7 +79,7 @@ export default async function MotherDaughterPage() {
               <p className="mt-6 text-lg leading-relaxed text-graphite-light sm:text-xl">
                 Zapraszamy Cię w podróż poza codzienny pośpiech, hałas i role,
                 w które tak łatwo wpadamy. To wyjazdowe warsztaty stworzone
-                z myślą o kobietach &mdash; tych dużych i tych małych &mdash;
+                z myślą o kobietach — tych dużych i tych małych —
                 które pragną spotkać się naprawdę: w ruchu, w uważności
                 i w sercu.
               </p>
@@ -137,14 +137,14 @@ export default async function MotherDaughterPage() {
               </h2>
               <div className="mt-6 space-y-4 text-lg leading-relaxed text-graphite-light">
                 <p>
-                  Podczas wyjazdu spotykamy się w ruchu i obecności &mdash;
+                  Podczas wyjazdu spotykamy się w ruchu i obecności —
                   poprzez jogę, taniec intuicyjny, medytacje, sztukę, muzykę
                   i głos. Tworzymy przestrzeń, w której córki poczują się częścią
-                  kręgu kobiet &mdash; widziane, ważne i zaproszone do bycia sobą.
+                  kręgu kobiet — widziane, ważne i zaproszone do bycia sobą.
                 </p>
                 <p>
                   Jednocześnie dbamy o równowagę. Będzie czas wspólny, pogłębiający
-                  relację matki i córki, ale także czas oddzielny &mdash; moment
+                  relację matki i córki, ale także czas oddzielny — moment
                   tylko dla mam, na regenerację, refleksję i bycie w kobiecym kręgu.
                 </p>
               </div>
@@ -184,7 +184,7 @@ export default async function MotherDaughterPage() {
               </h2>
               <p className="mt-4 text-lg text-graphite-light">
                 Jeśli czujesz, że chcesz zatrzymać się, odetchnąć i spotkać
-                swoją córkę w nowy sposób &mdash; ten wyjazd jest dla Was.
+                swoją córkę w nowy sposób — ten wyjazd jest dla Was.
               </p>
               <div className="mt-8 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
                 <Button href={ROUTES.trips}>

@@ -4,12 +4,24 @@ import { bookingSchema } from "@/lib/validations/booking";
 import { rateLimit } from "@/lib/rate-limit";
 import { log } from "@/lib/logger";
 
+const ALLOWED_ORIGINS = [
+  "https://www.wyjazdyzdziecmi.pl",
+  "https://wyjazdyzdziecmi.pl",
+  ...(process.env.NODE_ENV === "development" ? ["http://localhost:3000"] : []),
+];
+
 export async function POST(request: NextRequest) {
+  // CSRF: Origin check
+  const origin = request.headers.get("origin");
+  if (origin && !ALLOWED_ORIGINS.includes(origin)) {
+    return NextResponse.json({ error: "Forbidden" }, { status: 403 });
+  }
+
   // Rate limiting
-  const ip =
-    request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ??
-    request.headers.get("x-real-ip") ??
-    "unknown";
+  const forwardedFor = request.headers.get("x-forwarded-for");
+  const ip = forwardedFor
+    ? forwardedFor.split(",").at(-1)!.trim()
+    : (request.headers.get("x-real-ip") ?? "unknown");
 
   const { success } = rateLimit(ip);
   if (!success) {

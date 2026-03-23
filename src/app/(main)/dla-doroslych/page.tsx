@@ -71,7 +71,7 @@ export default async function AdultOnlyPage() {
                 Warsztaty dla dorosłych
               </h1>
               <p className="mt-6 text-lg leading-relaxed text-graphite-light sm:text-xl">
-                Wyjazdy stworzone wyłącznie dla dorosłych &mdash; przestrzeń
+                Wyjazdy stworzone wyłącznie dla dorosłych — przestrzeń
                 na regenerację, ruch i spotkanie z sobą. Joga, konie, natura
                 i kameralna grupa ludzi, z którymi dobrze jest po prostu być.
               </p>
@@ -150,7 +150,7 @@ export default async function AdultOnlyPage() {
               </h2>
               <p className="mt-4 text-lg text-graphite-light">
                 Masz pytania lub szukasz innego terminu? Napisz do nas
-                &mdash; chętnie pomożemy.
+                — chętnie pomożemy.
               </p>
               <div className="mt-8 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
                 <Button href={ROUTES.trips}>

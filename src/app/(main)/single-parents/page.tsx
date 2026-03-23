@@ -73,7 +73,7 @@ export default async function SingleParentsPage() {
               <p className="mt-6 text-lg leading-relaxed text-graphite-light sm:text-xl">
                 Wyjazdy stworzone z myślą o samodzielnych rodzicach i ich
                 dzieciach. Przestrzeń bez pośpiechu, pełna wsparcia i zrozumienia
-                &mdash; bo zasługujesz na chwilę wytchnienia.
+                — bo zasługujesz na chwilę wytchnienia.
               </p>
             </div>
           </ScrollAnimation>
@@ -149,7 +149,7 @@ export default async function SingleParentsPage() {
                 Dołącz do nas
               </h2>
               <p className="mt-4 text-lg text-graphite-light">
-                Masz pytania? Napisz do nas &mdash; chętnie pomożemy wybrać
+                Masz pytania? Napisz do nas — chętnie pomożemy wybrać
                 odpowiedni wyjazd.
               </p>
               <div className="mt-8 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">

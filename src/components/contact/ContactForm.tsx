@@ -148,7 +148,7 @@ export function ContactForm() {
         <Button
           type="submit"
           size="lg"
-          disabled={status === "submitting"}
+          loading={status === "submitting"}
           icon={<Send className="h-5 w-5" strokeWidth={1.5} />}
           className="w-full sm:w-auto"
         >

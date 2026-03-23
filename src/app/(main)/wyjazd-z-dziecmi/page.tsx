@@ -79,7 +79,7 @@ export default async function FamilyTripsPage() {
               <p className="mt-6 text-lg leading-relaxed text-graphite-light sm:text-xl">
                 Nie musisz być samodzielnym rodzicem, żeby potrzebować chwili
                 wytchnienia. Nasze wyjazdy to bezpieczna przestrzeń dla każdego,
-                kto chce spędzić wyjątkowy czas z dzieckiem &mdash; mamy, babcie,
+                kto chce spędzić wyjątkowy czas z dzieckiem — mamy, babcie,
                 ciocie, koleżanki. Odpoczywaj, oddychaj i po prostu bądź.
               </p>
             </div>
@@ -136,7 +136,7 @@ export default async function FamilyTripsPage() {
               </h2>
               <div className="mt-6 space-y-4 text-lg leading-relaxed text-graphite-light">
                 <p>
-                  Każdy dzień zaczyna się spokojnie &mdash; od porannej jogi lub
+                  Każdy dzień zaczyna się spokojnie — od porannej jogi lub
                   spaceru w ciszy. Potem warsztaty: kreatywne zajęcia dla dzieci
                   i dorosłych, wspólne gotowanie, zabawy na świeżym powietrzu.
                 </p>
@@ -180,7 +180,7 @@ export default async function FamilyTripsPage() {
                 Dołącz do nas
               </h2>
               <p className="mt-4 text-lg text-graphite-light">
-                Sprawdź dostępne terminy lub napisz do nas &mdash; pomożemy
+                Sprawdź dostępne terminy lub napisz do nas — pomożemy
                 znaleźć wyjazd idealny dla Ciebie i Twojego dziecka.
               </p>
               <div className="mt-8 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">

@@ -16,7 +16,7 @@ export const faqData = [
   {
     question: "Co powinniśmy zabrać ze sobą na wyjazd?",
     answer:
-      'Przed każdym wyjazdem wysyłamy uczestnikom maila z dokładnym planem oraz szczegółową listą rzeczy do spakowania. Ponieważ nasze wyjazdy odbywają się w otoczeniu natury i obfitują w aktywności ruchowe (takie jak joga, konie czy spacery po lesie), najważniejszy będzie wygodny strój sportowy, buty terenowe oraz odzież dostosowana do zmiennych warunków pogodowych. Dodatkowo, gorąco zachęcamy do pobrania naszego darmowego poradnika PDF \u201EJak przygotować dziecko do wyjazdu warsztatowego\u201D, który znajdziesz na dole naszej strony.',
+      'Przed każdym wyjazdem wysyłamy uczestnikom maila z dokładnym planem oraz szczegółową listą rzeczy do spakowania. Ponieważ nasze wyjazdy odbywają się w otoczeniu natury i obfitują w aktywności ruchowe (takie jak joga, konie czy spacery po lesie), najważniejszy będzie wygodny strój sportowy, buty terenowe oraz odzież dostosowana do zmiennych warunków pogodowych. Dodatkowo, gorąco zachęcamy do pobrania naszego darmowego poradnika PDF \„Jak przygotować dziecko do wyjazdu warsztatowego\", który znajdziesz na dole naszej strony.',
   },
   {
     question: "Kto opiekuje się dziećmi, gdy odbywają się warsztaty przeznaczone tylko dla rodziców?",
@@ -26,7 +26,7 @@ export const faqData = [
   {
     question: "W jakim wieku powinny być dzieci, aby wziąć udział w wyjeździe?",
     answer:
-      'Nasze wyjazdy są starannie profilowane, dlatego na stronach poszczególnych ofert (np. \u201EWspólny Rytm\u201D dla matek i córek) zawsze znajdziesz informację o rekomendowanym wieku uczestników (np. 5+ lat). Dzięki temu mamy pewność, że program, zabawy oraz warsztaty będą idealnie dopasowane do możliwości i zainteresowań dzieci w danej grupie wiekowej.',
+      'Nasze wyjazdy są starannie profilowane, dlatego na stronach poszczególnych ofert (np. \„Wspólny Rytm\" dla matek i córek) zawsze znajdziesz informację o rekomendowanym wieku uczestników (np. 5+ lat). Dzięki temu mamy pewność, że program, zabawy oraz warsztaty będą idealnie dopasowane do możliwości i zainteresowań dzieci w danej grupie wiekowej.',
   },
   {
     question: "Jak wygląda przykładowy dzień podczas wyjazdu warsztatowego?",

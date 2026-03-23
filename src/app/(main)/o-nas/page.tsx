@@ -24,7 +24,7 @@ const missionCards = [
     icon: Leaf,
     title: "Natura i cisza",
     description:
-      "Szukam miejsc w \u201Ebezinterneciu\u201D i \u201Ebezzasięgowie\u201D, gdzie możemy zbliżyć się do siebie.",
+      "Szukam miejsc w \„bezinterneciu\" i \„bezzasięgowie\", gdzie możemy zbliżyć się do siebie.",
   },
   {
     icon: Heart,
@@ -36,7 +36,7 @@ const missionCards = [
     icon: Star,
     title: "Najlepsi specjaliści",
     description:
-      "Zapraszam do współpracy specjalistów od rozwoju, aby tworzyć spotkania \u201Elepsze niż bajka\u201D.",
+      "Zapraszam do współpracy specjalistów od rozwoju, aby tworzyć spotkania \„lepsze niż bajka\".",
   },
 ];
 

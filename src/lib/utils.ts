@@ -7,7 +7,11 @@ export function cn(...inputs: ClassValue[]) {
 
 /** Parses YYYY-MM-DD as local midnight (avoids UTC offset issues). */
 export function parseLocalDate(dateStr: string): Date {
-  const [year, month, day] = dateStr.split("-").map(Number);
+  const parts = dateStr.split("-").map(Number);
+  if (parts.length !== 3 || parts.some(isNaN)) {
+    throw new Error(`Invalid date string: "${dateStr}"`);
+  }
+  const [year, month, day] = parts;
   return new Date(year, month - 1, day);
 }
 

@@ -33,6 +33,8 @@ export default config({
           options: [
             { label: "Rodzinny", value: "rodzinny" },
             { label: "Matka z córką", value: "matka-corka" },
+            { label: "Samodzielny rodzic", value: "single-parents" },
+            { label: "Dla dorosłych", value: "dla-doroslych" },
           ],
           defaultValue: "rodzinny",
         }),
@@ -239,6 +241,7 @@ export default config({
         title: fields.slug({ name: { label: "Tytuł" } }),
         subtitle: fields.text({ label: "Podtytuł" }),
         publishedDate: fields.text({ label: "Data publikacji (YYYY-MM-DD)" }),
+        image: fields.text({ label: "Zdjęcie (ścieżka, opcjonalne)" }),
         content: fields.markdoc({
           label: "Treść",
         }),

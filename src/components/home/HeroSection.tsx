@@ -24,13 +24,13 @@ const benefits = [
 
 function DecorativeElements() {
   return (
-    <>
+    <div aria-hidden="true">
       <div className="absolute top-[10%] right-[8%] h-px w-16 bg-moss/15" />
       <div className="absolute top-[35%] right-[4%] h-12 w-px bg-moss/10" />
       <div className="absolute bottom-[15%] right-[12%] h-px w-10 bg-moss/10" />
       <div className="absolute top-[20%] left-[48%] h-8 w-px bg-moss/8 hidden lg:block" />
       <div className="absolute bottom-[30%] left-[52%] h-px w-12 bg-moss/8 hidden lg:block" />
-    </>
+    </div>
   );
 }
 

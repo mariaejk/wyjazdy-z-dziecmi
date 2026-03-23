@@ -2,10 +2,10 @@ import type { Trip, ContentBlock } from "@/types/trip";
 import { reader } from "@/lib/keystatic";
 import { parseLocalDate } from "@/lib/utils";
 
-async function mapTrip(
+function mapTrip(
   slug: string,
   entry: NonNullable<Awaited<ReturnType<typeof reader.collections.trips.read>>>
-): Promise<Trip> {
+): Trip {
   return {
     slug,
     title: entry.title,
@@ -89,7 +89,7 @@ export async function getAllTrips(): Promise<Trip[]> {
   for (const slug of slugs) {
     const entry = await reader.collections.trips.read(slug);
     if (!entry) continue;
-    trips.push(await mapTrip(slug, entry));
+    trips.push(mapTrip(slug, entry));
   }
   // Sort chronologically by start date (earliest first)
   return trips.sort(

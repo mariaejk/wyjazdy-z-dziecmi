@@ -66,7 +66,7 @@ export async function ContactInfo() {
           Dane kontaktowe
         </h2>
         <p className="mt-3 text-graphite-light">
-          Masz pytania? Napisz do mnie lub zadzwoń &mdash; chętnie pomogę.
+          Masz pytania? Napisz do mnie lub zadzwoń — chętnie pomogę.
         </p>
       </ScrollAnimation>
 

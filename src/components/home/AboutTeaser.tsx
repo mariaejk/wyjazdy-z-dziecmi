@@ -39,7 +39,7 @@ export function AboutTeaser() {
             </p>
 
             <p className="mt-4 text-base leading-relaxed text-graphite-light">
-              Projekt &bdquo;Wyjazdowe warsztaty z Dziećmi&rdquo; powstał
+              Projekt „Wyjazdowe warsztaty z Dziećmi" powstał
               z mojej osobistej potrzeby ucieczki od przebodźcowania. Moje
               autorskie wyjazdy to idealny balans: z jednej strony tworzymy
               przestrzeń na beztroską bliskość i budowanie wspólnych wspomnień

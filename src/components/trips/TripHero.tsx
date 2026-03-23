@@ -44,7 +44,7 @@ export function TripHero({
           <div className="flex flex-wrap items-center gap-2">
             <Badge className="bg-white/20 text-white backdrop-blur-sm">
               <Calendar className="mr-1 h-3 w-3" strokeWidth={1.5} />
-              {formatDate(date)} &ndash; {formatDate(dateEnd)}
+              {formatDate(date)} – {formatDate(dateEnd)}
             </Badge>
             <Badge className="bg-white/20 text-white backdrop-blur-sm">
               <MapPin className="mr-1 h-3 w-3" strokeWidth={1.5} />

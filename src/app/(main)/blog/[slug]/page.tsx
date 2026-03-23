@@ -10,6 +10,7 @@ import { ScrollAnimation } from "@/components/shared/ScrollAnimation";
 import { StructuredData } from "@/components/shared/StructuredData";
 import { NewsletterForm } from "@/components/shared/NewsletterForm";
 import { SITE_CONFIG } from "@/lib/constants";
+import { formatDate } from "@/lib/utils";
 import { getBreadcrumbSchema } from "@/lib/structured-data";
 import { getAllBlogPosts, getBlogPost } from "@/data/blog";
 
@@ -66,7 +67,7 @@ export default async function BlogPostPage({ params }: PageProps) {
                 subtitle={post.subtitle}
               />
               <p className="mt-2 text-center text-sm text-graphite-light">
-                {post.publishedDate}
+                {formatDate(post.publishedDate)}
               </p>
             </div>
           </ScrollAnimation>

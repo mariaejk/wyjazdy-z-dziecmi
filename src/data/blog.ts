@@ -1,10 +1,9 @@
 import fs from "fs/promises";
 import path from "path";
-// @ts-expect-error js-yaml has no type declarations
 import yaml from "js-yaml";
 import Markdoc from "@markdoc/markdoc";
 
-const BLOG_DIR = "content/blog";
+const BLOG_DIR = path.join(process.cwd(), "content/blog");
 
 export type BlogPost = {
   slug: string;
@@ -26,30 +25,32 @@ export async function getAllBlogPosts(): Promise<BlogPost[]> {
     posts.push({ slug, ...meta });
   }
 
-  return posts;
+  return posts.sort((a, b) => b.publishedDate.localeCompare(a.publishedDate));
 }
 
 export async function getLatestBlogPosts(limit = 3): Promise<BlogPost[]> {
   const posts = await getAllBlogPosts();
-  return posts
-    .sort((a, b) => b.publishedDate.localeCompare(a.publishedDate))
-    .slice(0, limit);
+  return posts.slice(0, limit);
 }
 
 export async function getBlogPost(slug: string) {
   const meta = await readBlogMeta(slug);
   if (!meta) return undefined;
 
-  const contentPath = path.join(BLOG_DIR, slug, "content.mdoc");
-  const raw = await fs.readFile(contentPath, "utf-8");
-  const ast = Markdoc.parse(raw);
-  const content = Markdoc.transform(ast);
+  try {
+    const contentPath = path.join(BLOG_DIR, slug, "content.mdoc");
+    const raw = await fs.readFile(contentPath, "utf-8");
+    const ast = Markdoc.parse(raw);
+    const content = Markdoc.transform(ast);
 
-  return {
-    slug,
-    ...meta,
-    content,
-  };
+    return {
+      slug,
+      ...meta,
+      content,
+    };
+  } catch {
+    return undefined;
+  }
 }
 
 async function readBlogMeta(

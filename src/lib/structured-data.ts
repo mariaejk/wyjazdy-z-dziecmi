@@ -42,7 +42,7 @@ export function getEventSchema(trip: Trip) {
   // Only omit offers for past trips (no longer bookable).
   schema.eventStatus = "https://schema.org/EventScheduled";
 
-  if (trip.pricing.length > 0) {
+  if (trip.pricing.length > 0 && !trip.isPast) {
     const prices = trip.pricing.map((p) => p.price);
     schema.offers = {
       "@type": "AggregateOffer",
@@ -84,7 +84,7 @@ export function getBreadcrumbSchema(
       "@type": "ListItem",
       position: index + 1,
       name: item.name,
-      item: item.url,
+      item: item.url.startsWith("http") ? item.url : `${SITE_CONFIG.url}${item.url}`,
     })),
   };
 }
