@@ -37,7 +37,7 @@ export function CategoryCards() {
   return (
     <SectionWrapper className="py-10 sm:py-14">
       <Container>
-        <SectionHeading title="Najczęściej wybierane warsztaty" />
+        <SectionHeading title="Najczęściej wybierane" italicText="warsztaty" />
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4 sm:gap-6" role="region" aria-label="Kategorie warsztatów">
           {categories.map((cat, index) => (
             <ScrollAnimation
@@ -50,7 +50,7 @@ export function CategoryCards() {
                 href={cat.href}
                 className="group relative block overflow-hidden rounded-none border border-graphite/10 shadow-sm transition-shadow hover:shadow-md"
               >
-                <div className="aspect-[4/3]">
+                <div className="aspect-[3/2]">
                   <Image
                     src={cat.image}
                     alt={cat.alt}
@@ -61,7 +61,7 @@ export function CategoryCards() {
                 </div>
                 <div className="absolute inset-0 bg-gradient-to-t from-graphite/70 via-graphite/20 to-transparent" />
                 <div className="absolute inset-x-0 bottom-0 p-4 sm:p-5">
-                  <h3 className="font-heading text-xl font-bold text-white sm:text-2xl">
+                  <h3 className="font-heading text-xl font-light italic text-white sm:text-2xl">
                     {cat.label}
                   </h3>
                 </div>

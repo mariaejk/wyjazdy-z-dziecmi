@@ -20,7 +20,9 @@ export async function BlogTeaser() {
       <Container>
         <ScrollAnimation variant="fadeUp">
           <SectionHeading
-            title="Najnowsze wpisy na moim blogu"
+            overline="Z bloga"
+            title="Najnowsze"
+            italicText="wpisy"
             subtitle="Praktyczne wskazówki, inspiracje i kulisy warsztatów"
           />
         </ScrollAnimation>
@@ -44,7 +46,7 @@ export async function BlogTeaser() {
                   </div>
                 )}
                 <div className="flex flex-1 flex-col p-5">
-                  <h3 className="font-heading text-lg font-bold text-graphite group-hover:text-moss">
+                  <h3 className="font-heading text-lg font-light italic text-graphite group-hover:text-graphite-light">
                     {post.title}
                   </h3>
                   <p className="mt-1.5 flex items-center gap-1.5 text-sm text-graphite-light">

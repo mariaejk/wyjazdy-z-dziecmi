@@ -27,20 +27,21 @@ export function HeroSlideshow() {
 
   if (prefersReducedMotion) {
     return (
-      <Image
-        src={slides[0].src}
-        alt={slides[0].alt}
-        width={720}
-        height={540}
-        priority
-        sizes="(max-width: 1024px) calc(100vw - 2rem), 45vw"
-        className="aspect-[4/3] w-full object-cover"
-      />
+      <div className="absolute inset-0">
+        <Image
+          src={slides[0].src}
+          alt={slides[0].alt}
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover"
+        />
+      </div>
     );
   }
 
   return (
-    <div className="relative aspect-[4/3] w-full">
+    <div className="absolute inset-0">
       <AnimatePresence mode="wait">
         <motion.div
           key={current}
@@ -53,11 +54,10 @@ export function HeroSlideshow() {
           <Image
             src={slides[current].src}
             alt={slides[current].alt}
-            width={720}
-            height={540}
+            fill
             priority={current === 0}
-            sizes="(max-width: 1024px) calc(100vw - 2rem), 45vw"
-            className="h-full w-full object-cover"
+            sizes="100vw"
+            className="object-cover"
           />
         </motion.div>
       </AnimatePresence>
