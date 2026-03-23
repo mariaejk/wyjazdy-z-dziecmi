@@ -1,20 +1,20 @@
 @import "tailwindcss";
 
 @theme {
-  /* Colors — Fresh Forest Green */
-  --color-parchment: #F7F5F0;
-  --color-parchment-dark: #EBE8E0;
-  --color-moss: #52796F;
-  --color-moss-light: #6B9080;
-  --color-graphite: #1A1A1A;
-  --color-graphite-light: #4A5568;
+  /* Colors — The Common Wanderer inspired */
+  --color-parchment: #FAF9F6;
+  --color-parchment-dark: #F2EFE9;
+  --color-graphite: #222222;
+  --color-graphite-light: #555555;
   --color-white: #FFFFFF;
-  --color-terracotta: #2D6A4F;
-  --color-terracotta-dark: #1B4332;
+  --color-moss: #6C7A63;
+  --color-moss-light: #8B9B83;
+  /* --color-forest removed — was duplicate of graphite (#222222). Use bg-graphite / hover:bg-black instead. */
   --color-mustard: #DDB74A;
   --color-coral: #95D5B2;
+  --color-taupe: #8B857B;
 
-  /* Colors — Bright & Playful */
+  /* Colors — Category accents (calendar/badges) */
   --color-sage: #7BA187;
   --color-sage-dark: #5D8A6B;
   --color-peach: #F4A77A;
@@ -23,7 +23,7 @@
   --color-lavender: #C4B5D4;
 
   /* Typography */
-  --font-heading: var(--font-playfair);
+  --font-heading: var(--font-cormorant);
   --font-body: var(--font-inter);
   --font-lora: var(--font-lora);
   --font-caveat: var(--font-caveat);
@@ -39,19 +39,23 @@ body {
   background-color: var(--color-parchment);
   color: var(--color-graphite);
   font-family: var(--font-body), system-ui, sans-serif;
+  font-weight: 300;
+  font-size: 15px;
+  line-height: 1.8;
+  letter-spacing: 0.01em;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 /* Focus visible for accessibility */
 :focus-visible {
-  outline: 2px solid var(--color-terracotta);
+  outline: 2px solid var(--color-moss);
   outline-offset: 2px;
 }
 
 /* Selection colors */
 ::selection {
-  background-color: var(--color-terracotta);
+  background-color: var(--color-moss);
   color: var(--color-white);
 }
 

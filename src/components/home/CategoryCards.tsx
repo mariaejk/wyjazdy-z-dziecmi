@@ -35,10 +35,18 @@ const categories = [
 
 export function CategoryCards() {
   return (
-    <SectionWrapper className="py-10 sm:py-14">
+    <SectionWrapper className="py-12 sm:py-16 lg:py-20">
       <Container>
-        <SectionHeading title="Najczęściej wybierane warsztaty" />
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4 sm:gap-6" role="region" aria-label="Kategorie warsztatów">
+        <SectionHeading
+          overline="Odkryj nasze"
+          title="Najczęściej wybierane"
+          italicText="warsztaty"
+        />
+        <div
+          className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4 sm:gap-10"
+          role="region"
+          aria-label="Kategorie warsztatów"
+        >
           {categories.map((cat, index) => (
             <ScrollAnimation
               key={cat.href}
@@ -48,20 +56,21 @@ export function CategoryCards() {
             >
               <Link
                 href={cat.href}
-                className="group relative block overflow-hidden rounded-none border border-graphite/10 shadow-sm transition-shadow hover:shadow-md"
+                className="group flex flex-col gap-5"
               >
-                <div className="aspect-[4/3]">
+                {/* Photo — vertical 3:4, no overlay */}
+                <div className="relative aspect-[3/4] overflow-hidden rounded-none bg-parchment-dark">
                   <Image
                     src={cat.image}
                     alt={cat.alt}
                     fill
                     sizes="(max-width: 640px) calc(50vw - 1.5rem), calc(25vw - 2rem)"
-                    className="object-cover transition-transform duration-500 group-hover:scale-105"
+                    className="object-cover transition-transform duration-700 group-hover:scale-105"
                   />
                 </div>
-                <div className="absolute inset-0 bg-gradient-to-t from-graphite/70 via-graphite/20 to-transparent" />
-                <div className="absolute inset-x-0 bottom-0 p-4 sm:p-5">
-                  <h3 className="font-heading text-xl font-bold text-white sm:text-2xl">
+                {/* Text under photo */}
+                <div className="flex flex-col text-center">
+                  <h3 className="font-heading text-xl font-light italic text-graphite sm:text-2xl">
                     {cat.label}
                   </h3>
                 </div>

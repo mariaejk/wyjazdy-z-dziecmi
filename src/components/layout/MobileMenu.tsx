@@ -39,8 +39,8 @@ function MobileNavLinks({
                   className={cn(
                     "flex w-full items-center justify-between rounded-none px-3 py-3 text-base font-medium transition-colors",
                     childActive
-                      ? "bg-moss/10 text-moss"
-                      : "text-graphite hover:bg-parchment-dark hover:text-moss"
+                      ? "text-graphite"
+                      : "text-graphite-light hover:text-graphite"
                   )}
                   aria-expanded={isExpanded}
                 >
@@ -65,8 +65,8 @@ function MobileNavLinks({
                             className={cn(
                               "block rounded-none px-3 py-2.5 text-sm font-medium transition-colors",
                               active
-                                ? "bg-moss/10 text-moss"
-                                : "text-graphite hover:bg-parchment-dark hover:text-moss"
+                                ? "text-graphite"
+                                : "text-graphite-light hover:text-graphite"
                             )}
                             {...(active
                               ? { "aria-current": "page" as const }
@@ -92,8 +92,8 @@ function MobileNavLinks({
                 className={cn(
                   "block rounded-none px-3 py-3 text-base font-medium transition-colors",
                   active
-                    ? "bg-moss/10 text-moss"
-                    : "text-graphite hover:bg-parchment-dark hover:text-moss"
+                    ? "text-graphite"
+                    : "text-graphite-light hover:text-graphite"
                 )}
                 {...(active ? { "aria-current": "page" as const } : {})}
               >
@@ -211,7 +211,7 @@ export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
               <Link
                 href={ROUTES.trips}
                 onClick={onClose}
-                className="inline-flex w-full items-center justify-center rounded-none bg-terracotta px-6 py-3 text-base font-medium text-white transition-all duration-200 hover:bg-terracotta-dark focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta focus-visible:ring-offset-2 active:scale-[0.98]"
+                className="inline-flex w-full items-center justify-center rounded-none bg-graphite px-6 py-3.5 text-[11px] font-medium uppercase tracking-[0.2em] text-parchment transition-all duration-200 hover:bg-black focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-graphite focus-visible:ring-offset-2 active:scale-[0.98]"
               >
                 Sprawdź terminy
               </Link>

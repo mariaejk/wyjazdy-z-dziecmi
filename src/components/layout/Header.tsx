@@ -57,10 +57,10 @@ function DropdownNavItem({
       <button
         type="button"
         className={cn(
-          "inline-flex items-center justify-center gap-1 whitespace-nowrap rounded-none px-4 py-2.5 text-base font-medium transition-colors",
+          "inline-flex items-center justify-center gap-1 whitespace-nowrap rounded-none px-4 py-2.5 text-[11px] font-medium uppercase tracking-[0.15em] transition-colors",
           active
-            ? "bg-moss/10 text-moss"
-            : "text-graphite hover:bg-parchment-dark hover:text-moss"
+            ? "text-graphite"
+            : "text-graphite-light hover:text-graphite"
         )}
         aria-expanded={isOpen}
         aria-haspopup="menu"
@@ -91,8 +91,8 @@ function DropdownNavItem({
                   className={cn(
                     "block px-4 py-2 text-sm font-medium transition-colors",
                     childActive
-                      ? "bg-moss/10 text-moss"
-                      : "text-graphite hover:bg-parchment-dark hover:text-moss"
+                      ? "text-graphite"
+                      : "text-graphite-light hover:text-graphite"
                   )}
                   {...(childActive
                     ? { "aria-current": "page" as const }
@@ -128,7 +128,7 @@ export function Header() {
   }, [openDropdown]);
 
   return (
-    <header className="sticky top-0 z-40 border-b border-parchment-dark bg-parchment/95 backdrop-blur-sm">
+    <header className="sticky top-0 z-40 border-b border-graphite/5 bg-parchment/90 backdrop-blur-sm">
       <Container>
         <div className="flex h-16 items-center justify-between sm:h-20">
           {/* Logo */}
@@ -160,10 +160,10 @@ export function Header() {
                       <Link
                         href={item.href}
                         className={cn(
-                          "inline-flex items-center justify-center rounded-none px-4 py-2.5 text-base font-medium uppercase tracking-wide transition-colors",
+                          "inline-flex items-center justify-center rounded-none px-4 py-2.5 text-[11px] font-medium uppercase tracking-[0.15em] transition-colors",
                           active
-                            ? "bg-moss/10 text-moss"
-                            : "text-graphite hover:bg-parchment-dark hover:text-moss",
+                            ? "text-graphite"
+                            : "text-graphite-light hover:text-graphite",
                         )}
                         {...(active ? { "aria-current": "page" as const } : {})}
                       >

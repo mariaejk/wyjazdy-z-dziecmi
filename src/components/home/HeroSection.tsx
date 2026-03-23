@@ -1,93 +1,60 @@
 "use client";
 
 import { motion, useReducedMotion } from "motion/react";
-import { Leaf, Heart, Sparkles } from "lucide-react";
 import { Container } from "@/components/layout/Container";
 import { Button } from "@/components/ui/Button";
 import { HeroSlideshow } from "@/components/home/HeroSlideshow";
-import { cn } from "@/lib/utils";
 
 const benefits = [
-  {
-    icon: Leaf,
-    text: "Miejsca w otoczeniu natury, które przynoszą spokój i ukojenie",
-  },
-  {
-    icon: Heart,
-    text: "Warsztaty rozwojowe budujące więź z dzieckiem",
-  },
-  {
-    icon: Sparkles,
-    text: "Mnóstwo niebanalnych atrakcji, lepszych od niejednej bajki!",
-  },
+  "Miejsca w otoczeniu natury",
+  "Warsztaty budujące więź",
+  "Atrakcje lepsze od bajki",
 ];
-
-function DecorativeElements() {
-  return (
-    <>
-      <div className="absolute top-[10%] right-[8%] h-px w-16 bg-moss/15" />
-      <div className="absolute top-[35%] right-[4%] h-12 w-px bg-moss/10" />
-      <div className="absolute bottom-[15%] right-[12%] h-px w-10 bg-moss/10" />
-      <div className="absolute top-[20%] left-[48%] h-8 w-px bg-moss/8 hidden lg:block" />
-      <div className="absolute bottom-[30%] left-[52%] h-px w-12 bg-moss/8 hidden lg:block" />
-    </>
-  );
-}
 
 export function HeroSection() {
   const prefersReducedMotion = useReducedMotion();
 
   if (prefersReducedMotion) {
     return (
-      <section
-        id="hero"
-        className="relative overflow-hidden bg-parchment"
-      >
-        <DecorativeElements />
-        <Container className="relative z-10 pt-8 pb-12 sm:pt-10 sm:pb-16 lg:pt-12 lg:pb-20">
-          <div className="flex flex-col lg:flex-row lg:items-center lg:gap-16">
-            {/* Image — left */}
-            <div className="relative mx-auto w-full max-w-md lg:mx-0 lg:w-1/2 lg:max-w-none">
-              <div className="relative overflow-hidden rounded-none shadow-lg">
-                <HeroSlideshow />
-              </div>
+      <section id="hero" className="bg-parchment">
+        <Container className="flex flex-col items-center py-16 text-center sm:py-20 lg:py-28">
+          {/* H1 — SEO overline */}
+          <h1 className="mb-6 text-[11px] font-medium uppercase tracking-[0.25em] text-graphite-light">
+            Rodzinne wyjazdy warsztatowe w naturze
+          </h1>
+
+          {/* H2 — emotional, TCW style with italic */}
+          <h2 className="mx-auto max-w-4xl font-heading text-3xl font-light leading-tight text-graphite sm:text-4xl md:text-5xl lg:text-6xl">
+            Ty się regenerujesz. Twoje dziecko się{" "}
+            <em className="italic text-graphite-light">bawi</em>.{" "}
+            Razem tworzycie wspomnienia{" "}
+            <em className="italic text-graphite-light">na całe życie</em>.
+          </h2>
+
+          {/* Large image */}
+          <div className="relative mt-12 w-full max-w-5xl overflow-hidden sm:mt-16">
+            <div className="aspect-[16/9] md:aspect-[21/9]">
+              <HeroSlideshow />
             </div>
+          </div>
 
-            {/* Text — right */}
-            <div className="mt-8 lg:mt-0 lg:w-1/2">
-              {/* H1 = SEO descriptive keyword-rich, styled as overline badge.
-                  H2 = emotional headline for users. Intentional hierarchy inversion for SEO. */}
-              <h1 className="text-sm font-semibold uppercase tracking-wider text-moss">
-                Rodzinne wyjazdy warsztatowe w naturze
-              </h1>
-              <h2 className="mt-3 font-heading text-xl font-bold text-graphite sm:text-2xl lg:text-3xl">
-                Ty się regenerujesz. Twoje dziecko się bawi. Razem tworzycie wspomnienia{" "}
-                <span className="text-terracotta">na całe życie</span>.
-              </h2>
+          {/* Minimal benefits */}
+          <div className="mt-12 flex flex-col gap-6 sm:flex-row sm:gap-12 md:gap-16">
+            {benefits.map((text) => (
+              <p
+                key={text}
+                className="text-[11px] font-medium uppercase tracking-[0.2em] text-graphite-light"
+              >
+                {text}
+              </p>
+            ))}
+          </div>
 
-              <div className="mt-8 grid gap-4 sm:grid-cols-3">
-                {benefits.map((benefit) => (
-                  <div
-                    key={benefit.text}
-                    className="rounded-none border border-graphite/8 bg-parchment-dark/50 p-4"
-                  >
-                    <benefit.icon
-                      className="mb-2 h-5 w-5 text-graphite-light"
-                      strokeWidth={1.5}
-                    />
-                    <p className="text-sm leading-snug text-graphite">
-                      {benefit.text}
-                    </p>
-                  </div>
-                ))}
-              </div>
-
-              <div className="mt-8">
-                <Button href="/wyjazdy" size="lg" className="rounded-none">
-                  Zobacz wyjazdy
-                </Button>
-              </div>
-            </div>
+          {/* CTA */}
+          <div className="mt-12">
+            <Button href="/wyjazdy" size="lg">
+              Zobacz wyjazdy
+            </Button>
           </div>
         </Container>
       </section>
@@ -95,87 +62,71 @@ export function HeroSection() {
   }
 
   return (
-    <section
-      id="hero"
-      className="relative overflow-hidden bg-parchment"
-    >
-      <DecorativeElements />
+    <section id="hero" className="bg-parchment">
+      <Container className="flex flex-col items-center py-16 text-center sm:py-20 lg:py-28">
+        {/* H1 — SEO overline */}
+        <motion.h1
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.1 }}
+          className="mb-6 text-[11px] font-medium uppercase tracking-[0.25em] text-graphite-light"
+        >
+          Rodzinne wyjazdy warsztatowe w naturze
+        </motion.h1>
 
-      <Container className="relative z-10 py-12 sm:py-16 lg:py-20">
-        <div className="flex flex-col lg:flex-row lg:items-center lg:gap-16">
-          {/* Image — left */}
-          <motion.div
-            initial={{ opacity: 0, x: -60 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
-            className="relative mx-auto w-full max-w-md lg:mx-0 lg:w-1/2 lg:max-w-none"
-          >
-            <div className="relative overflow-hidden rounded-none shadow-lg">
-              <HeroSlideshow />
-            </div>
-          </motion.div>
+        {/* H2 — emotional, TCW style with italic */}
+        <motion.h2
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: 0.2 }}
+          className="mx-auto max-w-4xl font-heading text-3xl font-light leading-tight text-graphite sm:text-4xl md:text-5xl lg:text-6xl"
+        >
+          Ty się regenerujesz. Twoje dziecko się{" "}
+          <em className="italic text-graphite-light">bawi</em>.{" "}
+          Razem tworzycie wspomnienia{" "}
+          <em className="italic text-graphite-light">na całe życie</em>.
+        </motion.h2>
 
-          {/* Text — right */}
-          <div className="mt-8 lg:mt-0 lg:w-1/2">
-            {/* H1 — SEO descriptive */}
-            <motion.h1
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.15 }}
-              className="text-sm font-semibold uppercase tracking-wider text-moss"
-            >
-              Rodzinne wyjazdy warsztatowe w naturze
-            </motion.h1>
-
-            {/* H2 — emotional */}
-            <motion.h2
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.2 }}
-              className="mt-3 font-heading text-xl font-bold text-graphite sm:text-2xl lg:text-3xl"
-            >
-              Ty się regenerujesz. Twoje dziecko się bawi. Razem tworzycie wspomnienia{" "}
-              <span className="text-terracotta">na całe życie</span>.
-            </motion.h2>
-
-            {/* Benefit cards */}
-            <div className="mt-8 grid gap-4 sm:grid-cols-3">
-              {benefits.map((benefit, index) => (
-                <motion.div
-                  key={benefit.text}
-                  initial={{ opacity: 0, y: 24 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{
-                    duration: 0.5,
-                    delay: 0.5 + index * 0.12,
-                    ease: "easeOut",
-                  }}
-                  className="rounded-none border border-graphite/8 bg-parchment-dark/50 p-4"
-                >
-                  <benefit.icon
-                    className="mb-2 h-5 w-5 text-graphite-light"
-                    strokeWidth={1.5}
-                  />
-                  <p className="text-sm leading-snug text-graphite">
-                    {benefit.text}
-                  </p>
-                </motion.div>
-              ))}
-            </div>
-
-            {/* CTA */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.85 }}
-              className="mt-8"
-            >
-              <Button href="/wyjazdy" size="lg" className="rounded-none">
-                Zobacz wyjazdy
-              </Button>
-            </motion.div>
+        {/* Large image below */}
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.4 }}
+          className="relative mt-12 w-full max-w-5xl overflow-hidden sm:mt-16"
+        >
+          <div className="aspect-[16/9] md:aspect-[21/9]">
+            <HeroSlideshow />
           </div>
-        </div>
+        </motion.div>
+
+        {/* Minimal benefits */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.6, delay: 0.7 }}
+          className="mt-12 flex flex-col gap-6 sm:flex-row sm:gap-12 md:gap-16"
+        >
+          {benefits.map((text) => (
+            <p
+              key={text}
+              className="text-[11px] font-medium uppercase tracking-[0.2em] text-graphite-light"
+            >
+              {text}
+            </p>
+          ))}
+        </motion.div>
+
+        {/* CTA */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.85 }}
+          className="mt-12"
+        >
+          <Button href="/wyjazdy" size="lg">
+            Zobacz wyjazdy
+          </Button>
+        </motion.div>
       </Container>
     </section>
   );

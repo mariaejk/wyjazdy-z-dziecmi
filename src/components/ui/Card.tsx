@@ -51,7 +51,7 @@ export function Card({
         href={href}
         className={cn(
           "block rounded-none focus-visible:outline-none",
-          "focus-visible:ring-2 focus-visible:ring-terracotta focus-visible:ring-offset-2",
+          "focus-visible:ring-2 focus-visible:ring-graphite focus-visible:ring-offset-2",
         )}
       >
         {content}

@@ -17,7 +17,7 @@ Landing page / sales funnel for "Wyjazdy z Dziećmi" — a brand organizing fami
 - **Lucide React 0.575** — line icons (strokeWidth 1.5)
 - **clsx 2.1 + tailwind-merge 3.5** — className utility `cn()`
 - **Vercel** — deployment
-- Fonts: **Playfair Display** (headings) + **Inter** (body) + **Lora** (logo main text) + **Caveat** (logo script text), self-hosted via `next/font/google` (auto self-hosting, RODO OK)
+- Fonts: **Cormorant Garamond** (headings, font-light + italic accents) + **Inter** (body) + **Lora** (logo main text) + **Caveat** (logo script text only), self-hosted via `next/font/google` (auto self-hosting, RODO OK)
 
 ## Critical Constraints
 
@@ -31,12 +31,13 @@ Landing page / sales funnel for "Wyjazdy z Dziećmi" — a brand organizing fami
 ## Design System: "Fresh Forest" (Leśna Zieleń + Szałwia)
 
 ```
-Background:    #F7F5F0 (kremowa biel)
-Alt sections:  #EBE8E0 (jasny len)
-CTA Primary:   #2D6A4F (leśna zieleń) — hover: #1B4332
-Secondary:     #52796F (szałwia/teal) — hover: #6B9080
-Text:          #1A1A1A (głęboka czerń)
-Text light:    #4A5568 (neutralny szary)
+Background:    #FAF9F6 (ciepły krem TCW)
+Alt sections:  #F2EFE9 (piasek TCW)
+CTA Primary:   #222222 (charcoal) — hover: #000000
+Accent:        #6C7A63 (oliwka/moss) — hover links, focus rings
+Text:          #222222 (charcoal)
+Text light:    #555555 (slate)
+Taupe:         #8B857B (linie, ramki, kategoria dla-doroslych)
 Accents:       #DDB74A (mustard), #95D5B2 (miętowa zieleń)
 ```
 
@@ -288,3 +289,19 @@ All copy comes from `docs/tresc_na_strone.md` and `docs/TODO POPRAWIC landing pa
 - **Neutral benefit cards**: Remove per-card `bgClass`/`iconClass`, use uniform `bg-parchment-dark/50` + `text-graphite-light` for clean, non-distracting hero.
 - **Rectangular design system**: `rounded-none` everywhere. Exception: `Badge` uses `rounded-sm` — fully sharp corners look wrong on tiny elements. No other exceptions.
 - **Color variable names preserved**: `--color-terracotta` now holds green `#2D6A4F`. Renaming would break 100+ Tailwind class usages. The semantic disconnect (name vs color) is acceptable — all existing `bg-terracotta`, `text-terracotta` classes automatically pick up the new green.
+
+## Redesign Typografia + Kolory 22.03.2026 Lessons Learned
+
+- **Cormorant Garamond replaces Playfair Display**: Lighter, more elegant serif for magazine feel. Weights: 300 (light), 400, 600, 700. CSS variable: `--font-cormorant` (was `--font-playfair`). `--font-heading` now resolves to Cormorant.
+
+## The Common Wanderer Style 23.03.2026 Lessons Learned
+
+- **TCW palette — charcoal + cream**: CTA changed from green to charcoal (#222222). Background #FAF9F6 (warm cream), alt #F2EFE9 (sand). Moss olive #6C7A63 for subtle accents. Taupe #8B857B for lines/borders.
+- **font-light + italic replaces Caveat**: Headings use `font-light` (300 weight) with `<em className="italic text-graphite-light">` for accent words. No more handwriting font in headings. Caveat only in Logo.
+- **SectionHeading redesigned**: `accentText` → `italicText` (italic em), new `overline` prop for small uppercase text above heading. Pattern: `<SectionHeading overline="Odkryj nasze" title="Najczęściej wybierane" italicText="warsztaty" />`.
+- **Hero centered layout**: Changed from 50/50 (text-right, image-left) to centered editorial: overline → large heading → full-width image below → minimal text benefits → CTA. No benefit cards with borders.
+- **CategoryCards — text under photo**: Removed gradient overlay on images. Text placed below photo in centered layout. Images changed from 4:3 to 3:4 (vertical/portrait). Labels in italic font-light.
+- **Button TCW style**: Primary = charcoal bg, Secondary = charcoal outline. All buttons: `text-[11px] uppercase tracking-[0.2em]`. Ghost = underline style. No colored (green) buttons.
+- **Navigation minimal**: Links `text-[11px] uppercase tracking-[0.15em]`. Active state: `text-graphite` (no colored bg). Hover: `text-graphite-light → text-graphite`. Header border: `border-graphite/5`.
+- **Footer editorial**: Centered italic heading, section labels as `text-[10px] uppercase tracking-[0.25em]`. More vertical padding (py-16 sm:py-20 lg:py-24). Hover: `text-graphite` instead of `text-moss`.
+- **Category `dla-doroslych`**: Changed from `bg-forest` (now charcoal) to `bg-taupe` for calendar/badge distinction.

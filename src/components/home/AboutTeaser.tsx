@@ -9,15 +9,15 @@ export function AboutTeaser() {
   return (
     <SectionWrapper variant="alternate">
       <Container>
-        <div className="mx-auto flex max-w-5xl flex-col items-center gap-8 lg:flex-row lg:items-start lg:gap-12">
-          {/* Large photo */}
-          <ScrollAnimation variant="fadeLeft" className="shrink-0">
-            <div className="relative h-80 w-64 overflow-hidden rounded-none border border-graphite/10 shadow-sm sm:h-[420px] sm:w-80 lg:h-[500px] lg:w-96">
+        <div className="mx-auto flex max-w-5xl flex-col items-center gap-12 md:flex-row md:gap-20 lg:gap-24">
+          {/* Portrait photo — 3:4 aspect */}
+          <ScrollAnimation variant="fadeLeft" className="w-full shrink-0 md:w-5/12">
+            <div className="relative aspect-[3/4] w-full overflow-hidden rounded-none">
               <Image
                 src="/images/marysia.png"
                 alt="Maria Kordalewska"
                 fill
-                sizes="(max-width: 640px) 256px, (max-width: 1024px) 320px, 384px"
+                sizes="(max-width: 768px) 100vw, 40vw"
                 className="object-cover"
               />
             </div>
@@ -25,32 +25,29 @@ export function AboutTeaser() {
 
           {/* Text */}
           <ScrollAnimation variant="fadeRight" delay={0.15} className="flex-1">
-            <h2 className="font-heading text-2xl font-bold text-graphite sm:text-3xl">
-              Poznajmy się!
-            </h2>
-            <p className="mt-1 text-lg font-medium text-moss">
-              Nazywam się Maria Kordalewska
+            <p className="mb-4 text-[11px] font-medium uppercase tracking-[0.25em] text-graphite-light">
+              Poznajmy się
             </p>
+            <h2 className="font-heading text-3xl font-light text-graphite sm:text-4xl md:text-5xl">
+              Nazywam się{" "}
+              <em className="italic text-graphite-light">Maria</em>
+            </h2>
 
-            <p className="mt-4 text-lg leading-relaxed text-graphite-light">
+            <p className="mt-6 text-[15px] font-light leading-[1.8] text-graphite-light">
               Jestem mamą Laury, nauczycielką jogi, pilotką wycieczek
               i wieloletnią organizatorką eventów z tytułem doktora. Od lat
               łączę świat profesjonalnej komunikacji z miłością do natury.
             </p>
 
-            <p className="mt-4 text-base leading-relaxed text-graphite-light">
+            <p className="mt-4 text-[15px] font-light leading-[1.8] text-graphite-light">
               Projekt &bdquo;Wyjazdowe warsztaty z Dziećmi&rdquo; powstał
               z mojej osobistej potrzeby ucieczki od przebodźcowania. Moje
               autorskie wyjazdy to idealny balans: z jednej strony tworzymy
               przestrzeń na beztroską bliskość i budowanie wspólnych wspomnień
               z dzieckiem, a z drugiej — dajemy Ci święte prawo do odpoczynku.
-              Kiedy Twoje dziecko świetnie się bawi na mądrych warsztatach pod
-              okiem naszych specjalistów, Ty w końcu masz czas tylko dla siebie.
-              Na ciepłą kawę w ciszy, spacer, albo po prostu nicnierobienie —
-              bez cienia poczucia winy.
             </p>
 
-            <div className="mt-8">
+            <div className="mt-10">
               <Button href={ROUTES.about} variant="secondary">
                 Poznaj mnie bliżej
               </Button>

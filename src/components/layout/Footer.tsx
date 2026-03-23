@@ -9,19 +9,24 @@ import { CONTACT, SOCIAL_LINKS, SITE_CONFIG } from "@/lib/constants";
 
 export function Footer() {
   return (
-    <footer className="border-t border-parchment-dark bg-parchment-dark">
-      <Container className="py-12">
+    <footer className="border-t border-graphite/5 bg-parchment-dark">
+      <Container className="py-16 sm:py-20 lg:py-24">
+        {/* Centered editorial heading */}
+        <h2 className="mb-12 text-center font-heading text-3xl font-light italic text-graphite sm:text-4xl">
+          {SITE_CONFIG.name}
+        </h2>
+
         <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
           {/* Contact */}
           <div>
-            <h3 className="text-sm font-semibold uppercase tracking-wider text-graphite">
+            <h3 className="text-[10px] font-medium uppercase tracking-[0.25em] text-graphite-light">
               Kontakt
             </h3>
-            <ul className="mt-3 flex flex-col gap-2">
+            <ul className="mt-4 flex flex-col gap-2.5">
               <li>
                 <a
                   href={`mailto:${CONTACT.email}`}
-                  className="inline-flex items-center gap-2 text-sm text-graphite-light transition-colors hover:text-moss"
+                  className="inline-flex items-center gap-2 text-sm text-graphite-light transition-colors hover:text-graphite"
                 >
                   <Mail className="h-4 w-4" strokeWidth={1.5} />
                   {CONTACT.email}
@@ -30,7 +35,7 @@ export function Footer() {
               <li>
                 <a
                   href={`tel:${CONTACT.phone}`}
-                  className="inline-flex items-center gap-2 text-sm text-graphite-light transition-colors hover:text-moss"
+                  className="inline-flex items-center gap-2 text-sm text-graphite-light transition-colors hover:text-graphite"
                 >
                   <Phone className="h-4 w-4" strokeWidth={1.5} />
                   {CONTACT.phoneDisplay}
@@ -41,15 +46,15 @@ export function Footer() {
 
           {/* Social */}
           <div>
-            <h3 className="text-sm font-semibold uppercase tracking-wider text-graphite">
+            <h3 className="text-[10px] font-medium uppercase tracking-[0.25em] text-graphite-light">
               Znajdź nas
             </h3>
-            <ul className="mt-3 flex flex-col gap-2">
+            <ul className="mt-4 flex flex-col gap-2.5">
               <li>
                 <SocialLink
                   href={SOCIAL_LINKS.facebook}
                   platform="Facebook"
-                  className="inline-flex items-center gap-2 text-sm text-graphite-light transition-colors hover:text-moss"
+                  className="inline-flex items-center gap-2 text-sm text-graphite-light transition-colors hover:text-graphite"
                 >
                   <Facebook className="h-4 w-4" strokeWidth={1.5} />
                   Facebook
@@ -59,7 +64,7 @@ export function Footer() {
                 <SocialLink
                   href={SOCIAL_LINKS.instagram}
                   platform="Instagram"
-                  className="inline-flex items-center gap-2 text-sm text-graphite-light transition-colors hover:text-moss"
+                  className="inline-flex items-center gap-2 text-sm text-graphite-light transition-colors hover:text-graphite"
                 >
                   <Instagram className="h-4 w-4" strokeWidth={1.5} />
                   Instagram
@@ -68,17 +73,17 @@ export function Footer() {
             </ul>
           </div>
 
-          {/* Legal + Newsletter placeholder */}
+          {/* Legal */}
           <div>
-            <h3 className="text-sm font-semibold uppercase tracking-wider text-graphite">
+            <h3 className="text-[10px] font-medium uppercase tracking-[0.25em] text-graphite-light">
               Informacje
             </h3>
-            <ul className="mt-3 flex flex-col gap-2">
+            <ul className="mt-4 flex flex-col gap-2.5">
               {footerLegalLinks.map((link) => (
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="text-sm text-graphite-light transition-colors hover:text-moss"
+                    className="text-sm text-graphite-light transition-colors hover:text-graphite"
                   >
                     {link.label}
                   </Link>
@@ -95,8 +100,8 @@ export function Footer() {
         <NewsletterForm />
 
         {/* Copyright */}
-        <div className="mt-8 border-t border-parchment pt-6 text-center">
-          <p className="text-xs text-graphite-light">
+        <div className="mt-10 border-t border-graphite/5 pt-8 text-center">
+          <p className="text-[10px] uppercase tracking-[0.2em] text-graphite-light">
             &copy; {new Date().getFullYear()} {SITE_CONFIG.name}. Wszelkie prawa
             zastrzeżone.
           </p>

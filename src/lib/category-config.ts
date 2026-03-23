@@ -37,10 +37,10 @@ export const CATEGORY_CONFIG: Record<CategoryKey, CategoryConfig> = {
   },
   "dla-doroslych": {
     label: "Dla dorosłych",
-    calendarBg: "bg-terracotta text-white",
-    legendBg: "bg-terracotta",
-    badgeBg: "bg-terracotta/15",
-    badgeText: "text-terracotta-dark",
+    calendarBg: "bg-taupe text-white",
+    legendBg: "bg-taupe",
+    badgeBg: "bg-taupe/15",
+    badgeText: "text-taupe",
   },
 };
 

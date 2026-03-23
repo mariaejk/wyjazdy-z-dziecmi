@@ -1,7 +1,8 @@
 hej, klientka nie zadowolona kolorystyką landing page oraz trochę układem. Jej się nie podoba dominujący pomarańczowy/terakotowy kolor. To wygląda jak 
 kolor jesieni, a powinnie kojazyc się z weselem, zemia, przyrodą, bo to wyjazd z dziećmi.
 Chciałaby dodać:
-- zieleni, swierzość, prostota, natura
+- zieleni, swierzość, prostota, natura, piergament
+- styl szczeki drukowany-pisany, podwojne
 - żeby wszystkie przyciski oraz zdiecia były prostokątne
 - Styl magazynu na grafikach (layout magazynowy) to specyficzny sposób projektowania wizualnego, który charakteryzuje się wysoką estetyką, czytelnością oraz dynamicznym układem treści. Jego celem jest przyciągnięcie uwagi czytelnika i ułatwienie odbioru treści. 
 www.shablon.pl
@@ -12,7 +13,7 @@ Wykorzystanie przestrzeni (White Space): Duża ilość wolnej przestrzeni (tzw. 
 Wysoka jakość wizualizacji: Stosowanie wysokiej jakości zdjęć, ilustracji, infografik oraz grafik wektorowych.
 Spójność stylistyczna: Używanie ograniczonej palety kolorów i maksymalnie dwóch-trzech krojów pisma (fontów) w całym projekcie.
 Elementy scrapbookingu: Nowoczesne magazyny często wykorzystują styl scrapbook, czyli kolaże, wycinki, notatki, taśmy klejące, co nadaje grafice luźny, artystyczny charakter. 
-najbardziej klience podoba ta strona https://wielkizachwyt.pl/ i code znajduje się tutaj @docs/poprawki/poprawki_22.03_1/Wielki_Zachwyt_firecrawl
-oraz https://paniodrelaksu.pl/ i code tutaj @docs/poprawki/poprawki_22.03_1/Pani_od_relaksu-firecrawl
+najbardziej klience podoba ta strona https://www.thecommonwanderer.com/ , code tej strony @docs/poparwki/poprawki_22.03_1/commonwonderer_firecrawl.md
+oraz tez te dwa: https://wielkizachwyt.pl/ i code znajduje się tutaj @docs/poparwki/poprawki_22.03_1/Wielki_Zachwyt_firecrawl.md
+oraz https://paniodrelaksu.pl/ i code tutaj @docs/poparwki/poprawki_22.03_1/Pani_od_relaksu-firecrawl.md
 
-zaproponuj mi proszę rozwiązanie i zaproponuj.

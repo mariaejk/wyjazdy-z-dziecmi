@@ -1,5 +1,7 @@
 "use client";
 
+import { Button } from "@/components/ui/Button";
+
 export default function Error({
   reset,
 }: {
@@ -9,19 +11,15 @@ export default function Error({
   return (
     <div className="flex min-h-[50vh] items-center justify-center px-4">
       <div className="flex max-w-md flex-col items-center gap-6 text-center">
-        <h2 className="font-heading text-2xl font-bold text-graphite">
+        <h2 className="font-heading text-2xl font-light text-graphite">
           Coś poszło nie tak
         </h2>
         <p className="text-graphite-light">
           Przepraszamy, wystąpił nieoczekiwany błąd. Spróbuj odświeżyć stronę.
         </p>
-        <button
-          type="button"
-          onClick={reset}
-          className="rounded-none bg-terracotta px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-terracotta-dark"
-        >
+        <Button onClick={reset}>
           Spróbuj ponownie
-        </button>
+        </Button>
       </div>
     </div>
   );
