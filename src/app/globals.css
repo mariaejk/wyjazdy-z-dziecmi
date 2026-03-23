@@ -1,27 +1,27 @@
 @import "tailwindcss";
 
 @theme {
-  /* Colors — TCW Warm Earth (The Common Wanderer style) */
-  --color-parchment: #FDFCFA;
-  --color-parchment-dark: #F5F2ED;
-  --color-moss: #7A6B54;
-  --color-moss-light: #9A8B74;
-  --color-graphite: #2C2C2C;
-  --color-graphite-light: #6B6B6B;
+  /* Colors — TCW Earth Tones (exact from thecommonwanderer.com) */
+  --color-parchment: #f5ede3;
+  --color-parchment-dark: #e2cfb6;
+  --color-moss: #364531;
+  --color-moss-light: #4a5d42;
+  --color-graphite: #364531;
+  --color-graphite-light: #5e6e56;
   --color-white: #FFFFFF;
-  --color-terracotta: #7A6B54;
-  --color-terracotta-dark: #5E503C;
+  --color-terracotta: #b69677;
+  --color-terracotta-dark: #9a7d62;
   --color-mustard: #C4A94D;
-  --color-coral: #D4CFC7;
+  --color-coral: #e2cfb6;
 
-  /* Colors — Warm earth tones */
-  --color-sage: #8B857B;
-  --color-sage-dark: #6B6560;
-  --color-peach: #C4B9A8;
-  --color-peach-light: #DDD5C8;
-  --color-sky: #B8B0A4;
-  --color-lavender: #A89E94;
-  --color-taupe: #8B857B;
+  /* Colors — Earth tone variants */
+  --color-sage: #4a5d42;
+  --color-sage-dark: #364531;
+  --color-peach: #d4bfa8;
+  --color-peach-light: #e2cfb6;
+  --color-sky: #c8bfb2;
+  --color-lavender: #b0a898;
+  --color-taupe: #b69677;
 
   /* Typography */
   --font-heading: var(--font-cormorant);
