@@ -37,11 +37,11 @@ type ButtonProps = ButtonAsLink | ButtonAsButton;
 
 const variantStyles: Record<ButtonVariant, string> = {
   primary:
-    "bg-graphite text-white hover:bg-black focus-visible:ring-graphite",
+    "bg-terracotta text-white hover:bg-terracotta-dark focus-visible:ring-terracotta",
   secondary:
-    "border border-graphite text-graphite hover:bg-graphite hover:text-white focus-visible:ring-graphite",
+    "border border-terracotta text-terracotta hover:bg-terracotta hover:text-white focus-visible:ring-terracotta",
   ghost:
-    "text-graphite-light underline underline-offset-4 decoration-graphite-light/40 hover:text-graphite hover:decoration-graphite/60 focus-visible:ring-graphite",
+    "text-moss underline underline-offset-4 decoration-moss/40 hover:text-terracotta hover:decoration-terracotta/60 focus-visible:ring-terracotta",
 };
 
 const sizeStyles: Record<ButtonSize, string> = {
