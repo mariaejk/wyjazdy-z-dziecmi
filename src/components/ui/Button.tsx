@@ -39,15 +39,15 @@ const variantStyles: Record<ButtonVariant, string> = {
   primary:
     "bg-terracotta text-white hover:bg-terracotta-dark focus-visible:ring-terracotta",
   secondary:
-    "border-2 border-moss text-moss hover:bg-moss hover:text-white focus-visible:ring-moss",
+    "border border-terracotta text-terracotta hover:bg-terracotta hover:text-white focus-visible:ring-terracotta",
   ghost:
-    "text-moss hover:bg-moss/10 focus-visible:ring-moss",
+    "text-moss underline underline-offset-4 decoration-moss/40 hover:text-terracotta hover:decoration-terracotta/60 focus-visible:ring-terracotta",
 };
 
 const sizeStyles: Record<ButtonSize, string> = {
-  sm: "px-4 py-2 text-sm gap-1.5",
-  md: "px-6 py-3 text-base gap-2",
-  lg: "px-8 py-4 text-lg gap-2.5",
+  sm: "px-5 py-2.5 text-[11px] uppercase tracking-[0.2em] gap-1.5",
+  md: "px-7 py-3 text-[11px] uppercase tracking-[0.2em] gap-2",
+  lg: "px-9 py-4 text-[11px] uppercase tracking-[0.2em] gap-2.5",
 };
 
 export function Button({

@@ -9,12 +9,23 @@ import { CONTACT, SOCIAL_LINKS, SITE_CONFIG } from "@/lib/constants";
 
 export function Footer() {
   return (
-    <footer className="border-t border-parchment-dark bg-parchment-dark">
-      <Container className="py-12">
+    <footer className="border-t border-graphite/10 bg-parchment">
+      <Container className="py-16 sm:py-20">
+        {/* Brand tagline */}
+        <div className="mb-12 text-center">
+          <h2 className="font-heading text-3xl font-light italic text-graphite sm:text-4xl">
+            Warsztaty wyjazdowe z dziećmi.
+          </h2>
+          <p className="mx-auto mt-4 max-w-xl text-sm leading-relaxed text-graphite-light">
+            Wyjątkowe wyjazdy warsztatowe dla rodzin szukających bliskości, natury i regeneracji.
+            Prowadzone z pasją i troską o każdego uczestnika.
+          </p>
+        </div>
+
         <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
           {/* Contact */}
           <div>
-            <h3 className="text-sm font-semibold uppercase tracking-wider text-graphite">
+            <h3 className="font-heading text-lg font-light italic text-graphite">
               Kontakt
             </h3>
             <ul className="mt-3 flex flex-col gap-2">
@@ -41,7 +52,7 @@ export function Footer() {
 
           {/* Social */}
           <div>
-            <h3 className="text-sm font-semibold uppercase tracking-wider text-graphite">
+            <h3 className="font-heading text-lg font-light italic text-graphite">
               Znajdź nas
             </h3>
             <ul className="mt-3 flex flex-col gap-2">
@@ -70,7 +81,7 @@ export function Footer() {
 
           {/* Legal + Newsletter placeholder */}
           <div>
-            <h3 className="text-sm font-semibold uppercase tracking-wider text-graphite">
+            <h3 className="font-heading text-lg font-light italic text-graphite">
               Informacje
             </h3>
             <ul className="mt-3 flex flex-col gap-2">

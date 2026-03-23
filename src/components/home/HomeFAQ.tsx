@@ -57,7 +57,8 @@ export function HomeFAQ() {
       <Container>
         <ScrollAnimation variant="fadeUp">
           <SectionHeading
-            title="Najczęściej zadawane pytania"
+            title="Najczęściej zadawane"
+            italicText="pytania"
           />
         </ScrollAnimation>
 

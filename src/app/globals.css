@@ -1,18 +1,19 @@
 @import "tailwindcss";
 
 @theme {
-  /* Colors — Fresh Forest Green */
-  --color-parchment: #F7F5F0;
-  --color-parchment-dark: #EBE8E0;
-  --color-moss: #52796F;
-  --color-moss-light: #6B9080;
-  --color-graphite: #1A1A1A;
-  --color-graphite-light: #4A5568;
+  /* Colors — TCW Photography-First */
+  --color-parchment: #FAF9F6;
+  --color-parchment-dark: #F2EFE9;
+  --color-moss: #6C7A63;
+  --color-moss-light: #8A9680;
+  --color-graphite: #222222;
+  --color-graphite-light: #555555;
   --color-white: #FFFFFF;
   --color-terracotta: #2D6A4F;
   --color-terracotta-dark: #1B4332;
   --color-mustard: #DDB74A;
   --color-coral: #95D5B2;
+  --color-taupe: #8B857B;
 
   /* Colors — Bright & Playful */
   --color-sage: #7BA187;
@@ -23,7 +24,7 @@
   --color-lavender: #C4B5D4;
 
   /* Typography */
-  --font-heading: var(--font-playfair);
+  --font-heading: var(--font-cormorant);
   --font-body: var(--font-inter);
   --font-lora: var(--font-lora);
   --font-caveat: var(--font-caveat);
