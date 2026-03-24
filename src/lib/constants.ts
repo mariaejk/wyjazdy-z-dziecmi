@@ -29,7 +29,7 @@ export const ROUTES = {
   home: "/",
   about: "/o-nas",
   motherDaughter: "/matka-z-corka",
-  familyTrips: "/wyjazd-z-dziecmi",
+  familyTrips: "/warsztaty-z-dziecmi",
   singleParents: "/single-parents",
   adultOnly: "/dla-doroslych",
   trips: "/wyjazdy",

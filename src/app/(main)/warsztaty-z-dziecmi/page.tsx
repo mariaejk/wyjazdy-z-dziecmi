@@ -15,9 +15,9 @@ import { getBreadcrumbSchema } from "@/lib/structured-data";
 export const revalidate = 3600;
 
 export const metadata: Metadata = {
-  title: "Wyjazd z dziećmi",
+  title: "Warsztaty z dziećmi",
   description:
-    "Wyjazdy rodzinne z dziećmi. Odpoczynek, wsparcie i czas pełen bliskości w otoczeniu natury — dla mam, babć, cioć i koleżanek.",
+    "Warsztaty rodzinne z dziećmi. Odpoczynek, wsparcie i czas pełen bliskości w otoczeniu natury — dla mam, babć, cioć i koleżanek.",
 };
 
 const benefits = [
@@ -25,7 +25,7 @@ const benefits = [
     icon: Heart,
     title: "Czas tylko dla Was",
     description:
-      "Wyjazdy zaprojektowane tak, abyś mógł/mogła cieszyć się czasem z dzieckiem bez pośpiechu i codziennych obowiązków.",
+      "Warsztaty zaprojektowane tak, abyś mógł/mogła cieszyć się czasem z dzieckiem bez pośpiechu i codziennych obowiązków.",
   },
   {
     icon: Shield,
@@ -66,20 +66,20 @@ export default async function FamilyTripsPage() {
     <>
       <StructuredData data={getBreadcrumbSchema([
         { name: "Strona główna", url: SITE_CONFIG.url },
-        { name: "Wyjazd z dziećmi", url: `${SITE_CONFIG.url}/wyjazd-z-dziecmi` },
+        { name: "Warsztaty z dziećmi", url: `${SITE_CONFIG.url}/warsztaty-z-dziecmi` },
       ])} />
 
-      {/* Hero */}
-      <SectionWrapper>
+      {/* Hero — reduced spacing */}
+      <SectionWrapper className="py-10 sm:py-12">
         <Container>
           <ScrollAnimation variant="fadeUp">
             <div className="mx-auto max-w-3xl text-center">
-              <h1 className="font-heading text-4xl font-bold text-graphite sm:text-5xl lg:text-6xl">
-                Wyjazd z dziećmi
+              <h1 className="font-heading text-4xl font-light text-graphite sm:text-5xl lg:text-6xl">
+                <span className="relative inline-block">Warsztaty z dziećmi<svg className="mx-auto mt-1 h-[6px] w-[90%]" viewBox="0 0 200 8" fill="none" preserveAspectRatio="none" aria-hidden="true"><path d="M2 5.5C30 2 50 6.5 80 3.5C110 0.5 130 7 160 4C175 2.5 190 5 198 3.5" stroke="currentColor" className="text-graphite-light/40" strokeWidth="1.5" strokeLinecap="round" /></svg></span>
               </h1>
-              <p className="mt-6 text-lg leading-relaxed text-graphite-light sm:text-xl">
+              <p className="mt-4 text-lg leading-relaxed text-graphite-light sm:text-xl">
                 Nie musisz być samodzielnym rodzicem, żeby potrzebować chwili
-                wytchnienia. Nasze wyjazdy to bezpieczna przestrzeń dla każdego,
+                wytchnienia. Nasze warsztaty to bezpieczna przestrzeń dla każdego,
                 kto chce spędzić wyjątkowy czas z dzieckiem — mamy, babcie,
                 ciocie, koleżanki. Odpoczywaj, oddychaj i po prostu bądź.
               </p>
@@ -88,13 +88,15 @@ export default async function FamilyTripsPage() {
         </Container>
       </SectionWrapper>
 
-      {/* Benefits */}
-      <SectionWrapper variant="alternate">
+      {/* Benefits — reduced spacing */}
+      <SectionWrapper variant="alternate" className="py-10 sm:py-14">
         <Container>
           <ScrollAnimation variant="fadeUp">
             <SectionHeading
-              title="Dlaczego warto?"
-              subtitle="Wyjazdy dopasowane do potrzeb rodziców i opiekunów"
+              title="Dlaczego"
+              italicText="warto?"
+              underline
+              subtitle="Warsztaty dopasowane do potrzeb rodziców i opiekunów"
             />
           </ScrollAnimation>
 
@@ -105,8 +107,9 @@ export default async function FamilyTripsPage() {
                   key={benefit.title}
                   variant="fadeUp"
                   delay={index * 0.1}
+                  className="h-full"
                 >
-                  <div className="rounded-none border border-graphite/10 bg-white p-6">
+                  <div className="flex h-full flex-col rounded-none border border-graphite/10 bg-white p-6">
                     <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-none bg-moss/10">
                       <benefit.icon
                         className="h-6 w-6 text-moss"
@@ -116,7 +119,7 @@ export default async function FamilyTripsPage() {
                     <h3 className="font-heading text-lg font-bold text-graphite">
                       {benefit.title}
                     </h3>
-                    <p className="mt-2 text-sm leading-relaxed text-graphite-light">
+                    <p className="mt-2 flex-1 text-sm leading-relaxed text-graphite-light">
                       {benefit.description}
                     </p>
                   </div>
@@ -127,13 +130,14 @@ export default async function FamilyTripsPage() {
         </Container>
       </SectionWrapper>
 
-      {/* Experience Description */}
-      <SectionWrapper>
+      {/* Experience Description — reduced spacing */}
+      <SectionWrapper className="py-10 sm:py-14">
         <Container>
           <ScrollAnimation variant="fadeUp">
             <div className="mx-auto max-w-3xl text-center">
-              <h2 className="font-heading text-3xl font-bold text-graphite sm:text-4xl">
-                Jak wygląda wyjazd?
+              <h2 className="font-heading text-3xl font-light text-graphite sm:text-4xl">
+                Jak wygląda{" "}
+                <span className="relative inline-block"><em className="italic text-graphite-light">warsztat?</em><svg className="mx-auto mt-0.5 h-[5px] w-[90%]" viewBox="0 0 200 8" fill="none" preserveAspectRatio="none" aria-hidden="true"><path d="M2 5.5C30 2 50 6.5 80 3.5C110 0.5 130 7 160 4C175 2.5 190 5 198 3.5" stroke="currentColor" className="text-graphite-light/40" strokeWidth="1.5" strokeLinecap="round" /></svg></span>
               </h2>
               <div className="mt-6 space-y-4 text-lg leading-relaxed text-graphite-light">
                 <p>
@@ -153,49 +157,32 @@ export default async function FamilyTripsPage() {
 
       {/* Trips or Join Us */}
       {trips.length > 0 ? (
-        <>
-          <SectionWrapper variant="alternate">
-            <Container>
-              <SectionHeading
-                title="Nadchodzące warsztaty"
-                subtitle="Wybierz termin i dołącz do nas"
-              />
-              <div className="mx-auto max-w-2xl">
-                <div className="grid gap-6">
-                  {trips.map((trip, index) => (
-                    <ScrollAnimation key={trip.slug} delay={index * 0.15} className="h-full">
-                      <TripCard trip={trip} />
-                    </ScrollAnimation>
-                  ))}
-                </div>
+        <SectionWrapper variant="alternate" className="py-10 sm:py-14">
+          <Container>
+            <SectionHeading
+              title="Nadchodzące"
+              italicText="warsztaty"
+              underline
+              subtitle="Wybierz termin i dołącz do nas"
+            />
+            <div className="mx-auto max-w-2xl">
+              <div className="grid gap-6">
+                {trips.map((trip, index) => (
+                  <ScrollAnimation key={trip.slug} delay={index * 0.15} className="h-full">
+                    <TripCard trip={trip} />
+                  </ScrollAnimation>
+                ))}
               </div>
-            </Container>
-          </SectionWrapper>
-
-          <SectionWrapper>
-            <Container>
-              <ScrollAnimation variant="fadeUp">
-                <div className="mx-auto max-w-2xl text-center">
-                  <h2 className="font-heading text-3xl font-bold text-graphite sm:text-4xl">
-                    Dołącz do nas
-                  </h2>
-                  <p className="mt-4 text-lg text-graphite-light">
-                    Sprawdź dostępne terminy lub napisz do nas — pomożemy
-                    znaleźć wyjazd idealny dla Ciebie i Twojego dziecka.
-                  </p>
-                  <div className="mt-8 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
-                    <Button href={ROUTES.trips}>
-                      Zobacz wszystkie warsztaty
-                    </Button>
-                    <Button href={ROUTES.contact} variant="secondary">
-                      Napisz do nas
-                    </Button>
-                  </div>
-                </div>
+            </div>
+            <div className="mt-10 text-center">
+              <ScrollAnimation variant="fadeUp" delay={0.3}>
+                <Button href={ROUTES.trips} variant="secondary">
+                  Zobacz wszystkie warsztaty
+                </Button>
               </ScrollAnimation>
-            </Container>
-          </SectionWrapper>
-        </>
+            </div>
+          </Container>
+        </SectionWrapper>
       ) : (
         <JoinUsNewsletter />
       )}

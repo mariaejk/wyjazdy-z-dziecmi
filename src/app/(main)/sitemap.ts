@@ -11,7 +11,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { url: `${baseUrl}/wyjazdy`, changeFrequency: "weekly", priority: 0.9 },
     { url: `${baseUrl}/o-nas`, changeFrequency: "monthly", priority: 0.7 },
     { url: `${baseUrl}/matka-z-corka`, changeFrequency: "monthly", priority: 0.7 },
-    { url: `${baseUrl}/wyjazd-z-dziecmi`, changeFrequency: "monthly", priority: 0.7 },
+    { url: `${baseUrl}/warsztaty-z-dziecmi`, changeFrequency: "monthly", priority: 0.7 },
     { url: `${baseUrl}/galeria`, changeFrequency: "monthly", priority: 0.6 },
     { url: `${baseUrl}/blog`, changeFrequency: "monthly", priority: 0.6 },
     { url: `${baseUrl}/kontakt`, changeFrequency: "monthly", priority: 0.7 },

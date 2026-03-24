@@ -36,6 +36,15 @@ const securityHeaders = [
 ];
 
 const nextConfig: NextConfig = {
+  async redirects() {
+    return [
+      {
+        source: "/wyjazd-z-dziecmi",
+        destination: "/warsztaty-z-dziecmi",
+        permanent: true,
+      },
+    ];
+  },
   async headers() {
     return [
       {
