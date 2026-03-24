@@ -5,6 +5,19 @@
 
 ---
 
+## Log zmian
+
+### Faza 1 (2026-03-24)
+- Zainstalowano: `google-auth-library`, `resend`, `@react-email/components`, `@marsidev/react-turnstile` (+67 packages)
+- Zaktualizowano `.env.example` — dodano 8 zmiennych (Sheets, Resend, Turnstile), usunięto stare webhook URLs
+- Utworzono `src/lib/sheets.ts` — GoogleAuth JWT + raw fetch do Sheets API v4, 4 helpery (appendBooking/Contact/Newsletter/Waitlist), graceful error handling
+- Utworzono `src/lib/turnstile.ts` — verifyTurnstile(), graceful skip bez klucza
+- Utworzono `src/lib/email.ts` — Resend singleton, sendNotificationEmail() + sendConfirmationEmail(), graceful skip bez API key
+- Fix: `tsconfig.json` — dodano `docs` do exclude (referencyjny kod w docs/ łapany przez TypeScript compiler)
+- Build: PASS (zero errors)
+
+---
+
 ## Powiązane pliki
 
 ### Istniejące API routes (MODYFIKUJEMY — dodajemy Sheets + email + Turnstile)

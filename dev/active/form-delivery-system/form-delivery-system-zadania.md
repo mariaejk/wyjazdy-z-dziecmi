@@ -7,11 +7,12 @@
 
 ## Faza 1: Infrastruktura — zależności + helpery
 
-- [ ] 1.1 `npm install google-auth-library resend @react-email/components @marsidev/react-turnstile`
-- [ ] 1.2 Utworzyć `.env.example` z 8 zmiennymi (Sheets, Resend, Turnstile)
-- [ ] 1.3 Utworzyć `src/lib/sheets.ts` — Google Sheets helper (JWT + raw fetch)
-- [ ] 1.4 Utworzyć `src/lib/turnstile.ts` — weryfikacja tokenu Cloudflare
-- [ ] 1.5 Utworzyć `src/lib/email.ts` — Resend helper
+- [x] 1.1 `npm install google-auth-library resend @react-email/components @marsidev/react-turnstile` ✅
+- [x] 1.2 Zaktualizować `.env.example` z 8 zmiennymi (Sheets, Resend, Turnstile) ✅
+- [x] 1.3 Utworzyć `src/lib/sheets.ts` — Google Sheets helper (GoogleAuth + raw fetch) ✅
+- [x] 1.4 Utworzyć `src/lib/turnstile.ts` — weryfikacja tokenu Cloudflare ✅
+- [x] 1.5 Utworzyć `src/lib/email.ts` — Resend helper (sendNotificationEmail + sendConfirmationEmail) ✅
+- [x] 1.6 Fix: tsconfig.json exclude `docs/` (referencyjny kod łapany przez TS) ✅
 
 ## Faza 2: Email templates (React Email)
 
