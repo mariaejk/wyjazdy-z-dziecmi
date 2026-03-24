@@ -39,7 +39,6 @@ export default function MainLayout({
   return (
     <div
       className={`${inter.variable} ${lora.variable} ${caveat.variable} font-body bg-parchment text-graphite antialiased`}
-      style={{ "--font-cormorant": "Georgia, 'Times New Roman', serif" } as React.CSSProperties}
     >
       <StructuredData data={getOrganizationSchema()} />
       <GoogleAnalytics />
