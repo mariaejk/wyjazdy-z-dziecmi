@@ -1,7 +1,8 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { useForm } from "react-hook-form";
+import { Turnstile, type TurnstileInstance } from "@marsidev/react-turnstile";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Send, CheckCircle, AlertCircle } from "lucide-react";
 import { contactSchema, type ContactFormValues } from "@/lib/validations/contact";
@@ -18,6 +19,7 @@ type FormStatus = "idle" | "submitting" | "success" | "error";
 export function ContactForm() {
   const [status, setStatus] = useState<FormStatus>("idle");
   const [errorMessage, setErrorMessage] = useState("");
+  const turnstileRef = useRef<TurnstileInstance>(null);
 
   const {
     register,
@@ -40,10 +42,11 @@ export function ContactForm() {
     setErrorMessage("");
 
     try {
+      const turnstileToken = turnstileRef.current?.getResponse();
       const response = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data),
+        body: JSON.stringify({ ...data, turnstileToken }),
       });
 
       if (response.status === 429) {
@@ -66,6 +69,7 @@ export function ContactForm() {
       setStatus("success");
       analytics.contactSubmit();
       reset();
+      turnstileRef.current?.reset();
     } catch {
       setStatus("error");
       setErrorMessage("Nie udało się wysłać wiadomości. Sprawdź połączenie z internetem.");
@@ -142,6 +146,14 @@ export function ContactForm() {
           <AlertCircle className="mt-0.5 h-5 w-5 shrink-0 text-red-600" strokeWidth={1.5} />
           <p className="text-sm text-red-700">{errorMessage}</p>
         </div>
+      )}
+
+      {process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY && (
+        <Turnstile
+          ref={turnstileRef}
+          siteKey={process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY}
+          options={{ size: "invisible" }}
+        />
       )}
 
       <div className="pt-2">

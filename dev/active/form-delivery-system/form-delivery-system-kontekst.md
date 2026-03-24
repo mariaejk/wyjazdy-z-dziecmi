@@ -34,6 +34,13 @@
 - Newsletter: bez notification do Marii (decyzja: za dużo spamu)
 - Build: PASS (zero errors)
 
+### Faza 4 (2026-03-24)
+- Dodano Turnstile invisible widget do 4 formularzy: BookingForm, ContactForm, NewsletterForm, WaitlistForm
+- Pattern: useRef<TurnstileInstance> + getResponse() przed fetch + reset() po success
+- Conditional render: `{process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY && <Turnstile />}` — widget nie renderuje się bez klucza (dev mode)
+- Token dodawany do body via spread: `{ ...data, turnstileToken }`
+- Build: PASS (zero errors)
+
 ---
 
 ## Powiązane pliki

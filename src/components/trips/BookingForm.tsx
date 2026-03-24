@@ -1,7 +1,8 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { useForm } from "react-hook-form";
+import { Turnstile, type TurnstileInstance } from "@marsidev/react-turnstile";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Send, CheckCircle, AlertCircle, Shield } from "lucide-react";
 import { bookingSchema, type BookingFormValues } from "@/lib/validations/booking";
@@ -32,6 +33,7 @@ type FormStatus = "idle" | "submitting" | "success" | "error";
 export function BookingForm({ trips, preselectedTrip }: BookingFormProps) {
   const [status, setStatus] = useState<FormStatus>("idle");
   const [errorMessage, setErrorMessage] = useState("");
+  const turnstileRef = useRef<TurnstileInstance>(null);
 
   const {
     register,
@@ -69,10 +71,11 @@ export function BookingForm({ trips, preselectedTrip }: BookingFormProps) {
     setErrorMessage("");
 
     try {
+      const turnstileToken = turnstileRef.current?.getResponse();
       const response = await fetch("/api/booking", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data),
+        body: JSON.stringify({ ...data, turnstileToken }),
       });
 
       if (response.status === 429) {
@@ -95,6 +98,7 @@ export function BookingForm({ trips, preselectedTrip }: BookingFormProps) {
       setStatus("success");
       analytics.bookingSubmit(data.trip);
       reset();
+      turnstileRef.current?.reset();
     } catch {
       setStatus("error");
       setErrorMessage("Nie udało się wysłać formularza. Sprawdź połączenie z internetem.");
@@ -252,6 +256,14 @@ export function BookingForm({ trips, preselectedTrip }: BookingFormProps) {
             <Shield className="h-4 w-4 shrink-0 text-moss" strokeWidth={1.5} />
             Rezerwacja jest bezpłatna — nie płacisz z góry. Szczegóły płatności otrzymasz po potwierdzeniu.
           </p>
+
+          {process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY && (
+            <Turnstile
+              ref={turnstileRef}
+              siteKey={process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY}
+              options={{ size: "invisible" }}
+            />
+          )}
 
           <div className="pt-2">
             <Button

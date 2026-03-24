@@ -60,10 +60,10 @@
 
 ## Faza 4: Frontend — Turnstile widget
 
-- [ ] 4.1 Dodać Turnstile do `BookingForm.tsx`
-- [ ] 4.2 Dodać Turnstile do `ContactForm.tsx`
-- [ ] 4.3 Dodać Turnstile do `NewsletterForm.tsx`
-- [ ] 4.4 Dodać Turnstile do `WaitlistForm.tsx`
+- [x] 4.1 Dodać Turnstile do `BookingForm.tsx` ✅
+- [x] 4.2 Dodać Turnstile do `ContactForm.tsx` ✅
+- [x] 4.3 Dodać Turnstile do `NewsletterForm.tsx` ✅
+- [x] 4.4 Dodać Turnstile do `WaitlistForm.tsx` ✅
 
 ## Faza 5: Dokumentacja + finalizacja
 

@@ -1,7 +1,8 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { useForm } from "react-hook-form";
+import { Turnstile, type TurnstileInstance } from "@marsidev/react-turnstile";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Clock, CheckCircle, AlertCircle } from "lucide-react";
 import { waitlistSchema, type WaitlistFormValues } from "@/lib/validations/waitlist";
@@ -24,6 +25,7 @@ type WaitlistFormProps = {
 export function WaitlistForm({ tripSlug, tripTitle }: WaitlistFormProps) {
   const [status, setStatus] = useState<FormStatus>("idle");
   const [errorMessage, setErrorMessage] = useState("");
+  const turnstileRef = useRef<TurnstileInstance>(null);
 
   const {
     register,
@@ -48,10 +50,11 @@ export function WaitlistForm({ tripSlug, tripTitle }: WaitlistFormProps) {
     setErrorMessage("");
 
     try {
+      const turnstileToken = turnstileRef.current?.getResponse();
       const response = await fetch("/api/waitlist", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data),
+        body: JSON.stringify({ ...data, turnstileToken }),
       });
 
       if (response.status === 429) {
@@ -74,6 +77,7 @@ export function WaitlistForm({ tripSlug, tripTitle }: WaitlistFormProps) {
       setStatus("success");
       analytics.waitlistSignup(tripSlug);
       reset();
+      turnstileRef.current?.reset();
     } catch {
       setStatus("error");
       setErrorMessage("Nie udało się wysłać zgłoszenia. Sprawdź połączenie z internetem.");
@@ -138,6 +142,14 @@ export function WaitlistForm({ tripSlug, tripTitle }: WaitlistFormProps) {
               />
 
               <HoneypotField {...register("website")} />
+
+              {process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY && (
+                <Turnstile
+                  ref={turnstileRef}
+                  siteKey={process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY}
+                  options={{ size: "invisible" }}
+                />
+              )}
 
               <Checkbox
                 label={
