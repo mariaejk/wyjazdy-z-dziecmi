@@ -6,7 +6,7 @@ import { SectionWrapper } from "@/components/ui/SectionWrapper";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { ScrollAnimation } from "@/components/shared/ScrollAnimation";
 import { StructuredData } from "@/components/shared/StructuredData";
-import { TripCard } from "@/components/home/TripCard";
+import { TripCardHorizontal } from "@/components/home/TripCardHorizontal";
 import { TripCalendar } from "@/components/shared/TripCalendar";
 import { ForestPattern } from "@/components/shared/ForestPattern";
 import { TripsFilter } from "@/components/trips/TripsFilter";
@@ -66,10 +66,10 @@ export default async function TripsPage() {
               title="Zakończone warsztaty"
               subtitle="Zobacz, co było wcześniej"
             />
-            <div className="grid gap-6 sm:grid-cols-2 lg:gap-8">
+            <div className="mx-auto max-w-4xl space-y-6">
               {pastTrips.map((trip, index) => (
-                <ScrollAnimation key={trip.slug} delay={index * 0.15} className="h-full">
-                  <TripCard trip={trip} />
+                <ScrollAnimation key={trip.slug} delay={index * 0.12}>
+                  <TripCardHorizontal trip={trip} />
                 </ScrollAnimation>
               ))}
             </div>

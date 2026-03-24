@@ -3,7 +3,7 @@
 import { useSearchParams } from "next/navigation";
 import type { Trip } from "@/types/trip";
 import { ScrollAnimation } from "@/components/shared/ScrollAnimation";
-import { TripCard } from "@/components/home/TripCard";
+import { TripCardHorizontal } from "@/components/home/TripCardHorizontal";
 import { CATEGORY_CONFIG, type CategoryKey } from "@/lib/category-config";
 
 type TripsFilterProps = {
@@ -30,16 +30,16 @@ export function TripsFilter({ upcomingTrips }: TripsFilterProps) {
     <>
       <p className="mb-8 text-center text-lg text-graphite-light">{subtitle}</p>
       {filtered.length > 0 ? (
-        <div className="grid gap-6 sm:grid-cols-2 lg:gap-8">
+        <div className="mx-auto max-w-4xl space-y-6">
           {filtered.map((trip, index) => (
-            <ScrollAnimation key={trip.slug} delay={index * 0.15}>
-              <TripCard trip={trip} />
+            <ScrollAnimation key={trip.slug} delay={index * 0.12}>
+              <TripCardHorizontal trip={trip} />
             </ScrollAnimation>
           ))}
         </div>
       ) : (
         <p className="text-center text-graphite-light">
-          Aktualnie nie mamy zaplanowanych wyjazdów w tej kategorii. Śledź
+          Aktualnie nie mamy zaplanowanych warsztatów w tej kategorii. Śledź
           nas w mediach społecznościowych, aby być na bieżąco!
         </p>
       )}
