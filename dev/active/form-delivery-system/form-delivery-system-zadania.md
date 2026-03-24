@@ -35,6 +35,14 @@
 - [x] 2.6 `src/emails/WaitlistConfirmation.tsx` — do klienta (potwierdzenie waitlist) ✅
 - [x] 2.7 `src/emails/NewsletterConfirmation.tsx` — do klienta (potwierdzenie zapisu) ✅
 
+## Do poprawy po review fazy 2
+
+- [x] 🔴 **Confirmation emails** — dodany klikalny `<Link>` do wyjazdyzdziecmi.pl ✅
+- [x] 🟠 **3 templates** — import CONTACT.phone + SITE_CONFIG.url + SITE_CONFIG.name ✅
+- [x] 🟠 **WaitlistConfirmation** — pełna klauzula RODO z celem przetwarzania ✅
+- [x] 🟡 **Html** — `lang="pl"` we wszystkich 7 templates ✅
+- [x] 🟡 **NewsletterConfirmation** — link do strony + info o rezygnacji w stopce ✅
+
 ## Faza 3: Modyfikacja API routes
 
 - [ ] 3.1 Dodać `turnstileToken` (opcjonalne) do 4 Zod schemas

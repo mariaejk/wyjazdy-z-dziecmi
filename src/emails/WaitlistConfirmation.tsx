@@ -5,8 +5,10 @@ import {
   Container,
   Text,
   Hr,
+  Link,
   Preview,
 } from "@react-email/components";
+import { CONTACT, SITE_CONFIG } from "@/lib/constants";
 import * as s from "./styles";
 
 interface Props {
@@ -16,12 +18,12 @@ interface Props {
 
 export function WaitlistConfirmation(props: Props) {
   return (
-    <Html>
+    <Html lang="pl">
       <Head />
       <Preview>Lista oczekujących: {props.trip}</Preview>
       <Body style={s.main}>
         <Container style={s.container}>
-          <Text style={s.logo}>Wyjazdy z Dziećmi</Text>
+          <Text style={s.logo}>{SITE_CONFIG.name}</Text>
           <Hr style={s.hr} />
 
           <Text style={s.greeting}>Cześć {props.name}!</Text>
@@ -38,20 +40,27 @@ export function WaitlistConfirmation(props: Props) {
           </Text>
 
           <Text style={s.paragraph}>
-            Masz pytania? Zadzwoń pod <strong>+48 503 098 906</strong>.
+            Masz pytania? Zadzwoń pod <strong>{CONTACT.phone}</strong>.
+          </Text>
+
+          <Text style={s.paragraph}>
+            Odwiedź nas na{" "}
+            <Link href={SITE_CONFIG.url}>wyjazdyzdziecmi.pl</Link>.
           </Text>
 
           <Text style={s.paragraph}>
             Pozdrawiamy,
             <br />
-            Maria — Wyjazdy z Dziećmi
+            Maria — {SITE_CONFIG.name}
           </Text>
 
           <Hr style={s.hr} />
           <Text style={s.footer}>
             Ta wiadomość została wysłana automatycznie w związku z zapisem na
             listę oczekujących na stronie wyjazdyzdziecmi.pl. Administratorem
-            danych osobowych jest Maria Kordalewska (art. 6 ust. 1 lit. b RODO).
+            danych osobowych jest Maria Kordalewska. Dane przetwarzane są w celu
+            obsługi listy oczekujących i kontaktu w sprawie dostępności terminu
+            (art. 6 ust. 1 lit. b RODO).
           </Text>
         </Container>
       </Body>

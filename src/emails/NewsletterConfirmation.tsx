@@ -5,8 +5,10 @@ import {
   Container,
   Text,
   Hr,
+  Link,
   Preview,
 } from "@react-email/components";
+import { SITE_CONFIG } from "@/lib/constants";
 import * as s from "./styles";
 
 interface Props {
@@ -15,12 +17,12 @@ interface Props {
 
 export function NewsletterConfirmation(props: Props) {
   return (
-    <Html>
+    <Html lang="pl">
       <Head />
       <Preview>Dziękujemy za zapis — poradnik w drodze!</Preview>
       <Body style={s.main}>
         <Container style={s.container}>
-          <Text style={s.logo}>Wyjazdy z Dziećmi</Text>
+          <Text style={s.logo}>{SITE_CONFIG.name}</Text>
           <Hr style={s.hr} />
 
           <Text style={s.greeting}>Cześć!</Text>
@@ -36,9 +38,14 @@ export function NewsletterConfirmation(props: Props) {
           </Text>
 
           <Text style={s.paragraph}>
+            Odwiedź nas na{" "}
+            <Link href={SITE_CONFIG.url}>wyjazdyzdziecmi.pl</Link>.
+          </Text>
+
+          <Text style={s.paragraph}>
             Pozdrawiamy,
             <br />
-            Maria — Wyjazdy z Dziećmi
+            Maria — {SITE_CONFIG.name}
           </Text>
 
           <Hr style={s.hr} />
@@ -46,7 +53,8 @@ export function NewsletterConfirmation(props: Props) {
             Ta wiadomość została wysłana na adres {props.email} w związku z
             zapisem na newsletter na stronie wyjazdyzdziecmi.pl. Administratorem
             danych osobowych jest Maria Kordalewska (art. 6 ust. 1 lit. a RODO).
-            Możesz zrezygnować z newslettera w dowolnym momencie.
+            Możesz zrezygnować z newslettera w dowolnym momencie, odpowiadając na
+            tę wiadomość.
           </Text>
         </Container>
       </Body>

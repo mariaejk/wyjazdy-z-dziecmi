@@ -28,7 +28,7 @@ export function BookingNotification(props: Props) {
   const totalPeople = props.adults + props.children;
 
   return (
-    <Html>
+    <Html lang="pl">
       <Head />
       <Preview>
         {`Nowa rezerwacja: ${props.trip} — ${props.name} (${totalPeople} os.)`}

@@ -6,8 +6,10 @@ import {
   Section,
   Text,
   Hr,
+  Link,
   Preview,
 } from "@react-email/components";
+import { CONTACT, SITE_CONFIG } from "@/lib/constants";
 import * as s from "./styles";
 
 interface Props {
@@ -19,12 +21,12 @@ interface Props {
 
 export function BookingConfirmation(props: Props) {
   return (
-    <Html>
+    <Html lang="pl">
       <Head />
       <Preview>Potwierdzenie rezerwacji: {props.trip}</Preview>
       <Body style={s.main}>
         <Container style={s.container}>
-          <Text style={s.logo}>Wyjazdy z Dziećmi</Text>
+          <Text style={s.logo}>{SITE_CONFIG.name}</Text>
           <Hr style={s.hr} />
 
           <Text style={s.greeting}>Cześć {props.name}!</Text>
@@ -53,13 +55,18 @@ export function BookingConfirmation(props: Props) {
 
           <Text style={s.paragraph}>
             Masz pytania? Odpisz na tę wiadomość lub zadzwoń pod{" "}
-            <strong>+48 503 098 906</strong>.
+            <strong>{CONTACT.phone}</strong>.
+          </Text>
+
+          <Text style={s.paragraph}>
+            Odwiedź nas na{" "}
+            <Link href={SITE_CONFIG.url}>wyjazdyzdziecmi.pl</Link>.
           </Text>
 
           <Text style={s.paragraph}>
             Do zobaczenia!
             <br />
-            Maria — Wyjazdy z Dziećmi
+            Maria — {SITE_CONFIG.name}
           </Text>
 
           <Hr style={s.hr} />

@@ -20,7 +20,7 @@ interface Props {
 
 export function WaitlistNotification(props: Props) {
   return (
-    <Html>
+    <Html lang="pl">
       <Head />
       <Preview>
         Lista oczekujących: {props.trip} — {props.name}

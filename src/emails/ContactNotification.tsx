@@ -19,7 +19,7 @@ interface Props {
 
 export function ContactNotification(props: Props) {
   return (
-    <Html>
+    <Html lang="pl">
       <Head />
       <Preview>Nowe zapytanie od {props.name}</Preview>
       <Body style={s.main}>
