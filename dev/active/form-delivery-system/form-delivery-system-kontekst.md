@@ -16,6 +16,15 @@
 - Fix: `tsconfig.json` — dodano `docs` do exclude (referencyjny kod w docs/ łapany przez TypeScript compiler)
 - Build: PASS (zero errors)
 
+### Faza 2 (2026-03-24)
+- Utworzono `src/emails/styles.ts` — shared styles (DRY, importowane jako `* as s`)
+- 7 email templates React Email: BookingNotification, BookingConfirmation, ContactNotification, ContactConfirmation, WaitlistNotification, WaitlistConfirmation, NewsletterConfirmation
+- Każdy confirmation email zawiera: logo, telefon Marii, klauzulę RODO w stopce (art. 6 ust. 1 lit. b/a)
+- Notification emails mają replyTo hint w stopce
+- Fix: React Email `<Preview>` i `<Text>` nie akceptują number children — template literals zamiast interpolacji
+- Newsletter confirmation: art. 6 ust. 1 lit. a (zgoda), info o możliwości rezygnacji
+- Build: PASS (zero errors)
+
 ---
 
 ## Powiązane pliki

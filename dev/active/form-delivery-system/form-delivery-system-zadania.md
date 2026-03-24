@@ -26,13 +26,14 @@
 
 ## Faza 2: Email templates (React Email)
 
-- [ ] 2.1 `src/emails/BookingNotification.tsx` — do Marii (dane rezerwacji)
-- [ ] 2.2 `src/emails/BookingConfirmation.tsx` — do klienta (potwierdzenie rezerwacji)
-- [ ] 2.3 `src/emails/ContactNotification.tsx` — do Marii (nowe zapytanie)
-- [ ] 2.4 `src/emails/ContactConfirmation.tsx` — do klienta (potwierdzenie kontaktu)
-- [ ] 2.5 `src/emails/WaitlistNotification.tsx` — do Marii (lista oczekujących)
-- [ ] 2.6 `src/emails/WaitlistConfirmation.tsx` — do klienta (potwierdzenie waitlist)
-- [ ] 2.7 `src/emails/NewsletterConfirmation.tsx` — do klienta (potwierdzenie zapisu)
+- [x] 2.0 `src/emails/styles.ts` — shared styles (DRY) ✅
+- [x] 2.1 `src/emails/BookingNotification.tsx` — do Marii (dane rezerwacji) ✅
+- [x] 2.2 `src/emails/BookingConfirmation.tsx` — do klienta (potwierdzenie rezerwacji) ✅
+- [x] 2.3 `src/emails/ContactNotification.tsx` — do Marii (nowe zapytanie) ✅
+- [x] 2.4 `src/emails/ContactConfirmation.tsx` — do klienta (potwierdzenie kontaktu) ✅
+- [x] 2.5 `src/emails/WaitlistNotification.tsx` — do Marii (lista oczekujących) ✅
+- [x] 2.6 `src/emails/WaitlistConfirmation.tsx` — do klienta (potwierdzenie waitlist) ✅
+- [x] 2.7 `src/emails/NewsletterConfirmation.tsx` — do klienta (potwierdzenie zapisu) ✅
 
 ## Faza 3: Modyfikacja API routes
 
