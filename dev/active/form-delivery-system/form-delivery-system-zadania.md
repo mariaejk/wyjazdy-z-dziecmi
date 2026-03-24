@@ -75,7 +75,8 @@
 
 ## Faza 5: Dokumentacja + finalizacja
 
-- [ ] 5.1 Instrukcja konfiguracji serwisów: `docs/setup-external-services.md`
-- [ ] 5.2 Aktualizacja CLAUDE.md
-- [ ] 5.3 `npm run build` — zero błędów
-- [ ] 5.4 `npm run lint` — zero błędów
+- [x] 5.1 Instrukcja konfiguracji serwisów: `docs/setup-external-services.md` ✅
+- [x] 5.2 Aktualizacja CLAUDE.md (tech stack, constraints, project structure, 15 lessons learned) ✅
+- [x] 5.3 `npm run build` — zero błędów ✅
+- [x] 5.4 `npm run lint` — zero nowych błędów (pre-existing w .claude/hooks/) ✅
+- [x] 5.5 Fix: polskie cudzysłowy w email templates (unicode escapes w .tsx) ✅

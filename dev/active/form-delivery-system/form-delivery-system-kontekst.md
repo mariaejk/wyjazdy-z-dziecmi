@@ -41,6 +41,12 @@
 - Token dodawany do body via spread: `{ ...data, turnstileToken }`
 - Build: PASS (zero errors)
 
+### Faza 5 (2026-03-24)
+- Utworzono `docs/setup-external-services.md` — krok po kroku: Google Sheets, Resend, Turnstile, Vercel env vars
+- Zaktualizowano CLAUDE.md: tech stack (+3 paczki), constraints (Turnstile, form delivery), project structure (emails/, helpery), 15 lessons learned
+- Fix: polskie cudzysłowy „" w email templates → unicode escapes \u201E \u201D (lint compliance)
+- Build: PASS, Lint: PASS (zero nowych błędów)
+
 ---
 
 ## Powiązane pliki

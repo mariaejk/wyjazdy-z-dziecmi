@@ -29,7 +29,7 @@ export function NewsletterConfirmation(props: Props) {
 
           <Text style={s.paragraph}>
             Dziękujemy za zapis na nasz newsletter ({props.email}). Poradnik PDF
-            „Jak przygotować dziecko do wyjazdu warsztatowego" wyślemy wkrótce.
+            {"\u201EJak przygotować dziecko do wyjazdu warsztatowego\u201D"} wyślemy wkrótce.
           </Text>
 
           <Text style={s.paragraph}>
