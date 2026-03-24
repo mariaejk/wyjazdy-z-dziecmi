@@ -8,24 +8,24 @@ Dokumentacja wizualna strony. Dla klientki (podejmowanie decyzji o kolorach/czci
 
 | Rola | Czcionka | Styl | Gdzie używana |
 |------|----------|------|---------------|
-| **Nagłówki** | Cormorant Garamond | font-light, italic | H1, H2, SectionHeading, tytuły kart, tytuły sekcji |
+| **Nagłówki** | Georgia | font-light, italic | H1, H2, SectionHeading, tytuły kart, tytuły sekcji |
 | **Tekst** | Inter | normal 400/500/600 | Paragrafy, formularze, przyciski, menu, stopka |
 | **Logo (tekst)** | Lora | normal 400/500 | Logo kompas — "Warsztaty z dziećmi" |
 | **Logo (akcent)** | Caveat | 500/600 | Akcentowy tekst w SectionHeading (`italicText`) |
 
-Wszystkie czcionki self-hosted przez `next/font/google` — zero requestów do Google, RODO OK.
+Georgia to czcionka systemowa (pre-installed na wszystkich urządzeniach) — zero pobierania, zero requestów. Inter, Lora i Caveat self-hosted przez `next/font/google` — RODO OK.
 
 **Zmienne CSS:**
 ```css
---font-heading: var(--font-cormorant);  /* Cormorant Garamond */
---font-body: var(--font-inter);          /* Inter */
---font-lora: var(--font-lora);           /* Lora — logo */
---font-caveat: var(--font-caveat);       /* Caveat — akcenty */
+--font-heading: Georgia, "Times New Roman", serif;  /* Georgia — system font */
+--font-body: var(--font-inter);                      /* Inter */
+--font-lora: var(--font-lora);                       /* Lora — logo */
+--font-caveat: var(--font-caveat);                   /* Caveat — akcenty */
 ```
 
 **Klasy Tailwind:**
-- `font-heading` — nagłówki
-- `font-body` — tekst (domyślny na body)
+- `font-heading` — nagłówki (Georgia)
+- `font-body` — tekst (Inter, domyślny na body)
 - `font-[family-name:var(--font-lora)]` — Lora w logo
 - `font-[family-name:var(--font-caveat)]` — Caveat w akcentach
 

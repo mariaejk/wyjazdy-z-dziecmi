@@ -20,7 +20,7 @@ Landing page / sales funnel for "Wyjazdy z Dziećmi" — a brand organizing fami
 - **Lucide React 0.575** — line icons (strokeWidth 1.5)
 - **clsx 2.1 + tailwind-merge 3.5** — className utility `cn()`
 - **Vercel** — deployment
-- Fonts: **Playfair Display** (headings) + **Inter** (body) + **Lora** (logo main text) + **Caveat** (logo script text), self-hosted via `next/font/google` (auto self-hosting, RODO OK)
+- Fonts: **Georgia** (headings, system font — no download) + **Inter** (body) + **Lora** (logo main text) + **Caveat** (logo script text). Inter/Lora/Caveat self-hosted via `next/font/google`. Georgia set directly in `@theme` as `--font-heading`.
 
 ## Critical Constraints
 
@@ -353,3 +353,6 @@ All copy comes from `docs/tresc_na_strone.md` and `docs/TODO POPRAWIC landing pa
 - **URL rename needs 4 updates**: (1) Rename directory in `src/app/(main)/`, (2) Update `ROUTES` in constants.ts, (3) Update sitemap.ts, (4) Add 301 redirect in `next.config.ts`. Clean `.next/` cache after rename — stale type validator references old path.
 - **Reduced spacing pattern**: Override SectionWrapper default `py-16 sm:py-20 lg:py-24` with `className="py-10 sm:py-12"` or `py-10 sm:py-14` for tighter layout. Consistent with design reference (paniodrelaksu.pl).
 - **Benefit cards equal height**: `ScrollAnimation className="h-full"` + card `flex h-full flex-col` + description `flex-1`. Ensures all cards in grid row have same height regardless of content length.
+- **System fonts in Tailwind v4 `@theme`**: For system fonts (Georgia, Arial, etc.), set directly in `@theme { --font-heading: Georgia, serif; }`. Do NOT use `next/font` or inline `style` prop — `@theme` generates CSS on `:root` which takes precedence over inline styles on child elements.
+- **`next/font` variable vs `@theme` precedence**: `next/font` sets `--font-xxx` via a CSS class on the wrapper div. Tailwind v4 `@theme` references that variable on `:root`. For Google Fonts this works (inheritance). For system fonts, skip `next/font` entirely and hardcode in `@theme`.
+- **TripCardHorizontal on category pages**: All category pages (/warsztaty-z-dziecmi, /matka-z-corka, /single-parents, /dla-doroslych) and /wyjazdy use horizontal layout. Only homepage TripCardsSection keeps vertical TripCard grid.
