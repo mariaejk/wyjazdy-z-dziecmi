@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/Button";
 import { ScrollAnimation } from "@/components/shared/ScrollAnimation";
 import { StructuredData } from "@/components/shared/StructuredData";
 import { TripCard } from "@/components/home/TripCard";
+import { JoinUsNewsletter } from "@/components/shared/JoinUsNewsletter";
 import { getUpcomingTripsByCategory } from "@/data/trips";
 import { ROUTES, SITE_CONFIG } from "@/lib/constants";
 import { getBreadcrumbSchema } from "@/lib/structured-data";
@@ -150,51 +151,54 @@ export default async function FamilyTripsPage() {
         </Container>
       </SectionWrapper>
 
-      {/* Trips */}
-      {trips.length > 0 && (
-        <SectionWrapper variant="alternate">
-          <Container>
-            <SectionHeading
-              title="Nadchodzące warsztaty"
-              subtitle="Wybierz termin i dołącz do nas"
-            />
-            <div className="mx-auto max-w-2xl">
-              <div className="grid gap-6">
-                {trips.map((trip, index) => (
-                  <ScrollAnimation key={trip.slug} delay={index * 0.15} className="h-full">
-                    <TripCard trip={trip} />
-                  </ScrollAnimation>
-                ))}
+      {/* Trips or Join Us */}
+      {trips.length > 0 ? (
+        <>
+          <SectionWrapper variant="alternate">
+            <Container>
+              <SectionHeading
+                title="Nadchodzące warsztaty"
+                subtitle="Wybierz termin i dołącz do nas"
+              />
+              <div className="mx-auto max-w-2xl">
+                <div className="grid gap-6">
+                  {trips.map((trip, index) => (
+                    <ScrollAnimation key={trip.slug} delay={index * 0.15} className="h-full">
+                      <TripCard trip={trip} />
+                    </ScrollAnimation>
+                  ))}
+                </div>
               </div>
-            </div>
-          </Container>
-        </SectionWrapper>
-      )}
+            </Container>
+          </SectionWrapper>
 
-      {/* CTA */}
-      <SectionWrapper>
-        <Container>
-          <ScrollAnimation variant="fadeUp">
-            <div className="mx-auto max-w-2xl text-center">
-              <h2 className="font-heading text-3xl font-bold text-graphite sm:text-4xl">
-                Dołącz do nas
-              </h2>
-              <p className="mt-4 text-lg text-graphite-light">
-                Sprawdź dostępne terminy lub napisz do nas — pomożemy
-                znaleźć wyjazd idealny dla Ciebie i Twojego dziecka.
-              </p>
-              <div className="mt-8 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
-                <Button href={ROUTES.trips}>
-                  Zobacz wszystkie warsztaty
-                </Button>
-                <Button href={ROUTES.contact} variant="secondary">
-                  Napisz do nas
-                </Button>
-              </div>
-            </div>
-          </ScrollAnimation>
-        </Container>
-      </SectionWrapper>
+          <SectionWrapper>
+            <Container>
+              <ScrollAnimation variant="fadeUp">
+                <div className="mx-auto max-w-2xl text-center">
+                  <h2 className="font-heading text-3xl font-bold text-graphite sm:text-4xl">
+                    Dołącz do nas
+                  </h2>
+                  <p className="mt-4 text-lg text-graphite-light">
+                    Sprawdź dostępne terminy lub napisz do nas — pomożemy
+                    znaleźć wyjazd idealny dla Ciebie i Twojego dziecka.
+                  </p>
+                  <div className="mt-8 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
+                    <Button href={ROUTES.trips}>
+                      Zobacz wszystkie warsztaty
+                    </Button>
+                    <Button href={ROUTES.contact} variant="secondary">
+                      Napisz do nas
+                    </Button>
+                  </div>
+                </div>
+              </ScrollAnimation>
+            </Container>
+          </SectionWrapper>
+        </>
+      ) : (
+        <JoinUsNewsletter />
+      )}
     </>
   );
 }
