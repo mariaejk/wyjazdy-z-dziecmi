@@ -3,6 +3,11 @@ import type { NextRequest } from "next/server";
 import { waitlistSchema } from "@/lib/validations/waitlist";
 import { rateLimit } from "@/lib/rate-limit";
 import { log } from "@/lib/logger";
+import { verifyTurnstile } from "@/lib/turnstile";
+import { appendWaitlist } from "@/lib/sheets";
+import { sendNotificationEmail, sendConfirmationEmail } from "@/lib/email";
+import { WaitlistNotification } from "@/emails/WaitlistNotification";
+import { WaitlistConfirmation } from "@/emails/WaitlistConfirmation";
 
 const ALLOWED_ORIGINS = [
   "https://www.wyjazdyzdziecmi.pl",
@@ -65,12 +70,16 @@ export async function POST(request: NextRequest) {
 
   const data = result.data;
 
-  // TODO: Send webhook to n8n for waitlist notification
-  // await fetch(process.env.N8N_WAITLIST_WEBHOOK_URL!, {
-  //   method: "POST",
-  //   headers: { "Content-Type": "application/json" },
-  //   body: JSON.stringify(data),
-  // });
+  // Turnstile verification (if token provided)
+  if (data.turnstileToken) {
+    const isHuman = await verifyTurnstile(data.turnstileToken);
+    if (!isHuman) {
+      return NextResponse.json(
+        { error: "Weryfikacja antyspam nie powiodła się. Spróbuj ponownie." },
+        { status: 400 },
+      );
+    }
+  }
 
   log("Waitlist", {
     name: data.name,
@@ -78,6 +87,39 @@ export async function POST(request: NextRequest) {
     phone: data.phone,
     trip: data.trip,
   });
+
+  const timestamp = new Date().toLocaleString("pl-PL", {
+    timeZone: "Europe/Warsaw",
+  });
+
+  // Google Sheets + emails (parallel, graceful degradation)
+  await Promise.allSettled([
+    appendWaitlist({
+      name: data.name,
+      email: data.email,
+      phone: data.phone,
+      trip: data.trip,
+    }),
+    sendNotificationEmail(
+      `Lista oczekujących: ${data.trip} — ${data.name}`,
+      WaitlistNotification({
+        name: data.name,
+        email: data.email,
+        phone: data.phone,
+        trip: data.trip,
+        submittedAt: timestamp,
+      }),
+      data.email,
+    ),
+    sendConfirmationEmail(
+      data.email,
+      `Lista oczekujących: ${data.trip}`,
+      WaitlistConfirmation({
+        name: data.name,
+        trip: data.trip,
+      }),
+    ),
+  ]);
 
   return NextResponse.json({ success: true });
 }

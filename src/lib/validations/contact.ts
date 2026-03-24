@@ -17,6 +17,7 @@ export const contactSchema = z.object({
       error: "Zgoda na przetwarzanie danych jest wymagana",
     }),
   website: z.string(),
+  turnstileToken: z.string().optional(),
 });
 
 export type ContactFormValues = z.infer<typeof contactSchema>;

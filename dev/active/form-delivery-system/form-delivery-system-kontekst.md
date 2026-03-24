@@ -25,6 +25,15 @@
 - Newsletter confirmation: art. 6 ust. 1 lit. a (zgoda), info o możliwości rezygnacji
 - Build: PASS (zero errors)
 
+### Faza 3 (2026-03-24)
+- Dodano `turnstileToken: z.string().optional()` do 4 Zod schemas
+- Zmodyfikowano 4 API routes: booking, contact, newsletter, waitlist
+- Każdy route: po honeypot → Turnstile verification → po Zod → Promise.allSettled([Sheets, emails])
+- Zachowano: CSRF Origin, rate limit, honeypot, Zod, log()
+- Usunięto zakomentowane webhook TODO
+- Newsletter: bez notification do Marii (decyzja: za dużo spamu)
+- Build: PASS (zero errors)
+
 ---
 
 ## Powiązane pliki

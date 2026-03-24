@@ -3,6 +3,11 @@ import type { NextRequest } from "next/server";
 import { bookingSchema } from "@/lib/validations/booking";
 import { rateLimit } from "@/lib/rate-limit";
 import { log } from "@/lib/logger";
+import { verifyTurnstile } from "@/lib/turnstile";
+import { appendBooking } from "@/lib/sheets";
+import { sendNotificationEmail, sendConfirmationEmail } from "@/lib/email";
+import { BookingNotification } from "@/emails/BookingNotification";
+import { BookingConfirmation } from "@/emails/BookingConfirmation";
 
 const ALLOWED_ORIGINS = [
   "https://www.wyjazdyzdziecmi.pl",
@@ -65,12 +70,16 @@ export async function POST(request: NextRequest) {
 
   const data = result.data;
 
-  // TODO: Send webhook to n8n for email notification
-  // await fetch(process.env.N8N_BOOKING_WEBHOOK_URL!, {
-  //   method: "POST",
-  //   headers: { "Content-Type": "application/json" },
-  //   body: JSON.stringify(data),
-  // });
+  // Turnstile verification (if token provided)
+  if (data.turnstileToken) {
+    const isHuman = await verifyTurnstile(data.turnstileToken);
+    if (!isHuman) {
+      return NextResponse.json(
+        { error: "Weryfikacja antyspam nie powiodła się. Spróbuj ponownie." },
+        { status: 400 },
+      );
+    }
+  }
 
   log("Booking", {
     name: data.name,
@@ -80,6 +89,53 @@ export async function POST(request: NextRequest) {
     children: data.children,
     dietaryNeeds: data.dietaryNeeds,
   });
+
+  const timestamp = new Date().toLocaleString("pl-PL", {
+    timeZone: "Europe/Warsaw",
+  });
+
+  // Google Sheets + emails (parallel, graceful degradation)
+  await Promise.allSettled([
+    appendBooking({
+      name: data.name,
+      email: data.email,
+      phone: data.phone,
+      trip: data.trip,
+      adults: data.adults,
+      children: data.children,
+      childrenAges: data.childrenAges,
+      dietaryNeeds: data.dietaryNeeds,
+      notes: data.notes,
+      consentMarketing: data.consentMarketing,
+    }),
+    sendNotificationEmail(
+      `Nowa rezerwacja: ${data.trip} — ${data.name}`,
+      BookingNotification({
+        name: data.name,
+        email: data.email,
+        phone: data.phone,
+        trip: data.trip,
+        adults: data.adults,
+        children: data.children,
+        childrenAges: data.childrenAges,
+        dietaryNeeds: data.dietaryNeeds,
+        notes: data.notes,
+        consentMarketing: data.consentMarketing,
+        submittedAt: timestamp,
+      }),
+      data.email,
+    ),
+    sendConfirmationEmail(
+      data.email,
+      `Potwierdzenie rezerwacji: ${data.trip}`,
+      BookingConfirmation({
+        name: data.name,
+        trip: data.trip,
+        adults: data.adults,
+        children: data.children,
+      }),
+    ),
+  ]);
 
   return NextResponse.json({ success: true });
 }

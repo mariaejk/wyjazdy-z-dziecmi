@@ -3,6 +3,10 @@ import type { NextRequest } from "next/server";
 import { newsletterSchema } from "@/lib/validations/newsletter";
 import { rateLimit } from "@/lib/rate-limit";
 import { log } from "@/lib/logger";
+import { verifyTurnstile } from "@/lib/turnstile";
+import { appendNewsletter } from "@/lib/sheets";
+import { sendConfirmationEmail } from "@/lib/email";
+import { NewsletterConfirmation } from "@/emails/NewsletterConfirmation";
 
 const ALLOWED_ORIGINS = [
   "https://www.wyjazdyzdziecmi.pl",
@@ -65,14 +69,29 @@ export async function POST(request: NextRequest) {
 
   const data = result.data;
 
-  // TODO: Send webhook to n8n for newsletter subscription
-  // await fetch(process.env.N8N_NEWSLETTER_WEBHOOK_URL!, {
-  //   method: "POST",
-  //   headers: { "Content-Type": "application/json" },
-  //   body: JSON.stringify(data),
-  // });
+  // Turnstile verification (if token provided)
+  if (data.turnstileToken) {
+    const isHuman = await verifyTurnstile(data.turnstileToken);
+    if (!isHuman) {
+      return NextResponse.json(
+        { error: "Weryfikacja antyspam nie powiodła się. Spróbuj ponownie." },
+        { status: 400 },
+      );
+    }
+  }
 
   log("Newsletter", { email: data.email });
+
+  // Google Sheets + email confirmation (parallel, graceful degradation)
+  // No notification to owner — too much spam for newsletter signups
+  await Promise.allSettled([
+    appendNewsletter({ email: data.email }),
+    sendConfirmationEmail(
+      data.email,
+      "Dziękujemy za zapis — poradnik w drodze!",
+      NewsletterConfirmation({ email: data.email }),
+    ),
+  ]);
 
   return NextResponse.json({ success: true });
 }

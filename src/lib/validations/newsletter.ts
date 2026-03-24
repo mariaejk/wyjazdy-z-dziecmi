@@ -9,6 +9,7 @@ export const newsletterSchema = z.object({
       error: "Zgoda na przetwarzanie danych jest wymagana",
     }),
   website: z.string(),
+  turnstileToken: z.string().optional(),
 });
 
 export type NewsletterFormValues = z.infer<typeof newsletterSchema>;

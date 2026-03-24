@@ -3,6 +3,11 @@ import type { NextRequest } from "next/server";
 import { contactSchema } from "@/lib/validations/contact";
 import { rateLimit } from "@/lib/rate-limit";
 import { log } from "@/lib/logger";
+import { verifyTurnstile } from "@/lib/turnstile";
+import { appendContact } from "@/lib/sheets";
+import { sendNotificationEmail, sendConfirmationEmail } from "@/lib/email";
+import { ContactNotification } from "@/emails/ContactNotification";
+import { ContactConfirmation } from "@/emails/ContactConfirmation";
 
 const ALLOWED_ORIGINS = [
   "https://www.wyjazdyzdziecmi.pl",
@@ -65,18 +70,50 @@ export async function POST(request: NextRequest) {
 
   const data = result.data;
 
-  // TODO: Send webhook to n8n for email notification
-  // await fetch(process.env.N8N_CONTACT_WEBHOOK_URL!, {
-  //   method: "POST",
-  //   headers: { "Content-Type": "application/json" },
-  //   body: JSON.stringify(data),
-  // });
+  // Turnstile verification (if token provided)
+  if (data.turnstileToken) {
+    const isHuman = await verifyTurnstile(data.turnstileToken);
+    if (!isHuman) {
+      return NextResponse.json(
+        { error: "Weryfikacja antyspam nie powiodła się. Spróbuj ponownie." },
+        { status: 400 },
+      );
+    }
+  }
 
   log("Contact", {
     name: data.name,
     email: data.email,
     message: data.message.substring(0, 100),
   });
+
+  const timestamp = new Date().toLocaleString("pl-PL", {
+    timeZone: "Europe/Warsaw",
+  });
+
+  // Google Sheets + emails (parallel, graceful degradation)
+  await Promise.allSettled([
+    appendContact({
+      name: data.name,
+      email: data.email,
+      message: data.message,
+    }),
+    sendNotificationEmail(
+      `Nowe zapytanie od ${data.name}`,
+      ContactNotification({
+        name: data.name,
+        email: data.email,
+        message: data.message,
+        submittedAt: timestamp,
+      }),
+      data.email,
+    ),
+    sendConfirmationEmail(
+      data.email,
+      "Dziękujemy za wiadomość — odpowiemy w ciągu 24h",
+      ContactConfirmation({ name: data.name }),
+    ),
+  ]);
 
   return NextResponse.json({ success: true });
 }

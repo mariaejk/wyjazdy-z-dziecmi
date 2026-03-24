@@ -45,11 +45,11 @@
 
 ## Faza 3: Modyfikacja API routes
 
-- [ ] 3.1 Dodać `turnstileToken` (opcjonalne) do 4 Zod schemas
-- [ ] 3.2 Modyfikacja `api/booking/route.ts` — Turnstile + Sheets + emails
-- [ ] 3.3 Modyfikacja `api/contact/route.ts` — Turnstile + Sheets + emails
-- [ ] 3.4 Modyfikacja `api/newsletter/route.ts` — Turnstile + Sheets + email
-- [ ] 3.5 Modyfikacja `api/waitlist/route.ts` — Turnstile + Sheets + emails
+- [x] 3.1 Dodać `turnstileToken` (opcjonalne) do 4 Zod schemas ✅
+- [x] 3.2 Modyfikacja `api/booking/route.ts` — Turnstile + Sheets + emails ✅
+- [x] 3.3 Modyfikacja `api/contact/route.ts` — Turnstile + Sheets + emails ✅
+- [x] 3.4 Modyfikacja `api/newsletter/route.ts` — Turnstile + Sheets + email (bez notyfikacji do Marii) ✅
+- [x] 3.5 Modyfikacja `api/waitlist/route.ts` — Turnstile + Sheets + emails ✅
 
 ## Faza 4: Frontend — Turnstile widget
 
