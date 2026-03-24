@@ -85,7 +85,7 @@ export function CookieBanner() {
 
   // All 3 buttons share the same base style for equal visual weight (RODO/ePrivacy 2026)
   const buttonBase =
-    "w-full rounded-none border border-terracotta px-4 py-2.5 text-sm font-medium transition-colors sm:w-auto";
+    "w-full rounded-none border border-moss px-4 py-2.5 text-sm font-medium transition-colors sm:w-auto";
 
   return (
     <div
@@ -106,21 +106,21 @@ export function CookieBanner() {
               <button
                 type="button"
                 onClick={handleAcceptAll}
-                className={cn(buttonBase, "bg-terracotta text-white hover:bg-terracotta-dark")}
+                className={cn(buttonBase, "bg-moss text-white hover:bg-moss-dark")}
               >
                 Zaakceptuj wszystkie
               </button>
               <button
                 type="button"
                 onClick={handleAcceptNecessary}
-                className={cn(buttonBase, "bg-white text-terracotta hover:bg-parchment-dark")}
+                className={cn(buttonBase, "bg-white text-moss hover:bg-parchment-dark")}
               >
                 Tylko niezbędne
               </button>
               <button
                 type="button"
                 onClick={() => setShowPanel(true)}
-                className={cn(buttonBase, "bg-white text-terracotta hover:bg-parchment-dark")}
+                className={cn(buttonBase, "bg-white text-moss hover:bg-parchment-dark")}
               >
                 Dostosuj
               </button>
@@ -142,7 +142,7 @@ export function CookieBanner() {
                   type="checkbox"
                   checked
                   disabled
-                  className="h-4 w-4 rounded border-graphite/20 text-terracotta"
+                  className="h-4 w-4 rounded border-graphite/20 text-moss"
                 />
                 <span className="text-sm text-graphite">
                   <strong>Niezbędne</strong>{" "}
@@ -158,7 +158,7 @@ export function CookieBanner() {
                   type="checkbox"
                   checked={analyticsChecked}
                   onChange={(e) => setAnalyticsChecked(e.target.checked)}
-                  className="h-4 w-4 rounded border-graphite/20 text-terracotta focus:ring-2 focus:ring-terracotta/20 focus:ring-offset-0"
+                  className="h-4 w-4 rounded border-graphite/20 text-moss focus:ring-2 focus:ring-moss/20 focus:ring-offset-0"
                 />
                 <span className="text-sm text-graphite">
                   <strong>Analityczne</strong>{" "}
@@ -174,7 +174,7 @@ export function CookieBanner() {
                   type="checkbox"
                   checked={marketingChecked}
                   onChange={(e) => setMarketingChecked(e.target.checked)}
-                  className="h-4 w-4 rounded border-graphite/20 text-terracotta focus:ring-2 focus:ring-terracotta/20 focus:ring-offset-0"
+                  className="h-4 w-4 rounded border-graphite/20 text-moss focus:ring-2 focus:ring-moss/20 focus:ring-offset-0"
                 />
                 <span className="text-sm text-graphite">
                   <strong>Marketingowe</strong>{" "}
@@ -189,14 +189,14 @@ export function CookieBanner() {
               <button
                 type="button"
                 onClick={handleSaveCustom}
-                className={cn(buttonBase, "bg-terracotta text-white hover:bg-terracotta-dark")}
+                className={cn(buttonBase, "bg-moss text-white hover:bg-moss-dark")}
               >
                 Zapisz ustawienia
               </button>
               <button
                 type="button"
                 onClick={handleAcceptAll}
-                className={cn(buttonBase, "bg-white text-terracotta hover:bg-parchment-dark")}
+                className={cn(buttonBase, "bg-white text-moss hover:bg-parchment-dark")}
               >
                 Zaakceptuj wszystkie
               </button>

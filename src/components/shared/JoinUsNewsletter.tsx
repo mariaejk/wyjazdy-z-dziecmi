@@ -79,19 +79,19 @@ export function JoinUsNewsletter() {
   };
 
   return (
-    <section className="bg-graphite py-16 sm:py-20" id="wyjazdy">
+    <section className="bg-parchment-dark py-16 sm:py-20" id="wyjazdy">
       <Container>
         <ScrollAnimation variant="fadeUp">
           <div className="mx-auto max-w-2xl text-center">
-            <h2 className="font-heading text-3xl font-light text-white sm:text-4xl lg:text-5xl">
+            <h2 className="font-heading text-3xl font-light text-graphite sm:text-4xl lg:text-5xl">
               Dołącz do nas
             </h2>
-            <p className="mt-4 text-base leading-relaxed text-white/70 sm:text-lg">
+            <p className="mt-4 text-base leading-relaxed text-graphite-light sm:text-lg">
               Zapisz się do naszego newslettera i bądź na bieżąco z wszystkimi wydarzeniami
             </p>
 
             {status === "success" ? (
-              <div className="mt-8 flex items-center justify-center gap-3 text-moss-light">
+              <div className="mt-8 flex items-center justify-center gap-3 text-moss">
                 <CheckCircle className="h-5 w-5 shrink-0" strokeWidth={1.5} />
                 <p className="text-sm font-medium">
                   Dziękujemy za zapisanie się! Będziemy informować o nowych warsztatach.
@@ -115,11 +115,11 @@ export function JoinUsNewsletter() {
                       placeholder="Twój email"
                       aria-invalid={!!errors.email}
                       aria-describedby={errors.email ? "joinus-email-error" : undefined}
-                      className="w-full rounded-none border border-white/20 bg-white/10 px-4 py-3 text-sm text-white placeholder:text-white/40 focus:border-mustard focus:outline-none focus:ring-2 focus:ring-mustard/30"
+                      className="w-full rounded-none border border-graphite/20 bg-white px-4 py-3 text-sm text-graphite placeholder:text-graphite-light/60 focus:border-moss focus:outline-none focus:ring-2 focus:ring-moss/20"
                       {...register("email")}
                     />
                     {errors.email && (
-                      <p id="joinus-email-error" className="mt-1 text-left text-xs text-red-400" role="alert">
+                      <p id="joinus-email-error" className="mt-1 text-left text-xs text-red-600" role="alert">
                         {errors.email.message}
                       </p>
                     )}
@@ -127,7 +127,7 @@ export function JoinUsNewsletter() {
                   <button
                     type="submit"
                     disabled={status === "submitting"}
-                    className="shrink-0 rounded-none bg-mustard px-6 py-3 text-[13px] font-medium uppercase tracking-[0.12em] text-graphite transition-colors hover:bg-mustard/90 disabled:cursor-not-allowed disabled:opacity-60"
+                    className="shrink-0 rounded-none bg-moss px-6 py-3 text-[13px] font-medium uppercase tracking-[0.12em] text-white transition-colors hover:bg-moss-light disabled:cursor-not-allowed disabled:opacity-60"
                   >
                     {status === "submitting" ? "..." : "Zapisz się"}
                   </button>
@@ -153,14 +153,14 @@ export function JoinUsNewsletter() {
                       type="checkbox"
                       aria-invalid={!!errors.consentRodo}
                       aria-describedby={errors.consentRodo ? "joinus-consent-rodo-error" : undefined}
-                      className="mt-0.5 h-3.5 w-3.5 shrink-0 rounded-none border-white/20 bg-white/10 text-mustard focus:ring-2 focus:ring-mustard/30 focus:ring-offset-0 focus:ring-offset-graphite"
+                      className="mt-0.5 h-3.5 w-3.5 shrink-0 rounded-none border-graphite/20 text-moss focus:ring-2 focus:ring-moss/20 focus:ring-offset-0"
                       {...register("consentRodo")}
                     />
-                    <label htmlFor="joinus-consent-rodo" className="text-xs leading-relaxed text-white/60">
+                    <label htmlFor="joinus-consent-rodo" className="text-xs leading-relaxed text-graphite-light">
                       Wyrażam zgodę na przetwarzanie danych zgodnie z{" "}
                       <a
                         href={ROUTES.privacy}
-                        className="text-mustard underline hover:text-mustard/80"
+                        className="text-moss underline hover:text-moss-light"
                         target="_blank"
                         rel="noopener noreferrer"
                       >
@@ -170,7 +170,7 @@ export function JoinUsNewsletter() {
                     </label>
                   </div>
                   {errors.consentRodo && (
-                    <p id="joinus-consent-rodo-error" className="text-xs text-red-400" role="alert">
+                    <p id="joinus-consent-rodo-error" className="text-xs text-red-600" role="alert">
                       {errors.consentRodo.message}
                     </p>
                   )}
@@ -181,31 +181,31 @@ export function JoinUsNewsletter() {
                       type="checkbox"
                       aria-invalid={!!errors.consentNewsletter}
                       aria-describedby={errors.consentNewsletter ? "joinus-consent-newsletter-error" : undefined}
-                      className="mt-0.5 h-3.5 w-3.5 shrink-0 rounded-none border-white/20 bg-white/10 text-mustard focus:ring-2 focus:ring-mustard/30 focus:ring-offset-0 focus:ring-offset-graphite"
+                      className="mt-0.5 h-3.5 w-3.5 shrink-0 rounded-none border-graphite/20 text-moss focus:ring-2 focus:ring-moss/20 focus:ring-offset-0"
                       {...register("consentNewsletter")}
                     />
-                    <label htmlFor="joinus-consent-newsletter" className="text-xs leading-relaxed text-white/60">
+                    <label htmlFor="joinus-consent-newsletter" className="text-xs leading-relaxed text-graphite-light">
                       Wyrażam zgodę na otrzymywanie newslettera z informacjami o warsztatach i wydarzeniach. *
                     </label>
                   </div>
                   {errors.consentNewsletter && (
-                    <p id="joinus-consent-newsletter-error" className="text-xs text-red-400" role="alert">
+                    <p id="joinus-consent-newsletter-error" className="text-xs text-red-600" role="alert">
                       {errors.consentNewsletter.message}
                     </p>
                   )}
                 </div>
 
                 {status === "error" && errorMessage && (
-                  <div className="mx-auto mt-4 flex max-w-md items-start gap-2 rounded-none border border-red-400/30 bg-red-900/20 p-3" role="alert">
-                    <AlertCircle className="mt-0.5 h-4 w-4 shrink-0 text-red-400" strokeWidth={1.5} />
-                    <p className="text-xs text-red-300">{errorMessage}</p>
+                  <div className="mx-auto mt-4 flex max-w-md items-start gap-2 rounded-none border border-red-200 bg-red-50 p-3" role="alert">
+                    <AlertCircle className="mt-0.5 h-4 w-4 shrink-0 text-red-600" strokeWidth={1.5} />
+                    <p className="text-xs text-red-700">{errorMessage}</p>
                   </div>
                 )}
               </form>
             )}
 
             <div className="mt-8 flex flex-col items-center gap-3 sm:flex-row sm:justify-center sm:gap-4">
-              <Button href={ROUTES.trips} variant="secondary">
+              <Button href={ROUTES.trips}>
                 Zobacz wszystkie warsztaty
               </Button>
               <Button href={ROUTES.contact} variant="secondary">
