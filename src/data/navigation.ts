@@ -15,7 +15,7 @@ export const mainNavigation: NavItem[] = [
       { label: "Warsztaty z dziećmi", href: ROUTES.familyTrips },
       { label: "Matka i córka", href: ROUTES.motherDaughter },
       { label: "Single z dziećmi", href: ROUTES.singleParents },
-      { label: "Dla dorosłych", href: ROUTES.adultOnly },
+      { label: "Czas bez dzieci", href: ROUTES.adultOnly },
     ],
   },
   {

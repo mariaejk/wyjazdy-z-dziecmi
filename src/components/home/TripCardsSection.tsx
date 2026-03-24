@@ -6,10 +6,15 @@ import { ScrollAnimation } from "@/components/shared/ScrollAnimation";
 import { TripCard } from "@/components/home/TripCard";
 import { getUpcomingTrips } from "@/data/trips";
 import { ROUTES } from "@/lib/constants";
+import { JoinUsNewsletter } from "@/components/shared/JoinUsNewsletter";
 
 export async function TripCardsSection() {
   const upcomingTrips = await getUpcomingTrips();
-  if (upcomingTrips.length === 0) return null;
+
+  if (upcomingTrips.length === 0) {
+    return <JoinUsNewsletter />;
+  }
+
   const displayTrips = upcomingTrips.slice(0, 3);
 
   return (

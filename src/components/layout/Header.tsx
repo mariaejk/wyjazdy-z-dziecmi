@@ -59,14 +59,17 @@ function DropdownNavItem({
         className={cn(
           "inline-flex items-center justify-center gap-1 whitespace-nowrap rounded-none px-4 py-2.5 text-[13px] font-medium uppercase tracking-[0.12em] transition-colors",
           active
-            ? "bg-moss/10 text-moss"
-            : "text-graphite hover:bg-parchment-dark hover:text-moss"
+            ? "text-moss"
+            : "text-graphite hover:text-moss"
         )}
         aria-expanded={isOpen}
         aria-haspopup="menu"
         onClick={() => (isOpen ? onClose() : onOpen())}
       >
-        <span className="uppercase tracking-[0.12em] text-[13px]">{item.label}</span>
+        <span className={cn(
+          "uppercase tracking-[0.12em] text-[13px]",
+          active && "border-b-2 border-moss pb-0.5"
+        )}>{item.label}</span>
         <ChevronDown
           className={cn(
             "h-3.5 w-3.5 transition-transform",
@@ -91,8 +94,8 @@ function DropdownNavItem({
                   className={cn(
                     "block px-4 py-2 text-sm font-medium transition-colors",
                     childActive
-                      ? "bg-moss/10 text-moss"
-                      : "text-graphite hover:bg-parchment-dark hover:text-moss"
+                      ? "text-moss border-b border-moss"
+                      : "text-graphite hover:text-moss"
                   )}
                   {...(childActive
                     ? { "aria-current": "page" as const }
@@ -162,8 +165,8 @@ export function Header() {
                         className={cn(
                           "inline-flex items-center justify-center rounded-none px-4 py-2.5 text-[13px] font-medium uppercase tracking-[0.12em] transition-colors",
                           active
-                            ? "bg-moss/10 text-moss"
-                            : "text-graphite hover:bg-parchment-dark hover:text-moss",
+                            ? "text-moss border-b-2 border-moss"
+                            : "text-graphite hover:text-moss",
                         )}
                         {...(active ? { "aria-current": "page" as const } : {})}
                       >

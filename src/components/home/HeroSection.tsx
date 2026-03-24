@@ -29,9 +29,8 @@ export function HeroSection() {
             Rodzinne wyjazdy warsztatowe w naturze
           </h1>
           <h2 className="mt-4 max-w-3xl font-heading text-3xl font-light italic text-white sm:text-4xl lg:text-5xl xl:text-6xl">
-            Ty się regenerujesz. Twoje dziecko się{" "}
-            <em className="italic text-white/90">bawi</em>. Razem tworzycie wspomnienia{" "}
-            <span className="relative inline-block"><em className="italic text-white/90">na całe życie</em><svg className="mx-auto mt-0.5 h-[5px] w-[95%]" viewBox="0 0 200 8" fill="none" preserveAspectRatio="none" aria-hidden="true"><path d="M2 5.5C30 2 50 6.5 80 3.5C110 0.5 130 7 160 4C175 2.5 190 5 198 3.5" stroke="rgba(255,255,255,0.35)" strokeWidth="1.5" strokeLinecap="round" /></svg></span>.
+            „Świadomy kierunek — warsztaty rozwojowe dla{" "}
+            <span className="relative inline-block"><em className="italic text-white/90">dorosłych i dzieci</em><svg className="mx-auto mt-0.5 h-[5px] w-[95%]" viewBox="0 0 200 8" fill="none" preserveAspectRatio="none" aria-hidden="true"><path d="M2 5.5C30 2 50 6.5 80 3.5C110 0.5 130 7 160 4C175 2.5 190 5 198 3.5" stroke="rgba(255,255,255,0.35)" strokeWidth="1.5" strokeLinecap="round" /></svg></span>"
           </h2>
           <div className="mt-8">
             <Button href="/wyjazdy" size="lg">
@@ -78,9 +77,8 @@ export function HeroSection() {
           transition={{ duration: 0.7, delay: 0.5 }}
           className="mt-4 max-w-3xl font-heading text-3xl font-light italic text-white sm:text-4xl lg:text-5xl xl:text-6xl"
         >
-          Ty się regenerujesz. Twoje dziecko się{" "}
-          <em className="italic text-white/90">bawi</em>. Razem tworzycie wspomnienia{" "}
-          <em className="italic text-white/90">na całe życie</em>.
+          „Świadomy kierunek — warsztaty rozwojowe dla{" "}
+          <span className="relative inline-block"><em className="italic text-white/90">dorosłych i dzieci</em><svg className="mx-auto mt-0.5 h-[5px] w-[95%]" viewBox="0 0 200 8" fill="none" preserveAspectRatio="none" aria-hidden="true"><path d="M2 5.5C30 2 50 6.5 80 3.5C110 0.5 130 7 160 4C175 2.5 190 5 198 3.5" stroke="rgba(255,255,255,0.35)" strokeWidth="1.5" strokeLinecap="round" /></svg></span>"
         </motion.h2>
 
         {/* CTA */}

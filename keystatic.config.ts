@@ -34,7 +34,7 @@ export default config({
             { label: "Rodzinny", value: "rodzinny" },
             { label: "Matka z córką", value: "matka-corka" },
             { label: "Single z dziećmi", value: "single-parents" },
-            { label: "Dla dorosłych", value: "dla-doroslych" },
+            { label: "Czas bez dzieci", value: "dla-doroslych" },
           ],
           defaultValue: "rodzinny",
         }),

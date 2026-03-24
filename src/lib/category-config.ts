@@ -36,7 +36,7 @@ export const CATEGORY_CONFIG: Record<CategoryKey, CategoryConfig> = {
     badgeText: "text-purple-700",
   },
   "dla-doroslych": {
-    label: "Dla dorosłych",
+    label: "Czas bez dzieci",
     calendarBg: "bg-terracotta text-white",
     legendBg: "bg-terracotta",
     badgeBg: "bg-terracotta/15",

@@ -34,7 +34,6 @@ export function NewsletterForm() {
     resolver: zodResolver(newsletterSchema),
     defaultValues: {
       email: "",
-      // Zod literal(true) requires true type, but RHF needs false default for unchecked state
       consentRodo: false as unknown as true,
       website: "",
     },
@@ -88,7 +87,7 @@ export function NewsletterForm() {
 
   if (status === "success") {
     return (
-      <div className="mt-10 border-t border-parchment pt-8">
+      <div>
         <div className="flex items-center gap-3 text-moss">
           <CheckCircle className="h-5 w-5 shrink-0" strokeWidth={1.5} />
           <p className="text-sm font-medium">
@@ -103,8 +102,7 @@ export function NewsletterForm() {
     <form
       onSubmit={handleSubmit(onSubmit)}
       noValidate
-      className="mt-10 border-t border-parchment pt-8"
-      aria-label="Formularz newslettera"
+      aria-label="Formularz poradnika PDF"
     >
       <div className="flex flex-col gap-4">
         <div>
@@ -112,7 +110,7 @@ export function NewsletterForm() {
             Pobierz darmowy poradnik PDF
           </p>
           <p className="mt-1 text-xs text-graphite-light">
-            „Jak przygotować dziecko do wyjazdu warsztatowego” — praktyczne wskazówki dla rodziców bliskościowych.
+            „Jak przygotować dziecko do wyjazdu warsztatowego" — praktyczne wskazówki dla rodziców bliskościowych.
           </p>
         </div>
 

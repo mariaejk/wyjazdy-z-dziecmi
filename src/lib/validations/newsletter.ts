@@ -8,6 +8,11 @@ export const newsletterSchema = z.object({
     .literal(true, {
       error: "Zgoda na przetwarzanie danych jest wymagana",
     }),
+  consentNewsletter: z
+    .literal(true, {
+      error: "Zgoda na otrzymywanie newslettera jest wymagana",
+    })
+    .optional(),
   website: z.string(),
   turnstileToken: z.string().min(1).optional(),
 });

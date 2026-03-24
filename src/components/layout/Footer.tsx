@@ -4,6 +4,7 @@ import { Container } from "./Container";
 import { CookieSettingsButton } from "./CookieSettingsButton";
 import { SocialLink } from "./SocialLink";
 import { NewsletterForm } from "@/components/shared/NewsletterForm";
+import { FooterNewsletter } from "@/components/shared/FooterNewsletter";
 import { footerLegalLinks } from "@/data/navigation";
 import { CONTACT, SOCIAL_LINKS, SITE_CONFIG } from "@/lib/constants";
 
@@ -68,7 +69,7 @@ export function Footer() {
             </ul>
           </div>
 
-          {/* Legal + Newsletter placeholder */}
+          {/* Legal */}
           <div>
             <h3 className="font-heading text-lg font-light italic text-graphite">
               Informacje
@@ -91,8 +92,16 @@ export function Footer() {
           </div>
         </div>
 
-        {/* Newsletter */}
-        <NewsletterForm />
+        {/* PDF + Newsletter side by side */}
+        <div className="mt-10 grid gap-6 border-t border-parchment pt-8 lg:grid-cols-2">
+          {/* Left: PDF download */}
+          <div>
+            <NewsletterForm />
+          </div>
+
+          {/* Right: Newsletter signup (dark bg) */}
+          <FooterNewsletter />
+        </div>
 
         {/* Copyright */}
         <div className="mt-8 border-t border-parchment pt-6 text-center">
