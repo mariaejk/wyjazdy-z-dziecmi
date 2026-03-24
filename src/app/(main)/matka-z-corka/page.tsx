@@ -6,7 +6,7 @@ import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Button } from "@/components/ui/Button";
 import { ScrollAnimation } from "@/components/shared/ScrollAnimation";
 import { StructuredData } from "@/components/shared/StructuredData";
-import { TripCard } from "@/components/home/TripCard";
+import { TripCardHorizontal } from "@/components/home/TripCardHorizontal";
 import { JoinUsNewsletter } from "@/components/shared/JoinUsNewsletter";
 import { getUpcomingTripsByCategory } from "@/data/trips";
 import { ROUTES, SITE_CONFIG } from "@/lib/constants";
@@ -163,14 +163,12 @@ export default async function MotherDaughterPage() {
                 title="Nadchodzące warsztaty"
                 subtitle="Wybierz termin i dołącz do nas"
               />
-              <div className="mx-auto max-w-2xl">
-                <div className="grid gap-6">
-                  {trips.map((trip, index) => (
-                    <ScrollAnimation key={trip.slug} delay={index * 0.15} className="h-full">
-                      <TripCard trip={trip} />
-                    </ScrollAnimation>
-                  ))}
-                </div>
+              <div className="mx-auto max-w-4xl space-y-6">
+                {trips.map((trip, index) => (
+                  <ScrollAnimation key={trip.slug} delay={index * 0.12}>
+                    <TripCardHorizontal trip={trip} />
+                  </ScrollAnimation>
+                ))}
               </div>
             </Container>
           </SectionWrapper>
