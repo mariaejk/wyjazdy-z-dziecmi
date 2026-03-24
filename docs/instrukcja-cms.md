@@ -81,11 +81,11 @@ Po wejsciu do panelu zobaczysz boczny panel z sekcjami:
 | Data rozpoczecia       | Format: `2026-06-15` (rok-miesiac-dzien)      |
 | Data zakonczenia       | Format: `2026-06-17`                           |
 | Lokalizacja            | Np. "Kacze Bagno"                              |
-| Kategoria              | "Rodzinny" lub "Matka z corka"                 |
+| Kategoria              | "Rodzinny", "Matka z corka", "Single z dziecmi", "Czas bez dzieci" |
 | Krotki opis            | Tekst na karcie wyjazdu (strona glowna)        |
 | Dlugi opis             | Pelny opis na podstronie wyjazdu               |
 | Zdjecie glowne         | Sciezka do zdjecia, np. `/images/matka-corka.jpg` |
-| Zakonczony             | Checkbox — zaznacz gdy wyjazd juz sie odbyl    |
+| Zakonczony             | Ignorowane — system automatycznie oznacza wyjazd jako zakonczony na podstawie daty zakonczenia. Nie musisz tego zaznaczac. |
 | Liczba miejsc (ogolem) | Np. 15                                         |
 | Pozostale miejsca      | Np. 5 (gdy 0 — pojawia sie lista oczekujacych) |
 | Zaliczka (zl)          | Kwota zaliczki                                 |
@@ -328,7 +328,7 @@ Instrukcja tworzenia GitHub App: https://keystatic.com/docs/github-mode
 | Zmienic cene wyjazdu          | Wyjazdy > wybierz > Cennik > edytuj > Save             |
 | Dodac nowy wyjazd             | Wyjazdy > Create > wypelnij > Save                     |
 | Zmienic ilosc miejsc          | Wyjazdy > wybierz > "Pozostale miejsca" > Save         |
-| Oznaczyc wyjazd jako zakonczony | Wyjazdy > wybierz > zaznacz "Zakonczony" > Save      |
+| Oznaczyc wyjazd jako zakonczony | Automatyczne — system sam oznacza po dacie zakonczenia |
 | Dodac opinie                   | Opinie > Create > wypelnij > Save                      |
 | Zmienic opinie na glownej      | Strona glowna > edytuj liste ID > Save                 |
 | Dodac zdjecie do galerii       | 1) Dodaj plik do `public/images/` 2) Galeria > Create  |

@@ -36,7 +36,7 @@ Nie musisz nic robić — system działa sam. Twoja jedyna praca to:
 |-----------|-----------------|---------------------|--------|
 | **Rezerwacja** | Strona warsztatu (na dole) | Zakładka "Rezerwacje" | Do Ciebie + do klienta |
 | **Kontakt** | Strona /kontakt | Zakładka "Kontakty" | Do Ciebie + do klienta |
-| **Newsletter** | Stopka (na każdej stronie) | Zakładka "Newsletter" | Tylko do klienta |
+| **Newsletter** | Stopka (na każdej stronie) + sekcja "Dołącz do nas" (gdy brak aktywnych warsztatów) | Zakładka "Newsletter" | Tylko do klienta |
 | **Lista oczekujących** | Warsztat z kompletem miejsc | Zakładka "Lista oczekujących" | Do Ciebie + do klienta |
 
 ---
