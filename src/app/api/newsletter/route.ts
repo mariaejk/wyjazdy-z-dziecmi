@@ -85,7 +85,7 @@ export async function POST(request: NextRequest) {
 
   // Google Sheets + email confirmation (parallel, graceful degradation)
   // No notification to owner — too much spam for newsletter signups
-  await Promise.allSettled([
+  const results = await Promise.allSettled([
     appendNewsletter({ email: data.email }),
     sendConfirmationEmail(
       data.email,
@@ -93,6 +93,11 @@ export async function POST(request: NextRequest) {
       NewsletterConfirmation({ email: data.email }),
     ),
   ]);
+
+  const allFailed = results.every((r) => r.status === "rejected");
+  if (allFailed) {
+    console.error("[Newsletter] ALL deliveries failed!", { email: data.email });
+  }
 
   return NextResponse.json({ success: true });
 }

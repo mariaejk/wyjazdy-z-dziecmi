@@ -95,7 +95,7 @@ export async function POST(request: NextRequest) {
   });
 
   // Google Sheets + emails (parallel, graceful degradation)
-  await Promise.allSettled([
+  const results = await Promise.allSettled([
     appendBooking({
       name: data.name,
       email: data.email,
@@ -136,6 +136,16 @@ export async function POST(request: NextRequest) {
       }),
     ),
   ]);
+
+  // Detect total delivery failure — data submitted but not stored or emailed
+  const allFailed = results.every((r) => r.status === "rejected");
+  if (allFailed) {
+    console.error("[Booking] ALL deliveries failed — lead lost!", {
+      name: data.name,
+      email: data.email,
+      trip: data.trip,
+    });
+  }
 
   return NextResponse.json({ success: true });
 }

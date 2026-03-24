@@ -5,12 +5,6 @@ import { CONTACT } from "@/lib/constants";
 const FROM_EMAIL =
   process.env.FROM_EMAIL || "Wyjazdy z Dziećmi <onboarding@resend.dev>";
 
-function getResendClient(): Resend {
-  const key = process.env.RESEND_API_KEY;
-  if (!key) throw new Error("RESEND_API_KEY not set");
-  return new Resend(key);
-}
-
 type SendEmailOptions = {
   to: string;
   subject: string;
@@ -24,7 +18,7 @@ async function sendEmail(options: SendEmailOptions) {
     return;
   }
 
-  const resend = getResendClient();
+  const resend = new Resend(process.env.RESEND_API_KEY);
 
   const { error } = await resend.emails.send({
     from: FROM_EMAIL,

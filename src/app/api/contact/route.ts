@@ -93,7 +93,7 @@ export async function POST(request: NextRequest) {
   });
 
   // Google Sheets + emails (parallel, graceful degradation)
-  await Promise.allSettled([
+  const results = await Promise.allSettled([
     appendContact({
       name: data.name,
       email: data.email,
@@ -115,6 +115,14 @@ export async function POST(request: NextRequest) {
       ContactConfirmation({ name: data.name }),
     ),
   ]);
+
+  const allFailed = results.every((r) => r.status === "rejected");
+  if (allFailed) {
+    console.error("[Contact] ALL deliveries failed — lead lost!", {
+      name: data.name,
+      email: data.email,
+    });
+  }
 
   return NextResponse.json({ success: true });
 }

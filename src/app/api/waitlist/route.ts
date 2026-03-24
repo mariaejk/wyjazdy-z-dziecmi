@@ -94,7 +94,7 @@ export async function POST(request: NextRequest) {
   });
 
   // Google Sheets + emails (parallel, graceful degradation)
-  await Promise.allSettled([
+  const results = await Promise.allSettled([
     appendWaitlist({
       name: data.name,
       email: data.email,
@@ -121,6 +121,15 @@ export async function POST(request: NextRequest) {
       }),
     ),
   ]);
+
+  const allFailed = results.every((r) => r.status === "rejected");
+  if (allFailed) {
+    console.error("[Waitlist] ALL deliveries failed — lead lost!", {
+      name: data.name,
+      email: data.email,
+      trip: data.trip,
+    });
+  }
 
   return NextResponse.json({ success: true });
 }
