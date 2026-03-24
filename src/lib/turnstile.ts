@@ -10,6 +10,11 @@ export async function verifyTurnstile(token: string): Promise<boolean> {
     return true;
   }
 
+  if (!token.trim()) {
+    console.warn("[Turnstile] Empty token received");
+    return false;
+  }
+
   try {
     const response = await fetch(TURNSTILE_VERIFY_URL, {
       method: "POST",

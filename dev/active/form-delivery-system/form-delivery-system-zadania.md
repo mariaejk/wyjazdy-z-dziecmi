@@ -14,6 +14,16 @@
 - [x] 1.5 Utworzyć `src/lib/email.ts` — Resend helper (sendNotificationEmail + sendConfirmationEmail) ✅
 - [x] 1.6 Fix: tsconfig.json exclude `docs/` (referencyjny kod łapany przez TS) ✅
 
+## Do poprawy po review fazy 1
+
+- [x] 🔴 **sheets.ts:17-20** — dodać guard na CLIENT_EMAIL + PRIVATE_KEY ✅
+- [x] 🔴 **email.ts:4** — lazy init Resend via getResendClient() ✅
+- [x] 🔴 **email.ts:1** — ReactElement zamiast ReactNode ✅
+- [x] 🟠 **turnstile.ts:4** — guard empty string token ✅
+- [x] 🟠 **sheets.ts** — sanitizeCell() przeciw CSV/formula injection ✅
+- [x] 🟠 **email.ts:9** — OWNER_EMAIL fallback z CONTACT.email (constants.ts) ✅
+- [x] 🟡 **sheets.ts:128** — "Lista oczekujących" zamiast "Waitlist" ✅
+
 ## Faza 2: Email templates (React Email)
 
 - [ ] 2.1 `src/emails/BookingNotification.tsx` — do Marii (dane rezerwacji)

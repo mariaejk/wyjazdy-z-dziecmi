@@ -13,9 +13,21 @@ function getAuth() {
   });
 }
 
+// CSV/formula injection prevention — prefix dangerous chars with apostrophe
+function sanitizeCell(value: string): string {
+  if (/^[=+\-@\t\r]/.test(value)) {
+    return `'${value}`;
+  }
+  return value;
+}
+
 async function appendToSheet(sheet: string, values: string[]) {
-  if (!process.env.GOOGLE_SHEETS_SPREADSHEET_ID) {
-    console.warn("[Sheets] GOOGLE_SHEETS_SPREADSHEET_ID not set — skipping");
+  if (
+    !process.env.GOOGLE_SHEETS_SPREADSHEET_ID ||
+    !process.env.GOOGLE_SHEETS_CLIENT_EMAIL ||
+    !process.env.GOOGLE_SHEETS_PRIVATE_KEY
+  ) {
+    console.warn("[Sheets] Google Sheets credentials not configured — skipping");
     return;
   }
 
@@ -34,7 +46,7 @@ async function appendToSheet(sheet: string, values: string[]) {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({
-      values: [values],
+      values: [values.map(sanitizeCell)],
     }),
   });
 
@@ -125,7 +137,7 @@ export async function appendWaitlist(data: {
   trip: string;
 }) {
   try {
-    await appendToSheet("Waitlist", [
+    await appendToSheet("Lista oczekujących", [
       getTimestamp(),
       data.name,
       data.email,
