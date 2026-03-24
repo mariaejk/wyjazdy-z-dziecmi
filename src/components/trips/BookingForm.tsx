@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef } from "react";
+import { useState, useRef, useCallback } from "react";
 import { useForm } from "react-hook-form";
 import { Turnstile, type TurnstileInstance } from "@marsidev/react-turnstile";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -33,7 +33,13 @@ type FormStatus = "idle" | "submitting" | "success" | "error";
 export function BookingForm({ trips, preselectedTrip }: BookingFormProps) {
   const [status, setStatus] = useState<FormStatus>("idle");
   const [errorMessage, setErrorMessage] = useState("");
+  const [turnstileToken, setTurnstileToken] = useState<string>();
   const turnstileRef = useRef<TurnstileInstance>(null);
+
+  const resetTurnstile = useCallback(() => {
+    setTurnstileToken(undefined);
+    turnstileRef.current?.reset();
+  }, []);
 
   const {
     register,
@@ -71,7 +77,6 @@ export function BookingForm({ trips, preselectedTrip }: BookingFormProps) {
     setErrorMessage("");
 
     try {
-      const turnstileToken = turnstileRef.current?.getResponse();
       const response = await fetch("/api/booking", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -83,6 +88,7 @@ export function BookingForm({ trips, preselectedTrip }: BookingFormProps) {
         setErrorMessage(
           "Zbyt wiele prób. Spróbuj ponownie za kilka minut.",
         );
+        resetTurnstile();
         return;
       }
 
@@ -92,16 +98,18 @@ export function BookingForm({ trips, preselectedTrip }: BookingFormProps) {
         setErrorMessage(
           result.error ?? "Wystąpił błąd. Spróbuj ponownie.",
         );
+        resetTurnstile();
         return;
       }
 
       setStatus("success");
       analytics.bookingSubmit(data.trip);
       reset();
-      turnstileRef.current?.reset();
+      resetTurnstile();
     } catch {
       setStatus("error");
       setErrorMessage("Nie udało się wysłać formularza. Sprawdź połączenie z internetem.");
+      resetTurnstile();
     }
   };
 
@@ -262,6 +270,9 @@ export function BookingForm({ trips, preselectedTrip }: BookingFormProps) {
               ref={turnstileRef}
               siteKey={process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY}
               options={{ size: "invisible" }}
+              onSuccess={setTurnstileToken}
+              onError={() => setTurnstileToken(undefined)}
+              onExpire={() => setTurnstileToken(undefined)}
             />
           )}
 

@@ -65,6 +65,14 @@
 - [x] 4.3 Dodać Turnstile do `NewsletterForm.tsx` ✅
 - [x] 4.4 Dodać Turnstile do `WaitlistForm.tsx` ✅
 
+## Do poprawy po review fazy 4
+
+- [x] 🔴 **BF-1** — onSuccess callback + useState zamiast getResponse() ✅
+- [x] 🔴 **BF-2** — resetTurnstile() we wszystkich ścieżkach (429, !ok, catch, success) ✅
+- [x] 🟠 **BI-1** — pominięte (invisible mode auto-executes, submit nie musi czekać) ✅
+- [x] 🟠 **BI-2** — onError + onExpire → setTurnstileToken(undefined) ✅
+- [x] 🔵 **BS-2** — API routes: reject gdy TURNSTILE_SECRET_KEY set ale brak tokenu ✅
+
 ## Faza 5: Dokumentacja + finalizacja
 
 - [ ] 5.1 Instrukcja konfiguracji serwisów: `docs/setup-external-services.md`

@@ -65,7 +65,13 @@ export async function POST(request: NextRequest) {
 
   const data = result.data;
 
-  // Turnstile verification (if token provided)
+  // Turnstile verification — require token when secret key is configured
+  if (process.env.TURNSTILE_SECRET_KEY && !data.turnstileToken) {
+    return NextResponse.json(
+      { error: "Weryfikacja antyspam jest wymagana." },
+      { status: 400 },
+    );
+  }
   if (data.turnstileToken) {
     const isHuman = await verifyTurnstile(data.turnstileToken);
     if (!isHuman) {

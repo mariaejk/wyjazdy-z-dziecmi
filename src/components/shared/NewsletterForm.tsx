@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef } from "react";
+import { useState, useRef, useCallback } from "react";
 import { useForm } from "react-hook-form";
 import { usePathname } from "next/navigation";
 import { Turnstile, type TurnstileInstance } from "@marsidev/react-turnstile";
@@ -17,7 +17,13 @@ export function NewsletterForm() {
   const [status, setStatus] = useState<FormStatus>("idle");
   const [errorMessage, setErrorMessage] = useState("");
   const pathname = usePathname();
+  const [turnstileToken, setTurnstileToken] = useState<string>();
   const turnstileRef = useRef<TurnstileInstance>(null);
+
+  const resetTurnstile = useCallback(() => {
+    setTurnstileToken(undefined);
+    turnstileRef.current?.reset();
+  }, []);
 
   const {
     register,
@@ -48,7 +54,6 @@ export function NewsletterForm() {
     setErrorMessage("");
 
     try {
-      const turnstileToken = turnstileRef.current?.getResponse();
       const response = await fetch("/api/newsletter", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -58,6 +63,7 @@ export function NewsletterForm() {
       if (response.status === 429) {
         setStatus("error");
         setErrorMessage("Zbyt wiele prób. Spróbuj ponownie za kilka minut.");
+        resetTurnstile();
         return;
       }
 
@@ -65,16 +71,18 @@ export function NewsletterForm() {
         const result = await response.json();
         setStatus("error");
         setErrorMessage(result.error ?? "Wystąpił błąd. Spróbuj ponownie.");
+        resetTurnstile();
         return;
       }
 
       setStatus("success");
       analytics.newsletterSignup();
       reset();
-      turnstileRef.current?.reset();
+      resetTurnstile();
     } catch {
       setStatus("error");
       setErrorMessage("Nie udało się zapisać. Sprawdź połączenie z internetem.");
+      resetTurnstile();
     }
   };
 
@@ -144,6 +152,9 @@ export function NewsletterForm() {
             ref={turnstileRef}
             siteKey={process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY}
             options={{ size: "invisible" }}
+            onSuccess={setTurnstileToken}
+            onError={() => setTurnstileToken(undefined)}
+            onExpire={() => setTurnstileToken(undefined)}
           />
         )}
 
