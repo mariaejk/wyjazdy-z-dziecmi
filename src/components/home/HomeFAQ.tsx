@@ -59,6 +59,7 @@ export function HomeFAQ() {
           <SectionHeading
             title="Najczęściej zadawane"
             italicText="pytania"
+            underline
           />
         </ScrollAnimation>
 

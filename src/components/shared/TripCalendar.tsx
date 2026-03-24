@@ -265,10 +265,6 @@ export function TripCalendar({ trips }: TripCalendarProps) {
             {config.label}
           </button>
         ))}
-        <div className="flex items-center gap-2 text-xs text-graphite-light/60 sm:text-sm">
-          <span className={cn("inline-block h-3 w-3 rounded-sm", PAST_CATEGORY.legendBg)} />
-          {PAST_CATEGORY.label}
-        </div>
       </div>
     </div>
   );

@@ -20,7 +20,7 @@ const categories = [
     alt: "Warsztaty matka i córka",
   },
   {
-    label: "Samodzielny rodzic",
+    label: "Single z dziećmi",
     href: ROUTES.singleParents,
     image: "/images/przeszly-1.jpg",
     alt: "Warsztaty dla singli z dziećmi w naturze",
@@ -37,7 +37,7 @@ export function CategoryCards() {
   return (
     <SectionWrapper className="py-10 sm:py-14">
       <Container>
-        <SectionHeading title="Najczęściej wybierane" italicText="warsztaty" />
+        <SectionHeading title="Najczęściej wybierane" italicText="warsztaty" underline />
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4 sm:gap-6" role="region" aria-label="Kategorie warsztatów">
           {categories.map((cat, index) => (
             <ScrollAnimation

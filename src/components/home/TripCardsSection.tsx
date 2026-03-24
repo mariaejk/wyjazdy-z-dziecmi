@@ -19,6 +19,7 @@ export async function TripCardsSection() {
           <SectionHeading
             title="Nadchodzące"
             italicText="warsztaty"
+            underline
             subtitle="Wybierz warsztat dla siebie i swojego dziecka"
           />
         </ScrollAnimation>

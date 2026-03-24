@@ -14,7 +14,7 @@ import { ROUTES, SITE_CONFIG } from "@/lib/constants";
 import { getBreadcrumbSchema } from "@/lib/structured-data";
 
 export const metadata: Metadata = {
-  title: "O mnie",
+  title: "O nas",
   description:
     "Poznaj Marię Kordalewską — twórczynię projektu Wyjazdy z Dziećmi, nauczycielkę jogi i organizatorkę eventów.",
 };
@@ -49,7 +49,7 @@ export default async function AboutPage() {
     <>
       <StructuredData data={getBreadcrumbSchema([
         { name: "Strona główna", url: SITE_CONFIG.url },
-        { name: "O mnie", url: `${SITE_CONFIG.url}/o-nas` },
+        { name: "O nas", url: `${SITE_CONFIG.url}/o-nas` },
       ])} />
 
       {/* Intro */}
@@ -57,7 +57,7 @@ export default async function AboutPage() {
         <Container>
           <ScrollAnimation variant="fadeUp">
             <h1 className="mb-8 text-center font-heading text-3xl font-bold text-graphite sm:mb-10 sm:text-4xl lg:mb-12 lg:text-5xl">
-              O mnie
+              O nas
             </h1>
             <p className="mx-auto -mt-4 max-w-3xl text-center text-lg text-graphite-light sm:-mt-6 sm:text-xl">
               Poznaj moją historię i wartości

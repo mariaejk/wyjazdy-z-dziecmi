@@ -30,18 +30,13 @@ export default async function Home() {
 
       <CategoryCards />
 
-      {/* Image breaker #1 — natura */}
-      <ImageBreaker
-        src="/images/kacze-bagno.jpg"
-        alt="Krajobraz natury — Kacze Bagno"
-      />
-
       {/* Calendar */}
       <SectionWrapper variant="alternate">
         <Container>
           <SectionHeading
             title="Znajdź termin"
             italicText="idealny dla siebie"
+            underline
           />
           <div className="mx-auto max-w-3xl">
             <ScrollAnimation variant="fadeUp">

@@ -29,7 +29,7 @@ export const CATEGORY_CONFIG: Record<CategoryKey, CategoryConfig> = {
     badgeText: "text-amber-700",
   },
   "single-parents": {
-    label: "Single parents",
+    label: "Single z dziećmi",
     calendarBg: "bg-lavender text-graphite",
     legendBg: "bg-lavender",
     badgeBg: "bg-lavender/20",

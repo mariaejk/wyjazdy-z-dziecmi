@@ -33,7 +33,7 @@ export default config({
           options: [
             { label: "Rodzinny", value: "rodzinny" },
             { label: "Matka z córką", value: "matka-corka" },
-            { label: "Samodzielny rodzic", value: "single-parents" },
+            { label: "Single z dziećmi", value: "single-parents" },
             { label: "Dla dorosłych", value: "dla-doroslych" },
           ],
           defaultValue: "rodzinny",

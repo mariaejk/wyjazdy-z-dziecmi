@@ -11,17 +11,6 @@ export function Footer() {
   return (
     <footer className="border-t border-graphite/10 bg-parchment">
       <Container className="py-16 sm:py-20">
-        {/* Brand tagline */}
-        <div className="mb-12 text-center">
-          <h2 className="font-heading text-3xl font-light italic text-graphite sm:text-4xl">
-            Warsztaty wyjazdowe z dziećmi.
-          </h2>
-          <p className="mx-auto mt-4 max-w-xl text-sm leading-relaxed text-graphite-light">
-            Wyjątkowe wyjazdy warsztatowe dla rodzin szukających bliskości, natury i regeneracji.
-            Prowadzone z pasją i troską o każdego uczestnika.
-          </p>
-        </div>
-
         <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
           {/* Contact */}
           <div>

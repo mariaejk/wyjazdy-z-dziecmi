@@ -14,7 +14,7 @@ export const mainNavigation: NavItem[] = [
       { label: "Wszystkie warsztaty", href: ROUTES.trips },
       { label: "Warsztaty z dziećmi", href: ROUTES.familyTrips },
       { label: "Matka i córka", href: ROUTES.motherDaughter },
-      { label: "Single parents", href: ROUTES.singleParents },
+      { label: "Single z dziećmi", href: ROUTES.singleParents },
       { label: "Dla dorosłych", href: ROUTES.adultOnly },
     ],
   },
@@ -22,7 +22,7 @@ export const mainNavigation: NavItem[] = [
     label: "Poznajmy się",
     href: "",
     children: [
-      { label: "O mnie", href: ROUTES.about },
+      { label: "O nas", href: ROUTES.about },
       { label: "Galeria", href: ROUTES.gallery },
       { label: "Opinie", href: ROUTES.opinions },
       { label: "Moje inne projekty", href: ROUTES.projects },

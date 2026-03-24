@@ -8,7 +8,28 @@ type SectionHeadingProps = {
   align?: "center" | "left";
   as?: "h1" | "h2" | "h3";
   className?: string;
+  /** Show decorative hand-drawn underline under italicText */
+  underline?: boolean;
 };
+
+function DecorativeUnderline() {
+  return (
+    <svg
+      className="mx-auto mt-1 h-[6px] w-[90%] text-graphite-light/40"
+      viewBox="0 0 200 8"
+      fill="none"
+      preserveAspectRatio="none"
+      aria-hidden="true"
+    >
+      <path
+        d="M2 5.5C30 2 50 6.5 80 3.5C110 0.5 130 7 160 4C175 2.5 190 5 198 3.5"
+        stroke="currentColor"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+      />
+    </svg>
+  );
+}
 
 export function SectionHeading({
   title,
@@ -18,6 +39,7 @@ export function SectionHeading({
   align = "center",
   as: Tag = "h2",
   className,
+  underline = false,
 }: SectionHeadingProps) {
   return (
     <div
@@ -37,7 +59,10 @@ export function SectionHeading({
         {italicText && (
           <>
             {" "}
-            <em className="italic text-graphite-light">{italicText}</em>
+            <span className="relative inline-block">
+              <em className="italic text-graphite-light">{italicText}</em>
+              {underline && <DecorativeUnderline />}
+            </span>
           </>
         )}
       </Tag>

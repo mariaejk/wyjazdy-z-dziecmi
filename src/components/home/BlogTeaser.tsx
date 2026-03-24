@@ -23,6 +23,7 @@ export async function BlogTeaser() {
             overline="Z bloga"
             title="Najnowsze"
             italicText="wpisy"
+            underline
             subtitle="Praktyczne wskazówki, inspiracje i kulisy warsztatów"
           />
         </ScrollAnimation>

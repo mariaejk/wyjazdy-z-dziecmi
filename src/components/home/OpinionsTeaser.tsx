@@ -19,6 +19,7 @@ export async function OpinionsTeaser() {
         <SectionHeading
           title="Co mówią"
           italicText="uczestnicy"
+          underline
         />
         <ScrollAnimation variant="fadeUp">
           <div className="mb-8">
