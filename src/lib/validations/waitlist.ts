@@ -21,6 +21,7 @@ export const waitlistSchema = z.object({
       error: "Zgoda na przetwarzanie danych jest wymagana",
     }),
   website: z.string(),
+  turnstileToken: z.string().min(1).optional(),
 });
 
 export type WaitlistFormValues = z.infer<typeof waitlistSchema>;

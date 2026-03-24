@@ -6,7 +6,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 Landing page / sales funnel for "Wyjazdy z Dziećmi" — a brand organizing family workshop retreats in nature (yoga, dance, ceramics, horses). Client: Maria Kordalewska. Domain: wyjazdyzdziecmi.pl.
 
-**Status:** Phase 1-7 + Poprawki klientki + Redesign wizualny 13.03 + Poprawki konwersji 19.03 + Kategorie/kalendarz/las 20.03 + Poprawki UX 20.03 + Poprawki nazewnictwo/SEO/FAQ 20.03 + Poprawki UI 21.03 + Trip Video 21.03 + Poprawki UI+Nav 21.03 + Logo kompas SVG 22.03 + Blog na homepage 22.03 + Moje inne projekty 22.03 + Poprawki O mnie 22.03 + Poprawki layout/slideshow 22.03 + Poprawki nazwy/CTA/bio 22.03 + Redesign Leśna Zieleń 22.03 COMPLETE. Site is a production-ready sales funnel with CTA buttons, scarcity signals, GA4 event tracking, Microsoft Clarity, loading states, sticky mobile CTA, two-month trip calendar with interactive category filters + auto-navigation on homepage + /wyjazdy, auto-isPast from dateEnd + ISR, waitlist, blog, gallery, category filtering with colored badges, ForestPattern SVG decorations, Forest Green + Sage color scheme (rectangular shapes, no rounded corners), SEO H1 descriptive + H2 emotional (smaller text-xl/2xl/3xl), FAQ accordion (7 questions) with FAQPage schema.org + id="faq" anchor, childCare w CMS, FAQ/social analytics tracking, testimonials sorted newest-first, "warsztaty" naming consistency, StarRating above opinions, compact hero section with editorial decorative lines (not dots), optional trip video (TripVideo component, flex-col-reverse mobile), chronological trip sorting, 4 top-level nav items (Warsztaty dropdown, Poznajmy się dropdown, Blog, Kontakt), CategoryCards (4 image tiles under hero), FAQ link on trip pages, SVG compass logo (Lora + Caveat fonts) with mobile sygnet-only mode, compass favicon, /moje-projekty page (Joga z Marią + Enviar), rectangular photos (rounded-none, PersonBio, AboutTeaser) with border-graphite/10, no rotate on hero slideshow, CategoryCards H2 "Najczęściej wybierane warsztaty", "Samodzielny rodzic" (not "Singli"), AboutTeaser 2-column layout, PersonBio hideNameHeading prop, mobile CTA "Sprawdź terminy" in header, PersonBio renderBoldText (**text** → strong), category labels: "Samodzielny rodzic", "Dla matki i córki", "Czas bez dzieci", hero benefit cards neutral (bg-parchment-dark/50, text-graphite-light icons).
+**Status:** Phase 1-7 + Poprawki klientki + Redesign wizualny 13.03 + Poprawki konwersji 19.03 + Kategorie/kalendarz/las 20.03 + Poprawki UX 20.03 + Poprawki nazewnictwo/SEO/FAQ 20.03 + Poprawki UI 21.03 + Trip Video 21.03 + Poprawki UI+Nav 21.03 + Logo kompas SVG 22.03 + Blog na homepage 22.03 + Moje inne projekty 22.03 + Poprawki O mnie 22.03 + Poprawki layout/slideshow 22.03 + Poprawki nazwy/CTA/bio 22.03 + Redesign Leśna Zieleń 22.03 + Keystatic Audit 23.03 + Code Review Audit 24.03 COMPLETE. Site is a production-ready sales funnel with CTA buttons, scarcity signals, GA4 event tracking, Microsoft Clarity, loading states, sticky mobile CTA, two-month trip calendar with interactive category filters + auto-navigation on homepage + /wyjazdy, auto-isPast from dateEnd + ISR, waitlist, blog, gallery, category filtering with colored badges, ForestPattern SVG decorations, Forest Green + Sage color scheme (rectangular shapes, no rounded corners), SEO H1 descriptive + H2 emotional (smaller text-xl/2xl/3xl), FAQ accordion (7 questions) with FAQPage schema.org + id="faq" anchor, childCare w CMS, FAQ/social analytics tracking, testimonials sorted newest-first, "warsztaty" naming consistency, StarRating above opinions, compact hero section with editorial decorative lines (not dots), optional trip video (TripVideo component, flex-col-reverse mobile), chronological trip sorting, 4 top-level nav items (Warsztaty dropdown, Poznajmy się dropdown, Blog, Kontakt), CategoryCards (4 image tiles under hero), FAQ link on trip pages, SVG compass logo (Lora + Caveat fonts) with mobile sygnet-only mode, compass favicon, /moje-projekty page (Joga z Marią + Enviar), rectangular photos (rounded-none, PersonBio, AboutTeaser) with border-graphite/10, no rotate on hero slideshow, CategoryCards H2 "Najczęściej wybierane warsztaty", "Samodzielny rodzic" (not "Singli"), AboutTeaser 2-column layout, PersonBio hideNameHeading prop, mobile CTA "Sprawdź terminy" in header, PersonBio renderBoldText (**text** → strong), category labels: "Samodzielny rodzic", "Dla matki i córki", "Czas bez dzieci", hero benefit cards neutral (bg-parchment-dark/50, text-graphite-light icons).
 
 ## Tech Stack
 
@@ -14,6 +14,9 @@ Landing page / sales funnel for "Wyjazdy z Dziećmi" — a brand organizing fami
 - **React 19.2** + **Turbopack**
 - **Motion 12.34** (`motion/react`) — NOT `framer-motion` (incompatible with React 19)
 - **React Hook Form 7.71 + Zod 4.3** — form validation (client + server)
+- **Resend + @react-email/components** — transactional emails (notification + confirmation)
+- **google-auth-library** — Google Sheets API (lead storage, lightweight ~5MB, NOT googleapis)
+- **@marsidev/react-turnstile** — Cloudflare Turnstile invisible antyspam
 - **Lucide React 0.575** — line icons (strokeWidth 1.5)
 - **clsx 2.1 + tailwind-merge 3.5** — className utility `cn()`
 - **Vercel** — deployment
@@ -23,10 +26,10 @@ Landing page / sales funnel for "Wyjazdy z Dziećmi" — a brand organizing fami
 
 - **Motion, not Framer Motion**: `framer-motion` breaks with React 19 (default in Next.js 15). Always use `motion` package with `import { motion } from 'motion/react'`.
 - **Tailwind v4 syntax**: Use `@import "tailwindcss"` + `@theme {}` block. Old `@tailwind base/components/utilities` directives don't work.
-- **All forms need spam protection**: honeypot field (`website`, CSS hidden) + rate limiting (5 req/15min per IP) on every API route.
+- **All forms need spam protection**: honeypot field (`website`, CSS hidden) + rate limiting (5 req/15min per IP) + Cloudflare Turnstile (invisible) on every API route.
 - **Cookie banner must comply with RODO/ePrivacy 2026**: consent categories (necessary/analytics/marketing), 3 equal-weight buttons, changeable via footer link.
 - **`lang="pl"`** on `<html>` element in root layout.tsx.
-- **No automatic email confirmation** in MVP — don't promise it in microcopy.
+- **Form data delivery**: Google Sheets (lead storage) + Resend emails (notification to owner + confirmation to client). Config: `docs/setup-external-services.md`.
 
 ## Design System: "Fresh Forest" (Leśna Zieleń + Szałwia)
 
@@ -59,8 +62,9 @@ src/components/home/     — HeroSection, HeroSlideshow, TripCard, TripCardsSect
 src/components/trips/    — TripHero, TripTargetAudience, TripDescription, TripProgram, TripPracticalInfo, TripPricing, TripCollaborator, TripFAQ, TripGallery, BookingForm, StickyBookingCTA, PhoneLink
 src/components/about/    — PersonBio, PlaceCard
 src/components/contact/  — ContactForm, ContactInfo
-src/lib/                 — constants.ts, utils.ts, rate-limit.ts, logger.ts, structured-data.ts, analytics.ts
-src/lib/validations/     — booking.ts, contact.ts, newsletter.ts (Zod schemas, shared client+server)
+src/lib/                 — constants.ts, utils.ts, rate-limit.ts, logger.ts, structured-data.ts, analytics.ts, sheets.ts, email.ts, turnstile.ts
+src/lib/validations/     — booking.ts, contact.ts, newsletter.ts, waitlist.ts (Zod schemas, shared client+server)
+src/emails/              — React Email templates (BookingNotification/Confirmation, ContactNotification/Confirmation, WaitlistNotification/Confirmation, NewsletterConfirmation, styles.ts)
 src/hooks/               — useCookieConsent.ts
 src/app/api/booking/     — POST route (Zod + honeypot + rate limit)
 src/app/api/contact/     — POST route (Zod + honeypot + rate limit)
@@ -297,3 +301,38 @@ All copy comes from `docs/tresc_na_strone.md` and `docs/TODO POPRAWIC landing pa
 - **`Place` type had unused `image?: string`**: CMS and data layer use `images: string[]` (plural). Type had both singular and plural. Fix: remove unused singular `image` field from type. Always verify types match actual CMS schema.
 - **`BookingFormData` type incomplete**: `dietaryNeeds` existed in Zod schema, form UI, and API route but was missing from the `forms.ts` type. Fix: keep all type definitions in sync when adding new form fields.
 - **Keystatic consistency audit checklist**: When reviewing Keystatic setup, check 5 layers: (1) `keystatic.config.ts` schema, (2) `content/` YAML files, (3) `src/data/*.ts` readers/mappers, (4) `src/types/*.ts` TypeScript types, (5) `package.json` dependencies.
+
+## Code Review Audit 24.03.2026 Lessons Learned
+
+- **CSRF Origin validation on API routes**: All POST routes must verify `Origin` header against `ALLOWED_ORIGINS` array. Pattern: `const origin = request.headers.get("origin"); if (origin && !ALLOWED_ORIGINS.includes(origin)) return 403`. Allow `localhost:3000` only in development via `process.env.NODE_ENV`.
+- **Vercel IP extraction — last, not first**: Vercel appends real client IP as the **last** entry in `x-forwarded-for`. Use `.split(",").at(-1)!.trim()` instead of `.split(",")[0]`. First entry is user-controllable (spoofable).
+- **StructuredData XSS prevention**: `JSON.stringify` does not escape `</script>`. Always apply `.replace(/</g, "\\u003c")` before `dangerouslySetInnerHTML` in `<script type="application/ld+json">`.
+- **Rate limiter needs size cap**: In-memory `Map` grows unbounded. Add `MAX_IPS` constant (10,000) and evict expired entries when map reaches capacity. Note: per-instance on Vercel (not shared across serverless functions).
+- **`parseLocalDate` must validate input**: Empty string or malformed date produces `NaN` Date that silently propagates. Guard: `if (parts.length !== 3 || parts.some(isNaN)) throw Error`. Invalid dates defaulting to `isPast: false` means broken trips stay visible forever.
+- **No duplicate type sources for forms**: `forms.ts` manually defined types diverged from Zod schemas. Deleted — use only `z.infer<typeof schema>` (e.g. `BookingFormValues`). Single source of truth for form shapes.
+- **Past trips must not claim InStock**: `getEventSchema` must guard `if (trip.pricing.length > 0 && !trip.isPast)` before emitting `offers` block. Google Rich Results flags `InStock` on past events.
+- **Breadcrumb schema needs absolute URLs**: `getBreadcrumbSchema` must prepend `SITE_CONFIG.url` to relative paths. Google requires full absolute URLs in `item` field.
+- **Blog `BLOG_DIR` must use `process.cwd()`**: Relative paths (`"content/blog"`) resolve against cwd which may differ on Vercel. Always use `path.join(process.cwd(), "content/blog")`.
+- **`getBlogPost` needs try/catch**: If `index.yaml` exists but `content.mdoc` doesn't, `fs.readFile` throws uncaught ENOENT → 500 error. Wrap in try/catch, return `undefined`.
+- **HTML entities forbidden in .tsx**: `&bdquo;`, `&rdquo;`, `&mdash;`, `&ndash;` must be literal UTF-8 characters (`„`, `"`, `—`, `–`). Same rule as unicode escapes `\u201E` — only allowed in `.ts`, not `.tsx`.
+- **Dead CSS removal**: After design system changes, verify old animations/keyframes are still referenced. `animate-float-*` survived 2 redesigns unused. `grep` class names before keeping CSS.
+- **Form submissions not delivered in production**: All 4 API routes have commented-out n8n webhook calls. `log()` is no-op in production. Must configure webhook or email service before launch. **RESOLVED** in Form Delivery System (24.03.2026) — Google Sheets + Resend emails.
+
+## Form Delivery System 24.03.2026 Lessons Learned
+
+- **`google-auth-library` not `googleapis`**: `googleapis` = 82MB, cold start on Vercel. `google-auth-library` (~5MB) + raw `fetch` to Sheets API v4 is sufficient for `values.append`.
+- **Turnstile invisible mode requires `onSuccess` callback**: `getResponse()` returns `undefined` in invisible mode because the challenge executes asynchronously. Use `onSuccess={setToken}` + `useState` pattern, NOT `ref.current?.getResponse()`.
+- **Turnstile reset on ALL error paths**: Token is single-use. After 429, `!ok`, or `catch` — `reset()` is required, otherwise next submit will be rejected by Cloudflare.
+- **Server-side token enforcement**: When `TURNSTILE_SECRET_KEY` is set but no token arrives, reject the request (defense in depth). Without this, bots can skip Turnstile by not including the token field.
+- **`turnstileToken: z.string().min(1).optional()`**: Without `.min(1)`, empty string `""` passes Zod but is falsy in `if (data.turnstileToken)`, bypassing verification entirely.
+- **CSV/formula injection in Google Sheets**: User input starting with `=`, `+`, `-`, `@` is executed as formula. Apply `sanitizeCell()` — prefix dangerous chars with apostrophe `'`. Apostrophe is Google Sheets' escape character.
+- **Resend lazy init, not singleton**: `new Resend(undefined)` at module level can fail on import. Use `getResendClient()` that creates instance only when needed.
+- **React Email `<Text>` rejects number children**: `{props.adults}` (number) inside `<Text>` causes type error. Use template literals: `` {`${props.adults} dorosłych`} ``.
+- **React Email `<Html lang="pl">`**: Add `lang` attribute for accessibility in email clients that support it.
+- **Email templates import from `constants.ts`**: Phone, URL, site name — Single Source of Truth. Never hardcode `+48 503 098 906` in templates.
+- **Confirmation emails need `<Link>`**: Plain text URLs are not clickable in HTML email. Always use `<Link href="...">` from `@react-email/components`.
+- **RODO in email footers**: Transactional = art. 6 ust. 1 lit. b (contract). Newsletter = art. 6 ust. 1 lit. a (consent) + info about opt-out.
+- **`ALLOWED_ORIGINS` in constants.ts**: Extract from 4 API routes to single source. DRY.
+- **Don't log health data**: `dietaryNeeds` is RODO art. 9 special category — remove from dev logs.
+- **`Promise.allSettled` for graceful degradation**: Sheets + email run in parallel. If one fails, the other still works. User always sees success. Errors logged via `console.error` (Vercel logs).
+- **`tsconfig.json` exclude `docs/`**: Reference code in `docs/` with `"use server"` directives gets picked up by TypeScript compiler. Exclude the whole directory.

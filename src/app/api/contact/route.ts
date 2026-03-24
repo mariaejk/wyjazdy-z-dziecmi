@@ -3,12 +3,12 @@ import type { NextRequest } from "next/server";
 import { contactSchema } from "@/lib/validations/contact";
 import { rateLimit } from "@/lib/rate-limit";
 import { log } from "@/lib/logger";
-
-const ALLOWED_ORIGINS = [
-  "https://www.wyjazdyzdziecmi.pl",
-  "https://wyjazdyzdziecmi.pl",
-  ...(process.env.NODE_ENV === "development" ? ["http://localhost:3000"] : []),
-];
+import { verifyTurnstile } from "@/lib/turnstile";
+import { appendContact } from "@/lib/sheets";
+import { sendNotificationEmail, sendConfirmationEmail } from "@/lib/email";
+import { ContactNotification } from "@/emails/ContactNotification";
+import { ContactConfirmation } from "@/emails/ContactConfirmation";
+import { ALLOWED_ORIGINS } from "@/lib/constants";
 
 export async function POST(request: NextRequest) {
   // CSRF: Origin check
@@ -65,18 +65,64 @@ export async function POST(request: NextRequest) {
 
   const data = result.data;
 
-  // TODO: Send webhook to n8n for email notification
-  // await fetch(process.env.N8N_CONTACT_WEBHOOK_URL!, {
-  //   method: "POST",
-  //   headers: { "Content-Type": "application/json" },
-  //   body: JSON.stringify(data),
-  // });
+  // Turnstile verification — require token when secret key is configured
+  if (process.env.TURNSTILE_SECRET_KEY && !data.turnstileToken) {
+    return NextResponse.json(
+      { error: "Weryfikacja antyspam jest wymagana." },
+      { status: 400 },
+    );
+  }
+  if (data.turnstileToken) {
+    const isHuman = await verifyTurnstile(data.turnstileToken);
+    if (!isHuman) {
+      return NextResponse.json(
+        { error: "Weryfikacja antyspam nie powiodła się. Spróbuj ponownie." },
+        { status: 400 },
+      );
+    }
+  }
 
   log("Contact", {
     name: data.name,
     email: data.email,
     message: data.message.substring(0, 100),
   });
+
+  const timestamp = new Date().toLocaleString("pl-PL", {
+    timeZone: "Europe/Warsaw",
+  });
+
+  // Google Sheets + emails (parallel, graceful degradation)
+  const results = await Promise.allSettled([
+    appendContact({
+      name: data.name,
+      email: data.email,
+      message: data.message,
+    }),
+    sendNotificationEmail(
+      `Nowe zapytanie od ${data.name}`,
+      ContactNotification({
+        name: data.name,
+        email: data.email,
+        message: data.message,
+        submittedAt: timestamp,
+      }),
+      data.email,
+    ),
+    sendConfirmationEmail(
+      data.email,
+      "Dziękujemy za wiadomość — odpowiemy w ciągu 24h",
+      ContactConfirmation({ name: data.name }),
+    ),
+  ]);
+
+  const allFailed = results.every((r) => r.status === "rejected");
+  if (allFailed) {
+    console.error("[Contact] ALL deliveries failed — lead lost!", {
+      name: data.name,
+      email: data.email,
+    });
+  }
 
   return NextResponse.json({ success: true });
 }

@@ -1,8 +1,9 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef, useCallback } from "react";
 import { useForm } from "react-hook-form";
 import { usePathname } from "next/navigation";
+import { Turnstile, type TurnstileInstance } from "@marsidev/react-turnstile";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { CheckCircle, AlertCircle } from "lucide-react";
 import { newsletterSchema, type NewsletterFormValues } from "@/lib/validations/newsletter";
@@ -16,6 +17,13 @@ export function NewsletterForm() {
   const [status, setStatus] = useState<FormStatus>("idle");
   const [errorMessage, setErrorMessage] = useState("");
   const pathname = usePathname();
+  const [turnstileToken, setTurnstileToken] = useState<string>();
+  const turnstileRef = useRef<TurnstileInstance>(null);
+
+  const resetTurnstile = useCallback(() => {
+    setTurnstileToken(undefined);
+    turnstileRef.current?.reset();
+  }, []);
 
   const {
     register,
@@ -49,12 +57,13 @@ export function NewsletterForm() {
       const response = await fetch("/api/newsletter", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data),
+        body: JSON.stringify({ ...data, turnstileToken }),
       });
 
       if (response.status === 429) {
         setStatus("error");
         setErrorMessage("Zbyt wiele prób. Spróbuj ponownie za kilka minut.");
+        resetTurnstile();
         return;
       }
 
@@ -62,15 +71,18 @@ export function NewsletterForm() {
         const result = await response.json();
         setStatus("error");
         setErrorMessage(result.error ?? "Wystąpił błąd. Spróbuj ponownie.");
+        resetTurnstile();
         return;
       }
 
       setStatus("success");
       analytics.newsletterSignup();
       reset();
+      resetTurnstile();
     } catch {
       setStatus("error");
       setErrorMessage("Nie udało się zapisać. Sprawdź połączenie z internetem.");
+      resetTurnstile();
     }
   };
 
@@ -134,6 +146,17 @@ export function NewsletterForm() {
         </div>
 
         <HoneypotField {...register("website")} />
+
+        {process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY && (
+          <Turnstile
+            ref={turnstileRef}
+            siteKey={process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY}
+            options={{ size: "invisible" }}
+            onSuccess={setTurnstileToken}
+            onError={() => setTurnstileToken(undefined)}
+            onExpire={() => setTurnstileToken(undefined)}
+          />
+        )}
 
         <div className="flex items-start gap-2">
           <input

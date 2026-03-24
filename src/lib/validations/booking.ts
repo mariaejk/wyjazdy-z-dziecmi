@@ -41,6 +41,7 @@ export const bookingSchema = z.object({
     }),
   consentMarketing: z.boolean(),
   website: z.string(),
+  turnstileToken: z.string().min(1).optional(),
 });
 
 export type BookingFormValues = z.infer<typeof bookingSchema>;

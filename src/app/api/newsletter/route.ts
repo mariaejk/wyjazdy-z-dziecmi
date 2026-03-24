@@ -3,12 +3,11 @@ import type { NextRequest } from "next/server";
 import { newsletterSchema } from "@/lib/validations/newsletter";
 import { rateLimit } from "@/lib/rate-limit";
 import { log } from "@/lib/logger";
-
-const ALLOWED_ORIGINS = [
-  "https://www.wyjazdyzdziecmi.pl",
-  "https://wyjazdyzdziecmi.pl",
-  ...(process.env.NODE_ENV === "development" ? ["http://localhost:3000"] : []),
-];
+import { verifyTurnstile } from "@/lib/turnstile";
+import { appendNewsletter } from "@/lib/sheets";
+import { sendConfirmationEmail } from "@/lib/email";
+import { NewsletterConfirmation } from "@/emails/NewsletterConfirmation";
+import { ALLOWED_ORIGINS } from "@/lib/constants";
 
 export async function POST(request: NextRequest) {
   // CSRF: Origin check
@@ -65,14 +64,40 @@ export async function POST(request: NextRequest) {
 
   const data = result.data;
 
-  // TODO: Send webhook to n8n for newsletter subscription
-  // await fetch(process.env.N8N_NEWSLETTER_WEBHOOK_URL!, {
-  //   method: "POST",
-  //   headers: { "Content-Type": "application/json" },
-  //   body: JSON.stringify(data),
-  // });
+  // Turnstile verification — require token when secret key is configured
+  if (process.env.TURNSTILE_SECRET_KEY && !data.turnstileToken) {
+    return NextResponse.json(
+      { error: "Weryfikacja antyspam jest wymagana." },
+      { status: 400 },
+    );
+  }
+  if (data.turnstileToken) {
+    const isHuman = await verifyTurnstile(data.turnstileToken);
+    if (!isHuman) {
+      return NextResponse.json(
+        { error: "Weryfikacja antyspam nie powiodła się. Spróbuj ponownie." },
+        { status: 400 },
+      );
+    }
+  }
 
   log("Newsletter", { email: data.email });
+
+  // Google Sheets + email confirmation (parallel, graceful degradation)
+  // No notification to owner — too much spam for newsletter signups
+  const results = await Promise.allSettled([
+    appendNewsletter({ email: data.email }),
+    sendConfirmationEmail(
+      data.email,
+      "Dziękujemy za zapis — poradnik w drodze!",
+      NewsletterConfirmation({ email: data.email }),
+    ),
+  ]);
+
+  const allFailed = results.every((r) => r.status === "rejected");
+  if (allFailed) {
+    console.error("[Newsletter] ALL deliveries failed!", { email: data.email });
+  }
 
   return NextResponse.json({ success: true });
 }
