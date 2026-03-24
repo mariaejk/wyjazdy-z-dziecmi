@@ -51,6 +51,13 @@
 - [x] 3.4 Modyfikacja `api/newsletter/route.ts` — Turnstile + Sheets + email (bez notyfikacji do Marii) ✅
 - [x] 3.5 Modyfikacja `api/waitlist/route.ts` — Turnstile + Sheets + emails ✅
 
+## Do poprawy po review fazy 3
+
+- [x] 🔴 **Zod schemas** — `turnstileToken: z.string().min(1).optional()` ✅
+- [x] 🟠 **booking schema** — pola już akceptują "" (defaultValues pattern z CLAUDE.md) — OK ✅
+- [x] 🟡 **booking route** — usunięto `dietaryNeeds` z `log()` (RODO art. 9) ✅
+- [x] 🟡 **ALLOWED_ORIGINS** — wyekstrahowane do `constants.ts`, zaimportowane w 4 routes ✅
+
 ## Faza 4: Frontend — Turnstile widget
 
 - [ ] 4.1 Dodać Turnstile do `BookingForm.tsx`

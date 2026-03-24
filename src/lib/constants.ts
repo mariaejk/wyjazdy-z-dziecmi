@@ -18,6 +18,12 @@ export const SOCIAL_LINKS = {
   instagram: "https://www.instagram.com/wyjazdyzdziecmi",
 } as const;
 
+export const ALLOWED_ORIGINS = [
+  "https://www.wyjazdyzdziecmi.pl",
+  "https://wyjazdyzdziecmi.pl",
+  ...(process.env.NODE_ENV === "development" ? ["http://localhost:3000"] : []),
+];
+
 export const ROUTES = {
   home: "/",
   about: "/o-nas",

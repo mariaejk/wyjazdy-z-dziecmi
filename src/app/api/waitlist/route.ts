@@ -8,12 +8,7 @@ import { appendWaitlist } from "@/lib/sheets";
 import { sendNotificationEmail, sendConfirmationEmail } from "@/lib/email";
 import { WaitlistNotification } from "@/emails/WaitlistNotification";
 import { WaitlistConfirmation } from "@/emails/WaitlistConfirmation";
-
-const ALLOWED_ORIGINS = [
-  "https://www.wyjazdyzdziecmi.pl",
-  "https://wyjazdyzdziecmi.pl",
-  ...(process.env.NODE_ENV === "development" ? ["http://localhost:3000"] : []),
-];
+import { ALLOWED_ORIGINS } from "@/lib/constants";
 
 export async function POST(request: NextRequest) {
   // CSRF: Origin check
