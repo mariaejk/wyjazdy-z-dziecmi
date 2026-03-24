@@ -24,7 +24,7 @@
   --color-lavender: #C4B5D4;
 
   /* Typography */
-  --font-heading: var(--font-cormorant);
+  --font-heading: Georgia, "Times New Roman", serif;
   --font-body: var(--font-inter);
   --font-lora: var(--font-lora);
   --font-caveat: var(--font-caveat);

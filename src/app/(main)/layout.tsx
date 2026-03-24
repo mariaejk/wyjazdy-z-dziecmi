@@ -1,5 +1,5 @@
 import type { ReactNode } from "react";
-import { Cormorant_Garamond, Inter, Lora, Caveat } from "next/font/google";
+import { Inter, Lora, Caveat } from "next/font/google";
 import { SkipToContent } from "@/components/layout/SkipToContent";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
@@ -9,14 +9,6 @@ import { GoogleAnalytics } from "@/components/shared/GoogleAnalytics";
 import { ClarityScript } from "@/components/shared/ClarityScript";
 import { getOrganizationSchema } from "@/lib/structured-data";
 import "../globals.css";
-
-const cormorant = Cormorant_Garamond({
-  variable: "--font-cormorant",
-  subsets: ["latin", "latin-ext"],
-  display: "swap",
-  weight: ["300", "400", "600", "700"],
-  style: ["normal", "italic"],
-});
 
 const inter = Inter({
   variable: "--font-inter",
@@ -46,7 +38,7 @@ export default function MainLayout({
 }>) {
   return (
     <div
-      className={`${cormorant.variable} ${inter.variable} ${lora.variable} ${caveat.variable} font-body bg-parchment text-graphite antialiased`}
+      className={`${inter.variable} ${lora.variable} ${caveat.variable} font-body bg-parchment text-graphite antialiased`}
     >
       <StructuredData data={getOrganizationSchema()} />
       <GoogleAnalytics />
