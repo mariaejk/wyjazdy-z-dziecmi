@@ -164,7 +164,7 @@ export default async function AdultOnlyPage() {
           </SectionWrapper>
         </>
       ) : (
-        <JoinUsNewsletter className="bg-white" />
+        <JoinUsNewsletter className="bg-parchment" />
       )}
     </>
   );
