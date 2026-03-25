@@ -69,8 +69,8 @@ export default function ProjectsPage() {
 
             {/* Text — right side */}
             <ScrollAnimation variant="fadeRight" delay={0.15} className="flex-1">
-              <h2 className="font-heading text-2xl font-light text-graphite sm:text-3xl">
-                Joga z Marią
+              <h2 className="font-heading text-2xl font-light sm:text-3xl">
+                <span className="text-moss">Joga z Marią</span>
               </h2>
               <p className="mt-1 text-base text-graphite-light">
                 Twoja chwila oddechu
@@ -127,8 +127,21 @@ export default function ProjectsPage() {
       <SectionWrapper className="py-10 sm:py-14">
         <Container>
           <div className="mx-auto flex max-w-5xl flex-col items-center gap-8 lg:flex-row lg:items-start lg:gap-12">
-            {/* Text — left side */}
-            <ScrollAnimation variant="fadeLeft" delay={0.15} className="flex-1">
+            {/* Photo — left side */}
+            <ScrollAnimation variant="fadeLeft" className="shrink-0">
+              <div className="relative h-72 w-56 overflow-hidden rounded-none shadow-lg sm:h-80 sm:w-64 lg:h-96 lg:w-72">
+                <Image
+                  src="/images/marysia.png"
+                  alt="Maria Kordalewska"
+                  fill
+                  sizes="(max-width: 640px) 224px, (max-width: 1024px) 256px, 288px"
+                  className="object-cover"
+                />
+              </div>
+            </ScrollAnimation>
+
+            {/* Text — right side */}
+            <ScrollAnimation variant="fadeRight" delay={0.15} className="flex-1">
               <h2 className="font-heading text-2xl font-light text-graphite sm:text-3xl">
                 Enviar
               </h2>
@@ -166,19 +179,6 @@ export default function ProjectsPage() {
                 >
                   Facebook — Enviar
                 </Button>
-              </div>
-            </ScrollAnimation>
-
-            {/* Photo — right side */}
-            <ScrollAnimation variant="fadeRight" className="shrink-0">
-              <div className="relative h-72 w-56 overflow-hidden rounded-none shadow-lg sm:h-80 sm:w-64 lg:h-96 lg:w-72">
-                <Image
-                  src="/images/marysia.png"
-                  alt="Maria Kordalewska"
-                  fill
-                  sizes="(max-width: 640px) 224px, (max-width: 1024px) 256px, 288px"
-                  className="object-cover"
-                />
               </div>
             </ScrollAnimation>
           </div>
