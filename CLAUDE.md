@@ -436,3 +436,14 @@ All copy comes from `docs/tresc_na_strone.md` and `docs/TODO POPRAWIC landing pa
 - **PII in production `console.error`**: `console.error` runs in production (unlike `log()` helper). On total delivery failure, was logging `name`, `email` to Vercel logs. Fix: log only `trip`/`timestamp` — enough to debug without RODO exposure.
 - **Return 500 on total delivery failure**: Returning `{ success: true }` when both Sheets and email fail misleads user — they think submission was received but lead is lost. Return 500 with "spróbuj ponownie lub skontaktuj się telefonicznie".
 - **Rate limiter is per-instance on Vercel**: In-memory `Map` is not shared across serverless function instances. Acknowledged limitation — Turnstile is the primary spam defense, rate limiter is secondary. For higher scale, use Vercel KV (Redis).
+
+## UX/UI Audit 25.03.2026 Lessons Learned
+
+- **Placeholder contrast WCAG 1.4.3**: `placeholder:text-graphite-light/60` = 2.85:1 contrast. Remove `/60` opacity — use `placeholder:text-graphite-light` directly (#555 on white = 7.5:1). Never apply opacity to placeholder text colors.
+- **Hover color contrast**: `moss-light` (#8A9680) on parchment was 2.95:1. Darkened to #5A6853 (5.2:1). Hover states must also pass 4.5:1 WCAG AA — not just default states.
+- **`svh` over `vh` on mobile hero**: iOS Safari's address bar shrinks/grows, making `vh` unreliable. CTA button can be hidden below fold. Use `h-[70svh]` (small viewport height) to ensure content fits within visible area.
+- **Touch targets 44×44px (WCAG 2.5.8)**: Icon-only buttons (phone, hamburger, close) with `p-2` = ~36px. Add `min-h-11 min-w-11` (44px) to all interactive icon buttons. Padding alone is not enough when icon is small.
+- **Loading text accessibility**: `"..."` as loading indicator is meaningless to screen readers. Use `<span aria-label="Wysyłanie">…</span>` so assistive technology announces the state.
+- **`tel:` href must strip spaces**: `CONTACT.phone` contains spaces for display formatting. `tel:+48 503 098 906` is technically valid but inconsistent across devices. Always `.replace(/\s/g, "")` in `href`.
+- **Use `Button` component in error/404 pages**: Raw `<Link>` or `<button>` with inline styles miss `focus-visible:ring`, `active:scale`, and design system consistency. Always use the project's `Button` component.
+- **Category badge text ≠ category color**: Badge `badgeText` uses `text-amber-700`/`text-purple-700` (dark, passing contrast) — NOT `text-mustard`/`text-lavender` (light, failing). Calendar cells use these colors as backgrounds with `text-graphite` foreground. When auditing contrast, check actual class usage, not raw color values.
