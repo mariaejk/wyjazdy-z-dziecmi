@@ -33,10 +33,26 @@ export async function generateMetadata({
     return { title: "Artykuł nie znaleziony" };
   }
 
-  return {
+  const metadata: Metadata = {
     title: post.title,
     description: post.subtitle,
   };
+
+  if (post.image) {
+    metadata.openGraph = {
+      title: post.title,
+      description: post.subtitle,
+      images: [{ url: post.image }],
+    };
+    metadata.twitter = {
+      card: "summary_large_image",
+      title: post.title,
+      description: post.subtitle,
+      images: [post.image],
+    };
+  }
+
+  return metadata;
 }
 
 export default async function BlogPostPage({ params }: PageProps) {

@@ -59,6 +59,7 @@ export function BookingForm({ trips, preselectedTrip }: BookingFormProps) {
       childrenAges: "",
       notes: "",
       dietaryNeeds: "",
+      // RHF/Zod type mismatch — Zod literal(true) output ≠ boolean input
       consentRodo: false as unknown as true,
       consentMarketing: false,
       website: "",

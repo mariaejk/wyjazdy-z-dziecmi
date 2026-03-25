@@ -44,12 +44,20 @@ export function getEventSchema(trip: Trip) {
 
   if (trip.pricing.length > 0 && !trip.isPast) {
     const prices = trip.pricing.map((p) => p.price);
+
+    let availability = "https://schema.org/InStock";
+    if (trip.spotsLeft === 0) {
+      availability = "https://schema.org/SoldOut";
+    } else if (trip.spotsLeft !== undefined && trip.spotsLeft <= 3) {
+      availability = "https://schema.org/LimitedAvailability";
+    }
+
     schema.offers = {
       "@type": "AggregateOffer",
       lowPrice: Math.min(...prices),
       highPrice: Math.max(...prices),
       priceCurrency: "PLN",
-      availability: "https://schema.org/InStock",
+      availability,
       url: `${baseUrl}/wyjazdy/${trip.slug}`,
     };
   }

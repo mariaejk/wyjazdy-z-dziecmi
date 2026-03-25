@@ -52,7 +52,9 @@ async function appendToSheet(sheet: string, values: string[]) {
 
   if (!response.ok) {
     const errorText = await response.text();
-    throw new Error(`Google Sheets API error (${response.status}): ${errorText}`);
+    // Log full error for debugging, but don't include sensitive details in thrown error
+    console.error(`[Sheets] API error (${response.status}):`, errorText);
+    throw new Error(`Google Sheets API error (${response.status})`);
   }
 }
 

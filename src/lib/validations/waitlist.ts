@@ -12,10 +12,12 @@ export const waitlistSchema = z.object({
     .string()
     .min(9, "Numer telefonu musi mieć co najmniej 9 cyfr")
     .max(20, "Numer telefonu jest za długi")
-    .regex(/^[+\d\s()-]+$/, "Numer telefonu zawiera niedozwolone znaki"),
+    .regex(/^[+\d\s()-]+$/, "Numer telefonu zawiera niedozwolone znaki")
+    .regex(/\d/, "Numer telefonu musi zawierać co najmniej jedną cyfrę"),
   trip: z
     .string()
-    .min(1, "Wybierz wyjazd"),
+    .min(1, "Wybierz wyjazd")
+    .max(200, "Nazwa wyjazdu jest za długa"),
   consentRodo: z
     .literal(true, {
       error: "Zgoda na przetwarzanie danych jest wymagana",

@@ -75,6 +75,8 @@ export function Button({
           href={href}
           className={classes}
           aria-label={ariaLabel}
+          target={target}
+          rel={rel}
         >
           {icon && <span className="shrink-0">{icon}</span>}
           {children}

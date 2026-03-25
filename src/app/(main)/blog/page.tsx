@@ -20,7 +20,6 @@ export const metadata: Metadata = {
 
 export default async function BlogPage() {
   const posts = await getAllBlogPosts();
-  const sorted = [...posts].sort((a, b) => b.publishedDate.localeCompare(a.publishedDate));
 
   return (
     <>
@@ -44,7 +43,7 @@ export default async function BlogPage() {
       <SectionWrapper variant="alternate">
         <Container>
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {sorted.map((post, index) => (
+            {posts.map((post, index) => (
               <ScrollAnimation key={post.slug} variant="fadeUp" delay={index * 0.1} className="h-full">
                 <Link
                   href={`/blog/${post.slug}`}

@@ -6,6 +6,7 @@ import { usePathname } from "next/navigation";
 import { X, ChevronDown } from "lucide-react";
 import { motion, AnimatePresence, useReducedMotion } from "motion/react";
 import { mainNavigation } from "@/data/navigation";
+import { Button } from "@/components/ui/Button";
 import { ROUTES } from "@/lib/constants";
 import { cn, isNavActive } from "@/lib/utils";
 
@@ -207,14 +208,10 @@ export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
             <MobileNavLinks pathname={pathname} onClose={onClose} />
 
             {/* CTA */}
-            <div className="mt-6 px-7">
-              <Link
-                href={ROUTES.trips}
-                onClick={onClose}
-                className="inline-flex w-full items-center justify-center rounded-none bg-moss px-6 py-3 text-base font-medium text-white transition-all duration-200 hover:bg-moss-light focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-moss focus-visible:ring-offset-2 active:scale-[0.98]"
-              >
+            <div className="mt-6 px-7" onClick={onClose}>
+              <Button href={ROUTES.trips} className="w-full">
                 Sprawdź terminy
-              </Link>
+              </Button>
             </div>
           </motion.div>
         </>

@@ -38,6 +38,7 @@ export function ContactForm() {
       name: "",
       email: "",
       message: "",
+      // RHF/Zod type mismatch — Zod literal(true) output ≠ boolean input
       consentRodo: false as unknown as true,
       website: "",
     },

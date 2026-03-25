@@ -84,8 +84,8 @@ export function PersonBio({
               </h2>
             )}
             <p className={cn(
-              "text-sm font-medium tracking-wide text-moss uppercase",
-              hideNameHeading ? "font-heading text-xl font-bold sm:text-2xl" : "mt-1",
+              "font-medium tracking-wide text-moss uppercase",
+              hideNameHeading ? "font-heading text-xl font-bold sm:text-2xl" : "mt-1 text-sm",
             )}>
               {member.role}
             </p>

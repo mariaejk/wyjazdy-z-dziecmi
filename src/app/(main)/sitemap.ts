@@ -16,13 +16,14 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { url: `${baseUrl}/blog`, changeFrequency: "monthly", priority: 0.6 },
     { url: `${baseUrl}/kontakt`, changeFrequency: "monthly", priority: 0.7 },
     { url: `${baseUrl}/opinie`, changeFrequency: "monthly", priority: 0.6 },
+    { url: `${baseUrl}/inne-projekty`, changeFrequency: "monthly", priority: 0.5 },
   ];
 
   const allTrips = await getAllTrips();
   const tripPages: MetadataRoute.Sitemap = allTrips.map((trip) => ({
     url: `${baseUrl}/wyjazdy/${trip.slug}`,
-    changeFrequency: "weekly" as const,
-    priority: 0.8,
+    changeFrequency: trip.isPast ? "yearly" as const : "weekly" as const,
+    priority: trip.isPast ? 0.4 : 0.8,
   }));
 
   const blogPosts = await getAllBlogPosts();

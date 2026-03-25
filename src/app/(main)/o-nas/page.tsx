@@ -41,8 +41,8 @@ const missionCards = [
 ];
 
 export default async function AboutPage() {
-  const maria = (await getTeamMember("Maria Kordalewska"))!;
-  const kamila = (await getTeamMember("Kamila Janczurewicz"))!;
+  const maria = await getTeamMember("Maria Kordalewska");
+  const kamila = await getTeamMember("Kamila Janczurewicz");
   const places = await getAllPlaces();
 
   return (
@@ -53,11 +53,13 @@ export default async function AboutPage() {
       ])} />
 
       {/* Maria */}
-      <PersonBio member={maria} variant="alternate" imagePosition="left" hideNameHeading>
-        <Button href={ROUTES.projects} variant="secondary">
-          Inne projekty
-        </Button>
-      </PersonBio>
+      {maria && (
+        <PersonBio member={maria} variant="alternate" imagePosition="left" hideNameHeading>
+          <Button href={ROUTES.projects} variant="secondary">
+            Inne projekty
+          </Button>
+        </PersonBio>
+      )}
 
       {/* Moja misja */}
       <SectionWrapper>
@@ -100,7 +102,7 @@ export default async function AboutPage() {
           </ScrollAnimation>
         </Container>
       </SectionWrapper>
-      <PersonBio member={kamila} variant="alternate" imagePosition="left" />
+      {kamila && <PersonBio member={kamila} variant="alternate" imagePosition="left" />}
 
       {/* Places */}
       <SectionWrapper variant="alternate">

@@ -16,11 +16,13 @@ export async function OpinionsTeaser() {
   return (
     <SectionWrapper>
       <Container>
-        <SectionHeading
-          title="Co mówią"
-          italicText="uczestnicy"
-          underline
-        />
+        <ScrollAnimation variant="fadeUp">
+          <SectionHeading
+            title="Co mówią"
+            italicText="uczestnicy"
+            underline
+          />
+        </ScrollAnimation>
         <ScrollAnimation variant="fadeUp">
           <div className="mb-8">
             <StarRating />

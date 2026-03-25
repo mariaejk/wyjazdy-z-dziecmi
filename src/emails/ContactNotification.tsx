@@ -44,7 +44,7 @@ export function ContactNotification(props: Props) {
 
           <Hr style={s.hr} />
           <Text style={s.footer}>
-            Otrzymano: {props.submittedAt} · Kliknij {"\u201EOdpowiedz\u201D"} aby napisać do{" "}
+            Otrzymano: {props.submittedAt} · Kliknij {"„Odpowiedz"} aby napisać do{" "}
             {props.name}
           </Text>
         </Container>

@@ -17,6 +17,7 @@ export const metadata: Metadata = {
   title: "Single z dziećmi",
   description:
     "Warsztaty dla samodzielnych rodziców z dziećmi. Bezpieczna przestrzeń, wsparcie i czas pełen bliskości w otoczeniu natury.",
+  robots: { index: false },
 };
 
 export default async function SingleParentsPage() {

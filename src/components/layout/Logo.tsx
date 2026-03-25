@@ -16,8 +16,7 @@ export function Logo({ size = 50, color = "currentColor", className }: LogoProps
         viewBox="0 0 100 100"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
-        className="shrink-0"
-        style={{ overflow: "visible" }}
+        className="shrink-0 overflow-visible"
         aria-hidden="true"
       >
         {/* Zewnętrzny okrąg */}

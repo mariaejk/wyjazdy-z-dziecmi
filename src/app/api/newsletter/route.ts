@@ -67,6 +67,14 @@ export async function POST(request: NextRequest) {
 
   const data = result.data;
 
+  // RODO: at least one consent must be provided
+  if (!data.consentRodo && !data.consentNewsletter) {
+    return NextResponse.json(
+      { error: "Wymagana jest zgoda na przetwarzanie danych." },
+      { status: 400 },
+    );
+  }
+
   // Turnstile verification — require token when secret key is configured
   if (process.env.TURNSTILE_SECRET_KEY && !data.turnstileToken) {
     return NextResponse.json(
@@ -75,7 +83,7 @@ export async function POST(request: NextRequest) {
     );
   }
   if (data.turnstileToken) {
-    const isHuman = await verifyTurnstile(data.turnstileToken);
+    const isHuman = await verifyTurnstile(data.turnstileToken, ip);
     if (!isHuman) {
       return NextResponse.json(
         { error: "Weryfikacja antyspam nie powiodła się. Spróbuj ponownie." },

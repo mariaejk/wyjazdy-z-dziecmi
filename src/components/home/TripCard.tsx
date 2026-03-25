@@ -6,26 +6,11 @@ import { Button } from "@/components/ui/Button";
 import { formatDateRange, formatCurrency, cn } from "@/lib/utils";
 import { ROUTES } from "@/lib/constants";
 import { CATEGORY_CONFIG } from "@/lib/category-config";
+import { getScarcityBadge, getMinPrice } from "./trip-card-utils";
 
 type TripCardProps = {
   trip: Trip;
 };
-
-function getScarcityBadge(spotsLeft?: number) {
-  if (spotsLeft === undefined) return null;
-  if (spotsLeft === 0) {
-    return <Badge className="bg-red-100 text-red-700 border-0">Komplet</Badge>;
-  }
-  if (spotsLeft <= 3) {
-    return <Badge className="bg-amber-100 text-amber-700 border-0">Ostatnie miejsca!</Badge>;
-  }
-  return null;
-}
-
-function getMinPrice(pricing: Trip["pricing"]): number | null {
-  if (pricing.length === 0) return null;
-  return Math.min(...pricing.map((p) => p.price));
-}
 
 export function TripCard({ trip }: TripCardProps) {
   const tripUrl = `${ROUTES.trips}/${trip.slug}`;

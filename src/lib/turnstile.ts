@@ -1,7 +1,7 @@
 const TURNSTILE_VERIFY_URL =
   "https://challenges.cloudflare.com/turnstile/v0/siteverify";
 
-export async function verifyTurnstile(token: string): Promise<boolean> {
+export async function verifyTurnstile(token: string, remoteip?: string): Promise<boolean> {
   const secret = process.env.TURNSTILE_SECRET_KEY;
 
   // Graceful skip in dev mode without Turnstile keys
@@ -22,6 +22,7 @@ export async function verifyTurnstile(token: string): Promise<boolean> {
       body: JSON.stringify({
         secret,
         response: token,
+        ...(remoteip && { remoteip }),
       }),
     });
 

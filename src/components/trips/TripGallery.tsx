@@ -1,5 +1,6 @@
 import Image from "next/image";
 import type { TripGalleryImage } from "@/types/trip";
+import { cn } from "@/lib/utils";
 import { Container } from "@/components/layout/Container";
 import { SectionWrapper } from "@/components/ui/SectionWrapper";
 import { SectionHeading } from "@/components/ui/SectionHeading";
@@ -20,11 +21,12 @@ export function TripGallery({ images }: TripGalleryProps) {
           {images.map((image, index) => (
             <ScrollAnimation key={image.src} delay={index * 0.1}>
               <div
-                className={`relative overflow-hidden rounded-none ${
-                  image.isMain ? "sm:col-span-2 sm:row-span-2" : ""
-                }`}
+                className={cn(
+                  "relative overflow-hidden rounded-none",
+                  image.isMain && "sm:col-span-2 sm:row-span-2",
+                )}
               >
-                <div className={`relative ${image.isMain ? "aspect-[4/3]" : "aspect-square"}`}>
+                <div className={cn("relative", image.isMain ? "aspect-[4/3]" : "aspect-square")}>
                   <Image
                     src={image.src}
                     alt={image.alt}

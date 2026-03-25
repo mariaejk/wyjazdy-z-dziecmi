@@ -73,7 +73,7 @@ export async function POST(request: NextRequest) {
     );
   }
   if (data.turnstileToken) {
-    const isHuman = await verifyTurnstile(data.turnstileToken);
+    const isHuman = await verifyTurnstile(data.turnstileToken, ip);
     if (!isHuman) {
       return NextResponse.json(
         { error: "Weryfikacja antyspam nie powiodła się. Spróbuj ponownie." },
@@ -85,7 +85,6 @@ export async function POST(request: NextRequest) {
   log("Waitlist", {
     name: data.name,
     email: data.email,
-    phone: data.phone,
     trip: data.trip,
   });
 

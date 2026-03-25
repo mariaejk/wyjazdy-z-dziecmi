@@ -2,8 +2,11 @@ import { Resend } from "resend";
 import type { ReactElement } from "react";
 import { CONTACT } from "@/lib/constants";
 
-const FROM_EMAIL =
-  process.env.FROM_EMAIL || "Wyjazdy z Dziećmi <onboarding@resend.dev>";
+const FROM_EMAIL = process.env.FROM_EMAIL || "Wyjazdy z Dziećmi <onboarding@resend.dev>";
+
+if (!process.env.FROM_EMAIL && process.env.NODE_ENV === "production") {
+  console.warn("[Email] FROM_EMAIL not set — using default onboarding@resend.dev. Emails may not be delivered.");
+}
 
 type SendEmailOptions = {
   to: string;

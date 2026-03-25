@@ -90,7 +90,8 @@ export function CookieBanner() {
   return (
     <div
       role="dialog"
-      aria-label="Ustawienia plików cookies"
+      aria-label={!showPanel ? "Ustawienia plików cookies" : undefined}
+      aria-labelledby={showPanel ? "cookie-settings-heading" : undefined}
       aria-modal="false"
       className="fixed inset-x-0 bottom-0 z-50 border-t border-graphite/10 bg-white p-4 shadow-lg sm:p-6"
     >
@@ -128,7 +129,7 @@ export function CookieBanner() {
           </>
         ) : (
           <div ref={panelRef}>
-            <h2 className="font-heading text-lg font-bold text-graphite">
+            <h2 id="cookie-settings-heading" className="font-heading text-lg font-bold text-graphite">
               Ustawienia cookies
             </h2>
             <p className="mt-2 text-sm text-graphite-light">
