@@ -89,13 +89,16 @@ Panel administracyjny: **wyjazdyzdziecmi.pl/keystatic**
 Szczegółowa instrukcja: **`docs/instrukcja-cms.md`**
 
 Co możesz edytować w CMS:
-- Warsztaty (tytuły, opisy, ceny, terminy, zdjęcia)
+- Warsztaty (tytuły, opisy, ceny, terminy, zdjęcia, FAQ per warsztat)
 - Opinie klientów
 - Blog (artykuły)
 - Galeria zdjęć
-- Zespół (bio, zdjęcia)
+- Zespół (bio, krótkie bio na homepage, zdjęcia)
 - Miejsca
-- Treści strony głównej
+- Treści strony głównej (wyróżnione opinie)
+- FAQ na stronie głównej (pytania i odpowiedzi)
+- Karty "Dlaczego warto?" na stronach kategorii
+- Inne projekty (Joga z Marią, Enviar, nowe projekty)
 
 ---
 
