@@ -82,7 +82,7 @@ export function JoinUsNewsletter() {
   };
 
   return (
-    <section className="bg-parchment-dark py-14 sm:py-16" id="wyjazdy">
+    <section className="bg-parchment-dark py-8 sm:py-10" id="wyjazdy">
       <Container>
         <ScrollAnimation variant="fadeUp">
           <div className="mx-auto max-w-xl text-center">
