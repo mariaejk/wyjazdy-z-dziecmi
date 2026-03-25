@@ -83,7 +83,7 @@ export function JoinUsNewsletter({ className }: { className?: string }) {
   };
 
   return (
-    <section className={cn("bg-parchment-dark py-8 sm:py-10", className)} id="wyjazdy">
+    <section className={cn("bg-moss/10 py-8 sm:py-10", className)} id="wyjazdy">
       <Container>
         <ScrollAnimation variant="fadeUp">
           <div className="mx-auto max-w-xl text-center">

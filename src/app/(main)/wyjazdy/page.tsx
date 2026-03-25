@@ -35,7 +35,7 @@ export default async function TripsPage() {
       ])} />
 
       {/* Calendar */}
-      <SectionWrapper className="relative overflow-hidden">
+      <SectionWrapper variant="alternate" className="relative overflow-hidden">
         <Container>
           <SectionHeading
             title="Kalendarz warsztatów"
