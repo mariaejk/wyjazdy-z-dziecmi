@@ -50,7 +50,7 @@ export default async function TripsPage() {
         <ForestPattern variant="realistic" />
       </SectionWrapper>
 
-      <SectionWrapper variant="alternate">
+      <SectionWrapper>
         <Container>
           <SectionHeading title="Nadchodzące warsztaty" />
           <Suspense fallback={null}>
@@ -60,7 +60,7 @@ export default async function TripsPage() {
       </SectionWrapper>
 
       {pastTrips.length > 0 && (
-        <SectionWrapper variant="alternate">
+        <SectionWrapper className="bg-moss/10">
           <Container>
             <SectionHeading
               title="Zakończone warsztaty"
