@@ -11,7 +11,7 @@ import { CONTACT, SOCIAL_LINKS, SITE_CONFIG } from "@/lib/constants";
 export function Footer() {
   return (
     <footer className="border-t border-graphite/10 bg-parchment">
-      <Container className="py-16 sm:py-20">
+      <Container className="py-8 sm:py-10">
         <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
           {/* Contact */}
           <div>
