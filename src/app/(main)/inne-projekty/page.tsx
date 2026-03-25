@@ -27,7 +27,7 @@ export default function ProjectsPage() {
       />
 
       {/* Intro */}
-      <SectionWrapper className="py-10 sm:py-12">
+      <SectionWrapper className="py-4 sm:py-6">
         <Container>
           <SectionHeading
             as="h1"
@@ -48,7 +48,7 @@ export default function ProjectsPage() {
       </SectionWrapper>
 
       {/* Joga z Marią — image left, text right */}
-      <SectionWrapper variant="alternate" className="py-10 sm:py-14">
+      <SectionWrapper variant="alternate" className="py-6 sm:py-8">
         <Container>
           <div className="mx-auto flex max-w-5xl flex-col items-center gap-8 lg:flex-row lg:items-start lg:gap-12">
             {/* Video — left side */}
@@ -124,7 +124,7 @@ export default function ProjectsPage() {
       </SectionWrapper>
 
       {/* Enviar — text left, image right (swapped) */}
-      <SectionWrapper className="py-10 sm:py-14">
+      <SectionWrapper className="py-6 sm:py-8">
         <Container>
           <div className="mx-auto flex max-w-5xl flex-col items-center gap-8 lg:flex-row lg:items-start lg:gap-12">
             {/* Photo — left side */}

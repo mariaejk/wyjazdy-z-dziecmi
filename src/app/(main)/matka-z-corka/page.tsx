@@ -70,7 +70,7 @@ export default async function MotherDaughterPage() {
       ])} />
 
       {/* Hero — reduced spacing */}
-      <SectionWrapper className="py-10 sm:py-12">
+      <SectionWrapper className="py-4 sm:py-6">
         <Container>
           <ScrollAnimation variant="fadeUp">
             <div className="mx-auto max-w-3xl text-center">
@@ -90,7 +90,7 @@ export default async function MotherDaughterPage() {
       </SectionWrapper>
 
       {/* Benefits — reduced spacing */}
-      <SectionWrapper variant="alternate" className="py-10 sm:py-14">
+      <SectionWrapper variant="alternate" className="py-6 sm:py-8">
         <Container>
           <ScrollAnimation variant="fadeUp">
             <SectionHeading
@@ -132,7 +132,7 @@ export default async function MotherDaughterPage() {
       </SectionWrapper>
 
       {/* Experience Description — reduced spacing */}
-      <SectionWrapper className="py-10 sm:py-14">
+      <SectionWrapper className="py-6 sm:py-8">
         <Container>
           <ScrollAnimation variant="fadeUp">
             <div className="mx-auto max-w-3xl text-center">
@@ -160,7 +160,7 @@ export default async function MotherDaughterPage() {
       {/* Trips or Join Us */}
       {trips.length > 0 ? (
         <>
-          <SectionWrapper variant="alternate" className="py-10 sm:py-14">
+          <SectionWrapper variant="alternate" className="py-6 sm:py-8">
             <Container>
               <SectionHeading
                 title="Nadchodzące"

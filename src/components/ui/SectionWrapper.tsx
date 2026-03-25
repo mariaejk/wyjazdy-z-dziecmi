@@ -18,7 +18,7 @@ export function SectionWrapper({
     <section
       id={id}
       className={cn(
-        "py-16 sm:py-20 lg:py-24",
+        "py-8 sm:py-10",
         variant === "alternate" ? "bg-parchment-dark" : "bg-parchment",
         className,
       )}

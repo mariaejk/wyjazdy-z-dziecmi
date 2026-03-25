@@ -35,7 +35,7 @@ const categories = [
 
 export function CategoryCards() {
   return (
-    <SectionWrapper className="py-10 sm:py-14">
+    <SectionWrapper className="py-6 sm:py-8">
       <Container>
         <SectionHeading title="Najczęściej wybierane" italicText="warsztaty" underline />
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4 sm:gap-6" role="region" aria-label="Kategorie warsztatów">
