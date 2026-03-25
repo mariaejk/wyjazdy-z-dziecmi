@@ -60,7 +60,7 @@ export default async function TripsPage() {
       </SectionWrapper>
 
       {pastTrips.length > 0 && (
-        <SectionWrapper>
+        <SectionWrapper variant="alternate">
           <Container>
             <SectionHeading
               title="Zakończone warsztaty"
