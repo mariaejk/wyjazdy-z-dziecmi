@@ -424,3 +424,15 @@ All copy comes from `docs/tresc_na_strone.md` and `docs/TODO POPRAWIC landing pa
 - **Button discriminated union: link has no `onClick`**: `ButtonAsLink` sets `onClick?: never`. MobileMenu CTA needs `onClick={onClose}` for menu dismissal — wrap Button in a `<div onClick={onClose}>` instead.
 - **`false as unknown as true` needs comment**: RHF/Zod type mismatch workaround (Zod `literal(true)` output ≠ `boolean` input for defaultValues) is not self-evident. Add `// RHF/Zod type mismatch — Zod literal(true) output ≠ boolean input` comment on every occurrence.
 - **Email templates: literal UTF-8 in .tsx**: Project convention requires literal Polish chars in `.tsx`. Replace `\u201E`/`\u201D` unicode escapes with `„`/`"` in email template JSX expressions.
+
+## Security Audit 25.03.2026 Lessons Learned
+
+- **Blog slug path traversal**: `path.join(BLOG_DIR, slug)` with unsanitized URL param allows `../../` traversal. Guard with `isSafeSlug()`: reject `/`, `\`, `..`, leading `.`. Apply to both `getBlogPost()` and `readBlogMeta()`.
+- **CSRF: require Origin in production**: `if (origin && ...)` skips check when Origin header is absent. Non-browser clients (curl, bots) omit Origin by default. Fix: `if (!origin) return 403` in production. Dev mode stays permissive for testing.
+- **Shared `validateRequest()` helper**: Origin check, Content-Length, rate limit, JSON parse, honeypot — identical in all 4 API routes. Extract to `src/lib/api-security.ts` returning `{ ok: true, ip, body } | { ok: false, response }`. DRY and single point of security enforcement.
+- **Content-Length check before JSON parse**: Without limit, attacker sends 100MB body → memory pressure on serverless function. Guard: reject `Content-Length > 50KB` before `request.json()`. Vercel has 4.5MB default but explicit check is defense in depth.
+- **`VERCEL_URL` vs `VERCEL_PROJECT_PRODUCTION_URL`**: `VERCEL_URL` includes preview deployment URLs (predictable pattern). Every preview deployment becomes a valid CSRF origin. Use `VERCEL_PROJECT_PRODUCTION_URL` — only the production URL.
+- **Keystatic routes need HSTS + X-Frame-Options**: Admin panel had relaxed CSP (needed for GitHub OAuth) but also dropped HSTS and clickjacking protection. These headers don't conflict with OAuth — always include them.
+- **PII in production `console.error`**: `console.error` runs in production (unlike `log()` helper). On total delivery failure, was logging `name`, `email` to Vercel logs. Fix: log only `trip`/`timestamp` — enough to debug without RODO exposure.
+- **Return 500 on total delivery failure**: Returning `{ success: true }` when both Sheets and email fail misleads user — they think submission was received but lead is lost. Return 500 with "spróbuj ponownie lub skontaktuj się telefonicznie".
+- **Rate limiter is per-instance on Vercel**: In-memory `Map` is not shared across serverless function instances. Acknowledged limitation — Turnstile is the primary spam defense, rate limiter is secondary. For higher scale, use Vercel KV (Redis).
