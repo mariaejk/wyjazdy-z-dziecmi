@@ -64,7 +64,7 @@ export default async function AdultOnlyPage() {
   return (
     <>
       {/* Hero */}
-      <SectionWrapper>
+      <SectionWrapper variant="alternate">
         <Container>
           <ScrollAnimation variant="fadeUp">
             <div className="mx-auto max-w-3xl text-center">
@@ -82,7 +82,7 @@ export default async function AdultOnlyPage() {
       </SectionWrapper>
 
       {/* Benefits */}
-      <SectionWrapper variant="alternate">
+      <SectionWrapper>
         <Container>
           <ScrollAnimation variant="fadeUp">
             <SectionHeading
@@ -123,7 +123,7 @@ export default async function AdultOnlyPage() {
       {/* Trips or Join Us */}
       {trips.length > 0 ? (
         <>
-          <SectionWrapper>
+          <SectionWrapper className="bg-moss/10">
             <Container>
               <SectionHeading
                 title="Nadchodzące warsztaty"

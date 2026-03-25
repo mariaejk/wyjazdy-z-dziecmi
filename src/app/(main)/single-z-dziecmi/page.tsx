@@ -63,7 +63,7 @@ export default async function SingleParentsPage() {
   return (
     <>
       {/* Hero — reduced spacing */}
-      <SectionWrapper className="py-4 sm:py-6">
+      <SectionWrapper variant="alternate" className="py-4 sm:py-6">
         <Container>
           <ScrollAnimation variant="fadeUp">
             <div className="mx-auto max-w-3xl text-center">
@@ -81,7 +81,7 @@ export default async function SingleParentsPage() {
       </SectionWrapper>
 
       {/* Benefits — reduced spacing, equal height cards */}
-      <SectionWrapper variant="alternate" className="py-6 sm:py-8">
+      <SectionWrapper className="py-6 sm:py-8">
         <Container>
           <ScrollAnimation variant="fadeUp">
             <SectionHeading
@@ -124,7 +124,7 @@ export default async function SingleParentsPage() {
 
       {/* Trips or Join Us */}
       {trips.length > 0 ? (
-        <SectionWrapper className="py-6 sm:py-8">
+        <SectionWrapper className="bg-moss/10 py-6 sm:py-8">
           <Container>
             <SectionHeading
               title="Nadchodzące"
