@@ -48,6 +48,11 @@ const nextConfig: NextConfig = {
         destination: "/single-z-dziecmi",
         permanent: true,
       },
+      {
+        source: "/moje-projekty",
+        destination: "/inne-projekty",
+        permanent: true,
+      },
     ];
   },
   async headers() {

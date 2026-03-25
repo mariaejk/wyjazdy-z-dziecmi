@@ -15,7 +15,7 @@ export type CategoryConfig = {
 
 export const CATEGORY_CONFIG: Record<CategoryKey, CategoryConfig> = {
   rodzinny: {
-    label: "Warsztaty z dziećmi",
+    label: "Rodzinny czas",
     calendarBg: "bg-moss text-white",
     legendBg: "bg-moss",
     badgeBg: "bg-moss/15",

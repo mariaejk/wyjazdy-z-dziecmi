@@ -52,24 +52,10 @@ export default async function AboutPage() {
         { name: "O nas", url: `${SITE_CONFIG.url}/o-nas` },
       ])} />
 
-      {/* Intro */}
-      <SectionWrapper>
-        <Container>
-          <ScrollAnimation variant="fadeUp">
-            <h1 className="mb-8 text-center font-heading text-3xl font-bold text-graphite sm:mb-10 sm:text-4xl lg:mb-12 lg:text-5xl">
-              O nas
-            </h1>
-            <p className="mx-auto -mt-4 max-w-3xl text-center text-lg text-graphite-light sm:-mt-6 sm:text-xl">
-              Poznaj moją historię i wartości
-            </p>
-          </ScrollAnimation>
-        </Container>
-      </SectionWrapper>
-
       {/* Maria */}
       <PersonBio member={maria} variant="alternate" imagePosition="left" hideNameHeading>
         <Button href={ROUTES.projects} variant="secondary">
-          Moje inne projekty
+          Inne projekty
         </Button>
       </PersonBio>
 
@@ -139,7 +125,7 @@ export default async function AboutPage() {
         <Container>
           <ScrollAnimation variant="fadeUp">
             <div className="mx-auto max-w-2xl text-center">
-              <h2 className="font-heading text-3xl font-bold text-graphite sm:text-4xl">
+              <h2 className="font-heading text-3xl font-light text-graphite sm:text-4xl">
                 Dołącz do mnie
               </h2>
               <p className="mt-4 text-lg text-graphite-light">

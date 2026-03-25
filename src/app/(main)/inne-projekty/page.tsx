@@ -11,7 +11,7 @@ import { ROUTES } from "@/lib/constants";
 import { getBreadcrumbSchema } from "@/lib/structured-data";
 
 export const metadata: Metadata = {
-  title: "Moje inne projekty",
+  title: "Inne projekty",
   description:
     "Poznaj inne projekty Marii Kordalewskiej — Joga z Marią i Enviar, firma z przesłaniem. Wellbeing, joga i eventy firmowe.",
 };
@@ -22,17 +22,17 @@ export default function ProjectsPage() {
       <StructuredData
         data={getBreadcrumbSchema([
           { name: "Strona główna", url: ROUTES.home },
-          { name: "Moje inne projekty", url: ROUTES.projects },
+          { name: "Inne projekty", url: ROUTES.projects },
         ])}
       />
 
       {/* Intro */}
-      <SectionWrapper>
+      <SectionWrapper className="py-10 sm:py-12">
         <Container>
           <SectionHeading
             as="h1"
             title="Przestrzeń dobrego życia"
-            subtitle="Moje inne projekty"
+            subtitle="Inne projekty"
           />
           <ScrollAnimation variant="fadeUp">
             <p className="mx-auto max-w-3xl text-center text-lg leading-relaxed text-graphite-light">
@@ -47,32 +47,13 @@ export default function ProjectsPage() {
         </Container>
       </SectionWrapper>
 
-      {/* Joga z Marią */}
-      <SectionWrapper variant="alternate">
+      {/* Joga z Marią — image left, text right */}
+      <SectionWrapper variant="alternate" className="py-10 sm:py-14">
         <Container>
-          <SectionHeading title="Joga z Marią" subtitle="Twoja chwila oddechu" />
-
-          <div className="mx-auto max-w-5xl">
-            <ScrollAnimation variant="fadeUp">
-              <p className="mb-8 text-lg leading-relaxed text-graphite-light">
-                Joga to dla mnie znacznie więcej niż tylko ruch ciała. To
-                praktyka odpuszczania, łapania życiowego balansu i wyciszania
-                przebodźcowanego umysłu, co w dzisiejszym szybkim świecie jest
-                nam wszystkim niezwykle potrzebne.
-              </p>
-            </ScrollAnimation>
-
-            <ScrollAnimation variant="fadeUp" delay={0.1}>
-              <p className="mb-8 text-base leading-relaxed text-graphite-light">
-                Zobacz krótki materiał, w którym opowiadam, jak zaczęła się moja
-                osobista przygoda z jogą i dlaczego tak bardzo zmieniła moje
-                życie.
-              </p>
-            </ScrollAnimation>
-
-            {/* Video */}
-            <ScrollAnimation variant="fadeUp" delay={0.15}>
-              <div className="mx-auto mb-8 max-w-lg overflow-hidden rounded-none shadow-xl ring-1 ring-graphite/5 sm:max-w-xl">
+          <div className="mx-auto flex max-w-5xl flex-col items-center gap-8 lg:flex-row lg:items-start lg:gap-12">
+            {/* Video — left side */}
+            <ScrollAnimation variant="fadeLeft" className="shrink-0">
+              <div className="mx-auto max-w-lg overflow-hidden rounded-none shadow-xl ring-1 ring-graphite/5 sm:max-w-md lg:w-96">
                 <video
                   controls
                   playsInline
@@ -86,21 +67,34 @@ export default function ProjectsPage() {
               </div>
             </ScrollAnimation>
 
-            <ScrollAnimation variant="fadeUp" delay={0.2}>
-              <p className="mb-8 text-base leading-relaxed text-graphite-light">
+            {/* Text — right side */}
+            <ScrollAnimation variant="fadeRight" delay={0.15} className="flex-1">
+              <h2 className="font-heading text-2xl font-light text-graphite sm:text-3xl">
+                Joga z Marią
+              </h2>
+              <p className="mt-1 text-base text-graphite-light">
+                Twoja chwila oddechu
+              </p>
+
+              <p className="mt-4 text-base leading-relaxed text-graphite-light">
+                Joga to dla mnie znacznie więcej niż tylko ruch ciała. To
+                praktyka odpuszczania, łapania życiowego balansu i wyciszania
+                przebodźcowanego umysłu, co w dzisiejszym szybkim świecie jest
+                nam wszystkim niezwykle potrzebne.
+              </p>
+
+              <p className="mt-4 text-base leading-relaxed text-graphite-light">
                 Prowadzę zajęcia, które pomagają zrzucić z barków codzienne
                 napięcie i dają przestrzeń, by po prostu „być" tu
                 i teraz. Niezależnie od tego, czy dopiero zaczynasz, czy
                 praktykujesz od dawna, znajdziesz u mnie bezpieczną,
                 nieoceniającą przystań.
               </p>
-            </ScrollAnimation>
 
-            <ScrollAnimation variant="fadeUp" delay={0.25}>
-              <p className="mb-4 font-medium text-graphite">
+              <p className="mt-6 text-sm font-medium text-graphite">
                 Dołącz do mojej społeczności i zacznij ćwiczyć ze mną:
               </p>
-              <div className="flex flex-wrap gap-4">
+              <div className="mt-3 flex flex-wrap gap-3">
                 <Button
                   variant="secondary"
                   size="sm"
@@ -129,68 +123,64 @@ export default function ProjectsPage() {
         </Container>
       </SectionWrapper>
 
-      {/* Enviar */}
-      <SectionWrapper>
+      {/* Enviar — text left, image right (swapped) */}
+      <SectionWrapper className="py-10 sm:py-14">
         <Container>
-          <SectionHeading
-            title="Enviar"
-            subtitle="Firma z przesłaniem — Prezenty i eventy dla Twojego zespołu"
-          />
+          <div className="mx-auto flex max-w-5xl flex-col items-center gap-8 lg:flex-row lg:items-start lg:gap-12">
+            {/* Text — left side */}
+            <ScrollAnimation variant="fadeLeft" delay={0.15} className="flex-1">
+              <h2 className="font-heading text-2xl font-light text-graphite sm:text-3xl">
+                Enviar
+              </h2>
+              <p className="mt-1 text-base text-graphite-light">
+                Firma z przesłaniem — Prezenty i eventy dla Twojego zespołu
+              </p>
 
-          <div className="mx-auto flex max-w-5xl flex-col items-center gap-8 lg:flex-row-reverse lg:gap-12">
-          {/* Photo */}
-          <ScrollAnimation variant="fadeRight" className="shrink-0">
-            <div className="relative h-72 w-56 overflow-hidden rounded-none shadow-lg sm:h-80 sm:w-64 lg:h-96 lg:w-72">
-              <Image
-                src="/images/marysia.png"
-                alt="Maria Kordalewska"
-                fill
-                sizes="(max-width: 640px) 224px, (max-width: 1024px) 256px, 288px"
-                className="object-cover"
-              />
-            </div>
-          </ScrollAnimation>
-
-          <div className="flex-1">
-            <ScrollAnimation variant="fadeUp">
-              <p className="mb-6 text-lg leading-relaxed text-graphite-light">
+              <p className="mt-4 text-base leading-relaxed text-graphite-light">
                 Czy w świecie biznesu jest miejsce na autentyczne emocje,
                 empatię i wdzięczność? Zdecydowanie tak. Enviar to agencja,
                 którą stworzyłam, aby wspierać firmy w budowaniu silnych,
                 międzyludzkich relacji.
               </p>
-            </ScrollAnimation>
 
-            <ScrollAnimation variant="fadeUp" delay={0.1}>
-              <p className="mb-8 text-base leading-relaxed text-graphite-light">
+              <p className="mt-4 text-base leading-relaxed text-graphite-light">
                 W ramach Enviar łączymy wydarzenia z wyjątkowymi,
                 personalizowanymi prezentami dostarczanymi prosto do rąk lub
                 domów pracowników i kontrahentów. Naszą misją jest nie tylko
                 przesyłanie pozytywnych emocji, ale również wspieranie kobiecych
-                biznesów, promowanie polskich marek oraz dbanie o środowisko. To
-                idealne rozwiązanie dla pracodawców, którzy chcą mądrze docenić
-                swój zespół, podnieść motywację i zadbać o przyjazną atmosferę
-                w miejscu pracy.
+                biznesów, promowanie polskich marek oraz dbanie o środowisko.
               </p>
-            </ScrollAnimation>
 
-            <ScrollAnimation variant="fadeUp" delay={0.15}>
-              <p className="mb-4 font-medium text-graphite">
+              <p className="mt-6 text-sm font-medium text-graphite">
                 Zobacz, jak możemy wesprzeć Twoją firmę:
               </p>
-              <Button
-                variant="secondary"
-                size="sm"
-                href="https://www.facebook.com/enviar.firmazprzeslaniem/"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Enviar na Facebooku (otwiera się w nowej karcie)"
-                icon={<ExternalLink className="h-4 w-4" strokeWidth={1.5} />}
-              >
-                Facebook — Enviar
-              </Button>
+              <div className="mt-3">
+                <Button
+                  variant="secondary"
+                  size="sm"
+                  href="https://www.facebook.com/enviar.firmazprzeslaniem/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Enviar na Facebooku (otwiera się w nowej karcie)"
+                  icon={<ExternalLink className="h-4 w-4" strokeWidth={1.5} />}
+                >
+                  Facebook — Enviar
+                </Button>
+              </div>
             </ScrollAnimation>
-          </div>
+
+            {/* Photo — right side */}
+            <ScrollAnimation variant="fadeRight" className="shrink-0">
+              <div className="relative h-72 w-56 overflow-hidden rounded-none shadow-lg sm:h-80 sm:w-64 lg:h-96 lg:w-72">
+                <Image
+                  src="/images/marysia.png"
+                  alt="Maria Kordalewska"
+                  fill
+                  sizes="(max-width: 640px) 224px, (max-width: 1024px) 256px, 288px"
+                  className="object-cover"
+                />
+              </div>
+            </ScrollAnimation>
           </div>
         </Container>
       </SectionWrapper>

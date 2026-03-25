@@ -31,7 +31,7 @@ export default async function GalleryPage() {
             <SectionHeading
               as="h1"
               title="Galeria"
-              subtitle="Zobacz jak wyglądają nasze wyjazdy"
+              subtitle="Zobacz jak wyglądają nasze warsztaty"
             />
           </ScrollAnimation>
 
