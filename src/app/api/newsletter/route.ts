@@ -52,8 +52,11 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ success: true });
   }
 
-  // Zod validation
-  const result = newsletterSchema.safeParse(body);
+  // Zod validation — consentRodo is optional at API level (passive consent in JoinUsNewsletter)
+  const apiSchema = newsletterSchema.extend({
+    consentRodo: newsletterSchema.shape.consentRodo.optional(),
+  });
+  const result = apiSchema.safeParse(body);
   if (!result.success) {
     const errors = result.error.issues.map((issue) => ({
       field: issue.path.join("."),
