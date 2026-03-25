@@ -34,16 +34,17 @@
    ```
 3. Jesli nie ma ustawionych hasel w `.env` — panel otworzy sie od razu.
 
-### Tryb produkcyjny (Vercel)
+### Tryb produkcyjny (Vercel + GitHub mode)
 
 1. Wejdz na:
    ```
    https://wyjazdyzdziecmi.pl/keystatic
    ```
-2. Pojawi sie okno logowania (HTTP Basic Auth).
-3. Wpisz login i haslo ustawione w zmiennych srodowiskowych Vercel:
-   - `KEYSTATIC_ADMIN_USER` — login
-   - `KEYSTATIC_ADMIN_PASSWORD` — haslo
+2. Kliknij **Sign in with GitHub**.
+3. Zaloguj sie swoim kontem GitHub (musisz byc collaborator w repozytorium).
+4. Po zalogowaniu zobaczysz panel CMS.
+
+**Uwaga:** Jesli widzisz strone 404, oznacza to, ze tryb GitHub nie jest skonfigurowany. Patrz sekcja 15 ponizej lub `docs/setup-external-services.md`.
 
 ---
 
@@ -458,18 +459,85 @@ matki-corki-4.jpg            dlaczego-warto-podrozowac.jpg
 | Logowanie              | Opcjonalne                | GitHub OAuth                  |
 | Konfiguracja           | Zero (domyslny tryb)     | Wymaga env vars na Vercel     |
 
-### Jak wlaczyc tryb GitHub
+### Jak wlaczyc tryb GitHub — krok po kroku
 
-Na Vercel dodaj zmienne srodowiskowe:
-```
-NEXT_PUBLIC_KEYSTATIC_GITHUB_OWNER=twoj-github-username
-NEXT_PUBLIC_KEYSTATIC_GITHUB_REPO=nazwa-repozytorium
-KEYSTATIC_GITHUB_CLIENT_ID=xxx
-KEYSTATIC_GITHUB_CLIENT_SECRET=xxx
-KEYSTATIC_SECRET=losowy-ciag-znakow
-```
+Tryb GitHub pozwala edytowac tresci przez przegladarke na `wyjazdyzdziecmi.pl/keystatic`. Zmiany zapisuja sie bezposrednio w repozytorium GitHub, a Vercel automatycznie przebudowuje strone.
 
-Instrukcja tworzenia GitHub App: https://keystatic.com/docs/github-mode
+**Wymagania:** konto GitHub dla kazdej osoby, ktora ma edytowac tresci.
+
+#### Krok 1 — Klient zaklada konto GitHub
+1. Klient wchodzi na https://github.com/signup
+2. Tworzy darmowe konto (np. `maria-kordalewska`)
+3. Nie musi nic wiedziec o kodzie — bedzie logowac sie tylko przez przycisk na `/keystatic`
+
+#### Krok 2 — Dodaj klienta jako collaborator do repozytorium
+1. Wejdz na https://github.com/TatianaG-ka/wyjazdy-z-dziecmi/settings/access
+2. Kliknij **Invite a collaborator**
+3. Wpisz username klienta (np. `maria-kordalewska`) → wyslij zaproszenie
+4. Klient akceptuje zaproszenie (dostanie email od GitHub)
+
+#### Krok 3 — Stworz GitHub App (jednorazowo)
+1. Wejdz na https://github.com/settings/apps/new
+2. Wypelnij formularz:
+
+| Pole | Wartosc |
+|------|---------|
+| **GitHub App name** | `wyjazdy-z-dziecmi-cms` |
+| **Homepage URL** | `https://wyjazdyzdziecmi.pl` |
+| **Callback URL** | `https://wyjazdyzdziecmi.pl/api/keystatic/github/oauth/callback` |
+| **Request user authorization (OAuth)** | Zaznacz |
+| **Webhook → Active** | Odznacz (nie potrzebujemy) |
+
+3. W sekcji **Permissions → Repository permissions**:
+   - **Contents**: Read & write
+   - Reszta zostaw domyslnie (No access)
+4. Kliknij **Create GitHub App**
+5. Na stronie utworzonej apki:
+   - Skopiuj **Client ID** (widoczny od razu)
+   - Kliknij **Generate a new client secret** → skopiuj secret (wyswietla sie raz!)
+6. **Install App** (przycisk w lewym menu) → wybierz `TatianaG-ka` → **Only select repositories** → wybierz `wyjazdy-z-dziecmi` → Install
+
+#### Krok 4 — Dodaj zmienne srodowiskowe na Vercel
+1. Wejdz na https://vercel.com → projekt `wyjazdy-z-dziecmi` → **Settings** → **Environment Variables**
+2. Dodaj 5 zmiennych (Environment: Production + Preview + Development):
+
+| Zmienna | Wartosc | Skad |
+|---------|---------|------|
+| `NEXT_PUBLIC_KEYSTATIC_GITHUB_OWNER` | `TatianaG-ka` | Twoj GitHub username |
+| `NEXT_PUBLIC_KEYSTATIC_GITHUB_REPO` | `wyjazdy-z-dziecmi` | Nazwa repo |
+| `KEYSTATIC_GITHUB_CLIENT_ID` | `Iv1.abc123...` | Z kroku 3, pkt 5 |
+| `KEYSTATIC_GITHUB_CLIENT_SECRET` | `secret_abc123...` | Z kroku 3, pkt 5 |
+| `KEYSTATIC_SECRET` | losowy ciag 64 znakow | Wygeneruj: `openssl rand -hex 32` |
+
+3. Kliknij **Redeploy**: Deployments → wybierz najnowszy → **...** → **Redeploy**
+
+#### Krok 5 — Test
+1. Wejdz na `https://wyjazdyzdziecmi.pl/keystatic`
+2. Kliknij **Sign in with GitHub**
+3. Zaloguj sie kontem GitHub
+4. Powinien sie pojawic panel CMS z lista kolekcji
+
+#### Krok 6 — Klient testuje
+1. Klient wchodzi na `https://wyjazdyzdziecmi.pl/keystatic`
+2. Klika **Sign in with GitHub** → loguje sie swoim kontem
+3. Edytuje cos (np. opinie) → klika **Save**
+4. Po 2-3 minutach zmiana pojawia sie na stronie (automatyczny build na Vercel)
+
+#### Rozwiazywanie problemow
+
+| Problem | Rozwiazanie |
+|---------|-------------|
+| Strona 404 na `/keystatic` | Sprawdz czy env vars sa ustawione na Vercel. Bez `NEXT_PUBLIC_KEYSTATIC_GITHUB_OWNER` panel jest zablokowany. |
+| "Not authorized" po zalogowaniu | Sprawdz czy klient jest collaborator w repo (krok 2) |
+| "OAuth error" | Sprawdz Callback URL w GitHub App — musi dokladnie pasowac |
+| Zmiany nie pojawiaja sie na stronie | Sprawdz Vercel Deployments — czy build przeszedl po commit |
+| Klient nie dostaje zaproszenia | Sprawdz poprawnosc GitHub username w zaproszeniu |
+
+#### Dodawanie kolejnych edytorow
+1. Dodaj osobe jako collaborator do repozytorium (krok 2)
+2. Gotowe — osoba moze sie logowac na `/keystatic`
+
+Nie trzeba nic zmieniac w GitHub App ani env vars — kazdy collaborator z kontem GitHub moze sie logowac.
 
 ---
 

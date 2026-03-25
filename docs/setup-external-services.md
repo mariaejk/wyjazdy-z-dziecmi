@@ -1,6 +1,50 @@
 # Konfiguracja serwisów zewnętrznych
 
-Instrukcja krok po kroku dla: Google Sheets, Resend, Cloudflare Turnstile.
+Instrukcja krok po kroku dla: Keystatic CMS (GitHub mode), Google Sheets, Resend, Cloudflare Turnstile.
+
+---
+
+## 0. Keystatic CMS — GitHub mode (edycja treści przez przeglądarkę)
+
+Umożliwia klientowi (Maria) edycję treści na `wyjazdyzdziecmi.pl/keystatic` bez wiedzy technicznej. Zmiany zapisują się jako commity w GitHub, Vercel automatycznie przebudowuje stronę.
+
+### 0.1 Klient zakłada konto GitHub
+1. https://github.com/signup → darmowe konto
+2. Podaj klientowi link — nie musi wiedzieć co to GitHub, potrzebuje tylko konta do logowania
+
+### 0.2 Dodaj klienta jako collaborator
+1. https://github.com/TatianaG-ka/wyjazdy-z-dziecmi/settings/access
+2. **Invite a collaborator** → username klienta → wyślij
+3. Klient akceptuje (email)
+
+### 0.3 Stwórz GitHub App
+1. https://github.com/settings/apps/new
+2. Wypełnij:
+   - Name: `wyjazdy-z-dziecmi-cms`
+   - Homepage URL: `https://wyjazdyzdziecmi.pl`
+   - Callback URL: `https://wyjazdyzdziecmi.pl/api/keystatic/github/oauth/callback`
+   - Request user authorization (OAuth): ✅
+   - Webhook Active: ❌
+   - Permissions → Repository → Contents: **Read & write**
+3. **Create GitHub App** → skopiuj Client ID + wygeneruj Client Secret
+4. **Install App** → Only select repositories → `wyjazdy-z-dziecmi`
+
+### 0.4 Env variables
+
+```
+NEXT_PUBLIC_KEYSTATIC_GITHUB_OWNER=TatianaG-ka
+NEXT_PUBLIC_KEYSTATIC_GITHUB_REPO=wyjazdy-z-dziecmi
+KEYSTATIC_GITHUB_CLIENT_ID=<Client ID z GitHub App>
+KEYSTATIC_GITHUB_CLIENT_SECRET=<Client Secret z GitHub App>
+KEYSTATIC_SECRET=<openssl rand -hex 32>
+```
+
+### 0.5 Test
+1. Redeploy na Vercel (po dodaniu env vars)
+2. Wejdź na `wyjazdyzdziecmi.pl/keystatic` → Sign in with GitHub
+3. Klient robi to samo ze swojego konta
+
+Szczegółowa instrukcja: `docs/instrukcja-cms.md` sekcja 15.
 
 ---
 
@@ -91,6 +135,11 @@ Na Vercel: Settings → Environment Variables → dodaj wszystkie:
 
 | Zmienna | Wartość | Uwagi |
 |---------|---------|-------|
+| `NEXT_PUBLIC_KEYSTATIC_GITHUB_OWNER` | `TatianaG-ka` | GitHub username |
+| `NEXT_PUBLIC_KEYSTATIC_GITHUB_REPO` | `wyjazdy-z-dziecmi` | Nazwa repo |
+| `KEYSTATIC_GITHUB_CLIENT_ID` | z GitHub App | |
+| `KEYSTATIC_GITHUB_CLIENT_SECRET` | z GitHub App | |
+| `KEYSTATIC_SECRET` | `openssl rand -hex 32` | Losowy ciąg |
 | `GOOGLE_SHEETS_CLIENT_EMAIL` | z pliku JSON | |
 | `GOOGLE_SHEETS_PRIVATE_KEY` | z pliku JSON | Pamiętaj o cudzysłowach |
 | `GOOGLE_SHEETS_SPREADSHEET_ID` | z URL arkusza | |
@@ -122,6 +171,7 @@ Formularze działają bez żadnych kluczy — helpery logują `console.warn` i p
 
 | Usługa | Plan | Limit | Koszt |
 |--------|------|-------|-------|
+| Keystatic CMS (GitHub mode) | Free | Bez limitu użytkowników | 0 zł |
 | Google Sheets API | Free | 300 zapisów/min | 0 zł |
 | Resend | Free | 3000 emaili/mies. | 0 zł |
 | Cloudflare Turnstile | Free | 1M weryfikacji/mies. | 0 zł |
