@@ -6,6 +6,7 @@ import { Turnstile, type TurnstileInstance } from "@marsidev/react-turnstile";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { CheckCircle, AlertCircle } from "lucide-react";
+import { cn } from "@/lib/utils";
 import { analytics } from "@/lib/analytics";
 import { HoneypotField } from "@/components/ui/HoneypotField";
 import { Button } from "@/components/ui/Button";
@@ -23,7 +24,7 @@ type PassiveNewsletterValues = z.infer<typeof passiveNewsletterSchema>;
 
 type FormStatus = "idle" | "submitting" | "success" | "error";
 
-export function JoinUsNewsletter() {
+export function JoinUsNewsletter({ className }: { className?: string }) {
   const [status, setStatus] = useState<FormStatus>("idle");
   const [errorMessage, setErrorMessage] = useState("");
   const [turnstileToken, setTurnstileToken] = useState<string>();
@@ -82,7 +83,7 @@ export function JoinUsNewsletter() {
   };
 
   return (
-    <section className="bg-parchment-dark py-8 sm:py-10" id="wyjazdy">
+    <section className={cn("bg-parchment-dark py-8 sm:py-10", className)} id="wyjazdy">
       <Container>
         <ScrollAnimation variant="fadeUp">
           <div className="mx-auto max-w-xl text-center">
