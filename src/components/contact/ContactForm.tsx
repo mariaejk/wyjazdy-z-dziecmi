@@ -108,6 +108,7 @@ export function ContactForm() {
       <Input
         label="Imię i nazwisko"
         placeholder="Jan Kowalski"
+        autoComplete="name"
         required
         {...register("name")}
         error={errors.name?.message}
@@ -116,6 +117,7 @@ export function ContactForm() {
         label="E-mail"
         type="email"
         placeholder="jan@example.com"
+        autoComplete="email"
         required
         {...register("email")}
         error={errors.email?.message}

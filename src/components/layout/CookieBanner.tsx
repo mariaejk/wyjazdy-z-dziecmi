@@ -138,7 +138,7 @@ export function CookieBanner() {
 
             <div className="mt-4 space-y-3">
               {/* Necessary — always on */}
-              <label className="flex items-center gap-3">
+              <label className="flex items-start gap-3">
                 <input
                   type="checkbox"
                   checked
@@ -154,7 +154,7 @@ export function CookieBanner() {
               </label>
 
               {/* Analytics */}
-              <label className="flex items-center gap-3">
+              <label className="flex items-start gap-3">
                 <input
                   type="checkbox"
                   checked={analyticsChecked}
@@ -170,7 +170,7 @@ export function CookieBanner() {
               </label>
 
               {/* Marketing */}
-              <label className="flex items-center gap-3">
+              <label className="flex items-start gap-3">
                 <input
                   type="checkbox"
                   checked={marketingChecked}

@@ -107,7 +107,7 @@ function MonthGrid({
           <button
             type="button"
             onClick={onPrev}
-            className="rounded-none p-1 text-graphite-light transition-colors hover:bg-parchment-dark hover:text-graphite"
+            className="rounded-none p-2 min-h-11 min-w-11 text-graphite-light transition-colors hover:bg-parchment-dark hover:text-graphite"
             aria-label="Poprzedni miesiąc"
           >
             <ChevronLeft className="h-4 w-4 sm:h-5 sm:w-5" strokeWidth={1.5} />
@@ -122,7 +122,7 @@ function MonthGrid({
           <button
             type="button"
             onClick={onNext}
-            className="rounded-none p-1 text-graphite-light transition-colors hover:bg-parchment-dark hover:text-graphite"
+            className="rounded-none p-2 min-h-11 min-w-11 text-graphite-light transition-colors hover:bg-parchment-dark hover:text-graphite"
             aria-label="Następny miesiąc"
           >
             <ChevronRight className="h-4 w-4 sm:h-5 sm:w-5" strokeWidth={1.5} />
@@ -251,7 +251,7 @@ export function TripCalendar({ trips }: TripCalendarProps) {
             key={key}
             onClick={() => toggleFilter(key)}
             className={cn(
-              "flex items-center gap-2 rounded-sm px-3 py-1.5 text-xs font-medium transition-all sm:text-sm",
+              "flex items-center gap-2 rounded-sm px-3 py-2.5 text-xs font-medium transition-all sm:text-sm",
               activeFilter === key
                 ? cn(config.badgeBg, config.badgeText, "ring-1 ring-current")
                 : activeFilter === null

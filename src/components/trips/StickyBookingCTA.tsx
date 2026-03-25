@@ -62,7 +62,7 @@ export function StickyBookingCTA() {
     <div
       ref={containerRef}
       className={cn(
-        "fixed bottom-0 left-0 right-0 z-30 border-t border-parchment-dark bg-parchment/95 px-4 py-3 backdrop-blur-sm md:hidden",
+        "fixed bottom-0 left-0 right-0 z-30 border-t border-parchment-dark bg-parchment/95 px-4 py-3 pb-[env(safe-area-inset-bottom,12px)] backdrop-blur-sm md:hidden",
         !prefersReducedMotion && "transition-transform duration-300",
         isVisible ? "translate-y-0" : "translate-y-full",
       )}

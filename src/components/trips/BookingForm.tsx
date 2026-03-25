@@ -149,6 +149,7 @@ export function BookingForm({ trips, preselectedTrip }: BookingFormProps) {
             <Input
               label="Imię i nazwisko"
               placeholder="Jan Kowalski"
+              autoComplete="name"
               required
               {...register("name")}
               error={errors.name?.message}
@@ -157,6 +158,7 @@ export function BookingForm({ trips, preselectedTrip }: BookingFormProps) {
               label="E-mail"
               type="email"
               placeholder="jan@example.com"
+              autoComplete="email"
               required
               {...register("email")}
               error={errors.email?.message}
@@ -168,6 +170,7 @@ export function BookingForm({ trips, preselectedTrip }: BookingFormProps) {
               label="Telefon"
               type="tel"
               placeholder="+48 500 000 000"
+              autoComplete="tel"
               required
               {...register("phone")}
               error={errors.phone?.message}
@@ -186,6 +189,7 @@ export function BookingForm({ trips, preselectedTrip }: BookingFormProps) {
             <Input
               label="Dorośli"
               type="number"
+              inputMode="numeric"
               min={1}
               max={10}
               required
@@ -195,6 +199,7 @@ export function BookingForm({ trips, preselectedTrip }: BookingFormProps) {
             <Input
               label="Dzieci"
               type="number"
+              inputMode="numeric"
               min={0}
               max={10}
               required
@@ -207,6 +212,7 @@ export function BookingForm({ trips, preselectedTrip }: BookingFormProps) {
             <Input
               label="Wiek dzieci"
               placeholder="np. 5, 8"
+              inputMode="numeric"
               {...register("childrenAges")}
               error={errors.childrenAges?.message}
             />

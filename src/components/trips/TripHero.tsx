@@ -28,7 +28,7 @@ export function TripHero({
 }: TripHeroProps) {
   const isSoldOut = spotsLeft === 0;
   return (
-    <section id="hero" className="relative flex min-h-[60vh] items-end overflow-hidden">
+    <section id="hero" className="relative flex min-h-[60svh] items-end overflow-hidden">
       <Image
         src={image}
         alt={title}

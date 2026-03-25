@@ -45,7 +45,7 @@ const variantStyles: Record<ButtonVariant, string> = {
 };
 
 const sizeStyles: Record<ButtonSize, string> = {
-  sm: "px-5 py-2.5 text-[11px] uppercase tracking-[0.2em] gap-1.5",
+  sm: "px-5 py-2.5 text-[11px] uppercase tracking-[0.2em] gap-1.5 min-h-[44px]",
   md: "px-7 py-3 text-[11px] uppercase tracking-[0.2em] gap-2",
   lg: "px-9 py-4 text-[11px] uppercase tracking-[0.2em] gap-2.5",
 };

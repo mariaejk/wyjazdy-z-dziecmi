@@ -32,7 +32,8 @@ export function HeroSlideshow() {
           src={slides[0].src}
           alt={slides[0].alt}
           fill
-          priority
+          loading="eager"
+          fetchPriority="high"
           sizes="100vw"
           className="object-cover"
         />
@@ -55,7 +56,8 @@ export function HeroSlideshow() {
             src={slides[current].src}
             alt={slides[current].alt}
             fill
-            priority={current === 0}
+            loading={current === 0 ? "eager" : "lazy"}
+            fetchPriority={current === 0 ? "high" : "auto"}
             sizes="100vw"
             className="object-cover"
           />
