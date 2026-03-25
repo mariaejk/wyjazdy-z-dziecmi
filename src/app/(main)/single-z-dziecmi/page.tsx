@@ -13,10 +13,9 @@ import { ROUTES } from "@/lib/constants";
 export const revalidate = 3600;
 
 export const metadata: Metadata = {
-  title: "Single Parents — Wyjazdy z Dziećmi",
+  title: "Single z dziećmi",
   description:
-    "Wyjazdy dla samodzielnych rodziców z dziećmi. Bezpieczna przestrzeń, wsparcie i czas pełen bliskości w otoczeniu natury.",
-  robots: { index: false },
+    "Warsztaty dla samodzielnych rodziców z dziećmi. Bezpieczna przestrzeń, wsparcie i czas pełen bliskości w otoczeniu natury.",
 };
 
 const benefits = [
@@ -30,7 +29,7 @@ const benefits = [
     icon: Shield,
     title: "Wsparcie grupy",
     description:
-      "Spotkania z innymi single parents budują siłę i poczucie wspólnoty.",
+      "Spotkania z innymi samodzielnymi rodzicami budują siłę i poczucie wspólnoty.",
   },
   {
     icon: Users,
@@ -54,7 +53,7 @@ const benefits = [
     icon: Sparkles,
     title: "Nowe relacje",
     description:
-      "Wyjazdy to okazja do poznania ludzi w podobnej sytuacji życiowej. Przyjaźnie, które trwają.",
+      "Warsztaty to okazja do poznania ludzi w podobnej sytuacji życiowej. Przyjaźnie, które trwają.",
   },
 ];
 
@@ -63,16 +62,16 @@ export default async function SingleParentsPage() {
 
   return (
     <>
-      {/* Hero */}
-      <SectionWrapper>
+      {/* Hero — reduced spacing */}
+      <SectionWrapper className="py-10 sm:py-12">
         <Container>
           <ScrollAnimation variant="fadeUp">
             <div className="mx-auto max-w-3xl text-center">
-              <h1 className="font-heading text-4xl font-bold text-graphite sm:text-5xl lg:text-6xl">
-                Single Parents
+              <h1 className="font-heading text-4xl font-light text-graphite sm:text-5xl lg:text-6xl">
+                Single z dziećmi
               </h1>
-              <p className="mt-6 text-lg leading-relaxed text-graphite-light sm:text-xl">
-                Wyjazdy stworzone z myślą o samodzielnych rodzicach i ich
+              <p className="mt-4 text-lg leading-relaxed text-graphite-light sm:text-xl">
+                Warsztaty stworzone z myślą o samodzielnych rodzicach i ich
                 dzieciach. Przestrzeń bez pośpiechu, pełna wsparcia i zrozumienia
                 — bo zasługujesz na chwilę wytchnienia.
               </p>
@@ -81,13 +80,15 @@ export default async function SingleParentsPage() {
         </Container>
       </SectionWrapper>
 
-      {/* Benefits */}
-      <SectionWrapper variant="alternate">
+      {/* Benefits — reduced spacing, equal height cards */}
+      <SectionWrapper variant="alternate" className="py-10 sm:py-14">
         <Container>
           <ScrollAnimation variant="fadeUp">
             <SectionHeading
-              title="Dlaczego warto?"
-              subtitle="Wyjazdy dopasowane do potrzeb samodzielnych rodziców"
+              title="Dlaczego"
+              italicText="warto?"
+              underline
+              subtitle="Warsztaty dopasowane do potrzeb samodzielnych rodziców"
             />
           </ScrollAnimation>
 
@@ -98,8 +99,9 @@ export default async function SingleParentsPage() {
                   key={benefit.title}
                   variant="fadeUp"
                   delay={index * 0.1}
+                  className="h-full"
                 >
-                  <div className="rounded-none border border-graphite/10 bg-white p-6">
+                  <div className="flex h-full flex-col rounded-none border border-graphite/10 bg-white p-6">
                     <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-none bg-moss/10">
                       <benefit.icon
                         className="h-6 w-6 text-moss"
@@ -109,7 +111,7 @@ export default async function SingleParentsPage() {
                     <h3 className="font-heading text-lg font-bold text-graphite">
                       {benefit.title}
                     </h3>
-                    <p className="mt-2 text-sm leading-relaxed text-graphite-light">
+                    <p className="mt-2 flex-1 text-sm leading-relaxed text-graphite-light">
                       {benefit.description}
                     </p>
                   </div>
@@ -122,47 +124,30 @@ export default async function SingleParentsPage() {
 
       {/* Trips or Join Us */}
       {trips.length > 0 ? (
-        <>
-          <SectionWrapper>
-            <Container>
-              <SectionHeading
-                title="Nadchodzące warsztaty"
-                subtitle="Wybierz termin i dołącz do nas"
-              />
-              <div className="mx-auto max-w-4xl space-y-6">
-                {trips.map((trip, index) => (
-                  <ScrollAnimation key={trip.slug} delay={index * 0.12}>
-                    <TripCardHorizontal trip={trip} />
-                  </ScrollAnimation>
-                ))}
-              </div>
-            </Container>
-          </SectionWrapper>
-
-          <SectionWrapper variant="alternate">
-            <Container>
-              <ScrollAnimation variant="fadeUp">
-                <div className="mx-auto max-w-2xl text-center">
-                  <h2 className="font-heading text-3xl font-bold text-graphite sm:text-4xl">
-                    Dołącz do nas
-                  </h2>
-                  <p className="mt-4 text-lg text-graphite-light">
-                    Masz pytania? Napisz do nas — chętnie pomożemy wybrać
-                    odpowiedni wyjazd.
-                  </p>
-                  <div className="mt-8 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
-                    <Button href={ROUTES.trips}>
-                      Zobacz wszystkie warsztaty
-                    </Button>
-                    <Button href={ROUTES.contact} variant="secondary">
-                      Napisz do nas
-                    </Button>
-                  </div>
-                </div>
+        <SectionWrapper className="py-10 sm:py-14">
+          <Container>
+            <SectionHeading
+              title="Nadchodzące"
+              italicText="warsztaty"
+              underline
+              subtitle="Wybierz termin i dołącz do nas"
+            />
+            <div className="mx-auto max-w-4xl space-y-6">
+              {trips.map((trip, index) => (
+                <ScrollAnimation key={trip.slug} delay={index * 0.12}>
+                  <TripCardHorizontal trip={trip} />
+                </ScrollAnimation>
+              ))}
+            </div>
+            <div className="mt-10 text-center">
+              <ScrollAnimation variant="fadeUp" delay={0.3}>
+                <Button href={ROUTES.trips} variant="secondary">
+                  Zobacz wszystkie warsztaty
+                </Button>
               </ScrollAnimation>
-            </Container>
-          </SectionWrapper>
-        </>
+            </div>
+          </Container>
+        </SectionWrapper>
       ) : (
         <JoinUsNewsletter />
       )}

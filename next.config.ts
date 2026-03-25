@@ -43,6 +43,11 @@ const nextConfig: NextConfig = {
         destination: "/warsztaty-z-dziecmi",
         permanent: true,
       },
+      {
+        source: "/single-parents",
+        destination: "/single-z-dziecmi",
+        permanent: true,
+      },
     ];
   },
   async headers() {
