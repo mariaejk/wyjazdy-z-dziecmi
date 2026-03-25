@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { Sun, Flower2, Music, TreePine, Coffee, Sparkles } from "lucide-react";
 import { Container } from "@/components/layout/Container";
 import { SectionWrapper } from "@/components/ui/SectionWrapper";
 import { SectionHeading } from "@/components/ui/SectionHeading";
@@ -7,7 +6,9 @@ import { Button } from "@/components/ui/Button";
 import { ScrollAnimation } from "@/components/shared/ScrollAnimation";
 import { TripCardHorizontal } from "@/components/home/TripCardHorizontal";
 import { JoinUsNewsletter } from "@/components/shared/JoinUsNewsletter";
+import { BenefitCards } from "@/components/shared/BenefitCards";
 import { getUpcomingTripsByCategory } from "@/data/trips";
+import { getBenefitsByCategory } from "@/data/benefits";
 import { ROUTES } from "@/lib/constants";
 
 export const revalidate = 3600;
@@ -19,47 +20,9 @@ export const metadata: Metadata = {
   robots: { index: false },
 };
 
-const benefits = [
-  {
-    icon: Sun,
-    title: "Czas tylko dla Ciebie",
-    description:
-      "Zostawiasz codzienność za sobą. To wyjazd, w którym skupiasz się wyłącznie na sobie.",
-  },
-  {
-    icon: Flower2,
-    title: "Joga i oddech",
-    description:
-      "Poranna joga, medytacja i ćwiczenia oddechowe — ciało i umysł odzyskują równowagę.",
-  },
-  {
-    icon: Music,
-    title: "Ruch i ekspresja",
-    description:
-      "Taniec intuicyjny, praca z ciałem i głosem — odkryj swoją kreatywność.",
-  },
-  {
-    icon: TreePine,
-    title: "Natura i cisza",
-    description:
-      "Las, jezioro, ognisko wieczorem. Miejsca, które przynoszą ukojenie.",
-  },
-  {
-    icon: Coffee,
-    title: "Regeneracja",
-    description:
-      "Czas na rozmowy, spacery i bycie w swoim tempie. Bez pośpiechu, bez planu.",
-  },
-  {
-    icon: Sparkles,
-    title: "Kameralna grupa",
-    description:
-      "Małe grupy sprzyjają autentycznym relacjom i głębszemu doświadczeniu.",
-  },
-];
-
 export default async function AdultOnlyPage() {
   const trips = await getUpcomingTripsByCategory("dla-doroslych");
+  const benefits = await getBenefitsByCategory("dla-doroslych");
 
   return (
     <>
@@ -81,44 +44,14 @@ export default async function AdultOnlyPage() {
         </Container>
       </SectionWrapper>
 
-      {/* Benefits */}
-      <SectionWrapper>
-        <Container>
-          <ScrollAnimation variant="fadeUp">
-            <SectionHeading
-              title="Dlaczego warto?"
-              subtitle="Czas na siebie, w otoczeniu natury"
-            />
-          </ScrollAnimation>
-
-          <div className="mx-auto max-w-5xl">
-            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-              {benefits.map((benefit, index) => (
-                <ScrollAnimation
-                  key={benefit.title}
-                  variant="fadeUp"
-                  delay={index * 0.1}
-                >
-                  <div className="rounded-none border border-graphite/10 bg-white p-6">
-                    <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-none bg-moss/10">
-                      <benefit.icon
-                        className="h-6 w-6 text-moss"
-                        strokeWidth={1.5}
-                      />
-                    </div>
-                    <h3 className="font-heading text-lg font-bold text-graphite">
-                      {benefit.title}
-                    </h3>
-                    <p className="mt-2 text-sm leading-relaxed text-graphite-light">
-                      {benefit.description}
-                    </p>
-                  </div>
-                </ScrollAnimation>
-              ))}
-            </div>
-          </div>
-        </Container>
-      </SectionWrapper>
+      {/* Benefits from CMS */}
+      {benefits && (
+        <SectionWrapper>
+          <Container>
+            <BenefitCards benefits={benefits} />
+          </Container>
+        </SectionWrapper>
+      )}
 
       {/* Trips or Join Us */}
       {trips.length > 0 ? (

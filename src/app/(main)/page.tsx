@@ -4,7 +4,8 @@ import { TripCardsSection } from "@/components/home/TripCardsSection";
 import { AboutTeaser } from "@/components/home/AboutTeaser";
 import { OpinionsTeaser } from "@/components/home/OpinionsTeaser";
 import { BlogTeaser } from "@/components/home/BlogTeaser";
-import { HomeFAQ, faqData } from "@/components/home/HomeFAQ";
+import { HomeFAQ } from "@/components/home/HomeFAQ";
+import { getFAQItems } from "@/data/faq";
 import { StructuredData } from "@/components/shared/StructuredData";
 import { ImageBreaker } from "@/components/shared/ImageBreaker";
 import { getFAQSchema } from "@/lib/structured-data";
@@ -19,6 +20,7 @@ export const revalidate = 3600; // ISR: revalidate every hour for auto-isPast
 
 export default async function Home() {
   const calendarTrips = await getCalendarTrips();
+  const faqData = await getFAQItems();
 
   const faqSchema = getFAQSchema(faqData);
 
@@ -65,7 +67,7 @@ export default async function Home() {
       />
 
       <BlogTeaser />
-      <HomeFAQ />
+      <HomeFAQ faqData={faqData} />
     </>
   );
 }

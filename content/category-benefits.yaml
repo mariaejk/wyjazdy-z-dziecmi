@@ -1,0 +1,131 @@
+categories:
+  - category: rodzinny
+    subtitle: Warsztaty dopasowane do potrzeb rodziców i opiekunów
+    items:
+      - icon: Heart
+        title: Czas tylko dla Was
+        description: >-
+          Warsztaty zaprojektowane tak, abyś mógł/mogła cieszyć się czasem z
+          dzieckiem bez pośpiechu i codziennych obowiązków.
+      - icon: Shield
+        title: Bezpieczna przestrzeń
+        description: >-
+          Kameralna grupa, w której każdy jest mile widziany. Bez oceniania, z
+          pełnym szacunkiem dla Twojej historii.
+      - icon: Users
+        title: Społeczność
+        description: >-
+          Możliwość poznania innych rodziców, babć, cioć i opiekunów. Wspólne
+          doświadczenia budują trwałe relacje.
+      - icon: TreePine
+        title: Natura leczy
+        description: >-
+          Las, jezioro, cisza — przyroda daje siłę i spokój, których tak bardzo
+          potrzebujesz.
+      - icon: Smile
+        title: Zabawa i rozwój
+        description: >-
+          Warsztaty kreatywne, ruch i zabawy na świeżym powietrzu — dzieci
+          poznają nowych przyjaciół.
+      - icon: Sparkles
+        title: Chwila dla Ciebie
+        description: >-
+          W programie znajdziesz czas na jogę, relaks i oddech — bo Ty też
+          zasługujesz na regenerację.
+  - category: matka-corka
+    subtitle: Wspólny czas, który zmienia relację
+    items:
+      - icon: Heart
+        title: Pogłębienie więzi
+        description: >-
+          Wspólne warsztaty, ruch i rozmowy budują głębszą relację między mamą a
+          córką — poza codziennymi obowiązkami.
+      - icon: Music
+        title: Taniec i ruch
+        description: >-
+          Intuicyjny taniec, choreoterapia i joga — ciało jako droga do siebie i
+          do siebie nawzajem.
+      - icon: Sparkles
+        title: Kobieca moc
+        description: >-
+          Córki doświadczają mocy kobiecych spotkań od najmłodszych lat. Krąg
+          kobiet, który wspiera i inspiruje.
+      - icon: Users
+        title: Czas oddzielny i wspólny
+        description: >-
+          Czas dla mam na regenerację i refleksję, a córki budują własne relacje
+          w bezpiecznej grupie rówieśniczek.
+      - icon: Sun
+        title: Rytuały na co dzień
+        description: >-
+          Proste praktyki ruchu, oddechu i obecności, które zabierzecie do
+          codzienności jako Wasz wspólny język.
+      - icon: Flower2
+        title: Bezpieczna przestrzeń
+        description: >-
+          Nie trzeba nic udowadniać, przyspieszać ani dopasowywać się. Wystarczy
+          być. Zapraszamy mamy, babcie, ciocie i koleżanki.
+  - category: single-parents
+    subtitle: Warsztaty dopasowane do potrzeb samodzielnych rodziców
+    items:
+      - icon: Heart
+        title: Bez oceniania
+        description: >-
+          Bezpieczna, kameralna grupa ludzi, którzy rozumieją codzienność
+          samodzielnego rodzica.
+      - icon: Shield
+        title: Wsparcie grupy
+        description: >-
+          Spotkania z innymi samodzielnymi rodzicami budują siłę i poczucie
+          wspólnoty.
+      - icon: Users
+        title: Czas dla dziecka i dla Ciebie
+        description: >-
+          Program łączy wspólne aktywności z chwilą tylko dla dorosłych — na
+          oddech i regenerację.
+      - icon: TreePine
+        title: Natura jako terapia
+        description: >-
+          Las, jezioro, ognisko — natura daje siłę i spokój, których
+          potrzebujesz.
+      - icon: Smile
+        title: Zabawa dla dzieci
+        description: >-
+          Warsztaty kreatywne, zabawy na świeżym powietrzu — dzieci poznają
+          nowych przyjaciół.
+      - icon: Sparkles
+        title: Nowe relacje
+        description: >-
+          Warsztaty to okazja do poznania ludzi w podobnej sytuacji życiowej.
+          Przyjaźnie, które trwają.
+  - category: dla-doroslych
+    subtitle: Czas na siebie, w otoczeniu natury
+    items:
+      - icon: Sun
+        title: Czas tylko dla Ciebie
+        description: >-
+          Zostawiasz codzienność za sobą. To wyjazd, w którym skupiasz się
+          wyłącznie na sobie.
+      - icon: Flower2
+        title: Joga i oddech
+        description: >-
+          Poranna joga, medytacja i ćwiczenia oddechowe — ciało i umysł
+          odzyskują równowagę.
+      - icon: Music
+        title: Ruch i ekspresja
+        description: >-
+          Taniec intuicyjny, praca z ciałem i głosem — odkryj swoją
+          kreatywność.
+      - icon: TreePine
+        title: Natura i cisza
+        description: >-
+          Las, jezioro, ognisko wieczorem. Miejsca, które przynoszą ukojenie.
+      - icon: Coffee
+        title: Regeneracja
+        description: >-
+          Czas na rozmowy, spacery i bycie w swoim tempie. Bez pośpiechu, bez
+          planu.
+      - icon: Sparkles
+        title: Kameralna grupa
+        description: >-
+          Małe grupy sprzyjają autentycznym relacjom i głębszemu doświadczeniu.

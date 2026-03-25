@@ -214,6 +214,10 @@ export default config({
         name: fields.slug({ name: { label: "Imię i nazwisko" } }),
         role: fields.text({ label: "Rola" }),
         bio: fields.text({ label: "Bio", multiline: true }),
+        shortBio: fields.text({
+          label: "Krótkie bio (na stronę główną, opcjonalne)",
+          multiline: true,
+        }),
         image: fields.text({ label: "Zdjęcie (ścieżka)" }),
       },
     }),
@@ -245,6 +249,31 @@ export default config({
         content: fields.markdoc({
           label: "Treść",
         }),
+      },
+    }),
+
+    projects: collection({
+      label: "Inne projekty",
+      slugField: "title",
+      path: "content/projects/*",
+      format: { data: "yaml" },
+      schema: {
+        title: fields.slug({ name: { label: "Nazwa projektu" } }),
+        tagline: fields.text({ label: "Podtytuł / tagline" }),
+        description: fields.text({ label: "Opis (akapity oddzielone pustą linią)", multiline: true }),
+        image: fields.text({ label: "Zdjęcie (ścieżka, opcjonalne)" }),
+        videoUrl: fields.text({ label: "Wideo (ścieżka, opcjonalne)" }),
+        order: fields.integer({ label: "Kolejność wyświetlania", defaultValue: 0 }),
+        links: fields.array(
+          fields.object({
+            label: fields.text({ label: "Etykieta przycisku" }),
+            url: fields.text({ label: "URL" }),
+          }),
+          {
+            label: "Linki zewnętrzne",
+            itemLabel: (props) => props.fields.label.value || "...",
+          }
+        ),
       },
     }),
 
@@ -295,6 +324,85 @@ export default config({
         featuredTestimonialIds: fields.array(
           fields.text({ label: "ID opinii (slug)" }),
           { label: "Wyróżnione opinie na stronie głównej" }
+        ),
+      },
+    }),
+
+    categoryBenefits: singleton({
+      label: "Korzyści kategorii (benefit cards)",
+      path: "content/category-benefits",
+      format: { data: "yaml" },
+      schema: {
+        categories: fields.array(
+          fields.object({
+            category: fields.select({
+              label: "Kategoria",
+              options: [
+                { label: "Rodzinny", value: "rodzinny" },
+                { label: "Matka z córką", value: "matka-corka" },
+                { label: "Single z dziećmi", value: "single-parents" },
+                { label: "Czas bez dzieci", value: "dla-doroslych" },
+              ],
+              defaultValue: "rodzinny",
+            }),
+            subtitle: fields.text({ label: "Podtytuł sekcji Dlaczego warto?" }),
+            items: fields.array(
+              fields.object({
+                icon: fields.select({
+                  label: "Ikona (Lucide)",
+                  options: [
+                    { label: "Heart", value: "Heart" },
+                    { label: "Shield", value: "Shield" },
+                    { label: "Users", value: "Users" },
+                    { label: "TreePine", value: "TreePine" },
+                    { label: "Smile", value: "Smile" },
+                    { label: "Sparkles", value: "Sparkles" },
+                    { label: "Music", value: "Music" },
+                    { label: "Sun", value: "Sun" },
+                    { label: "Flower2", value: "Flower2" },
+                    { label: "Coffee", value: "Coffee" },
+                  ],
+                  defaultValue: "Heart",
+                }),
+                title: fields.text({ label: "Tytuł" }),
+                description: fields.text({ label: "Opis", multiline: true }),
+              }),
+              {
+                label: "Korzyści",
+                itemLabel: (props) => props.fields.title.value || "...",
+              }
+            ),
+          }),
+          {
+            label: "Kategorie",
+            itemLabel: (props) => {
+              const map: Record<string, string> = {
+                rodzinny: "Rodzinny",
+                "matka-corka": "Matka z córką",
+                "single-parents": "Single z dziećmi",
+                "dla-doroslych": "Czas bez dzieci",
+              };
+              return map[props.fields.category.value] || props.fields.category.value;
+            },
+          }
+        ),
+      },
+    }),
+
+    faq: singleton({
+      label: "FAQ (strona główna)",
+      path: "content/faq",
+      format: { data: "yaml" },
+      schema: {
+        items: fields.array(
+          fields.object({
+            question: fields.text({ label: "Pytanie" }),
+            answer: fields.text({ label: "Odpowiedź", multiline: true }),
+          }),
+          {
+            label: "Pytania i odpowiedzi",
+            itemLabel: (props) => props.fields.question.value || "...",
+          }
         ),
       },
     }),

@@ -4,8 +4,16 @@ import { SectionWrapper } from "@/components/ui/SectionWrapper";
 import { Button } from "@/components/ui/Button";
 import { ScrollAnimation } from "@/components/shared/ScrollAnimation";
 import { ROUTES } from "@/lib/constants";
+import { cn } from "@/lib/utils";
+import { getTeamMember } from "@/data/team";
 
-export function AboutTeaser() {
+export async function AboutTeaser() {
+  const maria = await getTeamMember("Maria Kordalewska");
+  if (!maria) return null;
+
+  const bioText = maria.shortBio ?? maria.bio;
+  const paragraphs = bioText.split(/\n\n+/).filter(Boolean);
+
   return (
     <SectionWrapper variant="alternate">
       <Container>
@@ -13,13 +21,15 @@ export function AboutTeaser() {
           {/* Large photo */}
           <ScrollAnimation variant="fadeLeft" className="shrink-0">
             <div className="relative h-80 w-64 overflow-hidden rounded-none sm:h-[420px] sm:w-80 lg:h-[500px] lg:w-96">
-              <Image
-                src="/images/maria-sloneczniki.jpg"
-                alt="Maria Kordalewska"
-                fill
-                sizes="(max-width: 640px) 256px, (max-width: 1024px) 320px, 384px"
-                className="object-cover"
-              />
+              {maria.image && (
+                <Image
+                  src={maria.image}
+                  alt={maria.name}
+                  fill
+                  sizes="(max-width: 640px) 256px, (max-width: 1024px) 320px, 384px"
+                  className="object-cover"
+                />
+              )}
             </div>
           </ScrollAnimation>
 
@@ -29,26 +39,20 @@ export function AboutTeaser() {
               Poznajmy się
             </p>
             <h2 className="mt-2 font-heading text-2xl font-light text-graphite sm:text-3xl">
-              <span className="text-moss">Maria Kordalewska</span>
+              <span className="text-moss">{maria.name}</span>
             </h2>
 
-            <p className="mt-4 text-lg leading-relaxed text-graphite-light">
-              Jestem mamą Laury, nauczycielką jogi, pilotką wycieczek
-              i wieloletnią organizatorką eventów z tytułem doktora. Od lat
-              łączę świat profesjonalnej komunikacji z miłością do natury.
-            </p>
-
-            <p className="mt-4 text-base leading-relaxed text-graphite-light">
-              Projekt „Wyjazdowe warsztaty z Dziećmi" powstał
-              z mojej osobistej potrzeby ucieczki od przebodźcowania. Moje
-              autorskie wyjazdy to idealny balans: z jednej strony tworzymy
-              przestrzeń na beztroską bliskość i budowanie wspólnych wspomnień
-              z dzieckiem, a z drugiej — dajemy Ci święte prawo do odpoczynku.
-              Kiedy Twoje dziecko świetnie się bawi na mądrych warsztatach pod
-              okiem naszych specjalistów, Ty w końcu masz czas tylko dla siebie.
-              Na ciepłą kawę w ciszy, spacer, albo po prostu nicnierobienie —
-              bez cienia poczucia winy.
-            </p>
+            {paragraphs.map((p, i) => (
+              <p
+                key={i}
+                className={cn(
+                  "mt-4 leading-relaxed text-graphite-light",
+                  i === 0 ? "text-lg" : "text-base"
+                )}
+              >
+                {p}
+              </p>
+            ))}
 
             <div className="mt-8">
               <Button href={ROUTES.about} variant="secondary">

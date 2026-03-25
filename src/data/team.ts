@@ -11,6 +11,7 @@ export async function getAllTeamMembers(): Promise<TeamMember[]> {
       name: entry.name,
       role: entry.role,
       bio: entry.bio,
+      shortBio: entry.shortBio || undefined,
       image: entry.image || undefined,
     });
   }

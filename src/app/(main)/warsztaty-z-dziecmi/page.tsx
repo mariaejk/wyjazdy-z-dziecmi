@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { Heart, Shield, Users, TreePine, Smile, Sparkles } from "lucide-react";
 import { Container } from "@/components/layout/Container";
 import { SectionWrapper } from "@/components/ui/SectionWrapper";
 import { SectionHeading } from "@/components/ui/SectionHeading";
@@ -8,7 +7,9 @@ import { ScrollAnimation } from "@/components/shared/ScrollAnimation";
 import { StructuredData } from "@/components/shared/StructuredData";
 import { TripCardHorizontal } from "@/components/home/TripCardHorizontal";
 import { JoinUsNewsletter } from "@/components/shared/JoinUsNewsletter";
+import { BenefitCards } from "@/components/shared/BenefitCards";
 import { getUpcomingTripsByCategory } from "@/data/trips";
+import { getBenefitsByCategory } from "@/data/benefits";
 import { ROUTES, SITE_CONFIG } from "@/lib/constants";
 import { getBreadcrumbSchema } from "@/lib/structured-data";
 
@@ -20,47 +21,9 @@ export const metadata: Metadata = {
     "Warsztaty rodzinne z dziećmi. Odpoczynek, wsparcie i czas pełen bliskości w otoczeniu natury — dla mam, babć, cioć i koleżanek.",
 };
 
-const benefits = [
-  {
-    icon: Heart,
-    title: "Czas tylko dla Was",
-    description:
-      "Warsztaty zaprojektowane tak, abyś mógł/mogła cieszyć się czasem z dzieckiem bez pośpiechu i codziennych obowiązków.",
-  },
-  {
-    icon: Shield,
-    title: "Bezpieczna przestrzeń",
-    description:
-      "Kameralna grupa, w której każdy jest mile widziany. Bez oceniania, z pełnym szacunkiem dla Twojej historii.",
-  },
-  {
-    icon: Users,
-    title: "Społeczność",
-    description:
-      "Możliwość poznania innych rodziców, babć, cioć i opiekunów. Wspólne doświadczenia budują trwałe relacje.",
-  },
-  {
-    icon: TreePine,
-    title: "Natura leczy",
-    description:
-      "Las, jezioro, cisza — przyroda daje siłę i spokój, których tak bardzo potrzebujesz.",
-  },
-  {
-    icon: Smile,
-    title: "Zabawa i rozwój",
-    description:
-      "Warsztaty kreatywne, ruch i zabawy na świeżym powietrzu — dzieci poznają nowych przyjaciół.",
-  },
-  {
-    icon: Sparkles,
-    title: "Chwila dla Ciebie",
-    description:
-      "W programie znajdziesz czas na jogę, relaks i oddech — bo Ty też zasługujesz na regenerację.",
-  },
-];
-
 export default async function FamilyTripsPage() {
   const trips = await getUpcomingTripsByCategory("rodzinny");
+  const benefits = await getBenefitsByCategory("rodzinny");
 
   return (
     <>
@@ -88,47 +51,14 @@ export default async function FamilyTripsPage() {
         </Container>
       </SectionWrapper>
 
-      {/* Benefits — reduced spacing */}
-      <SectionWrapper variant="alternate" className="py-6 sm:py-8">
-        <Container>
-          <ScrollAnimation variant="fadeUp">
-            <SectionHeading
-              title="Dlaczego"
-              italicText="warto?"
-              underline
-              subtitle="Warsztaty dopasowane do potrzeb rodziców i opiekunów"
-            />
-          </ScrollAnimation>
-
-          <div className="mx-auto max-w-5xl">
-            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-              {benefits.map((benefit, index) => (
-                <ScrollAnimation
-                  key={benefit.title}
-                  variant="fadeUp"
-                  delay={index * 0.1}
-                  className="h-full"
-                >
-                  <div className="flex h-full flex-col rounded-none border border-graphite/10 bg-white p-6">
-                    <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-none bg-moss/10">
-                      <benefit.icon
-                        className="h-6 w-6 text-moss"
-                        strokeWidth={1.5}
-                      />
-                    </div>
-                    <h3 className="font-heading text-lg font-bold text-graphite">
-                      {benefit.title}
-                    </h3>
-                    <p className="mt-2 flex-1 text-sm leading-relaxed text-graphite-light">
-                      {benefit.description}
-                    </p>
-                  </div>
-                </ScrollAnimation>
-              ))}
-            </div>
-          </div>
-        </Container>
-      </SectionWrapper>
+      {/* Benefits from CMS */}
+      {benefits && (
+        <SectionWrapper variant="alternate" className="py-6 sm:py-8">
+          <Container>
+            <BenefitCards benefits={benefits} />
+          </Container>
+        </SectionWrapper>
+      )}
 
       {/* Experience Description — reduced spacing */}
       <SectionWrapper className="py-6 sm:py-8">
