@@ -65,6 +65,17 @@ export function formatCurrency(amount: number): string {
   }).format(amount);
 }
 
+const VALID_SLUG = /^[a-z0-9][a-z0-9-]*[a-z0-9]$/;
+
+/** Logs a warning if a CMS slug contains invalid characters. */
+export function warnInvalidSlug(slug: string, collection: string): void {
+  if (slug.length > 0 && !VALID_SLUG.test(slug)) {
+    console.warn(
+      `[CMS] Invalid slug "${slug}" in ${collection} — expected lowercase alphanumeric + hyphens`
+    );
+  }
+}
+
 export function isNavActive(href: string, pathname: string): boolean {
   if (!href) return false;
   if (href === "/") return pathname === "/";

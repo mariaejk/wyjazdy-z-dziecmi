@@ -1,4 +1,6 @@
+import { cache } from "react";
 import { reader } from "@/lib/keystatic";
+import { warnInvalidSlug } from "@/lib/utils";
 
 export type ProjectLink = {
   label: string;
@@ -17,11 +19,12 @@ export type Project = {
   links: ProjectLink[];
 };
 
-export async function getAllProjects(): Promise<Project[]> {
+export const getAllProjects = cache(async (): Promise<Project[]> => {
   const slugs = await reader.collections.projects.list();
   const projects: Project[] = [];
 
   for (const slug of slugs) {
+    warnInvalidSlug(slug, "projects");
     const entry = await reader.collections.projects.read(slug);
     if (!entry) continue;
     projects.push({
@@ -38,4 +41,4 @@ export async function getAllProjects(): Promise<Project[]> {
   }
 
   return projects.sort((a, b) => a.order - b.order);
-}
+});

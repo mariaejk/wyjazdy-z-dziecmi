@@ -1,10 +1,13 @@
+import { cache } from "react";
 import type { TeamMember } from "@/types/team";
 import { reader } from "@/lib/keystatic";
+import { warnInvalidSlug } from "@/lib/utils";
 
-export async function getAllTeamMembers(): Promise<TeamMember[]> {
+export const getAllTeamMembers = cache(async (): Promise<TeamMember[]> => {
   const slugs = await reader.collections.team.list();
   const members: TeamMember[] = [];
   for (const slug of slugs) {
+    warnInvalidSlug(slug, "team");
     const entry = await reader.collections.team.read(slug);
     if (!entry) continue;
     members.push({
@@ -16,11 +19,11 @@ export async function getAllTeamMembers(): Promise<TeamMember[]> {
     });
   }
   return members;
-}
+});
 
-export async function getTeamMember(
-  name: string
-): Promise<TeamMember | undefined> {
-  const all = await getAllTeamMembers();
-  return all.find((m) => m.name === name);
-}
+export const getTeamMember = cache(
+  async (name: string): Promise<TeamMember | undefined> => {
+    const all = await getAllTeamMembers();
+    return all.find((m) => m.name === name);
+  }
+);

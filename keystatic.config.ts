@@ -16,12 +16,23 @@ const storage = isGithubMode
 
 export default config({
   storage,
+  ui: {
+    navigation: {
+      Wyjazdy: ["trips"],
+      Strona: ["homepage", "faq", "categoryBenefits"],
+      "Blog i opinie": ["blog", "testimonials"],
+      "Zespół i miejsca": ["team", "places"],
+      Galeria: ["gallery"],
+      "Inne projekty": ["projects"],
+    },
+  },
   collections: {
     trips: collection({
       label: "Wyjazdy",
       slugField: "title",
       path: "content/trips/*",
       format: { data: "yaml" },
+      columns: ["date", "category", "location"],
       schema: {
         title: fields.slug({ name: { label: "Nazwa wyjazdu" } }),
         subtitle: fields.text({ label: "Podtytuł" }),
@@ -227,6 +238,7 @@ export default config({
       slugField: "author",
       path: "content/testimonials/*",
       format: { data: "yaml" },
+      columns: ["context", "date"],
       schema: {
         author: fields.slug({ name: { label: "Autor" } }),
         quote: fields.text({ label: "Cytat", multiline: true }),
@@ -241,6 +253,8 @@ export default config({
       slugField: "title",
       path: "content/blog/*",
       format: { contentField: "content" },
+      entryLayout: "content",
+      columns: ["publishedDate"],
       schema: {
         title: fields.slug({ name: { label: "Tytuł" } }),
         subtitle: fields.text({ label: "Podtytuł" }),
@@ -257,6 +271,7 @@ export default config({
       slugField: "title",
       path: "content/projects/*",
       format: { data: "yaml" },
+      columns: ["tagline", "order"],
       schema: {
         title: fields.slug({ name: { label: "Nazwa projektu" } }),
         tagline: fields.text({ label: "Podtytuł / tagline" }),

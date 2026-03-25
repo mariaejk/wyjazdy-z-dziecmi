@@ -1,6 +1,7 @@
+import { cache } from "react";
 import type { Trip, ContentBlock } from "@/types/trip";
 import { reader } from "@/lib/keystatic";
-import { parseLocalDate } from "@/lib/utils";
+import { parseLocalDate, warnInvalidSlug } from "@/lib/utils";
 
 function mapTrip(
   slug: string,
@@ -83,10 +84,11 @@ function mapTrip(
   };
 }
 
-export async function getAllTrips(): Promise<Trip[]> {
+export const getAllTrips = cache(async (): Promise<Trip[]> => {
   const slugs = await reader.collections.trips.list();
   const trips: Trip[] = [];
   for (const slug of slugs) {
+    warnInvalidSlug(slug, "trips");
     const entry = await reader.collections.trips.read(slug);
     if (!entry) continue;
     trips.push(mapTrip(slug, entry));
@@ -95,15 +97,15 @@ export async function getAllTrips(): Promise<Trip[]> {
   return trips.sort(
     (a, b) => parseLocalDate(a.date).getTime() - parseLocalDate(b.date).getTime()
   );
-}
+});
 
-export async function getTripBySlug(
+export const getTripBySlug = cache(async (
   slug: string
-): Promise<Trip | undefined> {
+): Promise<Trip | undefined> => {
   const entry = await reader.collections.trips.read(slug);
   if (!entry) return undefined;
   return mapTrip(slug, entry);
-}
+});
 
 export async function getUpcomingTrips(): Promise<Trip[]> {
   const all = await getAllTrips();

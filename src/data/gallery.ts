@@ -1,3 +1,4 @@
+import { cache } from "react";
 import { reader } from "@/lib/keystatic";
 
 export type GalleryImage = {
@@ -6,7 +7,7 @@ export type GalleryImage = {
   category?: string;
 };
 
-export async function getAllGalleryImages(): Promise<GalleryImage[]> {
+export const getAllGalleryImages = cache(async (): Promise<GalleryImage[]> => {
   const slugs = await reader.collections.gallery.list();
   const entries: GalleryImage[] = [];
   for (const slug of slugs) {
@@ -19,4 +20,4 @@ export async function getAllGalleryImages(): Promise<GalleryImage[]> {
     });
   }
   return entries;
-}
+});
