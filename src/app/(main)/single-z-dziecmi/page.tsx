@@ -149,7 +149,7 @@ export default async function SingleParentsPage() {
           </Container>
         </SectionWrapper>
       ) : (
-        <JoinUsNewsletter className="bg-parchment" />
+        <JoinUsNewsletter className="bg-moss/10" />
       )}
     </>
   );
