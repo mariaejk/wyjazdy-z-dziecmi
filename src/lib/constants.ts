@@ -22,7 +22,10 @@ export const ALLOWED_ORIGINS = [
   "https://www.wyjazdyzdziecmi.pl",
   "https://wyjazdyzdziecmi.pl",
   ...(process.env.NODE_ENV === "development" ? ["http://localhost:3000"] : []),
-  ...(process.env.VERCEL_URL ? [`https://${process.env.VERCEL_URL}`] : []),
+  // Use production URL only — VERCEL_URL includes preview deployments which widens CSRF surface
+  ...(process.env.VERCEL_PROJECT_PRODUCTION_URL
+    ? [`https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`]
+    : []),
 ];
 
 export const ROUTES = {

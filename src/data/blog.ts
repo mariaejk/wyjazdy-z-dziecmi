@@ -33,7 +33,13 @@ export async function getLatestBlogPosts(limit = 3): Promise<BlogPost[]> {
   return posts.slice(0, limit);
 }
 
+function isSafeSlug(slug: string): boolean {
+  return !slug.includes("/") && !slug.includes("\\") && !slug.includes("..") && !slug.startsWith(".");
+}
+
 export async function getBlogPost(slug: string) {
+  if (!isSafeSlug(slug)) return undefined;
+
   const meta = await readBlogMeta(slug);
   if (!meta) return undefined;
 
@@ -56,6 +62,7 @@ export async function getBlogPost(slug: string) {
 async function readBlogMeta(
   slug: string
 ): Promise<Omit<BlogPost, "slug"> | null> {
+  if (!isSafeSlug(slug)) return null;
   const dir = path.join(BLOG_DIR, slug);
 
   // Try YAML first, then JSON
