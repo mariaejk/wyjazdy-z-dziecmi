@@ -124,19 +124,13 @@ export default async function AboutPage() {
       <SectionWrapper>
         <Container>
           <ScrollAnimation variant="fadeUp">
-            <div className="mx-auto max-w-2xl text-center">
-              <h2 className="font-heading text-3xl font-light text-graphite sm:text-4xl">
-                Dołącz do mnie
-              </h2>
-              <p className="mt-4 text-lg text-graphite-light">
-                Sprawdź nadchodzące wyjazdy i znajdź coś dla siebie i swoich dzieci.
+            <div className="mx-auto max-w-xl text-center">
+              <p className="text-sm leading-relaxed text-graphite-light sm:text-base">
+                Szukasz czegoś dostępnego teraz?
               </p>
-              <div className="mt-8 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
+              <div className="mt-4">
                 <Button href={ROUTES.trips}>
-                  Zobacz wyjazdy
-                </Button>
-                <Button href={ROUTES.contact} variant="secondary">
-                  Skontaktuj się
+                  Zobacz wszystkie warsztaty
                 </Button>
               </div>
             </div>
