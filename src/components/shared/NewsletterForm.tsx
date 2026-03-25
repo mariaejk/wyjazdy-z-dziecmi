@@ -125,7 +125,7 @@ export function NewsletterForm() {
               placeholder="Twój email"
               aria-invalid={!!errors.email}
               aria-describedby={errors.email ? "newsletter-email-error" : undefined}
-              className="w-full rounded-none border border-graphite/20 bg-white px-3 py-2 text-sm text-graphite placeholder:text-graphite-light/60 focus:border-moss focus:outline-none focus:ring-2 focus:ring-moss/20"
+              className="w-full rounded-none border border-graphite/20 bg-white px-3 py-2 text-sm text-graphite placeholder:text-graphite-light focus:border-moss focus:outline-none focus:ring-2 focus:ring-moss/20"
               {...register("email")}
             />
             {errors.email && (

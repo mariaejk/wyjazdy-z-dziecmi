@@ -30,7 +30,7 @@ export function Footer() {
               </li>
               <li>
                 <a
-                  href={`tel:${CONTACT.phone}`}
+                  href={`tel:${CONTACT.phone.replace(/\s/g, "")}`}
                   className="inline-flex items-center gap-2 text-sm text-graphite-light transition-colors hover:text-moss"
                 >
                   <Phone className="h-4 w-4" strokeWidth={1.5} />

@@ -202,7 +202,7 @@ export function Header() {
             {/* Phone icon — visible on mobile only */}
             <a
               href={`tel:${CONTACT.phone.replace(/\s/g, "")}`}
-              className="inline-flex items-center justify-center rounded-none p-2 text-graphite transition-colors hover:bg-parchment-dark hover:text-moss lg:hidden"
+              className="inline-flex items-center justify-center rounded-none p-2.5 text-graphite transition-colors hover:bg-parchment-dark hover:text-moss lg:hidden min-h-11 min-w-11"
               aria-label={`Zadzwoń: ${CONTACT.phoneDisplay}`}
               onClick={() => analytics.phoneClick()}
             >
@@ -213,7 +213,7 @@ export function Header() {
             <button
               type="button"
               onClick={() => setMobileMenuOpen(true)}
-              className="inline-flex items-center justify-center rounded-none p-2 text-graphite transition-colors hover:bg-parchment-dark hover:text-moss lg:hidden"
+              className="inline-flex items-center justify-center rounded-none p-2.5 text-graphite transition-colors hover:bg-parchment-dark hover:text-moss lg:hidden min-h-11 min-w-11"
               aria-expanded={mobileMenuOpen}
               aria-controls="mobile-menu"
               aria-label="Otwórz menu"

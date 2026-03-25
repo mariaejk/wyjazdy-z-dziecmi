@@ -197,7 +197,7 @@ export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
                 ref={closeButtonRef}
                 type="button"
                 onClick={onClose}
-                className="inline-flex items-center justify-center rounded-none p-2 text-graphite transition-colors hover:bg-parchment-dark hover:text-moss"
+                className="inline-flex items-center justify-center rounded-none p-2.5 text-graphite transition-colors hover:bg-parchment-dark hover:text-moss min-h-11 min-w-11"
                 aria-label="Zamknij menu"
               >
                 <X className="h-6 w-6" strokeWidth={1.5} />

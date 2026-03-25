@@ -120,7 +120,7 @@ export function JoinUsNewsletter({ className }: { className?: string }) {
                       placeholder="Twój adres e-mail"
                       aria-invalid={!!errors.email}
                       aria-describedby={errors.email ? "joinus-email-error" : undefined}
-                      className="w-full rounded-none border border-graphite/20 bg-white px-4 py-3 text-sm text-graphite placeholder:text-graphite-light/60 focus:border-moss focus:outline-none focus:ring-2 focus:ring-moss/20"
+                      className="w-full rounded-none border border-graphite/20 bg-white px-4 py-3 text-sm text-graphite placeholder:text-graphite-light focus:border-moss focus:outline-none focus:ring-2 focus:ring-moss/20"
                       {...register("email")}
                     />
                     {errors.email && (
@@ -134,7 +134,7 @@ export function JoinUsNewsletter({ className }: { className?: string }) {
                     disabled={status === "submitting"}
                     className="shrink-0 rounded-none bg-moss px-5 py-3 text-[11px] font-medium uppercase tracking-[0.15em] text-white transition-colors hover:bg-moss-light disabled:cursor-not-allowed disabled:opacity-60"
                   >
-                    {status === "submitting" ? "..." : "Powiadom mnie"}
+                    {status === "submitting" ? <span aria-label="Wysyłanie">…</span> : "Powiadom mnie"}
                   </button>
                 </div>
 

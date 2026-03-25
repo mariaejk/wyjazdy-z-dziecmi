@@ -109,7 +109,7 @@ export function FooterNewsletter() {
                 placeholder="Twój email"
                 aria-invalid={!!errors.email}
                 aria-describedby={errors.email ? "footer-nl-email-error" : undefined}
-                className="w-full rounded-none border border-graphite/20 bg-white px-3 py-2 text-sm text-graphite placeholder:text-graphite-light/60 focus:border-moss focus:outline-none focus:ring-2 focus:ring-moss/20"
+                className="w-full rounded-none border border-graphite/20 bg-white px-3 py-2 text-sm text-graphite placeholder:text-graphite-light focus:border-moss focus:outline-none focus:ring-2 focus:ring-moss/20"
                 {...register("email")}
               />
               {errors.email && (
@@ -123,7 +123,7 @@ export function FooterNewsletter() {
               disabled={status === "submitting"}
               className="shrink-0 rounded-none bg-moss px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-moss-light disabled:cursor-not-allowed disabled:opacity-60"
             >
-              {status === "submitting" ? "..." : "Zapisz się"}
+              {status === "submitting" ? <span aria-label="Wysyłanie">…</span> : "Zapisz się"}
             </button>
           </div>
 

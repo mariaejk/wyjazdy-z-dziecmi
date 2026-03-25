@@ -13,7 +13,7 @@ export function HeroSection() {
     return (
       <section
         id="hero"
-        className="relative h-[70vh] overflow-hidden sm:h-[80vh]"
+        className="relative h-[70svh] overflow-hidden sm:h-[80svh]"
       >
         {/* Full-bleed slideshow background */}
         <HeroSlideshow />
@@ -50,7 +50,7 @@ export function HeroSection() {
   return (
     <section
       id="hero"
-      className="relative h-[70vh] overflow-hidden sm:h-[80vh]"
+      className="relative h-[70svh] overflow-hidden sm:h-[80svh]"
     >
       {/* Full-bleed slideshow background */}
       <HeroSlideshow />

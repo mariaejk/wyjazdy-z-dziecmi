@@ -28,7 +28,7 @@ export function Input({ label, error, id, className, ref, ...props }: InputProps
         aria-describedby={error ? `${inputId}-error` : undefined}
         className={cn(
           "mt-1.5 block w-full rounded-none border bg-white px-3 py-2.5 text-graphite transition-colors",
-          "placeholder:text-graphite-light/60",
+          "placeholder:text-graphite-light",
           "focus:border-moss focus:outline-none focus:ring-2 focus:ring-moss/20",
           error
             ? "border-red-400 focus:border-red-500 focus:ring-red-200"
