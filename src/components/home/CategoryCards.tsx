@@ -16,7 +16,7 @@ const categories = [
   {
     label: "Matka i córka",
     href: ROUTES.motherDaughter,
-    image: "/images/matki-corki-1.jpg",
+    image: "/images/matka-corka-category.jpg",
     alt: "Warsztaty matka i córka",
   },
   {

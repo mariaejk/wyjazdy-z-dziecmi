@@ -14,7 +14,7 @@ export function AboutTeaser() {
           <ScrollAnimation variant="fadeLeft" className="shrink-0">
             <div className="relative h-80 w-64 overflow-hidden rounded-none sm:h-[420px] sm:w-80 lg:h-[500px] lg:w-96">
               <Image
-                src="/images/marysia.png"
+                src="/images/maria-sloneczniki.jpg"
                 alt="Maria Kordalewska"
                 fill
                 sizes="(max-width: 640px) 256px, (max-width: 1024px) 320px, 384px"
