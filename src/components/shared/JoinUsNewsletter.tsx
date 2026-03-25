@@ -13,9 +13,9 @@ import { Container } from "@/components/layout/Container";
 import { ScrollAnimation } from "@/components/shared/ScrollAnimation";
 import { ROUTES } from "@/lib/constants";
 
-// Uproszczony schemat — zgoda pasywna (klauzula pod przyciskiem zamiast checkboxów)
 const passiveNewsletterSchema = z.object({
   email: z.string().email("Podaj prawidłowy adres e-mail"),
+  consentRodo: z.literal(true, { error: "Zgoda jest wymagana" }),
   website: z.string(),
   turnstileToken: z.string().min(1).optional(),
 });
@@ -41,7 +41,7 @@ export function JoinUsNewsletter() {
     reset,
   } = useForm<PassiveNewsletterValues>({
     resolver: zodResolver(passiveNewsletterSchema),
-    defaultValues: { email: "", website: "" },
+    defaultValues: { email: "", consentRodo: false as unknown as true, website: "" },
   });
 
   const onSubmit = async (data: PassiveNewsletterValues) => {
@@ -91,7 +91,7 @@ export function JoinUsNewsletter() {
             </h2>
             <p className="mt-3 text-sm leading-relaxed text-graphite-light sm:text-base">
               W tej chwili nie mamy otwartych zapisów w tej kategorii. Zostaw
-              swój e-mail, a jako pierwsza dowiesz się, gdy pojawią się nowe warsztaty.
+              swój e-mail, a w pierwszej kolejności dowiesz się, gdy pojawią się nowe warsztaty.
             </p>
 
             {status === "success" ? (
@@ -150,18 +150,35 @@ export function JoinUsNewsletter() {
                   />
                 )}
 
-                <p className="mx-auto mt-3 max-w-sm text-center text-xs text-graphite-light/70">
-                  Zapisując się, akceptujesz{" "}
-                  <a
-                    href={ROUTES.privacy}
-                    className="underline hover:text-graphite"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    Politykę Prywatności
-                  </a>
-                  .
-                </p>
+                <div className="mx-auto mt-3 max-w-sm text-left">
+                  <div className="flex items-start gap-2">
+                    <input
+                      id="joinus-consent-rodo"
+                      type="checkbox"
+                      aria-invalid={!!errors.consentRodo}
+                      aria-describedby={errors.consentRodo ? "joinus-consent-rodo-error" : undefined}
+                      className="mt-0.5 h-3.5 w-3.5 shrink-0 rounded-none border-graphite/20 text-moss focus:ring-2 focus:ring-moss/20 focus:ring-offset-0"
+                      {...register("consentRodo")}
+                    />
+                    <label htmlFor="joinus-consent-rodo" className="text-xs leading-relaxed text-graphite-light">
+                      Akceptuję{" "}
+                      <a
+                        href={ROUTES.privacy}
+                        className="text-moss underline hover:text-moss-light"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        Politykę Prywatności
+                      </a>
+                      . *
+                    </label>
+                  </div>
+                  {errors.consentRodo && (
+                    <p id="joinus-consent-rodo-error" className="mt-1 text-xs text-red-600" role="alert">
+                      {errors.consentRodo.message}
+                    </p>
+                  )}
+                </div>
 
                 {status === "error" && errorMessage && (
                   <div className="mx-auto mt-4 flex max-w-sm items-start gap-2 rounded-none border border-red-200 bg-red-50 p-3" role="alert">
@@ -173,7 +190,7 @@ export function JoinUsNewsletter() {
             )}
 
             <div className="mt-8 border-t border-graphite/10 pt-8">
-              <p className="mb-4 text-xs text-graphite-light">
+              <p className="mb-4 text-sm leading-relaxed text-graphite-light sm:text-base">
                 Szukasz czegoś dostępnego teraz?
               </p>
               <Button href={ROUTES.trips}>
