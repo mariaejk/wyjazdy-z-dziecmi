@@ -18,6 +18,15 @@
 14. [Jak zapisac zmiany](#14-jak-zapisac-zmiany)
 15. [Tryb lokalny vs GitHub](#15-tryb-lokalny-vs-github)
 
+**Poradniki krok po kroku:**
+- [Poradnik 1: Dodaje nowy warsztat od zera](#poradnik-1-dodaje-nowy-warsztat-od-zera)
+- [Poradnik 2: Zmieniam termin warsztatu](#poradnik-2-zmieniam-termin-istniejacego-warsztatu)
+- [Poradnik 3: Warsztat jest wyprzedany](#poradnik-3-warsztat-jest-wyprzedany)
+- [Poradnik 4: Pisze nowy artykul na bloga](#poradnik-4-pisze-nowy-artykul-na-bloga)
+- [Poradnik 5: Aktualizuje ceny i cennik](#poradnik-5-aktualizuje-ceny-i-cennik-warsztatu)
+- [Poradnik 6: Dodaje nowa osobe do zespolu](#poradnik-6-dodaje-nowa-osobe-do-zespolu)
+- [Poradnik 7: Co NIE da sie zmienic przez CMS](#poradnik-7-co-nie-da-sie-zmienic-przez-cms)
+
 ---
 
 ## 1. Jak wejsc do panelu CMS
