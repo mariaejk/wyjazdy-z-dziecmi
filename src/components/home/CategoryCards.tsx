@@ -14,7 +14,7 @@ const categories = [
     alt: "Rodzinne warsztaty wyjazdowe w naturze",
   },
   {
-    label: "Dla matki i córki",
+    label: "Matka i córka",
     href: ROUTES.motherDaughter,
     image: "/images/matki-corki-1.jpg",
     alt: "Warsztaty matka i córka",
@@ -61,7 +61,7 @@ export function CategoryCards() {
                 </div>
                 <div className="absolute inset-0 bg-gradient-to-t from-graphite/70 via-graphite/20 to-transparent" />
                 <div className="absolute inset-x-0 bottom-0 p-4 sm:p-5">
-                  <h3 className="font-heading text-xl font-light italic text-white sm:text-2xl">
+                  <h3 className="font-heading text-xl font-light text-white sm:text-2xl">
                     {cat.label}
                   </h3>
                 </div>

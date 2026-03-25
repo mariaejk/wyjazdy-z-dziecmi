@@ -65,7 +65,7 @@ export function TripCardHorizontal({ trip }: TripCardHorizontalProps) {
           </div>
 
           <Link href={tripUrl}>
-            <h3 className="mt-3 font-heading text-xl font-light italic text-graphite transition-colors group-hover:text-moss sm:text-2xl">
+            <h3 className="mt-3 font-heading text-xl font-light text-graphite transition-colors group-hover:text-moss sm:text-2xl">
               {trip.title}
             </h3>
           </Link>

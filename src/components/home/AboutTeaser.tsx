@@ -28,8 +28,8 @@ export function AboutTeaser() {
             <p className="text-[11px] font-medium uppercase tracking-[0.25em] text-graphite-light">
               Poznajmy się
             </p>
-            <h2 className="mt-2 font-heading text-2xl font-light italic text-graphite sm:text-3xl">
-              Maria Kordalewska
+            <h2 className="mt-2 font-heading text-2xl font-light text-graphite sm:text-3xl">
+              <span className="text-moss">Maria Kordalewska</span>
             </h2>
 
             <p className="mt-4 text-lg leading-relaxed text-graphite-light">
