@@ -477,3 +477,17 @@ Project has complete documentation for handover to client:
 **Vercel Hobby ToS restriction**: Free tier is personal use only. Client's commercial site requires Pro plan ($20/month).
 
 **Alternative: Coolify on Hostinger VPS** ($7/month KVM 2, 8GB RAM minimum). ISR works on single instance. Needs Cloudflare free tier for CDN. More DevOps burden. Research documented in conversation 26.03.2026.
+
+**Repo ownership:** Code to be transferred from `TatianaG-ka` (developer) to client's GitHub account via Settings → Danger Zone → Transfer ownership. After transfer developer remains collaborator with write access. All docs use `[OWNER]` placeholder for GitHub username.
+
+**Post-handover workflow:** Developer does `git pull` (fetch CMS changes) → makes code fixes → `git push origin master` → Vercel auto-deploys in ~2 min. Client edits content via `/keystatic` (auto-commits to same repo). Both work on same repo, no sync needed beyond `git pull`.
+
+## Deployment & Handover 26.03.2026 Lessons Learned
+
+- **GitHub Transfer > push to new repo**: Transfer (Settings → Danger Zone → Transfer ownership) preserves all history, branches, issues AND automatically makes original owner a collaborator. Old URLs redirect. Cleaner than creating new repo + pushing.
+- **Don't hardcode GitHub username in docs**: Use `[OWNER]` placeholder in all documentation (setup guides, clone URLs, env vars). Username changes on transfer — hardcoded values become instantly wrong.
+- **Vercel Hobby is non-commercial**: ToS explicitly prohibits deployments "used for the purpose of financial gain." Client's production sales funnel requires Pro ($20/month). Not enforced aggressively but they can shut down without notice.
+- **Vercel = hosting, Hostinger = DNS only**: Common confusion — client thinks they need hosting on Hostinger because domain is there. Hostinger only provides DNS records pointing to Vercel. No hosting package needed.
+- **Coolify minimum 8GB RAM for Next.js**: KVM 1 (4GB) crashes during `npm run build` — Next.js build spikes to 3-4GB + Coolify overhead. GitHub Issues #6656 and #7173 confirm. Workaround: build via GitHub Actions, push pre-built Docker image.
+- **`git pull` before every work session**: After handover, client makes CMS edits that create commits on same repo. Always pull before starting code changes to avoid merge conflicts.
+- **Resend DNS records don't conflict with Vercel**: SPF, DKIM, DMARC (TXT records) are independent from Vercel's A and CNAME records. Can be set up simultaneously on Hostinger DNS.
