@@ -20,28 +20,41 @@ Umożliwia klientowi (Maria) edycję treści na `wyjazdyzdziecmi.pl/keystatic` b
 ### 0.3 Stwórz GitHub App
 1. https://github.com/settings/apps/new
 2. Wypełnij:
-   - Name: `wyjazdy-z-dziecmi-cms`
+   - Name: `Wyjazdy CMS` (lub dowolna)
    - Homepage URL: `https://wyjazdyzdziecmi.pl`
-   - Callback URL: `https://wyjazdyzdziecmi.pl/api/keystatic/github/oauth/callback`
+   - Callback URL: `https://wyjazdy-z-dziecmi.vercel.app/api/keystatic/github/oauth/callback`
+     (po migracji na hosting dodaj też: `https://wyjazdyzdziecmi.pl/api/keystatic/github/oauth/callback`)
    - Request user authorization (OAuth): ✅
-   - Webhook Active: ❌
+   - Webhook Active: może zostać zaznaczone (nie wpływa na OAuth)
    - Permissions → Repository → Contents: **Read & write**
-3. **Create GitHub App** → skopiuj Client ID + wygeneruj Client Secret
-4. **Install App** → Only select repositories → `wyjazdy-z-dziecmi`
+3. **Create GitHub App** → skopiuj **Client ID** (format `Iv23.xxx`, NIE numeryczny App ID!)
+4. Wygeneruj **Client Secret**
+5. **Install App** → Only select repositories → `wyjazdy-z-dziecmi`
+   - Po kliknięciu "Install & Authorize" pojawi się "Authorization failed" — to normalne (redirect instalacji, nie OAuth). Zignoruj.
+
+### 0.3.1 Dodawanie edytorów (ważne!)
+GitHub App jest domyślnie **prywatna** — tylko właściciel może się autoryzować.
+Dla każdego nowego edytora:
+1. Dodaj go jako **collaborator** do repo (krok 0.2)
+2. GitHub App → Advanced → **Make this GitHub App public**
+3. Edytor wchodzi na `/keystatic` → Sign in with GitHub → Authorize
+4. Po autoryzacji możesz wrócić do **Make private** — token edytora będzie nadal działać
 
 ### 0.4 Env variables
 
 ```
 NEXT_PUBLIC_KEYSTATIC_GITHUB_OWNER=TatianaG-ka
 NEXT_PUBLIC_KEYSTATIC_GITHUB_REPO=wyjazdy-z-dziecmi
-KEYSTATIC_GITHUB_CLIENT_ID=<Client ID z GitHub App>
+KEYSTATIC_GITHUB_CLIENT_ID=<Client ID z GitHub App (Iv23.xxx)>
 KEYSTATIC_GITHUB_CLIENT_SECRET=<Client Secret z GitHub App>
 KEYSTATIC_SECRET=<openssl rand -hex 32>
 ```
 
+Po każdej zmianie env vars → **Redeploy** na Vercel (zmiana nie działa automatycznie).
+
 ### 0.5 Test
 1. Redeploy na Vercel (po dodaniu env vars)
-2. Wejdź na `wyjazdyzdziecmi.pl/keystatic` → Sign in with GitHub
+2. Otwórz incognito → `wyjazdy-z-dziecmi.vercel.app/keystatic` → Sign in with GitHub
 3. Klient robi to samo ze swojego konta
 
 Szczegółowa instrukcja: `docs/instrukcja-cms.md` sekcja 15.
