@@ -378,14 +378,16 @@ Umów się z klientką na screenshare i pokaż:
 | Hosting + deploy | Vercel | Developer (lub klientka) |
 | Domena | Hostinger | Klientka |
 
-### Koszty miesięczne:
+### Koszty miesięczne (zależą od wybranej platformy):
 
-| Usługa | Koszt |
-|---|---|
-| Hostinger — domena | ~40-60 zł/rok (~4 zł/mies.) |
-| Vercel Pro | $20/mies. (~80 zł/mies.) |
-| GitHub, Sheets, Resend, Turnstile, Keystatic | 0 zł |
-| **Razem** | **~84 zł/mies.** |
+| Usługa | Vercel Hobby | Vercel Pro | Coolify (VPS) |
+|---|---|---|---|
+| Hostinger — domena | ~4 zł/mies. | ~4 zł/mies. | ~4 zł/mies. |
+| Hosting | $0 | $20/mies. (~80 zł) | ~$7/mies. (~28 zł) |
+| GitHub, Sheets, Resend, Turnstile, Keystatic | 0 zł | 0 zł | 0 zł |
+| **Razem** | **~4 zł/mies.** | **~84 zł/mies.** | **~32 zł/mies.** |
+
+Porównanie platform → sekcja [Wybór platformy hostingowej](#wybór-platformy-hostingowej) na końcu dokumentu.
 
 ---
 
@@ -434,3 +436,71 @@ Oboje pracujecie na tym samym repo, ale:
 | `instrukcja-cms.md` | Instrukcja CMS dla klientki (edycja treści) |
 | `instrukcja-zarzadzanie.md` | Instrukcja zarządzania stroną dla klientki (formularze, Sheets) |
 | `instrukcja-developer.md` | Instrukcja dla przyszłego developera |
+
+---
+
+## Wybór platformy hostingowej
+
+Analiza przeprowadzona 26.03.2026. Trzy realistyczne opcje dla tego projektu:
+
+### Porównanie platform
+
+| Kryterium | Vercel Hobby ($0) | Coolify na VPS (~$7/mies.) | Netlify Free ($0) |
+|---|---|---|---|
+| **Koszt** | $0 | ~$7/mies. (Hostinger KVM 2) | $0 |
+| **Użytek komercyjny** | Zabroniony w ToS | Dozwolony | Dozwolony |
+| **Limit deployów** | Bez limitu | Bez limitu | **~20/mies.** (nowe konta) |
+| **CMS auto-deploy** | OK | OK | **Szybko zjada limit** |
+| **ISR (revalidate)** | Natywne, pełne | Działa (single instance) | Działa (OpenNext adapter) |
+| **API routes** | Serverless functions | Node.js always-on | Serverless functions |
+| **Cold starts API** | ~1 sek | **Brak** (always-on) | **~3+ sek** |
+| **Latencja PL** | Dobra (edge EU) | **Najlepsza** (VPS w EU) | Słaba (US East domyślnie) |
+| **CDN** | Globalny (automatyczny) | Brak (dodaj Cloudflare free) | Globalny (automatyczny) |
+| **Maintenance** | Zero | 1-2h/mies. (aktualizacje OS, Docker) | Zero |
+| **Migracja z Vercel** | Już działa | 4-8h (Docker, Nixpacks) | 2-4h (zmiana env vars) |
+| **next/image** | Vercel Image CDN | sharp (lokalnie) | Netlify Image CDN |
+| **Preview deployments** | Automatyczne | Ręczne | Automatyczne |
+
+### Rekomendacja
+
+**1. Vercel Hobby ($0) — najprostsze, już działa**
+- Ryzyko ToS: Vercel zabrania komercyjnego użycia na darmowym planie. Nie egzekwują aktywnie, ale mogą poprosić o upgrade lub wyłączyć bez ostrzeżenia
+- Realistycznie: mała polska strona warsztatowa nie jest na radarze Vercela
+- Wszystko działa idealnie — ISR, API, CMS, auto-deploy
+
+**2. Coolify na Hostinger VPS (~28 zł/mies.) — legalnie i tanio**
+- Klientka ma hosting na Hostinger, ale shared hosting (PHP) nie obsłuży Next.js
+- VPS KVM 2 (8GB RAM, 2 vCPU) to minimum — **4GB RAM crashuje** przy buildzie Next.js
+- Zero limitów deployów, bandwidth, API calls
+- Serwer w EU (Holandia/Niemcy) — najszybsza opcja dla polskich użytkowników
+- Wymaga: setup VPS (~2h), okazjonalne aktualizacje OS i Coolify (~1-2h/mies.)
+- Opcja: buduj przez GitHub Actions (darmowe) → push Docker image → Coolify ciągnie gotowy obraz (eliminuje problem RAM przy buildzie)
+
+**3. Netlify Free — NIE REKOMENDOWANE z nowym kontem**
+- Konta założone po 04.09.2025 mają system kredytowy: ~20 deployów produkcyjnych/mies.
+- Każdy commit Marysi z CMS = deploy = -15 kredytów z puli 300
+- Przy codziennej edycji treści limit kończy się w ~3 tygodnie
+- Cold starts API ~3+ sek — formularz rezerwacji będzie wolny
+- Serverless functions domyślnie w US East — dodatkowe opóźnienie dla PL
+- Jedyna przewaga nad Vercel Hobby: legalny użytek komercyjny
+- **Wyjątek:** Jeśli masz stare konto Netlify (sprzed 04.09.2025) — stare limity są dużo lepsze (100GB bandwidth, 300 min build, 125k function calls)
+
+### Decyzja
+
+Wybór zależy od priorytetu klientki:
+
+| Priorytet | Wybierz |
+|---|---|
+| Najmniej pracy, działa teraz | Vercel Hobby ($0) |
+| Legalnie + tanio + szybkie API | Coolify (~28 zł/mies.) |
+| Legalnie + zero maintenance | Vercel Pro (~84 zł/mies.) |
+
+### Migracja na Coolify (jeśli wybrane)
+
+Jeśli klientka zdecyduje się na Coolify, potrzebne zmiany w kodzie:
+1. `next.config.ts` — dodaj `output: "standalone"`
+2. `src/lib/api-security.ts` — usuń `VERCEL_PROJECT_PRODUCTION_URL`, dodaj URL VPS do `ALLOWED_ORIGINS`
+3. Opcjonalnie: `Dockerfile` (lub użyj Nixpacks auto-detect)
+4. Opcjonalnie: `nixpacks.toml` z `npm ci --legacy-peer-deps` (jeśli build fails)
+
+Szczegółowa instrukcja Coolify: osobny dokument do stworzenia gdy klientka zdecyduje.
