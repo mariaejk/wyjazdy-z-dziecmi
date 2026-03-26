@@ -20,7 +20,7 @@ Przewodnik po projekcie dla nowego developera.
 ## 1. Szybki start
 
 ```bash
-git clone https://github.com/TatianaG-ka/wyjazdy-z-dziecmi.git
+git clone https://github.com/[OWNER]/wyjazdy-z-dziecmi.git  # zamień [OWNER] na username właściciela repo
 cd wyjazdy-z-dziecmi
 npm install
 cp .env.example .env.local   # wypełnij klucze lub zostaw puste (dev mode)

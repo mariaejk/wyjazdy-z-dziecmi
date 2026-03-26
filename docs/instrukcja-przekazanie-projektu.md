@@ -43,42 +43,59 @@ Instrukcja krok po kroku: co robi developer (Ty), co robi klientka (Maria), w ja
 
 ---
 
-## Faza 1: Developer — przygotowanie kodu
+## Faza 1: Developer — transfer repo na konto klientki
 
-### 1.1 Sprawdź czy repo klientki istnieje na GitHub
+Kod jest teraz na Twoim koncie (`TatianaG-ka/wyjazdy-z-dziecmi`). Trzeba go przenieść na konto klientki (Maria), żeby ona była właścicielem.
 
-Klientka (TatianaG-ka) powinna mieć repo `wyjazdy-z-dziecmi` na GitHub. Jeśli nie:
+### 1.1 Klientka zakłada konto GitHub
 
-**Opcja A — Klientka tworzy puste repo:**
-1. Klientka wchodzi na https://github.com/new
-2. Nazwa: `wyjazdy-z-dziecmi`
-3. Visibility: **Private** (kod nie musi być publiczny)
-4. NIE zaznaczaj "Add a README" — repo musi być puste
-5. Kliknij "Create repository"
+1. https://github.com/signup → darmowe konto
+2. Zapisz jej **username** — będzie potrzebny w kolejnych krokach
+3. Klientka nie musi wiedzieć co to GitHub — potrzebuje tylko konta do logowania w CMS
 
-**Opcja B — Fork/Transfer z Twojego repo:**
-Jeśli kod jest na Twoim koncie GitHub, możesz:
-- **Transfer**: Settings → Danger Zone → Transfer ownership → podaj username klientki
-- Lub: dodaj remote i wypchnij (krok 1.2)
+### 1.2 Transfer repo (rekomendowane)
 
-### 1.2 Wypchnij kod na repo klientki
+Transfer przenosi całe repo (z historią, branches, issues) na konto klientki. Ty automatycznie stajesz się collaborator.
+
+1. Wejdź na https://github.com/TatianaG-ka/wyjazdy-z-dziecmi/settings
+2. Przewiń na dół → **Danger Zone** → **Transfer ownership**
+3. Wpisz username klientki → potwierdź nazwę repo `wyjazdy-z-dziecmi`
+4. Klientka dostanie email z prośbą o akceptację → musi kliknąć **Accept**
+5. Po akceptacji repo jest na koncie klientki: `https://github.com/[KLIENTKA]/wyjazdy-z-dziecmi`
+
+**Co się dzieje po transferze:**
+- Stary URL (`TatianaG-ka/wyjazdy-z-dziecmi`) automatycznie przekierowuje na nowy
+- Cała historia commitów, branches zachowane
+- Ty (TatianaG-ka) jesteś automatycznie collaborator z dostępem write
+
+### 1.3 Zaktualizuj local remote
 
 ```bash
-# Dodaj repo klientki jako remote
-git remote add client https://github.com/TatianaG-ka/wyjazdy-z-dziecmi.git
-
-# Wypchnij cały kod
-git push client master
+# Zmień URL remote na nowe repo klientki
+git remote set-url origin https://github.com/[KLIENTKA]/wyjazdy-z-dziecmi.git
 
 # Sprawdź
 git remote -v
+# Powinno pokazać: https://github.com/[KLIENTKA]/wyjazdy-z-dziecmi.git
 ```
 
-Jeśli repo klientki nie jest puste (ma README), użyj `git push client master --force` (jednorazowo).
+Zamień `[KLIENTKA]` na username klientki.
 
-### 1.3 Sprawdź że `.env.example` jest w repo
+### 1.4 Sprawdź że `.env.example` jest w repo
 
 Plik `.env.example` z pustymi kluczami powinien być w repo (jest). NIE commituj `.env.local` z prawdziwymi kluczami.
+
+### 1.5 Alternatywa: push do nowego repo (zamiast transferu)
+
+Jeśli transfer nie działa (np. klientka nie akceptuje emaila):
+
+1. Klientka tworzy puste repo na swoim koncie: https://github.com/new → nazwa `wyjazdy-z-dziecmi` → **Private** → bez README
+2. Klientka dodaje Cię jako collaborator: repo → Settings → Collaborators → Invite → `TatianaG-ka`
+3. Ty:
+```bash
+git remote set-url origin https://github.com/[KLIENTKA]/wyjazdy-z-dziecmi.git
+git push origin master
+```
 
 ---
 
@@ -86,14 +103,14 @@ Plik `.env.example` z pustymi kluczami powinien być w repo (jest). NIE commituj
 
 ### Kto ma konto Vercel?
 
-**Rekomendacja:** Klientka zakłada konto Vercel (loguje się GitHubem). Wtedy ona jest właścicielem deployu i ma pełną kontrolę. Ty możesz być dodany jako Member.
+**Rekomendacja:** Klientka zakłada konto Vercel (loguje się swoim GitHubem — tym na który przeniesiono repo). Wtedy ona jest właścicielem deployu i ma pełną kontrolę. Ty możesz być dodany jako Member.
 
-**Alternatywa:** Deploy z Twojego konta Vercel — prostsze na start, ale klientka zależy od Ciebie.
+**Alternatywa:** Deploy z Twojego konta Vercel — prostsze na start, ale klientka zależy od Ciebie. Jeśli wybierzesz tę opcję, zaloguj się swoim GitHubem i zaimportuj repo klientki (masz dostęp jako collaborator).
 
 ### 2.1 Załóż konto na Vercel
 
 1. Wejdź na https://vercel.com/signup
-2. Kliknij **"Continue with GitHub"** → zaloguj się kontem GitHub (tym samym gdzie jest repo)
+2. Kliknij **"Continue with GitHub"** → zaloguj kontem GitHub **właściciela repo** (klientka lub Ty)
 3. Autoryzuj Vercel
 
 ### 2.2 Importuj projekt
@@ -229,7 +246,9 @@ Pełna instrukcja: `setup-external-services.md` → sekcja 0
 
 ### 5.1 Stwórz GitHub App
 
-1. Na koncie GitHub klientki (lub Twoim): https://github.com/settings/apps/new
+GitHub App musi być utworzona na koncie **właściciela repo** (klientka, po transferze).
+
+1. Zaloguj się na konto klientki (lub poproś ją) → https://github.com/settings/apps/new
 2. Wypełnij wg instrukcji w `setup-external-services.md` krok 0.3
 3. **Callback URL** — dodaj OBA:
    - `https://wyjazdy-z-dziecmi.vercel.app/api/keystatic/github/oauth/callback`
@@ -237,22 +256,27 @@ Pełna instrukcja: `setup-external-services.md` → sekcja 0
 4. Skopiuj Client ID + wygeneruj Client Secret
 5. Install App na repo `wyjazdy-z-dziecmi`
 
+**Ważne:** Jeśli nie masz dostępu do konta klientki, możesz stworzyć GitHub App na swoim koncie — ale wtedy App musi być **publiczna** (Advanced → Make public) żeby klientka mogła się autoryzować.
+
 ### 5.2 Dodaj env vars Keystatic na Vercel
 
 ```
-NEXT_PUBLIC_KEYSTATIC_GITHUB_OWNER=TatianaG-ka
+NEXT_PUBLIC_KEYSTATIC_GITHUB_OWNER=[KLIENTKA]
 NEXT_PUBLIC_KEYSTATIC_GITHUB_REPO=wyjazdy-z-dziecmi
 KEYSTATIC_GITHUB_CLIENT_ID=<Client ID>
 KEYSTATIC_GITHUB_CLIENT_SECRET=<Client Secret>
 KEYSTATIC_SECRET=<losowy ciąg — wygeneruj: openssl rand -hex 32>
 ```
 
+Zamień `[KLIENTKA]` na GitHub username klientki (właścicielka repo po transferze).
+
 **Redeploy** po dodaniu.
 
-### 5.3 Dodaj klientkę jako collaborator (jeśli repo jest na Twoim koncie)
+### 5.3 Upewnij się że masz dostęp jako collaborator
 
-1. Repo → Settings → Collaborators → Invite → username klientki
-2. Klientka akceptuje zaproszenie (email od GitHub)
+Po transferze repo Ty (TatianaG-ka) automatycznie jesteś collaborator. Sprawdź:
+1. Wejdź na `https://github.com/[KLIENTKA]/wyjazdy-z-dziecmi`
+2. Powinieneś widzieć kod i móc pushować
 
 ### 5.4 Test CMS
 
@@ -350,7 +374,7 @@ Umów się z klientką na screenshare i pokaż:
 | Panel CMS | `wyjazdyzdziecmi.pl/keystatic` | Klientka |
 | Rezerwacje + kontakty | Arkusz Google Sheets | Klientka |
 | Powiadomienia email | `wyjazdyzdziecmi@gmail.com` | Klientka |
-| Kod źródłowy | GitHub `wyjazdy-z-dziecmi` | Developer |
+| Kod źródłowy | GitHub `[KLIENTKA]/wyjazdy-z-dziecmi` | Klientka (owner), Developer (collaborator) |
 | Hosting + deploy | Vercel | Developer (lub klientka) |
 | Domena | Hostinger | Klientka |
 
@@ -362,6 +386,42 @@ Umów się z klientką na screenshare i pokaż:
 | Vercel Pro | $20/mies. (~80 zł/mies.) |
 | GitHub, Sheets, Resend, Turnstile, Keystatic | 0 zł |
 | **Razem** | **~84 zł/mies.** |
+
+---
+
+## Jak trafiają poprawki developera na stronę (po przekazaniu)
+
+Po przekazaniu projektu klientce, Twój codzienny workflow wygląda tak:
+
+```
+1. git pull origin master          ← pobierz ewentualne zmiany klientki z CMS
+2. (robisz poprawki w kodzie)
+3. git add + git commit
+4. git push origin master          ← push na repo klientki (masz dostęp jako collaborator)
+5. Vercel automatycznie buduje     ← nowa wersja na wyjazdyzdziecmi.pl w ~2 min
+```
+
+**Klientka nie musi nic robić** — Twoje poprawki pojawiają się na stronie automatycznie.
+
+**Ważne:** Klientka też edytuje treści przez CMS (`/keystatic`), co tworzy commity w tym samym repo. Dlatego ZAWSZE rób `git pull` przed rozpoczęciem pracy, żeby uniknąć konfliktów.
+
+### Schemat:
+
+```
+Developer (Ty)                          Klientka (Maria)
+     │                                        │
+     │  git push ──────► GitHub repo ◄─────── CMS /keystatic (auto-commit)
+     │                       │
+     │                       ▼
+     │                    Vercel
+     │                       │
+     │                       ▼
+     │               wyjazdyzdziecmi.pl
+```
+
+Oboje pracujecie na tym samym repo, ale:
+- **Ty** pushesz kod (poprawki, nowe funkcje) przez `git push`
+- **Klientka** edytuje treści (warsztaty, blog, opinie) przez CMS w przeglądarce
 
 ---
 

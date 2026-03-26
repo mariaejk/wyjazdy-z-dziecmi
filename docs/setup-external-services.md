@@ -13,7 +13,7 @@ Umożliwia klientowi (Maria) edycję treści na `wyjazdyzdziecmi.pl/keystatic` b
 2. Podaj klientowi link — nie musi wiedzieć co to GitHub, potrzebuje tylko konta do logowania
 
 ### 0.2 Dodaj klienta jako collaborator
-1. https://github.com/TatianaG-ka/wyjazdy-z-dziecmi/settings/access
+1. https://github.com/[OWNER]/wyjazdy-z-dziecmi/settings/access (zamień [OWNER] na username właściciela repo)
 2. **Invite a collaborator** → username klienta → wyślij
 3. Klient akceptuje (email)
 
@@ -43,7 +43,7 @@ Dla każdego nowego edytora:
 ### 0.4 Env variables
 
 ```
-NEXT_PUBLIC_KEYSTATIC_GITHUB_OWNER=TatianaG-ka
+NEXT_PUBLIC_KEYSTATIC_GITHUB_OWNER=[OWNER]  # zamień na username właściciela repo
 NEXT_PUBLIC_KEYSTATIC_GITHUB_REPO=wyjazdy-z-dziecmi
 KEYSTATIC_GITHUB_CLIENT_ID=<Client ID z GitHub App (Iv23.xxx)>
 KEYSTATIC_GITHUB_CLIENT_SECRET=<Client Secret z GitHub App>
@@ -148,7 +148,7 @@ Na Vercel: Settings → Environment Variables → dodaj wszystkie:
 
 | Zmienna | Wartość | Uwagi |
 |---------|---------|-------|
-| `NEXT_PUBLIC_KEYSTATIC_GITHUB_OWNER` | `TatianaG-ka` | GitHub username |
+| `NEXT_PUBLIC_KEYSTATIC_GITHUB_OWNER` | `[OWNER]` | GitHub username właściciela repo |
 | `NEXT_PUBLIC_KEYSTATIC_GITHUB_REPO` | `wyjazdy-z-dziecmi` | Nazwa repo |
 | `KEYSTATIC_GITHUB_CLIENT_ID` | z GitHub App | |
 | `KEYSTATIC_GITHUB_CLIENT_SECRET` | z GitHub App | |
