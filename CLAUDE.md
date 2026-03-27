@@ -8,26 +8,35 @@ Landing page / sales funnel for "Wyjazdy z Dziećmi" — family workshop retreat
 
 ## Tech Stack
 
-- **Next.js 16.1.6** (App Router, SSG) + **TypeScript** + **Tailwind CSS v4**
+- **Next.js 16.2.1** (App Router, SSG) + **TypeScript** + **Tailwind CSS v4**
 - **React 19.2** + **Turbopack**
 - **Motion 12.34** (`motion/react`) — NOT `framer-motion` (incompatible with React 19)
 - **React Hook Form 7.71 + Zod 4.3** — form validation (client + server)
 - **Resend + @react-email/components** — transactional emails
-- **google-auth-library** — Google Sheets API (NOT `googleapis` — 82MB, cold start)
+- **Airtable REST API** — form data storage (raw fetch, Bearer token, NO SDK)
 - **@marsidev/react-turnstile** — Cloudflare Turnstile invisible antyspam
 - **Lucide React 0.575** — line icons (strokeWidth 1.5)
 - **clsx 2.1 + tailwind-merge 3.5** — className utility `cn()`
-- **Vercel** — deployment
+- **@opennextjs/cloudflare 1.18.0** — CF Workers adapter (devDependency)
+- **wrangler 4.77.0** — CF Workers CLI (devDependency)
 - Fonts: **Georgia** (headings, system font via `@theme`) + **Inter** (body) + **Lora** (logo) + **Caveat** (logo script). Inter/Lora/Caveat via `next/font/google`.
+
+## Deployment (migration in progress)
+
+- **Current**: Vercel Hobby (łamie ToS dla komercji)
+- **Target**: Cloudflare Workers ($5/mies.) — branch `feature/cloudflare-airtable-migration`
+- **Status**: Fazy 0-3 ukończone (kod gotowy), Fazy 4-5 czekają na Airtable + CF dashboard setup
+- **Repo**: `https://github.com/mariaejk/wyjazdy-z-dziecmi.git`. Developer (TatianaG-ka) = collaborator.
+- **Docs**: `docs/instrukcja-przekazanie-projektu.md`, `docs/setup-external-services.md`, `docs/decyzja-hosting-platforma.md`
 
 ## Critical Constraints
 
 - **Motion, not Framer Motion**: Always `import { motion } from 'motion/react'`.
 - **Tailwind v4 syntax**: `@import "tailwindcss"` + `@theme {}`. No `@tailwind` directives.
 - **All forms need spam protection**: honeypot (`website`, CSS hidden) + rate limiting + Cloudflare Turnstile on every API route.
-- **All API routes use `validateRequest()`** from `src/lib/api-security.ts` — shared CSRF, Content-Length, rate limit, honeypot.
+- **All API routes use `validateRequest()`** from `src/lib/api-security.ts` — shared CSRF, Content-Length, rate limit (KV on CF Workers, in-memory fallback), honeypot.
 - **`lang="pl"`** on `<html>` element.
-- **Form delivery**: Google Sheets + Resend emails + Turnstile. Config: `docs/setup-external-services.md`.
+- **Form delivery**: Airtable (data storage) + Resend emails + Turnstile. Config: `docs/setup-external-services.md`.
 - **`cn()` always** over template literals (Tailwind merge).
 - **Polskie znaki UTF-8** — literal characters in .ts and .tsx. `\u201E`/`\u201D` only for typographic quotes in .ts.
 - **`parseLocalDate()`** — always instead of `new Date(dateStr)` for YYYY-MM-DD strings.
@@ -58,41 +67,41 @@ src/components/home/     — HeroSection, HeroSlideshow, TripCard, TripCardsSect
 src/components/trips/    — TripHero, TripDescription, TripProgram, TripPricing, BookingForm, StickyBookingCTA
 src/components/about/    — PersonBio, PlaceCard
 src/components/contact/  — ContactForm, ContactInfo
-src/lib/                 — constants.ts, utils.ts, api-security.ts, rate-limit.ts, category-config.ts, sheets.ts, email.ts, turnstile.ts
+src/lib/                 — constants.ts, utils.ts, api-security.ts, rate-limit.ts, category-config.ts, airtable.ts, email.ts, turnstile.ts
 src/lib/validations/     — booking.ts, contact.ts, newsletter.ts, waitlist.ts (Zod schemas)
 src/emails/              — React Email templates
-src/data/                — navigation.ts, trips.ts, team.ts, blog.ts (CMS readers)
+src/data/                — navigation.ts, trips.ts, team.ts, blog.ts (Keystatic CMS readers)
 src/types/               — trip.ts, team.ts, place.ts, cookies.ts, global.d.ts
 content/                 — Keystatic CMS data (YAML + Markdoc)
+open-next.config.ts      — OpenNext CF Workers adapter config
+wrangler.jsonc           — CF Workers deployment config
 ```
 
 ## Build Commands
 
 ```bash
 npm run dev        # Development server
-npm run build      # Production build (must pass with zero errors)
+npm run build      # Production build (Next.js, must pass with zero errors)
+npm run build:cf   # Cloudflare Workers build (via @opennextjs/cloudflare)
+npm run preview    # Local CF Workers preview (wrangler dev)
+npm run deploy     # Build + deploy to CF Workers
 npm run lint       # ESLint
 ```
 
 ## Key Architecture Decisions
 
-- **Keystatic CMS**: Collections: trips, team, blog, gallery, testimonials, projects. Singletons: homepage, places, faq, categoryBenefits. Admin at `/keystatic` (GitHub OAuth on Vercel, blocked in production without GitHub mode).
-- **Blog reader**: Direct `fs.readdir` + `js-yaml` + `Markdoc` (NOT Keystatic reader — bug). Each post = `content/blog/{slug}/index.yaml` + `content.mdoc`.
+- **Keystatic CMS**: Collections: trips, team, blog, gallery, testimonials, projects. Singletons: homepage, places, faq, categoryBenefits. Admin at `/keystatic` (GitHub OAuth in production).
+- **Blog reader**: Keystatic reader API (`reader.collections.blog.list/read`). `resolveLinkedFiles: true` returns `{ node: Node }` — Markdoc AST transformed via `Markdoc.transform()`. `React.cache()` wrappery. `BlogPostWithContent` exported type.
+- **Airtable** (form data): Raw `fetch()` to REST API with Bearer token. 4 tables: Rezerwacje, Kontakty, Newsletter, ListaOczekujacych. `sanitizeFields()` for CSV injection prevention. NO SDK (0KB overhead).
+- **Rate limiting**: Async, KV-based on CF Workers + in-memory fallback (Vercel/dev). `KVBinding` exported from `rate-limit.ts`. Graceful degradation (KV error → fallback).
+- **CF Workers adapter**: `@opennextjs/cloudflare` with `cloudflare-node` wrapper, `edge` converter, `dummy` incremental cache (ISR disabled). `getCloudflareContext({ async: true })` for KV bindings.
+- **Dual deployment**: Code works on both Vercel and CF Workers. `ALLOWED_ORIGINS` includes `CF_PAGES_URL` and `VERCEL_PROJECT_PRODUCTION_URL`.
 - **`CATEGORY_CONFIG`** in `category-config.ts` — Single Source of Truth for category colors.
-- **Auto-isPast** from `dateEnd` via `parseLocalDate()`. ISR `revalidate=3600` on all trip-dependent pages.
+- **Auto-isPast** from `dateEnd` via `parseLocalDate()`. `revalidate=3600` on trip pages (SSG on CF Workers with dummy cache).
 - **Form types**: Use `z.infer<typeof schema>` only. No separate type definitions.
 - **`React.cache()`** on all CMS readers for request deduplication.
-- **`isSafeSlug()`** in `src/data/blog.ts` — path traversal guard on URL params used in `path.join()`.
-- **ICON_MAP pattern**: CMS stores icon name as string, code maps via `Record<string, LucideIcon>`.
+- **`isSafeSlug()`** + **`warnInvalidSlug()`** in blog reader — path traversal guard + CMS slug validation.
 
 ## Content Sources
 
 All copy from `docs/tresc_na_strone.md` and `docs/TODO POPRAWIC landing page 2.03.2026.docx`.
-
-## Deployment & Handover
-
-- **Hosting**: Vercel (Pro $20/month for commercial use). Hostinger = DNS only.
-- **Repo**: `https://github.com/mariaejk/wyjazdy-z-dziecmi.git`. Developer (TatianaG-ka) = collaborator.
-- **Docs**: `docs/instrukcja-przekazanie-projektu.md` (master checklist), `docs/setup-external-services.md`, `docs/instrukcja-cms.md`, `docs/instrukcja-developer.md`.
-- **Post-handover**: `git pull` → code changes → `git push` → Vercel auto-deploys. Client edits content via `/keystatic`.
-- **Hosting comparison**: `docs/decyzja-hosting-platforma.md` (Vercel/Coolify/CF Workers/Netlify/Railway).
