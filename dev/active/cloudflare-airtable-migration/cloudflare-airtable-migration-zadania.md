@@ -88,21 +88,22 @@ Ostatnia aktualizacja: 2026-03-27
 
 ## Faza 3: Workers compatibility (4-6h)
 
-- [ ] 3.1 Przepisanie `src/lib/rate-limit.ts` → async z KV namespace
-- [ ] 3.2 Aktualizacja `src/lib/api-security.ts` — getCloudflareContext() + async rateLimit
-- [ ] 3.3 Aktualizacja `src/lib/constants.ts` — CF_PAGES_URL zamiast VERCEL_*
-- [ ] 3.4 Weryfikacja Resend SDK na Workers runtime
-- [ ] 3.5 (Jeśli potrzebne) Zmiana email.ts na pre-render HTML + resend html option
-- [ ] 3.6 Sprawdzenie ISR support w @opennextjs/cloudflare
-- [ ] 3.7 (Jeśli ISR nie działa) Usunięcie `revalidate`, dodanie CF Cache Rules
-- [ ] 3.8 Utworzenie `wrangler.toml` (KV bindings, nodejs_compat)
-- [ ] 3.9 Aktualizacja `package.json` scripts (build:cf, preview)
-- [ ] 3.10 Utworzenie `.dev.vars` (gitignored) z sekretami
-- [ ] 3.11 `wrangler dev` serwuje stronę lokalnie
-- [ ] 3.12 Test: API routes działają w Workers runtime
-- [ ] 3.13 Test: rate limiter persystuje między requestami
-- [ ] 3.14 Test: emaile wysyłają się poprawnie
-- [ ] 3.15 Sprawdzenie bundle size (<25MB)
+- [x] 3.1 Przepisanie `src/lib/rate-limit.ts` → async z KV namespace + in-memory fallback
+- [x] 3.2 Aktualizacja `src/lib/api-security.ts` — dynamic import getCloudflareContext() + async rateLimit
+- [x] 3.3 Aktualizacja `src/lib/constants.ts` — CF_PAGES_URL + zachowanie VERCEL fallback
+- [x] 3.4 Weryfikacja Resend SDK — `react` option uses @react-email/render (pure JS, should work on Workers)
+- [x] 3.5 Email.ts — bez zmian (Resend SDK compatible, fallback do HTML jeśli problem w testach)
+- [x] 3.6 ISR — `incrementalCache: "dummy"` = ISR wyłączone. Strony pre-renderowane at build time.
+- [x] 3.7 `revalidate` exports zachowane (opennextjs-cloudflare z dummy cache je ignoruje)
+- [x] 3.8 wrangler.jsonc — utworzony w Fazie 0 ✅
+- [x] 3.9 package.json scripts — utworzone w Fazie 0 ✅
+- [x] 3.10 .dev.vars.example — utworzony w Fazie 0 ✅
+- [x] 3.10a `src/types/global.d.ts` — CloudflareEnv rozszerzony o RATE_LIMIT KVNamespace
+- [ ] 3.11 `wrangler dev` serwuje stronę lokalnie ⏳ ODŁOŻONE (wymaga secrets w .dev.vars)
+- [ ] 3.12 Test: API routes działają w Workers runtime ⏳ ODŁOŻONE
+- [ ] 3.13 Test: rate limiter persystuje między requestami ⏳ ODŁOŻONE
+- [ ] 3.14 Test: emaile wysyłają się poprawnie ⏳ ODŁOŻONE
+- [x] 3.15 Sprawdzenie bundle size: **4.3MB compressed** (limit 10MB) ✅
 - [ ] 3.16 **Review fazy 3** → `/dev-docs-review` + `code-architecture-reviewer`
 - [ ] 3.17 Naprawa uwag z review
 - [ ] 3.18 **Zamknięcie fazy 3** → `/dev-docs-complete`

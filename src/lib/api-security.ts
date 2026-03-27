@@ -9,6 +9,20 @@ type SecurityCheckResult =
   | { ok: true; ip: string; body: unknown }
   | { ok: false; response: NextResponse };
 
+// Try to get CF Workers KV binding for rate limiting.
+// Returns undefined when not running on CF Workers (Vercel, local dev).
+async function getKVBinding(): Promise<unknown | undefined> {
+  try {
+    // Dynamic import — only available on CF Workers with @opennextjs/cloudflare
+    const { getCloudflareContext } = await import("@opennextjs/cloudflare");
+    const ctx = await getCloudflareContext();
+    return ctx.env?.RATE_LIMIT;
+  } catch {
+    // Not on CF Workers — KV not available
+    return undefined;
+  }
+}
+
 /**
  * Shared security preamble for all API POST routes.
  * Checks: Origin (CSRF), Content-Length, rate limit, JSON parse, honeypot.
@@ -29,13 +43,14 @@ export async function validateRequest(request: NextRequest): Promise<SecurityChe
     return { ok: false, response: NextResponse.json({ error: "Payload too large" }, { status: 413 }) };
   }
 
-  // Rate limiting
+  // Rate limiting — uses KV on CF Workers, in-memory fallback elsewhere
   const forwardedFor = request.headers.get("x-forwarded-for");
   const ip = forwardedFor
     ? forwardedFor.split(",").at(-1)!.trim()
     : (request.headers.get("x-real-ip") ?? "unknown");
 
-  const { success } = rateLimit(ip);
+  const kv = await getKVBinding();
+  const { success } = await rateLimit(ip, kv as Parameters<typeof rateLimit>[1]);
   if (!success) {
     return {
       ok: false,

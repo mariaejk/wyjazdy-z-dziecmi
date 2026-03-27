@@ -18,6 +18,16 @@ Ostatnia aktualizacja: 2026-03-27
 - `open-next.config.ts` — OpenNext adapter config
 - `wrangler.jsonc` — CF Workers deployment config
 
+### Faza 3 — Workers compatibility (2026-03-27)
+- `src/lib/rate-limit.ts` — async, KV-based z in-memory fallback. Graceful degradation (KV error → fallback)
+- `src/lib/api-security.ts` — dynamic import `getCloudflareContext()` (only on CF Workers), async rateLimit
+- `src/lib/constants.ts` — CF_PAGES_URL dodany do ALLOWED_ORIGINS, Vercel fallback zachowany
+- `src/types/global.d.ts` — CloudflareEnv rozszerzony o `RATE_LIMIT?: KVNamespace`
+- Email: bez zmian — Resend SDK z `react` option używa @react-email/render (pure JS)
+- ISR: `incrementalCache: "dummy"` = wyłączone. Strony pre-renderowane at build. `revalidate` exports zachowane (ignorowane)
+- Bundle: 4.3MB compressed (vs 4.4MB w Fazie 0)
+- Next.js build + CF Workers build — oba przechodzą
+
 ### Faza 2 — Blog fs → Keystatic reader (2026-03-27)
 - `src/data/blog.ts` przepisany — fs.readdir/readFile/js-yaml → Keystatic reader API
 - `React.cache()` wrappery na getAllBlogPosts, getLatestBlogPosts, getBlogPost
