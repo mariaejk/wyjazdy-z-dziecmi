@@ -356,3 +356,5 @@ Historical lessons from each development phase. Reference when debugging similar
 - **OpenNext Windows warning**: "not fully compatible with Windows, use WSL". Build passes but runtime may have issues. Document in config.
 - **`CF_PAGES_URL`** auto-set by CF Pages — add to `ALLOWED_ORIGINS`. Keep Vercel fallback during transition.
 - **`warnInvalidSlug()`** must be called in all CMS readers — blog was missing it after migration.
+- **ISR silently ignored on CF Workers**: `revalidate=3600` exports are kept for Vercel compatibility but do nothing with `incrementalCache: "dummy"`. Auto-isPast (trip dateEnd check) only updates on rebuild. Set up daily CF Cron Trigger or GitHub Actions cron for production.
+- **`append*` functions must NOT catch errors**: Errors must propagate to `Promise.allSettled` in routes for `allFailed` detection. Internal try/catch makes Airtable failures invisible — leads silently lost.

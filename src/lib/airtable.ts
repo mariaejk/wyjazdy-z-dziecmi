@@ -61,6 +61,10 @@ function sanitizeFields(fields: Record<string, string>): Record<string, string> 
   return sanitized;
 }
 
+// No try/catch on public append* functions — errors must propagate to
+// Promise.allSettled() in API routes for correct graceful degradation.
+// If append* swallows errors, allFailed is never true and lost leads go undetected.
+
 // Pola: Data, Imie, Email, Telefon, Wyjazd, Dorosli, Dzieci, WiekDzieci, Dieta, Uwagi, Status, ZgodaRODO, Marketing
 export async function appendBooking(data: {
   name: string;
@@ -74,25 +78,21 @@ export async function appendBooking(data: {
   notes?: string;
   consentMarketing: boolean;
 }) {
-  try {
-    await appendToTable("Rezerwacje", {
-      Data: getTimestamp(),
-      Imie: data.name,
-      Email: data.email,
-      Telefon: data.phone,
-      Wyjazd: data.trip,
-      Dorosli: String(data.adults),
-      Dzieci: String(data.children),
-      WiekDzieci: data.childrenAges ?? "",
-      Dieta: data.dietaryNeeds ?? "",
-      Uwagi: data.notes ?? "",
-      Status: "Nowy",
-      ZgodaRODO: "Tak",
-      Marketing: data.consentMarketing ? "Tak" : "Nie",
-    });
-  } catch (error) {
-    console.error("[Airtable] appendBooking failed:", error);
-  }
+  await appendToTable("Rezerwacje", {
+    Data: getTimestamp(),
+    Imie: data.name,
+    Email: data.email,
+    Telefon: data.phone,
+    Wyjazd: data.trip,
+    Dorosli: String(data.adults),
+    Dzieci: String(data.children),
+    WiekDzieci: data.childrenAges ?? "",
+    Dieta: data.dietaryNeeds ?? "",
+    Uwagi: data.notes ?? "",
+    Status: "Nowy",
+    ZgodaRODO: "Tak",
+    Marketing: data.consentMarketing ? "Tak" : "Nie",
+  });
 }
 
 // Pola: Data, Imie, Email, Wiadomosc, Status, ZgodaRODO, Zrodlo
@@ -101,33 +101,25 @@ export async function appendContact(data: {
   email: string;
   message: string;
 }) {
-  try {
-    await appendToTable("Kontakty", {
-      Data: getTimestamp(),
-      Imie: data.name,
-      Email: data.email,
-      Wiadomosc: data.message,
-      Status: "Nowy",
-      ZgodaRODO: "Tak",
-      Zrodlo: "Formularz kontaktowy",
-    });
-  } catch (error) {
-    console.error("[Airtable] appendContact failed:", error);
-  }
+  await appendToTable("Kontakty", {
+    Data: getTimestamp(),
+    Imie: data.name,
+    Email: data.email,
+    Wiadomosc: data.message,
+    Status: "Nowy",
+    ZgodaRODO: "Tak",
+    Zrodlo: "Formularz kontaktowy",
+  });
 }
 
 // Pola: Data, Email, Status, ZgodaRODO
 export async function appendNewsletter(data: { email: string }) {
-  try {
-    await appendToTable("Newsletter", {
-      Data: getTimestamp(),
-      Email: data.email,
-      Status: "Aktywny",
-      ZgodaRODO: "Tak",
-    });
-  } catch (error) {
-    console.error("[Airtable] appendNewsletter failed:", error);
-  }
+  await appendToTable("Newsletter", {
+    Data: getTimestamp(),
+    Email: data.email,
+    Status: "Aktywny",
+    ZgodaRODO: "Tak",
+  });
 }
 
 // Pola: Data, Imie, Email, Telefon, Wyjazd, Status, ZgodaRODO
@@ -137,17 +129,13 @@ export async function appendWaitlist(data: {
   phone: string;
   trip: string;
 }) {
-  try {
-    await appendToTable("ListaOczekujacych", {
-      Data: getTimestamp(),
-      Imie: data.name,
-      Email: data.email,
-      Telefon: data.phone,
-      Wyjazd: data.trip,
-      Status: "Oczekujący",
-      ZgodaRODO: "Tak",
-    });
-  } catch (error) {
-    console.error("[Airtable] appendWaitlist failed:", error);
-  }
+  await appendToTable("ListaOczekujacych", {
+    Data: getTimestamp(),
+    Imie: data.name,
+    Email: data.email,
+    Telefon: data.phone,
+    Wyjazd: data.trip,
+    Status: "Oczekujący",
+    ZgodaRODO: "Tak",
+  });
 }

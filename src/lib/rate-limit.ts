@@ -42,6 +42,9 @@ export interface KVBinding {
   put(key: string, value: string, options?: { expirationTtl?: number }): Promise<void>;
 }
 
+// Note: KV read-modify-write is not atomic — concurrent requests from the same IP
+// may read stale data and both pass. Acceptable for low-traffic landing page where
+// Turnstile is the primary spam defense. For stricter limiting, use Durable Objects.
 async function rateLimitKV(ip: string, kv: KVBinding): Promise<{ success: boolean }> {
   const key = `rate:${ip}`;
   const now = Date.now();
