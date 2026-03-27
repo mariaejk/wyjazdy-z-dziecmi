@@ -358,3 +358,5 @@ Historical lessons from each development phase. Reference when debugging similar
 - **`warnInvalidSlug()`** must be called in all CMS readers — blog was missing it after migration.
 - **ISR silently ignored on CF Workers**: `revalidate=3600` exports are kept for Vercel compatibility but do nothing with `incrementalCache: "dummy"`. Auto-isPast (trip dateEnd check) only updates on rebuild. Set up daily CF Cron Trigger or GitHub Actions cron for production.
 - **`append*` functions must NOT catch errors**: Errors must propagate to `Promise.allSettled` in routes for `allFailed` detection. Internal try/catch makes Airtable failures invisible — leads silently lost.
+- **4 instrukcje do aktualizacji po deploy**: `instrukcja-zarzadzanie.md` (6x Google Sheets), `setup-external-services.md` (12x), `instrukcja-developer.md` (8x), `instrukcja-przekazanie-projektu.md` (51x). Aktualizować DOPIERO po deploy na CF Workers — do tego momentu Vercel + Sheets są aktualne.
+- **Dual deployment transition**: Kod na branchu `feature/cloudflare-airtable-migration` działa zarówno na Vercel jak i CF Workers. Instrukcje aktualizować dopiero po DNS cutover, nie przed.

@@ -134,10 +134,11 @@ Ostatnia aktualizacja: 2026-03-27
 - [ ] 5.1 Pełne testy funkcjonalne (17 stron, 4 formularze, rate limit, honeypot, Turnstile)
 - [ ] 5.2 Lighthouse comparison (before vs after)
 - [ ] 5.3 Sprawdzenie SEO (sitemap, robots, meta tags, OG images)
-- [ ] 5.4 Aktualizacja CLAUDE.md (nowy hosting, Airtable, CF Workers)
-- [ ] 5.5 Aktualizacja `docs/setup-external-services.md`
-- [ ] 5.6 Aktualizacja `docs/instrukcja-developer.md`
-- [ ] 5.7 Aktualizacja `docs/instrukcja-przekazanie-projektu.md`
+- [ ] 5.4 Aktualizacja CLAUDE.md — usunąć sekcję "Pending" (stanie się aktualna)
+- [ ] 5.5 Aktualizacja `docs/setup-external-services.md` — Google Sheets API → Airtable API (12 referencji)
+- [ ] 5.6 Aktualizacja `docs/instrukcja-developer.md` — Vercel → CF Workers, build commands (8 referencji)
+- [ ] 5.7 Aktualizacja `docs/instrukcja-przekazanie-projektu.md` — cały handover flow Vercel→CF (51 referencji)
+- [ ] 5.7a Aktualizacja `docs/instrukcja-zarzadzanie.md` — Google Sheets → Airtable dla Marii (6 referencji)
 - [ ] 5.8 Merge do mastera
 - [ ] 5.9 Usunięcie brancha
 - [ ] 5.10 (Po 1 tygodniu stabilności) Usunięcie Vercel projektu

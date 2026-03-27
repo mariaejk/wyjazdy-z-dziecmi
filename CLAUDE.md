@@ -105,3 +105,11 @@ npm run lint       # ESLint
 ## Content Sources
 
 All copy from `docs/tresc_na_strone.md` and `docs/TODO POPRAWIC landing page 2.03.2026.docx`.
+
+## Pending: Docs update after CF Workers deploy (Faza 5)
+
+After DNS cutover to CF Workers, update these files (still reference Google Sheets + Vercel):
+- `docs/instrukcja-zarzadzanie.md` — client guide (Maria): Google Sheets → Airtable, lead management
+- `docs/setup-external-services.md` — service setup: Google Sheets API → Airtable API, env vars
+- `docs/instrukcja-developer.md` — developer guide: Vercel → CF Workers, build commands
+- `docs/instrukcja-przekazanie-projektu.md` — handover checklist: entire Vercel → CF Workers flow
