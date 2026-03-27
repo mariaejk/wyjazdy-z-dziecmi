@@ -42,4 +42,5 @@ next-env.d.ts
 claude-code-infrastructure-showcase/
 temp-next/
 .open-next/
+.wrangler/
 .dev.vars

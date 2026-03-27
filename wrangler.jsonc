@@ -1,4 +1,5 @@
 {
+  "$schema": "node_modules/wrangler/config-schema.json",
   "name": "wyjazdy-z-dziecmi",
   "compatibility_date": "2025-05-05",
   "compatibility_flags": ["nodejs_compat"],
@@ -7,4 +8,10 @@
     "directory": ".open-next/assets",
     "binding": "ASSETS"
   }
+
+  // KV namespace for rate limiting (Faza 3)
+  // Uncomment after creating KV namespace in CF dashboard:
+  // "kv_namespaces": [
+  //   { "binding": "RATE_LIMIT", "id": "<your-kv-namespace-id>" }
+  // ]
 }

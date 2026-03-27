@@ -15,7 +15,19 @@ Ostatnia aktualizacja: 2026-03-27
 - [x] 0.7a Utworzenie `open-next.config.ts` (wymagane przez adapter)
 - [x] 0.7b Utworzenie `wrangler.jsonc` (CF Workers config)
 - [x] 0.7c Sprawdzenie bundle size: **4.4MB compressed** (limit 10MB) ✅ MIEŚCI SIĘ
-- [ ] 0.8 **Review fazy 0** → `/dev-docs-review`
+- [x] 0.8 **Review fazy 0** → `/dev-docs-review` ✅ DONE
+
+## Do poprawy po review fazy 0
+
+- [x] 🔴 [blocking] **package.json** — Dodać skrypty CF: `build:cf`, `preview`, `deploy`
+- [x] 🟠 [important] **wrangler.jsonc** — Dodać zakomentowany `kv_namespaces` placeholder
+- [x] 🟠 [important] **package.json** — Poprawić `eslint-config-next` z `"16.1.6"` na `"^16.2.1"`
+- [x] 🟠 [important] **open-next.config.ts** — Dodać komentarz o Windows/WSL warning
+- [x] 🟡 [nit] **wrangler.jsonc** — Dodać `$schema` dla autouzupełniania
+- [x] 🟡 [nit] **.gitignore** — Dodać `.wrangler/`
+- [x] 🟡 [nit] **open-next.config.ts** — Komentarz o `incrementalCache: "dummy"` (bez ISR)
+- [x] 🟡 [nit] Utworzyć `.dev.vars.example` z listą secretów
+
 - [ ] 0.9 **Zamknięcie fazy 0** → `/dev-docs-complete`
 
 ## Faza 1: Google Sheets → Airtable (3-4h)
