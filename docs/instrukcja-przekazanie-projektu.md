@@ -504,3 +504,65 @@ Jeśli klientka zdecyduje się na Coolify, potrzebne zmiany w kodzie:
 4. Opcjonalnie: `nixpacks.toml` z `npm ci --legacy-peer-deps` (jeśli build fails)
 
 Szczegółowa instrukcja Coolify: osobny dokument do stworzenia gdy klientka zdecyduje.
+
+### Coolify — co obejmuje maintenance (~5-10 min/mies.)
+
+Coolify to self-hosted platforma na VPS. W odróżnieniu od Vercel/Netlify, **Ty zarządzasz serwerem**. Oto co to oznacza w praktyce:
+
+#### Regularne czynności (co miesiąc, ~5-10 min)
+
+**1. Aktualizacja Coolify:**
+- Dashboard pokazuje powiadomienie o nowej wersji
+- Klikasz "Update" w UI → automatycznie się zaktualizuje
+- Sprawdzasz czy strona dalej działa
+
+**2. Aktualizacja systemu operacyjnego (łatki bezpieczeństwa):**
+```bash
+ssh root@[IP-VPS]
+apt update && apt upgrade -y
+```
+Zazwyczaj nie wymaga restartu. Jeśli kernel update → `reboot` (1 min downtime).
+
+#### Okazjonalne (co 2-3 mies. lub gdy coś nie działa)
+
+**3. Czyszczenie Docker images (co 2-3 mies.):**
+```bash
+docker system prune -a --volumes
+```
+Stare buildy zajmują dysk. Rób gdy dysk > 80%.
+
+**4. Strona nie działa — restart:**
+- Coolify dashboard → projekt → "Restart"
+- Lub SSH: `docker restart [container]`
+- Przyczyny: OOM kill (za mało RAM), Docker hang, update Coolify zepsuł coś
+
+**5. SSL nie odnawia się:**
+- Coolify odnawia Let's Encrypt automatycznie, ale czasem się zacina
+- Fix: Dashboard → Domain → "Renew Certificate"
+
+#### Czego NIE musisz robić
+
+- **Backup kodu** — jest na GitHub
+- **Backup treści CMS** — jest na GitHub (Keystatic = pliki YAML w repo)
+- **Konfiguracja firewalla** — Hostinger VPS ma domyślny
+- **Monitoring** — Coolify ma basic health check. Opcjonalnie: dodaj darmowy [UptimeRobot](https://uptimerobot.com) (email gdy strona padnie)
+
+#### Realistyczna ocena czasu
+
+| Sytuacja | Co robisz | Czas |
+|---|---|---|
+| Normalny miesiąc | Update Coolify + `apt upgrade` | 5-10 min |
+| Co 2-3 miesiące | + czyszczenie Docker images | +5 min |
+| Coś padło (raz na kilka mies.) | SSH debug + restart kontenera | 15-60 min |
+| Najgorszy scenariusz | Update Coolify zepsuł Docker | 1-2h |
+
+#### Porównanie z Vercel
+
+| | Vercel | Coolify |
+|---|---|---|
+| Twój czas/mies. | 0 min | 5-10 min (+ okazjonalny debug) |
+| Koszt/mies. | $0 (Hobby) lub $20 (Pro) | ~$7 |
+| Strona padła o 3 w nocy | Vercel naprawia | Ty naprawiasz (rano) |
+| Aktualizacje bezpieczeństwa | Automatyczne | Ręczne (`apt upgrade`) |
+
+**Wniosek:** Maintenance Coolify to ~10 min/mies. rutyny + ryzyko okazjonalnego 1-2h debug. To cena zaoszczędzonych ~50 zł/mies. vs Vercel Pro (lub legalności vs Vercel Hobby).
