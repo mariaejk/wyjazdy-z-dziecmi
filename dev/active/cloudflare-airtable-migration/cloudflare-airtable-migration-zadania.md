@@ -104,8 +104,15 @@ Ostatnia aktualizacja: 2026-03-27
 - [ ] 3.13 Test: rate limiter persystuje między requestami ⏳ ODŁOŻONE
 - [ ] 3.14 Test: emaile wysyłają się poprawnie ⏳ ODŁOŻONE
 - [x] 3.15 Sprawdzenie bundle size: **4.3MB compressed** (limit 10MB) ✅
-- [ ] 3.16 **Review fazy 3** → `/dev-docs-review` + `code-architecture-reviewer`
-- [ ] 3.17 Naprawa uwag z review
+- [x] 3.16 **Review fazy 3** → `/dev-docs-review` ✅ DONE
+
+## Do poprawy po review fazy 3
+
+- [x] 🔴 [blocking] **api-security.ts** — `getCloudflareContext({ async: true })` dodane
+- [x] 🔴 [blocking] **global.d.ts + rate-limit.ts** — KVBinding eksportowany z rate-limit.ts, global.d.ts: `RATE_LIMIT?: unknown`
+- [x] 🟠 [important] **api-security.ts** — Usunięto duplikat KVBinding, import z rate-limit.ts, usunięto unsafe cast
+
+- [x] 3.17 Naprawa uwag z review ✅
 - [ ] 3.18 **Zamknięcie fazy 3** → `/dev-docs-complete`
 
 ## Faza 4: Deploy + DNS (3-4h)

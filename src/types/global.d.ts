@@ -6,8 +6,10 @@ declare global {
   }
 
   // Cloudflare Workers bindings — extends @opennextjs/cloudflare CloudflareEnv
+  // KV type is handled locally in api-security.ts (KVBinding interface)
+  // to avoid dependency on @cloudflare/workers-types
   interface CloudflareEnv {
-    RATE_LIMIT?: KVNamespace;
+    RATE_LIMIT?: unknown;
   }
 }
 

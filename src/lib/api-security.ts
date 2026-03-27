@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 import { ALLOWED_ORIGINS } from "./constants";
-import { rateLimit } from "./rate-limit";
+import { rateLimit, type KVBinding } from "./rate-limit";
 
 const MAX_BODY_SIZE = 50_000; // 50KB
 
@@ -9,14 +9,14 @@ type SecurityCheckResult =
   | { ok: true; ip: string; body: unknown }
   | { ok: false; response: NextResponse };
 
-// Try to get CF Workers KV binding for rate limiting.
-// Returns undefined when not running on CF Workers (Vercel, local dev).
-async function getKVBinding(): Promise<unknown | undefined> {
+async function getKVBinding(): Promise<KVBinding | undefined> {
   try {
     // Dynamic import — only available on CF Workers with @opennextjs/cloudflare
     const { getCloudflareContext } = await import("@opennextjs/cloudflare");
-    const ctx = await getCloudflareContext();
-    return ctx.env?.RATE_LIMIT;
+    // { async: true } required — without it, synchronous overload is used and
+    // await becomes a no-op, causing KV rate limiting to silently fail
+    const ctx = await getCloudflareContext({ async: true });
+    return ctx.env?.RATE_LIMIT as KVBinding | undefined;
   } catch {
     // Not on CF Workers — KV not available
     return undefined;
@@ -50,7 +50,7 @@ export async function validateRequest(request: NextRequest): Promise<SecurityChe
     : (request.headers.get("x-real-ip") ?? "unknown");
 
   const kv = await getKVBinding();
-  const { success } = await rateLimit(ip, kv as Parameters<typeof rateLimit>[1]);
+  const { success } = await rateLimit(ip, kv);
   if (!success) {
     return {
       ok: false,

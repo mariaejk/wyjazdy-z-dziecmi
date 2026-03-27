@@ -37,12 +37,12 @@ function rateLimitInMemory(ip: string): { success: boolean } {
 }
 
 // KV namespace type (subset of Cloudflare KV API)
-interface KVNamespace {
+export interface KVBinding {
   get(key: string): Promise<string | null>;
   put(key: string, value: string, options?: { expirationTtl?: number }): Promise<void>;
 }
 
-async function rateLimitKV(ip: string, kv: KVNamespace): Promise<{ success: boolean }> {
+async function rateLimitKV(ip: string, kv: KVBinding): Promise<{ success: boolean }> {
   const key = `rate:${ip}`;
   const now = Date.now();
 
@@ -65,7 +65,7 @@ async function rateLimitKV(ip: string, kv: KVNamespace): Promise<{ success: bool
  */
 export async function rateLimit(
   ip: string,
-  kv?: KVNamespace,
+  kv?: KVBinding,
 ): Promise<{ success: boolean }> {
   if (kv) {
     try {
