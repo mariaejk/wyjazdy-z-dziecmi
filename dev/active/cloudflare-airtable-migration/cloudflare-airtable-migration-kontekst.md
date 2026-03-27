@@ -3,6 +3,29 @@
 Branch: `feature/cloudflare-airtable-migration`
 Ostatnia aktualizacja: 2026-03-27
 
+## Faza 0 — wyniki
+
+- **@opennextjs/cloudflare 1.18.0** + **wrangler 4.77.0** zainstalowane
+- **Build przechodzi** — `npx @opennextjs/cloudflare build` OK (Next.js 16.2.1)
+- **Bundle size: 4.4MB compressed** — mieści się w limicie 10MB (CF Workers paid plan)
+- **Bundle breakdown**: next (15MB), react-dom (1.3MB), google-auth-library (328KB), reszta mała
+- **Ostrzeżenie**: "OpenNext is not fully compatible with Windows. Use WSL." — build przechodzi ale runtime może mieć problemy
+- **ISR**: wymaga R2 + Durable Objects (paid). Obecny config: `incrementalCache: "dummy"`, `tagCache: "dummy"` = ISR wyłączone
+- **open-next.config.ts**: wymagany z pełną konfiguracją (wrapper, converter, proxy, cache, queue, edgeExternals)
+- **wrangler.jsonc**: compatibility_date 2025-05-05, nodejs_compat flag
+
+### Nowe pliki dodane w Fazie 0
+- `open-next.config.ts` — OpenNext adapter config
+- `wrangler.jsonc` — CF Workers deployment config
+
+### Odkryte z researchu (27.03.2026)
+- **Bundle limit**: 10 MiB compressed (paid plan), NIE 25MB
+- **ISR wymaga Durable Objects** = Workers Paid plan ($5/mies.) + R2 bucket
+- **wrangler 4.65+** wymagany (peer dep)
+- **@cloudflare/next-on-pages PORZUCONY** (ostatni update 09.2025, nie wspiera Next.js 16)
+- **fs.readdir potwierdzone niedziałające** na Workers (GitHub issue #734)
+- **Next.js 16.2.0 bug naprawiony** w adapter 1.17.3+ (prefetch-hints.json)
+
 ## Powiązane pliki
 
 ### Do przepisania

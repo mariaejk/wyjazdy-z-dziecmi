@@ -5,13 +5,16 @@ Ostatnia aktualizacja: 2026-03-27
 
 ## Faza 0: Przygotowanie infrastruktury (2-3h)
 
-- [ ] 0.1 Utworzenie brancha `feature/cloudflare-airtable-migration`
-- [ ] 0.2 Setup Airtable: baza z 4 tabelami (Rezerwacje, Kontakty, Newsletter, ListaOczekujacych)
-- [ ] 0.3 Airtable: Personal Access Token z `data.records:write`
-- [ ] 0.4 Setup CF Pages/Workers projekt
-- [ ] 0.5 Utworzenie KV namespace `RATE_LIMIT`
-- [ ] 0.6 `npm install -D @opennextjs/cloudflare wrangler`
-- [ ] 0.7 Weryfikacja: `npx @opennextjs/cloudflare build` startuje
+- [x] 0.1 Utworzenie brancha `feature/cloudflare-airtable-migration`
+- [ ] 0.2 Setup Airtable: baza z 4 tabelami (Rezerwacje, Kontakty, Newsletter, ListaOczekujacych) ⚠️ WYMAGA RĘCZNEJ KONFIGURACJI W DASHBOARD
+- [ ] 0.3 Airtable: Personal Access Token z `data.records:write` ⚠️ WYMAGA RĘCZNEJ KONFIGURACJI
+- [ ] 0.4 Setup CF Pages/Workers projekt ⚠️ WYMAGA RĘCZNEJ KONFIGURACJI W DASHBOARD
+- [ ] 0.5 Utworzenie KV namespace `RATE_LIMIT` ⚠️ WYMAGA RĘCZNEJ KONFIGURACJI
+- [x] 0.6 `npm install -D @opennextjs/cloudflare wrangler` — v1.18.0 + v4.77.0
+- [x] 0.7 Weryfikacja: `npx @opennextjs/cloudflare build` startuje ✅ BUILD OK
+- [x] 0.7a Utworzenie `open-next.config.ts` (wymagane przez adapter)
+- [x] 0.7b Utworzenie `wrangler.jsonc` (CF Workers config)
+- [x] 0.7c Sprawdzenie bundle size: **4.4MB compressed** (limit 10MB) ✅ MIEŚCI SIĘ
 - [ ] 0.8 **Review fazy 0** → `/dev-docs-review`
 - [ ] 0.9 **Zamknięcie fazy 0** → `/dev-docs-complete`
 
