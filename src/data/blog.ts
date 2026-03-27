@@ -1,6 +1,8 @@
 import { cache } from "react";
 import Markdoc from "@markdoc/markdoc";
+import type { RenderableTreeNode } from "@markdoc/markdoc";
 import { reader } from "@/lib/keystatic";
+import { warnInvalidSlug, parseLocalDate } from "@/lib/utils";
 
 export type BlogPost = {
   slug: string;
@@ -8,6 +10,10 @@ export type BlogPost = {
   subtitle: string;
   publishedDate: string;
   image?: string;
+};
+
+export type BlogPostWithContent = BlogPost & {
+  content: RenderableTreeNode;
 };
 
 function isSafeSlug(slug: string): boolean {
@@ -24,6 +30,7 @@ export const getAllBlogPosts = cache(async (): Promise<BlogPost[]> => {
   const posts: BlogPost[] = [];
 
   for (const slug of slugs) {
+    warnInvalidSlug(slug, "blog");
     if (!isSafeSlug(slug)) continue;
 
     const entry = await reader.collections.blog.read(slug);
@@ -38,38 +45,53 @@ export const getAllBlogPosts = cache(async (): Promise<BlogPost[]> => {
     });
   }
 
-  return posts.sort((a, b) => b.publishedDate.localeCompare(a.publishedDate));
+  return posts.sort(
+    (a, b) =>
+      parseLocalDate(b.publishedDate).getTime() -
+      parseLocalDate(a.publishedDate).getTime(),
+  );
 });
 
-export const getLatestBlogPosts = cache(
-  async (limit = 3): Promise<BlogPost[]> => {
-    const posts = await getAllBlogPosts();
-    return posts.slice(0, limit);
+export async function getLatestBlogPosts(
+  limit = 3,
+): Promise<BlogPost[]> {
+  const posts = await getAllBlogPosts();
+  return posts.slice(0, limit);
+}
+
+export const getBlogPost = cache(
+  async (slug: string): Promise<BlogPostWithContent | undefined> => {
+    if (!isSafeSlug(slug)) return undefined;
+
+    try {
+      // resolveLinkedFiles: true is REQUIRED — without it, entry.content is a
+      // lazy loader function, not { node: Node }. Calling .node on it returns
+      // undefined and Markdoc.transform() silently produces empty output.
+      const entry = await reader.collections.blog.read(slug, {
+        resolveLinkedFiles: true,
+      });
+      if (!entry) return undefined;
+
+      // Runtime guard — ensure content was resolved to a Markdoc AST node
+      if (!entry.content || !("node" in entry.content)) {
+        console.error(
+          `[Blog] entry.content missing node for slug "${slug}" — resolveLinkedFiles may have failed`,
+        );
+        return undefined;
+      }
+
+      const content = Markdoc.transform(entry.content.node);
+
+      return {
+        slug,
+        title: entry.title,
+        subtitle: entry.subtitle,
+        publishedDate: entry.publishedDate,
+        image: entry.image || undefined,
+        content,
+      };
+    } catch {
+      return undefined;
+    }
   },
 );
-
-export const getBlogPost = cache(async (slug: string) => {
-  if (!isSafeSlug(slug)) return undefined;
-
-  try {
-    const entry = await reader.collections.blog.read(slug, {
-      resolveLinkedFiles: true,
-    });
-    if (!entry) return undefined;
-
-    // Keystatic returns { node: Node } for markdoc contentField with resolveLinkedFiles.
-    // Transform the Markdoc AST node to RenderableTreeNode for Markdoc.renderers.react()
-    const content = Markdoc.transform(entry.content.node);
-
-    return {
-      slug,
-      title: entry.title,
-      subtitle: entry.subtitle,
-      publishedDate: entry.publishedDate,
-      image: entry.image || undefined,
-      content,
-    };
-  } catch {
-    return undefined;
-  }
-});

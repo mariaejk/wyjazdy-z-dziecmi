@@ -73,8 +73,17 @@ Ostatnia aktualizacja: 2026-03-27
 - [ ] 2.9 Test: `/blog/[slug]` renderuje Markdoc content poprawnie ⏳ ODŁOŻONE
 - [ ] 2.10 Test: BlogTeaser na homepage pokazuje 3 posty ⏳ ODŁOŻONE
 - [ ] 2.11 Test: sitemap zawiera blog posts ⏳ ODŁOŻONE
-- [ ] 2.12 **Review fazy 2** → `/dev-docs-review`
-- [ ] 2.13 Naprawa uwag z review
+- [x] 2.12 **Review fazy 2** → `/dev-docs-review` ✅ DONE
+
+## Do poprawy po review fazy 2
+
+- [x] 🔴 [blocking] **src/data/blog.ts** — Runtime guard na `entry.content.node` + komentarz o `resolveLinkedFiles`
+- [x] 🔴 [blocking] **src/data/blog.ts** — Dodano `warnInvalidSlug(slug, "blog")`
+- [x] 🟠 [important] **src/data/blog.ts** — `getLatestBlogPosts` plain async function
+- [x] 🟠 [important] **src/data/blog.ts** — Eksport typu `BlogPostWithContent`
+- [x] 🟠 [important] **src/data/blog.ts** — Sort: `parseLocalDate().getTime()`
+
+- [x] 2.13 Naprawa uwag z review ✅
 - [ ] 2.14 **Zamknięcie fazy 2** → `/dev-docs-complete`
 
 ## Faza 3: Workers compatibility (4-6h)
