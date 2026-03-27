@@ -18,6 +18,11 @@ Ostatnia aktualizacja: 2026-03-27
 - `open-next.config.ts` — OpenNext adapter config
 - `wrangler.jsonc` — CF Workers deployment config
 
+### Faza 0 — zamknięta 2026-03-27
+- Wszystkie zadania code ukończone + review naprawione
+- Zadania 0.2-0.5 (Airtable + CF dashboard setup) odłożone — użytkownik zrobi ręcznie
+- Build CF przechodzi, bundle 4.4MB compressed
+
 ### Odkryte z researchu (27.03.2026)
 - **Bundle limit**: 10 MiB compressed (paid plan), NIE 25MB
 - **ISR wymaga Durable Objects** = Workers Paid plan ($5/mies.) + R2 bucket

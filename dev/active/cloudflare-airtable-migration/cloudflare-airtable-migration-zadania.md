@@ -28,7 +28,7 @@ Ostatnia aktualizacja: 2026-03-27
 - [x] 🟡 [nit] **open-next.config.ts** — Komentarz o `incrementalCache: "dummy"` (bez ISR)
 - [x] 🟡 [nit] Utworzyć `.dev.vars.example` z listą secretów
 
-- [ ] 0.9 **Zamknięcie fazy 0** → `/dev-docs-complete`
+- [x] 0.9 **Zamknięcie fazy 0** → `/dev-docs-complete` ✅ DONE 2026-03-27
 
 ## Faza 1: Google Sheets → Airtable (3-4h)
 
