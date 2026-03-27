@@ -113,7 +113,7 @@ Ostatnia aktualizacja: 2026-03-27
 - [x] 🟠 [important] **api-security.ts** — Usunięto duplikat KVBinding, import z rate-limit.ts, usunięto unsafe cast
 
 - [x] 3.17 Naprawa uwag z review ✅
-- [ ] 3.18 **Zamknięcie fazy 3** → `/dev-docs-complete`
+- [x] 3.18 **Zamknięcie fazy 3** → `/dev-docs-complete` ✅ DONE 2026-03-27
 
 ## Faza 4: Deploy + DNS (3-4h)
 
