@@ -4,7 +4,7 @@ import { newsletterSchema } from "@/lib/validations/newsletter";
 import { log } from "@/lib/logger";
 import { verifyTurnstile } from "@/lib/turnstile";
 import { validateRequest } from "@/lib/api-security";
-import { appendNewsletter } from "@/lib/sheets";
+import { appendNewsletter } from "@/lib/airtable";
 import { sendConfirmationEmail } from "@/lib/email";
 import { NewsletterConfirmation } from "@/emails/NewsletterConfirmation";
 

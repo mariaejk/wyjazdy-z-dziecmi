@@ -32,23 +32,23 @@ Ostatnia aktualizacja: 2026-03-27
 
 ## Faza 1: Google Sheets → Airtable (3-4h)
 
-- [ ] 1.1 Utworzenie `src/lib/airtable.ts` z 4 funkcjami append
-- [ ] 1.2 `appendBooking()` — 13 pól → Airtable Rezerwacje
-- [ ] 1.3 `appendContact()` — 7 pól → Airtable Kontakty
-- [ ] 1.4 `appendNewsletter()` — 4 pola → Airtable Newsletter
-- [ ] 1.5 `appendWaitlist()` — 7 pól → Airtable ListaOczekujacych
-- [ ] 1.6 Aktualizacja importu w `src/app/api/booking/route.ts`
-- [ ] 1.7 Aktualizacja importu w `src/app/api/contact/route.ts`
-- [ ] 1.8 Aktualizacja importu w `src/app/api/newsletter/route.ts`
-- [ ] 1.9 Aktualizacja importu w `src/app/api/waitlist/route.ts`
-- [ ] 1.10 Usunięcie `src/lib/sheets.ts`
-- [ ] 1.11 `npm uninstall google-auth-library`
-- [ ] 1.12 Aktualizacja `.env.example` (usunąć GOOGLE_SHEETS_*, dodać AIRTABLE_*)
-- [ ] 1.13 `npm run build` przechodzi
-- [ ] 1.14 Test manualny: formularz booking → wiersz w Airtable
-- [ ] 1.15 Test manualny: formularz contact → wiersz w Airtable
-- [ ] 1.16 Test manualny: formularz newsletter → wiersz w Airtable
-- [ ] 1.17 Test manualny: formularz waitlist → wiersz w Airtable
+- [x] 1.1 Utworzenie `src/lib/airtable.ts` z 4 funkcjami append
+- [x] 1.2 `appendBooking()` — 13 pól → Airtable Rezerwacje
+- [x] 1.3 `appendContact()` — 7 pól → Airtable Kontakty
+- [x] 1.4 `appendNewsletter()` — 4 pola → Airtable Newsletter
+- [x] 1.5 `appendWaitlist()` — 7 pól → Airtable ListaOczekujacych
+- [x] 1.6 Aktualizacja importu w `src/app/api/booking/route.ts`
+- [x] 1.7 Aktualizacja importu w `src/app/api/contact/route.ts`
+- [x] 1.8 Aktualizacja importu w `src/app/api/newsletter/route.ts`
+- [x] 1.9 Aktualizacja importu w `src/app/api/waitlist/route.ts`
+- [x] 1.10 Usunięcie `src/lib/sheets.ts`
+- [x] 1.11 `npm uninstall google-auth-library`
+- [x] 1.12 Aktualizacja `.env.example` (usunąć GOOGLE_SHEETS_*, dodać AIRTABLE_*)
+- [x] 1.13 `npm run build` przechodzi ✅
+- [ ] 1.14 Test manualny: formularz booking → wiersz w Airtable ⏳ ODŁOŻONE (brak Airtable setup)
+- [ ] 1.15 Test manualny: formularz contact → wiersz w Airtable ⏳ ODŁOŻONE
+- [ ] 1.16 Test manualny: formularz newsletter → wiersz w Airtable ⏳ ODŁOŻONE
+- [ ] 1.17 Test manualny: formularz waitlist → wiersz w Airtable ⏳ ODŁOŻONE
 - [ ] 1.18 **Review fazy 1** → `/dev-docs-review`
 - [ ] 1.19 Naprawa uwag z review
 - [ ] 1.20 **Zamknięcie fazy 1** → `/dev-docs-complete`

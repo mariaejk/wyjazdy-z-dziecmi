@@ -4,7 +4,7 @@ import { bookingSchema } from "@/lib/validations/booking";
 import { log } from "@/lib/logger";
 import { verifyTurnstile } from "@/lib/turnstile";
 import { validateRequest } from "@/lib/api-security";
-import { appendBooking } from "@/lib/sheets";
+import { appendBooking } from "@/lib/airtable";
 import { sendNotificationEmail, sendConfirmationEmail } from "@/lib/email";
 import { BookingNotification } from "@/emails/BookingNotification";
 import { BookingConfirmation } from "@/emails/BookingConfirmation";

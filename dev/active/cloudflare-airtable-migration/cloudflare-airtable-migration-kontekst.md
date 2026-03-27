@@ -18,6 +18,15 @@ Ostatnia aktualizacja: 2026-03-27
 - `open-next.config.ts` — OpenNext adapter config
 - `wrangler.jsonc` — CF Workers deployment config
 
+### Faza 1 — Google Sheets → Airtable (2026-03-27)
+- `src/lib/sheets.ts` usunięty, `src/lib/airtable.ts` utworzony
+- 4 API routes zaktualizowane (import sheets → airtable)
+- `google-auth-library` usunięty z dependencies
+- `.env.example` zaktualizowany (GOOGLE_SHEETS_* → AIRTABLE_*)
+- Named fields zamiast positional arrays — bezpieczniejsze
+- `sanitizeCell()` usunięty — Airtable nie ma ryzyka CSV injection
+- Build przechodzi, testy manualne odłożone (brak Airtable setup)
+
 ### Faza 0 — zamknięta 2026-03-27
 - Wszystkie zadania code ukończone + review naprawione
 - Zadania 0.2-0.5 (Airtable + CF dashboard setup) odłożone — użytkownik zrobi ręcznie

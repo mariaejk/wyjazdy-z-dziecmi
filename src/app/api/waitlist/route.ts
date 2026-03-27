@@ -4,7 +4,7 @@ import { waitlistSchema } from "@/lib/validations/waitlist";
 import { log } from "@/lib/logger";
 import { verifyTurnstile } from "@/lib/turnstile";
 import { validateRequest } from "@/lib/api-security";
-import { appendWaitlist } from "@/lib/sheets";
+import { appendWaitlist } from "@/lib/airtable";
 import { sendNotificationEmail, sendConfirmationEmail } from "@/lib/email";
 import { WaitlistNotification } from "@/emails/WaitlistNotification";
 import { WaitlistConfirmation } from "@/emails/WaitlistConfirmation";

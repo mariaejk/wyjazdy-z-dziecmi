@@ -4,7 +4,7 @@ import { contactSchema } from "@/lib/validations/contact";
 import { log } from "@/lib/logger";
 import { verifyTurnstile } from "@/lib/turnstile";
 import { validateRequest } from "@/lib/api-security";
-import { appendContact } from "@/lib/sheets";
+import { appendContact } from "@/lib/airtable";
 import { sendNotificationEmail, sendConfirmationEmail } from "@/lib/email";
 import { ContactNotification } from "@/emails/ContactNotification";
 import { ContactConfirmation } from "@/emails/ContactConfirmation";
