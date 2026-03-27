@@ -84,7 +84,7 @@ Ostatnia aktualizacja: 2026-03-27
 - [x] 🟠 [important] **src/data/blog.ts** — Sort: `parseLocalDate().getTime()`
 
 - [x] 2.13 Naprawa uwag z review ✅
-- [ ] 2.14 **Zamknięcie fazy 2** → `/dev-docs-complete`
+- [x] 2.14 **Zamknięcie fazy 2** → `/dev-docs-complete` ✅ DONE 2026-03-27
 
 ## Faza 3: Workers compatibility (4-6h)
 
