@@ -49,8 +49,15 @@ Ostatnia aktualizacja: 2026-03-27
 - [ ] 1.15 Test manualny: formularz contact → wiersz w Airtable ⏳ ODŁOŻONE
 - [ ] 1.16 Test manualny: formularz newsletter → wiersz w Airtable ⏳ ODŁOŻONE
 - [ ] 1.17 Test manualny: formularz waitlist → wiersz w Airtable ⏳ ODŁOŻONE
-- [ ] 1.18 **Review fazy 1** → `/dev-docs-review`
-- [ ] 1.19 Naprawa uwag z review
+- [x] 1.18 **Review fazy 1** → `/dev-docs-review` ✅ DONE
+
+## Do poprawy po review fazy 1
+
+- [x] 🔴 [blocking] **src/lib/airtable.ts** — Dodać `sanitizeCell()` + `sanitizeFields()` wrapper
+- [x] 🟠 [important] **4 API routes** — Zmienić komentarze `// Google Sheets + emails` → `// Airtable + emails`
+- [x] 🟠 [important] **src/lib/airtable.ts** — Poprawić typy opcjonalnych pól (childrenAges?, dietaryNeeds?, notes?) + `??` zamiast `||`
+
+- [x] 1.19 Naprawa uwag z review ✅
 - [ ] 1.20 **Zamknięcie fazy 1** → `/dev-docs-complete`
 
 ## Faza 2: Blog fs → Keystatic reader (2-3h)

@@ -55,7 +55,7 @@ export async function POST(request: NextRequest) {
 
   log("Newsletter", { email: data.email });
 
-  // Google Sheets + email confirmation (parallel, graceful degradation)
+  // Airtable + email confirmation (parallel, graceful degradation)
   // No notification to owner — too much spam for newsletter signups
   const results = await Promise.allSettled([
     appendNewsletter({ email: data.email }),

@@ -55,7 +55,7 @@ export async function POST(request: NextRequest) {
     timeZone: "Europe/Warsaw",
   });
 
-  // Google Sheets + emails (parallel, graceful degradation)
+  // Airtable + emails (parallel, graceful degradation)
   const results = await Promise.allSettled([
     appendBooking({
       name: data.name,

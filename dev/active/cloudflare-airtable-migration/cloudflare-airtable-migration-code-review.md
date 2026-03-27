@@ -1,3 +1,243 @@
+# Code Review: Faza 1 — Migracja Google Sheets → Airtable
+
+Last Updated: 2026-03-27
+
+---
+
+## Executive Summary
+
+Migracja z `sheets.ts` na `airtable.ts` jest dobrze wykonana. Główna architektura (graceful degradation, Promise.allSettled, error handling) jest zachowana i spójna z poprzednią implementacją. API call do Airtable jest poprawny — URL, headers i body format zgodne ze specyfikacją REST API v0. `google-auth-library` poprawnie usunięty z `package.json`. Znaleziono 1 problem blokujący (brakująca sanitizacja danych), 3 ważne problemy i 4 drobne uwagi.
+
+---
+
+## 🔴 [blocking] Brakująca sanitizacja — odpowiednik `sanitizeCell()`
+
+**Plik:** `src/lib/airtable.ts` — brak funkcji
+
+Poprzedni `sheets.ts` miał funkcję `sanitizeCell()` chroniącą przed formula injection (`=`, `+`, `-`, `@` na początku wartości). Airtable REST API nie wykonuje formuł z rekordów tworzonych przez API — więc klasyczne injection jak w Sheets nie dotyczy Airtable bezpośrednio.
+
+**Jednak** — jest inny wektor: jeśli klient eksportuje tabelę do CSV/Excel i otworzy plik, Excel/LibreOffice wykona formuły w komórkach zaczynających się od `=`. To klasyczny [CSV Injection / Formula Injection (OWASP)](https://owasp.org/www-community/attacks/CSV_Injection) — dotyczy danych wyjściowych, nie Airtable API samego w sobie.
+
+Konkretny scenariusz: użytkownik wpisuje `=HYPERLINK("http://evil.com","klik")` w pole "Uwagi". Właściciel eksportuje bazę do Excel. Formuła wykonuje się. Może być użyte do phishingu.
+
+**Fix — dodaj do `airtable.ts`:**
+
+```typescript
+/**
+ * Prevents CSV/formula injection when data is exported to Excel or Google Sheets.
+ * Prefixes dangerous characters with apostrophe (Excel/Sheets escape character).
+ */
+function sanitizeCell(value: string): string {
+    if (/^[=+\-@]/.test(value)) {
+        return `'${value}`;
+    }
+    return value;
+}
+```
+
+**Zastosowanie** — wyłącznie na polach tekstowych od użytkownika (`Imie`, `Telefon`, `Wyjazd`, `WiekDzieci`, `Dieta`, `Uwagi`, `Wiadomosc`). Nie stosuj na polach kontrolowanych przez kod (`Data`, `Status`, `ZgodaRODO`, `Marketing`, `Zrodlo`).
+
+```typescript
+await appendToTable("Rezerwacje", {
+    Data: getTimestamp(),
+    Imie: sanitizeCell(data.name),
+    Email: data.email,          // email format validation prevents injection
+    Telefon: sanitizeCell(data.phone),
+    Wyjazd: sanitizeCell(data.trip),
+    Dorosli: String(data.adults),
+    Dzieci: String(data.children),
+    WiekDzieci: sanitizeCell(data.childrenAges || ""),
+    Dieta: sanitizeCell(data.dietaryNeeds || ""),
+    Uwagi: sanitizeCell(data.notes || ""),
+    Status: "Nowy",
+    ZgodaRODO: "Tak",
+    Marketing: data.consentMarketing ? "Tak" : "Nie",
+});
+```
+
+---
+
+## 🟠 [important] Stale komentarze "Google Sheets" w 4 API routes
+
+**Pliki:**
+- `src/app/api/booking/route.ts` linia 58
+- `src/app/api/contact/route.ts` linia 56
+- `src/app/api/waitlist/route.ts` linia 56
+- `src/app/api/newsletter/route.ts` linia 58
+
+Wszystkie mają komentarz:
+```typescript
+// Google Sheets + emails (parallel, graceful degradation)
+```
+
+Komentarz jest mylący po migracji. Następny developer (lub developer wracający po 6 miesiącach) zobaczy "Google Sheets" i będzie szukać importu `sheets.ts` albo zakwestionuje czy migracja była kompletna.
+
+**Fix:**
+```typescript
+// Airtable + emails (parallel, graceful degradation)
+```
+
+---
+
+## 🟠 [important] Sygnatury opcjonalnych pól w `appendBooking` niezgodne z rzeczywistością
+
+**Plik:** `src/lib/airtable.ts`, linie 48–58
+
+Parametry `childrenAges`, `dietaryNeeds`, `notes` są zadeklarowane jako `string` (wymagane), ale w `appendToTable` są używane z `|| ""` co sugeruje że mogą być `undefined`:
+
+```typescript
+WiekDzieci: data.childrenAges || "",   // || "" = może być undefined
+Dieta: data.dietaryNeeds || "",
+Uwagi: data.notes || "",
+```
+
+Jeśli Zod schema ma te pola jako `.optional()` lub `.default("")`, to TypeScript może zgłosić błąd przy przekazaniu `data.childrenAges` (typ `string | undefined`) do parametru `string`. Albo TypeScript nie zgłosi błędu ale `|| ""` jest zbędne.
+
+**Fix — dostosuj sygnaturę do rzeczywistości:**
+
+```typescript
+export async function appendBooking(data: {
+    name: string;
+    email: string;
+    phone: string;
+    trip: string;
+    adults: number;
+    children: number;
+    childrenAges?: string;
+    dietaryNeeds?: string;
+    notes?: string;
+    consentMarketing: boolean;
+})
+```
+
+Ewentualnie jeśli Zod `.default("")` gwarantuje `string` (nigdy `undefined`), usuń `|| ""` jako zbędne.
+
+---
+
+## 🟠 [important] Brak `.wrangler/` w `.gitignore`
+
+**Plik:** `.gitignore`
+
+Wrangler 4.x tworzy katalog `.wrangler/` podczas `wrangler dev` dla lokalnej persystencji KV, D1, R2. Po Fazie 3 (KV rate limiter) ten katalog będzie tworzony lokalnie. Bez wpisu w `.gitignore` może zostać przypadkowo skommunikowany.
+
+Sprawdzono: `.wrangler/` nie jest w obecnym `.gitignore`.
+
+**Fix:** Dodaj `.wrangler/` do `.gitignore`.
+
+---
+
+## 🟡 [nit] `errorText` z Airtable API — logowanie jest poprawne, ale warto dodać komentarz
+
+**Plik:** `src/lib/airtable.ts`, linia 38
+
+```typescript
+console.error(`[Airtable] API error (${response.status}):`, errorText);
+throw new Error(`Airtable API error (${response.status})`);
+```
+
+Pełny error idzie do logów (Vercel/CF), do throwed Error trafia tylko status — zgodne z projektem i Security Audit Lessons ("Log full error via console.error, but throw only Error(status)"). Poprawne.
+
+Warto dodać komentarz analogiczny do sheets.ts żeby intencja była jasna:
+
+```typescript
+// Log full error for debugging, but don't leak API details in thrown error
+console.error(`[Airtable] API error (${response.status}):`, errorText);
+```
+
+Ten komentarz jest już obecny na linii 37 — więc nit jest zamknięty. Brak akcji wymagany.
+
+---
+
+## 🟡 [nit] `process.env` w CF Workers — wymaga konfiguracji secrets
+
+**Plik:** `src/lib/airtable.ts`, linie 4–5
+
+`process.env` działa w CF Workers z flagą `nodejs_compat` (ustawioną w `wrangler.jsonc`). Poprawne.
+
+**Jednak** — zmienne środowiskowe w CF Workers muszą być skonfigurowane jako Secrets (`wrangler secret put AIRTABLE_API_KEY`) lub przez CF Dashboard. W `wrangler.jsonc` nie ma bloku `[vars]` ani komentarza dokumentującego wymagane sekrety.
+
+**Rekomendacja:** Dodaj do `wrangler.jsonc` jako komentarz:
+
+```jsonc
+// Secrets (nigdy nie dodawaj wartości tutaj — używaj `wrangler secret put`):
+// AIRTABLE_API_KEY, AIRTABLE_BASE_ID, RESEND_API_KEY, FROM_EMAIL, OWNER_EMAIL
+// TURNSTILE_SECRET_KEY, KEYSTATIC_GITHUB_CLIENT_ID, itd.
+// Lub ustaw przez CF Dashboard: Workers & Pages → wyjazdy-z-dziecmi → Settings → Variables
+```
+
+---
+
+## 🔵 [suggestion] Brak pola `Zgoda` w `appendNewsletter` — RODO audit trail
+
+**Plik:** `src/lib/airtable.ts`, linia 103
+
+`appendNewsletter` przyjmuje tylko `{ email: string }`. Newsletter route sprawdza `!data.consentRodo && !data.consentNewsletter` — więc jeden z tych consent'ów jest zawsze `true`. Airtable rekord nie rejestruje jednak **który** checkbox był zaznaczony.
+
+Z perspektywy RODO — brak zapisu który typ zgody był udzielony utrudnia audyt compliance. `sheets.ts` też miało hardcoded `ZgodaRODO: "Tak"`, więc jest to regresja neutralna (nie pogorsza).
+
+**Suggestion:** Dodaj opcjonalne pole `Zgoda` do `appendNewsletter`:
+
+```typescript
+export async function appendNewsletter(data: {
+    email: string;
+    consentType?: "rodo" | "newsletter" | "both";
+}) {
+    await appendToTable("Newsletter", {
+        Data: getTimestamp(),
+        Email: data.email,
+        Status: "Aktywny",
+        ZgodaRODO: "Tak",
+        Zgoda: data.consentType ?? "rodo",
+    });
+}
+```
+
+---
+
+## Weryfikacja zgodności z CF Workers
+
+Wszystkie blokery CF Workers z poprzedniego sheets.ts są usunięte:
+
+| Bloker | Status |
+|--------|--------|
+| `google-auth-library` (Node.js crypto) | Usunięty z `package.json` |
+| `JWT signing` (Node.js `crypto`) | Nie ma w `airtable.ts` |
+| `googleapis` (Node.js http) | Nie było w projekcie, nie ma |
+| Raw `fetch()` do Airtable REST | Jest — CF Workers native |
+| `process.env` | Jest — działa z `nodejs_compat` |
+
+`airtable.ts` jest w pełni kompatybilny z CF Workers środowiskiem.
+
+---
+
+## Weryfikacja Airtable API Call
+
+- **URL:** `https://api.airtable.com/v0/{baseId}/{tableName}` — poprawny format
+- **Method:** POST — poprawny (tworzenie rekordu)
+- **Header Authorization:** `Bearer {apiKey}` — poprawny format Personal Access Token
+- **Header Content-Type:** `application/json` — wymagany
+- **Body:** `{ fields: { ... } }` — poprawny format dla `POST /v0/{baseId}/{tableId}` (create record)
+- **`encodeURIComponent(table)`** — poprawne, ważne dla polskich znaków w nazwie tabeli
+
+Jeden potencjalny problem: nazwy tabel muszą dokładnie odpowiadać nazwom w Airtable dashboard. Kod używa: `Rezerwacje`, `Kontakty`, `Newsletter`, `ListaOczekujacych`. Muszą być tak samo nazwane w Airtable — bez spacji, polskich znaków, różnych liter.
+
+---
+
+## Next Steps
+
+Po zatwierdzeniu:
+
+1. **[blocking]** Dodaj `sanitizeCell()` do `airtable.ts` i zastosuj na polach od użytkownika w `appendBooking`, `appendContact`, `appendWaitlist`
+2. **[important]** Zaktualizuj komentarze "Google Sheets" → "Airtable" w 4 routes
+3. **[important]** Dostosuj sygnatury opcjonalnych pól w `appendBooking`
+4. **[important]** Dodaj `.wrangler/` do `.gitignore`
+5. **[nit]** Dodaj komentarz o secrets do `wrangler.jsonc`
+6. **[suggestion]** Rozważ dodanie pola `Zgoda` w `appendNewsletter` dla RODO audit trail
+
+---
+
+---
+
 # Code Review: Faza 0 — Przygotowanie infrastruktury CF Workers
 
 Last Updated: 2026-03-27

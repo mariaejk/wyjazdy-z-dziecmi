@@ -29,7 +29,7 @@ async function appendToTable(
       Authorization: `Bearer ${config.apiKey}`,
       "Content-Type": "application/json",
     },
-    body: JSON.stringify({ fields }),
+    body: JSON.stringify({ fields: sanitizeFields(fields) }),
   });
 
   if (!response.ok) {
@@ -44,6 +44,23 @@ function getTimestamp() {
   return new Date().toLocaleString("pl-PL", { timeZone: "Europe/Warsaw" });
 }
 
+// CSV/formula injection prevention — dangerous chars trigger formulas in Excel/LibreOffice
+// when client exports Airtable data. Prefix with apostrophe (safe display char).
+function sanitizeCell(value: string): string {
+  if (/^[=+\-@\t\r]/.test(value)) {
+    return `'${value}`;
+  }
+  return value;
+}
+
+function sanitizeFields(fields: Record<string, string>): Record<string, string> {
+  const sanitized: Record<string, string> = {};
+  for (const [key, value] of Object.entries(fields)) {
+    sanitized[key] = sanitizeCell(value);
+  }
+  return sanitized;
+}
+
 // Pola: Data, Imie, Email, Telefon, Wyjazd, Dorosli, Dzieci, WiekDzieci, Dieta, Uwagi, Status, ZgodaRODO, Marketing
 export async function appendBooking(data: {
   name: string;
@@ -52,9 +69,9 @@ export async function appendBooking(data: {
   trip: string;
   adults: number;
   children: number;
-  childrenAges: string;
-  dietaryNeeds: string;
-  notes: string;
+  childrenAges?: string;
+  dietaryNeeds?: string;
+  notes?: string;
   consentMarketing: boolean;
 }) {
   try {
@@ -66,9 +83,9 @@ export async function appendBooking(data: {
       Wyjazd: data.trip,
       Dorosli: String(data.adults),
       Dzieci: String(data.children),
-      WiekDzieci: data.childrenAges || "",
-      Dieta: data.dietaryNeeds || "",
-      Uwagi: data.notes || "",
+      WiekDzieci: data.childrenAges ?? "",
+      Dieta: data.dietaryNeeds ?? "",
+      Uwagi: data.notes ?? "",
       Status: "Nowy",
       ZgodaRODO: "Tak",
       Marketing: data.consentMarketing ? "Tak" : "Nie",
