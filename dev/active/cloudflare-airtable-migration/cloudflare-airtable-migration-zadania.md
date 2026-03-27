@@ -58,21 +58,21 @@ Ostatnia aktualizacja: 2026-03-27
 - [x] 🟠 [important] **src/lib/airtable.ts** — Poprawić typy opcjonalnych pól (childrenAges?, dietaryNeeds?, notes?) + `??` zamiast `||`
 
 - [x] 1.19 Naprawa uwag z review ✅
-- [ ] 1.20 **Zamknięcie fazy 1** → `/dev-docs-complete`
+- [x] 1.20 **Zamknięcie fazy 1** → `/dev-docs-complete` ✅ DONE 2026-03-27
 
 ## Faza 2: Blog fs → Keystatic reader (2-3h)
 
-- [ ] 2.1 Aktualizacja `src/lib/keystatic.ts` — warunkowy createGitHubReader
-- [ ] 2.2 Przepisanie `src/data/blog.ts` → Keystatic reader API
-- [ ] 2.3 Dodanie `React.cache()` wrapperów na blog functions
-- [ ] 2.4 Zachowanie `isSafeSlug()` walidacji
-- [ ] 2.5 Dostosowanie `src/app/(main)/blog/[slug]/page.tsx` Markdoc rendering
-- [ ] 2.6 `npm uninstall js-yaml && npm uninstall @types/js-yaml`
-- [ ] 2.7 `npm run build` przechodzi
-- [ ] 2.8 Test: `/blog` wyświetla 3 posty
-- [ ] 2.9 Test: `/blog/[slug]` renderuje Markdoc content poprawnie
-- [ ] 2.10 Test: BlogTeaser na homepage pokazuje 3 posty
-- [ ] 2.11 Test: sitemap zawiera blog posts
+- [x] 2.1 Aktualizacja `src/lib/keystatic.ts` — komentarz, createGitHubReader w Fazie 3
+- [x] 2.2 Przepisanie `src/data/blog.ts` → Keystatic reader API
+- [x] 2.3 Dodanie `React.cache()` wrapperów na blog functions
+- [x] 2.4 Zachowanie `isSafeSlug()` walidacji
+- [x] 2.5 `blog/[slug]/page.tsx` — bez zmian (Markdoc.renderers.react kompatybilny)
+- [x] 2.6 `npm uninstall js-yaml @types/js-yaml`
+- [x] 2.7 `npm run build` przechodzi ✅ (29 stron)
+- [ ] 2.8 Test: `/blog` wyświetla 3 posty ⏳ ODŁOŻONE (testy wizualne później)
+- [ ] 2.9 Test: `/blog/[slug]` renderuje Markdoc content poprawnie ⏳ ODŁOŻONE
+- [ ] 2.10 Test: BlogTeaser na homepage pokazuje 3 posty ⏳ ODŁOŻONE
+- [ ] 2.11 Test: sitemap zawiera blog posts ⏳ ODŁOŻONE
 - [ ] 2.12 **Review fazy 2** → `/dev-docs-review`
 - [ ] 2.13 Naprawa uwag z review
 - [ ] 2.14 **Zamknięcie fazy 2** → `/dev-docs-complete`

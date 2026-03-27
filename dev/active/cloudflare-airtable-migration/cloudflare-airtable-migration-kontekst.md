@@ -18,6 +18,15 @@ Ostatnia aktualizacja: 2026-03-27
 - `open-next.config.ts` — OpenNext adapter config
 - `wrangler.jsonc` — CF Workers deployment config
 
+### Faza 2 — Blog fs → Keystatic reader (2026-03-27)
+- `src/data/blog.ts` przepisany — fs.readdir/readFile/js-yaml → Keystatic reader API
+- `React.cache()` wrappery na getAllBlogPosts, getLatestBlogPosts, getBlogPost
+- Keystatic `entry.content` z `resolveLinkedFiles: true` zwraca `{ node: Node }` — Markdoc AST
+- `Markdoc.transform(entry.content.node)` daje RenderableTreeNode kompatybilny z `Markdoc.renderers.react()`
+- `blog/[slug]/page.tsx` bez zmian — `post.content` nadal jest RenderableTreeNode
+- `js-yaml` i `@types/js-yaml` usunięte z dependencies
+- `createGitHubReader` odłożony do Fazy 3 (Workers compat)
+
 ### Faza 1 — Google Sheets → Airtable (2026-03-27)
 - `src/lib/sheets.ts` usunięty, `src/lib/airtable.ts` utworzony
 - 4 API routes zaktualizowane (import sheets → airtable)

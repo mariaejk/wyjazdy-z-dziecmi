@@ -19,7 +19,6 @@
     "@marsidev/react-turnstile": "^1.4.2",
     "@react-email/components": "^1.0.10",
     "clsx": "^2.1.1",
-    "js-yaml": "^4.1.1",
     "lucide-react": "^0.575.0",
     "motion": "^12.34.3",
     "next": "^16.2.1",
@@ -33,7 +32,6 @@
   "devDependencies": {
     "@opennextjs/cloudflare": "^1.18.0",
     "@tailwindcss/postcss": "^4",
-    "@types/js-yaml": "^4.0.9",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
