@@ -10,9 +10,11 @@ const config: OpenNextConfig = {
       wrapper: "cloudflare-node",
       converter: "edge",
       proxyExternalRequest: "fetch",
-      // ISR disabled — using "dummy" cache. Pages are SSG with CF Cache Rules.
-      // To enable ISR: replace with R2 cache handler + Durable Objects (paid plan required).
-      incrementalCache: "dummy",
+      // SSG only — serve prerendered pages from Workers static assets (read-only, no ISR).
+      incrementalCache: () =>
+        import(
+          "@opennextjs/cloudflare/overrides/incremental-cache/static-assets-incremental-cache"
+        ).then((m) => m.default),
       tagCache: "dummy",
       queue: "direct",
     },
