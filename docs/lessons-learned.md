@@ -336,3 +336,27 @@ Historical lessons from each development phase. Reference when debugging similar
 - **Repo transferred to client**: `https://github.com/mariaejk/wyjazdy-z-dziecmi.git`.
 - **Railway Hobby also prohibits commercial use**: Zero advantage over Vercel at any tier.
 - **Full hosting decision documented**: `docs/decyzja-hosting-platforma.md`.
+
+## Cloudflare Workers + Airtable Migration 27.03.2026
+
+- **@opennextjs/cloudflare 1.18.0** supports Next.js 16.1.6+ (`^16.1.5` peer dep). `@cloudflare/next-on-pages` is fully deprecated (last update 09.2025, no Next.js 16 support).
+- **wrangler 4.65+** required (peer dep). Current: 4.77.0.
+- **Bundle size limit**: 10 MiB **compressed** on paid plan, NOT 25MB uncompressed. This project: 4.3MB compressed — OK.
+- **`open-next.config.ts` required**: Full config with wrapper/converter/proxy/cache/queue/edgeExternals. `{}` or `{ default: {} }` throws validation error.
+- **`compatibility_date: "2025-05-05"`** minimum for FinalizationRegistry. `nodejs_compat` flag required.
+- **ISR requires Durable Objects** ($5/month paid plan) + R2 bucket. Without them: use `incrementalCache: "dummy"` — pages pre-rendered at build time only.
+- **`fs.readdir` confirmed not working** on Workers runtime (GitHub issue #734). Blog reader migrated to Keystatic reader API.
+- **Keystatic `resolveLinkedFiles: true`** returns `{ node: Node }` for markdoc contentField. Without it, `entry.content` is a lazy loader — `.node` returns `undefined` silently. Always add runtime guard.
+- **`getCloudflareContext({ async: true })`** — without `{ async: true }`, TypeScript picks synchronous overload, `await` becomes no-op, KV never works.
+- **Dynamic import for CF bindings**: `await import("@opennextjs/cloudflare")` in try/catch — returns `undefined` on Vercel/dev. Enables dual deployment.
+- **KVBinding type locally defined** in `rate-limit.ts` — avoids dependency on `@cloudflare/workers-types`. Exported and imported in `api-security.ts`.
+- **Airtable REST API** simpler than Google Sheets: `fetch(url, { headers: { Authorization: "Bearer ${token}" }, body: JSON.stringify({ fields }) })`. No SDK needed. Named fields instead of positional arrays — safer.
+- **Airtable still needs `sanitizeCell()`** — CSV injection when client exports to Excel/LibreOffice. `=`, `+`, `-`, `@` prefix with apostrophe.
+- **Airtable Free tier**: 1,000 API calls/month + 1,000 records/base (changed Jan 2025). Low traffic landing page = OK.
+- **OpenNext Windows warning**: "not fully compatible with Windows, use WSL". Build passes but runtime may have issues. Document in config.
+- **`CF_PAGES_URL`** auto-set by CF Pages — add to `ALLOWED_ORIGINS`. Keep Vercel fallback during transition.
+- **`warnInvalidSlug()`** must be called in all CMS readers — blog was missing it after migration.
+- **ISR silently ignored on CF Workers**: `revalidate=3600` exports are kept for Vercel compatibility but do nothing with `incrementalCache: "dummy"`. Auto-isPast (trip dateEnd check) only updates on rebuild. Set up daily CF Cron Trigger or GitHub Actions cron for production.
+- **`append*` functions must NOT catch errors**: Errors must propagate to `Promise.allSettled` in routes for `allFailed` detection. Internal try/catch makes Airtable failures invisible — leads silently lost.
+- **4 instrukcje do aktualizacji po deploy**: `instrukcja-zarzadzanie.md` (6x Google Sheets), `setup-external-services.md` (12x), `instrukcja-developer.md` (8x), `instrukcja-przekazanie-projektu.md` (51x). Aktualizować DOPIERO po deploy na CF Workers — do tego momentu Vercel + Sheets są aktualne.
+- **Dual deployment transition**: Kod na branchu `feature/cloudflare-airtable-migration` działa zarówno na Vercel jak i CF Workers. Instrukcje aktualizować dopiero po DNS cutover, nie przed.

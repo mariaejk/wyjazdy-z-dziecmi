@@ -41,3 +41,6 @@ next-env.d.ts
 # project specific
 claude-code-infrastructure-showcase/
 temp-next/
+.open-next/
+.wrangler/
+.dev.vars

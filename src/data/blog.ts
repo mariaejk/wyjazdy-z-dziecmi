@@ -1,9 +1,8 @@
-import fs from "fs/promises";
-import path from "path";
-import yaml from "js-yaml";
+import { cache } from "react";
 import Markdoc from "@markdoc/markdoc";
-
-const BLOG_DIR = path.join(process.cwd(), "content/blog");
+import type { RenderableTreeNode } from "@markdoc/markdoc";
+import { reader } from "@/lib/keystatic";
+import { warnInvalidSlug, parseLocalDate } from "@/lib/utils";
 
 export type BlogPost = {
   slug: string;
@@ -13,76 +12,86 @@ export type BlogPost = {
   image?: string;
 };
 
-export async function getAllBlogPosts(): Promise<BlogPost[]> {
-  const entries = await fs.readdir(BLOG_DIR, { withFileTypes: true });
-  const posts: BlogPost[] = [];
+export type BlogPostWithContent = BlogPost & {
+  content: RenderableTreeNode;
+};
 
-  for (const entry of entries) {
-    if (!entry.isDirectory()) continue;
-    const slug = entry.name;
-    const meta = await readBlogMeta(slug);
-    if (!meta) continue;
-    posts.push({ slug, ...meta });
-  }
-
-  return posts.sort((a, b) => b.publishedDate.localeCompare(a.publishedDate));
+function isSafeSlug(slug: string): boolean {
+  return (
+    !slug.includes("/") &&
+    !slug.includes("\\") &&
+    !slug.includes("..") &&
+    !slug.startsWith(".")
+  );
 }
 
-export async function getLatestBlogPosts(limit = 3): Promise<BlogPost[]> {
+export const getAllBlogPosts = cache(async (): Promise<BlogPost[]> => {
+  const slugs = await reader.collections.blog.list();
+  const posts: BlogPost[] = [];
+
+  for (const slug of slugs) {
+    warnInvalidSlug(slug, "blog");
+    if (!isSafeSlug(slug)) continue;
+
+    const entry = await reader.collections.blog.read(slug);
+    if (!entry) continue;
+
+    posts.push({
+      slug,
+      title: entry.title,
+      subtitle: entry.subtitle,
+      publishedDate: entry.publishedDate,
+      image: entry.image || undefined,
+    });
+  }
+
+  return posts.sort(
+    (a, b) =>
+      parseLocalDate(b.publishedDate).getTime() -
+      parseLocalDate(a.publishedDate).getTime(),
+  );
+});
+
+export async function getLatestBlogPosts(
+  limit = 3,
+): Promise<BlogPost[]> {
   const posts = await getAllBlogPosts();
   return posts.slice(0, limit);
 }
 
-function isSafeSlug(slug: string): boolean {
-  return !slug.includes("/") && !slug.includes("\\") && !slug.includes("..") && !slug.startsWith(".");
-}
+export const getBlogPost = cache(
+  async (slug: string): Promise<BlogPostWithContent | undefined> => {
+    if (!isSafeSlug(slug)) return undefined;
 
-export async function getBlogPost(slug: string) {
-  if (!isSafeSlug(slug)) return undefined;
-
-  const meta = await readBlogMeta(slug);
-  if (!meta) return undefined;
-
-  try {
-    const contentPath = path.join(BLOG_DIR, slug, "content.mdoc");
-    const raw = await fs.readFile(contentPath, "utf-8");
-    const ast = Markdoc.parse(raw);
-    const content = Markdoc.transform(ast);
-
-    return {
-      slug,
-      ...meta,
-      content,
-    };
-  } catch {
-    return undefined;
-  }
-}
-
-async function readBlogMeta(
-  slug: string
-): Promise<Omit<BlogPost, "slug"> | null> {
-  if (!isSafeSlug(slug)) return null;
-  const dir = path.join(BLOG_DIR, slug);
-
-  // Try YAML first, then JSON
-  for (const filename of ["index.yaml", "index.json"]) {
-    const filePath = path.join(dir, filename);
     try {
-      const raw = await fs.readFile(filePath, "utf-8");
-      const data =
-        filename.endsWith(".yaml")
-          ? (yaml.load(raw) as Record<string, string>)
-          : (JSON.parse(raw) as Record<string, string>);
+      // resolveLinkedFiles: true is REQUIRED — without it, entry.content is a
+      // lazy loader function, not { node: Node }. Calling .node on it returns
+      // undefined and Markdoc.transform() silently produces empty output.
+      const entry = await reader.collections.blog.read(slug, {
+        resolveLinkedFiles: true,
+      });
+      if (!entry) return undefined;
+
+      // Runtime guard — ensure content was resolved to a Markdoc AST node
+      if (!entry.content || !("node" in entry.content)) {
+        console.error(
+          `[Blog] entry.content missing node for slug "${slug}" — resolveLinkedFiles may have failed`,
+        );
+        return undefined;
+      }
+
+      const content = Markdoc.transform(entry.content.node);
+
       return {
-        title: data.title,
-        subtitle: data.subtitle,
-        publishedDate: data.publishedDate,
-        image: data.image || undefined,
+        slug,
+        title: entry.title,
+        subtitle: entry.subtitle,
+        publishedDate: entry.publishedDate,
+        image: entry.image || undefined,
+        content,
       };
     } catch {
-      continue;
+      return undefined;
     }
-  }
-  return null;
-}
+  },
+);

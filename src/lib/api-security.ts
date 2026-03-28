@@ -1,13 +1,27 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 import { ALLOWED_ORIGINS } from "./constants";
-import { rateLimit } from "./rate-limit";
+import { rateLimit, type KVBinding } from "./rate-limit";
 
 const MAX_BODY_SIZE = 50_000; // 50KB
 
 type SecurityCheckResult =
   | { ok: true; ip: string; body: unknown }
   | { ok: false; response: NextResponse };
+
+async function getKVBinding(): Promise<KVBinding | undefined> {
+  try {
+    // Dynamic import — only available on CF Workers with @opennextjs/cloudflare
+    const { getCloudflareContext } = await import("@opennextjs/cloudflare");
+    // { async: true } required — without it, synchronous overload is used and
+    // await becomes a no-op, causing KV rate limiting to silently fail
+    const ctx = await getCloudflareContext({ async: true });
+    return ctx.env?.RATE_LIMIT as KVBinding | undefined;
+  } catch {
+    // Not on CF Workers — KV not available
+    return undefined;
+  }
+}
 
 /**
  * Shared security preamble for all API POST routes.
@@ -29,13 +43,14 @@ export async function validateRequest(request: NextRequest): Promise<SecurityChe
     return { ok: false, response: NextResponse.json({ error: "Payload too large" }, { status: 413 }) };
   }
 
-  // Rate limiting
+  // Rate limiting — uses KV on CF Workers, in-memory fallback elsewhere
   const forwardedFor = request.headers.get("x-forwarded-for");
   const ip = forwardedFor
     ? forwardedFor.split(",").at(-1)!.trim()
     : (request.headers.get("x-real-ip") ?? "unknown");
 
-  const { success } = rateLimit(ip);
+  const kv = await getKVBinding();
+  const { success } = await rateLimit(ip, kv);
   if (!success) {
     return {
       ok: false,

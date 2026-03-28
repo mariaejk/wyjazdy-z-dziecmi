@@ -4,7 +4,7 @@ import { waitlistSchema } from "@/lib/validations/waitlist";
 import { log } from "@/lib/logger";
 import { verifyTurnstile } from "@/lib/turnstile";
 import { validateRequest } from "@/lib/api-security";
-import { appendWaitlist } from "@/lib/sheets";
+import { appendWaitlist } from "@/lib/airtable";
 import { sendNotificationEmail, sendConfirmationEmail } from "@/lib/email";
 import { WaitlistNotification } from "@/emails/WaitlistNotification";
 import { WaitlistConfirmation } from "@/emails/WaitlistConfirmation";
@@ -53,7 +53,7 @@ export async function POST(request: NextRequest) {
     timeZone: "Europe/Warsaw",
   });
 
-  // Google Sheets + emails (parallel, graceful degradation)
+  // Airtable + emails (parallel, graceful degradation)
   const results = await Promise.allSettled([
     appendWaitlist({
       name: data.name,
