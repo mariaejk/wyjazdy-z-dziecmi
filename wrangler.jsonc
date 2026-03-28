@@ -7,7 +7,7 @@
   "assets": {
     "directory": ".open-next/assets",
     "binding": "ASSETS"
-  }
+  },
 
   // KV namespace for rate limiting (Faza 3)
   // Uncomment after creating KV namespace in CF dashboard:
