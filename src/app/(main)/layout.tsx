@@ -1,3 +1,5 @@
+export const dynamic = "force-static";
+
 import type { ReactNode } from "react";
 import { Inter, Lora, Caveat } from "next/font/google";
 import { SkipToContent } from "@/components/layout/SkipToContent";
