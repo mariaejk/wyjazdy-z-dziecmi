@@ -11,7 +11,7 @@ import { getUpcomingTripsByCategory } from "@/data/trips";
 import { getBenefitsByCategory } from "@/data/benefits";
 import { ROUTES } from "@/lib/constants";
 
-export const revalidate = 3600;
+export const dynamic = "force-static";
 
 export const metadata: Metadata = {
   title: "Single z dziećmi",

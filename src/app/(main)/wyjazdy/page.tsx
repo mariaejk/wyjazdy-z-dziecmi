@@ -13,7 +13,7 @@ import { TripsFilter } from "@/components/trips/TripsFilter";
 import { SITE_CONFIG } from "@/lib/constants";
 import { getBreadcrumbSchema } from "@/lib/structured-data";
 
-export const revalidate = 3600; // ISR: revalidate every hour for auto-isPast
+export const dynamic = "force-static";
 
 export const metadata: Metadata = {
   title: "Nadchodzące warsztaty wyjazdowe — terminy i ceny",

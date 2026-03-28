@@ -16,7 +16,7 @@ import { ScrollAnimation } from "@/components/shared/ScrollAnimation";
 import { TripCalendar } from "@/components/shared/TripCalendar";
 import { getCalendarTrips } from "@/data/trips";
 
-export const revalidate = 3600; // ISR: revalidate every hour for auto-isPast
+export const dynamic = "force-static";
 
 export default async function Home() {
   const calendarTrips = await getCalendarTrips();

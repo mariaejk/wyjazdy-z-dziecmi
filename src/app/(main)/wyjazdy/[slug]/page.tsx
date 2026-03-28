@@ -22,7 +22,7 @@ import { SectionWrapper } from "@/components/ui/SectionWrapper";
 import { Button } from "@/components/ui/Button";
 import { ScrollAnimation } from "@/components/shared/ScrollAnimation";
 
-export const revalidate = 3600;
+export const dynamic = "force-static";
 
 type PageProps = {
   params: Promise<{ slug: string }>;

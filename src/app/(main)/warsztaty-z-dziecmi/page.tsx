@@ -13,7 +13,7 @@ import { getBenefitsByCategory } from "@/data/benefits";
 import { ROUTES, SITE_CONFIG } from "@/lib/constants";
 import { getBreadcrumbSchema } from "@/lib/structured-data";
 
-export const revalidate = 3600;
+export const dynamic = "force-static";
 
 export const metadata: Metadata = {
   title: "Warsztaty z dziećmi",
