@@ -14,4 +14,8 @@
   // "kv_namespaces": [
   //   { "binding": "RATE_LIMIT", "id": "<your-kv-namespace-id>" }
   // ]
+
+  "observability": {
+    "enabled": false
+  }
 }
