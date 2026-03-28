@@ -8,7 +8,12 @@ const showAdminUI =
   process.env.NODE_ENV !== "production" ||
   Boolean(process.env.NEXT_PUBLIC_KEYSTATIC_GITHUB_OWNER);
 
-const handler = makeRouteHandler({ config });
+const handler = makeRouteHandler({
+  config,
+  clientId: process.env.KEYSTATIC_GITHUB_CLIENT_ID,
+  clientSecret: process.env.KEYSTATIC_GITHUB_CLIENT_SECRET,
+  secret: process.env.KEYSTATIC_SECRET,
+});
 
 export const GET = showAdminUI
   ? handler.GET
