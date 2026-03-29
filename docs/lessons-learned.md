@@ -372,3 +372,15 @@ Historical lessons from each development phase. Reference when debugging similar
 - **Debug OAuth flow**: Stwórz osobny endpoint z `?action=login` (redirect do GitHub) i `?action=callback` (wymiana code→token). Pozwala przetestować client_id + secret bez Keystatic.
 - **Wiele GitHub Apps = chaos**: Każda nowa App ma inny client_id/secret. Trzymaj się jednej i zweryfikuj że env vars na Vercel pasują do AKTUALNEJ App (nie starej).
 - **`KEYSTATIC_SECRET` = losowy hex 64 znaki**: Wygeneruj: `node -e "console.log(require('crypto').randomBytes(32).toString('hex'))"`. Do szyfrowania refresh_token cookie.
+
+## Security + RODO Audit 29.03.2026
+
+- **Polityka prywatności i regulamin PRZED formularzami**: Zgody RODO z linkiem do nieistniejącej polityki mogą być uznane za nieważne przez UODO. CRITICAL — opublikować przed zbieraniem danych.
+- **Double opt-in na newsletter (PKE 2024)**: Subskrypcja natychmiastowa bez linku aktywacyjnego narusza dobre praktyki PKE. Wymaga: confirmation_token w Airtable + nowa trasa `/api/newsletter/confirm`.
+- **`List-Unsubscribe` header w emailach**: Wymagany przez Gmail/Yahoo od 2024. Dodać do wszystkich emaili Resend.
+- **Alerty na `allFailed`**: `console.error` nie wystarczy — utracone leady mogą być niewykryte przez dni. Dodać email/webhook powiadomienie.
+- **Plan reagowania na incydenty**: RODO Art. 33 wymaga powiadomienia UODO w 72h. Potrzebny `docs/incident-response.md`.
+- **Static site = najlepsza obrona**: Next.js SSG + Keystatic eliminuje SQL Injection, XSS server-side, większość ataków na CMS. Dokumenty bezpieczeństwa to potwierdzają.
+- **3 linie obrony antybotowej ponad standard**: Turnstile + honeypot + rate limit to więcej niż wymaga większość landing page.
+- **CSP `unsafe-inline` + `unsafe-eval`**: Wymagane przez Next.js/GA, ale zmniejsza ochronę XSS. Rozważyć nonce-based CSP w przyszłości.
+- **Dane dzieci — minimalizacja OK**: Zbieramy tylko liczbę dzieci + wiek (opcjonalnie). Brak imion, dat urodzenia, PESEL. Ale brakuje jawnego oświadczenia rodzica w checkbox RODO.

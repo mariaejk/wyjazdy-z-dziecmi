@@ -29,6 +29,7 @@ Landing page / sales funnel for "Wyjazdy z Dziećmi" — family workshop retreat
 - **Repo**: `https://github.com/mariaejk/wyjazdy-z-dziecmi.git`. Developer (TatianaG-ka) = collaborator.
 - **Keystatic route**: `makeRouteHandler()` z jawnym `clientId`, `clientSecret`, `secret` (nie polegaj na wewnętrznym env var read).
 - **Docs**: `docs/instrukcja-przekazanie-projektu.md`, `docs/setup-external-services.md`, `docs/decyzja-hosting-platforma.md`
+- **Security audit**: `docs/security-audit-29-03-2026.md` — 2 CRITICAL (polityka prywatnosci + regulamin placeholdery), 4 HIGH (DOI newsletter, alerty, incident plan, Art.17 RODO)
 
 ## Critical Constraints
 
