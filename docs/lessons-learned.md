@@ -360,3 +360,15 @@ Historical lessons from each development phase. Reference when debugging similar
 - **`append*` functions must NOT catch errors**: Errors must propagate to `Promise.allSettled` in routes for `allFailed` detection. Internal try/catch makes Airtable failures invisible — leads silently lost.
 - **4 instrukcje do aktualizacji po deploy**: `instrukcja-zarzadzanie.md` (6x Google Sheets), `setup-external-services.md` (12x), `instrukcja-developer.md` (8x), `instrukcja-przekazanie-projektu.md` (51x). Aktualizować DOPIERO po deploy na CF Workers — do tego momentu Vercel + Sheets są aktualne.
 - **Dual deployment transition**: Kod na branchu `feature/cloudflare-airtable-migration` działa zarówno na Vercel jak i CF Workers. Instrukcje aktualizować dopiero po DNS cutover, nie przed.
+
+## Vercel + Keystatic GitHub OAuth Setup 29.03.2026
+
+- **Vercel "Redeploy" nie odczytuje nowych env vars**: "Redeploy of X" kopiuje stary build. Trzeba nowy push do repo albo "Redeploy" BEZ cache. Nawet wtedy — sprawdź czy build trwa sensownie (>1 min), nie 38 sekund.
+- **Vercel może mieć 2 projekty dla tego samego repo**: Nowy projekt dostaje suffix (np. `-one`). Domena `wyjazdy-z-dziecmi.vercel.app` ≠ `wyjazdy-z-dziecmi-one.vercel.app`. Zawsze sprawdź **Settings → Domains** by znać aktualny URL.
+- **GitHub App Callback URL musi dokładnie pasować**: `redirect_uri` mismatch = "Be careful!" error. Po zmianie domeny zaktualizuj Callback URL w GitHub App.
+- **GitHub App "User-to-server token expiration" wymagane przez Keystatic**: Bez tego GitHub nie zwraca `refresh_token` i `expires_in` — Keystatic parsowanie failuje z "Authorization failed".
+- **GitHub token endpoint zwraca 200 nawet na błędy**: `tokenRes.ok` jest `true`, ale body zawiera `{ error: "bad_verification_code" }`. Keystatic failuje na `tokenDataResultType.create()` w catch bloku.
+- **Jawne przekazanie env vars do `makeRouteHandler()`**: Zamiast polegać na wewnętrznym `process.env` w Keystatic, przekaż `clientId`, `clientSecret`, `secret` jawnie w route.ts.
+- **Debug OAuth flow**: Stwórz osobny endpoint z `?action=login` (redirect do GitHub) i `?action=callback` (wymiana code→token). Pozwala przetestować client_id + secret bez Keystatic.
+- **Wiele GitHub Apps = chaos**: Każda nowa App ma inny client_id/secret. Trzymaj się jednej i zweryfikuj że env vars na Vercel pasują do AKTUALNEJ App (nie starej).
+- **`KEYSTATIC_SECRET` = losowy hex 64 znaki**: Wygeneruj: `node -e "console.log(require('crypto').randomBytes(32).toString('hex'))"`. Do szyfrowania refresh_token cookie.

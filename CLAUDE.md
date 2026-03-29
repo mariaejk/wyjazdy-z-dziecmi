@@ -23,10 +23,11 @@ Landing page / sales funnel for "Wyjazdy z Dziećmi" — family workshop retreat
 
 ## Deployment (migration in progress)
 
-- **Current**: Vercel Hobby (łamie ToS dla komercji)
+- **Current**: Vercel (`wyjazdy-z-dziecmi-one.vercel.app`) — Keystatic CMS działa z GitHub App `new-cms-wyjazdy-2`
 - **Target**: Cloudflare Workers ($5/mies.) — branch `feature/cloudflare-airtable-migration`
-- **Status**: Fazy 0-3 ukończone (kod gotowy), Fazy 4-5 czekają na Airtable + CF dashboard setup
+- **Status**: Fazy 0-3 ukończone (kod gotowy), Fazy 4-5 czekają na Airtable + CF dashboard setup. Keystatic OAuth na Vercel skonfigurowane (29.03).
 - **Repo**: `https://github.com/mariaejk/wyjazdy-z-dziecmi.git`. Developer (TatianaG-ka) = collaborator.
+- **Keystatic route**: `makeRouteHandler()` z jawnym `clientId`, `clientSecret`, `secret` (nie polegaj na wewnętrznym env var read).
 - **Docs**: `docs/instrukcja-przekazanie-projektu.md`, `docs/setup-external-services.md`, `docs/decyzja-hosting-platforma.md`
 
 ## Critical Constraints
