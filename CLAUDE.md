@@ -25,7 +25,9 @@ Landing page / sales funnel for "Wyjazdy z Dziećmi" — family workshop retreat
 
 - **Current**: Vercel (`wyjazdy-z-dziecmi-one.vercel.app`) — Keystatic CMS działa z GitHub App `new-cms-wyjazdy-2`
 - **Target**: Cloudflare Workers ($5/mies.) — `wyjazdy-z-dziecmi.maria-kordalewska.workers.dev`
-- **Status**: Fazy 0-4 ukończone. CF Workers dashboard skonfigurowany (env vars, KV RATE_LIMIT, Airtable, Resend, Turnstile). Faza 5 (DNS cutover) czeka na push + test na staging. (01.04.2026)
+- **Status**: CF Workers DZIAŁA na staging (Airtable + Resend + Turnstile przetestowane). Faza 5 (DNS cutover) pending. (01.04.2026)
+- **Deploy**: GitHub Actions auto-deploy na push do master (build na Linux). Secrety via `wrangler secret put`, public vars w `wrangler.jsonc`.
+- **Email**: Plain HTML templates (`src/lib/email-templates.ts`) — React Email nie działa na CF Workers runtime.
 - **Repo**: `https://github.com/mariaejk/wyjazdy-z-dziecmi.git`. Developer (TatianaG-ka) = collaborator.
 - **Keystatic route**: `makeRouteHandler()` z jawnym `clientId`, `clientSecret`, `secret` (nie polegaj na wewnętrznym env var read).
 - **Docs**: `docs/instrukcja-przekazanie-projektu.md`, `docs/setup-external-services.md`, `docs/decyzja-hosting-platforma.md`
