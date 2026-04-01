@@ -6,7 +6,7 @@ import { verifyTurnstile } from "@/lib/turnstile";
 import { validateRequest } from "@/lib/api-security";
 import { appendNewsletter } from "@/lib/airtable";
 import { sendConfirmationEmail } from "@/lib/email";
-import { NewsletterConfirmation } from "@/emails/NewsletterConfirmation";
+import { newsletterConfirmationHtml } from "@/lib/email-templates";
 
 export async function POST(request: NextRequest) {
   const check = await validateRequest(request);
@@ -62,7 +62,7 @@ export async function POST(request: NextRequest) {
     sendConfirmationEmail(
       data.email,
       "Dziękujemy za zapis — poradnik w drodze!",
-      NewsletterConfirmation({ email: data.email }),
+      newsletterConfirmationHtml({ email: data.email }),
     ),
   ]);
 

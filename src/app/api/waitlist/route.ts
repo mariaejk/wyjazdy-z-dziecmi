@@ -6,8 +6,7 @@ import { verifyTurnstile } from "@/lib/turnstile";
 import { validateRequest } from "@/lib/api-security";
 import { appendWaitlist } from "@/lib/airtable";
 import { sendNotificationEmail, sendConfirmationEmail } from "@/lib/email";
-import { WaitlistNotification } from "@/emails/WaitlistNotification";
-import { WaitlistConfirmation } from "@/emails/WaitlistConfirmation";
+import { waitlistNotificationHtml, waitlistConfirmationHtml } from "@/lib/email-templates";
 
 export async function POST(request: NextRequest) {
   const check = await validateRequest(request);
@@ -63,7 +62,7 @@ export async function POST(request: NextRequest) {
     }),
     sendNotificationEmail(
       `Lista oczekujących: ${data.trip} — ${data.name}`,
-      WaitlistNotification({
+      waitlistNotificationHtml({
         name: data.name,
         email: data.email,
         phone: data.phone,
@@ -75,7 +74,7 @@ export async function POST(request: NextRequest) {
     sendConfirmationEmail(
       data.email,
       `Lista oczekujących: ${data.trip}`,
-      WaitlistConfirmation({
+      waitlistConfirmationHtml({
         name: data.name,
         trip: data.trip,
       }),

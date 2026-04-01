@@ -6,8 +6,7 @@ import { verifyTurnstile } from "@/lib/turnstile";
 import { validateRequest } from "@/lib/api-security";
 import { appendContact } from "@/lib/airtable";
 import { sendNotificationEmail, sendConfirmationEmail } from "@/lib/email";
-import { ContactNotification } from "@/emails/ContactNotification";
-import { ContactConfirmation } from "@/emails/ContactConfirmation";
+import { contactNotificationHtml, contactConfirmationHtml } from "@/lib/email-templates";
 
 export async function POST(request: NextRequest) {
   const check = await validateRequest(request);
@@ -62,7 +61,7 @@ export async function POST(request: NextRequest) {
     }),
     sendNotificationEmail(
       `Nowe zapytanie od ${data.name}`,
-      ContactNotification({
+      contactNotificationHtml({
         name: data.name,
         email: data.email,
         message: data.message,
@@ -73,7 +72,7 @@ export async function POST(request: NextRequest) {
     sendConfirmationEmail(
       data.email,
       "Dziękujemy za wiadomość — odpowiemy w ciągu 24h",
-      ContactConfirmation({ name: data.name }),
+      contactConfirmationHtml({ name: data.name }),
     ),
   ]);
 

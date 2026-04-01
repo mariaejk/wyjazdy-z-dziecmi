@@ -6,8 +6,7 @@ import { verifyTurnstile } from "@/lib/turnstile";
 import { validateRequest } from "@/lib/api-security";
 import { appendBooking } from "@/lib/airtable";
 import { sendNotificationEmail, sendConfirmationEmail } from "@/lib/email";
-import { BookingNotification } from "@/emails/BookingNotification";
-import { BookingConfirmation } from "@/emails/BookingConfirmation";
+import { bookingNotificationHtml, bookingConfirmationHtml } from "@/lib/email-templates";
 
 export async function POST(request: NextRequest) {
   const check = await validateRequest(request);
@@ -71,7 +70,7 @@ export async function POST(request: NextRequest) {
     }),
     sendNotificationEmail(
       `Nowa rezerwacja: ${data.trip} — ${data.name}`,
-      BookingNotification({
+      bookingNotificationHtml({
         name: data.name,
         email: data.email,
         phone: data.phone,
@@ -89,11 +88,9 @@ export async function POST(request: NextRequest) {
     sendConfirmationEmail(
       data.email,
       `Potwierdzenie rezerwacji: ${data.trip}`,
-      BookingConfirmation({
+      bookingConfirmationHtml({
         name: data.name,
         trip: data.trip,
-        adults: data.adults,
-        children: data.children,
       }),
     ),
   ]);

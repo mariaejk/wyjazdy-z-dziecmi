@@ -1,6 +1,4 @@
 import { Resend } from "resend";
-import type { ReactElement } from "react";
-import { render } from "@react-email/render";
 import { CONTACT } from "@/lib/constants";
 
 const FROM_EMAIL = process.env.FROM_EMAIL || "Wyjazdy z Dziećmi <onboarding@resend.dev>";
@@ -12,7 +10,7 @@ if (!process.env.FROM_EMAIL && process.env.NODE_ENV === "production") {
 type SendEmailOptions = {
   to: string;
   subject: string;
-  react: ReactElement;
+  html: string;
   replyTo?: string;
 };
 
@@ -22,14 +20,13 @@ async function sendEmail(options: SendEmailOptions) {
     return;
   }
 
-  const html = await render(options.react);
   const resend = new Resend(process.env.RESEND_API_KEY);
 
   const { error } = await resend.emails.send({
     from: FROM_EMAIL,
     to: [options.to],
     subject: options.subject,
-    html,
+    html: options.html,
     replyTo: options.replyTo,
   });
 
@@ -40,7 +37,7 @@ async function sendEmail(options: SendEmailOptions) {
 
 export async function sendNotificationEmail(
   subject: string,
-  react: ReactElement,
+  html: string,
   replyTo?: string,
 ) {
   const ownerEmail = process.env.OWNER_EMAIL || CONTACT.email;
@@ -49,7 +46,7 @@ export async function sendNotificationEmail(
     await sendEmail({
       to: ownerEmail,
       subject,
-      react,
+      html,
       replyTo,
     });
   } catch (error) {
@@ -60,13 +57,13 @@ export async function sendNotificationEmail(
 export async function sendConfirmationEmail(
   to: string,
   subject: string,
-  react: ReactElement,
+  html: string,
 ) {
   try {
     await sendEmail({
       to,
       subject,
-      react,
+      html,
     });
   } catch (error) {
     console.error("[Email] Confirmation failed:", error);
