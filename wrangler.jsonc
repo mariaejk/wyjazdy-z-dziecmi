@@ -15,6 +15,10 @@
   //   { "binding": "RATE_LIMIT", "id": "<your-kv-namespace-id>" }
   // ]
 
+  "vars": {
+    "NEXT_PUBLIC_TURNSTILE_SITE_KEY": "0x4AAAAAACy69qw2BYCWGuia"
+  },
+
   "observability": {
     "enabled": false,
     "head_sampling_rate": 1,
