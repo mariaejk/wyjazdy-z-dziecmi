@@ -25,6 +25,8 @@ export default function TermsPage() {
             <li>
               Kontakt z Organizatorem:
               <ul>
+                <li>Adres: ul. Bartłomieja 7 lok. 29, 02-683 Warszawa</li>
+                <li>NIP: 9512199541</li>
                 <li>E-mail: <a href="mailto:wyjazdyzdziecmi@gmail.com">wyjazdyzdziecmi@gmail.com</a></li>
                 <li>Telefon: <a href="tel:+48503098906">+48 503 098 906</a></li>
                 <li>Strona: <a href="https://wyjazdyzdziecmi.pl">wyjazdyzdziecmi.pl</a></li>

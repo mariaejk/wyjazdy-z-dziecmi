@@ -26,6 +26,8 @@ export default function PrivacyPage() {
             prowadząca działalność pod nazwą „Wyjazdy z Dziećmi".
           </p>
           <ul>
+            <li>Adres: ul. Bartłomieja 7 lok. 29, 02-683 Warszawa</li>
+            <li>NIP: 9512199541</li>
             <li>E-mail: <a href="mailto:wyjazdyzdziecmi@gmail.com">wyjazdyzdziecmi@gmail.com</a></li>
             <li>Telefon: <a href="tel:+48503098906">+48 503 098 906</a></li>
           </ul>
