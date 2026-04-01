@@ -36,14 +36,14 @@ export function Logo({ size = 50, color = "currentColor", className }: LogoProps
       {/* Tekst — ukryty na mobile, widoczny od md */}
       <div className="hidden md:flex flex-col leading-[0.9]">
         <span
-          className="font-[family-name:var(--font-lora)] text-[32px] lg:text-[38px] font-normal tracking-tight"
-          style={{ color }}
+          className="text-[32px] lg:text-[38px] font-normal tracking-tight"
+          style={{ color, fontFamily: "var(--font-lora), Lora, serif" }}
         >
           Warsztaty
         </span>
         <span
-          className="font-[family-name:var(--font-caveat)] text-[24px] lg:text-[28px] -mt-1.5 pl-8 lg:pl-10"
-          style={{ color }}
+          className="text-[24px] lg:text-[28px] -mt-1.5 pl-8 lg:pl-10"
+          style={{ color, fontFamily: "var(--font-caveat), Caveat, cursive" }}
         >
           z dziećmi
         </span>

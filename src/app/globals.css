@@ -1,5 +1,11 @@
 @import "tailwindcss";
 
+@source "../../src";
+@source "../../content";
+@source not "../../docs";
+@source not "../../dev";
+@source not "../../.claude";
+
 @theme {
   /* Colors — TCW Photography-First */
   --color-parchment: #FAF9F6;
@@ -26,8 +32,6 @@
   /* Typography */
   --font-heading: Georgia, "Times New Roman", serif;
   --font-body: var(--font-inter);
-  --font-lora: var(--font-lora);
-  --font-caveat: var(--font-caveat);
 }
 
 /* Global styles */
