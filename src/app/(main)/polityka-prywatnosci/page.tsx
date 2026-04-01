@@ -220,7 +220,13 @@ export default function PrivacyPage() {
             w dokumentacji swojej przeglądarki (Chrome, Firefox, Safari, Edge).
           </p>
 
-          <h2>8. Bezpieczeństwo danych</h2>
+          <h2>8. Zautomatyzowane podejmowanie decyzji</h2>
+          <p>
+            Twoje dane osobowe <strong>nie podlegają zautomatyzowanemu podejmowaniu decyzji,
+            w tym profilowaniu</strong>, w rozumieniu art. 22 RODO.
+          </p>
+
+          <h2>9. Bezpieczeństwo danych</h2>
           <p>
             Stosujemy odpowiednie środki techniczne i organizacyjne w celu ochrony Twoich danych, w tym:
           </p>
@@ -232,14 +238,14 @@ export default function PrivacyPage() {
             <li>Weryfikacja Origin (CSRF) na wszystkich endpointach API</li>
           </ul>
 
-          <h2>9. Zmiany polityki prywatności</h2>
+          <h2>10. Zmiany polityki prywatności</h2>
           <p>
             Administrator zastrzega sobie prawo do wprowadzania zmian w niniejszej Polityce prywatności.
             O istotnych zmianach poinformujemy poprzez umieszczenie zaktualizowanej wersji na tej stronie
             wraz z datą ostatniej aktualizacji.
           </p>
 
-          <h2>10. Kontakt</h2>
+          <h2>11. Kontakt</h2>
           <p>
             W razie pytań dotyczących niniejszej Polityki prywatności lub przetwarzania Twoich danych
             osobowych, skontaktuj się z nami:

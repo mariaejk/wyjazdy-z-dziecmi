@@ -104,23 +104,28 @@ export default function TermsPage() {
           <h2>§5. Rezygnacja uczestnika</h2>
           <ol>
             <li>
+              Zgodnie z art. 38 pkt 12 Ustawy z dnia 30 maja 2014 r. o prawach konsumenta,
+              ze względu na to, że warsztaty mają ściśle oznaczony termin świadczenia usługi
+              związanej z wypoczynkiem, konsumentowi <strong>nie przysługuje ustawowe prawo
+              do odstąpienia od umowy</strong> zawartej na odległość w terminie 14 dni.
+            </li>
+            <li>
               Uczestnik może zrezygnować z udziału w warsztacie, informując Organizatora
               drogą e-mailową lub telefonicznie.
             </li>
             <li>
-              Warunki zwrotu wpłaconej kwoty w przypadku rezygnacji:
+              Wpłata podlega zwrotowi jedynie w przypadku:
               <ul>
-                <li><strong>Więcej niż 30 dni przed warsztatem</strong> — zwrot 100% wpłaconej kwoty.</li>
-                <li><strong>15–30 dni przed warsztatem</strong> — zwrot 50% wpłaconej kwoty.</li>
-                <li><strong>Mniej niż 15 dni przed warsztatem</strong> — brak zwrotu.</li>
+                <li><strong>odwołania warsztatu przez Organizatora</strong> — zwrot 100% wpłaconej kwoty,</li>
+                <li><strong>znalezienia przez Uczestnika osoby zastępczej</strong> na swoje miejsce,
+                  zaakceptowanej przez Organizatora — zwrot 100% wpłaconej kwoty.</li>
               </ul>
             </li>
             <li>
-              Jeśli Uczestnik znajdzie osobę zastępczą, zwrot wynosi 100%
-              niezależnie od terminu rezygnacji. Organizator musi zaakceptować osobę zastępczą.
+              W pozostałych przypadkach rezygnacji wpłata nie podlega zwrotowi.
             </li>
             <li>
-              Zwroty realizowane są w ciągu 14 dni od otrzymania informacji o rezygnacji
+              Zwroty (gdy przysługują) realizowane są w ciągu 14 dni
               na rachunek bankowy, z którego dokonano wpłaty.
             </li>
           </ol>
