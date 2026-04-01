@@ -21,13 +21,8 @@ export const SOCIAL_LINKS = {
 export const ALLOWED_ORIGINS = [
   "https://www.wyjazdyzdziecmi.pl",
   "https://wyjazdyzdziecmi.pl",
+  "https://wyjazdy-z-dziecmi.maria-kordalewska.workers.dev",
   ...(process.env.NODE_ENV === "development" ? ["http://localhost:3000"] : []),
-  // CF Workers: CF_PAGES_URL is auto-set by Cloudflare Pages.
-  // Note: includes preview deployment URLs (like VERCEL_URL).
-  // For production-only, use a custom env var with the production domain.
-  ...(process.env.CF_PAGES_URL
-    ? [`https://${process.env.CF_PAGES_URL}`]
-    : []),
   // Vercel fallback (kept for dual-deployment transition period)
   ...(process.env.VERCEL_PROJECT_PRODUCTION_URL
     ? [`https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`]
