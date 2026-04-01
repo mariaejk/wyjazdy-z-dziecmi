@@ -1,5 +1,6 @@
 import { Resend } from "resend";
 import type { ReactElement } from "react";
+import { render } from "@react-email/render";
 import { CONTACT } from "@/lib/constants";
 
 const FROM_EMAIL = process.env.FROM_EMAIL || "Wyjazdy z Dziećmi <onboarding@resend.dev>";
@@ -21,13 +22,14 @@ async function sendEmail(options: SendEmailOptions) {
     return;
   }
 
+  const html = await render(options.react);
   const resend = new Resend(process.env.RESEND_API_KEY);
 
   const { error } = await resend.emails.send({
     from: FROM_EMAIL,
     to: [options.to],
     subject: options.subject,
-    react: options.react,
+    html,
     replyTo: options.replyTo,
   });
 
