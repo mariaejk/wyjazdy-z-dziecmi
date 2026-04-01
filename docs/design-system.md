@@ -54,7 +54,7 @@ Georgia to czcionka systemowa (pre-installed na wszystkich urządzeniach) — ze
 | Mięta | `#95D5B2` | `--color-coral` | — |
 | Taupe | `#8B857B` | `--color-taupe` | — |
 | Szałwia | `#7BA187` | `--color-sage` | — |
-| Lawenda | `#C4B5D4` | `--color-lavender` | Kalendarz kategoria "single-parents" |
+| Lawenda | `#C4B5D4` | `--color-lavender` | Kalendarz kategoria "single-z-dziecmi" |
 
 ### Kolory kategorii (kalendarz + badge)
 

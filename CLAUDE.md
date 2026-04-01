@@ -24,8 +24,8 @@ Landing page / sales funnel for "Wyjazdy z Dziećmi" — family workshop retreat
 ## Deployment (migration in progress)
 
 - **Current**: Vercel (`wyjazdy-z-dziecmi-one.vercel.app`) — Keystatic CMS działa z GitHub App `new-cms-wyjazdy-2`
-- **Target**: Cloudflare Workers ($5/mies.) — branch `feature/cloudflare-airtable-migration`
-- **Status**: Fazy 0-3 ukończone (kod gotowy), Fazy 4-5 czekają na Airtable + CF dashboard setup. Keystatic OAuth na Vercel skonfigurowane (29.03).
+- **Target**: Cloudflare Workers ($5/mies.) — `wyjazdy-z-dziecmi.maria-kordalewska.workers.dev`
+- **Status**: Fazy 0-4 ukończone. CF Workers dashboard skonfigurowany (env vars, KV RATE_LIMIT, Airtable, Resend, Turnstile). Faza 5 (DNS cutover) czeka na push + test na staging. (01.04.2026)
 - **Repo**: `https://github.com/mariaejk/wyjazdy-z-dziecmi.git`. Developer (TatianaG-ka) = collaborator.
 - **Keystatic route**: `makeRouteHandler()` z jawnym `clientId`, `clientSecret`, `secret` (nie polegaj na wewnętrznym env var read).
 - **Docs**: `docs/instrukcja-przekazanie-projektu.md`, `docs/setup-external-services.md`, `docs/decyzja-hosting-platforma.md`
@@ -34,7 +34,7 @@ Landing page / sales funnel for "Wyjazdy z Dziećmi" — family workshop retreat
 ## Critical Constraints
 
 - **Motion, not Framer Motion**: Always `import { motion } from 'motion/react'`.
-- **Tailwind v4 syntax**: `@import "tailwindcss"` + `@theme {}`. No `@tailwind` directives.
+- **Tailwind v4 syntax**: `@import "tailwindcss"` + `@theme {}` + `@source` (only `src/` and `content/`). No `@tailwind` directives. No cyclic `--font-*` in `@theme` (causes Turbopack CSS parse error).
 - **All forms need spam protection**: honeypot (`website`, CSS hidden) + rate limiting + Cloudflare Turnstile on every API route.
 - **All API routes use `validateRequest()`** from `src/lib/api-security.ts` — shared CSRF, Content-Length, rate limit (KV on CF Workers, in-memory fallback), honeypot.
 - **`lang="pl"`** on `<html>` element.
