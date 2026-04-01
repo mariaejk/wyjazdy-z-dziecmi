@@ -171,7 +171,7 @@ export default function PrivacyPage() {
             <li><strong>Zgoda marketingowa</strong> — całkowicie dobrowolna, nie wpływa na realizację rezerwacji.</li>
           </ul>
 
-          <h2>7. Pliki cookies</h2>
+          <h2 id="cookies">7. Pliki cookies</h2>
           <p>
             Serwis wykorzystuje pliki cookies (ciasteczka) — małe pliki tekstowe zapisywane
             na Twoim urządzeniu przez przeglądarkę internetową.

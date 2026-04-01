@@ -101,7 +101,10 @@ export function CookieBanner() {
             <p className="text-sm leading-relaxed text-graphite">
               Używamy plików cookies, aby zapewnić prawidłowe działanie strony.
               Możesz zaakceptować wszystkie cookies, wybrać tylko niezbędne lub
-              dostosować swoje preferencje.
+              dostosować swoje preferencje.{" "}
+              <a href="/polityka-prywatnosci#cookies" className="text-moss underline hover:text-moss-light">
+                Więcej informacji
+              </a>
             </p>
             <div className="mt-4 flex flex-col gap-2 sm:flex-row sm:gap-3">
               <button
