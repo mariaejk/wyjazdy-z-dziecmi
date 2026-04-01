@@ -18,6 +18,8 @@ jobs:
       - run: npm ci
 
       - run: npx @opennextjs/cloudflare build
+        env:
+          NEXT_PUBLIC_TURNSTILE_SITE_KEY: ${{ vars.NEXT_PUBLIC_TURNSTILE_SITE_KEY }}
 
       - run: npx wrangler deploy
         env:
