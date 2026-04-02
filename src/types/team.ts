@@ -5,4 +5,5 @@ export type TeamMember = {
   shortBio?: string;
   image?: string;
   instagram?: string;
+  facebook?: string;
 };

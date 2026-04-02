@@ -37,10 +37,10 @@ export const CATEGORY_CONFIG: Record<CategoryKey, CategoryConfig> = {
   },
   "dla-doroslych": {
     label: "Czas bez dzieci",
-    calendarBg: "bg-terracotta text-white",
-    legendBg: "bg-terracotta",
-    badgeBg: "bg-terracotta/15",
-    badgeText: "text-terracotta-dark",
+    calendarBg: "bg-sky text-graphite",
+    legendBg: "bg-sky",
+    badgeBg: "bg-sky/20",
+    badgeText: "text-blue-700",
   },
 };
 

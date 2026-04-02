@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
 import Image from "next/image";
-import { User, Instagram } from "lucide-react";
+import { User, Instagram, Facebook } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Container } from "@/components/layout/Container";
 import { SectionWrapper } from "@/components/ui/SectionWrapper";
@@ -89,16 +89,31 @@ export function PersonBio({
             )}>
               {member.role}
             </p>
-            {member.instagram && (
-              <a
-                href={member.instagram}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="mt-2 inline-flex items-center gap-1.5 text-sm text-moss transition-colors hover:text-moss-light"
-              >
-                <Instagram className="h-4 w-4" strokeWidth={1.5} />
-                {member.instagram.replace(/https?:\/\/(www\.)?instagram\.com\//, "@").replace(/\/$/, "")}
-              </a>
+            {(member.instagram || member.facebook) && (
+              <div className="mt-2 flex flex-wrap gap-4">
+                {member.instagram && (
+                  <a
+                    href={member.instagram}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1.5 text-sm text-moss transition-colors hover:text-moss-light"
+                  >
+                    <Instagram className="h-4 w-4" strokeWidth={1.5} />
+                    {member.instagram.replace(/https?:\/\/(www\.)?instagram\.com\//, "@").replace(/\/$/, "")}
+                  </a>
+                )}
+                {member.facebook && (
+                  <a
+                    href={member.facebook}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1.5 text-sm text-moss transition-colors hover:text-moss-light"
+                  >
+                    <Facebook className="h-4 w-4" strokeWidth={1.5} />
+                    Facebook
+                  </a>
+                )}
+              </div>
             )}
             <div className="mt-4 space-y-4">
               {paragraphs.map((paragraph, i) => (

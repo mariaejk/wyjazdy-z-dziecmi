@@ -232,6 +232,7 @@ export default config({
         }),
         image: fields.text({ label: "Zdjęcie (ścieżka)" }),
         instagram: fields.text({ label: "Instagram URL (opcjonalnie)" }),
+        facebook: fields.text({ label: "Facebook URL (opcjonalnie)" }),
       },
     }),
 

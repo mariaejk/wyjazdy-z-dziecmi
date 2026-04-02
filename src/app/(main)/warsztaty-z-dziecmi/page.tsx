@@ -16,9 +16,9 @@ import { getBreadcrumbSchema } from "@/lib/structured-data";
 export const dynamic = "force-static";
 
 export const metadata: Metadata = {
-  title: "Warsztaty z dziećmi",
+  title: "Rodzinny czas",
   description:
-    "Warsztaty rodzinne z dziećmi. Odpoczynek, wsparcie i czas pełen bliskości w otoczeniu natury — dla mam, babć, cioć i koleżanek.",
+    "Warsztaty rodzinne z dziećmi. Odpoczynek, wsparcie i czas pełen bliskości w otoczeniu natury — dla mam, babć, cioć, wujków i dziadków.",
 };
 
 export default async function FamilyTripsPage() {
@@ -29,7 +29,7 @@ export default async function FamilyTripsPage() {
     <>
       <StructuredData data={getBreadcrumbSchema([
         { name: "Strona główna", url: SITE_CONFIG.url },
-        { name: "Warsztaty z dziećmi", url: `${SITE_CONFIG.url}/warsztaty-z-dziecmi` },
+        { name: "Rodzinny czas", url: `${SITE_CONFIG.url}/warsztaty-z-dziecmi` },
       ])} />
 
       {/* Hero — reduced spacing */}
@@ -38,13 +38,14 @@ export default async function FamilyTripsPage() {
           <ScrollAnimation variant="fadeUp">
             <div className="mx-auto max-w-3xl text-center">
               <h1 className="font-heading text-4xl font-light text-graphite sm:text-5xl lg:text-6xl">
-                <span className="relative inline-block">Warsztaty z dziećmi<svg className="mx-auto mt-1 h-[6px] w-[90%]" viewBox="0 0 200 8" fill="none" preserveAspectRatio="none" aria-hidden="true"><path d="M2 5.5C30 2 50 6.5 80 3.5C110 0.5 130 7 160 4C175 2.5 190 5 198 3.5" stroke="currentColor" className="text-graphite-light/40" strokeWidth="1.5" strokeLinecap="round" /></svg></span>
+                <span className="relative inline-block">Rodzinny czas<svg className="mx-auto mt-1 h-[6px] w-[90%]" viewBox="0 0 200 8" fill="none" preserveAspectRatio="none" aria-hidden="true"><path d="M2 5.5C30 2 50 6.5 80 3.5C110 0.5 130 7 160 4C175 2.5 190 5 198 3.5" stroke="currentColor" className="text-graphite-light/40" strokeWidth="1.5" strokeLinecap="round" /></svg></span>
               </h1>
               <p className="mt-4 text-lg leading-relaxed text-graphite-light sm:text-xl">
                 To propozycja dla rodzin, które szukają alternatywy dla tłocznych
                 miejsc, popularnych atrakcji i hotelowych animacji. Z nami
                 zwolnicie, zapomnicie o bajce i spędzicie naprawdę jakościowy
-                czas razem.
+                czas razem. To też doskonały pomysł na spędzenie czasu z dziećmi
+                dla babć, dziadków, cioć oraz wujków.
               </p>
             </div>
           </ScrollAnimation>

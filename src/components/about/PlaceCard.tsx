@@ -29,10 +29,10 @@ export function PlaceCard({ place, index = 0 }: PlaceCardProps) {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-1 text-sm text-moss hover:text-moss-light"
-                aria-label={`${place.name} na Facebooku (otwiera się w nowej karcie)`}
+                aria-label={`Strona ${place.name} (otwiera się w nowej karcie)`}
               >
                 <ExternalLink className="h-3.5 w-3.5" strokeWidth={1.5} />
-                <span>Facebook</span>
+                <span>Strona WWW</span>
               </a>
             )}
           </div>
@@ -52,14 +52,13 @@ export function PlaceCard({ place, index = 0 }: PlaceCardProps) {
         {place.images && place.images.length > 0 && (
           <div className="mt-6 grid grid-cols-2 gap-3 sm:grid-cols-4">
             {place.images.map((src, i) => (
-              <div key={src} className="overflow-hidden rounded-none">
+              <div key={src} className="relative aspect-[3/2] overflow-hidden rounded-none">
                 <Image
                   src={src}
                   alt={`${place.name} — zdjęcie ${i + 1}`}
-                  width={300}
-                  height={200}
+                  fill
                   sizes="(max-width: 640px) calc(50vw - 2rem), 150px"
-                  className="h-auto w-full object-cover"
+                  className="object-cover"
                 />
               </div>
             ))}
