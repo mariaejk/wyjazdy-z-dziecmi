@@ -31,7 +31,7 @@ export function TripProgram({ schedule }: TripProgramProps) {
                         className="mt-0.5 h-4 w-4 shrink-0 text-moss"
                         strokeWidth={1.5}
                       />
-                      <div className="flex min-w-0 flex-col gap-0.5 sm:flex-row sm:gap-3">
+                      <div className="grid min-w-0 grid-cols-[auto_1fr] gap-x-3 gap-y-0.5 sm:gap-x-4">
                         <span className="whitespace-nowrap text-sm font-semibold text-moss">
                           {activity.time}
                         </span>

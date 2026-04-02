@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { Container } from "@/components/layout/Container";
 import { SectionWrapper } from "@/components/ui/SectionWrapper";
 import { SectionHeading } from "@/components/ui/SectionHeading";
@@ -32,7 +33,20 @@ export default async function MotherDaughterPage() {
         { name: "Matka i córka", url: `${SITE_CONFIG.url}/matka-z-corka` },
       ])} />
 
-      {/* Hero — reduced spacing */}
+      {/* Hero image */}
+      <div className="relative aspect-[21/9] w-full overflow-hidden sm:aspect-[3/1]">
+        <Image
+          src="/images/okladka-matki-hero.jpeg"
+          alt="Warsztaty matka i córka — kobiety siedzące na drewnianej podłodze"
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover object-top"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-graphite/40 to-transparent" />
+      </div>
+
+      {/* Hero text */}
       <SectionWrapper className="py-4 sm:py-6">
         <Container>
           <ScrollAnimation variant="fadeUp">

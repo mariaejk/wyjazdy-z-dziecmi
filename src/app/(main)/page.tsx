@@ -61,8 +61,8 @@ export default async function Home() {
 
       {/* Image breaker #3 — matki i córki */}
       <ImageBreaker
-        src="/images/matki-corki-1.jpg"
-        alt="Warsztaty matka i córka w naturze"
+        src="/images/matki-corki-8.jpg"
+        alt="Mama przytulająca dziecko w naturze"
         aspectRatio="16/9"
       />
 

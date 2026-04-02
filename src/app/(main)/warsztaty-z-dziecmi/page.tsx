@@ -41,7 +41,7 @@ export default async function FamilyTripsPage() {
           fill
           priority
           sizes="100vw"
-          className="object-cover"
+          className="object-cover object-bottom"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-graphite/40 to-transparent" />
       </div>
