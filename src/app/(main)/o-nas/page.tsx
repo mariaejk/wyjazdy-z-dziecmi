@@ -43,6 +43,8 @@ const missionCards = [
 export default async function AboutPage() {
   const maria = await getTeamMember("Maria Kordalewska");
   const kamila = await getTeamMember("Kamila Janczurewicz");
+  const ilona = await getTeamMember("Ilona Bekier-Ekwa");
+  const michal = await getTeamMember("Michał Wróblewski");
   const places = await getAllPlaces();
 
   return (
@@ -103,6 +105,8 @@ export default async function AboutPage() {
         </Container>
       </SectionWrapper>
       {kamila && <PersonBio member={kamila} variant="alternate" imagePosition="left" />}
+      {ilona && <PersonBio member={ilona} imagePosition="right" />}
+      {michal && <PersonBio member={michal} variant="alternate" imagePosition="left" />}
 
       {/* Places */}
       <SectionWrapper variant="alternate">

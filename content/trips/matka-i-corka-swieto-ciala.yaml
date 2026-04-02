@@ -1,0 +1,180 @@
+title: 'Matka i Córka — Święto Ciała'
+subtitle: 'Wyjazdowe warsztaty z ruchem i sztuką dla kobiet i dziewczynek 5+'
+date: '2026-06-04'
+dateEnd: '2026-06-07'
+location: 'Kacze Bagno — Miejsce Inicjatyw Pozytywnych'
+category: matka-corka
+shortDescription: >-
+  Zapraszamy Was na wyjątkowy wyjazd dla mam i córek, którego tematem
+  przewodnim będzie ciało — jego mądrość, różnorodność i naturalne piękno.
+  To spotkanie stworzone, aby budować czułą i zdrową relację z ciałem już
+  od najmłodszych lat oraz wzmacniać więź między matką i córką.
+longDescription: >-
+  W świecie porównań i ocen wracamy do czucia, oddechu i uważności. Do ruchu,
+  który nie musi wyglądać w określony sposób. Do ciała, które nie musi być
+  „idealne", aby było wystarczające. Poprzez ruch intuicyjny, taniec, jogę,
+  praktyki oddechowe i twórcze działania będziemy odkrywać radość poruszania
+  się oraz uczyć się słuchać sygnałów płynących z ciała.
+
+
+  Podczas wyjazdu Ilona poprowadzi autorską metodę Womanifesto, którą rozwija
+  od 20 lat, pracując z kobietami i ich historiami zapisanymi w ciele. To
+  łagodna i głęboka praca oparta na powrocie do swojej esencji, odkrywaniu
+  ukrytego potencjału oraz wyrażaniu siebie poprzez ruch i sztukę. Ważnym
+  elementem będzie wzajemne wsparcie, bycie widzianą i doświadczenie
+  kobiecego kręgu.
+
+
+  Maria poprowadzi dla mam praktykę ukochania swojego ciała — pełną czułości,
+  akceptacji i wdzięczności. Będzie to czas zatrzymania, łagodnego spotkania
+  ze sobą i spojrzenia na swoje ciało z nowej perspektywy — bez oceniania,
+  z uważnością i życzliwością. Poprowadzi również łagodną poranną jogę dla
+  mam i córek.
+
+
+  Tworzymy bezpieczną, wspierającą atmosferę, w której dziewczynki mogą
+  poczuć się częścią kobiecego kręgu — widziane i przyjęte dokładnie takie,
+  jakie są.
+
+
+  W programie znajdzie się również ceramika, ceremonia kakao, wspólne
+  ognisko, sauna, balia oraz naturalna sesja zdjęciowa dla mam i córek.
+  Fotografka Joanna Gieranin, która będzie z nami przez cały wyjazd, jest
+  także tancerką i mamą — przyjedzie ze swoją córką i uchwyci Waszą
+  bliskość, autentyczność i swobodę w ruchu.
+image: /images/warsztat-matki-corki-swieto-ciala.jpg
+isPast: false
+spotsTotal: 12
+spotsLeft: 10
+deposit: 450
+earlyBirdDeadline: ''
+earlyBirdPrice: null
+targetAudience:
+  - label: 'Mamy, które chcą budować w córce miłość do ciała od najmłodszych lat'
+    description: ''
+  - label: 'Córki od 5 lat'
+    description: ''
+  - label: 'Kobiety szukające czułego spotkania ze sobą i swoim ciałem'
+    description: ''
+schedule:
+  - date: '2026-06-04'
+    dayLabel: 'Czwartek, 4 czerwca — PRZYJAZD & OSADZENIE'
+    activities:
+      - time: '12:00'
+        activity: 'Przyjazd, zakwaterowanie, czas na oddech'
+      - time: '14:00'
+        activity: Obiad
+      - time: '16:00–18:30'
+        activity: 'Krąg, przywitanie, matka + córka — świętowanie ciała'
+      - time: '19:00'
+        activity: 'Kolacja, ognisko'
+  - date: '2026-06-05'
+    dayLabel: 'Piątek, 5 czerwca — SŁUCHANIE SYGNAŁÓW CIAŁA'
+    activities:
+      - time: '8:00'
+        activity: 'Joga (łagodny poranek)'
+      - time: '9:00'
+        activity: Śniadanie
+      - time: '10:30–13:30'
+        activity: 'Warsztat Womanifesto z Iloną dla matek / warsztat ceramiczny dla córek'
+      - time: '14:00'
+        activity: Obiad
+      - time: '16:00–17:30'
+        activity: 'Warsztat taneczny z Iloną dla córek / warsztat miłości do ciała z Marią dla mam'
+      - time: '17:30–18:30'
+        activity: 'NIESPODZIANKA / wszyscy'
+      - time: '19:00'
+        activity: Kolacja
+      - time: '20:00'
+        activity: 'Sauna & balia & chill'
+  - date: '2026-06-06'
+    dayLabel: 'Sobota, 6 czerwca — RELACJA: JA I MOJE CIAŁO / JA I TY'
+    activities:
+      - time: '8:00'
+        activity: Joga
+      - time: '9:00'
+        activity: Śniadanie
+      - time: '10:00–11:30'
+        activity: 'Czas na spacer, medytacje'
+      - time: '11:30–13:30'
+        activity: 'Warsztat matka + córka z Iloną i Naomi (ruch, emocje, granice, relacja z ciałem)'
+      - time: '14:00'
+        activity: Obiad
+      - time: '16:00–18:30'
+        activity: 'Sesja zdjęciowa matka + córka'
+      - time: '19:00'
+        activity: Kolacja
+      - time: '20:00'
+        activity: Ceremonia kakao
+  - date: '2026-06-07'
+    dayLabel: 'Niedziela, 7 czerwca — INTEGRACJA'
+    activities:
+      - time: '8:30'
+        activity: 'Joga (łagodna)'
+      - time: '9:30'
+        activity: Śniadanie
+      - time: '10:30–13:30'
+        activity: 'Warsztat matka + córka — świętowanie ciała oraz krąg na zakończenie'
+      - time: '14:00'
+        activity: Obiad
+practicalInfo:
+  accommodation: >-
+    Eko-domki (pokoje 3-4 osobowe z łazienką), pokoje w budynku głównym
+    (2-3 osobowe z łazienką), duża sala nad pracownią (wieloosobowa
+    z dwoma łazienkami), namiot (dostęp do łazienek w budynku głównym).
+  food: >-
+    3 posiłki dziennie (śniadanie, obiad, kolacja), każdego dnia świeże ciasto,
+    owoce, kawa, herbata, woda dostępne non stop. Domowe, zdrowe posiłki
+    przygotowywane z ekologicznych produktów od lokalnych dostawców oraz
+    z permakulturowego ogrodu. Uwzględniamy diety (alergię, nietolerancję).
+  transport: ''
+  childCare: >-
+    Podczas bloków warsztatowych dla mam, córki mają własny program:
+    warsztaty ceramiczne, zajęcia taneczne i twórcze w bezpiecznej przestrzeni.
+pricing:
+  - label: 'Mama (eko-domki)'
+    price: 1850
+  - label: 'Córka (eko-domki)'
+    price: 1145
+  - label: 'Mama (pokoje w budynku głównym)'
+    price: 1800
+  - label: 'Córka (pokoje w budynku głównym)'
+    price: 1130
+  - label: 'Mama (duża sala nad pracownią)'
+    price: 1625
+  - label: 'Córka (duża sala nad pracownią)'
+    price: 1093
+  - label: 'Mama (namiot)'
+    price: 1490
+  - label: 'Córka (namiot)'
+    price: 1025
+priceIncludes: []
+priceExcludes: []
+collaborator:
+  name: Ilona Bekier-Ekwa
+  role: 'Choreografka, reżyserka ruchu, nauczycielka jogi i medytacji'
+  bio: >-
+    Finalistka i choreografka programu „You Can Dance - Po Prostu Tańcz".
+    Autorka programów artystyczno-rozwojowych Humanifesto, Womanifesto
+    i Manifesto. Od ponad 20 lat prowadzi warsztaty, w których ruch staje
+    się narzędziem budowania świadomości ciała. Jest mamą 5-letniej Naomi,
+    z którą wspólnie praktykuje jogę i taniec.
+  image: /images/ilona.jpg
+faq:
+  - question: Dla jakiego wieku dziewczynek są warsztaty?
+    answer: >-
+      Warsztaty są projektowane z myślą o dziewczynkach w wieku 5+. Jeśli Twoja
+      córka jest nieco młodsza — skontaktuj się z nami, ocenimy indywidualnie.
+  - question: Czy wyżywienie jest wliczone w cenę?
+    answer: >-
+      Tak, pełne wyżywienie (śniadania, obiady, kolacje) jest wliczone w cenę.
+      Posiłki przygotowywane z ekologicznych składników z uwzględnieniem diet.
+  - question: Jak zarezerwować miejsce?
+    answer: >-
+      Gwarancją miejsca jest wpłata zaliczki 450 zł. Dane do przelewu
+      otrzymasz po wypełnieniu formularza zgłoszeniowego.
+gallery:
+  - src: /images/warsztat-matki-corki-swieto-ciala.jpg
+    alt: 'Matka i Córka — Święto Ciała'
+    isMain: true
+contentBlocks: []
