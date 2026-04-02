@@ -21,11 +21,12 @@ Landing page / sales funnel for "Wyjazdy z Dziećmi" — family workshop retreat
 - **wrangler 4.77.0** — CF Workers CLI (devDependency)
 - Fonts: **Georgia** (headings, system font via `@theme`) + **Inter** (body) + **Lora** (logo) + **Caveat** (logo script). Inter/Lora/Caveat via `next/font/google`.
 
-## Deployment (migration in progress)
+## Deployment (LIVE on CF Workers)
 
-- **Current**: Vercel (`wyjazdy-z-dziecmi-one.vercel.app`) — Keystatic CMS działa z GitHub App `new-cms-wyjazdy-2`
-- **Target**: Cloudflare Workers ($5/mies.) — `wyjazdy-z-dziecmi.maria-kordalewska.workers.dev`
-- **Status**: CF Workers DZIAŁA na staging (Airtable + Resend + Turnstile przetestowane). Faza 5 (DNS cutover) pending. (01.04.2026)
+- **Production**: Cloudflare Workers — `wyjazdyzdziecmi.pl` / `www.wyjazdyzdziecmi.pl` (domena podłączona 02.04.2026)
+- **Staging**: `wyjazdy-z-dziecmi.maria-kordalewska.workers.dev`
+- **CMS**: Keystatic na Vercel (`wyjazdy-z-dziecmi-one.vercel.app`) — GitHub App `new-cms-wyjazdy-2`
+- **Status**: Formularze naprawione (Turnstile fix 02.04.2026). Airtable + Resend + Turnstile działają.
 - **Deploy**: GitHub Actions auto-deploy na push do master (build na Linux). Secrety via `wrangler secret put`, public vars w `wrangler.jsonc`.
 - **Email**: Plain HTML templates (`src/lib/email-templates.ts`) — React Email nie działa na CF Workers runtime.
 - **Repo**: `https://github.com/mariaejk/wyjazdy-z-dziecmi.git`. Developer (TatianaG-ka) = collaborator.
@@ -38,6 +39,7 @@ Landing page / sales funnel for "Wyjazdy z Dziećmi" — family workshop retreat
 - **Motion, not Framer Motion**: Always `import { motion } from 'motion/react'`.
 - **Tailwind v4 syntax**: `@import "tailwindcss"` + `@theme {}` + `@source` (only `src/` and `content/`). No `@tailwind` directives. No cyclic `--font-*` in `@theme` (causes Turbopack CSS parse error).
 - **All forms need spam protection**: honeypot (`website`, CSS hidden) + rate limiting + Cloudflare Turnstile on every API route.
+- **Turnstile site key**: Use `TURNSTILE_SITE_KEY` from `constants.ts` (hardcoded). NOT `process.env.NEXT_PUBLIC_*` — CF Workers/OpenNext doesn't inline NEXT_PUBLIC vars into client bundles.
 - **All API routes use `validateRequest()`** from `src/lib/api-security.ts` — shared CSRF, Content-Length, rate limit (KV on CF Workers, in-memory fallback), honeypot.
 - **`lang="pl"`** on `<html>` element.
 - **Form delivery**: Airtable (data storage) + Resend emails + Turnstile. Config: `docs/setup-external-services.md`.

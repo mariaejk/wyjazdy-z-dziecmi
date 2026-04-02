@@ -384,3 +384,9 @@ Historical lessons from each development phase. Reference when debugging similar
 - **3 linie obrony antybotowej ponad standard**: Turnstile + honeypot + rate limit to więcej niż wymaga większość landing page.
 - **CSP `unsafe-inline` + `unsafe-eval`**: Wymagane przez Next.js/GA, ale zmniejsza ochronę XSS. Rozważyć nonce-based CSP w przyszłości.
 - **Dane dzieci — minimalizacja OK**: Zbieramy tylko liczbę dzieci + wiek (opcjonalnie). Brak imion, dat urodzenia, PESEL. Ale brakuje jawnego oświadczenia rodzica w checkbox RODO.
+
+## CF Workers + OpenNext 02.04.2026
+
+- **`NEXT_PUBLIC_*` env vars NIE działają na CF Workers**: `@opennextjs/cloudflare build` nie inline'uje `NEXT_PUBLIC_*` do client JS bundles, nawet jeśli są ustawione w GitHub Actions env. Hardkoduj publiczne klucze (Turnstile site key, GA ID) w `src/lib/constants.ts` jako eksportowane stałe.
+- **Turnstile debug**: Jeśli formularz zwraca "Weryfikacja antyspam jest wymagana" — sprawdź czy site key jest w client bundle (`curl strona | grep 0x4AAAA`). Brak = widget się nie renderuje = token nie jest wysyłany.
+- **Domena podłączona**: `wyjazdyzdziecmi.pl` + `www.wyjazdyzdziecmi.pl` → CF Workers. DNS na Hostingerze. ALLOWED_ORIGINS w `constants.ts` zawiera oba warianty + workers.dev.
