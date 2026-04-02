@@ -12,7 +12,7 @@ export function Footer() {
   return (
     <footer className="border-t border-graphite/10 bg-parchment">
       <Container className="py-8 sm:py-10">
-        <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid grid-cols-2 gap-x-4 gap-y-8 lg:grid-cols-3">
           {/* Contact */}
           <div>
             <h3 className="font-heading text-lg font-light italic text-graphite">
@@ -70,7 +70,7 @@ export function Footer() {
           </div>
 
           {/* Legal */}
-          <div>
+          <div className="col-span-2 lg:col-span-1">
             <h3 className="font-heading text-lg font-light italic text-graphite">
               Informacje
             </h3>

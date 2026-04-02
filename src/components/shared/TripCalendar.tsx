@@ -224,44 +224,61 @@ export function TripCalendar({ trips }: TripCalendarProps) {
 
   return (
     <div className="overflow-hidden rounded-none border border-graphite/10 bg-white" aria-label="Kalendarz warsztatów" role="region">
-      {/* Two-month grid */}
-      <div className="grid grid-cols-1 gap-4 p-4 sm:grid-cols-2 sm:gap-6" aria-live="polite">
-        <MonthGrid
-          year={currentYear}
-          month={currentMonth}
-          trips={trips}
-          activeFilter={activeFilter}
-          now={now}
-          onPrev={goToPrevMonth}
-        />
-        <MonthGrid
-          year={next.year}
-          month={next.month}
-          trips={trips}
-          activeFilter={activeFilter}
-          now={now}
-          onNext={goToNextMonth}
-        />
+      {/* Calendar grid — 1 month on mobile, 2 on sm+ */}
+      <div className="p-4 sm:grid sm:grid-cols-2 sm:gap-6" aria-live="polite">
+        {/* Mobile: single month with both arrows */}
+        <div className="sm:hidden">
+          <MonthGrid
+            year={currentYear}
+            month={currentMonth}
+            trips={trips}
+            activeFilter={activeFilter}
+            now={now}
+            onPrev={goToPrevMonth}
+            onNext={goToNextMonth}
+          />
+        </div>
+        {/* Desktop: two months side by side */}
+        <div className="hidden sm:block">
+          <MonthGrid
+            year={currentYear}
+            month={currentMonth}
+            trips={trips}
+            activeFilter={activeFilter}
+            now={now}
+            onPrev={goToPrevMonth}
+          />
+        </div>
+        <div className="hidden sm:block">
+          <MonthGrid
+            year={next.year}
+            month={next.month}
+            trips={trips}
+            activeFilter={activeFilter}
+            now={now}
+            onNext={goToNextMonth}
+          />
+        </div>
       </div>
 
       {/* Legend — interactive filters */}
-      <div className="flex flex-wrap items-center justify-center gap-3 border-t border-graphite/10 px-4 py-3 sm:gap-4">
+      <div className="flex flex-wrap items-center justify-center gap-2 border-t border-graphite/10 px-4 py-3 sm:gap-3">
         {(Object.entries(CATEGORY_CONFIG) as [CategoryKey, typeof CATEGORY_CONFIG[CategoryKey]][]).map(([key, config]) => (
           <button
             key={key}
             onClick={() => toggleFilter(key)}
             className={cn(
-              "flex items-center gap-2 rounded-sm px-3 py-2.5 text-xs font-medium transition-all sm:text-sm",
+              "flex items-center gap-2 rounded-full border px-3 py-2 text-xs font-medium transition-all sm:px-3 sm:py-2.5 sm:text-sm",
               activeFilter === key
-                ? cn(config.badgeBg, config.badgeText, "ring-1 ring-current")
+                ? cn(config.badgeBg, config.badgeText, "border-current")
                 : activeFilter === null
-                  ? "text-graphite-light hover:text-graphite"
-                  : "text-graphite-light/50 hover:text-graphite-light",
+                  ? "border-graphite/15 bg-white text-graphite-light hover:text-graphite hover:border-graphite/30"
+                  : "border-transparent text-graphite-light/50 hover:text-graphite-light hover:border-graphite/15",
             )}
             aria-pressed={activeFilter === key}
             aria-label={`Filtruj: ${config.label}`}
           >
-            <span className={cn("inline-block h-3 w-3 rounded-sm", config.legendBg)} />
+            <span className={cn("inline-block h-3 w-3 shrink-0 rounded-full", config.legendBg)} />
             {config.label}
           </button>
         ))}

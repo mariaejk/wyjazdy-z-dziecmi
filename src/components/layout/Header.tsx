@@ -81,7 +81,7 @@ function DropdownNavItem({
 
       {isOpen && (
         <ul
-          className="absolute left-0 top-full z-50 mt-1 min-w-[160px] rounded-none border border-parchment-dark bg-parchment py-1 shadow-lg"
+          className="absolute left-0 top-full z-50 mt-1 min-w-[160px] rounded-none border border-graphite/10 bg-white/95 backdrop-blur-md py-2 shadow-xl"
           role="menu"
         >
           {item.children?.map((child) => {
@@ -189,8 +189,8 @@ export function Header() {
               <span>{CONTACT.phoneDisplay}</span>
             </a>
 
-            {/* CTA — always visible */}
-            <Button href={ROUTES.trips} size="sm" className="whitespace-nowrap lg:hidden">
+            {/* CTA — hidden on smallest screens to prevent hamburger overflow */}
+            <Button href={ROUTES.trips} size="sm" className="hidden sm:inline-flex lg:hidden whitespace-nowrap">
               Sprawdź terminy
             </Button>
             <div className="hidden lg:block">
