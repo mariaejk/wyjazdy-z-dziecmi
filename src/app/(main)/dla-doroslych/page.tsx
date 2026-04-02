@@ -35,9 +35,9 @@ export default async function AdultOnlyPage() {
                 Warsztaty dla dorosłych
               </h1>
               <p className="mt-6 text-lg leading-relaxed text-graphite-light sm:text-xl">
-                Wyjazdy stworzone wyłącznie dla dorosłych — przestrzeń
-                na regenerację, ruch i spotkanie z sobą. Joga, konie, natura
-                i kameralna grupa ludzi, z którymi dobrze jest po prostu być.
+                Zapraszamy Was także na wydarzenia bez dzieci. To spotkania
+                doskonałe dla rodziców, osób szukających spokoju, odpoczynku,
+                ale też kontaktu ze sobą.
               </p>
             </div>
           </ScrollAnimation>

@@ -35,9 +35,13 @@ export default async function SingleParentsPage() {
                 Single z dziećmi
               </h1>
               <p className="mt-4 text-lg leading-relaxed text-graphite-light sm:text-xl">
-                Warsztaty stworzone z myślą o samodzielnych rodzicach i ich
-                dzieciach. Przestrzeń bez pośpiechu, pełna wsparcia i zrozumienia
-                — bo zasługujesz na chwilę wytchnienia.
+                Warsztaty stworzone z myślą o samodzielnych i o samotnych
+                rodzicach i ich dzieciach. Bez względu na to, do której kategorii
+                siebie zaliczasz, zapraszamy Cię do przestrzeni pełnej zrozumienia
+                i wsparcia. Gdzie możesz przez chwilę odetchnąć, zobaczyć, że nie
+                jesteś sam w swojej walce, bo inni są na tym samym froncie.
+                Inaczej spojrzeć na siebie i swoje dziecko. To też przestrzeń
+                budowania relacji, bo w końcu nie jesteśmy tylko rodzicami.
               </p>
             </div>
           </ScrollAnimation>

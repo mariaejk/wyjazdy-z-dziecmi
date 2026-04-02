@@ -41,10 +41,10 @@ export default async function FamilyTripsPage() {
                 <span className="relative inline-block">Warsztaty z dziećmi<svg className="mx-auto mt-1 h-[6px] w-[90%]" viewBox="0 0 200 8" fill="none" preserveAspectRatio="none" aria-hidden="true"><path d="M2 5.5C30 2 50 6.5 80 3.5C110 0.5 130 7 160 4C175 2.5 190 5 198 3.5" stroke="currentColor" className="text-graphite-light/40" strokeWidth="1.5" strokeLinecap="round" /></svg></span>
               </h1>
               <p className="mt-4 text-lg leading-relaxed text-graphite-light sm:text-xl">
-                Nie musisz być samodzielnym rodzicem, żeby potrzebować chwili
-                wytchnienia. Nasze warsztaty to bezpieczna przestrzeń dla każdego,
-                kto chce spędzić wyjątkowy czas z dzieckiem — mamy, babcie,
-                ciocie, koleżanki. Odpoczywaj, oddychaj i po prostu bądź.
+                To propozycja dla rodzin, które szukają alternatywy dla tłocznych
+                miejsc, popularnych atrakcji i hotelowych animacji. Z nami
+                zwolnicie, zapomnicie o bajce i spędzicie naprawdę jakościowy
+                czas razem.
               </p>
             </div>
           </ScrollAnimation>

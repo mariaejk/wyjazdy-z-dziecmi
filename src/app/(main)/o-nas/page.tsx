@@ -24,19 +24,19 @@ const missionCards = [
     icon: Leaf,
     title: "Natura i cisza",
     description:
-      "Szukam miejsc w \„bezinterneciu\" i \„bezzasięgowie\", gdzie możemy zbliżyć się do siebie.",
+      "Szukam miejsc, gdzie możemy zbliżyć się do siebie z minimalną ilością bodźców i rozpraszaczy.",
   },
   {
     icon: Heart,
     title: "Autentyczne relacje",
     description:
-      "Tworzę przestrzeń do wspólnego bycia — bez pośpiechu, bez oceniania, z pełną obecnością.",
+      "Tworzę przestrzeń do wspólnego bycia — bez pośpiechu, bez oceniania, z pełną uważnością.",
   },
   {
     icon: Star,
     title: "Najlepsi specjaliści",
     description:
-      "Zapraszam do współpracy specjalistów od rozwoju, aby tworzyć spotkania \„lepsze niż bajka\".",
+      "Zapraszam do współpracy specjalistów od rozwoju, aby zadbać o jakość i różnorodność warsztatów.",
   },
 ];
 

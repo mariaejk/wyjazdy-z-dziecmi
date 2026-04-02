@@ -41,11 +41,12 @@ export default async function MotherDaughterPage() {
                 Matka i córka
               </h1>
               <p className="mt-4 text-lg leading-relaxed text-graphite-light sm:text-xl">
-                Zapraszamy Cię w podróż poza codzienny pośpiech, hałas i role,
-                w które tak łatwo wpadamy. To wyjazdowe warsztaty stworzone
-                z myślą o kobietach — tych dużych i tych małych —
-                które pragną spotkać się naprawdę: w ruchu, w uważności
-                i w sercu.
+                To spotkanie dwóch kobiet. Każda zamknięta w swoim czasie,
+                a jednocześnie żyjące równolegle, tak bardzo zespolone ze sobą
+                od zawsze. Nierozerwalne, a jednak tak bardzo różne. Ten warsztat
+                to okazja do zaobserwowania tej relacji taką, jaka ona jest.
+                To czas, aby na chwilę wyjść z ról i w zabawie i szczerym
+                uśmiechu odnaleźć radość z bycia razem.
               </p>
             </div>
           </ScrollAnimation>
