@@ -37,7 +37,11 @@ items:
       profesjonalna infrastruktura do jazdy konnej: kryta ujeżdżalnia, parkur,
       olbrzymie tereny do jazdy konnej.
     url: https://sasek.pl/
-    images: []
+    images:
+      - /images/sasek-1.jpg
+      - /images/sasek-2.jpg
+      - /images/sasek-3.jpg
+      - /images/sasek-4.jpg
     features:
       - Jezioro z piaszczystą plażą
       - Kryta ujeżdżalnia

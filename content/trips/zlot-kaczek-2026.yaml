@@ -60,8 +60,8 @@ targetAudience:
 schedule: []
 practicalInfo:
   accommodation: >-
-    Pole namiotowe (w cenie biletu), sala wspólna z łóżkami (60 zł/os/noc),
-    pokoje eko-domki (100 zł/os/noc), przyczepy campingowe (700 zł/4 dni).
+    Pole namiotowe w cenie biletu, sala wspólna z łóżkami, pokoje eko-domki,
+    przyczepy campingowe.
   food: >-
     Pełne wyżywienie w cenie biletu: śniadanie, obiad, kolacja, domowe
     wypieki. Opcje: wegetariańska, wegańska, bezglutenowa.
@@ -70,11 +70,7 @@ practicalInfo:
     Podczas bloków warsztatowych dla dorosłych, dziećmi opiekują się
     doświadczone animatorki. Program dla dzieci obejmuje zabawy na świeżym
     powietrzu, tworzenie i ruch.
-pricing:
-  - label: Bilet early bird (czw-nd)
-    price: 690
-  - label: Bilet early bird (pt-nd)
-    price: 560
+pricing: []
 priceIncludes:
   - Pełne wyżywienie (3 posiłki + przekąski)
   - Nocleg na polu namiotowym/campingowym

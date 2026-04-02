@@ -71,9 +71,9 @@ practicalInfo:
     Przytulne apartamenty w pensjonacie Sasek Mały — bezpieczny, ogrodzony
     teren z dostępem do jeziora.
   food: >-
-    Całodzienne wyżywienie: 140 zł/dzień dorosły, 70 zł dzieci do 10 lat, 0 zł
-    dzieci do 3 lat. Część pokoi ma już śniadanie w cenie, można też wziąć
-    opcję bez wyżywienia. Płatne w pensjonacie.
+    Całodzienne wyżywienie płatne w pensjonacie. Część pokoi ma już śniadanie
+    w cenie, można też wziąć opcję bez wyżywienia. Dzieci do 3 lat bezpłatnie.
+    Cennik na sasek.pl.
   transport: Dojazd własny. Szczegółowe wskazówki otrzymasz po rezerwacji.
   childCare: >-
     Podczas bloków warsztatowych dla dorosłych, dziećmi opiekują się
@@ -89,8 +89,8 @@ priceIncludes:
   - Animacje i opieka dla dzieci
   - Gry i zabawy na świeżym powietrzu
 priceExcludes:
-  - 'Nocleg (od 100 zł/os, płatny w pensjonacie)'
-  - Wyżywienie (140 zł/dzień dorosły)
+  - Nocleg (płatny w pensjonacie)
+  - Wyżywienie (płatne w pensjonacie)
   - Jazda konna (płatna w pensjonacie)
 collaborator:
   name: Kamila Janczurewicz
