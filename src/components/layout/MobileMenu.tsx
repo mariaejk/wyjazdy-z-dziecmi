@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useCallback, useState } from "react";
+import { createPortal } from "react-dom";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { X, ChevronDown } from "lucide-react";
@@ -163,7 +164,14 @@ export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
     };
   }, [isOpen, handleKeyDown]);
 
-  return (
+  // Portal to document.body — prevents iOS Safari stacking context issues
+  // when header has sticky + backdrop-blur
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => setMounted(true), []);
+
+  if (!mounted) return null;
+
+  return createPortal(
     <AnimatePresence>
       {isOpen && (
         <>
@@ -216,6 +224,7 @@ export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
           </motion.div>
         </>
       )}
-    </AnimatePresence>
+    </AnimatePresence>,
+    document.body
   );
 }
