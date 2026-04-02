@@ -163,7 +163,7 @@ export function NewsletterForm() {
             type="checkbox"
             aria-invalid={!!errors.consentRodo}
             aria-describedby={errors.consentRodo ? "newsletter-consent-error" : undefined}
-            className="mt-0.5 h-3.5 w-3.5 shrink-0 rounded-none border-graphite/20 text-moss focus:ring-2 focus:ring-moss/20 focus:ring-offset-0"
+            className="mt-0.5 h-4 w-4 shrink-0 rounded-none border-graphite/20 text-moss focus:ring-2 focus:ring-moss/20 focus:ring-offset-0"
             {...register("consentRodo")}
           />
           <label htmlFor="newsletter-consent" className="text-xs leading-relaxed text-graphite-light">

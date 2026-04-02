@@ -14,7 +14,7 @@ export function Input({ label, error, id, className, ref, ...props }: InputProps
     <div className={className}>
       <label
         htmlFor={inputId}
-        className="block text-sm font-medium text-graphite"
+        className="block text-sm font-medium text-graphite sm:text-sm"
       >
         {label}
         {props.required && (
@@ -37,7 +37,7 @@ export function Input({ label, error, id, className, ref, ...props }: InputProps
         {...props}
       />
       {error && (
-        <p id={`${inputId}-error`} className="mt-1 text-sm text-red-600" role="alert">
+        <p id={`${inputId}-error`} className="mt-1 text-xs text-red-600 sm:text-sm" role="alert">
           {error}
         </p>
       )}

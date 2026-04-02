@@ -110,7 +110,7 @@ export function FooterNewsletter() {
                 placeholder="Twój email"
                 aria-invalid={!!errors.email}
                 aria-describedby={errors.email ? "footer-nl-email-error" : undefined}
-                className="w-full rounded-none border border-graphite/20 bg-white px-3 py-2 text-sm text-graphite placeholder:text-graphite-light focus:border-moss focus:outline-none focus:ring-2 focus:ring-moss/20"
+                className="w-full rounded-none border border-graphite/20 bg-white px-3 py-2.5 text-base text-graphite placeholder:text-graphite-light focus:border-moss focus:outline-none focus:ring-2 focus:ring-moss/20 sm:py-2 sm:text-sm"
                 {...register("email")}
               />
               {errors.email && (
@@ -148,7 +148,7 @@ export function FooterNewsletter() {
                 type="checkbox"
                 aria-invalid={!!errors.consentRodo}
                 aria-describedby={errors.consentRodo ? "footer-nl-rodo-error" : undefined}
-                className="mt-0.5 h-3.5 w-3.5 shrink-0 rounded-none border-graphite/20 text-moss focus:ring-2 focus:ring-moss/20 focus:ring-offset-0"
+                className="mt-0.5 h-4 w-4 shrink-0 rounded-none border-graphite/20 text-moss focus:ring-2 focus:ring-moss/20 focus:ring-offset-0"
                 {...register("consentRodo")}
               />
               <label htmlFor="footer-nl-consent-rodo" className="text-xs leading-relaxed text-graphite-light">
@@ -176,7 +176,7 @@ export function FooterNewsletter() {
                 type="checkbox"
                 aria-invalid={!!errors.consentNewsletter}
                 aria-describedby={errors.consentNewsletter ? "footer-nl-newsletter-error" : undefined}
-                className="mt-0.5 h-3.5 w-3.5 shrink-0 rounded-none border-graphite/20 text-moss focus:ring-2 focus:ring-moss/20 focus:ring-offset-0"
+                className="mt-0.5 h-4 w-4 shrink-0 rounded-none border-graphite/20 text-moss focus:ring-2 focus:ring-moss/20 focus:ring-offset-0"
                 {...register("consentNewsletter")}
               />
               <label htmlFor="footer-nl-consent-newsletter" className="text-xs leading-relaxed text-graphite-light">
