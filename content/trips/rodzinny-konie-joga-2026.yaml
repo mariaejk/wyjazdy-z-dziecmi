@@ -44,7 +44,7 @@ image: /images/konie-joga-2026.jpg
 isPast: false
 spotsTotal: null
 spotsLeft: null
-deposit: 300
+deposit: 0
 earlyBirdDeadline: ''
 earlyBirdPrice: null
 targetAudience:
@@ -72,7 +72,8 @@ practicalInfo:
     teren z dostępem do jeziora.
   food: >-
     Całodzienne wyżywienie: 140 zł/dzień dorosły, 70 zł dzieci do 10 lat, 0 zł
-    dzieci do 3 lat.
+    dzieci do 3 lat. Część pokoi ma już śniadanie w cenie, można też wziąć
+    opcję bez wyżywienia. Płatne w pensjonacie.
   transport: Dojazd własny. Szczegółowe wskazówki otrzymasz po rezerwacji.
   childCare: >-
     Podczas bloków warsztatowych dla dorosłych, dziećmi opiekują się
@@ -114,8 +115,9 @@ faq:
       dzieci, jak i dorosłych.
   - question: Jak zarezerwować miejsce?
     answer: >-
-      Napisz do nas, a następnie zarezerwuj nocleg na stronie sasek.pl. Wpłata
-      zaliczki 30% gwarantuje miejsce.
+      Napisz do organizatorów (503 098 906), wejdź na stronę sasek.pl, wybierz
+      pokój i dokonaj rezerwacji online lub e-mailowo. Wpłata zaliczki 30% ceny
+      noclegu gwarantuje miejsce. Wszystkie ceny na sasek.pl/cennik.
   - question: Ile kosztuje nocleg?
     answer: 'Noclegi od 100 zł/os/noc. Cennik pokoi na stronie sasek.pl.'
 gallery: []

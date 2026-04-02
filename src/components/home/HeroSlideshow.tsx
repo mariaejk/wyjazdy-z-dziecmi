@@ -5,7 +5,7 @@ import Image from "next/image";
 import { motion, AnimatePresence, useReducedMotion } from "motion/react";
 
 const slides = [
-  { src: "/images/hero.jpg", alt: "Rodzina na wyjeździe warsztatowym w naturze" },
+  { src: "/images/hero-zachod-slonca.jpg", alt: "Dzieci bawiące się nad jeziorem o zachodzie słońca" },
   { src: "/images/matki-corki-1.jpg", alt: "Warsztaty matka i córka" },
   { src: "/images/przeszly-1.jpg", alt: "Uczestnicy warsztatów na łonie natury" },
   { src: "/images/kazce-bagno-1.jpg", alt: "Warsztaty w otoczeniu natury — Kacze Bagno" },
