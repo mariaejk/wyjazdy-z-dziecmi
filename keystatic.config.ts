@@ -280,6 +280,7 @@ export default config({
         tagline: fields.text({ label: "Podtytuł / tagline" }),
         description: fields.text({ label: "Opis (akapity oddzielone pustą linią)", multiline: true }),
         image: fields.text({ label: "Zdjęcie (ścieżka, opcjonalne)" }),
+        logo: fields.text({ label: "Logo (ścieżka, opcjonalne)" }),
         videoUrl: fields.text({ label: "Wideo (ścieżka, opcjonalne)" }),
         order: fields.integer({ label: "Kolejność wyświetlania", defaultValue: 0 }),
         links: fields.array(

@@ -102,6 +102,17 @@ export default async function ProjectsPage() {
 
               {/* Text — right side */}
               <ScrollAnimation variant="fadeRight" delay={0.15} className="flex-1">
+                {project.logo && (
+                  <div className="relative mb-4 h-16 w-16">
+                    <Image
+                      src={project.logo}
+                      alt={`${project.title} — logo`}
+                      fill
+                      sizes="64px"
+                      className="object-contain"
+                    />
+                  </div>
+                )}
                 <h2 className="font-heading text-2xl font-light sm:text-3xl">
                   <span className="text-moss">{project.title}</span>
                 </h2>

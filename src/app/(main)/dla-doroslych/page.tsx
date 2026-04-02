@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { Container } from "@/components/layout/Container";
 import { SectionWrapper } from "@/components/ui/SectionWrapper";
 import { SectionHeading } from "@/components/ui/SectionHeading";
@@ -39,6 +40,15 @@ export default async function AdultOnlyPage() {
                 doskonałe dla rodziców, osób szukających spokoju, odpoczynku,
                 ale też kontaktu ze sobą.
               </p>
+            </div>
+            <div className="relative mx-auto mt-8 aspect-[4/3] max-w-2xl overflow-hidden rounded-none">
+              <Image
+                src="/images/okladka-czas-bez-dzieci.jpeg"
+                alt="Czas bez dzieci — relaks na huśtawce w otoczeniu zieleni"
+                fill
+                sizes="(max-width: 768px) 100vw, 672px"
+                className="object-cover"
+              />
             </div>
           </ScrollAnimation>
         </Container>

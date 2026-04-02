@@ -14,6 +14,7 @@ export type Project = {
   description: string;
   paragraphs: string[];
   image?: string;
+  logo?: string;
   videoUrl?: string;
   order: number;
   links: ProjectLink[];
@@ -34,6 +35,7 @@ export const getAllProjects = cache(async (): Promise<Project[]> => {
       description: entry.description,
       paragraphs: entry.description.split(/\n\n+/).filter(Boolean),
       image: entry.image || undefined,
+      logo: entry.logo || undefined,
       videoUrl: entry.videoUrl || undefined,
       order: entry.order ?? 0,
       links: entry.links.map((l) => ({ label: l.label, url: l.url })),
