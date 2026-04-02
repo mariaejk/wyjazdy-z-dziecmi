@@ -16,14 +16,14 @@ const categories = [
   {
     label: "Matka i córka",
     href: ROUTES.motherDaughter,
-    image: "/images/matka-corka-category.jpg",
-    alt: "Warsztaty matka i córka",
+    image: "/images/okladka-matki-hero.jpeg",
+    alt: "Warsztaty matka i córka — kobiety na drewnianej podłodze",
   },
   {
     label: "Single z dziećmi",
     href: ROUTES.singleParents,
-    image: "/images/przeszly-1.jpg",
-    alt: "Warsztaty dla singli z dziećmi w naturze",
+    image: "/images/okladka-single-z-dziecmi-hero.jpeg",
+    alt: "Rodzina na kajakach — warsztaty dla singli z dziećmi",
   },
   {
     label: "Czas bez dzieci",
