@@ -12,7 +12,7 @@ import { HoneypotField } from "@/components/ui/HoneypotField";
 import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/layout/Container";
 import { ScrollAnimation } from "@/components/shared/ScrollAnimation";
-import { ROUTES } from "@/lib/constants";
+import { ROUTES, TURNSTILE_SITE_KEY } from "@/lib/constants";
 
 const passiveNewsletterSchema = z.object({
   email: z.string().email("Podaj prawidłowy adres e-mail"),
@@ -140,10 +140,10 @@ export function JoinUsNewsletter({ className }: { className?: string }) {
 
                 <HoneypotField {...register("website")} />
 
-                {process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY && (
+                {TURNSTILE_SITE_KEY && (
                   <Turnstile
                     ref={turnstileRef}
-                    siteKey={process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY}
+                    siteKey={TURNSTILE_SITE_KEY}
                     options={{ size: "invisible" }}
                     onSuccess={setTurnstileToken}
                     onError={() => setTurnstileToken(undefined)}

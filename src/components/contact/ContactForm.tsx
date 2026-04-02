@@ -7,6 +7,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { Send, CheckCircle, AlertCircle } from "lucide-react";
 import { contactSchema, type ContactFormValues } from "@/lib/validations/contact";
 import { analytics } from "@/lib/analytics";
+import { TURNSTILE_SITE_KEY } from "@/lib/constants";
 import { Input } from "@/components/ui/Input";
 import { Textarea } from "@/components/ui/Textarea";
 import { Checkbox } from "@/components/ui/Checkbox";
@@ -159,10 +160,10 @@ export function ContactForm() {
         </div>
       )}
 
-      {process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY && (
+      {TURNSTILE_SITE_KEY && (
         <Turnstile
           ref={turnstileRef}
-          siteKey={process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY}
+          siteKey={TURNSTILE_SITE_KEY}
           options={{ size: "invisible" }}
           onSuccess={setTurnstileToken}
           onError={() => setTurnstileToken(undefined)}

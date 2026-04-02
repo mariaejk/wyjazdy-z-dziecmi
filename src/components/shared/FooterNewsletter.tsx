@@ -7,6 +7,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { CheckCircle, AlertCircle } from "lucide-react";
 import { newsletterSchema, type NewsletterFormValues } from "@/lib/validations/newsletter";
 import { analytics } from "@/lib/analytics";
+import { TURNSTILE_SITE_KEY } from "@/lib/constants";
 import { HoneypotField } from "@/components/ui/HoneypotField";
 import { ROUTES } from "@/lib/constants";
 
@@ -129,10 +130,10 @@ export function FooterNewsletter() {
 
           <HoneypotField {...register("website")} />
 
-          {process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY && (
+          {TURNSTILE_SITE_KEY && (
             <Turnstile
               ref={turnstileRef}
-              siteKey={process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY}
+              siteKey={TURNSTILE_SITE_KEY}
               options={{ size: "invisible" }}
               onSuccess={setTurnstileToken}
               onError={() => setTurnstileToken(undefined)}

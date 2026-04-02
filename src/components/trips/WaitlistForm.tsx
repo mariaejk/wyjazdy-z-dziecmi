@@ -7,6 +7,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { Clock, CheckCircle, AlertCircle } from "lucide-react";
 import { waitlistSchema, type WaitlistFormValues } from "@/lib/validations/waitlist";
 import { analytics } from "@/lib/analytics";
+import { TURNSTILE_SITE_KEY } from "@/lib/constants";
 import { Input } from "@/components/ui/Input";
 import { Checkbox } from "@/components/ui/Checkbox";
 import { HoneypotField } from "@/components/ui/HoneypotField";
@@ -151,10 +152,10 @@ export function WaitlistForm({ tripSlug, tripTitle }: WaitlistFormProps) {
 
               <HoneypotField {...register("website")} />
 
-              {process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY && (
+              {TURNSTILE_SITE_KEY && (
                 <Turnstile
                   ref={turnstileRef}
-                  siteKey={process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY}
+                  siteKey={TURNSTILE_SITE_KEY}
                   options={{ size: "invisible" }}
                   onSuccess={setTurnstileToken}
                   onError={() => setTurnstileToken(undefined)}

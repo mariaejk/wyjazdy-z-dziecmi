@@ -7,6 +7,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { Send, CheckCircle, AlertCircle, Shield } from "lucide-react";
 import { bookingSchema, type BookingFormValues } from "@/lib/validations/booking";
 import { analytics } from "@/lib/analytics";
+import { TURNSTILE_SITE_KEY } from "@/lib/constants";
 import { Container } from "@/components/layout/Container";
 import { SectionWrapper } from "@/components/ui/SectionWrapper";
 import { SectionHeading } from "@/components/ui/SectionHeading";
@@ -272,10 +273,10 @@ export function BookingForm({ trips, preselectedTrip }: BookingFormProps) {
             Rezerwacja jest bezpłatna — nie płacisz z góry. Szczegóły płatności otrzymasz po potwierdzeniu.
           </p>
 
-          {process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY && (
+          {TURNSTILE_SITE_KEY && (
             <Turnstile
               ref={turnstileRef}
-              siteKey={process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY}
+              siteKey={TURNSTILE_SITE_KEY}
               options={{ size: "invisible" }}
               onSuccess={setTurnstileToken}
               onError={() => setTurnstileToken(undefined)}

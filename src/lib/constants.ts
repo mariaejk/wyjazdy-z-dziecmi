@@ -18,6 +18,11 @@ export const SOCIAL_LINKS = {
   instagram: "https://www.instagram.com/wyjazdyzdziecmi",
 } as const;
 
+// Public site key — safe to hardcode (not a secret).
+// CF Workers + @opennextjs/cloudflare don't inline NEXT_PUBLIC_* env vars into client bundles,
+// so we hardcode it here instead of relying on process.env.
+export const TURNSTILE_SITE_KEY = "0x4AAAAAACy69qw2BYCWGuia";
+
 export const ALLOWED_ORIGINS = [
   "https://www.wyjazdyzdziecmi.pl",
   "https://wyjazdyzdziecmi.pl",
