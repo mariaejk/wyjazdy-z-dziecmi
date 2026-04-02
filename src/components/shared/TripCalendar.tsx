@@ -225,7 +225,7 @@ export function TripCalendar({ trips }: TripCalendarProps) {
   return (
     <div className="overflow-hidden rounded-none border border-graphite/10 bg-white" aria-label="Kalendarz warsztatów" role="region">
       {/* Calendar grid — 1 month on mobile, 2 on sm+ */}
-      <div className="p-4 sm:grid sm:grid-cols-2 sm:gap-6" aria-live="polite">
+      <div className="overflow-x-hidden p-4 sm:grid sm:grid-cols-2 sm:gap-6 sm:p-6" aria-live="polite">
         {/* Mobile: single month with both arrows */}
         <div className="sm:hidden">
           <MonthGrid
@@ -268,7 +268,7 @@ export function TripCalendar({ trips }: TripCalendarProps) {
             key={key}
             onClick={() => toggleFilter(key)}
             className={cn(
-              "flex items-center gap-2 rounded-full border px-3 py-2 text-xs font-medium transition-all sm:px-3 sm:py-2.5 sm:text-sm",
+              "flex items-center gap-2 rounded-full border min-h-11 px-3 py-2 text-xs font-medium transition-all sm:py-2.5 sm:text-sm",
               activeFilter === key
                 ? cn(config.badgeBg, config.badgeText, "border-current")
                 : activeFilter === null

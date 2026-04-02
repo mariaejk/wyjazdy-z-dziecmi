@@ -25,7 +25,7 @@ export function HeroSection() {
         <Container className="relative z-10 flex h-full flex-col justify-end pb-12 sm:pb-16 lg:pb-20">
           {/* H1 = SEO descriptive keyword-rich, styled as overline.
               H2 = emotional headline for users. Intentional hierarchy inversion for SEO. */}
-          <h1 className="text-[11px] font-medium uppercase tracking-[0.25em] text-white/70">
+          <h1 className="text-xs font-medium uppercase tracking-[0.25em] text-white/70 sm:text-[11px]">
             Rodzinne wyjazdy warsztatowe w naturze
           </h1>
           <h2 className="mt-4 max-w-3xl font-heading text-3xl font-light italic text-white sm:text-4xl lg:text-5xl xl:text-6xl">
@@ -65,7 +65,7 @@ export function HeroSection() {
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.3 }}
-          className="text-[11px] font-medium uppercase tracking-[0.25em] text-white/70"
+          className="text-xs font-medium uppercase tracking-[0.25em] text-white/70 sm:text-[11px]"
         >
           Rodzinne wyjazdy warsztatowe w naturze
         </motion.h1>

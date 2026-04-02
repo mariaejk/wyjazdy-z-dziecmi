@@ -132,7 +132,7 @@ export function JoinUsNewsletter({ className }: { className?: string }) {
                   <button
                     type="submit"
                     disabled={status === "submitting"}
-                    className="shrink-0 rounded-none bg-moss px-5 py-3 text-[11px] font-medium uppercase tracking-[0.15em] text-white transition-colors hover:bg-moss-light disabled:cursor-not-allowed disabled:opacity-60"
+                    className="shrink-0 rounded-none bg-moss px-4 py-3 text-xs font-medium uppercase tracking-[0.15em] text-white transition-colors hover:bg-moss-light disabled:cursor-not-allowed disabled:opacity-60 sm:px-5 sm:text-[11px]"
                   >
                     {status === "submitting" ? <span aria-label="Wysyłanie">…</span> : "Powiadom mnie"}
                   </button>

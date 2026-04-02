@@ -22,7 +22,7 @@ export function Footer() {
               <li>
                 <a
                   href={`mailto:${CONTACT.email}`}
-                  className="inline-flex items-center gap-2 text-sm text-graphite-light transition-colors hover:text-moss"
+                  className="inline-flex items-center gap-2 min-h-11 text-sm text-graphite-light transition-colors hover:text-moss"
                 >
                   <Mail className="h-4 w-4" strokeWidth={1.5} />
                   {CONTACT.email}
@@ -31,7 +31,7 @@ export function Footer() {
               <li>
                 <a
                   href={`tel:${CONTACT.phone.replace(/\s/g, "")}`}
-                  className="inline-flex items-center gap-2 text-sm text-graphite-light transition-colors hover:text-moss"
+                  className="inline-flex items-center gap-2 min-h-11 text-sm text-graphite-light transition-colors hover:text-moss"
                 >
                   <Phone className="h-4 w-4" strokeWidth={1.5} />
                   {CONTACT.phoneDisplay}
@@ -50,7 +50,7 @@ export function Footer() {
                 <SocialLink
                   href={SOCIAL_LINKS.facebook}
                   platform="Facebook"
-                  className="inline-flex items-center gap-2 text-sm text-graphite-light transition-colors hover:text-moss"
+                  className="inline-flex items-center gap-2 min-h-11 text-sm text-graphite-light transition-colors hover:text-moss"
                 >
                   <Facebook className="h-4 w-4" strokeWidth={1.5} />
                   Facebook
@@ -60,7 +60,7 @@ export function Footer() {
                 <SocialLink
                   href={SOCIAL_LINKS.instagram}
                   platform="Instagram"
-                  className="inline-flex items-center gap-2 text-sm text-graphite-light transition-colors hover:text-moss"
+                  className="inline-flex items-center gap-2 min-h-11 text-sm text-graphite-light transition-colors hover:text-moss"
                 >
                   <Instagram className="h-4 w-4" strokeWidth={1.5} />
                   Instagram

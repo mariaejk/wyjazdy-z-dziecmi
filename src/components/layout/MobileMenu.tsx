@@ -192,7 +192,7 @@ export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
             className="fixed right-0 top-0 z-50 flex h-full w-4/5 max-w-xs flex-col overflow-y-auto bg-parchment shadow-xl"
           >
             {/* Close button */}
-            <div className="flex items-center justify-end px-4 py-4">
+            <div className="flex items-center justify-end px-4 py-4 pt-[env(safe-area-inset-top,16px)]">
               <button
                 ref={closeButtonRef}
                 type="button"

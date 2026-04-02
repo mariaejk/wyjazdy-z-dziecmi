@@ -131,7 +131,7 @@ export function Header() {
   }, [openDropdown]);
 
   return (
-    <header className="sticky top-0 z-40 border-b border-parchment-dark bg-parchment/95 backdrop-blur-sm">
+    <header className="sticky top-0 z-40 border-b border-parchment-dark bg-parchment/95 pt-[env(safe-area-inset-top,0px)] backdrop-blur-sm">
       <Container>
         <div className="flex h-16 items-center justify-between sm:h-20">
           {/* Logo */}
