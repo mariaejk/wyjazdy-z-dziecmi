@@ -71,6 +71,7 @@ export type Trip = {
   priceIncludes?: string[];
   priceExcludes?: string[];
   collaborator?: TripCollaborator;
+  facebookEventUrl?: string;
   faq: TripFAQ[];
   gallery: TripGalleryImage[];
   contentBlocks?: ContentBlock[];

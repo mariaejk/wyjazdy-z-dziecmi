@@ -16,6 +16,7 @@ export const getAllTeamMembers = cache(async (): Promise<TeamMember[]> => {
       bio: entry.bio,
       shortBio: entry.shortBio || undefined,
       image: entry.image || undefined,
+      instagram: entry.instagram || undefined,
     });
   }
   return members;

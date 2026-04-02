@@ -159,6 +159,7 @@ export default config({
           },
           { label: "Współprowadzący" }
         ),
+        facebookEventUrl: fields.text({ label: "Link do wydarzenia na Facebooku (opcjonalnie)" }),
         faq: fields.array(
           fields.object({
             question: fields.text({ label: "Pytanie" }),
@@ -230,6 +231,7 @@ export default config({
           multiline: true,
         }),
         image: fields.text({ label: "Zdjęcie (ścieżka)" }),
+        instagram: fields.text({ label: "Instagram URL (opcjonalnie)" }),
       },
     }),
 

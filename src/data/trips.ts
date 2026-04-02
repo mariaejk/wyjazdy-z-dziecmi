@@ -60,6 +60,7 @@ function mapTrip(
             image: entry.collaborator.image || undefined,
           }
         : undefined,
+    facebookEventUrl: entry.facebookEventUrl || undefined,
     faq: entry.faq.map((f) => ({
       question: f.question,
       answer: f.answer,

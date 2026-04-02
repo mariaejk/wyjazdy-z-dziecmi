@@ -15,7 +15,7 @@ export const CONTACT = {
 
 export const SOCIAL_LINKS = {
   facebook: "https://www.facebook.com/wyjazdyzdziecmi",
-  instagram: "https://www.instagram.com/wyjazdyzdziecmi",
+  instagram: "https://www.instagram.com/wyjazdy_z_dziecmi",
 } as const;
 
 // Public site key — safe to hardcode (not a secret).

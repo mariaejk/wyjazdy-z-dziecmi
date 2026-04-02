@@ -4,4 +4,5 @@ export type TeamMember = {
   bio: string;
   shortBio?: string;
   image?: string;
+  instagram?: string;
 };
