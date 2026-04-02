@@ -40,7 +40,7 @@ longDescription: >-
   Okolica Saska to prawdziwy raj dla miłośników spacerów i rowerowych wypraw.
   Malownicze trasy prowadzą przez lasy i wzdłuż jezior — a jeśli nie macie
   rowerów, można je wypożyczyć na miejscu.
-image: /images/konie-joga-2026.jpg
+image: /images/koni.jpeg
 isPast: false
 spotsTotal: null
 spotsLeft: null
@@ -58,26 +58,34 @@ targetAudience:
     description: ''
 schedule:
   - date: '2026-08-01'
-    dayLabel: 'Sobota, 1 sierpnia — dzień przyjazdu'
+    dayLabel: 'Przykładowy dzień'
     activities:
-      - time: 'od 14:00'
-        activity: 'Przyjazd, zakwaterowanie, zwiedzanie Saska'
+      - time: '8:00'
+        activity: 'Joga na polanie, nad jeziorem wśród koni'
+      - time: '9:00'
+        activity: Śniadanie
+      - time: '10:00'
+        activity: 'Przejażdżki konne / czas na relaks nad jeziorem / spacery'
+      - time: '14:00'
+        activity: Obiad
+      - time: '15:00'
+        activity: Przejażdżki
+      - time: '16:00–18:00'
+        activity: 'Animacje dla dzieci / warsztaty dla rodziców'
       - time: '19:00'
-        activity: Kolacja powitalna
+        activity: Kolacja
       - time: '20:00'
-        activity: Krąg otwarcia i integracja przy ognisku
+        activity: 'Odprowadzanie koni na łąki / ognisko'
 practicalInfo:
   accommodation: >-
-    Przytulne apartamenty w pensjonacie Sasek Mały — bezpieczny, ogrodzony
-    teren z dostępem do jeziora.
+    Przytulne apartamenty w pensjonacie Sasek Mały.
   food: >-
-    Całodzienne wyżywienie płatne w pensjonacie. Część pokoi ma już śniadanie
-    w cenie, można też wziąć opcję bez wyżywienia. Dzieci do 3 lat bezpłatnie.
-    Cennik na sasek.pl.
+    Całodzienne wyżywienie, 3 posiłki, podwieczorek i kawa na tarasie. Jest też
+    dostęp do kuchni. Diety (nietolerancje, alergie) należy zgłaszać wcześniej.
   transport: Dojazd własny. Szczegółowe wskazówki otrzymasz po rezerwacji.
   childCare: >-
     Podczas bloków warsztatowych dla dorosłych, dziećmi opiekują się
-    doświadczone animatorki. Program dla dzieci obejmuje zabawy na świeżym
+    doświadczone organizatorki. Program dla dzieci obejmuje zabawy na świeżym
     powietrzu, tworzenie i ruch.
 pricing:
   - label: 'Warsztaty — dorosły'
