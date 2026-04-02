@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { Container } from "@/components/layout/Container";
 import { SectionWrapper } from "@/components/ui/SectionWrapper";
 import { SectionHeading } from "@/components/ui/SectionHeading";
@@ -32,7 +33,20 @@ export default async function FamilyTripsPage() {
         { name: "Rodzinny czas", url: `${SITE_CONFIG.url}/warsztaty-z-dziecmi` },
       ])} />
 
-      {/* Hero — reduced spacing */}
+      {/* Hero image */}
+      <div className="relative aspect-[21/9] w-full overflow-hidden sm:aspect-[3/1]">
+        <Image
+          src="/images/okladka-rodzinny-czas-hero.jpeg"
+          alt="Rodziny na warsztatach w naturze — wspólne zajęcia na łące"
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-graphite/40 to-transparent" />
+      </div>
+
+      {/* Hero text */}
       <SectionWrapper className="py-4 sm:py-6">
         <Container>
           <ScrollAnimation variant="fadeUp">

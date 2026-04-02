@@ -10,8 +10,8 @@ const categories = [
   {
     label: "Rodzinny czas",
     href: ROUTES.familyTrips,
-    image: "/images/hero.jpg",
-    alt: "Rodzinne warsztaty wyjazdowe w naturze",
+    image: "/images/okladka-rodzinny-czas-hero.jpeg",
+    alt: "Rodziny na warsztatach w naturze — wspólne zajęcia na łące",
   },
   {
     label: "Matka i córka",
