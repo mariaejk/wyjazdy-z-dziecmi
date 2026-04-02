@@ -21,21 +21,21 @@ export function TripProgram({ schedule }: TripProgramProps) {
                 <h3 className="font-heading text-xl font-bold text-graphite sm:text-2xl">
                   {day.dayLabel}
                 </h3>
-                <div className="mt-4 space-y-3">
+                <div className="mt-4 divide-y divide-graphite/5">
                   {day.activities.map((activity, actIndex) => (
                     <div
                       key={actIndex}
-                      className="flex items-start gap-3"
+                      className="flex items-start gap-3 py-2.5 first:pt-0 last:pb-0"
                     >
                       <Clock
                         className="mt-0.5 h-4 w-4 shrink-0 text-moss"
                         strokeWidth={1.5}
                       />
-                      <div className="flex flex-col gap-0.5 sm:flex-row sm:gap-3">
-                        <span className="whitespace-nowrap text-sm font-medium text-moss">
+                      <div className="flex min-w-0 flex-col gap-0.5 sm:flex-row sm:gap-3">
+                        <span className="whitespace-nowrap text-sm font-semibold text-moss">
                           {activity.time}
                         </span>
-                        <span className="text-graphite-light">
+                        <span className="text-sm text-graphite-light sm:text-base">
                           {activity.activity}
                         </span>
                       </div>

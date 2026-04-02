@@ -45,8 +45,8 @@ longDescription: >-
   oraz emisji głosu, muzykę przy ognisku… i jeszcze więcej.
 image: /images/zlot-kaczek-2026.jpg
 isPast: false
-spotsTotal: 35
-spotsLeft: 35
+spotsTotal: null
+spotsLeft: null
 deposit: 0
 earlyBirdDeadline: '2026-03-31'
 earlyBirdPrice: null

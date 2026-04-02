@@ -44,8 +44,8 @@ longDescription: >-
   bliskość, autentyczność i swobodę w ruchu.
 image: /images/warsztat-matki-corki-swieto-ciala.jpg
 isPast: false
-spotsTotal: 12
-spotsLeft: 10
+spotsTotal: null
+spotsLeft: null
 deposit: 450
 earlyBirdDeadline: ''
 earlyBirdPrice: null

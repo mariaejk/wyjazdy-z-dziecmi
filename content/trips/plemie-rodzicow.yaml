@@ -60,8 +60,8 @@ longDescription: >-
   wydarzy. Dołącz do naszego plemienia.
 image: /images/plemie-rodzicow.jpg
 isPast: false
-spotsTotal: 15
-spotsLeft: 12
+spotsTotal: null
+spotsLeft: null
 deposit: 450
 earlyBirdDeadline: ''
 earlyBirdPrice: null
