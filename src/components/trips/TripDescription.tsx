@@ -17,7 +17,7 @@ export function TripDescription({
   contentBlocks,
 }: TripDescriptionProps) {
   return (
-    <SectionWrapper variant="alternate">
+    <SectionWrapper>
       <Container>
         <SectionHeading title="O wyjeździe" />
         <div className="mx-auto max-w-3xl">

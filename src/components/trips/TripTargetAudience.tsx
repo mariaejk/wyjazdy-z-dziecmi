@@ -11,7 +11,7 @@ type TripTargetAudienceProps = {
 
 export function TripTargetAudience({ items }: TripTargetAudienceProps) {
   return (
-    <SectionWrapper>
+    <SectionWrapper variant="alternate">
       <Container>
         <SectionHeading title="Dla kogo?" />
         <div className="mx-auto max-w-2xl space-y-4">

@@ -52,7 +52,7 @@ export function TripHero({
           className={cn("object-cover", POSITION_CLASS[imagePosition])}
         />
       </div>
-      <SectionWrapper className="py-6 sm:py-8">
+      <SectionWrapper variant="alternate" className="py-6 sm:py-8">
         <Container>
           <div className="mx-auto max-w-3xl">
             <div className="flex flex-wrap items-center gap-2">

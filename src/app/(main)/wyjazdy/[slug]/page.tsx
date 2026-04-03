@@ -108,7 +108,7 @@ export default async function TripPage({ params }: PageProps) {
         spotsLeft={trip.spotsLeft}
       />
 
-      {/* 1.5. Video + Description (side by side) */}
+      {/* 2. Video + Description (side by side) */}
       {trip.videoUrl && (
         <div id="opis">
           <TripVideo
@@ -117,11 +117,6 @@ export default async function TripPage({ params }: PageProps) {
             longDescription={trip.longDescription}
           />
         </div>
-      )}
-
-      {/* 2. Target Audience */}
-      {trip.targetAudience.length > 0 && (
-        <TripTargetAudience items={trip.targetAudience} />
       )}
 
       {/* 3. Description (only when no video — otherwise shown alongside video) */}
@@ -133,6 +128,11 @@ export default async function TripPage({ params }: PageProps) {
             contentBlocks={trip.contentBlocks}
           />
         </div>
+      )}
+
+      {/* 4. Target Audience — after description */}
+      {trip.targetAudience.length > 0 && (
+        <TripTargetAudience items={trip.targetAudience} />
       )}
 
       {/* 4. Program */}
