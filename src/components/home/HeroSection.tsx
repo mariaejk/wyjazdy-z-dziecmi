@@ -23,14 +23,9 @@ export function HeroSection() {
 
         {/* Content overlaid at bottom */}
         <Container className="relative z-10 flex h-full flex-col justify-end pb-12 sm:pb-16 lg:pb-20">
-          {/* H1 = SEO descriptive keyword-rich, styled as overline.
-              H2 = emotional headline for users. Intentional hierarchy inversion for SEO. */}
-          <h1 className="text-xs font-medium uppercase tracking-[0.25em] text-white/70 sm:text-[11px]">
-            Rodzinne wyjazdy warsztatowe w naturze
+          <h1 className="max-w-3xl font-heading text-3xl font-light italic text-white sm:text-4xl lg:text-5xl xl:text-6xl">
+            Świadomy kierunek — warsztaty rozwojowe dla dorosłych i dzieci
           </h1>
-          <h2 className="mt-4 max-w-3xl font-heading text-3xl font-light italic text-white sm:text-4xl lg:text-5xl xl:text-6xl">
-            Świadomy kierunek
-          </h2>
           <div className="mt-8">
             <Button href="/wyjazdy" size="lg">
               Zobacz warsztaty
@@ -59,25 +54,15 @@ export function HeroSection() {
 
       {/* Content overlaid at bottom */}
       <Container className="relative z-10 flex h-full flex-col justify-end pb-12 sm:pb-16 lg:pb-20">
-        {/* H1 — SEO descriptive overline */}
+        {/* H1 — headline */}
         <motion.h1
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.3 }}
-          className="text-xs font-medium uppercase tracking-[0.25em] text-white/70 sm:text-[11px]"
-        >
-          Rodzinne wyjazdy warsztatowe w naturze
-        </motion.h1>
-
-        {/* H2 — emotional headline */}
-        <motion.h2
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.5 }}
-          className="mt-4 max-w-3xl font-heading text-3xl font-light italic text-white sm:text-4xl lg:text-5xl xl:text-6xl"
+          className="max-w-3xl font-heading text-3xl font-light italic text-white sm:text-4xl lg:text-5xl xl:text-6xl"
         >
-          Świadomy kierunek
-        </motion.h2>
+          Świadomy kierunek — warsztaty rozwojowe dla dorosłych i dzieci
+        </motion.h1>
 
         {/* CTA */}
         <motion.div
