@@ -47,7 +47,7 @@ export async function ContactInfo() {
           <div className="mb-4 flex items-center gap-3">
             <div className="relative h-16 w-16 shrink-0 overflow-hidden rounded-none">
               <Image
-                src={maria.image}
+                src="/images/marysia-kontakt.jpeg"
                 alt={maria.name}
                 fill
                 sizes="64px"
