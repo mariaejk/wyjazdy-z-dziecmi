@@ -64,6 +64,7 @@ export default async function Home() {
         src="/images/image-breaker-6.jpeg"
         alt="Dzieci i rodzice na warsztatach w naturze"
         aspectRatio="16/9"
+        objectPosition="bottom"
       />
 
       <BlogTeaser />

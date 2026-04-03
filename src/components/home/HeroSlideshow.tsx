@@ -9,6 +9,8 @@ const slides = [
   { src: "/images/matki-corki-5.jpg", alt: "Joga na warsztatach w naturze" },
   { src: "/images/slide-2.jpeg", alt: "Spacer po wiejskiej drodze w otoczeniu natury" },
   { src: "/images/kazce-bagno-1.jpg", alt: "Warsztaty w otoczeniu natury — Kacze Bagno" },
+  { src: "/images/slide-show-1.jpeg", alt: "Rodziny na warsztatach w naturze" },
+  { src: "/images/slide-show-2.jpeg", alt: "Wspólne chwile na warsztatach rodzinnych" },
 ];
 
 export function HeroSlideshow() {

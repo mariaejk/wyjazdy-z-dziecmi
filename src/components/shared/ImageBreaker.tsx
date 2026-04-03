@@ -5,6 +5,7 @@ type ImageBreakerProps = {
   src: string;
   alt: string;
   aspectRatio?: "21/9" | "16/9" | "3/1";
+  objectPosition?: "top" | "center" | "bottom";
   overlayText?: string;
   className?: string;
 };
@@ -15,10 +16,17 @@ const aspectClasses = {
   "3/1": "aspect-[3/1]",
 } as const;
 
+const positionClasses = {
+  top: "object-top",
+  center: "object-center",
+  bottom: "object-bottom",
+} as const;
+
 export function ImageBreaker({
   src,
   alt,
   aspectRatio = "21/9",
+  objectPosition = "center",
   overlayText,
   className,
 }: ImageBreakerProps) {
@@ -36,7 +44,7 @@ export function ImageBreaker({
         fill
         loading="lazy"
         sizes="100vw"
-        className="object-cover"
+        className={cn("object-cover", positionClasses[objectPosition])}
       />
       {overlayText && (
         <>
