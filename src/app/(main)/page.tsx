@@ -50,19 +50,19 @@ export default async function Home() {
 
       <TripCardsSection />
 
-      {/* Image breaker #2 — atmosfera warsztatu */}
+      {/* Image breaker #2 — przed Poznajmy się */}
       <ImageBreaker
-        src="/images/przeszly-1.jpg"
-        alt="Uczestnicy warsztatów na łonie natury"
+        src="/images/image-breaker-5.jpeg"
+        alt="Rodziny na warsztatach w naturze"
       />
 
       <AboutTeaser />
       <OpinionsTeaser />
 
-      {/* Image breaker #3 — matki i córki */}
+      {/* Image breaker #3 — przed FAQ */}
       <ImageBreaker
-        src="/images/matki-corki-8.jpg"
-        alt="Mama przytulająca dziecko w naturze"
+        src="/images/image-breaker-6.jpeg"
+        alt="Dzieci i rodzice na warsztatach w naturze"
         aspectRatio="16/9"
       />
 
