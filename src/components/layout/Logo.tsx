@@ -14,7 +14,7 @@ export function Logo({ size = 50, className }: LogoProps) {
         alt="Wyjazdy z Dziećmi — Świadomy kierunek"
         width={size * 3}
         height={size}
-        className="h-auto object-contain"
+        className="h-auto object-contain mix-blend-multiply"
         priority
       />
     </div>
