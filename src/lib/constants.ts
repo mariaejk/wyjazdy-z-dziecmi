@@ -14,7 +14,7 @@ export const CONTACT = {
 } as const;
 
 export const SOCIAL_LINKS = {
-  facebook: "https://www.facebook.com/wyjazdyzdziecmi",
+  facebook: "https://www.facebook.com/share/18DgKa8Sja/?mibextid=wwXIfr",
   instagram: "https://www.instagram.com/wyjazdy_z_dziecmi",
 } as const;
 

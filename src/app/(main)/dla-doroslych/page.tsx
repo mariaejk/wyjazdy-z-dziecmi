@@ -15,7 +15,7 @@ import { ROUTES } from "@/lib/constants";
 export const dynamic = "force-static";
 
 export const metadata: Metadata = {
-  title: "Warsztaty dla dorosłych — Wyjazdy z Dziećmi",
+  title: "Czas bez dzieci — Wyjazdy z Dziećmi",
   description:
     "Warsztaty wyjazdowe tylko dla dorosłych — joga, konie, ruch w naturze. Bo liczysz się także ty.",
   robots: { index: false },
@@ -33,7 +33,7 @@ export default async function AdultOnlyPage() {
           <ScrollAnimation variant="fadeUp">
             <div className="mx-auto max-w-3xl text-center">
               <h1 className="font-heading text-4xl font-light text-graphite sm:text-5xl lg:text-6xl">
-                Warsztaty dla dorosłych
+                Czas bez dzieci
               </h1>
               <p className="mt-6 text-lg leading-relaxed text-graphite-light sm:text-xl">
                 Zapraszamy Was także na wydarzenia bez dzieci. To spotkania
