@@ -27,28 +27,15 @@ export default async function SingleParentsPage() {
 
   return (
     <>
-      {/* Hero image */}
-      <div className="relative aspect-[21/9] w-full overflow-hidden sm:aspect-[3/1]">
-        <Image
-          src="/images/okladka-single-z-dziecmi-hero.jpeg"
-          alt="Rodzina na kajakach — warsztaty dla singli z dziećmi"
-          fill
-          priority
-          sizes="100vw"
-          className="object-cover"
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-graphite/40 to-transparent" />
-      </div>
-
-      {/* Hero text */}
-      <SectionWrapper variant="alternate" className="py-4 sm:py-6">
+      {/* Hero */}
+      <SectionWrapper variant="alternate">
         <Container>
           <ScrollAnimation variant="fadeUp">
             <div className="mx-auto max-w-3xl text-center">
               <h1 className="font-heading text-4xl font-light text-graphite sm:text-5xl lg:text-6xl">
                 Single z dziećmi
               </h1>
-              <p className="mt-4 text-lg leading-relaxed text-graphite-light sm:text-xl">
+              <p className="mt-6 text-lg leading-relaxed text-graphite-light sm:text-xl">
                 Warsztaty stworzone z myślą o samodzielnych i o samotnych
                 rodzicach i ich dzieciach. Bez względu na to, do której kategorii
                 siebie zaliczasz, zapraszamy Cię do przestrzeni pełnej zrozumienia
@@ -57,6 +44,16 @@ export default async function SingleParentsPage() {
                 Inaczej spojrzeć na siebie i swoje dziecko. To też przestrzeń
                 budowania relacji, bo w końcu nie jesteśmy tylko rodzicami.
               </p>
+            </div>
+            <div className="relative mx-auto mt-8 aspect-[4/3] max-w-2xl overflow-hidden rounded-none">
+              <Image
+                src="/images/okladka-single-z-dziecmi-hero.jpeg"
+                alt="Rodzina na kajakach — warsztaty dla singli z dziećmi"
+                fill
+                priority
+                sizes="(max-width: 768px) 100vw, 672px"
+                className="object-cover"
+              />
             </div>
           </ScrollAnimation>
         </Container>

@@ -33,31 +33,15 @@ export default async function MotherDaughterPage() {
         { name: "Matka i córka", url: `${SITE_CONFIG.url}/matka-z-corka` },
       ])} />
 
-      {/* Tytuł wycentrowany */}
-      <SectionWrapper className="py-6 sm:py-8">
+      {/* Hero */}
+      <SectionWrapper variant="alternate">
         <Container>
-          <h1 className="text-center font-heading text-4xl font-light text-graphite sm:text-5xl lg:text-6xl">
-            Matka i córka
-          </h1>
-        </Container>
-      </SectionWrapper>
-
-      {/* Zdjęcie + tekst obok siebie */}
-      <SectionWrapper className="pb-6 sm:pb-8">
-        <Container>
-          <div className="grid items-center gap-8 lg:grid-cols-2 lg:gap-12">
-            <div className="relative aspect-[4/3] overflow-hidden">
-              <Image
-                src="/images/okladka-matki-hero.jpeg"
-                alt="Warsztaty matka i córka — kobiety siedzące na drewnianej podłodze"
-                fill
-                priority
-                sizes="(min-width: 1024px) 50vw, 100vw"
-                className="object-cover object-center"
-              />
-            </div>
-            <ScrollAnimation variant="fadeUp">
-              <p className="text-lg leading-relaxed text-graphite-light">
+          <ScrollAnimation variant="fadeUp">
+            <div className="mx-auto max-w-3xl text-center">
+              <h1 className="font-heading text-4xl font-light text-graphite sm:text-5xl lg:text-6xl">
+                Matka i córka
+              </h1>
+              <p className="mt-6 text-lg leading-relaxed text-graphite-light sm:text-xl">
                 To spotkanie dwóch kobiet. Każda zamknięta w swoim czasie,
                 a jednocześnie żyjące równolegle, tak bardzo zespolone ze sobą
                 od zawsze. Nierozerwalne, a jednak tak bardzo różne. Ten warsztat
@@ -65,8 +49,18 @@ export default async function MotherDaughterPage() {
                 To czas, aby na chwilę wyjść z ról i w zabawie i szczerym
                 uśmiechu odnaleźć radość z bycia razem.
               </p>
-            </ScrollAnimation>
-          </div>
+            </div>
+            <div className="relative mx-auto mt-8 aspect-[4/3] max-w-2xl overflow-hidden rounded-none">
+              <Image
+                src="/images/okladka-matki-hero.jpeg"
+                alt="Warsztaty matka i córka — kobiety siedzące na drewnianej podłodze"
+                fill
+                priority
+                sizes="(max-width: 768px) 100vw, 672px"
+                className="object-cover"
+              />
+            </div>
+          </ScrollAnimation>
         </Container>
       </SectionWrapper>
 
