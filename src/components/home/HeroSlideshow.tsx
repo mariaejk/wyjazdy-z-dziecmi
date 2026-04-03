@@ -6,10 +6,8 @@ import { motion, AnimatePresence, useReducedMotion } from "motion/react";
 
 const slides = [
   { src: "/images/hero-zachod-slonca.jpg", alt: "Dzieci bawiące się nad jeziorem o zachodzie słońca" },
-  { src: "/images/slide-1.jpeg", alt: "Rodziny spacerujące drogą w letnim słońcu" },
   { src: "/images/matki-corki-5.jpg", alt: "Joga na warsztatach w naturze" },
   { src: "/images/slide-2.jpeg", alt: "Spacer po wiejskiej drodze w otoczeniu natury" },
-  { src: "/images/przeszly-1.jpg", alt: "Uczestnicy warsztatów na łonie natury" },
   { src: "/images/kazce-bagno-1.jpg", alt: "Warsztaty w otoczeniu natury — Kacze Bagno" },
 ];
 
