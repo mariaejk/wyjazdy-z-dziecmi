@@ -58,6 +58,15 @@ export default config({
           multiline: true,
         }),
         image: fields.text({ label: "Zdjęcie główne (ścieżka)" }),
+        imagePosition: fields.select({
+          label: "Pozycja zdjęcia głównego (kadrowanie)",
+          options: [
+            { label: "Środek (domyślnie)", value: "center" },
+            { label: "Góra", value: "top" },
+            { label: "Dół", value: "bottom" },
+          ],
+          defaultValue: "center",
+        }),
         videoUrl: fields.text({
           label: "URL wideo promocyjnego (opcjonalne, np. /videos/nazwa.mp4)",
         }),

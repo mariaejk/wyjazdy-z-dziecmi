@@ -51,6 +51,7 @@ export type Trip = {
   shortDescription: string;
   longDescription: string;
   image: string;
+  imagePosition?: "center" | "top" | "bottom";
   videoUrl?: string;
   isPast: boolean;
   category: "rodzinny" | "matka-corka" | "single-parents" | "dla-doroslych";

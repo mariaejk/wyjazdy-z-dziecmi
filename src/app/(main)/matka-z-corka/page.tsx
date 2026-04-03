@@ -33,28 +33,31 @@ export default async function MotherDaughterPage() {
         { name: "Matka i córka", url: `${SITE_CONFIG.url}/matka-z-corka` },
       ])} />
 
-      {/* Hero image */}
-      <div className="relative aspect-[21/9] w-full overflow-hidden sm:aspect-[3/1]">
-        <Image
-          src="/images/okladka-matki-hero.jpeg"
-          alt="Warsztaty matka i córka — kobiety siedzące na drewnianej podłodze"
-          fill
-          priority
-          sizes="100vw"
-          className="object-cover object-top"
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-graphite/40 to-transparent" />
-      </div>
-
-      {/* Hero text */}
-      <SectionWrapper className="py-4 sm:py-6">
+      {/* Tytuł wycentrowany */}
+      <SectionWrapper className="py-6 sm:py-8">
         <Container>
-          <ScrollAnimation variant="fadeUp">
-            <div className="mx-auto max-w-3xl text-center">
-              <h1 className="font-heading text-4xl font-light text-graphite sm:text-5xl lg:text-6xl">
-                Matka i córka
-              </h1>
-              <p className="mt-4 text-lg leading-relaxed text-graphite-light sm:text-xl">
+          <h1 className="text-center font-heading text-4xl font-light text-graphite sm:text-5xl lg:text-6xl">
+            Matka i córka
+          </h1>
+        </Container>
+      </SectionWrapper>
+
+      {/* Zdjęcie + tekst obok siebie */}
+      <SectionWrapper className="pb-6 sm:pb-8">
+        <Container>
+          <div className="grid items-center gap-8 lg:grid-cols-2 lg:gap-12">
+            <div className="relative aspect-[4/3] overflow-hidden">
+              <Image
+                src="/images/okladka-matki-hero.jpeg"
+                alt="Warsztaty matka i córka — kobiety siedzące na drewnianej podłodze"
+                fill
+                priority
+                sizes="(min-width: 1024px) 50vw, 100vw"
+                className="object-cover object-center"
+              />
+            </div>
+            <ScrollAnimation variant="fadeUp">
+              <p className="text-lg leading-relaxed text-graphite-light">
                 To spotkanie dwóch kobiet. Każda zamknięta w swoim czasie,
                 a jednocześnie żyjące równolegle, tak bardzo zespolone ze sobą
                 od zawsze. Nierozerwalne, a jednak tak bardzo różne. Ten warsztat
@@ -62,8 +65,8 @@ export default async function MotherDaughterPage() {
                 To czas, aby na chwilę wyjść z ról i w zabawie i szczerym
                 uśmiechu odnaleźć radość z bycia razem.
               </p>
-            </div>
-          </ScrollAnimation>
+            </ScrollAnimation>
+          </div>
         </Container>
       </SectionWrapper>
 

@@ -18,6 +18,7 @@ function mapTrip(
     shortDescription: entry.shortDescription,
     longDescription: entry.longDescription,
     image: entry.image,
+    imagePosition: (entry.imagePosition as Trip["imagePosition"]) || undefined,
     videoUrl: entry.videoUrl || undefined,
     isPast: parseLocalDate(entry.dateEnd) < new Date(),
     spotsTotal: entry.spotsTotal ?? undefined,

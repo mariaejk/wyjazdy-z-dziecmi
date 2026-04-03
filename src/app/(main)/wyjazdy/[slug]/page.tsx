@@ -103,6 +103,7 @@ export default async function TripPage({ params }: PageProps) {
         dateEnd={trip.dateEnd}
         location={trip.location}
         image={trip.image}
+        imagePosition={trip.imagePosition}
         isPast={trip.isPast}
         spotsLeft={trip.spotsLeft}
       />

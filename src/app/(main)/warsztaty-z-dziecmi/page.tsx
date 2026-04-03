@@ -33,34 +33,30 @@ export default async function FamilyTripsPage() {
         { name: "Rodzinny czas", url: `${SITE_CONFIG.url}/warsztaty-z-dziecmi` },
       ])} />
 
-      {/* Hero image */}
-      <div className="relative aspect-[21/9] w-full overflow-hidden sm:aspect-[3/1]">
-        <Image
-          src="/images/okladka-rodzinny-czas-hero.jpeg"
-          alt="Rodziny na warsztatach w naturze — wspólne zajęcia na łące"
-          fill
-          priority
-          sizes="100vw"
-          className="object-cover object-bottom"
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-graphite/40 to-transparent" />
-      </div>
-
-      {/* Hero text */}
-      <SectionWrapper className="py-4 sm:py-6">
+      {/* Hero */}
+      <SectionWrapper variant="alternate">
         <Container>
           <ScrollAnimation variant="fadeUp">
             <div className="mx-auto max-w-3xl text-center">
               <h1 className="font-heading text-4xl font-light text-graphite sm:text-5xl lg:text-6xl">
-                <span className="relative inline-block">Rodzinny czas<svg className="mx-auto mt-1 h-[6px] w-[90%]" viewBox="0 0 200 8" fill="none" preserveAspectRatio="none" aria-hidden="true"><path d="M2 5.5C30 2 50 6.5 80 3.5C110 0.5 130 7 160 4C175 2.5 190 5 198 3.5" stroke="currentColor" className="text-graphite-light/40" strokeWidth="1.5" strokeLinecap="round" /></svg></span>
+                Rodzinny czas
               </h1>
-              <p className="mt-4 text-lg leading-relaxed text-graphite-light sm:text-xl">
+              <p className="mt-6 text-lg leading-relaxed text-graphite-light sm:text-xl">
                 To propozycja dla rodzin, które szukają alternatywy dla tłocznych
                 miejsc, popularnych atrakcji i hotelowych animacji. Z nami
                 zwolnicie, zapomnicie o bajce i spędzicie naprawdę jakościowy
                 czas razem. To też doskonały pomysł na spędzenie czasu z dziećmi
                 dla babć, dziadków, cioć oraz wujków.
               </p>
+            </div>
+            <div className="relative mx-auto mt-8 aspect-[4/3] max-w-2xl overflow-hidden rounded-none">
+              <Image
+                src="/images/okladka-rodzinny-czas-hero.jpeg"
+                alt="Rodziny na warsztatach w naturze — wspólne zajęcia na łące"
+                fill
+                sizes="(max-width: 768px) 100vw, 672px"
+                className="object-cover"
+              />
             </div>
           </ScrollAnimation>
         </Container>

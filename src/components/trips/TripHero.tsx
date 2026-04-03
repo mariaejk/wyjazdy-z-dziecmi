@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { Calendar, MapPin } from "lucide-react";
+import { cn } from "@/lib/utils";
 import { Container } from "@/components/layout/Container";
 import { Badge } from "@/components/ui/Badge";
 import { Button } from "@/components/ui/Button";
@@ -12,9 +13,16 @@ type TripHeroProps = {
   dateEnd: string;
   location: string;
   image: string;
+  imagePosition?: "center" | "top" | "bottom";
   isPast: boolean;
   spotsLeft?: number;
 };
+
+const POSITION_CLASS = {
+  center: "object-center",
+  top: "object-top",
+  bottom: "object-bottom",
+} as const;
 
 export function TripHero({
   title,
@@ -23,6 +31,7 @@ export function TripHero({
   dateEnd,
   location,
   image,
+  imagePosition = "center",
   isPast,
   spotsLeft,
 }: TripHeroProps) {
@@ -35,9 +44,9 @@ export function TripHero({
         fill
         priority
         sizes="100vw"
-        className="object-cover"
+        className={cn("object-cover", POSITION_CLASS[imagePosition])}
       />
-      <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/50 to-black/20" />
+      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
 
       <Container className="relative z-10 pb-12 pt-32 sm:pb-16 sm:pt-40">
         <div className="max-w-3xl">
