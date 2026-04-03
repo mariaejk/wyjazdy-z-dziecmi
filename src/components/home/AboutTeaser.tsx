@@ -4,7 +4,6 @@ import { SectionWrapper } from "@/components/ui/SectionWrapper";
 import { Button } from "@/components/ui/Button";
 import { ScrollAnimation } from "@/components/shared/ScrollAnimation";
 import { ROUTES } from "@/lib/constants";
-import { cn } from "@/lib/utils";
 import { getTeamMember } from "@/data/team";
 
 export async function AboutTeaser() {
@@ -45,10 +44,7 @@ export async function AboutTeaser() {
             {paragraphs.map((p, i) => (
               <p
                 key={i}
-                className={cn(
-                  "mt-4 leading-relaxed text-graphite-light",
-                  i === 0 ? "text-lg" : "text-base"
-                )}
+                className="mt-4 text-base leading-relaxed text-graphite-light"
               >
                 {p}
               </p>
