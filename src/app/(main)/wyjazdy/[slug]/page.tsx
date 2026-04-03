@@ -18,7 +18,6 @@ import { BookingForm } from "@/components/trips/BookingForm";
 import { WaitlistForm } from "@/components/trips/WaitlistForm";
 import { StickyBookingCTA } from "@/components/trips/StickyBookingCTA";
 import { Container } from "@/components/layout/Container";
-import { Facebook } from "lucide-react";
 import { SectionWrapper } from "@/components/ui/SectionWrapper";
 import { Button } from "@/components/ui/Button";
 import { ScrollAnimation } from "@/components/shared/ScrollAnimation";
@@ -106,6 +105,7 @@ export default async function TripPage({ params }: PageProps) {
         imagePosition={trip.imagePosition}
         isPast={trip.isPast}
         spotsLeft={trip.spotsLeft}
+        facebookEventUrl={trip.facebookEventUrl}
       />
 
       {/* 2. Video + Description (side by side) */}
@@ -153,24 +153,7 @@ export default async function TripPage({ params }: PageProps) {
         />
       )}
 
-      {/* Facebook Event */}
-      {trip.facebookEventUrl && (
-        <SectionWrapper>
-          <Container>
-            <div className="mx-auto max-w-3xl text-center">
-              <a
-                href={trip.facebookEventUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 rounded-none border border-moss px-6 py-3 text-[11px] font-medium uppercase tracking-[0.2em] text-moss transition-colors hover:bg-moss hover:text-white"
-              >
-                <Facebook className="h-4 w-4" strokeWidth={1.5} />
-                Dołącz do wydarzenia na Facebooku
-              </a>
-            </div>
-          </Container>
-        </SectionWrapper>
-      )}
+
 
       {/* 7. Collaborator */}
       {trip.collaborator && hasCollaborator && <TripCollaborator collaborator={trip.collaborator} />}

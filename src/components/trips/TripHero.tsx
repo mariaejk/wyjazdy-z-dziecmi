@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { Calendar, MapPin } from "lucide-react";
+import { Calendar, MapPin, Facebook } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Container } from "@/components/layout/Container";
 import { Badge } from "@/components/ui/Badge";
@@ -17,6 +17,7 @@ type TripHeroProps = {
   imagePosition?: "center" | "top" | "bottom";
   isPast: boolean;
   spotsLeft?: number;
+  facebookEventUrl?: string;
 };
 
 const POSITION_CLASS = {
@@ -35,6 +36,7 @@ export function TripHero({
   imagePosition = "center",
   isPast,
   spotsLeft,
+  facebookEventUrl,
 }: TripHeroProps) {
   const isSoldOut = spotsLeft === 0;
   const ctaHref = isSoldOut ? "#lista-oczekujacych" : "#formularz";
@@ -74,8 +76,19 @@ export function TripHero({
             </p>
 
             {!isPast && (
-              <div className="mt-6">
+              <div className="mt-6 flex flex-wrap items-center gap-4">
                 <Button href={ctaHref}>{ctaLabel}</Button>
+                {facebookEventUrl && (
+                  <a
+                    href={facebookEventUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 rounded-none border border-moss px-6 py-3 text-[11px] font-medium uppercase tracking-[0.2em] text-moss transition-colors hover:bg-moss hover:text-white"
+                  >
+                    <Facebook className="h-4 w-4" strokeWidth={1.5} />
+                    Wydarzenie na Facebooku
+                  </a>
+                )}
               </div>
             )}
           </div>
