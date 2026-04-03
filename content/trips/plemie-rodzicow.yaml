@@ -126,22 +126,24 @@ practicalInfo:
     i kulinarne, zabawy na świeżym powietrzu, gry terenowe. Sauna i balia
     też są dla najmłodszych.
 pricing:
-  - label: 'Rodzic (eko-domki)'
-    price: 1300
-  - label: 'Dziecko (eko-domki)'
-    price: 1030
-  - label: 'Rodzic (pokoje w budynku głównym)'
-    price: 1180
-  - label: 'Dziecko (pokoje w budynku głównym)'
-    price: 970
-  - label: 'Rodzic (duża sala nad pracownią)'
-    price: 1230
-  - label: 'Dziecko (duża sala nad pracownią)'
-    price: 995
-  - label: 'Rodzic (namiot)'
-    price: 1140
-  - label: 'Dziecko (namiot)'
-    price: 950
+  - label: 'Warsztaty (cena za osobę)'
+    price: 600
+  - label: 'Rodzic (eko-domki 3–4 os. z łazienką)'
+    price: 700
+  - label: 'Dziecko* (eko-domki)'
+    price: 430
+  - label: 'Rodzic (pokoje w budynku głównym 2–3 os. z łazienką)'
+    price: 580
+  - label: 'Dziecko* (pokoje w budynku głównym)'
+    price: 370
+  - label: 'Rodzic (duża sala nad pracownią, wieloosobowa)'
+    price: 630
+  - label: 'Dziecko* (duża sala nad pracownią)'
+    price: 395
+  - label: 'Rodzic (namiot, dostęp do łazienek)'
+    price: 540
+  - label: 'Dziecko* (namiot)'
+    price: 350
 priceIncludes: []
 priceExcludes: []
 collaborator:

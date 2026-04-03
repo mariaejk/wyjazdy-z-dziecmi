@@ -28,8 +28,8 @@ const categories = [
   {
     label: "Czas bez dzieci",
     href: ROUTES.adultOnly,
-    image: "/images/kazce-bagno-1.jpg",
-    alt: "Warsztaty wyjazdowe dla dorosłych",
+    image: "/images/marysia_single.jpeg",
+    alt: "Marysia na huśtawce — warsztaty wyjazdowe dla dorosłych",
   },
 ];
 

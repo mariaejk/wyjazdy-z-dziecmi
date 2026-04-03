@@ -132,22 +132,24 @@ practicalInfo:
     Podczas bloków warsztatowych dla mam, córki mają własny program:
     warsztaty ceramiczne, zajęcia taneczne i twórcze w bezpiecznej przestrzeni.
 pricing:
+  - label: 'Warsztaty (cena za osobę)'
+    price: 600
   - label: 'Mama (eko-domki)'
-    price: 1850
+    price: 1200
   - label: 'Córka (eko-domki)'
-    price: 1145
+    price: 600
   - label: 'Mama (pokoje w budynku głównym)'
-    price: 1800
+    price: 1100
   - label: 'Córka (pokoje w budynku głównym)'
-    price: 1130
-  - label: 'Mama (duża sala nad pracownią)'
-    price: 1625
+    price: 500
+  - label: 'Mama (duża sala nad pracownią, wieloosobowa)'
+    price: 900
   - label: 'Córka (duża sala nad pracownią)'
-    price: 1093
-  - label: 'Mama (namiot)'
-    price: 1490
+    price: 400
+  - label: 'Mama (namiot, dostęp do łazienek)'
+    price: 750
   - label: 'Córka (namiot)'
-    price: 1025
+    price: 300
 priceIncludes: []
 priceExcludes: []
 collaborator:
