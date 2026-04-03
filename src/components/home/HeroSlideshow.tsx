@@ -5,12 +5,10 @@ import Image from "next/image";
 import { motion, AnimatePresence, useReducedMotion } from "motion/react";
 
 const slides = [
-  { src: "/images/hero-zachod-slonca.jpg", alt: "Dzieci bawiące się nad jeziorem o zachodzie słońca" },
-  { src: "/images/matki-corki-5.jpg", alt: "Joga na warsztatach w naturze" },
-  { src: "/images/slide-2.jpeg", alt: "Spacer po wiejskiej drodze w otoczeniu natury" },
-  { src: "/images/kazce-bagno-1.jpg", alt: "Warsztaty w otoczeniu natury — Kacze Bagno" },
-  { src: "/images/slide-show-1.jpeg", alt: "Rodziny na warsztatach w naturze" },
-  { src: "/images/slide-show-2.jpeg", alt: "Wspólne chwile na warsztatach rodzinnych" },
+  { src: "/images/hero-zachod-slonca.jpg", alt: "Dzieci bawiące się nad jeziorem o zachodzie słońca", position: "object-bottom" as const },
+  { src: "/images/slide-2.jpeg", alt: "Spacer po wiejskiej drodze w otoczeniu natury", position: "object-bottom" as const },
+  { src: "/images/kazce-bagno-1.jpg", alt: "Warsztaty w otoczeniu natury — Kacze Bagno", position: "object-center" as const },
+  { src: "/images/slide-show-1.jpeg", alt: "Rodziny na warsztatach w naturze", position: "object-bottom" as const },
 ];
 
 export function HeroSlideshow() {
@@ -37,7 +35,7 @@ export function HeroSlideshow() {
           loading="eager"
           fetchPriority="high"
           sizes="100vw"
-          className="object-cover"
+          className={`object-cover ${slides[0].position}`}
         />
       </div>
     );
@@ -61,7 +59,7 @@ export function HeroSlideshow() {
             loading={current === 0 ? "eager" : "lazy"}
             fetchPriority={current === 0 ? "high" : "auto"}
             sizes="100vw"
-            className="object-cover"
+            className={`object-cover ${slides[current].position}`}
           />
         </motion.div>
       </AnimatePresence>
