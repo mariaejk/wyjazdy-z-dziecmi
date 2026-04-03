@@ -55,7 +55,7 @@ export default async function FamilyTripsPage() {
                 alt="Rodziny na warsztatach w naturze — wspólne zajęcia na łące"
                 fill
                 sizes="(max-width: 768px) 100vw, 672px"
-                className="object-cover"
+                className="object-cover object-bottom"
               />
             </div>
           </ScrollAnimation>
