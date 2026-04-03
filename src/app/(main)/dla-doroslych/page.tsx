@@ -17,7 +17,7 @@ export const dynamic = "force-static";
 export const metadata: Metadata = {
   title: "Warsztaty dla dorosłych — Wyjazdy z Dziećmi",
   description:
-    "Warsztaty wyjazdowe tylko dla dorosłych — joga, konie, ruch w naturze. Czas na regenerację i rozwój osobisty.",
+    "Warsztaty wyjazdowe tylko dla dorosłych — joga, konie, ruch w naturze. Bo liczysz się także ty.",
   robots: { index: false },
 };
 

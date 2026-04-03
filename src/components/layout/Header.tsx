@@ -136,7 +136,7 @@ export function Header() {
         <div className="flex h-16 items-center justify-between sm:h-20">
           {/* Logo */}
           <Link href={ROUTES.home} className="group flex items-center" aria-label="Wyjazdy z Dziećmi — strona główna">
-            <Logo size={44} color="#48351b" className="sm:gap-3" />
+            <Logo size={44} />
           </Link>
 
           {/* Right side: nav + phone + CTA + hamburger */}
