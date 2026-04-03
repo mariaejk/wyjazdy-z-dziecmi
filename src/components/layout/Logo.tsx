@@ -10,11 +10,11 @@ export function Logo({ size = 50, className }: LogoProps) {
   return (
     <div className={cn("flex items-center", className)}>
       <Image
-        src="/images/logo.jpg"
+        src="/images/logo.png"
         alt="Wyjazdy z Dziećmi — Świadomy kierunek"
         width={size * 3}
         height={size}
-        className="h-auto object-contain mix-blend-multiply"
+        className="h-auto object-contain"
         priority
       />
     </div>
