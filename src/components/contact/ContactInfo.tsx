@@ -24,7 +24,7 @@ const contactItems = [
   {
     icon: Facebook,
     label: "Facebook",
-    value: extractHandle(SOCIAL_LINKS.facebook, "facebook.com/"),
+    value: "Wyjazdy z Dziećmi",
     href: SOCIAL_LINKS.facebook,
     external: true,
   },

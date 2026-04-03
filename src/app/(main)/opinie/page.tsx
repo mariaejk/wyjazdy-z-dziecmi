@@ -41,7 +41,7 @@ export default async function OpinionsPage() {
             </div>
           </ScrollAnimation>
 
-          <div className="mx-auto grid max-w-4xl gap-6 sm:grid-cols-2">
+          <div className="mx-auto grid max-w-5xl gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {testimonials.map((testimonial, index) => (
               <TestimonialCard
                 key={testimonial.id}

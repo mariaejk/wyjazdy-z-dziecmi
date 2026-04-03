@@ -130,19 +130,19 @@ pricing:
     price: 600
   - label: 'Rodzic (eko-domki 3–4 os. z łazienką)'
     price: 700
-  - label: 'Dziecko* (eko-domki)'
+  - label: 'Dziecko (eko-domki)'
     price: 430
   - label: 'Rodzic (pokoje w budynku głównym 2–3 os. z łazienką)'
     price: 580
-  - label: 'Dziecko* (pokoje w budynku głównym)'
+  - label: 'Dziecko (pokoje w budynku głównym)'
     price: 370
   - label: 'Rodzic (duża sala nad pracownią, wieloosobowa)'
     price: 630
-  - label: 'Dziecko* (duża sala nad pracownią)'
+  - label: 'Dziecko (duża sala nad pracownią)'
     price: 395
   - label: 'Rodzic (namiot, dostęp do łazienek)'
     price: 540
-  - label: 'Dziecko* (namiot)'
+  - label: 'Dziecko (namiot)'
     price: 350
 priceIncludes: []
 priceExcludes: []
