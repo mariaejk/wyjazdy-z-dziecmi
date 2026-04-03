@@ -12,24 +12,28 @@ const categories = [
     href: ROUTES.familyTrips,
     image: "/images/okladka-rodzinny-czas-hero.jpeg",
     alt: "Rodziny na warsztatach w naturze — wspólne zajęcia na łące",
+    position: "object-center",
   },
   {
     label: "Matka i córka",
     href: ROUTES.motherDaughter,
     image: "/images/okladka-matki-hero.jpeg",
     alt: "Warsztaty matka i córka — kobiety na drewnianej podłodze",
+    position: "object-center",
   },
   {
     label: "Single z dziećmi",
     href: ROUTES.singleParents,
     image: "/images/okladka-single-z-dziecmi-hero.jpeg",
     alt: "Rodzina na kajakach — warsztaty dla singli z dziećmi",
+    position: "object-left",
   },
   {
     label: "Czas bez dzieci",
     href: ROUTES.adultOnly,
     image: "/images/marysia_single.jpeg",
     alt: "Marysia na huśtawce — warsztaty wyjazdowe dla dorosłych",
+    position: "object-center",
   },
 ];
 
@@ -56,7 +60,7 @@ export function CategoryCards() {
                     alt={cat.alt}
                     fill
                     sizes="(max-width: 640px) calc(100vw - 2rem), (max-width: 1024px) calc(50vw - 1.5rem), calc(25vw - 2rem)"
-                    className="object-cover transition-transform duration-500 group-hover:scale-105"
+                    className={`object-cover transition-transform duration-500 group-hover:scale-105 ${cat.position}`}
                   />
                 </div>
                 <div className="absolute inset-0 bg-gradient-to-t from-graphite/70 via-graphite/20 to-transparent" />
